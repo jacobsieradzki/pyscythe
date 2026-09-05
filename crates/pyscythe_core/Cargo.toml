@@ -1,0 +1,16 @@
+[package]
+name = "pyscythe_core"
+description = "Domain model and analyses for pyscythe, independent of any parser or filesystem"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[dependencies]
+camino = { workspace = true, features = ["serde1"] }
+serde = { workspace = true }
+
+[lints]
+workspace = true

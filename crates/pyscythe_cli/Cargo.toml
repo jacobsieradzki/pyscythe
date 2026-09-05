@@ -1,0 +1,29 @@
+[package]
+name = "pyscythe"
+description = "Codebase intelligence for Python: dead code, circular imports, duplication, complexity, and architecture boundaries"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[[bin]]
+name = "pyscythe"
+path = "src/main.rs"
+
+[dependencies]
+pyscythe_core = { workspace = true }
+pyscythe_ty = { workspace = true }
+
+anyhow = { workspace = true }
+clap = { workspace = true }
+serde_json = { workspace = true }
+
+[dev-dependencies]
+assert_cmd = { workspace = true }
+predicates = { workspace = true }
+serde_json = { workspace = true }
+
+[lints]
+workspace = true

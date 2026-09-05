@@ -1,0 +1,77 @@
+[workspace]
+resolver = "3"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.96"
+license = "MIT"
+repository = "https://github.com/jacobsieradzki/pyscythe"
+authors = ["Jacob Sieradzki"]
+
+[workspace.dependencies]
+pyscythe_core = { path = "crates/pyscythe_core" }
+pyscythe_ty = { path = "crates/pyscythe_ty" }
+
+# Astral crates are not published to crates.io; pin to a ruff commit.
+ruff_db = { git = "https://github.com/astral-sh/ruff", rev = "689a33fd36eae4537c93e62014fa7ba89bcc3213", features = ["os"] }
+ruff_python_ast = { git = "https://github.com/astral-sh/ruff", rev = "689a33fd36eae4537c93e62014fa7ba89bcc3213" }
+ruff_source_file = { git = "https://github.com/astral-sh/ruff", rev = "689a33fd36eae4537c93e62014fa7ba89bcc3213" }
+ruff_text_size = { git = "https://github.com/astral-sh/ruff", rev = "689a33fd36eae4537c93e62014fa7ba89bcc3213" }
+ty_ide = { git = "https://github.com/astral-sh/ruff", rev = "689a33fd36eae4537c93e62014fa7ba89bcc3213" }
+ty_module_resolver = { git = "https://github.com/astral-sh/ruff", rev = "689a33fd36eae4537c93e62014fa7ba89bcc3213" }
+ty_project = { git = "https://github.com/astral-sh/ruff", rev = "689a33fd36eae4537c93e62014fa7ba89bcc3213" }
+ty_python_core = { git = "https://github.com/astral-sh/ruff", rev = "689a33fd36eae4537c93e62014fa7ba89bcc3213" }
+ty_python_semantic = { git = "https://github.com/astral-sh/ruff", rev = "689a33fd36eae4537c93e62014fa7ba89bcc3213" }
+
+anyhow = "1.0"
+camino = "1.1"
+clap = { version = "4.5", features = ["derive"] }
+rustc-hash = "2.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+
+assert_cmd = "2.0"
+predicates = "3.1"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_debug_implementations = "warn"
+missing_docs = "warn"
+unreachable_pub = "warn"
+unused_qualifications = "warn"
+rust_2018_idioms = { level = "warn", priority = -1 }
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -3 }
+pedantic = { level = "warn", priority = -2 }
+nursery = { level = "warn", priority = -2 }
+# Restriction lints we opt into: no panicking paths in library code.
+unwrap_used = "warn"
+expect_used = "warn"
+panic = "warn"
+indexing_slicing = "warn"
+todo = "warn"
+unimplemented = "warn"
+dbg_macro = "warn"
+print_stdout = "warn"
+print_stderr = "warn"
+exit = "warn"
+allow_attributes = "warn"
+str_to_string = "warn"
+rc_buffer = "warn"
+rc_mutex = "warn"
+iter_over_hash_type = "warn"
+# Pedantic lints that fight readability more than they help.
+module_name_repetitions = "allow"
+# Conflicts with rustc's `unreachable_pub`, which we prefer: it forces `pub(crate)` on internal items.
+redundant_pub_crate = "allow"
+
+# Salsa-heavy dependencies are unusably slow unoptimised; mirror ruff's overrides.
+[profile.dev.package.salsa]
+opt-level = 3
+
+[profile.dev.package.similar]
+opt-level = 3

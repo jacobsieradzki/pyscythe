@@ -1,0 +1,3 @@
+# Every warning is an error, everywhere. Dependencies are cap-linted by cargo so only our crates are held to this.
+[build]
+rustflags = ["-D", "warnings"]

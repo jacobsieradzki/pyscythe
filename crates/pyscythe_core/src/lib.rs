@@ -1,0 +1,15 @@
+//! Domain model and analyses for pyscythe.
+//!
+//! This crate knows nothing about parsers, filesystems, or the ty database.
+//! Analyses are written against the [`index::CodebaseIndex`] port so they can be
+//! driven by a real adapter in production and by an in-memory fake in tests.
+
+pub mod dead_code;
+pub mod finding;
+pub mod index;
+pub mod report;
+pub mod source;
+pub mod symbol;
+
+#[cfg(test)]
+pub(crate) mod testing;

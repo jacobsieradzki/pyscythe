@@ -1,0 +1,28 @@
+[package]
+name = "pyscythe_ty"
+description = "Adapter that implements the pyscythe codebase index on top of the ty semantic database"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[dependencies]
+pyscythe_core = { workspace = true }
+
+ruff_db = { workspace = true }
+ruff_source_file = { workspace = true }
+ruff_text_size = { workspace = true }
+ty_ide = { workspace = true }
+ty_module_resolver = { workspace = true }
+ty_project = { workspace = true }
+ty_python_semantic = { workspace = true }
+
+anyhow = { workspace = true }
+camino = { workspace = true }
+rustc-hash = { workspace = true }
+thiserror = { workspace = true }
+
+[lints]
+workspace = true
