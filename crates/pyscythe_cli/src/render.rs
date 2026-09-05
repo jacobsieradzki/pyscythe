@@ -3,7 +3,7 @@
 use std::io::Write;
 
 use pyscythe_core::finding::Finding;
-use pyscythe_core::report::Report;
+use pyscythe_core::report::{Report, ReportKind};
 
 /// Writes one line per finding followed by a summary.
 pub(crate) fn human(report: &Report, out: &mut impl Write) -> std::io::Result<()> {
@@ -12,22 +12,34 @@ pub(crate) fn human(report: &Report, out: &mut impl Write) -> std::io::Result<()
     }
 
     let summary = &report.summary;
-    let kept = if summary.symbols_kept == 0 {
-        String::new()
-    } else {
-        format!(", {} kept by plugins", summary.symbols_kept)
+    let details = match report.kind {
+        ReportKind::DeadCode => {
+            let mut parts = vec![format!("{} symbols checked", summary.symbols_checked)];
+            if summary.symbols_kept > 0 {
+                parts.push(format!("{} kept by plugins", summary.symbols_kept));
+            }
+            if summary.symbols_ignored > 0 {
+                parts.push(format!("{} ignored by config", summary.symbols_ignored));
+            }
+            format!(" ({})", parts.join(", "))
+        }
+        ReportKind::Cycles => String::new(),
+    };
+    let subject = match report.kind {
+        ReportKind::DeadCode => "dead code",
+        ReportKind::Cycles => "import cycles",
     };
     if report.is_clean() {
         writeln!(
             out,
-            "No dead code found in {} files ({} symbols checked{kept}).",
-            summary.files_scanned, summary.symbols_checked
+            "No {subject} found in {} files{details}.",
+            summary.files_scanned
         )
     } else {
         writeln!(
             out,
-            "\n{} finding(s) in {} files ({} symbols checked{kept}).",
-            summary.findings, summary.files_scanned, summary.symbols_checked
+            "\n{} finding(s) in {} files{details}.",
+            summary.findings, summary.files_scanned
         )
     }
 }

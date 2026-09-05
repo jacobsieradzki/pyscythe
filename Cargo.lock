@@ -1244,7 +1244,9 @@ name = "pyscythe_core"
 version = "0.1.0"
 dependencies = [
  "camino",
+ "globset",
  "serde",
+ "thiserror",
 ]
 
 [[package]]

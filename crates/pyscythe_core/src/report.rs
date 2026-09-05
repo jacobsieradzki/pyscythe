@@ -8,8 +8,10 @@ use crate::finding::Finding;
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
 #[serde(rename_all = "kebab-case")]
 pub enum ReportKind {
-    /// Unused symbols.
+    /// Unused symbols and files.
     DeadCode,
+    /// Circular imports.
+    Cycles,
 }
 
 /// Counts that summarise a run.
@@ -21,6 +23,8 @@ pub struct Summary {
     pub symbols_checked: usize,
     /// Unreferenced symbols a framework plugin kept.
     pub symbols_kept: usize,
+    /// Candidate symbols skipped by `ignore-names` configuration.
+    pub symbols_ignored: usize,
     /// Findings produced.
     pub findings: usize,
 }

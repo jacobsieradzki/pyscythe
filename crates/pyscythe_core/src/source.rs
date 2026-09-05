@@ -42,6 +42,15 @@ impl ModulePath {
     }
 }
 
+/// Whether a module guards script behaviour behind `if __name__ == "__main__":`.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum MainGuard {
+    /// The module can be run as a script.
+    Present,
+    /// No such guard.
+    Absent,
+}
+
 /// A Python source file known to the index.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct SourceFile {
@@ -51,6 +60,16 @@ pub struct SourceFile {
     pub path: Utf8PathBuf,
     /// The module this file resolves to, when it lives on a search path.
     pub module: Option<ModulePath>,
+    /// Whether the file has a `__main__` guard.
+    pub main_guard: MainGuard,
+}
+
+impl SourceFile {
+    /// The file's name without directories, or empty when it has none.
+    #[must_use]
+    pub fn file_name(&self) -> &str {
+        self.path.file_name().unwrap_or_default()
+    }
 }
 
 /// A byte offset into a file's source text.

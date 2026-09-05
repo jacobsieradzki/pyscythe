@@ -57,7 +57,7 @@ pub(crate) mod testing {
 
     use crate::keep::{KeepContext, KeepRule};
     use crate::manifest::Manifest;
-    use crate::source::{ByteOffset, ByteSpan, FileId, ModulePath, SourceFile};
+    use crate::source::{ByteOffset, ByteSpan, FileId, MainGuard, ModulePath, SourceFile};
     use crate::symbol::{
         Decorator, DottedName, KeywordName, Symbol, SymbolId, SymbolKind, SymbolName, SymbolScope,
     };
@@ -144,6 +144,7 @@ pub(crate) mod testing {
                 id: FileId::new(0),
                 path: Utf8PathBuf::from(self.path),
                 module: self.module.map(ModulePath::new),
+                main_guard: MainGuard::Absent,
             };
             let symbol = Symbol {
                 id: SymbolId::new(file.id, 0),

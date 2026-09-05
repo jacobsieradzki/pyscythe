@@ -17,6 +17,28 @@ pub enum Reference {
     External,
 }
 
+/// When an import edge takes effect.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum ImportKind {
+    /// Executed when the importing module loads.
+    Runtime,
+    /// Inside a function body or a dynamic import by string, so it runs later.
+    Deferred,
+    /// Under `if TYPE_CHECKING:`, never executed.
+    TypeOnly,
+}
+
+/// One module importing another.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub struct Import {
+    /// The imported file.
+    pub target: FileId,
+    /// Where the import statement (or string) sits in the importing file.
+    pub span: ByteSpan,
+    /// When the import happens.
+    pub kind: ImportKind,
+}
+
 /// Everything an analysis may ask about a codebase.
 ///
 /// Implementations resolve names semantically: a reference is only reported
@@ -30,6 +52,9 @@ pub trait CodebaseIndex {
 
     /// Every reference to `symbol`, excluding its own declaration.
     fn references(&self, symbol: &Symbol) -> Vec<Reference>;
+
+    /// Every module `file` imports, including deferred and type-only imports.
+    fn imports(&self, file: FileId) -> Vec<Import>;
 
     /// Converts a byte offset in `file` to a line and column.
     fn position(&self, file: FileId, offset: ByteOffset) -> Option<Position>;

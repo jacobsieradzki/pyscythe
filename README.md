@@ -6,7 +6,7 @@ Built in Rust on the [ruff](https://github.com/astral-sh/ruff) and [ty](https://
 
 ## Status
 
-Early. `pyscythe dead-code` reports module-level functions, classes, and variables that nothing refers to, resolving references semantically through ty (aliased imports, attribute access, re-exports). Built-in plugins keep symbols that frameworks reach by convention: pyproject entry points, pytest, FastAPI, Flask, Click/Typer, Celery, Airflow, Django, Alembic, SQLAlchemy/SQLModel, Pydantic. See [TODO.md](TODO.md) for the roadmap.
+Early. `pyscythe dead-code` reports module-level functions, classes, variables, and whole files that nothing refers to, resolving references semantically through ty (aliased imports, attribute access, re-exports). Dotted strings such as `"pkg.settings.DEBUG"` count as references. `pyscythe cycles` reports import cycles that would bite at load time. Built-in plugins keep symbols that frameworks reach by convention: pyproject entry points, pytest, FastAPI, Flask, Click/Typer, Celery, Airflow, Django, Alembic, SQLAlchemy/SQLModel, Pydantic. See [TODO.md](TODO.md) for the roadmap.
 
 ## Usage
 
@@ -14,6 +14,17 @@ Early. `pyscythe dead-code` reports module-level functions, classes, and variabl
 pyscythe dead-code path/to/project
 pyscythe dead-code path/to/project --format json
 pyscythe dead-code path/to/project --no-plugins   # report every unreferenced symbol
+pyscythe cycles path/to/project
+```
+
+Configuration lives in `pyproject.toml`:
+
+```toml
+[tool.pyscythe]
+exclude = ["scripts", "**/legacy_*.py"]   # left out of reports; their references still count
+ignore-names = ["deprecated_*"]           # symbols never reported
+entry-points = ["pkg.worker:run"]         # extra roots beyond [project.scripts]
+include-notebooks = false
 ```
 
 Exit codes: `0` clean, `1` findings, `2` error.

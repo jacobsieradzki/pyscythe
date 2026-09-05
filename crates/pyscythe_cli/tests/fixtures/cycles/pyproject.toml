@@ -1,0 +1,4 @@
+[project]
+name = "cycles"
+version = "0.0.0"
+requires-python = ">=3.12"

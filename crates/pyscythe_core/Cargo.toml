@@ -10,7 +10,9 @@ authors.workspace = true
 
 [dependencies]
 camino = { workspace = true, features = ["serde1"] }
+globset = { workspace = true }
 serde = { workspace = true }
+thiserror = { workspace = true }
 
 [lints]
 workspace = true

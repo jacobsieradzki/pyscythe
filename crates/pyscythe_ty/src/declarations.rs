@@ -15,6 +15,26 @@ pub(crate) struct Declaration {
     pub(crate) class_keywords: Vec<KeywordName>,
 }
 
+/// Whether `module` has a top-level `if __name__ == "__main__":` block.
+pub(crate) fn has_main_guard(module: &ast::ModModule) -> bool {
+    module.body.iter().any(|statement| {
+        let Stmt::If(if_statement) = statement else {
+            return false;
+        };
+        let Expr::Compare(compare) = &*if_statement.test else {
+            return false;
+        };
+        let Expr::Name(left) = &*compare.left else {
+            return false;
+        };
+        left.id.as_str() == "__name__"
+            && compare
+                .comparators
+                .iter()
+                .any(|c| matches!(c, Expr::StringLiteral(s) if s.value.to_str() == "__main__"))
+    })
+}
+
 /// Declarations for every `def` and `class` in `module`, keyed by name range.
 pub(crate) fn declarations_by_name_range(
     module: &ast::ModModule,

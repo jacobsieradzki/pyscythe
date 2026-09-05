@@ -2,8 +2,10 @@
 
 use camino::Utf8PathBuf;
 
-use crate::index::{CodebaseIndex, Reference};
-use crate::source::{ByteOffset, ByteSpan, Column, FileId, Line, ModulePath, Position, SourceFile};
+use crate::index::{CodebaseIndex, Import, ImportKind, Reference};
+use crate::source::{
+    ByteOffset, ByteSpan, Column, FileId, Line, MainGuard, ModulePath, Position, SourceFile,
+};
 use crate::symbol::{Decorator, Symbol, SymbolId, SymbolKind, SymbolName, SymbolScope};
 
 /// Each symbol is laid out on its own "line" of this many bytes so that
@@ -15,6 +17,7 @@ pub(crate) struct FakeIndex {
     files: Vec<SourceFile>,
     symbols: Vec<Symbol>,
     references: Vec<(SymbolId, Reference)>,
+    imports: Vec<(FileId, Import)>,
 }
 
 impl FakeIndex {
@@ -23,13 +26,35 @@ impl FakeIndex {
     }
 
     pub(crate) fn add_file(&mut self, path: &str, module: &str) -> FileId {
+        self.push_file(path, module, MainGuard::Absent)
+    }
+
+    /// A file with an `if __name__ == "__main__":` guard.
+    pub(crate) fn add_script(&mut self, path: &str, module: &str) -> FileId {
+        self.push_file(path, module, MainGuard::Present)
+    }
+
+    fn push_file(&mut self, path: &str, module: &str, main_guard: MainGuard) -> FileId {
         let id = FileId::new(u32::try_from(self.files.len()).expect("fewer than u32::MAX files"));
         self.files.push(SourceFile {
             id,
             path: Utf8PathBuf::from(path),
             module: Some(ModulePath::new(module)),
+            main_guard,
         });
         id
+    }
+
+    pub(crate) fn add_import(&mut self, from: FileId, to: FileId, kind: ImportKind) {
+        let ordinal = u32::try_from(self.imports.len()).expect("few imports");
+        self.imports.push((
+            from,
+            Import {
+                target: to,
+                span: ByteSpan::new(ByteOffset::new(ordinal), ByteOffset::new(ordinal + 1)),
+                kind,
+            },
+        ));
     }
 
     pub(crate) fn add_symbol(&mut self, file: FileId, name: &str, kind: SymbolKind) -> SymbolId {
@@ -142,6 +167,14 @@ impl CodebaseIndex for FakeIndex {
             .iter()
             .filter(|(id, _)| *id == symbol.id)
             .map(|(_, reference)| *reference)
+            .collect()
+    }
+
+    fn imports(&self, file: FileId) -> Vec<Import> {
+        self.imports
+            .iter()
+            .filter(|(from, _)| *from == file)
+            .map(|(_, import)| *import)
             .collect()
     }
 

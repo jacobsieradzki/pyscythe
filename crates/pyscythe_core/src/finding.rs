@@ -16,6 +16,10 @@ pub enum Rule {
     UnusedClass,
     /// A module-level variable or constant nothing refers to.
     UnusedVariable,
+    /// A module no other module imports and nothing runs.
+    UnusedFile,
+    /// A set of modules that import each other at load time.
+    CircularImport,
 }
 
 impl Rule {
@@ -43,6 +47,8 @@ impl Rule {
             Self::UnusedFunction => "function",
             Self::UnusedClass => "class",
             Self::UnusedVariable => "variable",
+            Self::UnusedFile => "file",
+            Self::CircularImport => "import cycle",
         }
     }
 }
@@ -51,10 +57,39 @@ impl Rule {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize)]
 #[serde(rename_all = "kebab-case")]
 pub enum Confidence {
-    /// Almost certainly dead; nothing outside the file could reach it.
+    /// Almost certainly right; nothing outside the project could change it.
     High,
-    /// Probably dead, but public names may be consumed by code we cannot see.
+    /// Probably right, but public names may be consumed by code we cannot see.
     Medium,
+}
+
+/// A place in the project.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct Location {
+    /// Absolute path of the file.
+    pub path: Utf8PathBuf,
+    /// Module path of the file, when resolvable.
+    pub module: Option<ModulePath>,
+    /// Line and column, when resolvable.
+    pub position: Option<Position>,
+}
+
+/// What a finding is about, beyond its location.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+#[serde(untagged)]
+pub enum Detail {
+    /// A named definition.
+    Symbol {
+        /// The symbol concerned.
+        symbol: SymbolName,
+    },
+    /// A chain of imports that returns to its start.
+    Cycle {
+        /// Each link imports the next; the last imports the first.
+        chain: Vec<Location>,
+    },
+    /// A whole file.
+    File,
 }
 
 /// One actionable result.
@@ -66,12 +101,24 @@ pub struct Finding {
     pub path: Utf8PathBuf,
     /// Module path of the file, when resolvable.
     pub module: Option<ModulePath>,
-    /// The symbol concerned.
-    pub symbol: SymbolName,
-    /// Where the symbol's name appears.
+    /// Where in the file the finding points.
     pub position: Option<Position>,
     /// How confident the analysis is.
     pub confidence: Confidence,
     /// A one-line human explanation.
     pub message: String,
+    /// What the finding is about.
+    #[serde(flatten)]
+    pub detail: Detail,
+}
+
+impl Finding {
+    /// The symbol this finding is about, for symbol findings.
+    #[must_use]
+    pub const fn symbol(&self) -> Option<&SymbolName> {
+        match &self.detail {
+            Detail::Symbol { symbol } => Some(symbol),
+            Detail::Cycle { .. } | Detail::File => None,
+        }
+    }
 }

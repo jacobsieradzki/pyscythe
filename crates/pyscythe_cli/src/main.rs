@@ -7,7 +7,8 @@ use std::process::ExitCode;
 use clap::{Parser, Subcommand, ValueEnum};
 use pyscythe_core::keep::Policy;
 use pyscythe_core::report::Report;
-use pyscythe_ty::TyIndex;
+use pyscythe_pyproject::ProjectSettings;
+use pyscythe_ty::{IndexOptions, TyIndex};
 
 mod render;
 
@@ -21,8 +22,10 @@ struct Cli {
 
 #[derive(Debug, Subcommand)]
 enum Command {
-    /// Report module-level definitions that nothing refers to.
+    /// Report module-level definitions and files that nothing refers to.
     DeadCode(AnalysisArgs),
+    /// Report groups of modules that import each other at load time.
+    Cycles(AnalysisArgs),
 }
 
 #[derive(Debug, clap::Args)]
@@ -83,23 +86,53 @@ fn main() -> ExitCode {
 
 fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
     match cli.command {
-        Command::DeadCode(args) => {
-            let index = TyIndex::open(&args.path)?;
-            let manifest = pyscythe_pyproject::load(index.root())?;
-            let policy = if args.no_plugins {
-                Policy::none()
-            } else {
-                Policy::builtin()
-            };
-            let report = pyscythe_core::dead_code::analyze(&index, &policy, &manifest);
-            emit(&report, args.format, out)?;
-            Ok(if report.is_clean() {
-                Outcome::Clean
-            } else {
-                Outcome::Findings
-            })
-        }
+        Command::DeadCode(args) => run_analysis(&args, out, dead_code),
+        Command::Cycles(args) => run_analysis(&args, out, cycles),
     }
+}
+
+fn run_analysis(
+    args: &AnalysisArgs,
+    out: &mut impl std::io::Write,
+    analysis: impl FnOnce(&TyIndex, &AnalysisArgs, &ProjectSettings) -> Report,
+) -> anyhow::Result<Outcome> {
+    let (index, settings) = open_project(&args.path)?;
+    let report = analysis(&index, args, &settings);
+    emit(&report, args.format, out)?;
+    Ok(if report.is_clean() {
+        Outcome::Clean
+    } else {
+        Outcome::Findings
+    })
+}
+
+/// Reads settings from the project's `pyproject.toml`, then opens the index with them.
+///
+/// ty decides where the project root is, so the index is opened once to learn
+/// it and again with the exclusions the settings ask for.
+fn open_project(path: &std::path::Path) -> anyhow::Result<(TyIndex, ProjectSettings)> {
+    let probe = TyIndex::open(path, &IndexOptions::default())?;
+    let settings = pyscythe_pyproject::load(probe.root())?;
+    let options = IndexOptions {
+        exclude: settings.config.exclude.clone(),
+        notebooks: settings.config.notebooks,
+    };
+    drop(probe);
+    let index = TyIndex::open(path, &options)?;
+    Ok((index, settings))
+}
+
+fn dead_code(index: &TyIndex, args: &AnalysisArgs, settings: &ProjectSettings) -> Report {
+    let policy = if args.no_plugins {
+        Policy::none()
+    } else {
+        Policy::builtin()
+    };
+    pyscythe_core::dead_code::analyze(index, &policy, &settings.manifest, &settings.config)
+}
+
+fn cycles(index: &TyIndex, _args: &AnalysisArgs, _settings: &ProjectSettings) -> Report {
+    pyscythe_core::cycles::analyze(index)
 }
 
 fn emit(report: &Report, format: Format, out: &mut impl std::io::Write) -> anyhow::Result<()> {

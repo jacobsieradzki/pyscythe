@@ -146,7 +146,7 @@ fn plugins_can_be_switched_off() {
         .as_array()
         .expect("findings array")
         .iter()
-        .map(|f| f["symbol"].as_str().expect("symbol name"))
+        .filter_map(|f| f["symbol"].as_str())
         .collect();
     symbols.sort_unstable();
     assert!(
@@ -186,4 +186,74 @@ fn notebooks_are_not_analysed() {
         .assert()
         .success()
         .stdout(predicate::str::contains("No dead code found in 1 files"));
+}
+
+#[test]
+fn a_file_nobody_imports_is_reported_as_unused_and_scripts_are_not() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("unused_file"))
+        .output()
+        .expect("runs");
+
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let findings = report["findings"].as_array().expect("findings array");
+    assert_eq!(findings.len(), 1, "{report}");
+    assert_eq!(findings[0]["rule"], "unused-file");
+    assert_eq!(findings[0]["module"], "pkg.orphan");
+    assert!(
+        findings[0].get("symbol").is_none(),
+        "file findings carry no symbol"
+    );
+}
+
+#[test]
+fn tool_pyscythe_config_excludes_ignores_and_adds_roots() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("configured"))
+        .output()
+        .expect("runs");
+
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let symbols: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["symbol"].as_str())
+        .collect();
+    assert_eq!(symbols, ["still_dead"], "{report}");
+    assert_eq!(report["summary"]["symbols_ignored"], 1);
+    assert_eq!(
+        report["summary"]["files_scanned"], 4,
+        "scripts/ is excluded from reports"
+    );
+}
+
+#[test]
+fn dotted_strings_count_as_references() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("string_refs"))
+        .output()
+        .expect("runs");
+
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let symbols: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["symbol"].as_str())
+        .collect();
+    // The string names the module `pkg.tasks`, which keeps the file, not the function in it.
+    assert_eq!(symbols, ["UnusedMiddleware", "nightly"], "{report}");
+    let unused_file_reported = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .any(|f| f["rule"] == "unused-file");
+    assert!(
+        !unused_file_reported,
+        "pkg.tasks is named in a string: {report}"
+    );
 }

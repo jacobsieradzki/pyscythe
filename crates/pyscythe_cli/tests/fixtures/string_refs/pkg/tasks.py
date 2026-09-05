@@ -1,0 +1,2 @@
+def nightly() -> None:
+    pass

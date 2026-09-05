@@ -79,7 +79,7 @@ impl KeepContext<'_> {
     /// The file's name without directories, or empty when it has none.
     #[must_use]
     pub fn file_name(&self) -> &str {
-        self.file.path.file_name().unwrap_or_default()
+        self.file.file_name()
     }
 
     /// Whether any directory on the file's path is named `name`.

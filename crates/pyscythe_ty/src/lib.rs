@@ -7,9 +7,10 @@
 use std::sync::OnceLock;
 
 use camino::{Utf8Path, Utf8PathBuf};
-use pyscythe_core::index::{CodebaseIndex, Reference};
+use pyscythe_core::config::{NotebookPolicy, PathPatterns};
+use pyscythe_core::index::{CodebaseIndex, Import, Reference};
 use pyscythe_core::source::{
-    ByteOffset, ByteSpan, Column, FileId, Line, ModulePath, Position, SourceFile,
+    ByteOffset, ByteSpan, Column, FileId, Line, MainGuard, ModulePath, Position, SourceFile,
 };
 use pyscythe_core::symbol::{Symbol, SymbolId, SymbolKind, SymbolName, SymbolScope};
 use ruff_db::files::File;
@@ -42,10 +43,34 @@ pub enum OpenError {
     Configuration(#[source] anyhow::Error),
 }
 
+/// Which files to report on.
+#[derive(Debug, Clone)]
+pub struct IndexOptions {
+    /// Project-relative globs for files to leave out of reports.
+    pub exclude: PathPatterns,
+    /// Whether notebooks are analysed at all.
+    pub notebooks: NotebookPolicy,
+}
+
+impl Default for IndexOptions {
+    fn default() -> Self {
+        Self {
+            exclude: PathPatterns::none(),
+            notebooks: NotebookPolicy::Exclude,
+        }
+    }
+}
+
 /// A [`CodebaseIndex`] backed by ty.
+///
+/// Excluded files are still walked for references and imports, so a use from
+/// an excluded script keeps a symbol alive; they are just never reported on.
 pub struct TyIndex {
     db: ProjectDatabase,
+    /// Reported files, indexed by [`FileId`].
     files: Vec<File>,
+    /// Every analysed file, including excluded ones.
+    all_files: Vec<File>,
     ids: FxHashMap<File, FileId>,
     sources: Vec<SourceFile>,
     references: OnceLock<ReferenceIndex>,
@@ -66,7 +91,7 @@ impl TyIndex {
     ///
     /// Returns [`OpenError`] when the path is not UTF-8, ty cannot discover a
     /// project, or the configuration is invalid.
-    pub fn open(path: &std::path::Path) -> Result<Self, OpenError> {
+    pub fn open(path: &std::path::Path, options: &IndexOptions) -> Result<Self, OpenError> {
         // ty asserts that its working directory is absolute, so resolve relative paths first.
         let absolute = std::path::absolute(path).map_err(|error| {
             OpenError::Configuration(anyhow::anyhow!(
@@ -91,13 +116,27 @@ impl TyIndex {
         db.freeze();
 
         // Notebooks are scratch space; nobody deletes cells because a linter said so.
-        let mut files: Vec<File> = db
+        let mut all_files: Vec<File> = db
             .project()
             .files(&db)
             .iter()
-            .filter(|file| !is_notebook(file.path(&db).to_string().as_str()))
+            .filter(|file| {
+                options.notebooks == NotebookPolicy::Include
+                    || !is_notebook(file.path(&db).to_string().as_str())
+            })
             .collect();
-        files.sort_by_key(|file| file.path(&db).to_string());
+        all_files.sort_by_key(|file| file.path(&db).to_string());
+
+        let project_root = db.project().root(&db).as_utf8_path().to_path_buf();
+        let files: Vec<File> = all_files
+            .iter()
+            .copied()
+            .filter(|file| {
+                let path = Utf8PathBuf::from(file.path(&db).to_string());
+                let relative = path.strip_prefix(&project_root).unwrap_or(&path);
+                !options.exclude.matches(relative)
+            })
+            .collect();
 
         let mut ids = FxHashMap::default();
         let mut sources = Vec::with_capacity(files.len());
@@ -106,16 +145,24 @@ impl TyIndex {
                 OpenError::Configuration(anyhow::anyhow!("too many files: {error}"))
             })?);
             ids.insert(*file, id);
+            let program_file = db.program_file(*file);
+            let module = parsed_module(&db, program_file.python_file(&db)).load(&db);
             sources.push(SourceFile {
                 id,
                 path: Utf8PathBuf::from(file.path(&db).to_string()),
                 module: module_of(&db, *file),
+                main_guard: if declarations::has_main_guard(module.syntax()) {
+                    MainGuard::Present
+                } else {
+                    MainGuard::Absent
+                },
             });
         }
 
         Ok(Self {
             db,
             files,
+            all_files,
             ids,
             sources,
             references: OnceLock::new(),
@@ -134,7 +181,7 @@ impl TyIndex {
 
     fn reference_index(&self) -> &ReferenceIndex {
         self.references
-            .get_or_init(|| ReferenceIndex::build(&self.db, &self.files))
+            .get_or_init(|| ReferenceIndex::build(&self.db, &self.all_files))
     }
 }
 
@@ -198,6 +245,23 @@ impl CodebaseIndex for TyIndex {
                     span: span_of(use_site.range),
                 },
                 None => Reference::External,
+            })
+            .collect()
+    }
+
+    fn imports(&self, file: FileId) -> Vec<Import> {
+        let Some(ty_file) = self.ty_file(file) else {
+            return Vec::new();
+        };
+        self.reference_index()
+            .imports_from(ty_file)
+            .iter()
+            .filter_map(|edge| {
+                Some(Import {
+                    target: *self.ids.get(&edge.target)?,
+                    span: span_of(edge.range),
+                    kind: edge.kind,
+                })
             })
             .collect()
     }
