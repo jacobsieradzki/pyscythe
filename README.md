@@ -33,6 +33,35 @@ include-notebooks = false
 
 Exit codes: `0` clean, `1` findings, `2` error.
 
+### In CI
+
+```bash
+pyscythe dead-code --format github          # GitHub Actions annotations
+pyscythe dead-code --format sarif > out.sarif
+pyscythe dead-code --format markdown        # a table for a PR comment
+pyscythe dead-code --min-confidence medium  # skip low-confidence method findings
+```
+
+Adopting on an existing codebase: record what is there today, then fail only on new findings.
+
+```bash
+pyscythe dead-code --write-baseline .pyscythe-baseline.json
+pyscythe dead-code --baseline .pyscythe-baseline.json
+```
+
+Silence a single finding where it happens:
+
+```python
+def kept_for_a_reason() -> None:  # pyscythe: ignore
+    ...
+
+# pyscythe: ignore[unused-method]
+def another() -> None:
+    ...
+```
+
+`# pyscythe: ignore-file` anywhere in a file silences the whole file.
+
 ## Developing
 
 Rust is managed by [mise](https://mise.jdx.dev). Every warning is an error; clippy runs with `pedantic` and `nursery` on.

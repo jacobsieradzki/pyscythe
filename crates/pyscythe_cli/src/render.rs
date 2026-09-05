@@ -2,6 +2,9 @@
 
 use std::io::Write;
 
+use camino::Utf8Path;
+use pyscythe_core::finding::Confidence;
+
 use pyscythe_core::finding::Finding;
 use pyscythe_core::report::{Report, ReportKind};
 
@@ -37,6 +40,12 @@ pub(crate) fn human(report: &Report, show_kept: bool, out: &mut impl Write) -> s
             }
             if summary.symbols_ignored > 0 {
                 parts.push(format!("{} ignored by config", summary.symbols_ignored));
+            }
+            if summary.suppressed > 0 {
+                parts.push(format!("{} suppressed by comments", summary.suppressed));
+            }
+            if summary.baselined > 0 {
+                parts.push(format!("{} in baseline", summary.baselined));
             }
             format!(" ({})", parts.join(", "))
         }
@@ -74,4 +83,75 @@ fn line_for(finding: &Finding) -> String {
         },
     );
     format!("{location}  {}", finding.message)
+}
+
+/// Project-relative display path.
+fn relative<'a>(path: &'a Utf8Path, root: &Utf8Path) -> &'a Utf8Path {
+    path.strip_prefix(root).unwrap_or(path)
+}
+
+/// One `::warning`/`::notice` workflow command per finding.
+pub(crate) fn github_annotations(
+    report: &Report,
+    root: &Utf8Path,
+    out: &mut impl Write,
+) -> std::io::Result<()> {
+    for finding in &report.findings {
+        let level = match finding.confidence {
+            Confidence::High | Confidence::Medium => "warning",
+            Confidence::Low => "notice",
+        };
+        let file = relative(&finding.path, root);
+        let position = finding.position.map_or_else(String::new, |p| {
+            format!(",line={},col={}", p.line.get(), p.column.get())
+        });
+        writeln!(
+            out,
+            "::{level} file={file}{position},title=pyscythe {}::{}",
+            finding.rule.code(),
+            finding.message
+        )?;
+    }
+    Ok(())
+}
+
+/// A table suitable for a pull request comment.
+pub(crate) fn markdown(
+    report: &Report,
+    root: &Utf8Path,
+    out: &mut impl Write,
+) -> std::io::Result<()> {
+    let summary = &report.summary;
+    if report.is_clean() {
+        return writeln!(
+            out,
+            "**pyscythe**: no findings in {} files.",
+            summary.files_scanned
+        );
+    }
+    writeln!(
+        out,
+        "**pyscythe**: {} finding(s) in {} files.\n",
+        summary.findings, summary.files_scanned
+    )?;
+    writeln!(out, "| Rule | Location | Finding | Confidence |")?;
+    writeln!(out, "| --- | --- | --- | --- |")?;
+    for finding in &report.findings {
+        let file = relative(&finding.path, root);
+        let location = finding
+            .position
+            .map_or_else(|| file.to_string(), |p| format!("{file}:{}", p.line.get()));
+        let confidence = match finding.confidence {
+            Confidence::High => "high",
+            Confidence::Medium => "medium",
+            Confidence::Low => "low",
+        };
+        writeln!(
+            out,
+            "| `{}` | `{location}` | {} | {confidence} |",
+            finding.rule.code(),
+            finding.message.replace('|', "\\|")
+        )?;
+    }
+    Ok(())
 }

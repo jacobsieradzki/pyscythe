@@ -1,6 +1,7 @@
 //! The port through which analyses see a codebase.
 
-use crate::source::{ByteOffset, ByteSpan, FileId, Position, SourceFile};
+use crate::finding::Rule;
+use crate::source::{ByteOffset, ByteSpan, FileId, Line, Position, SourceFile};
 use crate::symbol::{DottedName, Symbol, SymbolName};
 
 /// Whether an attribute name appears anywhere, regardless of what it resolves to.
@@ -100,6 +101,60 @@ impl Ancestry {
     }
 }
 
+/// What a `# pyscythe: ignore` comment covers.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum SuppressionScope {
+    /// Every rule, for the definition on or below the comment's line.
+    AllRules,
+    /// Only these rules, for the definition on or below the comment's line.
+    Rules(Vec<Rule>),
+    /// The whole file: `# pyscythe: ignore-file`.
+    File,
+}
+
+/// A suppression comment in a file.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Suppression {
+    /// The line the comment sits on.
+    pub line: Line,
+    /// What it covers.
+    pub scope: SuppressionScope,
+}
+
+impl Suppression {
+    /// Parses the text after `#` of a comment, such as `pyscythe: ignore[unused-method]`.
+    ///
+    /// Unknown rule codes are dropped; a comment naming only unknown rules
+    /// suppresses nothing.
+    #[must_use]
+    pub fn parse(comment: &str, line: Line) -> Option<Self> {
+        let body = comment.trim_start_matches('#').trim();
+        let directive = body.strip_prefix("pyscythe:")?.trim();
+        if directive == "ignore-file" {
+            return Some(Self {
+                line,
+                scope: SuppressionScope::File,
+            });
+        }
+        let rest = directive.strip_prefix("ignore")?;
+        if rest.trim().is_empty() {
+            return Some(Self {
+                line,
+                scope: SuppressionScope::AllRules,
+            });
+        }
+        let inner = rest.trim().strip_prefix('[')?.split_once(']')?.0;
+        let rules: Vec<Rule> = inner
+            .split(',')
+            .filter_map(|code| Rule::from_code(code.trim()))
+            .collect();
+        (!rules.is_empty()).then_some(Self {
+            line,
+            scope: SuppressionScope::Rules(rules),
+        })
+    }
+}
+
 /// Everything an analysis may ask about a codebase.
 ///
 /// Implementations resolve names semantically: a reference is only reported
@@ -134,11 +189,54 @@ pub trait CodebaseIndex {
     /// Anything that is not a class has unknown ancestry.
     fn ancestry(&self, symbol: &Symbol) -> Ancestry;
 
+    /// Every `# pyscythe: ignore` comment in `file`.
+    fn suppressions(&self, file: FileId) -> Vec<Suppression>;
+
     /// Converts a byte offset in `file` to a line and column.
     fn position(&self, file: FileId, offset: ByteOffset) -> Option<Position>;
 
     /// Looks up a file by identity.
     fn file(&self, id: FileId) -> Option<&SourceFile> {
         self.files().get(id.index())
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{Suppression, SuppressionScope};
+    use crate::finding::Rule;
+    use crate::source::Line;
+
+    fn line() -> Line {
+        Line::from_one_based(7).unwrap()
+    }
+
+    #[test]
+    fn parses_bare_ignore() {
+        let suppression = Suppression::parse("# pyscythe: ignore", line()).unwrap();
+        assert_eq!(suppression.scope, SuppressionScope::AllRules);
+    }
+
+    #[test]
+    fn parses_rule_lists() {
+        let suppression =
+            Suppression::parse("#pyscythe:ignore[unused-method, unused-class]", line()).unwrap();
+        assert_eq!(
+            suppression.scope,
+            SuppressionScope::Rules(vec![Rule::UnusedMethod, Rule::UnusedClass])
+        );
+    }
+
+    #[test]
+    fn parses_ignore_file() {
+        let suppression = Suppression::parse("# pyscythe: ignore-file", line()).unwrap();
+        assert_eq!(suppression.scope, SuppressionScope::File);
+    }
+
+    #[test]
+    fn ignores_other_comments_and_unknown_rules() {
+        assert!(Suppression::parse("# noqa", line()).is_none());
+        assert!(Suppression::parse("# pyscythe: ignore[not-a-rule]", line()).is_none());
+        assert!(Suppression::parse("# pyscythe: something", line()).is_none());
     }
 }

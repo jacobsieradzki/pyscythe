@@ -34,6 +34,8 @@ pub fn analyze(index: &dyn CodebaseIndex) -> Report {
             symbols_checked: 0,
             symbols_kept: 0,
             symbols_ignored: 0,
+            suppressed: 0,
+            baselined: 0,
             findings: findings.len(),
         },
         findings,

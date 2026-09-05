@@ -20,7 +20,7 @@ impl SymbolId {
 }
 
 /// The name a symbol is bound to.
-#[derive(Debug, Clone, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, serde::Deserialize)]
 #[serde(transparent)]
 pub struct SymbolName(String);
 

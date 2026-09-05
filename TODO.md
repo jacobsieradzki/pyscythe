@@ -17,8 +17,11 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 - [x] `--show-kept` lists what plugins suppressed and why; JSON always carries `kept`.
 - [x] `--exclude` on the command line; `--timings` prints phase durations.
 - [x] `[tool.pyscythe]` config: `exclude`, `ignore-names`, `entry-points`, `include-notebooks`.
-- [ ] Inline suppression comment (`# pyscythe: ignore[unused-function]`).
-- [ ] Baseline file and `--since <ref>` for PR gating.
+- [x] Inline suppression: `# pyscythe: ignore`, `# pyscythe: ignore[rule, ...]` on the definition line or the line above, `# pyscythe: ignore-file`.
+- [ ] Report suppression comments that no longer suppress anything.
+- [x] Baseline: `--write-baseline FILE` records current findings by rule, relative path, symbol, and owner (no line numbers); `--baseline FILE` hides them and exits 0 when nothing new.
+- [x] `--min-confidence low|medium|high`.
+- [ ] `--since <ref>` to gate only files changed since a git ref.
 - [x] Performance: single-pass inverted reference index built in parallel (also fixed aliased-import misses).
 - [x] Perf: the process forgets the salsa database at exit instead of dropping it (ty does the same), and the project is opened once. 64 files in ~180 ms wall.
 
@@ -34,7 +37,8 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 
 ## Output and integration
 
-- [ ] SARIF, GitHub annotations, markdown, and PR-comment formats.
+- [x] `--format sarif|github|markdown` alongside `human` and `json`.
+- [ ] PR-comment format with a stable marker for updating an existing comment.
 - [ ] GitHub Action.
 
 ## Deferred by decision

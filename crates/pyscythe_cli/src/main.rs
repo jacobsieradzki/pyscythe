@@ -4,13 +4,17 @@ use std::io::Write as _;
 use std::path::PathBuf;
 use std::process::ExitCode;
 
+use camino::Utf8Path;
 use clap::{Parser, Subcommand, ValueEnum};
+use pyscythe_core::baseline::Baseline;
+use pyscythe_core::finding::Confidence;
 use pyscythe_core::keep::Policy;
 use pyscythe_core::report::Report;
 use pyscythe_pyproject::ProjectSettings;
 use pyscythe_ty::{IndexOptions, TyIndex};
 
 mod render;
+mod sarif;
 
 /// Codebase intelligence for Python.
 #[derive(Debug, Parser)]
@@ -53,6 +57,38 @@ struct AnalysisArgs {
     /// Print how long each phase took to stderr.
     #[arg(long)]
     timings: bool,
+
+    /// Drop findings already recorded in this baseline file.
+    #[arg(long, value_name = "FILE")]
+    baseline: Option<PathBuf>,
+
+    /// Record every current finding to this baseline file and exit 0.
+    #[arg(long, value_name = "FILE")]
+    write_baseline: Option<PathBuf>,
+
+    /// Only report findings at this confidence or better.
+    #[arg(long, value_enum, default_value_t = MinConfidence::Low)]
+    min_confidence: MinConfidence,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum)]
+enum MinConfidence {
+    /// Everything.
+    Low,
+    /// Medium and high.
+    Medium,
+    /// High only.
+    High,
+}
+
+impl From<MinConfidence> for Confidence {
+    fn from(value: MinConfidence) -> Self {
+        match value {
+            MinConfidence::Low => Self::Low,
+            MinConfidence::Medium => Self::Medium,
+            MinConfidence::High => Self::High,
+        }
+    }
 }
 
 /// Wall-clock phases of a run, printed with `--timings`.
@@ -93,6 +129,12 @@ enum Format {
     Human,
     /// A compact JSON document for tools.
     Json,
+    /// SARIF 2.1.0, for GitHub code scanning and editors.
+    Sarif,
+    /// GitHub Actions workflow annotations.
+    Github,
+    /// A Markdown table, for pull request comments.
+    Markdown,
 }
 
 /// Process exit statuses, mirroring the fallow convention.
@@ -144,9 +186,19 @@ fn run_analysis(
     let (index, settings) = open_project(args, &mut timings)?;
     index.prepare();
     timings.mark("reference index");
-    let report = analysis(&index, args, &settings);
+    let mut report = analysis(&index, args, &settings);
     timings.mark("analysis");
-    emit(&report, args, out)?;
+
+    let root = index.root().to_path_buf();
+    let wrote_baseline = write_baseline(args, &report, &root)?;
+    apply_baseline(args, &mut report, &root)?;
+    let threshold: Confidence = args.min_confidence.into();
+    report
+        .findings
+        .retain(|finding| finding.confidence <= threshold);
+    report.summary.findings = report.findings.len();
+
+    emit(&report, args, &root, out)?;
     timings.mark("output");
     if args.timings {
         timings.report(&mut std::io::stderr().lock())?;
@@ -154,11 +206,35 @@ fn run_analysis(
     // Dropping the salsa database tears down every cached query one by one,
     // which costs more than the analysis did. The process is exiting anyway.
     std::mem::forget(index);
-    Ok(if report.is_clean() {
+    Ok(if wrote_baseline || report.is_clean() {
         Outcome::Clean
     } else {
         Outcome::Findings
     })
+}
+
+/// Writes the current findings as a baseline when asked; returns whether it did.
+fn write_baseline(args: &AnalysisArgs, report: &Report, root: &Utf8Path) -> anyhow::Result<bool> {
+    let Some(path) = &args.write_baseline else {
+        return Ok(false);
+    };
+    let baseline = Baseline::from_report(report, root);
+    let text = serde_json::to_string_pretty(&baseline)?;
+    std::fs::write(path, format!("{text}\n"))
+        .map_err(|error| anyhow::anyhow!("cannot write baseline {}: {error}", path.display()))?;
+    Ok(true)
+}
+
+fn apply_baseline(args: &AnalysisArgs, report: &mut Report, root: &Utf8Path) -> anyhow::Result<()> {
+    let Some(path) = &args.baseline else {
+        return Ok(());
+    };
+    let text = std::fs::read_to_string(path)
+        .map_err(|error| anyhow::anyhow!("cannot read baseline {}: {error}", path.display()))?;
+    let baseline: Baseline = serde_json::from_str(&text)
+        .map_err(|error| anyhow::anyhow!("cannot parse baseline {}: {error}", path.display()))?;
+    baseline.apply(report, root);
+    Ok(())
 }
 
 /// Opens the project, reads its `pyproject.toml`, and applies the file selection it asks for.
@@ -194,13 +270,24 @@ fn cycles(index: &TyIndex, _args: &AnalysisArgs, _settings: &ProjectSettings) ->
     pyscythe_core::cycles::analyze(index)
 }
 
-fn emit(report: &Report, args: &AnalysisArgs, out: &mut impl std::io::Write) -> anyhow::Result<()> {
+fn emit(
+    report: &Report,
+    args: &AnalysisArgs,
+    root: &Utf8Path,
+    out: &mut impl std::io::Write,
+) -> anyhow::Result<()> {
     match args.format {
         Format::Human => render::human(report, args.show_kept, out)?,
         Format::Json => {
             serde_json::to_writer(&mut *out, report)?;
             writeln!(out)?;
         }
+        Format::Sarif => {
+            serde_json::to_writer_pretty(&mut *out, &sarif::document(report, root))?;
+            writeln!(out)?;
+        }
+        Format::Github => render::github_annotations(report, root, out)?,
+        Format::Markdown => render::markdown(report, root, out)?,
     }
     Ok(())
 }

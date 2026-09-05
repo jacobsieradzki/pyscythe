@@ -4,11 +4,13 @@ use std::collections::{BTreeMap, BTreeSet};
 
 use crate::config::Config;
 use crate::finding::{Confidence, Detail, Finding, Rule};
-use crate::index::{Ancestry, CodebaseIndex, Inheritance, NameUsage, Reference};
+use crate::index::{
+    Ancestry, CodebaseIndex, Inheritance, NameUsage, Reference, Suppression, SuppressionScope,
+};
 use crate::keep::{KeepContext, KeepReason, PluginName, Policy};
 use crate::manifest::Manifest;
 use crate::report::{KeptSymbol, Report, ReportKind, Summary};
-use crate::source::{FileId, MainGuard, SourceFile};
+use crate::source::{FileId, Line, MainGuard, Position, SourceFile};
 use crate::symbol::{Symbol, SymbolId, SymbolKind, SymbolName, SymbolScope};
 
 /// Files that are run or loaded by convention rather than imported.
@@ -40,12 +42,21 @@ pub fn analyze(
     let mut kept = Vec::new();
     let mut symbols_checked = 0;
     let mut symbols_ignored = 0;
+    let mut suppressed = 0;
     let mut files_with_kept_symbols: BTreeSet<FileId> = BTreeSet::new();
+    let mut suppressed_files: BTreeSet<FileId> = BTreeSet::new();
 
     for file in index.files() {
         let symbols = index.symbols(file.id);
         let owner_names: BTreeMap<SymbolId, SymbolName> =
             symbols.iter().map(|s| (s.id, s.name.clone())).collect();
+        let suppressions = index.suppressions(file.id);
+        if suppressions
+            .iter()
+            .any(|s| s.scope == SuppressionScope::File)
+        {
+            suppressed_files.insert(file.id);
+        }
 
         for symbol in symbols {
             let checker = SymbolCheck {
@@ -55,11 +66,16 @@ pub fn analyze(
                 config,
                 file,
                 owner_names: &owner_names,
+                suppressions: &suppressions,
             };
             match checker.verdict(symbol) {
                 Verdict::NotCandidate => {}
                 Verdict::Ignored => symbols_ignored += 1,
                 Verdict::Used => symbols_checked += 1,
+                Verdict::Suppressed => {
+                    symbols_checked += 1;
+                    suppressed += 1;
+                }
                 Verdict::Kept(symbol) => {
                     symbols_checked += 1;
                     files_with_kept_symbols.insert(file.id);
@@ -75,7 +91,11 @@ pub fn analyze(
 
     let unused_files = unused_files(index, manifest, &files_with_kept_symbols);
     findings.retain(|finding| !unused_files.iter().any(|file| file.path == finding.path));
-    findings.extend(unused_files.into_iter().map(|file| Finding {
+    let (suppressed_unused_files, reported_unused_files): (Vec<_>, Vec<_>) = unused_files
+        .into_iter()
+        .partition(|file| suppressed_files.contains(&file.id));
+    suppressed += suppressed_unused_files.len();
+    findings.extend(reported_unused_files.into_iter().map(|file| Finding {
         rule: Rule::UnusedFile,
         path: file.path.clone(),
         module: file.module.clone(),
@@ -101,6 +121,8 @@ pub fn analyze(
             symbols_checked,
             symbols_kept: kept.len(),
             symbols_ignored,
+            suppressed,
+            baselined: 0,
             findings: findings.len(),
         },
         findings,
@@ -116,6 +138,8 @@ enum Verdict {
     Ignored,
     /// Something refers to it.
     Used,
+    /// Dead, but a `# pyscythe: ignore` comment covers it.
+    Suppressed,
     /// Unreferenced, but a plugin or an override keeps it.
     Kept(KeptSymbol),
     /// Unreferenced and nothing keeps it.
@@ -130,6 +154,7 @@ struct SymbolCheck<'a> {
     config: &'a Config,
     file: &'a SourceFile,
     owner_names: &'a BTreeMap<SymbolId, SymbolName>,
+    suppressions: &'a [Suppression],
 }
 
 impl SymbolCheck<'_> {
@@ -169,6 +194,10 @@ impl SymbolCheck<'_> {
                 plugin: reason.plugin,
                 why: reason.why,
             });
+        }
+
+        if self.is_suppressed(&symbol, rule, position) {
+            return Verdict::Suppressed;
         }
 
         let owner = match symbol.scope {
@@ -240,6 +269,27 @@ fn is_test_file(name: &str) -> bool {
         .is_some_and(|stem| stem.starts_with("test_") || stem.ends_with("_test"))
 }
 
+impl SymbolCheck<'_> {
+    /// A comment on the definition's name line, or on the line just above the
+    /// definition (above any decorators), silences `rule` for it.
+    fn is_suppressed(&self, symbol: &Symbol, rule: Rule, position: Option<Position>) -> bool {
+        let name_line = position.map(|p| p.line);
+        let line_above = self
+            .index
+            .position(self.file.id, symbol.full_span.start())
+            .and_then(|p| Line::from_one_based(p.line.get().saturating_sub(1)));
+        self.suppressions.iter().any(|suppression| {
+            let covers_rule = match &suppression.scope {
+                SuppressionScope::File => return true,
+                SuppressionScope::AllRules => true,
+                SuppressionScope::Rules(rules) => rules.contains(&rule),
+            };
+            covers_rule
+                && (Some(suppression.line) == name_line || Some(suppression.line) == line_above)
+        })
+    }
+}
+
 /// A method that overrides an inherited member may be called by the base
 /// class's own code, which never names the subclass.
 fn override_reason(index: &dyn CodebaseIndex, symbol: &Symbol) -> Option<KeepReason> {
@@ -309,7 +359,7 @@ mod tests {
     use super::analyze;
     use crate::config::{Config, NamePatterns};
     use crate::finding::{Confidence, Rule};
-    use crate::index::{Ancestry, ImportKind};
+    use crate::index::{Ancestry, ImportKind, SuppressionScope};
     use crate::keep::Policy;
     use crate::manifest::{EntryPoint, EntryPointKind, Manifest};
     use crate::report::Report;
@@ -508,6 +558,38 @@ mod tests {
 
         assert_eq!(symbol_names(&report), ["Child"]);
         assert_eq!(report.kept[0].symbol.as_str(), "User");
+    }
+
+    #[test]
+    fn suppression_comments_silence_findings_on_their_line_or_the_line_above() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/pkg/m.py", "pkg.m");
+        let on_line = index.add_symbol(file, "on_line", SymbolKind::Function);
+        let above = index.add_symbol(file, "above", SymbolKind::Function);
+        let wrong_rule = index.add_symbol(file, "wrong_rule", SymbolKind::Function);
+        index.add_symbol(file, "loud", SymbolKind::Function);
+        index.suppress_on_name_line(on_line, SuppressionScope::AllRules);
+        index.suppress_on_line_above(above, SuppressionScope::Rules(vec![Rule::UnusedFunction]));
+        index.suppress_on_name_line(wrong_rule, SuppressionScope::Rules(vec![Rule::UnusedClass]));
+        import_from_elsewhere(&mut index, file);
+
+        let report = analyze_without_plugins(&index);
+
+        assert_eq!(symbol_names(&report), ["wrong_rule", "loud"]);
+        assert_eq!(report.summary.suppressed, 2);
+    }
+
+    #[test]
+    fn ignore_file_silences_a_whole_file_including_unused_file() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/pkg/legacy.py", "pkg.legacy");
+        index.add_symbol(file, "old", SymbolKind::Function);
+        index.suppress_file(file);
+
+        let report = analyze_without_plugins(&index);
+
+        assert!(report.is_clean(), "{:?}", report.findings);
+        assert_eq!(report.summary.suppressed, 2, "the symbol and the file");
     }
 
     #[test]

@@ -7,7 +7,9 @@ use crate::source::{ModulePath, Position};
 use crate::symbol::{SymbolKind, SymbolName};
 
 /// The rule a finding was produced by.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize)]
+#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, serde::Deserialize,
+)]
 #[serde(rename_all = "kebab-case")]
 pub enum Rule {
     /// A module-level function nothing refers to.
@@ -39,6 +41,50 @@ impl Rule {
             | SymbolKind::Parameter
             | SymbolKind::TypeParameter
             | SymbolKind::Module => None,
+        }
+    }
+
+    /// Every rule, in a stable order for tooling metadata.
+    pub const ALL: [Self; 6] = [
+        Self::UnusedFunction,
+        Self::UnusedClass,
+        Self::UnusedVariable,
+        Self::UnusedMethod,
+        Self::UnusedFile,
+        Self::CircularImport,
+    ];
+
+    /// The kebab-case identifier used in JSON, SARIF, and suppression comments.
+    #[must_use]
+    pub const fn code(self) -> &'static str {
+        match self {
+            Self::UnusedFunction => "unused-function",
+            Self::UnusedClass => "unused-class",
+            Self::UnusedVariable => "unused-variable",
+            Self::UnusedMethod => "unused-method",
+            Self::UnusedFile => "unused-file",
+            Self::CircularImport => "circular-import",
+        }
+    }
+
+    /// Parses a rule from its code.
+    #[must_use]
+    pub fn from_code(code: &str) -> Option<Self> {
+        Self::ALL.into_iter().find(|rule| rule.code() == code)
+    }
+
+    /// A one-line description for tooling metadata.
+    #[must_use]
+    pub const fn description(self) -> &'static str {
+        match self {
+            Self::UnusedFunction => "A module-level function that nothing refers to.",
+            Self::UnusedClass => "A class that nothing refers to.",
+            Self::UnusedVariable => "A module-level variable or constant that nothing refers to.",
+            Self::UnusedMethod => {
+                "A method or property that nothing calls, by resolution or by name."
+            }
+            Self::UnusedFile => "A module that no other module imports and nothing runs.",
+            Self::CircularImport => "Modules that import each other at load time.",
         }
     }
 

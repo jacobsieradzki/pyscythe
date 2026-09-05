@@ -4,6 +4,7 @@
 //! Analyses are written against the [`index::CodebaseIndex`] port so they can be
 //! driven by a real adapter in production and by an in-memory fake in tests.
 
+pub mod baseline;
 pub mod config;
 pub mod cycles;
 pub mod dead_code;

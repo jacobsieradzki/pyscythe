@@ -3,7 +3,8 @@
 use camino::Utf8PathBuf;
 
 use crate::index::{
-    Ancestry, CodebaseIndex, Import, ImportKind, Inheritance, NameUsage, Reference,
+    Ancestry, CodebaseIndex, Import, ImportKind, Inheritance, NameUsage, Reference, Suppression,
+    SuppressionScope,
 };
 use crate::source::{
     ByteOffset, ByteSpan, Column, FileId, Line, MainGuard, ModulePath, Position, SourceFile,
@@ -23,6 +24,7 @@ pub(crate) struct FakeIndex {
     used_attribute_names: Vec<String>,
     overriding: Vec<SymbolId>,
     ancestries: Vec<(SymbolId, Ancestry)>,
+    suppressions: Vec<(FileId, Suppression)>,
 }
 
 impl FakeIndex {
@@ -97,6 +99,42 @@ impl FakeIndex {
     ) -> SymbolId {
         let decorators = decorators.iter().map(|d| Decorator::named(*d)).collect();
         self.push_symbol(file, name, kind, SymbolScope::Nested { parent }, decorators)
+    }
+
+    fn symbol(&self, id: SymbolId) -> &Symbol {
+        self.symbols
+            .iter()
+            .find(|s| s.id == id)
+            .expect("symbol was added")
+    }
+
+    fn line_of(offset: ByteOffset) -> Line {
+        Line::from_one_based(offset.get() / LINE_STRIDE + 1).expect("non-zero line")
+    }
+
+    pub(crate) fn suppress_on_name_line(&mut self, symbol: SymbolId, scope: SuppressionScope) {
+        let target = self.symbol(symbol);
+        let line = Self::line_of(target.name_span.start());
+        self.suppressions
+            .push((target.file, Suppression { line, scope }));
+    }
+
+    pub(crate) fn suppress_on_line_above(&mut self, symbol: SymbolId, scope: SuppressionScope) {
+        let target = self.symbol(symbol);
+        let start = Self::line_of(target.full_span.start());
+        let line = Line::from_one_based(start.get() - 1).expect("symbol is not on line one");
+        self.suppressions
+            .push((target.file, Suppression { line, scope }));
+    }
+
+    pub(crate) fn suppress_file(&mut self, file: FileId) {
+        self.suppressions.push((
+            file,
+            Suppression {
+                line: Line::from_one_based(1).expect("one"),
+                scope: SuppressionScope::File,
+            },
+        ));
     }
 
     /// Records the resolved ancestors of a class.
@@ -216,6 +254,14 @@ impl CodebaseIndex for FakeIndex {
         } else {
             NameUsage::Unused
         }
+    }
+
+    fn suppressions(&self, file: FileId) -> Vec<Suppression> {
+        self.suppressions
+            .iter()
+            .filter(|(f, _)| *f == file)
+            .map(|(_, s)| s.clone())
+            .collect()
     }
 
     fn ancestry(&self, symbol: &Symbol) -> Ancestry {

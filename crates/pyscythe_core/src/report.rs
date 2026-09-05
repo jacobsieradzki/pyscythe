@@ -46,6 +46,10 @@ pub struct Summary {
     pub symbols_kept: usize,
     /// Candidate symbols skipped by `ignore-names` configuration.
     pub symbols_ignored: usize,
+    /// Findings silenced by `# pyscythe: ignore` comments.
+    pub suppressed: usize,
+    /// Findings already recorded in the baseline.
+    pub baselined: usize,
     /// Findings produced.
     pub findings: usize,
 }

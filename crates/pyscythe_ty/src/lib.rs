@@ -8,7 +8,9 @@ use std::sync::OnceLock;
 
 use camino::{Utf8Path, Utf8PathBuf};
 use pyscythe_core::config::{NotebookPolicy, PathPatterns};
-use pyscythe_core::index::{Ancestry, CodebaseIndex, Import, Inheritance, NameUsage, Reference};
+use pyscythe_core::index::{
+    Ancestry, CodebaseIndex, Import, Inheritance, NameUsage, Reference, Suppression,
+};
 use pyscythe_core::source::{
     ByteOffset, ByteSpan, Column, FileId, Line, MainGuard, ModulePath, Position, SourceFile,
 };
@@ -17,7 +19,8 @@ use ruff_db::files::File;
 use ruff_db::parsed::parsed_module;
 use ruff_db::source::{line_index, source_text};
 use ruff_db::system::{OsSystem, SystemPath};
-use ruff_text_size::{TextRange, TextSize};
+use ruff_python_ast::token::TokenKind;
+use ruff_text_size::{Ranged, TextRange, TextSize};
 use rustc_hash::FxHashMap;
 use ty_ide::{HierarchicalSymbols, SymbolInfo, document_symbols};
 use ty_project::metadata::ProjectMetadataError;
@@ -294,6 +297,29 @@ impl CodebaseIndex for TyIndex {
                     span: span_of(edge.range),
                     kind: edge.kind,
                 })
+            })
+            .collect()
+    }
+
+    fn suppressions(&self, file: FileId) -> Vec<Suppression> {
+        let Some(ty_file) = self.ty_file(file) else {
+            return Vec::new();
+        };
+        let program_file = self.db.program_file(ty_file);
+        let module = parsed_module(&self.db, program_file.python_file(&self.db)).load(&self.db);
+        let source = source_text(&self.db, ty_file);
+        let lines = line_index(&self.db, ty_file);
+        module
+            .tokens()
+            .iter()
+            .filter(|token| token.kind() == TokenKind::Comment)
+            .filter_map(|token| {
+                let text = source
+                    .as_str()
+                    .get(std::ops::Range::<usize>::from(token.range()))?;
+                let line = lines.line_column(token.start(), source.as_str()).line;
+                let line = Line::from_one_based(u32::try_from(line.get()).ok()?)?;
+                Suppression::parse(text, line)
             })
             .collect()
     }
