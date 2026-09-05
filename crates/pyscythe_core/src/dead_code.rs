@@ -2,14 +2,20 @@
 
 use crate::finding::{Confidence, Finding, Rule};
 use crate::index::{CodebaseIndex, Reference};
+use crate::keep::{KeepContext, Policy};
+use crate::manifest::Manifest;
 use crate::report::{Report, ReportKind, Summary};
 use crate::symbol::Symbol;
 
 /// Runs the dead-code analysis over every file in `index`.
+///
+/// Unreferenced symbols that `policy` keeps, such as route handlers or entry
+/// points named in `manifest`, are counted but not reported.
 #[must_use]
-pub fn analyze(index: &dyn CodebaseIndex) -> Report {
+pub fn analyze(index: &dyn CodebaseIndex, policy: &Policy, manifest: &Manifest) -> Report {
     let mut findings = Vec::new();
     let mut symbols_checked = 0;
+    let mut symbols_kept = 0;
 
     for file in index.files() {
         for symbol in index.symbols(file.id) {
@@ -19,6 +25,16 @@ pub fn analyze(index: &dyn CodebaseIndex) -> Report {
             symbols_checked += 1;
 
             if is_used(&symbol, &index.references(&symbol)) {
+                continue;
+            }
+
+            let context = KeepContext {
+                symbol: &symbol,
+                file,
+                manifest,
+            };
+            if policy.keep_reason(context).is_some() {
+                symbols_kept += 1;
                 continue;
             }
 
@@ -42,6 +58,7 @@ pub fn analyze(index: &dyn CodebaseIndex) -> Report {
         summary: Summary {
             files_scanned: index.files().len(),
             symbols_checked,
+            symbols_kept,
             findings: findings.len(),
         },
         findings,
@@ -83,8 +100,16 @@ fn confidence_for(symbol: &Symbol) -> Confidence {
 mod tests {
     use super::analyze;
     use crate::finding::{Confidence, Rule};
-    use crate::symbol::SymbolKind;
+    use crate::keep::Policy;
+    use crate::manifest::{EntryPoint, EntryPointKind, Manifest};
+    use crate::report::Report;
+    use crate::source::ModulePath;
+    use crate::symbol::{SymbolKind, SymbolName};
     use crate::testing::FakeIndex;
+
+    fn analyze_without_plugins(index: &FakeIndex) -> Report {
+        analyze(index, &Policy::none(), &Manifest::empty())
+    }
 
     #[test]
     fn reports_a_module_level_function_with_no_references() {
@@ -92,7 +117,7 @@ mod tests {
         let file = index.add_file("/proj/pkg/helpers.py", "pkg.helpers");
         index.add_symbol(file, "orphan", SymbolKind::Function);
 
-        let report = analyze(&index);
+        let report = analyze_without_plugins(&index);
 
         let names: Vec<_> = report.findings.iter().map(|f| f.symbol.as_str()).collect();
         assert_eq!(names, ["orphan"]);
@@ -108,7 +133,7 @@ mod tests {
         let helper = index.add_symbol(helpers, "helper", SymbolKind::Function);
         index.add_reference(helper, app);
 
-        let report = analyze(&index);
+        let report = analyze_without_plugins(&index);
 
         assert!(
             report.is_clean(),
@@ -124,7 +149,7 @@ mod tests {
         let recursive = index.add_symbol(file, "recurse", SymbolKind::Function);
         index.add_reference_inside_own_body(recursive);
 
-        let report = analyze(&index);
+        let report = analyze_without_plugins(&index);
 
         assert_eq!(report.findings.len(), 1);
     }
@@ -136,7 +161,7 @@ mod tests {
         let symbol = index.add_symbol(file, "handler", SymbolKind::Function);
         index.add_external_reference(symbol);
 
-        assert!(analyze(&index).is_clean());
+        assert!(analyze_without_plugins(&index).is_clean());
     }
 
     #[test]
@@ -148,7 +173,7 @@ mod tests {
         index.add_symbol(file, "__all__", SymbolKind::Variable);
         index.add_reference(class, file);
 
-        let report = analyze(&index);
+        let report = analyze_without_plugins(&index);
 
         assert!(report.is_clean());
         assert_eq!(report.summary.symbols_checked, 1);
@@ -161,7 +186,7 @@ mod tests {
         index.add_symbol(file, "_hidden", SymbolKind::Function);
         index.add_symbol(file, "visible", SymbolKind::Function);
 
-        let report = analyze(&index);
+        let report = analyze_without_plugins(&index);
 
         let confidences: Vec<_> = report
             .findings
@@ -186,9 +211,43 @@ mod tests {
         index.add_symbol(alpha, "a2", SymbolKind::Function);
         index.add_symbol(alpha, "a1", SymbolKind::Function);
 
-        let report = analyze(&index);
+        let report = analyze_without_plugins(&index);
 
         let order: Vec<_> = report.findings.iter().map(|f| f.symbol.as_str()).collect();
         assert_eq!(order, ["a2", "a1", "z"]);
+    }
+
+    #[test]
+    fn kept_symbols_are_counted_but_not_reported() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/pkg/routes.py", "pkg.routes");
+        index.add_decorated_symbol(file, "get_user", SymbolKind::Function, &["router.get"]);
+        index.add_symbol(file, "orphan", SymbolKind::Function);
+
+        let report = analyze(&index, &Policy::builtin(), &Manifest::empty());
+
+        let names: Vec<_> = report.findings.iter().map(|f| f.symbol.as_str()).collect();
+        assert_eq!(names, ["orphan"]);
+        assert_eq!(report.summary.symbols_kept, 1);
+        assert_eq!(report.summary.symbols_checked, 2);
+    }
+
+    #[test]
+    fn entry_points_from_the_manifest_are_kept() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/pkg/cli.py", "pkg.cli");
+        index.add_symbol(file, "main", SymbolKind::Function);
+        let manifest = Manifest {
+            entry_points: vec![EntryPoint {
+                kind: EntryPointKind::Script,
+                module: ModulePath::new("pkg.cli"),
+                attribute: Some(SymbolName::new("main")),
+            }],
+        };
+
+        let report = analyze(&index, &Policy::builtin(), &manifest);
+
+        assert!(report.is_clean());
+        assert_eq!(report.summary.symbols_kept, 1);
     }
 }

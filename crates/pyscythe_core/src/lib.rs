@@ -7,6 +7,9 @@
 pub mod dead_code;
 pub mod finding;
 pub mod index;
+pub mod keep;
+pub mod manifest;
+pub mod plugins;
 pub mod report;
 pub mod source;
 pub mod symbol;

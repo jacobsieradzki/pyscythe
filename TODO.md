@@ -8,12 +8,18 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 - [ ] Unused methods, properties, and class attributes (needs attribute-level references; ty resolves these).
 - [ ] Unused files: modules no other module imports and that are not entry points.
 - [ ] Unused dependencies: distributions in `pyproject.toml` that no import resolves into.
-- [ ] Entry points: `[project.scripts]`, `[project.entry-points]`, `__main__.py`, `if __name__ == "__main__"`.
-- [ ] Framework plugins that mark roots and framework-consumed symbols: FastAPI, Pydantic, Typer/Click, pytest (fixtures via ty), Flask, Airflow, setuptools entry points, Django (migrations, admin, management commands, settings strings, signals), Celery, SQLAlchemy, Alembic.
+- [x] Entry points from `[project.scripts]`, `[project.gui-scripts]`, `[project.entry-points]`. Still to do: `setup.py` / `setup.cfg` entry points.
+- [x] Framework plugins (convention-based, by decorator name, base class name, and file layout): FastAPI, Pydantic, Typer/Click, pytest, Flask, Airflow, Django, Celery, SQLAlchemy/SQLModel, Alembic.
+- [ ] Resolve decorator and base-class identity through ty instead of matching text, so `from fastapi import APIRouter as R` and re-exported bases are recognised.
+- [ ] String references: a literal `"pkg.module.attr"` or `"pkg.module:attr"` anywhere in the project counts as a use (Django settings, Celery `include`, `importlib`, Airflow).
+- [ ] Django: `INSTALLED_APPS`, middleware, and context-processor strings once string references land.
+- [ ] `--show-kept` to list what plugins suppressed and why.
+- [ ] Config toggle to include notebooks (excluded by default).
 - [ ] `[tool.pyscythe]` config in `pyproject.toml`: ignore globs, ignore names, extra entry points.
 - [ ] Inline suppression comment (`# pyscythe: ignore[unused-function]`).
 - [ ] Baseline file and `--since <ref>` for PR gating.
-- [ ] Performance: replace per-symbol `find_references` with a single pass that resolves every reference expression to its definition and builds an inverted index.
+- [x] Performance: single-pass inverted reference index built in parallel (also fixed aliased-import misses).
+- [ ] Project discovery shells out to `uv` for workspace metadata, which costs roughly half a second on a small project. Consider a `--no-uv` flag or caching.
 
 ## Other analyses
 

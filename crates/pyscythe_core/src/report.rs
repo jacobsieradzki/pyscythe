@@ -19,6 +19,8 @@ pub struct Summary {
     pub files_scanned: usize,
     /// Symbols the analysis considered.
     pub symbols_checked: usize,
+    /// Unreferenced symbols a framework plugin kept.
+    pub symbols_kept: usize,
     /// Findings produced.
     pub findings: usize,
 }

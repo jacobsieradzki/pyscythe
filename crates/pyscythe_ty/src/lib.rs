@@ -4,6 +4,8 @@
 //! file, and answers semantic questions such as "where is this name used?".
 //! This crate only translates between ty's types and pyscythe's domain.
 
+use std::sync::OnceLock;
+
 use camino::{Utf8Path, Utf8PathBuf};
 use pyscythe_core::index::{CodebaseIndex, Reference};
 use pyscythe_core::source::{
@@ -11,14 +13,20 @@ use pyscythe_core::source::{
 };
 use pyscythe_core::symbol::{Symbol, SymbolId, SymbolKind, SymbolName, SymbolScope};
 use ruff_db::files::File;
+use ruff_db::parsed::parsed_module;
 use ruff_db::source::{line_index, source_text};
 use ruff_db::system::{OsSystem, SystemPath};
 use ruff_text_size::{TextRange, TextSize};
 use rustc_hash::FxHashMap;
-use ty_ide::{HierarchicalSymbols, SymbolInfo, document_symbols, find_references};
+use ty_ide::{HierarchicalSymbols, SymbolInfo, document_symbols};
 use ty_project::metadata::ProjectMetadataError;
 use ty_project::{Db as _, ProjectDatabase, ProjectMetadata};
 use ty_python_semantic::Db as _;
+
+use crate::reference_index::{DefinitionKey, ReferenceIndex};
+
+mod declarations;
+mod reference_index;
 
 /// Why a project could not be opened.
 #[derive(Debug, thiserror::Error)]
@@ -40,6 +48,7 @@ pub struct TyIndex {
     files: Vec<File>,
     ids: FxHashMap<File, FileId>,
     sources: Vec<SourceFile>,
+    references: OnceLock<ReferenceIndex>,
 }
 
 impl std::fmt::Debug for TyIndex {
@@ -81,7 +90,13 @@ impl TyIndex {
         db.freeze_open_files();
         db.freeze();
 
-        let mut files: Vec<File> = db.project().files(&db).iter().collect();
+        // Notebooks are scratch space; nobody deletes cells because a linter said so.
+        let mut files: Vec<File> = db
+            .project()
+            .files(&db)
+            .iter()
+            .filter(|file| !is_notebook(file.path(&db).to_string().as_str()))
+            .collect();
         files.sort_by_key(|file| file.path(&db).to_string());
 
         let mut ids = FxHashMap::default();
@@ -103,12 +118,30 @@ impl TyIndex {
             files,
             ids,
             sources,
+            references: OnceLock::new(),
         })
+    }
+
+    /// The directory ty identified as the project root.
+    #[must_use]
+    pub fn root(&self) -> &Utf8Path {
+        self.db.project().root(&self.db).as_utf8_path()
     }
 
     fn ty_file(&self, id: FileId) -> Option<File> {
         self.files.get(id.index()).copied()
     }
+
+    fn reference_index(&self) -> &ReferenceIndex {
+        self.references
+            .get_or_init(|| ReferenceIndex::build(&self.db, &self.files))
+    }
+}
+
+fn is_notebook(path: &str) -> bool {
+    std::path::Path::new(path)
+        .extension()
+        .is_some_and(|extension| extension.eq_ignore_ascii_case("ipynb"))
 }
 
 fn module_of(db: &ProjectDatabase, file: File) -> Option<ModulePath> {
@@ -129,10 +162,13 @@ impl CodebaseIndex for TyIndex {
         };
         let program_file = self.db.program_file(ty_file);
         let tree = document_symbols(&self.db, program_file).to_hierarchical();
+        let module = parsed_module(&self.db, program_file.python_file(&self.db)).load(&self.db);
+        let declarations = declarations::declarations_by_name_range(module.syntax());
 
         let mut collector = SymbolCollector {
             file,
             tree: &tree,
+            declarations,
             out: Vec::new(),
         };
         for (id, info) in tree.iter() {
@@ -145,16 +181,21 @@ impl CodebaseIndex for TyIndex {
         let Some(ty_file) = self.ty_file(symbol.file) else {
             return Vec::new();
         };
-        let program_file = self.db.program_file(ty_file);
-        let offset = TextSize::new(symbol.name_span.start().get());
+        let key = DefinitionKey {
+            file: ty_file,
+            name_range: TextRange::new(
+                TextSize::new(symbol.name_span.start().get()),
+                TextSize::new(symbol.name_span.end().get()),
+            ),
+        };
 
-        find_references(&self.db, program_file, offset, false)
-            .unwrap_or_default()
-            .into_iter()
-            .map(|target| match self.ids.get(&target.file()) {
+        self.reference_index()
+            .uses_of(key)
+            .iter()
+            .map(|use_site| match self.ids.get(&use_site.file) {
                 Some(&file) => Reference::Internal {
                     file,
-                    span: span_of(target.range()),
+                    span: span_of(use_site.range),
                 },
                 None => Reference::External,
             })
@@ -177,6 +218,7 @@ impl CodebaseIndex for TyIndex {
 struct SymbolCollector<'a> {
     file: FileId,
     tree: &'a HierarchicalSymbols,
+    declarations: FxHashMap<TextRange, declarations::Declaration>,
     out: Vec<Symbol>,
 }
 
@@ -186,12 +228,19 @@ impl SymbolCollector<'_> {
             return;
         };
         let symbol_id = SymbolId::new(self.file, ordinal);
+        let declaration = self
+            .declarations
+            .remove(&info.name_range)
+            .unwrap_or_default();
         self.out.push(Symbol {
             id: symbol_id,
             file: self.file,
             name: SymbolName::new(info.name.as_ref()),
             kind: kind_of(info.kind),
             scope,
+            decorators: declaration.decorators,
+            bases: declaration.bases,
+            class_keywords: declaration.class_keywords,
             name_span: span_of(info.name_range),
             full_span: span_of(info.full_range),
         });

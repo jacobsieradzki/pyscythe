@@ -1234,6 +1234,7 @@ dependencies = [
  "clap",
  "predicates",
  "pyscythe_core",
+ "pyscythe_pyproject",
  "pyscythe_ty",
  "serde_json",
 ]
@@ -1247,13 +1248,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "pyscythe_pyproject"
+version = "0.1.0"
+dependencies = [
+ "camino",
+ "pyscythe_core",
+ "serde",
+ "thiserror",
+ "toml",
+]
+
+[[package]]
 name = "pyscythe_ty"
 version = "0.1.0"
 dependencies = [
  "anyhow",
  "camino",
  "pyscythe_core",
+ "rayon",
  "ruff_db",
+ "ruff_python_ast",
  "ruff_source_file",
  "ruff_text_size",
  "rustc-hash",

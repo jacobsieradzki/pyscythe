@@ -1,0 +1,7 @@
+[project]
+name = "frameworks"
+version = "0.0.0"
+requires-python = ">=3.12"
+
+[project.scripts]
+frameworks = "pkg.cli:main"

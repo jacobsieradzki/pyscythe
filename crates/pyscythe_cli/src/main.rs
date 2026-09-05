@@ -5,6 +5,7 @@ use std::path::PathBuf;
 use std::process::ExitCode;
 
 use clap::{Parser, Subcommand, ValueEnum};
+use pyscythe_core::keep::Policy;
 use pyscythe_core::report::Report;
 use pyscythe_ty::TyIndex;
 
@@ -33,6 +34,10 @@ struct AnalysisArgs {
     /// Output format.
     #[arg(long, value_enum, default_value_t = Format::Human)]
     format: Format,
+
+    /// Disable framework plugins, reporting every unreferenced symbol.
+    #[arg(long)]
+    no_plugins: bool,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum)]
@@ -80,7 +85,13 @@ fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
     match cli.command {
         Command::DeadCode(args) => {
             let index = TyIndex::open(&args.path)?;
-            let report = pyscythe_core::dead_code::analyze(&index);
+            let manifest = pyscythe_pyproject::load(index.root())?;
+            let policy = if args.no_plugins {
+                Policy::none()
+            } else {
+                Policy::builtin()
+            };
+            let report = pyscythe_core::dead_code::analyze(&index, &policy, &manifest);
             emit(&report, args.format, out)?;
             Ok(if report.is_clean() {
                 Outcome::Clean

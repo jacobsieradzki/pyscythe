@@ -97,3 +97,93 @@ fn a_missing_path_is_an_error() {
         .code(2)
         .stderr(predicate::str::contains("error:"));
 }
+
+#[test]
+fn symbols_reached_through_aliased_imports_are_used() {
+    pyscythe()
+        .arg("dead-code")
+        .arg(fixture("aliased_import"))
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("No dead code found"));
+}
+
+#[test]
+fn framework_plugins_keep_conventional_roots() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("frameworks"))
+        .output()
+        .expect("runs");
+
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let symbols: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .map(|f| f["symbol"].as_str().expect("symbol name"))
+        .collect();
+    assert_eq!(symbols, ["orphan"], "only the undecorated helper is dead");
+    assert!(
+        report["summary"]["symbols_kept"]
+            .as_u64()
+            .expect("kept count")
+            >= 7,
+        "routes, hook, commands, task, tests and entry point are kept: {report}"
+    );
+}
+
+#[test]
+fn plugins_can_be_switched_off() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json", "--no-plugins"])
+        .arg(fixture("frameworks"))
+        .output()
+        .expect("runs");
+
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let mut symbols: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .map(|f| f["symbol"].as_str().expect("symbol name"))
+        .collect();
+    symbols.sort_unstable();
+    assert!(
+        symbols.contains(&"create_user"),
+        "route handler reported without plugins: {symbols:?}"
+    );
+    assert!(
+        symbols.contains(&"main"),
+        "entry point reported without plugins: {symbols:?}"
+    );
+    assert_eq!(report["summary"]["symbols_kept"], 0);
+}
+
+#[test]
+fn orm_table_models_are_kept_but_plain_schemas_are_not() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("orm_models"))
+        .output()
+        .expect("runs");
+
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let symbols: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .map(|f| f["symbol"].as_str().expect("symbol name"))
+        .collect();
+    assert_eq!(symbols, ["EventRead"]);
+}
+
+#[test]
+fn notebooks_are_not_analysed() {
+    pyscythe()
+        .arg("dead-code")
+        .arg(fixture("notebook"))
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("No dead code found in 1 files"));
+}

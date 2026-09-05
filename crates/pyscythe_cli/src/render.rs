@@ -11,17 +11,23 @@ pub(crate) fn human(report: &Report, out: &mut impl Write) -> std::io::Result<()
         writeln!(out, "{}", line_for(finding))?;
     }
 
+    let summary = &report.summary;
+    let kept = if summary.symbols_kept == 0 {
+        String::new()
+    } else {
+        format!(", {} kept by plugins", summary.symbols_kept)
+    };
     if report.is_clean() {
         writeln!(
             out,
-            "No dead code found in {} files ({} symbols checked).",
-            report.summary.files_scanned, report.summary.symbols_checked
+            "No dead code found in {} files ({} symbols checked{kept}).",
+            summary.files_scanned, summary.symbols_checked
         )
     } else {
         writeln!(
             out,
-            "\n{} finding(s) in {} files ({} symbols checked).",
-            report.summary.findings, report.summary.files_scanned, report.summary.symbols_checked
+            "\n{} finding(s) in {} files ({} symbols checked{kept}).",
+            summary.findings, summary.files_scanned, summary.symbols_checked
         )
     }
 }

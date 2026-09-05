@@ -12,6 +12,7 @@ authors.workspace = true
 pyscythe_core = { workspace = true }
 
 ruff_db = { workspace = true }
+ruff_python_ast = { workspace = true }
 ruff_source_file = { workspace = true }
 ruff_text_size = { workspace = true }
 ty_ide = { workspace = true }
@@ -21,6 +22,7 @@ ty_python_semantic = { workspace = true }
 
 anyhow = { workspace = true }
 camino = { workspace = true }
+rayon = { workspace = true }
 rustc-hash = { workspace = true }
 thiserror = { workspace = true }
 

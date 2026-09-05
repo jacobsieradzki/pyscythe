@@ -50,6 +50,91 @@ impl SymbolName {
     }
 }
 
+/// A dotted name as written in source, such as `router.get` or `pytest.fixture`.
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub struct DottedName(String);
+
+impl DottedName {
+    /// Wraps a dotted name.
+    #[must_use]
+    pub fn new(dotted: impl Into<String>) -> Self {
+        Self(dotted.into())
+    }
+
+    /// The dotted name as text.
+    #[must_use]
+    pub fn as_str(&self) -> &str {
+        &self.0
+    }
+
+    /// The segments between the dots.
+    pub fn segments(&self) -> impl Iterator<Item = &str> {
+        self.0.split('.')
+    }
+
+    /// The final segment, such as `get` in `router.get`.
+    #[must_use]
+    pub fn last_segment(&self) -> &str {
+        self.0.rsplit('.').next().unwrap_or(&self.0)
+    }
+
+    /// Whether the name has a receiver, such as `router` in `router.get`.
+    #[must_use]
+    pub fn has_receiver(&self) -> bool {
+        self.0.contains('.')
+    }
+
+    /// Whether the name is exactly `text`.
+    #[must_use]
+    pub fn is(&self, text: &str) -> bool {
+        self.0 == text
+    }
+}
+
+/// A keyword argument name passed to a decorator, such as `autouse`.
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub struct KeywordName(String);
+
+impl KeywordName {
+    /// Wraps a keyword argument name.
+    #[must_use]
+    pub fn new(name: impl Into<String>) -> Self {
+        Self(name.into())
+    }
+
+    /// The keyword as text.
+    #[must_use]
+    pub fn as_str(&self) -> &str {
+        &self.0
+    }
+}
+
+/// A decorator applied to a definition.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Decorator {
+    /// The decorator expression with any call arguments stripped: `@router.get("/")` is `router.get`.
+    pub name: DottedName,
+    /// Keyword argument names passed to the decorator call, if it was called.
+    pub keywords: Vec<KeywordName>,
+}
+
+impl Decorator {
+    /// A decorator with no call arguments.
+    #[must_use]
+    pub fn named(name: impl Into<String>) -> Self {
+        Self {
+            name: DottedName::new(name),
+            keywords: Vec::new(),
+        }
+    }
+
+    /// Whether the decorator call passed a keyword argument named `keyword`.
+    #[must_use]
+    pub fn has_keyword(&self, keyword: &str) -> bool {
+        self.keywords.iter().any(|k| k.as_str() == keyword)
+    }
+}
+
 /// What kind of thing a symbol is.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize)]
 #[serde(rename_all = "kebab-case")]
@@ -103,6 +188,12 @@ pub struct Symbol {
     pub kind: SymbolKind,
     /// Whether it is module-level or nested.
     pub scope: SymbolScope,
+    /// Decorators applied to the definition, outermost first.
+    pub decorators: Vec<Decorator>,
+    /// For classes, the base classes as written, such as `Base` or `db.Model`.
+    pub bases: Vec<DottedName>,
+    /// For classes, keyword arguments in the class statement, such as `table` in `table=True`.
+    pub class_keywords: Vec<KeywordName>,
     /// The span of the name token.
     pub name_span: ByteSpan,
     /// The span of the whole definition including its body.
@@ -114,5 +205,24 @@ impl Symbol {
     #[must_use]
     pub const fn is_module_level(&self) -> bool {
         matches!(self.scope, SymbolScope::Module)
+    }
+
+    /// Whether any decorator satisfies `predicate`.
+    pub fn has_decorator(&self, predicate: impl Fn(&Decorator) -> bool) -> bool {
+        self.decorators.iter().any(predicate)
+    }
+
+    /// Whether any base class's last segment is one of `names`.
+    #[must_use]
+    pub fn has_base_named(&self, names: &[&str]) -> bool {
+        self.bases
+            .iter()
+            .any(|base| names.contains(&base.last_segment()))
+    }
+
+    /// Whether the class statement passed a keyword argument named `keyword`.
+    #[must_use]
+    pub fn has_class_keyword(&self, keyword: &str) -> bool {
+        self.class_keywords.iter().any(|k| k.as_str() == keyword)
     }
 }

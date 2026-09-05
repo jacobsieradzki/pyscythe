@@ -6,13 +6,14 @@ Built in Rust on the [ruff](https://github.com/astral-sh/ruff) and [ty](https://
 
 ## Status
 
-Walking skeleton. `pyscythe dead-code` reports module-level functions, classes, and variables that nothing refers to. See [TODO.md](TODO.md) for the roadmap.
+Early. `pyscythe dead-code` reports module-level functions, classes, and variables that nothing refers to, resolving references semantically through ty (aliased imports, attribute access, re-exports). Built-in plugins keep symbols that frameworks reach by convention: pyproject entry points, pytest, FastAPI, Flask, Click/Typer, Celery, Airflow, Django, Alembic, SQLAlchemy/SQLModel, Pydantic. See [TODO.md](TODO.md) for the roadmap.
 
 ## Usage
 
 ```bash
 pyscythe dead-code path/to/project
 pyscythe dead-code path/to/project --format json
+pyscythe dead-code path/to/project --no-plugins   # report every unreferenced symbol
 ```
 
 Exit codes: `0` clean, `1` findings, `2` error.
@@ -31,5 +32,6 @@ cargo fmt --all --check
 ## Layout
 
 - `crates/pyscythe_core` — domain model and analyses. No parser, no filesystem. Analyses are written against the `CodebaseIndex` port and tested with an in-memory fake.
-- `crates/pyscythe_ty` — the adapter that implements `CodebaseIndex` on the ty project database.
+- `crates/pyscythe_ty` — the adapter that implements `CodebaseIndex` on the ty project database, including the parallel reference index.
+- `crates/pyscythe_pyproject` — reads `pyproject.toml` into the manifest (entry points).
 - `crates/pyscythe_cli` — the `pyscythe` binary, output formats, and acceptance tests that run the real binary over fixture projects.
