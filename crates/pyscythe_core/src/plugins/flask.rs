@@ -3,8 +3,21 @@
 
 use crate::keep::{KeepContext, KeepRule, PluginName};
 use crate::plugins::decorated_with;
+use crate::symbol::SymbolKind;
 
 pub(crate) struct Flask;
+
+/// `MethodView` dispatches to these by request method.
+const VIEW_METHODS: &[&str] = &[
+    "get",
+    "post",
+    "put",
+    "patch",
+    "delete",
+    "head",
+    "options",
+    "dispatch_request",
+];
 
 const DECORATORS: &[&str] = &[
     "route",
@@ -40,8 +53,14 @@ impl KeepRule for Flask {
     }
 
     fn keep(&self, context: KeepContext<'_>) -> Option<&'static str> {
-        decorated_with(context.symbol, DECORATORS, true)
-            .then_some("registered with a Flask app or blueprint")
+        let symbol = context.symbol;
+        if decorated_with(symbol, DECORATORS, true) {
+            return Some("registered with a Flask app or blueprint");
+        }
+        if symbol.kind == SymbolKind::Method && VIEW_METHODS.contains(&symbol.name.as_str()) {
+            return Some("Flask view method dispatched by HTTP verb");
+        }
+        None
     }
 }
 
@@ -72,6 +91,13 @@ mod tests {
                 .decorated("app.context_processor")
                 .is_kept_by(&Flask)
         );
+    }
+
+    #[test]
+    fn keeps_method_view_verbs() {
+        assert!(Case::method("get").is_kept_by(&Flask));
+        assert!(Case::method("dispatch_request").is_kept_by(&Flask));
+        assert!(!Case::method("render").is_kept_by(&Flask));
     }
 
     #[test]

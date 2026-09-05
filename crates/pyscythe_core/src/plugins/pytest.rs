@@ -7,6 +7,22 @@ use crate::symbol::SymbolKind;
 
 pub(crate) struct Pytest;
 
+/// pytest and unittest call these by name.
+const TEST_LIFECYCLE_METHODS: &[&str] = &[
+    "setup_method",
+    "teardown_method",
+    "setup_class",
+    "teardown_class",
+    "setup",
+    "teardown",
+    "setUp",
+    "tearDown",
+    "setUpClass",
+    "tearDownClass",
+    "setUpTestData",
+    "runTest",
+];
+
 fn is_test_file(name: &str) -> bool {
     let Some(stem) = name.strip_suffix(".py") else {
         return false;
@@ -28,11 +44,16 @@ impl KeepRule for Pytest {
             return Some("conftest.py is loaded by pytest");
         }
         if is_test_file(file_name) {
-            if symbol.kind == SymbolKind::Function && name.starts_with("test") {
+            if matches!(symbol.kind, SymbolKind::Function | SymbolKind::Method)
+                && name.starts_with("test")
+            {
                 return Some("collected as a test");
             }
             if symbol.kind == SymbolKind::Class && name.starts_with("Test") {
                 return Some("collected as a test class");
+            }
+            if symbol.kind == SymbolKind::Method && TEST_LIFECYCLE_METHODS.contains(&name) {
+                return Some("test lifecycle hook");
             }
         }
         if symbol.kind == SymbolKind::Function && name.starts_with("pytest_") {
@@ -69,6 +90,35 @@ mod tests {
         assert!(
             Case::class("TestThing")
                 .at("/p/tests/test_it.py")
+                .is_kept_by(&Pytest)
+        );
+    }
+
+    #[test]
+    fn keeps_test_methods_and_lifecycle_hooks() {
+        assert!(
+            Case::method("test_it")
+                .at("/p/tests/test_it.py")
+                .is_kept_by(&Pytest)
+        );
+        assert!(
+            Case::method("setUp")
+                .at("/p/tests/test_it.py")
+                .is_kept_by(&Pytest)
+        );
+        assert!(
+            Case::method("setup_method")
+                .at("/p/tests/test_it.py")
+                .is_kept_by(&Pytest)
+        );
+        assert!(
+            !Case::method("build")
+                .at("/p/tests/test_it.py")
+                .is_kept_by(&Pytest)
+        );
+        assert!(
+            !Case::method("setUp")
+                .at("/p/pkg/base.py")
                 .is_kept_by(&Pytest)
         );
     }

@@ -16,12 +16,14 @@ mod fastapi;
 mod flask;
 mod pydantic;
 mod pytest;
+mod python;
 mod sqlalchemy;
 
 /// Every built-in plugin, in the order their rules are consulted.
 #[must_use]
 pub fn all() -> Vec<Box<dyn KeepRule>> {
     vec![
+        Box::new(python::Python),
         Box::new(entry_points::EntryPoints),
         Box::new(pytest::Pytest),
         Box::new(fastapi::FastApi),
@@ -55,6 +57,7 @@ pub(crate) fn decorated_with(
 pub(crate) mod testing {
     use camino::Utf8PathBuf;
 
+    use crate::index::Ancestry;
     use crate::keep::{KeepContext, KeepRule};
     use crate::manifest::Manifest;
     use crate::source::{ByteOffset, ByteSpan, FileId, MainGuard, ModulePath, SourceFile};
@@ -67,9 +70,11 @@ pub(crate) mod testing {
         pub(crate) module: Option<&'static str>,
         pub(crate) name: &'static str,
         pub(crate) kind: SymbolKind,
+        pub(crate) nested: bool,
         pub(crate) decorators: Vec<Decorator>,
         pub(crate) bases: Vec<DottedName>,
         pub(crate) class_keywords: Vec<KeywordName>,
+        pub(crate) ancestry: Ancestry,
         pub(crate) manifest: Manifest,
     }
 
@@ -80,9 +85,11 @@ pub(crate) mod testing {
                 module: Some("pkg.mod"),
                 name,
                 kind: SymbolKind::Function,
+                nested: false,
                 decorators: Vec::new(),
                 bases: Vec::new(),
                 class_keywords: Vec::new(),
+                ancestry: Ancestry::unknown(),
                 manifest: Manifest::empty(),
             }
         }
@@ -90,6 +97,15 @@ pub(crate) mod testing {
         pub(crate) fn class(name: &'static str) -> Self {
             Self {
                 kind: SymbolKind::Class,
+                ..Self::function(name)
+            }
+        }
+
+        /// A method on a class in the same file.
+        pub(crate) fn method(name: &'static str) -> Self {
+            Self {
+                kind: SymbolKind::Method,
+                nested: true,
                 ..Self::function(name)
             }
         }
@@ -129,6 +145,12 @@ pub(crate) mod testing {
             self
         }
 
+        /// Every base resolved, to these qualified names.
+        pub(crate) fn with_ancestors(mut self, names: &[&str]) -> Self {
+            self.ancestry = Ancestry::Complete(names.iter().map(|n| DottedName::new(*n)).collect());
+            self
+        }
+
         pub(crate) fn with_class_keyword(mut self, keyword: &str) -> Self {
             self.class_keywords.push(KeywordName::new(keyword));
             self
@@ -151,7 +173,13 @@ pub(crate) mod testing {
                 file: file.id,
                 name: SymbolName::new(self.name),
                 kind: self.kind,
-                scope: SymbolScope::Module,
+                scope: if self.nested {
+                    SymbolScope::Nested {
+                        parent: SymbolId::new(file.id, 0),
+                    }
+                } else {
+                    SymbolScope::Module
+                },
                 decorators: self.decorators.clone(),
                 bases: self.bases.clone(),
                 class_keywords: self.class_keywords.clone(),
@@ -162,6 +190,7 @@ pub(crate) mod testing {
                 symbol: &symbol,
                 file: &file,
                 manifest: &self.manifest,
+                ancestry: &self.ancestry,
             })
         }
 

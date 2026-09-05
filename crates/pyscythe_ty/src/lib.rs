@@ -8,11 +8,11 @@ use std::sync::OnceLock;
 
 use camino::{Utf8Path, Utf8PathBuf};
 use pyscythe_core::config::{NotebookPolicy, PathPatterns};
-use pyscythe_core::index::{CodebaseIndex, Import, Reference};
+use pyscythe_core::index::{Ancestry, CodebaseIndex, Import, Inheritance, NameUsage, Reference};
 use pyscythe_core::source::{
     ByteOffset, ByteSpan, Column, FileId, Line, MainGuard, ModulePath, Position, SourceFile,
 };
-use pyscythe_core::symbol::{Symbol, SymbolId, SymbolKind, SymbolName, SymbolScope};
+use pyscythe_core::symbol::{DottedName, Symbol, SymbolId, SymbolKind, SymbolName, SymbolScope};
 use ruff_db::files::File;
 use ruff_db::parsed::parsed_module;
 use ruff_db::source::{line_index, source_text};
@@ -27,6 +27,7 @@ use ty_python_semantic::Db as _;
 use crate::reference_index::{DefinitionKey, ReferenceIndex};
 
 mod declarations;
+mod inheritance;
 mod reference_index;
 
 /// Why a project could not be opened.
@@ -91,7 +92,7 @@ impl TyIndex {
     ///
     /// Returns [`OpenError`] when the path is not UTF-8, ty cannot discover a
     /// project, or the configuration is invalid.
-    pub fn open(path: &std::path::Path, options: &IndexOptions) -> Result<Self, OpenError> {
+    pub fn open(path: &std::path::Path) -> Result<Self, OpenError> {
         // ty asserts that its working directory is absolute, so resolve relative paths first.
         let absolute = std::path::absolute(path).map_err(|error| {
             OpenError::Configuration(anyhow::anyhow!(
@@ -115,24 +116,46 @@ impl TyIndex {
         db.freeze_open_files();
         db.freeze();
 
+        let mut index = Self {
+            db,
+            files: Vec::new(),
+            all_files: Vec::new(),
+            ids: FxHashMap::default(),
+            sources: Vec::new(),
+            references: OnceLock::new(),
+        };
+        index.select_files(&IndexOptions::default())?;
+        Ok(index)
+    }
+
+    /// Chooses which files are analysed and which are reported on.
+    ///
+    /// Call this after reading the project's settings; it discards any
+    /// reference index built so far.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`OpenError`] when the project has more files than can be numbered.
+    pub fn select_files(&mut self, options: &IndexOptions) -> Result<(), OpenError> {
+        let db = &self.db;
         // Notebooks are scratch space; nobody deletes cells because a linter said so.
         let mut all_files: Vec<File> = db
             .project()
-            .files(&db)
+            .files(db)
             .iter()
             .filter(|file| {
                 options.notebooks == NotebookPolicy::Include
-                    || !is_notebook(file.path(&db).to_string().as_str())
+                    || !is_notebook(file.path(db).to_string().as_str())
             })
             .collect();
-        all_files.sort_by_key(|file| file.path(&db).to_string());
+        all_files.sort_by_key(|file| file.path(db).to_string());
 
-        let project_root = db.project().root(&db).as_utf8_path().to_path_buf();
+        let project_root = db.project().root(db).as_utf8_path().to_path_buf();
         let files: Vec<File> = all_files
             .iter()
             .copied()
             .filter(|file| {
-                let path = Utf8PathBuf::from(file.path(&db).to_string());
+                let path = Utf8PathBuf::from(file.path(db).to_string());
                 let relative = path.strip_prefix(&project_root).unwrap_or(&path);
                 !options.exclude.matches(relative)
             })
@@ -146,11 +169,11 @@ impl TyIndex {
             })?);
             ids.insert(*file, id);
             let program_file = db.program_file(*file);
-            let module = parsed_module(&db, program_file.python_file(&db)).load(&db);
+            let module = parsed_module(db, program_file.python_file(db)).load(db);
             sources.push(SourceFile {
                 id,
-                path: Utf8PathBuf::from(file.path(&db).to_string()),
-                module: module_of(&db, *file),
+                path: Utf8PathBuf::from(file.path(db).to_string()),
+                module: module_of(db, *file),
                 main_guard: if declarations::has_main_guard(module.syntax()) {
                     MainGuard::Present
                 } else {
@@ -159,14 +182,12 @@ impl TyIndex {
             });
         }
 
-        Ok(Self {
-            db,
-            files,
-            all_files,
-            ids,
-            sources,
-            references: OnceLock::new(),
-        })
+        self.files = files;
+        self.all_files = all_files;
+        self.ids = ids;
+        self.sources = sources;
+        self.references = OnceLock::new();
+        Ok(())
     }
 
     /// The directory ty identified as the project root.
@@ -177,6 +198,12 @@ impl TyIndex {
 
     fn ty_file(&self, id: FileId) -> Option<File> {
         self.files.get(id.index()).copied()
+    }
+
+    /// Builds the reference index now rather than on first use, so callers
+    /// can attribute its cost separately.
+    pub fn prepare(&self) {
+        let _ = self.reference_index();
     }
 
     fn reference_index(&self) -> &ReferenceIndex {
@@ -192,10 +219,15 @@ fn is_notebook(path: &str) -> bool {
 }
 
 fn module_of(db: &ProjectDatabase, file: File) -> Option<ModulePath> {
+    module_name_of(db, file).map(ModulePath::new)
+}
+
+/// The dotted module name `file` resolves to on the search paths, if any.
+pub(crate) fn module_name_of(db: &dyn ty_project::Db, file: File) -> Option<String> {
     let program_file = db.program_file(file);
     let resolver_file = program_file.resolver_file(db);
     ty_module_resolver::file_to_module(db, resolver_file)
-        .map(|module| ModulePath::new(module.name(db).as_str()))
+        .map(|module| module.name(db).as_str().to_owned())
 }
 
 impl CodebaseIndex for TyIndex {
@@ -264,6 +296,53 @@ impl CodebaseIndex for TyIndex {
                 })
             })
             .collect()
+    }
+
+    fn ancestry(&self, symbol: &Symbol) -> Ancestry {
+        if symbol.kind != SymbolKind::Class {
+            return Ancestry::unknown();
+        }
+        let Some(ty_file) = self.ty_file(symbol.file) else {
+            return Ancestry::unknown();
+        };
+        let hierarchy = inheritance::hierarchy_of_class(&self.db, ty_file, symbol.name_span);
+        let names = hierarchy
+            .ancestors
+            .into_iter()
+            .map(|ancestor| DottedName::new(ancestor.qualified_name))
+            .collect();
+        if hierarchy.complete {
+            Ancestry::Complete(names)
+        } else {
+            Ancestry::Incomplete(names)
+        }
+    }
+
+    fn inheritance(&self, symbol: &Symbol) -> Inheritance {
+        if symbol.is_module_level() {
+            return Inheritance::Fresh;
+        }
+        let Some(ty_file) = self.ty_file(symbol.file) else {
+            return Inheritance::Fresh;
+        };
+        if inheritance::overrides_inherited_member(
+            &self.db,
+            ty_file,
+            symbol.full_span,
+            symbol.name.as_str(),
+        ) {
+            Inheritance::OverridesBase
+        } else {
+            Inheritance::Fresh
+        }
+    }
+
+    fn attribute_name_usage(&self, name: &SymbolName) -> NameUsage {
+        if self.reference_index().attribute_name_is_used(name.as_str()) {
+            NameUsage::Used
+        } else {
+            NameUsage::Unused
+        }
     }
 
     fn position(&self, file: FileId, offset: ByteOffset) -> Option<Position> {

@@ -7,6 +7,14 @@ use crate::symbol::SymbolKind;
 
 pub(crate) struct SqlAlchemy;
 
+/// Decorators that hand a method to the ORM.
+const METHOD_DECORATORS: &[&str] = &[
+    "validates",
+    "hybrid_property",
+    "declared_attr",
+    "reconstructor",
+];
+
 /// Declarative bases by convention: plain `SQLAlchemy`, Flask-`SQLAlchemy`, and `SQLModel`.
 const DECLARATIVE_BASES: &[&str] = &["Base", "DeclarativeBase", "Model"];
 
@@ -21,7 +29,9 @@ impl KeepRule for SqlAlchemy {
             if symbol.has_class_keyword("table") {
                 return Some("SQLModel table registered with metadata");
             }
-            if symbol.has_base_named(DECLARATIVE_BASES) {
+            if context.descends_from("sqlalchemy", DECLARATIVE_BASES)
+                || context.descends_from("flask_sqlalchemy", DECLARATIVE_BASES)
+            {
                 return Some("ORM model registered with declarative metadata");
             }
         }
@@ -29,6 +39,9 @@ impl KeepRule for SqlAlchemy {
             || decorated_with(symbol, &["listens_for"], false)
         {
             return Some("registered as a SQLAlchemy event listener");
+        }
+        if decorated_with(symbol, METHOD_DECORATORS, false) {
+            return Some("SQLAlchemy mapped attribute or validator");
         }
         None
     }
@@ -55,6 +68,20 @@ mod tests {
     }
 
     #[test]
+    fn keeps_orm_method_decorators() {
+        assert!(
+            Case::method("check")
+                .decorated("validates")
+                .is_kept_by(&SqlAlchemy)
+        );
+        assert!(
+            Case::method("full")
+                .decorated("hybrid_property")
+                .is_kept_by(&SqlAlchemy)
+        );
+    }
+
+    #[test]
     fn keeps_table_models() {
         assert!(
             Case::class("Event")
@@ -75,6 +102,24 @@ mod tests {
             Case::class("User")
                 .extending("DeclarativeBase")
                 .is_kept_by(&SqlAlchemy)
+        );
+    }
+
+    #[test]
+    fn resolved_ancestry_beats_base_names() {
+        let orm = Case::class("User").extending("Base").with_ancestors(&[
+            "pkg.db.Base",
+            "sqlalchemy.orm.decl_api.DeclarativeBase",
+            "builtins.object",
+        ]);
+        assert!(orm.is_kept_by(&SqlAlchemy));
+
+        let local = Case::class("Child")
+            .extending("Base")
+            .with_ancestors(&["pkg.widget.Base", "builtins.object"]);
+        assert!(
+            !local.is_kept_by(&SqlAlchemy),
+            "a local class called Base is not an ORM base"
         );
     }
 

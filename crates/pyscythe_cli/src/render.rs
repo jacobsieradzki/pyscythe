@@ -5,10 +5,27 @@ use std::io::Write;
 use pyscythe_core::finding::Finding;
 use pyscythe_core::report::{Report, ReportKind};
 
-/// Writes one line per finding followed by a summary.
-pub(crate) fn human(report: &Report, out: &mut impl Write) -> std::io::Result<()> {
+/// Writes one line per finding, optionally the kept symbols, then a summary.
+pub(crate) fn human(report: &Report, show_kept: bool, out: &mut impl Write) -> std::io::Result<()> {
     for finding in &report.findings {
         writeln!(out, "{}", line_for(finding))?;
+    }
+
+    if show_kept && !report.kept.is_empty() {
+        writeln!(out, "\nKept by plugins:")?;
+        for kept in &report.kept {
+            let location = kept.position.map_or_else(
+                || kept.path.to_string(),
+                |p| format!("{}:{}:{}", kept.path, p.line.get(), p.column.get()),
+            );
+            writeln!(
+                out,
+                "{location}  `{}` kept by {}: {}",
+                kept.symbol.as_str(),
+                kept.plugin.as_str(),
+                kept.why
+            )?;
+        }
     }
 
     let summary = &report.summary;

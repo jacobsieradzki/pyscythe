@@ -1,7 +1,16 @@
 //! The port through which analyses see a codebase.
 
 use crate::source::{ByteOffset, ByteSpan, FileId, Position, SourceFile};
-use crate::symbol::Symbol;
+use crate::symbol::{DottedName, Symbol, SymbolName};
+
+/// Whether an attribute name appears anywhere, regardless of what it resolves to.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum NameUsage {
+    /// Some `x.name` access, or `getattr(x, "name")`, exists in the project.
+    Used,
+    /// No such access exists.
+    Unused,
+}
 
 /// One place a symbol is referred to.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -39,6 +48,58 @@ pub struct Import {
     pub kind: ImportKind,
 }
 
+/// Whether a method redefines something a base class already provides.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum Inheritance {
+    /// A base class, anywhere in the hierarchy, defines a member of this name.
+    OverridesBase,
+    /// The name is new on this class.
+    Fresh,
+}
+
+/// The resolved base classes of a class, transitively, as qualified names
+/// such as `sqlalchemy.orm.decl_api.DeclarativeBase`.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum Ancestry {
+    /// Every base at every level resolved to a class.
+    Complete(Vec<DottedName>),
+    /// At least one base could not be resolved, so the list may be missing
+    /// ancestors; rules should fall back to what the source says.
+    Incomplete(Vec<DottedName>),
+}
+
+impl Ancestry {
+    /// No bases known at all, as for a symbol that is not a class.
+    #[must_use]
+    pub const fn unknown() -> Self {
+        Self::Incomplete(Vec::new())
+    }
+
+    /// The ancestors that did resolve.
+    #[must_use]
+    pub fn names(&self) -> &[DottedName] {
+        match self {
+            Self::Complete(names) | Self::Incomplete(names) => names,
+        }
+    }
+
+    /// Whether every base resolved.
+    #[must_use]
+    pub const fn is_complete(&self) -> bool {
+        matches!(self, Self::Complete(_))
+    }
+
+    /// Whether any ancestor lives in `package` or one of its submodules.
+    #[must_use]
+    pub fn has_ancestor_in(&self, package: &str) -> bool {
+        self.names().iter().any(|name| {
+            name.as_str()
+                .strip_prefix(package)
+                .is_some_and(|rest| rest.starts_with('.'))
+        })
+    }
+}
+
 /// Everything an analysis may ask about a codebase.
 ///
 /// Implementations resolve names semantically: a reference is only reported
@@ -55,6 +116,23 @@ pub trait CodebaseIndex {
 
     /// Every module `file` imports, including deferred and type-only imports.
     fn imports(&self, file: FileId) -> Vec<Import>;
+
+    /// Whether `name` is accessed as an attribute anywhere, by any receiver.
+    ///
+    /// This is the safety net for duck typing and overriding: a call through a
+    /// base type or an untyped object cannot be resolved to one method, but the
+    /// name still shows up.
+    fn attribute_name_usage(&self, name: &SymbolName) -> NameUsage;
+
+    /// Whether a method or property overrides an inherited member.
+    ///
+    /// Only meaningful for symbols nested in a class; anything else is `Fresh`.
+    fn inheritance(&self, symbol: &Symbol) -> Inheritance;
+
+    /// The transitive base classes of a class symbol, by qualified name.
+    ///
+    /// Anything that is not a class has unknown ancestry.
+    fn ancestry(&self, symbol: &Symbol) -> Ancestry;
 
     /// Converts a byte offset in `file` to a line and column.
     fn position(&self, file: FileId, offset: ByteOffset) -> Option<Position>;

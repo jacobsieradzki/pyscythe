@@ -4,13 +4,19 @@
 //! handler, pytest collects `test_*` functions, an installer imports an entry
 //! point. Each convention is a [`KeepRule`]; a [`Policy`] is the set in force.
 
+use serde::Serialize;
+
+use crate::index::Ancestry;
 use crate::manifest::Manifest;
 use crate::source::SourceFile;
 use crate::symbol::Symbol;
 
 /// Which plugin a keep rule belongs to.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize)]
+#[serde(rename_all = "kebab-case")]
 pub enum PluginName {
+    /// Conventions of the language itself, such as `@overload`.
+    Python,
     /// `[project.scripts]` and `[project.entry-points]`.
     EntryPoints,
     /// pytest collection and fixtures.
@@ -40,6 +46,7 @@ impl PluginName {
     #[must_use]
     pub const fn as_str(self) -> &'static str {
         match self {
+            Self::Python => "python",
             Self::EntryPoints => "entry-points",
             Self::Pytest => "pytest",
             Self::FastApi => "fastapi",
@@ -73,9 +80,20 @@ pub struct KeepContext<'a> {
     pub file: &'a SourceFile,
     /// The project manifest.
     pub manifest: &'a Manifest,
+    /// Resolved base classes, for class symbols.
+    pub ancestry: &'a Ancestry,
 }
 
 impl KeepContext<'_> {
+    /// Whether the class descends from something in `package`, or, when its
+    /// bases could not all be resolved, is written with a base whose last
+    /// segment is one of `base_names`.
+    #[must_use]
+    pub fn descends_from(&self, package: &str, base_names: &[&str]) -> bool {
+        self.ancestry.has_ancestor_in(package)
+            || (!self.ancestry.is_complete() && self.symbol.has_base_named(base_names))
+    }
+
     /// The file's name without directories, or empty when it has none.
     #[must_use]
     pub fn file_name(&self) -> &str {

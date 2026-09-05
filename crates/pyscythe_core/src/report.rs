@@ -1,8 +1,29 @@
 //! The aggregate result of running an analysis.
 
+use camino::Utf8PathBuf;
 use serde::Serialize;
 
 use crate::finding::Finding;
+use crate::keep::PluginName;
+use crate::source::{ModulePath, Position};
+use crate::symbol::SymbolName;
+
+/// An unreferenced symbol a plugin decided to keep.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct KeptSymbol {
+    /// Absolute path of the file.
+    pub path: Utf8PathBuf,
+    /// Module path of the file, when resolvable.
+    pub module: Option<ModulePath>,
+    /// The symbol kept.
+    pub symbol: SymbolName,
+    /// Where its name appears.
+    pub position: Option<Position>,
+    /// The plugin that kept it.
+    pub plugin: PluginName,
+    /// Why, in a few words.
+    pub why: &'static str,
+}
 
 /// Which analysis produced a report.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
@@ -38,6 +59,8 @@ pub struct Report {
     pub kind: ReportKind,
     /// Findings sorted by path then position.
     pub findings: Vec<Finding>,
+    /// Unreferenced symbols plugins kept, sorted by path then position.
+    pub kept: Vec<KeptSymbol>,
     /// Run counts.
     pub summary: Summary,
 }

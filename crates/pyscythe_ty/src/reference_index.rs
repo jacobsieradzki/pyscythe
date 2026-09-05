@@ -45,11 +45,13 @@ pub(crate) struct ImportEdge {
     pub(crate) kind: ImportKind,
 }
 
-/// Uses of every project definition, plus the import graph.
+/// Uses of every project definition, the import graph, and every attribute
+/// name that is accessed anywhere.
 #[derive(Debug, Default)]
 pub(crate) struct ReferenceIndex {
     uses: FxHashMap<DefinitionKey, Vec<Use>>,
     imports: FxHashMap<File, Vec<ImportEdge>>,
+    attribute_names: FxHashSet<String>,
 }
 
 impl ReferenceIndex {
@@ -74,8 +76,14 @@ impl ReferenceIndex {
                 index.uses.entry(key).or_default().push(use_site);
             }
             index.imports.insert(file, file_uses.imports);
+            index.attribute_names.extend(file_uses.attribute_names);
         }
         index
+    }
+
+    /// Whether `x.<name>` or `getattr(x, "<name>")` appears anywhere.
+    pub(crate) fn attribute_name_is_used(&self, name: &str) -> bool {
+        self.attribute_names.contains(name)
     }
 
     /// Every recorded use of the definition whose name occupies `key`.
@@ -93,7 +101,11 @@ impl ReferenceIndex {
 struct FileUses {
     uses: Vec<(DefinitionKey, Use)>,
     imports: Vec<ImportEdge>,
+    attribute_names: FxHashSet<String>,
 }
+
+/// Builtins whose second argument names an attribute.
+const REFLECTION_BUILTINS: &[&str] = &["getattr", "hasattr", "setattr", "delattr"];
 
 fn collect_uses(db: &dyn ty_project::Db, file: File, project_files: &FxHashSet<File>) -> FileUses {
     let program_file = db.program_file(file);
@@ -294,8 +306,21 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
                 self.record(name.range(), name.range(), resolved);
             }
             AnyNodeRef::ExprAttribute(attribute) if attribute.ctx.is_load() => {
+                self.out
+                    .attribute_names
+                    .insert(attribute.attr.as_str().to_owned());
                 let resolved = definitions_for_attribute(self.model, attribute);
                 self.record(attribute.attr.range(), attribute.range(), resolved);
+            }
+            AnyNodeRef::ExprCall(call) => {
+                if let Expr::Name(callee) = &*call.func
+                    && REFLECTION_BUILTINS.contains(&callee.id.as_str())
+                    && let Some(Expr::StringLiteral(name)) = call.arguments.args.get(1)
+                {
+                    self.out
+                        .attribute_names
+                        .insert(name.value.to_str().to_owned());
+                }
             }
             AnyNodeRef::ExprStringLiteral(literal) => {
                 self.record_string_reference(literal);

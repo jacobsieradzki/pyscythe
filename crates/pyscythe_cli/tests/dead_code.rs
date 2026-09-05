@@ -257,3 +257,80 @@ fn dotted_strings_count_as_references() {
         "pkg.tasks is named in a string: {report}"
     );
 }
+
+#[test]
+fn unused_methods_are_reported_but_resolved_named_and_hooked_ones_are_not() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("methods"))
+        .output()
+        .expect("runs");
+
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let mut findings: Vec<(&str, &str, &str)> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| {
+            Some((
+                f["owner"].as_str().unwrap_or(""),
+                f["symbol"].as_str()?,
+                f["confidence"].as_str()?,
+            ))
+        })
+        .collect();
+    findings.sort_unstable();
+    assert_eq!(
+        findings,
+        [
+            ("Base", "hook", "low"),
+            ("TestWidget", "helper_nobody_calls", "low"),
+            ("Widget", "_unused_private", "medium"),
+            ("Widget", "unused_property", "low"),
+            ("Widget", "unused_public", "low"),
+        ],
+        "{report}"
+    );
+    let kept: Vec<&str> = report["kept"]
+        .as_array()
+        .expect("kept array")
+        .iter()
+        .filter_map(|k| k["symbol"].as_str())
+        .collect();
+    assert_eq!(
+        kept,
+        ["hook", "TestWidget", "setup_method", "test_render"],
+        "Child.hook overrides an inherited member: {report}"
+    );
+}
+
+#[test]
+fn show_kept_lists_plugin_decisions() {
+    pyscythe()
+        .args(["dead-code", "--show-kept"])
+        .arg(fixture("frameworks"))
+        .assert()
+        .stdout(predicate::str::contains("Kept by plugins:"))
+        .stdout(predicate::str::contains(
+            "`create_user` kept by fastapi: registered as a route handler",
+        ))
+        .stdout(predicate::str::contains(
+            "`main` kept by entry-points: declared as an entry point in pyproject.toml",
+        ));
+}
+
+#[test]
+fn exclude_flag_adds_to_configured_exclusions() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json", "--exclude", "pkg/lib.py"])
+        .arg(fixture("configured"))
+        .output()
+        .expect("runs");
+
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    assert_eq!(report["summary"]["files_scanned"], 3, "{report}");
+    assert!(
+        report["findings"].as_array().expect("findings").is_empty(),
+        "{report}"
+    );
+}

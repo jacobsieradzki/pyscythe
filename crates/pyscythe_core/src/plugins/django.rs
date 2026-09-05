@@ -7,6 +7,88 @@ use crate::symbol::SymbolKind;
 
 pub(crate) struct Django;
 
+/// Methods Django, the admin, class-based views, and DRF call by name.
+const HOOK_METHODS: &[&str] = &[
+    // Models and forms
+    "save",
+    "delete",
+    "clean",
+    "clean_fields",
+    "full_clean",
+    "get_absolute_url",
+    "natural_key",
+    "save_model",
+    "save_formset",
+    "save_related",
+    // Admin and views
+    "get_queryset",
+    "get_object",
+    "get_context_data",
+    "get_form",
+    "get_form_class",
+    "get_form_kwargs",
+    "get_success_url",
+    "get_template_names",
+    "get_urls",
+    "get_readonly_fields",
+    "get_list_display",
+    "get_fieldsets",
+    "get_search_results",
+    "form_valid",
+    "form_invalid",
+    "dispatch",
+    "setup",
+    "get",
+    "post",
+    "put",
+    "patch",
+    "delete",
+    "head",
+    "options",
+    "trace",
+    // Django REST framework
+    "list",
+    "create",
+    "retrieve",
+    "update",
+    "partial_update",
+    "destroy",
+    "perform_create",
+    "perform_update",
+    "perform_destroy",
+    "get_serializer",
+    "get_serializer_class",
+    "get_serializer_context",
+    "get_permissions",
+    "get_authenticators",
+    "get_throttles",
+    "get_paginated_response",
+    "paginate_queryset",
+    "filter_queryset",
+    "validate",
+    "to_representation",
+    "to_internal_value",
+    "has_permission",
+    "has_object_permission",
+    // Management commands and middleware
+    "handle",
+    "add_arguments",
+    "process_request",
+    "process_response",
+    "process_view",
+    "process_exception",
+    "process_template_response",
+    // App config and signals
+    "ready",
+];
+
+/// `validate_<field>`, `clean_<field>`, `get_<field>_display`-style hooks.
+fn is_prefixed_hook(name: &str) -> bool {
+    name.starts_with("validate_")
+        || name.starts_with("clean_")
+        || name.starts_with("has_") && name.ends_with("_permission")
+}
+
 /// `models.Model`, `AbstractUser`, `TimeStampedModel`, and similar, but not
 /// the Pydantic and `SQLModel` bases that also end in "Model".
 fn looks_like_django_model(base: &str) -> bool {
@@ -40,8 +122,13 @@ impl KeepRule for Django {
         if file_name == "apps.py" && symbol.kind == SymbolKind::Class && name.ends_with("Config") {
             return Some("Django app config");
         }
+        if symbol.kind == SymbolKind::Class && context.ancestry.has_ancestor_in("django.db.models")
+        {
+            return Some("Django model registered by the app registry");
+        }
         if (file_name == "models.py" || context.parent_directory_is("models"))
             && symbol.kind == SymbolKind::Class
+            && !context.ancestry.is_complete()
             && symbol
                 .bases
                 .iter()
@@ -59,6 +146,11 @@ impl KeepRule for Django {
         }
         if (file_name == "wsgi.py" || file_name == "asgi.py") && name == "application" {
             return Some("Django application entry point");
+        }
+        if symbol.kind == SymbolKind::Method
+            && (HOOK_METHODS.contains(&name) || is_prefixed_hook(name))
+        {
+            return Some("Django hook method called by name");
         }
         if decorated_with(symbol, &["register"], true) {
             return Some("registered with the Django admin");
@@ -136,6 +228,33 @@ mod tests {
                 .at("/p/site/wsgi.py")
                 .is_kept_by(&Django)
         );
+    }
+
+    #[test]
+    fn keeps_hook_methods_but_not_ordinary_ones() {
+        assert!(Case::method("save").is_kept_by(&Django));
+        assert!(Case::method("get_queryset").is_kept_by(&Django));
+        assert!(Case::method("validate_email").is_kept_by(&Django));
+        assert!(Case::method("has_change_permission").is_kept_by(&Django));
+        assert!(!Case::method("compute_total").is_kept_by(&Django));
+        assert!(
+            !Case::function("save").is_kept_by(&Django),
+            "only methods are hooks"
+        );
+    }
+
+    #[test]
+    fn resolved_django_models_are_kept_anywhere_and_local_lookalikes_are_not() {
+        let model = Case::class("Order")
+            .at("/p/shop/domain.py")
+            .with_ancestors(&["django.db.models.base.Model", "builtins.object"]);
+        assert!(model.is_kept_by(&Django));
+
+        let lookalike = Case::class("Order")
+            .at("/p/shop/models.py")
+            .extending("BaseModel")
+            .with_ancestors(&["pkg.core.BaseModel", "builtins.object"]);
+        assert!(!lookalike.is_kept_by(&Django));
     }
 
     #[test]

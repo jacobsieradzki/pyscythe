@@ -16,6 +16,8 @@ pub enum Rule {
     UnusedClass,
     /// A module-level variable or constant nothing refers to.
     UnusedVariable,
+    /// A method or property nothing calls, by resolution or by name.
+    UnusedMethod,
     /// A module no other module imports and nothing runs.
     UnusedFile,
     /// A set of modules that import each other at load time.
@@ -47,6 +49,7 @@ impl Rule {
             Self::UnusedFunction => "function",
             Self::UnusedClass => "class",
             Self::UnusedVariable => "variable",
+            Self::UnusedMethod => "method",
             Self::UnusedFile => "file",
             Self::CircularImport => "import cycle",
         }
@@ -61,6 +64,8 @@ pub enum Confidence {
     High,
     /// Probably right, but public names may be consumed by code we cannot see.
     Medium,
+    /// Plausible, but overriding, duck typing, or reflection could hide a use.
+    Low,
 }
 
 /// A place in the project.
@@ -82,6 +87,9 @@ pub enum Detail {
     Symbol {
         /// The symbol concerned.
         symbol: SymbolName,
+        /// The class that owns it, for methods and properties.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        owner: Option<SymbolName>,
     },
     /// A chain of imports that returns to its start.
     Cycle {
@@ -117,7 +125,7 @@ impl Finding {
     #[must_use]
     pub const fn symbol(&self) -> Option<&SymbolName> {
         match &self.detail {
-            Detail::Symbol { symbol } => Some(symbol),
+            Detail::Symbol { symbol, .. } => Some(symbol),
             Detail::Cycle { .. } | Detail::File => None,
         }
     }

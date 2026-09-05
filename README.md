@@ -6,7 +6,7 @@ Built in Rust on the [ruff](https://github.com/astral-sh/ruff) and [ty](https://
 
 ## Status
 
-Early. `pyscythe dead-code` reports module-level functions, classes, variables, and whole files that nothing refers to, resolving references semantically through ty (aliased imports, attribute access, re-exports). Dotted strings such as `"pkg.settings.DEBUG"` count as references. `pyscythe cycles` reports import cycles that would bite at load time. Built-in plugins keep symbols that frameworks reach by convention: pyproject entry points, pytest, FastAPI, Flask, Click/Typer, Celery, Airflow, Django, Alembic, SQLAlchemy/SQLModel, Pydantic. See [TODO.md](TODO.md) for the roadmap.
+Early. `pyscythe dead-code` reports functions, classes, methods, properties, variables, and whole files that nothing refers to, resolving references semantically through ty (aliased imports, attribute access, re-exports). Dotted strings such as `"pkg.settings.DEBUG"` count as references. Methods that override an inherited member (walked through ty, so library bases count) are kept, and any attribute name accessed anywhere keeps same-named methods as a duck-typing safety net. `pyscythe cycles` reports import cycles that would bite at load time. Built-in plugins keep symbols that frameworks reach by convention: pyproject entry points, pytest, FastAPI, Flask, Click/Typer, Celery, Airflow, Django, Alembic, SQLAlchemy/SQLModel, Pydantic. See [TODO.md](TODO.md) for the roadmap.
 
 ## Usage
 
@@ -14,8 +14,12 @@ Early. `pyscythe dead-code` reports module-level functions, classes, variables, 
 pyscythe dead-code path/to/project
 pyscythe dead-code path/to/project --format json
 pyscythe dead-code path/to/project --no-plugins   # report every unreferenced symbol
+pyscythe dead-code path/to/project --show-kept    # list what plugins suppressed, and why
+pyscythe dead-code path/to/project --exclude scripts --exclude "**/legacy_*.py"
 pyscythe cycles path/to/project
 ```
+
+Confidence: `high` for private module-level names, `medium` for public ones and private methods, `low` for public methods, where overriding or reflection could hide a use.
 
 Configuration lives in `pyproject.toml`:
 

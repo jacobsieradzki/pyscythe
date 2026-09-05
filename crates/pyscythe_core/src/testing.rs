@@ -2,7 +2,9 @@
 
 use camino::Utf8PathBuf;
 
-use crate::index::{CodebaseIndex, Import, ImportKind, Reference};
+use crate::index::{
+    Ancestry, CodebaseIndex, Import, ImportKind, Inheritance, NameUsage, Reference,
+};
 use crate::source::{
     ByteOffset, ByteSpan, Column, FileId, Line, MainGuard, ModulePath, Position, SourceFile,
 };
@@ -18,6 +20,9 @@ pub(crate) struct FakeIndex {
     symbols: Vec<Symbol>,
     references: Vec<(SymbolId, Reference)>,
     imports: Vec<(FileId, Import)>,
+    used_attribute_names: Vec<String>,
+    overriding: Vec<SymbolId>,
+    ancestries: Vec<(SymbolId, Ancestry)>,
 }
 
 impl FakeIndex {
@@ -80,6 +85,33 @@ impl FakeIndex {
         kind: SymbolKind,
     ) -> SymbolId {
         self.push_symbol(file, name, kind, SymbolScope::Nested { parent }, Vec::new())
+    }
+
+    pub(crate) fn add_decorated_nested_symbol(
+        &mut self,
+        file: FileId,
+        parent: SymbolId,
+        name: &str,
+        kind: SymbolKind,
+        decorators: &[&str],
+    ) -> SymbolId {
+        let decorators = decorators.iter().map(|d| Decorator::named(*d)).collect();
+        self.push_symbol(file, name, kind, SymbolScope::Nested { parent }, decorators)
+    }
+
+    /// Records the resolved ancestors of a class.
+    pub(crate) fn set_ancestry(&mut self, symbol: SymbolId, ancestry: Ancestry) {
+        self.ancestries.push((symbol, ancestry));
+    }
+
+    /// Records that `symbol` overrides a member of a base class.
+    pub(crate) fn mark_overrides_base(&mut self, symbol: SymbolId) {
+        self.overriding.push(symbol);
+    }
+
+    /// Records that `x.<name>` appears somewhere, without resolving it.
+    pub(crate) fn mark_attribute_name_used(&mut self, name: &str) {
+        self.used_attribute_names.push(name.to_owned());
     }
 
     fn push_symbol(
@@ -176,6 +208,29 @@ impl CodebaseIndex for FakeIndex {
             .filter(|(from, _)| *from == file)
             .map(|(_, import)| *import)
             .collect()
+    }
+
+    fn attribute_name_usage(&self, name: &SymbolName) -> NameUsage {
+        if self.used_attribute_names.iter().any(|n| n == name.as_str()) {
+            NameUsage::Used
+        } else {
+            NameUsage::Unused
+        }
+    }
+
+    fn ancestry(&self, symbol: &Symbol) -> Ancestry {
+        self.ancestries
+            .iter()
+            .find(|(id, _)| *id == symbol.id)
+            .map_or_else(Ancestry::unknown, |(_, ancestry)| ancestry.clone())
+    }
+
+    fn inheritance(&self, symbol: &Symbol) -> Inheritance {
+        if self.overriding.contains(&symbol.id) {
+            Inheritance::OverridesBase
+        } else {
+            Inheritance::Fresh
+        }
     }
 
     fn position(&self, _file: FileId, offset: ByteOffset) -> Option<Position> {

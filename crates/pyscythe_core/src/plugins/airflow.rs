@@ -9,6 +9,9 @@ pub(crate) struct Airflow;
 
 const DECORATORS: &[&str] = &["dag", "task", "task_group", "setup", "teardown"];
 
+/// Methods on operators and sensors that the scheduler calls.
+const OPERATOR_METHODS: &[&str] = &["execute", "poke", "pre_execute", "post_execute", "on_kill"];
+
 impl KeepRule for Airflow {
     fn plugin(&self) -> PluginName {
         PluginName::Airflow
@@ -28,6 +31,9 @@ impl KeepRule for Airflow {
             && matches!(symbol.kind, SymbolKind::Variable | SymbolKind::Constant)
         {
             return Some("module-level object in the DAGs folder");
+        }
+        if symbol.kind == SymbolKind::Method && OPERATOR_METHODS.contains(&symbol.name.as_str()) {
+            return Some("Airflow operator hook called by name");
         }
         None
     }
@@ -56,6 +62,13 @@ mod tests {
                 .decorated("task_group")
                 .is_kept_by(&Airflow)
         );
+    }
+
+    #[test]
+    fn keeps_operator_hooks() {
+        assert!(Case::method("execute").is_kept_by(&Airflow));
+        assert!(Case::method("poke").is_kept_by(&Airflow));
+        assert!(!Case::method("helper").is_kept_by(&Airflow));
     }
 
     #[test]

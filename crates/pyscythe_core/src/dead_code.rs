@@ -1,15 +1,15 @@
 //! Finds module-level definitions and whole files that nothing refers to.
 
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap, BTreeSet};
 
 use crate::config::Config;
 use crate::finding::{Confidence, Detail, Finding, Rule};
-use crate::index::{CodebaseIndex, Reference};
-use crate::keep::{KeepContext, Policy};
+use crate::index::{Ancestry, CodebaseIndex, Inheritance, NameUsage, Reference};
+use crate::keep::{KeepContext, KeepReason, PluginName, Policy};
 use crate::manifest::Manifest;
-use crate::report::{Report, ReportKind, Summary};
+use crate::report::{KeptSymbol, Report, ReportKind, Summary};
 use crate::source::{FileId, MainGuard, SourceFile};
-use crate::symbol::Symbol;
+use crate::symbol::{Symbol, SymbolId, SymbolKind, SymbolName, SymbolScope};
 
 /// Files that are run or loaded by convention rather than imported.
 const ROOT_FILE_NAMES: &[&str] = &[
@@ -37,48 +37,39 @@ pub fn analyze(
     config: &Config,
 ) -> Report {
     let mut findings = Vec::new();
+    let mut kept = Vec::new();
     let mut symbols_checked = 0;
-    let mut symbols_kept = 0;
     let mut symbols_ignored = 0;
     let mut files_with_kept_symbols: BTreeSet<FileId> = BTreeSet::new();
 
     for file in index.files() {
-        for symbol in index.symbols(file.id) {
-            let Some(rule) = candidate_rule(&symbol) else {
-                continue;
-            };
-            if config.ignore_names.matches(symbol.name.as_str()) {
-                symbols_ignored += 1;
-                continue;
-            }
-            symbols_checked += 1;
+        let symbols = index.symbols(file.id);
+        let owner_names: BTreeMap<SymbolId, SymbolName> =
+            symbols.iter().map(|s| (s.id, s.name.clone())).collect();
 
-            if is_used(&symbol, &index.references(&symbol)) {
-                continue;
-            }
-
-            let context = KeepContext {
-                symbol: &symbol,
-                file,
+        for symbol in symbols {
+            let checker = SymbolCheck {
+                index,
+                policy,
                 manifest,
+                config,
+                file,
+                owner_names: &owner_names,
             };
-            if policy.keep_reason(context).is_some() {
-                symbols_kept += 1;
-                files_with_kept_symbols.insert(file.id);
-                continue;
+            match checker.verdict(symbol) {
+                Verdict::NotCandidate => {}
+                Verdict::Ignored => symbols_ignored += 1,
+                Verdict::Used => symbols_checked += 1,
+                Verdict::Kept(symbol) => {
+                    symbols_checked += 1;
+                    files_with_kept_symbols.insert(file.id);
+                    kept.push(symbol);
+                }
+                Verdict::Dead(finding) => {
+                    symbols_checked += 1;
+                    findings.push(finding);
+                }
             }
-
-            findings.push(Finding {
-                rule,
-                path: file.path.clone(),
-                module: file.module.clone(),
-                position: index.position(file.id, symbol.name_span.start()),
-                confidence: confidence_for(&symbol),
-                message: format!("{} `{}` is never used", rule.noun(), symbol.name.as_str()),
-                detail: Detail::Symbol {
-                    symbol: symbol.name,
-                },
-            });
         }
     }
 
@@ -91,15 +82,16 @@ pub fn analyze(
         position: None,
         confidence: Confidence::Medium,
         message: format!(
-                "file `{}` is never imported or run",
-                file.module
-                    .as_ref()
-                    .map_or_else(|| file.file_name().to_owned(), |m| m.as_str().to_owned())
-            ),
+            "file `{}` is never imported or run",
+            file.module
+                .as_ref()
+                .map_or_else(|| file.file_name().to_owned(), |m| m.as_str().to_owned())
+        ),
         detail: Detail::File,
     }));
 
     findings.sort_by(|a, b| a.path.cmp(&b.path).then(a.position.cmp(&b.position)));
+    kept.sort_by(|a, b| a.path.cmp(&b.path).then(a.position.cmp(&b.position)));
 
     Report {
         schema_version: Report::SCHEMA_VERSION,
@@ -107,11 +99,98 @@ pub fn analyze(
         summary: Summary {
             files_scanned: index.files().len(),
             symbols_checked,
-            symbols_kept,
+            symbols_kept: kept.len(),
             symbols_ignored,
             findings: findings.len(),
         },
         findings,
+        kept,
+    }
+}
+
+/// What the analysis concluded about one symbol.
+enum Verdict {
+    /// Not something the analysis looks at, such as a dunder or a parameter.
+    NotCandidate,
+    /// Matched `ignore-names`.
+    Ignored,
+    /// Something refers to it.
+    Used,
+    /// Unreferenced, but a plugin or an override keeps it.
+    Kept(KeptSymbol),
+    /// Unreferenced and nothing keeps it.
+    Dead(Finding),
+}
+
+/// Everything needed to judge the symbols of one file.
+struct SymbolCheck<'a> {
+    index: &'a dyn CodebaseIndex,
+    policy: &'a Policy,
+    manifest: &'a Manifest,
+    config: &'a Config,
+    file: &'a SourceFile,
+    owner_names: &'a BTreeMap<SymbolId, SymbolName>,
+}
+
+impl SymbolCheck<'_> {
+    fn verdict(&self, symbol: Symbol) -> Verdict {
+        let Some(rule) = candidate_rule(&symbol) else {
+            return Verdict::NotCandidate;
+        };
+        if self.config.ignore_names.matches(symbol.name.as_str()) {
+            return Verdict::Ignored;
+        }
+        if is_used(self.index, &symbol) {
+            return Verdict::Used;
+        }
+
+        let position = self.index.position(self.file.id, symbol.name_span.start());
+        let ancestry = if symbol.kind == SymbolKind::Class {
+            self.index.ancestry(&symbol)
+        } else {
+            Ancestry::unknown()
+        };
+        let context = KeepContext {
+            symbol: &symbol,
+            file: self.file,
+            manifest: self.manifest,
+            ancestry: &ancestry,
+        };
+        let reason = self
+            .policy
+            .keep_reason(context)
+            .or_else(|| override_reason(self.index, &symbol));
+        if let Some(reason) = reason {
+            return Verdict::Kept(KeptSymbol {
+                path: self.file.path.clone(),
+                module: self.file.module.clone(),
+                symbol: symbol.name,
+                position,
+                plugin: reason.plugin,
+                why: reason.why,
+            });
+        }
+
+        let owner = match symbol.scope {
+            SymbolScope::Nested { parent } => self.owner_names.get(&parent).cloned(),
+            SymbolScope::Module => None,
+        };
+        let qualified = owner.as_ref().map_or_else(
+            || symbol.name.as_str().to_owned(),
+            |owner| format!("{}.{}", owner.as_str(), symbol.name.as_str()),
+        );
+        Verdict::Dead(Finding {
+            rule,
+            path: self.file.path.clone(),
+            module: self.file.module.clone(),
+            position,
+            confidence: confidence_for(&symbol),
+            message: format!("{} `{qualified}` is never used", rule.noun()),
+            detail: Detail::Symbol {
+                symbol: symbol.name,
+                owner,
+            },
+        })
     }
 }
 
@@ -161,34 +240,67 @@ fn is_test_file(name: &str) -> bool {
         .is_some_and(|stem| stem.starts_with("test_") || stem.ends_with("_test"))
 }
 
-/// The rule that would fire for `symbol` if it turns out to be unused.
-///
-/// Only module-level definitions are candidates for now; dunders such as
-/// `__all__` or `__version__` are consumed by the interpreter or tooling.
-fn candidate_rule(symbol: &Symbol) -> Option<Rule> {
-    if !symbol.is_module_level() || symbol.name.is_dunder() {
-        return None;
-    }
-    Rule::for_unused(symbol.kind)
-}
-
-/// A symbol is used when any reference lies outside its own definition.
-///
-/// References inside the definition, such as a recursive call, do not count.
-fn is_used(symbol: &Symbol, references: &[Reference]) -> bool {
-    references.iter().any(|reference| match *reference {
-        Reference::External => true,
-        Reference::Internal { file, span } => {
-            file != symbol.file || !symbol.full_span.encloses(span)
-        }
+/// A method that overrides an inherited member may be called by the base
+/// class's own code, which never names the subclass.
+fn override_reason(index: &dyn CodebaseIndex, symbol: &Symbol) -> Option<KeepReason> {
+    let is_member = matches!(symbol.kind, SymbolKind::Method | SymbolKind::Property);
+    (is_member && index.inheritance(symbol) == Inheritance::OverridesBase).then_some(KeepReason {
+        plugin: PluginName::Python,
+        why: "overrides an inherited member",
     })
 }
 
+/// The rule that would fire for `symbol` if it turns out to be unused.
+///
+/// Dunders such as `__all__`, `__init__`, or `__version__` are consumed by the
+/// interpreter or tooling. Module-level functions, classes, and variables are
+/// candidates; so are methods and properties directly on a class, except the
+/// `.setter`/`.deleter` halves of a property, which share the getter's name.
+fn candidate_rule(symbol: &Symbol) -> Option<Rule> {
+    if symbol.name.is_dunder() {
+        return None;
+    }
+    match symbol.scope {
+        SymbolScope::Module => Rule::for_unused(symbol.kind),
+        SymbolScope::Nested { .. } => match symbol.kind {
+            SymbolKind::Method | SymbolKind::Property if !is_property_accessor(symbol) => {
+                Some(Rule::UnusedMethod)
+            }
+            _ => None,
+        },
+    }
+}
+
+fn is_property_accessor(symbol: &Symbol) -> bool {
+    symbol.has_decorator(|d| matches!(d.name.last_segment(), "setter" | "deleter" | "getter"))
+}
+
+/// A symbol is used when a reference resolves to it from outside its own
+/// definition, or, for methods, when its name is accessed as an attribute
+/// anywhere: a call through a base type or an untyped object cannot be
+/// resolved to one method but still shows up by name.
+fn is_used(index: &dyn CodebaseIndex, symbol: &Symbol) -> bool {
+    let referenced = index
+        .references(symbol)
+        .iter()
+        .any(|reference| match *reference {
+            Reference::External => true,
+            Reference::Internal { file, span } => {
+                file != symbol.file || !symbol.full_span.encloses(span)
+            }
+        });
+    if referenced {
+        return true;
+    }
+    matches!(symbol.kind, SymbolKind::Method | SymbolKind::Property)
+        && index.attribute_name_usage(&symbol.name) == NameUsage::Used
+}
+
 fn confidence_for(symbol: &Symbol) -> Confidence {
-    if symbol.name.is_private() {
-        Confidence::High
-    } else {
-        Confidence::Medium
+    match (symbol.scope, symbol.name.is_private()) {
+        (SymbolScope::Module, true) => Confidence::High,
+        (SymbolScope::Module, false) | (SymbolScope::Nested { .. }, true) => Confidence::Medium,
+        (SymbolScope::Nested { .. }, false) => Confidence::Low,
     }
 }
 
@@ -197,12 +309,12 @@ mod tests {
     use super::analyze;
     use crate::config::{Config, NamePatterns};
     use crate::finding::{Confidence, Rule};
-    use crate::index::ImportKind;
+    use crate::index::{Ancestry, ImportKind};
     use crate::keep::Policy;
     use crate::manifest::{EntryPoint, EntryPointKind, Manifest};
     use crate::report::Report;
     use crate::source::ModulePath;
-    use crate::symbol::{SymbolKind, SymbolName};
+    use crate::symbol::{DottedName, SymbolKind, SymbolName};
     use crate::testing::FakeIndex;
 
     fn analyze_without_plugins(index: &FakeIndex) -> Report {
@@ -284,19 +396,159 @@ mod tests {
     }
 
     #[test]
-    fn methods_and_dunders_are_not_candidates() {
+    fn dunders_and_nested_classes_are_not_candidates() {
         let mut index = FakeIndex::new();
         let file = index.add_file("/proj/pkg/m.py", "pkg.m");
         let class = index.add_symbol(file, "Widget", SymbolKind::Class);
-        index.add_nested_symbol(file, class, "render", SymbolKind::Method);
+        index.add_nested_symbol(file, class, "__init__", SymbolKind::Method);
+        index.add_nested_symbol(file, class, "Meta", SymbolKind::Class);
         index.add_symbol(file, "__all__", SymbolKind::Variable);
         index.add_reference(class, file);
         import_from_elsewhere(&mut index, file);
 
         let report = analyze_without_plugins(&index);
 
-        assert!(report.is_clean());
+        assert!(report.is_clean(), "{:?}", report.findings);
         assert_eq!(report.summary.symbols_checked, 1);
+    }
+
+    #[test]
+    fn an_unused_method_is_reported_with_its_owner_at_low_confidence() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/pkg/m.py", "pkg.m");
+        let class = index.add_symbol(file, "Widget", SymbolKind::Class);
+        index.add_nested_symbol(file, class, "render", SymbolKind::Method);
+        index.add_nested_symbol(file, class, "_prepare", SymbolKind::Method);
+        index.add_reference(class, file);
+        import_from_elsewhere(&mut index, file);
+
+        let report = analyze_without_plugins(&index);
+
+        let summary: Vec<_> = report
+            .findings
+            .iter()
+            .map(|f| (f.message.as_str(), f.confidence, f.rule))
+            .collect();
+        assert_eq!(
+            summary,
+            [
+                (
+                    "method `Widget.render` is never used",
+                    Confidence::Low,
+                    Rule::UnusedMethod
+                ),
+                (
+                    "method `Widget._prepare` is never used",
+                    Confidence::Medium,
+                    Rule::UnusedMethod
+                ),
+            ]
+        );
+    }
+
+    #[test]
+    fn a_method_whose_name_is_accessed_anywhere_is_used() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/pkg/m.py", "pkg.m");
+        let class = index.add_symbol(file, "Widget", SymbolKind::Class);
+        index.add_nested_symbol(file, class, "render", SymbolKind::Method);
+        index.add_reference(class, file);
+        index.mark_attribute_name_used("render");
+        import_from_elsewhere(&mut index, file);
+
+        assert!(analyze_without_plugins(&index).is_clean());
+    }
+
+    #[test]
+    fn a_method_overriding_a_base_member_is_kept() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/pkg/m.py", "pkg.m");
+        let class = index.add_symbol(file, "Store", SymbolKind::Class);
+        let override_ =
+            index.add_nested_symbol(file, class, "similarity_search", SymbolKind::Method);
+        index.mark_overrides_base(override_);
+        index.add_reference(class, file);
+        import_from_elsewhere(&mut index, file);
+
+        let report = analyze_without_plugins(&index);
+
+        assert!(report.is_clean(), "{:?}", report.findings);
+        assert_eq!(report.kept[0].why, "overrides an inherited member");
+    }
+
+    #[test]
+    fn plugins_see_resolved_ancestry_rather_than_base_names() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/pkg/m.py", "pkg.m");
+        let local = index.add_decorated_symbol(file, "Child", SymbolKind::Class, &[]);
+        let orm = index.add_decorated_symbol(file, "User", SymbolKind::Class, &[]);
+        index.set_ancestry(
+            local,
+            Ancestry::Complete(vec![
+                DottedName::new("pkg.m.Base"),
+                DottedName::new("builtins.object"),
+            ]),
+        );
+        index.set_ancestry(
+            orm,
+            Ancestry::Complete(vec![
+                DottedName::new("pkg.db.Base"),
+                DottedName::new("sqlalchemy.orm.decl_api.DeclarativeBase"),
+                DottedName::new("builtins.object"),
+            ]),
+        );
+        import_from_elsewhere(&mut index, file);
+
+        let report = analyze(
+            &index,
+            &Policy::builtin(),
+            &Manifest::empty(),
+            &Config::default(),
+        );
+
+        assert_eq!(symbol_names(&report), ["Child"]);
+        assert_eq!(report.kept[0].symbol.as_str(), "User");
+    }
+
+    #[test]
+    fn property_setters_are_not_candidates() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/pkg/m.py", "pkg.m");
+        let class = index.add_symbol(file, "Widget", SymbolKind::Class);
+        index.add_decorated_nested_symbol(file, class, "size", SymbolKind::Property, &["property"]);
+        index.add_decorated_nested_symbol(
+            file,
+            class,
+            "size",
+            SymbolKind::Property,
+            &["size.setter"],
+        );
+        index.add_reference(class, file);
+        import_from_elsewhere(&mut index, file);
+
+        let report = analyze_without_plugins(&index);
+
+        assert_eq!(report.findings.len(), 1, "only the getter is a candidate");
+        assert_eq!(report.summary.symbols_checked, 2);
+    }
+
+    #[test]
+    fn kept_symbols_are_listed_with_their_reason() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/pkg/routes.py", "pkg.routes");
+        index.add_decorated_symbol(file, "get_user", SymbolKind::Function, &["router.get"]);
+
+        let report = analyze(
+            &index,
+            &Policy::builtin(),
+            &Manifest::empty(),
+            &Config::default(),
+        );
+
+        assert_eq!(report.kept.len(), 1);
+        assert_eq!(report.kept[0].symbol.as_str(), "get_user");
+        assert_eq!(report.kept[0].plugin, crate::keep::PluginName::FastApi);
+        assert_eq!(report.kept[0].why, "registered as a route handler");
     }
 
     #[test]

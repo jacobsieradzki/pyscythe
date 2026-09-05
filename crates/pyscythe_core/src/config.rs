@@ -18,7 +18,7 @@ pub struct PatternError {
 #[derive(Debug, Clone)]
 pub struct PathPatterns {
     set: GlobSet,
-    is_empty: bool,
+    patterns: Vec<String>,
 }
 
 impl PathPatterns {
@@ -27,8 +27,20 @@ impl PathPatterns {
     pub const fn none() -> Self {
         Self {
             set: GlobSet::empty(),
-            is_empty: true,
+            patterns: Vec::new(),
         }
+    }
+
+    /// These patterns plus `more`.
+    ///
+    /// # Errors
+    ///
+    /// Returns the first pattern in `more` that fails to parse.
+    pub fn extended<'a>(
+        &'a self,
+        more: impl IntoIterator<Item = &'a str>,
+    ) -> Result<Self, PatternError> {
+        Self::parse(self.patterns.iter().map(String::as_str).chain(more))
     }
 
     /// Compiles `patterns`; `**` crosses directories and a bare `dir/` prefix
@@ -39,9 +51,9 @@ impl PathPatterns {
     /// Returns the first pattern that fails to parse.
     pub fn parse<'a>(patterns: impl IntoIterator<Item = &'a str>) -> Result<Self, PatternError> {
         let mut builder = GlobSetBuilder::new();
-        let mut is_empty = true;
+        let mut kept = Vec::new();
         for pattern in patterns {
-            is_empty = false;
+            kept.push(pattern.to_owned());
             builder.add(glob(pattern)?);
             if !pattern.contains('*') {
                 builder.add(glob(&format!("{}/**", pattern.trim_end_matches('/')))?);
@@ -51,13 +63,16 @@ impl PathPatterns {
             pattern: String::from("<set>"),
             source,
         })?;
-        Ok(Self { set, is_empty })
+        Ok(Self {
+            set,
+            patterns: kept,
+        })
     }
 
     /// Whether `relative_path` matches any pattern.
     #[must_use]
     pub fn matches(&self, relative_path: &Utf8Path) -> bool {
-        !self.is_empty && self.set.is_match(relative_path.as_str())
+        !self.patterns.is_empty() && self.set.is_match(relative_path.as_str())
     }
 }
 
@@ -160,6 +175,15 @@ mod tests {
         let patterns = PathPatterns::parse(["**/legacy_*.py"]).unwrap();
         assert!(patterns.matches(Utf8Path::new("pkg/sub/legacy_thing.py")));
         assert!(!patterns.matches(Utf8Path::new("pkg/sub/thing.py")));
+    }
+
+    #[test]
+    fn patterns_can_be_extended() {
+        let base = PathPatterns::parse(["scripts"]).unwrap();
+        let extended = base.extended(["docs"]).unwrap();
+        assert!(extended.matches(Utf8Path::new("scripts/a.py")));
+        assert!(extended.matches(Utf8Path::new("docs/conf.py")));
+        assert!(!base.matches(Utf8Path::new("docs/conf.py")));
     }
 
     #[test]

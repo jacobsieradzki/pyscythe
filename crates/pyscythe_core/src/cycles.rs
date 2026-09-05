@@ -28,6 +28,7 @@ pub fn analyze(index: &dyn CodebaseIndex) -> Report {
     Report {
         schema_version: Report::SCHEMA_VERSION,
         kind: ReportKind::Cycles,
+        kept: Vec::new(),
         summary: Summary {
             files_scanned: files.len(),
             symbols_checked: 0,

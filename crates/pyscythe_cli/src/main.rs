@@ -41,6 +41,50 @@ struct AnalysisArgs {
     /// Disable framework plugins, reporting every unreferenced symbol.
     #[arg(long)]
     no_plugins: bool,
+
+    /// List the unreferenced symbols plugins kept, and why.
+    #[arg(long)]
+    show_kept: bool,
+
+    /// Extra project-relative globs to leave out of reports, on top of `[tool.pyscythe] exclude`.
+    #[arg(long, value_name = "GLOB")]
+    exclude: Vec<String>,
+
+    /// Print how long each phase took to stderr.
+    #[arg(long)]
+    timings: bool,
+}
+
+/// Wall-clock phases of a run, printed with `--timings`.
+struct Timings {
+    started: std::time::Instant,
+    phases: Vec<(&'static str, std::time::Duration)>,
+}
+
+impl Timings {
+    fn start() -> Self {
+        Self {
+            started: std::time::Instant::now(),
+            phases: Vec::new(),
+        }
+    }
+
+    fn mark(&mut self, phase: &'static str) {
+        let now = std::time::Instant::now();
+        self.phases.push((phase, now.duration_since(self.started)));
+        self.started = now;
+    }
+
+    fn report(&self, out: &mut impl std::io::Write) -> std::io::Result<()> {
+        for (phase, duration) in &self.phases {
+            writeln!(
+                out,
+                "{phase:>16}: {:>7.1} ms",
+                duration.as_secs_f64() * 1000.0
+            )?;
+        }
+        Ok(())
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum)]
@@ -96,9 +140,20 @@ fn run_analysis(
     out: &mut impl std::io::Write,
     analysis: impl FnOnce(&TyIndex, &AnalysisArgs, &ProjectSettings) -> Report,
 ) -> anyhow::Result<Outcome> {
-    let (index, settings) = open_project(&args.path)?;
+    let mut timings = Timings::start();
+    let (index, settings) = open_project(args, &mut timings)?;
+    index.prepare();
+    timings.mark("reference index");
     let report = analysis(&index, args, &settings);
-    emit(&report, args.format, out)?;
+    timings.mark("analysis");
+    emit(&report, args, out)?;
+    timings.mark("output");
+    if args.timings {
+        timings.report(&mut std::io::stderr().lock())?;
+    }
+    // Dropping the salsa database tears down every cached query one by one,
+    // which costs more than the analysis did. The process is exiting anyway.
+    std::mem::forget(index);
     Ok(if report.is_clean() {
         Outcome::Clean
     } else {
@@ -106,19 +161,23 @@ fn run_analysis(
     })
 }
 
-/// Reads settings from the project's `pyproject.toml`, then opens the index with them.
-///
-/// ty decides where the project root is, so the index is opened once to learn
-/// it and again with the exclusions the settings ask for.
-fn open_project(path: &std::path::Path) -> anyhow::Result<(TyIndex, ProjectSettings)> {
-    let probe = TyIndex::open(path, &IndexOptions::default())?;
-    let settings = pyscythe_pyproject::load(probe.root())?;
+/// Opens the project, reads its `pyproject.toml`, and applies the file selection it asks for.
+fn open_project(
+    args: &AnalysisArgs,
+    timings: &mut Timings,
+) -> anyhow::Result<(TyIndex, ProjectSettings)> {
+    let mut index = TyIndex::open(&args.path)?;
+    timings.mark("open project");
+    let settings = pyscythe_pyproject::load(index.root())?;
     let options = IndexOptions {
-        exclude: settings.config.exclude.clone(),
+        exclude: settings
+            .config
+            .exclude
+            .extended(args.exclude.iter().map(String::as_str))?,
         notebooks: settings.config.notebooks,
     };
-    drop(probe);
-    let index = TyIndex::open(path, &options)?;
+    index.select_files(&options)?;
+    timings.mark("select files");
     Ok((index, settings))
 }
 
@@ -135,9 +194,9 @@ fn cycles(index: &TyIndex, _args: &AnalysisArgs, _settings: &ProjectSettings) ->
     pyscythe_core::cycles::analyze(index)
 }
 
-fn emit(report: &Report, format: Format, out: &mut impl std::io::Write) -> anyhow::Result<()> {
-    match format {
-        Format::Human => render::human(report, out)?,
+fn emit(report: &Report, args: &AnalysisArgs, out: &mut impl std::io::Write) -> anyhow::Result<()> {
+    match args.format {
+        Format::Human => render::human(report, args.show_kept, out)?,
         Format::Json => {
             serde_json::to_writer(&mut *out, report)?;
             writeln!(out)?;
