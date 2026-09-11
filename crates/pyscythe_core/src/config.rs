@@ -178,6 +178,8 @@ pub struct DenyRule {
     pub from: ModulePrefix,
     /// Modules they may not import.
     pub deny: Vec<ModulePrefix>,
+    /// Exceptions inside `deny`, such as a types-only submodule.
+    pub allow: Vec<ModulePrefix>,
 }
 
 /// Architecture boundaries from `[tool.pyscythe.boundaries]`.

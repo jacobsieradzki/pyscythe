@@ -1,2 +1,33 @@
 [tools]
 rust = "stable"
+"cargo:cargo-shear" = "latest"
+"cargo:typos-cli" = "latest"
+
+# `mise run check` is the whole gate; CI runs the same tasks.
+[tasks.fmt]
+description = "Format every crate"
+run = "cargo fmt --all"
+
+[tasks.lint]
+description = "Clippy at pedantic + nursery with -D warnings"
+run = "cargo clippy --workspace --all-targets"
+
+[tasks.test]
+description = "Unit and acceptance tests"
+run = "cargo test --workspace"
+
+[tasks.doc]
+description = "Rustdoc with broken links denied"
+run = "cargo doc --workspace --no-deps"
+
+[tasks.deps]
+description = "Unused Cargo dependencies"
+run = "cargo shear"
+
+[tasks.spell]
+description = "Spelling in code and docs"
+run = "typos"
+
+[tasks.check]
+description = "Everything CI checks"
+depends = ["fmt", "lint", "test", "doc", "deps", "spell"]

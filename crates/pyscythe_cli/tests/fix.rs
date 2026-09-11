@@ -117,3 +117,36 @@ fn low_confidence_findings_are_left_alone_by_default() {
         .stdout(predicate::str::contains("-    def unused_public(self) -> None:").not());
     std::fs::remove_dir_all(project).ok();
 }
+
+#[test]
+fn imports_orphaned_by_a_removal_go_with_it() {
+    let project = copy_fixture("fix_imports");
+
+    pyscythe().arg("fix").arg(&project).assert().success();
+
+    let util = std::fs::read_to_string(project.join("pkg/util.py")).expect("read");
+    assert_eq!(
+        util,
+        "import json\nfrom typing import Any, cast\n\n\ndef used() -> str:\n    return json.dumps(cast(Any, {}))\n"
+    );
+    std::fs::remove_dir_all(project).ok();
+}
+
+#[test]
+fn only_restricts_the_rules_acted_on() {
+    let project = copy_fixture("unused_file");
+
+    pyscythe()
+        .args(["fix", "--dry-run", "--only", "unused-function"])
+        .arg(&project)
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("delete pkg/orphan.py").not());
+    pyscythe()
+        .args(["fix", "--dry-run", "--only", "not-a-rule"])
+        .arg(&project)
+        .assert()
+        .code(2)
+        .stderr(predicate::str::contains("unknown rule"));
+    std::fs::remove_dir_all(project).ok();
+}

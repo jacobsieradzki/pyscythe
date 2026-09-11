@@ -38,7 +38,7 @@ enum Command {
     /// Report duplicated code.
     Dupes(DupesArgs),
     /// Report imports that cross the architecture boundaries in `[tool.pyscythe.boundaries]`.
-    Boundaries(AnalysisArgs),
+    Boundaries(BoundariesArgs),
     /// Delete dead definitions and files. Shows a diff with --dry-run.
     Fix(FixArgs),
     /// Compare declared dependencies with what the code imports.
@@ -70,6 +70,10 @@ struct FixArgs {
     /// Leave findings recorded in this baseline alone.
     #[arg(long, value_name = "FILE")]
     baseline: Option<PathBuf>,
+
+    /// Only act on these rules, such as `unused-function,unused-file`.
+    #[arg(long, value_name = "RULES", value_delimiter = ',')]
+    only: Vec<String>,
 }
 
 impl FixArgs {
@@ -168,6 +172,16 @@ struct AnalysisArgs {
     /// Only report findings in files changed since this git ref (plus untracked files).
     #[arg(long, value_name = "REF")]
     since: Option<String>,
+}
+
+#[derive(Debug, clap::Args)]
+struct BoundariesArgs {
+    #[command(flatten)]
+    common: AnalysisArgs,
+
+    /// Print a proposed `[tool.pyscythe.boundaries]` table derived from the import graph instead of checking.
+    #[arg(long)]
+    suggest: bool,
 }
 
 #[derive(Debug, clap::Args)]
@@ -296,7 +310,16 @@ fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
             run_analysis(&args.common, out, move |i, _, _| Ok(cycles(i, options)))
         }
         Command::Health(args) => run_analysis(&args, out, |i, _, s| Ok(health(i, s))),
-        Command::Boundaries(args) => run_analysis(&args, out, boundaries),
+        Command::Boundaries(args) if args.suggest => {
+            let mut timings = Timings::start();
+            let (index, _) = open_project(&args.common, &mut timings)?;
+            index.prepare();
+            let suggestion = pyscythe_core::boundaries::suggest(&index);
+            std::mem::forget(index);
+            write!(out, "{}", suggestion.to_toml())?;
+            Ok(Outcome::Clean)
+        }
+        Command::Boundaries(args) => run_analysis(&args.common, out, boundaries),
         Command::Fix(args) => run_fix(&args, out),
         Command::Deps(args) => run_analysis(&args, out, |i, _, s| {
             Ok(pyscythe_core::deps::analyze(
@@ -418,8 +441,19 @@ fn run_fix(args: &FixArgs, out: &mut impl std::io::Write) -> anyhow::Result<Outc
     report
         .findings
         .retain(|finding| finding.confidence <= threshold);
+    if !args.only.is_empty() {
+        let mut wanted = Vec::new();
+        for code in &args.only {
+            let rule = pyscythe_core::finding::Rule::from_code(code)
+                .ok_or_else(|| anyhow::anyhow!("unknown rule `{code}` in --only"))?;
+            wanted.push(rule);
+        }
+        report
+            .findings
+            .retain(|finding| wanted.contains(&finding.rule));
+    }
 
-    let plan = pyscythe_core::fix::plan(&index, &report);
+    let plan = pyscythe_core::fix::plan(&index, &report, &pyscythe_metrics::RuffImportPruner);
     std::mem::forget(index);
 
     for edit in &plan.edits {

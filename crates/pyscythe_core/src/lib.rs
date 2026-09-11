@@ -14,6 +14,7 @@ pub mod dupes;
 pub mod edit;
 pub mod finding;
 pub mod fix;
+pub mod graph;
 pub mod health;
 pub mod index;
 pub mod keep;

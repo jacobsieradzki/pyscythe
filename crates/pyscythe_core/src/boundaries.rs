@@ -91,6 +91,130 @@ fn target_depth(finding: &Finding) -> usize {
     }
 }
 
+/// A layering proposal derived from the import graph.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Suggestion {
+    /// Ranks from top to bottom; each rank lists the second-level packages in it.
+    pub layers: Vec<Vec<ModulePrefix>>,
+    /// Packages that import each other and so cannot be layered until untangled.
+    pub tangles: Vec<Vec<ModulePrefix>>,
+}
+
+impl Suggestion {
+    /// The proposal as a `[tool.pyscythe.boundaries]` table.
+    #[must_use]
+    pub fn to_toml(&self) -> String {
+        let mut out = String::from("[tool.pyscythe.boundaries]\nlayers = [\n");
+        for rank in &self.layers {
+            let names: Vec<String> = rank.iter().map(|p| format!("\"{}\"", p.as_str())).collect();
+            out.push_str(&format!("    [{}],\n", names.join(", ")));
+        }
+        out.push_str("]\n");
+        for tangle in &self.tangles {
+            let names: Vec<&str> = tangle.iter().map(ModulePrefix::as_str).collect();
+            out.push_str(&format!(
+                "# {} import each other; they share a rank until the cycle is broken.\n",
+                names.join(", ")
+            ));
+        }
+        out
+    }
+}
+
+/// Proposes layers from how second-level packages (`app.api`, `app.domain`)
+/// import each other at load time: importers rank above what they import.
+///
+/// Packages in an import cycle are condensed into one rank and reported as a
+/// tangle. Modules with fewer than two segments have no package to rank.
+#[must_use]
+pub fn suggest(index: &dyn CodebaseIndex) -> Suggestion {
+    let files = index.files();
+    let package_of = |file: &crate::source::SourceFile| -> Option<ModulePrefix> {
+        let module = file.module.as_ref()?;
+        let mut segments = module.as_str().split('.');
+        let (first, second) = (segments.next()?, segments.next()?);
+        Some(ModulePrefix::new(format!("{first}.{second}")))
+    };
+
+    let mut packages: Vec<ModulePrefix> = files.iter().filter_map(package_of).collect();
+    packages.sort_by(|a, b| a.as_str().cmp(b.as_str()));
+    packages.dedup();
+    let position = |prefix: &ModulePrefix| packages.iter().position(|p| p == prefix);
+
+    let mut edges: Vec<Vec<usize>> = vec![Vec::new(); packages.len()];
+    for file in files {
+        let (Some(from), Some(from_index)) = (
+            package_of(file),
+            package_of(file).and_then(|p| position(&p)),
+        ) else {
+            continue;
+        };
+        for import in index.imports(file.id) {
+            if import.kind != ImportKind::Runtime {
+                continue;
+            }
+            let Some(to) = index.file(import.target).and_then(package_of) else {
+                continue;
+            };
+            if to == from {
+                continue;
+            }
+            if let Some(to_index) = position(&to)
+                && !edges[from_index].contains(&to_index)
+            {
+                edges[from_index].push(to_index);
+            }
+        }
+    }
+
+    let components = crate::graph::strongly_connected_components(&edges);
+    let component_of: Vec<usize> = {
+        let mut lookup = vec![0; packages.len()];
+        for (index, component) in components.iter().enumerate() {
+            for &node in component {
+                lookup[node] = index;
+            }
+        }
+        lookup
+    };
+    // Condensed DAG: rank = longest chain of importers above.
+    let mut condensed: Vec<Vec<usize>> = vec![Vec::new(); components.len()];
+    for (from, targets) in edges.iter().enumerate() {
+        for &to in targets {
+            let (a, b) = (component_of[from], component_of[to]);
+            if a != b && !condensed[a].contains(&b) {
+                condensed[a].push(b);
+            }
+        }
+    }
+    let mut rank = vec![0usize; components.len()];
+    for _ in 0..components.len() {
+        for (from, targets) in condensed.iter().enumerate() {
+            for &to in targets {
+                if rank[to] < rank[from] + 1 {
+                    rank[to] = rank[from] + 1;
+                }
+            }
+        }
+    }
+
+    let depth = rank.iter().copied().max().map_or(0, |max| max + 1);
+    let mut layers: Vec<Vec<ModulePrefix>> = vec![Vec::new(); depth];
+    let mut tangles = Vec::new();
+    for (index, component) in components.iter().enumerate() {
+        let members: Vec<ModulePrefix> = component.iter().map(|&n| packages[n].clone()).collect();
+        if members.len() > 1 {
+            tangles.push(members.clone());
+        }
+        layers[rank[index]].extend(members);
+    }
+    for layer in &mut layers {
+        layer.sort_by(|a, b| a.as_str().cmp(b.as_str()));
+    }
+    layers.retain(|layer| !layer.is_empty());
+    Suggestion { layers, tangles }
+}
+
 /// Why `from` may not import `to`, if it may not.
 fn violation(config: &BoundaryConfig, from: &str, to: &str) -> Option<String> {
     if let (Some(from_rank), Some(to_rank)) = (config.rank_of(from), config.rank_of(to))
@@ -119,6 +243,7 @@ fn violation(config: &BoundaryConfig, from: &str, to: &str) -> Option<String> {
         .rules
         .iter()
         .filter(|rule| rule.from.covers(from))
+        .filter(|rule| !rule.allow.iter().any(|allowed| allowed.covers(to)))
         .find_map(|rule| {
             rule.deny
                 .iter()
@@ -199,6 +324,81 @@ mod tests {
     }
 
     #[test]
+    fn allow_lists_carve_exceptions_out_of_deny_rules() {
+        let mut index = FakeIndex::new();
+        let domain = index.add_file("/p/app/domain/order.py", "app.domain.order");
+        let types = index.add_file("/p/app/infra/types.py", "app.infra.types");
+        let db = index.add_file("/p/app/infra/db.py", "app.infra.db");
+        index.add_import(domain, types, ImportKind::Runtime);
+        index.add_import(domain, db, ImportKind::Runtime);
+        let config = BoundaryConfig {
+            rules: vec![DenyRule {
+                from: ModulePrefix::new("app.domain"),
+                deny: vec![ModulePrefix::new("app.infra")],
+                allow: vec![ModulePrefix::new("app.infra.types")],
+            }],
+            ..layered()
+        };
+
+        let report = analyze(&index, &config);
+
+        assert_eq!(report.findings.len(), 1);
+        assert!(report.findings[0].message.contains("`app.infra.db`"));
+    }
+
+    #[test]
+    fn suggests_layers_from_who_imports_whom() {
+        let mut index = FakeIndex::new();
+        let api = index.add_file("/p/app/api/routes.py", "app.api.routes");
+        let services = index.add_file("/p/app/services/orders.py", "app.services.orders");
+        let workers = index.add_file("/p/app/workers/jobs.py", "app.workers.jobs");
+        let domain = index.add_file("/p/app/domain/order.py", "app.domain.order");
+        index.add_import(api, services, ImportKind::Runtime);
+        index.add_import(services, domain, ImportKind::Runtime);
+        index.add_import(workers, domain, ImportKind::Runtime);
+        index.add_import(api, workers, ImportKind::Runtime);
+
+        let suggestion = super::suggest(&index);
+
+        let names: Vec<Vec<&str>> = suggestion
+            .layers
+            .iter()
+            .map(|rank| rank.iter().map(ModulePrefix::as_str).collect())
+            .collect();
+        assert_eq!(
+            names,
+            [
+                vec!["app.api"],
+                vec!["app.services", "app.workers"],
+                vec!["app.domain"]
+            ]
+        );
+        assert!(suggestion.tangles.is_empty());
+        assert!(
+            suggestion
+                .to_toml()
+                .contains("[\"app.services\", \"app.workers\"],")
+        );
+    }
+
+    #[test]
+    fn packages_that_import_each_other_share_a_rank_and_are_called_out() {
+        let mut index = FakeIndex::new();
+        let api = index.add_file("/p/app/api/routes.py", "app.api.routes");
+        let services = index.add_file("/p/app/services/orders.py", "app.services.orders");
+        let domain = index.add_file("/p/app/domain/order.py", "app.domain.order");
+        index.add_import(api, services, ImportKind::Runtime);
+        index.add_import(services, api, ImportKind::Runtime);
+        index.add_import(services, domain, ImportKind::Runtime);
+
+        let suggestion = super::suggest(&index);
+
+        assert_eq!(suggestion.layers.len(), 2);
+        assert_eq!(suggestion.tangles.len(), 1);
+        assert!(suggestion.to_toml().contains("import each other"));
+    }
+
+    #[test]
     fn deny_rules_apply_on_top_of_layers() {
         let mut index = FakeIndex::new();
         let domain = index.add_file("/p/app/domain/order.py", "app.domain.order");
@@ -208,6 +408,7 @@ mod tests {
             rules: vec![DenyRule {
                 from: ModulePrefix::new("app.domain"),
                 deny: vec![ModulePrefix::new("app.infra")],
+                allow: Vec::new(),
             }],
             ..layered()
         };

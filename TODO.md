@@ -36,9 +36,9 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 - [x] Health thresholds in `[tool.pyscythe.health]`.
 - [ ] Health: per-file and per-package scores; maintainability index; trend against a baseline.
 - [x] `pyscythe boundaries`: `layers` (ranks, several prefixes per rank), `rules` with `from`/`deny`, `preset = "hexagonal"` with `root`, type-only imports allowed unless `check-type-only`.
-- [ ] Boundaries: `pyscythe boundaries --suggest` to propose layers from the import graph; per-rule allow lists.
+- [x] `pyscythe boundaries --suggest` proposes layers from second-level package imports (tangles called out); rules take `allow` lists.
 - [x] `pyscythe fix [--dry-run]`: removes dead definitions (whole lines, decorators included, gap preserved) and unused files; skips nested definitions and methods whose removal would empty a class; medium confidence and better by default.
-- [ ] Fix: also drop imports that become unused after a removal; `--only RULE`; interactive confirmation.
+- [x] Fix drops imports orphaned by a removal and takes `--only RULE,...`. Interactive confirmation is not planned: `--dry-run` plus git is the review step.
 
 ## Output and integration
 

@@ -73,3 +73,17 @@ fn a_project_without_boundary_config_is_an_error() {
         .code(2)
         .stderr(predicate::str::contains("no boundaries configured"));
 }
+
+#[test]
+fn suggest_prints_a_layers_table_from_the_import_graph() {
+    pyscythe()
+        .args(["boundaries", "--suggest"])
+        .arg(fixture("boundaries"))
+        .assert()
+        .success()
+        .stdout(predicate::str::starts_with(
+            "[tool.pyscythe.boundaries]\nlayers = [\n",
+        ))
+        .stdout(predicate::str::contains("[\"app.api\", \"app.services\"],"))
+        .stdout(predicate::str::contains("import each other"));
+}

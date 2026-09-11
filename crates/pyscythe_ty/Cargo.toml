@@ -15,7 +15,6 @@ pyscythe_metrics = { workspace = true }
 ruff_db = { workspace = true }
 ruff_python_ast = { workspace = true }
 ruff_python_stdlib = { workspace = true }
-ruff_source_file = { workspace = true }
 ruff_text_size = { workspace = true }
 ty_ide = { workspace = true }
 ty_module_resolver = { workspace = true }

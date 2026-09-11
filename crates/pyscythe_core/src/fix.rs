@@ -2,7 +2,7 @@
 
 use camino::Utf8PathBuf;
 
-use crate::edit::{BodyAfterRemoval, Deletable};
+use crate::edit::{BodyAfterRemoval, Deletable, ImportPruner};
 use crate::finding::{Detail, Finding, Rule};
 use crate::index::CodebaseIndex;
 use crate::report::Report;
@@ -63,7 +63,7 @@ impl FixPlan {
 /// `def` nested inside an `if`, is skipped, as is a method whose removal
 /// would leave its class body empty.
 #[must_use]
-pub fn plan(index: &dyn CodebaseIndex, report: &Report) -> FixPlan {
+pub fn plan(index: &dyn CodebaseIndex, report: &Report, pruner: &dyn ImportPruner) -> FixPlan {
     let mut plan = FixPlan::default();
 
     for file in index.files() {
@@ -79,7 +79,7 @@ pub fn plan(index: &dyn CodebaseIndex, report: &Report) -> FixPlan {
             plan.deletions.push(file.path.clone());
             continue;
         }
-        plan_file(index, file.id, &findings, &mut plan);
+        plan_file(index, file.id, &findings, pruner, &mut plan);
     }
 
     for finding in &report.findings {
@@ -96,7 +96,13 @@ pub fn plan(index: &dyn CodebaseIndex, report: &Report) -> FixPlan {
     plan
 }
 
-fn plan_file(index: &dyn CodebaseIndex, file: FileId, findings: &[&Finding], plan: &mut FixPlan) {
+fn plan_file(
+    index: &dyn CodebaseIndex,
+    file: FileId,
+    findings: &[&Finding],
+    pruner: &dyn ImportPruner,
+    plan: &mut FixPlan,
+) {
     let Some(source) = index.source(file) else {
         return;
     };
@@ -151,9 +157,17 @@ fn plan_file(index: &dyn CodebaseIndex, file: FileId, findings: &[&Finding], pla
     }
 
     let mut after = source.clone();
+    let mut removed_text = String::new();
     for deletable in kept.iter().rev() {
+        if let Some(block) =
+            source.get(deletable.lines.start().get() as usize..deletable.lines.end().get() as usize)
+        {
+            removed_text.push_str(block);
+            removed_text.push('\n');
+        }
         after = remove_block(&after, deletable.lines);
     }
+    after = pruner.prune_orphaned_imports(&after, &removed_text);
     plan.edits.push(FileEdit {
         path: index.file(file).map(|f| f.path.clone()).unwrap_or_default(),
         before: source,
@@ -206,6 +220,7 @@ mod tests {
     use super::{plan, remove_block};
     use crate::config::Config;
     use crate::dead_code;
+    use crate::edit::KeepImports;
     use crate::keep::Policy;
     use crate::manifest::Manifest;
     use crate::source::{ByteOffset, ByteSpan};
@@ -261,7 +276,7 @@ mod tests {
             &Manifest::empty(),
             &Config::default(),
         );
-        let plan = plan(&index, &report);
+        let plan = plan(&index, &report, &KeepImports);
 
         assert_eq!(
             plan.deletions,
@@ -291,7 +306,7 @@ mod tests {
             &Manifest::empty(),
             &Config::default(),
         );
-        let plan = plan(&index, &report);
+        let plan = plan(&index, &report, &KeepImports);
 
         assert!(plan.edits.is_empty());
         assert_eq!(plan.skipped.len(), 1);

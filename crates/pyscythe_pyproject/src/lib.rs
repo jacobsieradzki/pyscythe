@@ -92,6 +92,7 @@ fn boundary_config(table: BoundariesTable) -> Result<BoundaryConfig, ParseError>
         .extend(table.rules.into_iter().map(|rule| DenyRule {
             from: ModulePrefix::new(rule.from),
             deny: rule.deny.into_iter().map(ModulePrefix::new).collect(),
+            allow: rule.allow.into_iter().map(ModulePrefix::new).collect(),
         }));
     if table.check_type_only {
         config.type_only = TypeOnlyImports::Check;
@@ -388,6 +389,8 @@ enum LayerEntry {
 struct RuleTable {
     from: String,
     deny: Vec<String>,
+    #[serde(default)]
+    allow: Vec<String>,
 }
 
 #[derive(Debug, Default, Deserialize)]

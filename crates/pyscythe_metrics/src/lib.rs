@@ -8,7 +8,7 @@
 //! without a nesting bonus, and each boolean-operator sequence adds one.
 //! Nested functions are measured on their own and excluded from their parent.
 
-use pyscythe_core::edit::{BodyAfterRemoval, Deletable};
+use pyscythe_core::edit::{BodyAfterRemoval, Deletable, ImportPruner};
 use pyscythe_core::metrics::FunctionMetrics;
 use pyscythe_core::source::{ByteOffset, ByteSpan, Column, Line};
 use pyscythe_core::symbol::SymbolName;
@@ -600,6 +600,36 @@ mod tests {
     }
 
     #[test]
+    fn orphaned_imports_are_pruned_and_shared_ones_kept() {
+        let after = "import os\nimport json\nfrom typing import Any, cast\nimport sys as system\n\n\ndef used() -> str:\n    return json.dumps(cast(Any, {}))\n";
+        let removed = "def dead() -> str:\n    return os.getcwd() + system.platform\n";
+        let pruned = super::prune_orphaned_imports(after, removed);
+        assert_eq!(
+            pruned,
+            "import json\nfrom typing import Any, cast\n\n\ndef used() -> str:\n    return json.dumps(cast(Any, {}))\n"
+        );
+    }
+
+    #[test]
+    fn partially_orphaned_from_imports_keep_the_survivors() {
+        let after = "from os import getcwd, path\n\nprint(path)\n";
+        let removed = "def dead():\n    return getcwd()\n";
+        assert_eq!(
+            super::prune_orphaned_imports(after, removed),
+            "from os import path\n\nprint(path)\n"
+        );
+    }
+
+    #[test]
+    fn unrelated_unused_imports_are_left_alone() {
+        let after = "import os\n\nprint(1)\n";
+        assert_eq!(
+            super::prune_orphaned_imports(after, "def dead():\n    pass\n"),
+            after
+        );
+    }
+
+    #[test]
     fn deletables_cover_whole_lines_including_decorators_and_flag_sole_methods() {
         let source = "X = 1\n\n\n@dec\ndef f():\n    pass\n\n\nclass C:\n    def only(self):\n        pass\n\n\nclass D:\n    a = 1\n    def m(self):\n        pass\n";
         let parsed = ruff_python_parser::parse_module(source).expect("parses");
@@ -693,4 +723,139 @@ mod tests {
         assert_eq!(all[1].cyclomatic, 2);
         assert_eq!(all[0].parameters, 1);
     }
+}
+
+/// Prunes imports whose bindings only removed code used, by re-parsing.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct RuffImportPruner;
+
+impl ImportPruner for RuffImportPruner {
+    fn prune_orphaned_imports(&self, source: &str, removed_text: &str) -> String {
+        prune_orphaned_imports(source, removed_text)
+    }
+}
+
+/// One import binding: the name it introduces and how to spell it back.
+struct ImportBinding {
+    bound: String,
+    spelling: String,
+}
+
+/// `source` with import bindings removed that appear as names in
+/// `removed_text` but nowhere in `source` outside import statements.
+/// A statement that loses every binding goes entirely; otherwise it is
+/// rewritten on one line with the survivors.
+#[must_use]
+pub fn prune_orphaned_imports(source: &str, removed_text: &str) -> String {
+    let Ok(parsed) = ruff_python_parser::parse_module(source) else {
+        return source.to_owned();
+    };
+    let Ok(removed) = ruff_python_parser::parse_module(removed_text) else {
+        return source.to_owned();
+    };
+    let removed_names: std::collections::BTreeSet<&str> = removed
+        .tokens()
+        .iter()
+        .filter(|t| t.kind() == TokenKind::Name)
+        .filter_map(|t| removed_text.get(std::ops::Range::<usize>::from(t.range())))
+        .collect();
+
+    // Import statements at module level and the names they bind.
+    let mut statements: Vec<(ruff_text_size::TextRange, String, Vec<ImportBinding>)> = Vec::new();
+    for statement in &parsed.syntax().body {
+        match statement {
+            Stmt::Import(import) => {
+                let bindings = import
+                    .names
+                    .iter()
+                    .map(|alias| ImportBinding {
+                        bound: alias.asname.as_ref().map_or_else(
+                            || alias.name.split('.').next().unwrap_or("").to_owned(),
+                            |asname| asname.to_string(),
+                        ),
+                        spelling: alias.asname.as_ref().map_or_else(
+                            || alias.name.to_string(),
+                            |asname| format!("{} as {asname}", alias.name),
+                        ),
+                    })
+                    .collect();
+                statements.push((import.range(), "import ".to_owned(), bindings));
+            }
+            Stmt::ImportFrom(import) => {
+                if import.names.iter().any(|alias| alias.name.as_str() == "*") {
+                    continue;
+                }
+                let module = import.module.as_ref().map_or("", |m| m.as_str());
+                let head = format!("from {}{module} import ", ".".repeat(import.level as usize));
+                let bindings = import
+                    .names
+                    .iter()
+                    .map(|alias| ImportBinding {
+                        bound: alias
+                            .asname
+                            .as_ref()
+                            .map_or_else(|| alias.name.to_string(), ToString::to_string),
+                        spelling: alias.asname.as_ref().map_or_else(
+                            || alias.name.to_string(),
+                            |asname| format!("{} as {asname}", alias.name),
+                        ),
+                    })
+                    .collect();
+                statements.push((import.range(), head, bindings));
+            }
+            _ => {}
+        }
+    }
+
+    let inside_import = |range: ruff_text_size::TextRange| {
+        statements
+            .iter()
+            .any(|(statement, _, _)| statement.contains_range(range))
+    };
+    let mut live: std::collections::BTreeSet<&str> = std::collections::BTreeSet::new();
+    for token in parsed.tokens().iter() {
+        if token.kind() == TokenKind::Name
+            && !inside_import(token.range())
+            && let Some(text) = source.get(std::ops::Range::<usize>::from(token.range()))
+        {
+            live.insert(text);
+        }
+    }
+
+    let mut result = source.to_owned();
+    for (range, head, bindings) in statements.iter().rev() {
+        let survivors: Vec<&ImportBinding> = bindings
+            .iter()
+            .filter(|binding| {
+                live.contains(binding.bound.as_str())
+                    || !removed_names.contains(binding.bound.as_str())
+            })
+            .collect();
+        if survivors.len() == bindings.len() {
+            continue;
+        }
+        let start = range.start().to_u32() as usize;
+        let end = range.end().to_u32() as usize;
+        let replacement = if survivors.is_empty() {
+            String::new()
+        } else {
+            format!(
+                "{head}{}",
+                survivors
+                    .iter()
+                    .map(|b| b.spelling.as_str())
+                    .collect::<Vec<_>>()
+                    .join(", ")
+            )
+        };
+        if let (Some(before), Some(after)) = (result.get(..start), result.get(end..)) {
+            let mut after = after;
+            if replacement.is_empty() {
+                // Take the rest of the line with the statement.
+                after = after.strip_prefix('\n').unwrap_or(after);
+            }
+            result = format!("{before}{replacement}{after}");
+        }
+    }
+    result
 }

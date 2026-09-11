@@ -3,6 +3,23 @@
 use crate::source::{ByteSpan, Column, Line};
 use crate::symbol::SymbolName;
 
+/// Rewrites source after definitions were removed: drops import bindings
+/// that only the removed code used. Needs a parser, so it lives outside core.
+pub trait ImportPruner {
+    /// `source` with imports orphaned by `removed_text` taken out.
+    fn prune_orphaned_imports(&self, source: &str, removed_text: &str) -> String;
+}
+
+/// Leaves imports alone.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct KeepImports;
+
+impl ImportPruner for KeepImports {
+    fn prune_orphaned_imports(&self, source: &str, _removed_text: &str) -> String {
+        source.to_owned()
+    }
+}
+
 /// Whether removing a class-body statement would leave the body empty.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum BodyAfterRemoval {

@@ -14,10 +14,13 @@ Codebase intelligence for Python, in Rust, on the ruff and ty crates. See README
 Rust comes from mise (`mise install`). Run cargo via `mise exec -- cargo ...` if the shell has not activated mise.
 
 ```bash
+mise run check      # fmt, clippy, tests, rustdoc, cargo shear, typos: the CI gate
 cargo test --workspace
 cargo clippy --workspace --all-targets
 cargo fmt --all
 ```
+
+Patch scripts that edit Rust by exact-string replacement must assert every replacement landed; rustfmt reflows text and silently defeats them otherwise. Never chain a commit after a piped cargo command: the pipeline's exit status hides failures.
 
 ## Dependencies
 

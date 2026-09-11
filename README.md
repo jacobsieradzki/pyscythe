@@ -92,14 +92,14 @@ def another() -> None:
 
 ## Developing
 
-Rust is managed by [mise](https://mise.jdx.dev). Every warning is an error; clippy runs with `pedantic` and `nursery` on.
+Rust is managed by [mise](https://mise.jdx.dev), which also installs `cargo-shear` and `typos`. Every warning is an error; clippy runs with `pedantic` and `nursery` on, rustdoc denies broken links, `cargo shear` fails on unused dependencies, and `typos` checks spelling. `mise run check` runs the whole gate, the same one CI runs.
 
 ```bash
 mise install
-cargo test --workspace
-cargo clippy --workspace --all-targets
-cargo fmt --all --check
+mise run check
 ```
+
+For Rust, the tools that map onto oxlint, oxfmt, and fallow are clippy, rustfmt, and rustc's own `dead_code` and `unreachable_pub` lints plus `cargo shear`; all are wired in here.
 
 ## Layout
 
