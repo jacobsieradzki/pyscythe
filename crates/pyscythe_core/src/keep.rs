@@ -82,6 +82,9 @@ pub enum FileRole {
     /// A tool's configuration script (`gunicorn.conf.py`, PyInstaller
     /// `hook-*.py`), whose module-level names the tool reads.
     ToolConfig,
+    /// An Alembic `env.py` or a migration under `versions/`, which Alembic
+    /// loads by path.
+    AlembicScript,
 }
 
 /// Everything a rule may look at when deciding.

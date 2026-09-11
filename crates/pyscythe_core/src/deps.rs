@@ -13,18 +13,36 @@ use crate::report::{Report, ReportKind, Summary};
 /// Distributions that are run as commands or loaded by other tools rather
 /// than imported, so never "unused".
 const TOOL_DISTRIBUTIONS: &[&str] = &[
+    "bandit",
     "black",
     "build",
+    "bump2version",
+    "bumpversion",
+    "cibuildwheel",
+    "codespell",
+    "commitizen",
     "coverage",
     "flake8",
     "gunicorn",
+    "hatch",
     "hypercorn",
+    "ipdb",
     "ipykernel",
+    "ipython",
     "isort",
     "jupyter",
     "jupyterlab",
     "maturin",
+    "mkdocs",
+    "mkdocs-material",
     "mypy",
+    "pdm",
+    "poetry",
+    "poethepoet",
+    "pyinstaller",
+    "pylint",
+    "pyupgrade",
+    "sphinx",
     "notebook",
     "nox",
     "pip",
@@ -44,6 +62,30 @@ const TOOL_DISTRIBUTIONS: &[&str] = &[
     "uv",
     "uvicorn",
     "wheel",
+];
+
+/// Distributions a framework loads by configuration rather than an import:
+/// database drivers named in a URL, validators FastAPI and Pydantic pull in
+/// when a field asks for them, servers' event loops and parsers.
+const LOADED_BY_CONFIGURATION: &[&str] = &[
+    "aiosqlite",
+    "asyncpg",
+    "cx-oracle",
+    "email-validator",
+    "httptools",
+    "mysqlclient",
+    "oracledb",
+    "pg8000",
+    "psycopg",
+    "psycopg-binary",
+    "psycopg-c",
+    "psycopg2",
+    "psycopg2-binary",
+    "pymysql",
+    "pyodbc",
+    "python-multipart",
+    "uvloop",
+    "watchfiles",
 ];
 
 /// Distributions whose import name does not follow from their name.
@@ -280,10 +322,15 @@ fn unused_finding(dependency: &crate::manifest::Dependency, manifest_path: &Utf8
     }
 }
 
-/// Tools, `types-*` stub packages (never imported), and configured exemptions.
+/// Tools, pytest plugins, stub packages (never imported), drivers loaded by
+/// configuration, and configured exemptions.
 fn is_tool(name: &DistributionName, config: &Config) -> bool {
-    TOOL_DISTRIBUTIONS.contains(&name.as_str())
-        || name.as_str().starts_with("types-")
+    let name_str = name.as_str();
+    TOOL_DISTRIBUTIONS.contains(&name_str)
+        || LOADED_BY_CONFIGURATION.contains(&name_str)
+        || name_str.starts_with("types-")
+        || name_str.ends_with("-stubs")
+        || name_str.starts_with("pytest-")
         || config.ignored_dependencies.contains(name)
 }
 

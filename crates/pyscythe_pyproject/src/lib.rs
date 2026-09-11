@@ -470,13 +470,13 @@ fn setup_cfg_dependencies(text: &str) -> Vec<Dependency> {
 pub fn parse(text: &str) -> Result<ProjectSettings, ParseError> {
     let document: PyProject = toml::from_str(text)?;
     let project = document.project.unwrap_or_default();
-    let tool = document
-        .tool
-        .and_then(|tool| tool.pyscythe)
-        .unwrap_or_default();
+    let tables = document.tool.unwrap_or_default();
+    let tool = tables.pyscythe.unwrap_or_default();
+    let poetry = tables.poetry.unwrap_or_default();
 
     let mut entry_points = Vec::new();
     entry_points.extend(targets(&project.scripts, EntryPointKind::Script));
+    entry_points.extend(targets(&poetry.scripts, EntryPointKind::Script));
     entry_points.extend(targets(&project.gui_scripts, EntryPointKind::GuiScript));
     for group in project.entry_points.values() {
         entry_points.extend(targets(group, EntryPointKind::Plugin));
@@ -517,6 +517,7 @@ pub fn parse(text: &str) -> Result<ProjectSettings, ParseError> {
             });
         }
     }
+    dependencies.extend(poetry.dependencies());
 
     let config = Config {
         exclude: PathPatterns::parse(tool.exclude.iter().map(String::as_str))?,
@@ -642,9 +643,59 @@ struct IncludeGroup {
     include_group: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Default, Deserialize)]
 struct Tool {
     pyscythe: Option<PyscytheTable>,
+    poetry: Option<PoetryTable>,
+}
+
+/// `[tool.poetry]`: dependencies keyed by name (the value is a constraint or
+/// a table), optional groups, and scripts.
+#[derive(Debug, Default, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+struct PoetryTable {
+    #[serde(default)]
+    dependencies: BTreeMap<String, toml::Value>,
+    #[serde(default)]
+    dev_dependencies: BTreeMap<String, toml::Value>,
+    #[serde(default)]
+    group: BTreeMap<String, PoetryGroup>,
+    #[serde(default)]
+    scripts: BTreeMap<String, String>,
+}
+
+#[derive(Debug, Default, Deserialize)]
+struct PoetryGroup {
+    #[serde(default)]
+    dependencies: BTreeMap<String, toml::Value>,
+}
+
+impl PoetryTable {
+    /// Every declared requirement; `python` is the interpreter constraint, not one.
+    fn dependencies(&self) -> Vec<Dependency> {
+        let named = |names: &BTreeMap<String, toml::Value>, group: DependencyGroup| {
+            names
+                .keys()
+                .filter(|name| name.as_str() != "python")
+                .map(|name| Dependency {
+                    name: DistributionName::normalize(name),
+                    group: group.clone(),
+                })
+                .collect::<Vec<_>>()
+        };
+        let mut out = named(&self.dependencies, DependencyGroup::Main);
+        out.extend(named(
+            &self.dev_dependencies,
+            DependencyGroup::Group("dev".to_owned()),
+        ));
+        for (group, table) in &self.group {
+            out.extend(named(
+                &table.dependencies,
+                DependencyGroup::Group(group.clone()),
+            ));
+        }
+        out
+    }
 }
 
 /// `[tool.pyscythe]`.
@@ -753,6 +804,50 @@ mod tests {
     use pyscythe_core::config::{NotebookPolicy, TypeOnlyImports};
     use pyscythe_core::manifest::{DependencyGroup, EntryPointKind};
     use pyscythe_core::symbol::SymbolName;
+
+    #[test]
+    fn reads_poetry_dependencies_groups_and_scripts() {
+        let settings = parse(
+            r#"
+[tool.poetry]
+name = "demo"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.22.0"
+Pillow = { version = "^10", optional = true }
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8"
+
+[tool.poetry.scripts]
+demo = "demo.cli:main"
+"#,
+        )
+        .unwrap();
+
+        let pairs: Vec<(&str, DependencyGroup)> = settings
+            .manifest
+            .dependencies
+            .iter()
+            .map(|d| (d.name.as_str(), d.group.clone()))
+            .collect();
+        assert_eq!(
+            pairs,
+            [
+                ("pillow", DependencyGroup::Main),
+                ("requests", DependencyGroup::Main),
+                ("pytest", DependencyGroup::Group("dev".into())),
+            ]
+        );
+        let modules: Vec<&str> = settings
+            .manifest
+            .entry_points
+            .iter()
+            .map(|e| e.module.as_str())
+            .collect();
+        assert_eq!(modules, ["demo.cli"]);
+    }
 
     #[test]
     fn reads_scripts_gui_scripts_and_plugin_groups() {

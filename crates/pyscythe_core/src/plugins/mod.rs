@@ -115,6 +115,11 @@ pub(crate) mod testing {
             self
         }
 
+        pub(crate) fn in_alembic_script(mut self) -> Self {
+            self.file_role = FileRole::AlembicScript;
+            self
+        }
+
         pub(crate) fn registered_by_base(mut self) -> Self {
             self.registration = SubclassRegistration::ByBaseHook;
             self

@@ -67,7 +67,7 @@ pub fn analyze(
     let mut files_with_kept_symbols: BTreeSet<FileId> = BTreeSet::new();
     let mut suppressed_files: BTreeSet<FileId> = BTreeSet::new();
     let mut stale_suppressions: Vec<(FileId, Line)> = Vec::new();
-    let settings_files = django_settings_files(index);
+    let roles = file_roles(index);
 
     for file in index.files() {
         let symbols = index.symbols(file.id);
@@ -91,13 +91,7 @@ pub fn analyze(
                 file,
                 owner_names: &owner_names,
                 suppressions: &suppressions,
-                file_role: if settings_files.contains(&file.id) {
-                    FileRole::DjangoSettings
-                } else if is_tool_config_file(file.file_name()) {
-                    FileRole::ToolConfig
-                } else {
-                    FileRole::Regular
-                },
+                file_role: roles.get(&file.id).copied().unwrap_or(FileRole::Regular),
             };
             match checker.verdict(symbol) {
                 Verdict::NotCandidate => {}
@@ -132,7 +126,7 @@ pub fn analyze(
 
     findings.extend(stale_suppression_findings(index, stale_suppressions));
 
-    let unused_files = unused_files(index, manifest, &files_with_kept_symbols, &settings_files);
+    let unused_files = unused_files(index, manifest, &files_with_kept_symbols, &roles);
     findings.retain(|finding| !unused_files.iter().any(|file| file.path == finding.path));
     let (suppressed_unused_files, reported_unused_files): (Vec<_>, Vec<_>) = unused_files
         .into_iter()
@@ -395,7 +389,7 @@ fn unused_files<'a>(
     index: &'a dyn CodebaseIndex,
     manifest: &Manifest,
     files_with_kept_symbols: &BTreeSet<FileId>,
-    settings_files: &BTreeSet<FileId>,
+    roles: &BTreeMap<FileId, FileRole>,
 ) -> Vec<&'a SourceFile> {
     let files = index.files();
     let imported: BTreeSet<FileId> = files
@@ -413,7 +407,61 @@ fn unused_files<'a>(
         .iter()
         .filter(|file| !imported.contains(&file.id))
         .filter(|file| !is_root_file(file, manifest, files_with_kept_symbols))
-        .filter(|file| !settings_files.contains(&file.id))
+        // Settings, Alembic scripts, tool configuration: loaded by name or path.
+        .filter(|file| !roles.contains_key(&file.id))
+        .collect()
+}
+
+/// Files that a framework or tool loads without importing them.
+fn file_roles(index: &dyn CodebaseIndex) -> BTreeMap<FileId, FileRole> {
+    let settings = django_settings_files(index);
+    let alembic = alembic_script_files(index);
+    index
+        .files()
+        .iter()
+        .filter_map(|file| {
+            let role = if settings.contains(&file.id) {
+                FileRole::DjangoSettings
+            } else if alembic.contains(&file.id) {
+                FileRole::AlembicScript
+            } else if is_tool_config_file(file.file_name()) {
+                FileRole::ToolConfig
+            } else {
+                return None;
+            };
+            Some((file.id, role))
+        })
+        .collect()
+}
+
+/// Alembic loads `env.py` and every script under `versions/` by path. A
+/// directory is Alembic's when it holds a `versions` directory of scripts,
+/// whatever it is called (`alembic`, `migrations`, `revisions`).
+fn alembic_script_files(index: &dyn CodebaseIndex) -> BTreeSet<FileId> {
+    let files = index.files();
+    let alembic_dirs: BTreeSet<&camino::Utf8Path> = files
+        .iter()
+        .filter_map(|file| {
+            let parent = file.relative_path.parent()?;
+            (parent.file_name() == Some("versions"))
+                .then(|| parent.parent())
+                .flatten()
+        })
+        .collect();
+    files
+        .iter()
+        .filter(|file| {
+            let Some(parent) = file.relative_path.parent() else {
+                return false;
+            };
+            let is_env = file.file_name() == "env.py" && alembic_dirs.contains(parent);
+            let is_version = parent.file_name() == Some("versions")
+                && parent
+                    .parent()
+                    .is_some_and(|dir| alembic_dirs.contains(dir));
+            is_env || is_version
+        })
+        .map(|file| file.id)
         .collect()
 }
 
@@ -596,6 +644,26 @@ mod tests {
             .iter()
             .filter_map(|f| f.symbol().map(SymbolName::as_str))
             .collect()
+    }
+
+    #[test]
+    fn alembic_scripts_are_found_by_their_versions_directory() {
+        let mut index = FakeIndex::new();
+        let env = index.add_file("/proj/src/app/db/revisions/env.py", "app.db.revisions.env");
+        let script = index.add_file(
+            "/proj/src/app/db/revisions/versions/001_init.py",
+            "app.db.revisions.versions.init",
+        );
+        let other = index.add_file("/proj/src/app/env.py", "app.env");
+
+        let scripts = super::alembic_script_files(&index);
+
+        assert!(scripts.contains(&env));
+        assert!(scripts.contains(&script));
+        assert!(
+            !scripts.contains(&other),
+            "an env.py with no versions/ is not Alembic's"
+        );
     }
 
     #[test]

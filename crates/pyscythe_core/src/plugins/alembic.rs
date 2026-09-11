@@ -1,6 +1,6 @@
 //! Alembic executes migration scripts by loading well-known module attributes.
 
-use crate::keep::{KeepContext, KeepRule, PluginName};
+use crate::keep::{FileRole, KeepContext, KeepRule, PluginName};
 
 pub(crate) struct Alembic;
 
@@ -26,6 +26,9 @@ impl KeepRule for Alembic {
         if context.file_name() == "env.py" && context.is_under_directory("alembic") {
             return Some("Alembic environment script");
         }
+        if context.file_role == FileRole::AlembicScript && context.symbol.is_module_level() {
+            return Some("Alembic script loaded by path");
+        }
         None
     }
 }
@@ -50,6 +53,21 @@ mod tests {
         assert!(
             !Case::function("helper")
                 .at("/p/alembic/versions/abc.py")
+                .is_kept_by(&Alembic)
+        );
+    }
+
+    #[test]
+    fn keeps_module_level_names_of_scripts_alembic_loads_by_path() {
+        assert!(
+            Case::function("show_secrets_encoder")
+                .at("/p/db/revisions/versions/2021_abc.py")
+                .in_alembic_script()
+                .is_kept_by(&Alembic)
+        );
+        assert!(
+            !Case::function("show_secrets_encoder")
+                .at("/p/db/revisions/versions/2021_abc.py")
                 .is_kept_by(&Alembic)
         );
     }

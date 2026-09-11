@@ -152,3 +152,24 @@ fn requirements_files_count_as_declared_when_nothing_else_does() {
         "six is imported; unused-req (base) and unused-local-req (local group) are not: {report}"
     );
 }
+
+#[test]
+fn distributions_named_in_configuration_strings_count_as_used() {
+    let output = pyscythe()
+        .args(["deps", "--format", "json"])
+        .arg(fixture("string_deps"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let findings: Vec<(&str, &str)> = report["findings"]
+        .as_array()
+        .expect("findings")
+        .iter()
+        .filter_map(|f| Some((f["rule"].as_str()?, f["distribution"].as_str()?)))
+        .collect();
+    assert_eq!(
+        findings,
+        [("unused-dependency", "unused-thing")],
+        "whitenoise is named in MIDDLEWARE and corsheaders in INSTALLED_APPS: {report}"
+    );
+}

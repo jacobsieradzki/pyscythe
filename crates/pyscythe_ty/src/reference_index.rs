@@ -230,6 +230,26 @@ impl UseCollector<'_, '_> {
         }
     }
 
+    /// `"whitenoise.middleware.WhiteNoiseMiddleware"` in `MIDDLEWARE` or
+    /// `"corsheaders"` in `INSTALLED_APPS`: a distribution named in
+    /// configuration is a distribution in use. Only names that resolve into
+    /// the environment count; anything else is just a string.
+    fn record_installed_module_use(&mut self, range: TextRange, dotted: &str) {
+        let top_level = dotted.split('.').next().unwrap_or(dotted);
+        if top_level.len() < 3 || !is_identifier(top_level) {
+            return;
+        }
+        let Some(module) = self.model.resolve_module(Some(top_level), 0) else {
+            return;
+        };
+        let installed = module
+            .search_path(self.db)
+            .is_some_and(|path| path.is_site_packages() || path.is_editable());
+        if installed {
+            self.record_external(range, top_level, 0);
+        }
+    }
+
     /// Notes an absolute import of `dotted` when it lands outside the project
     /// and the standard library, or nowhere at all.
     fn record_external(&mut self, range: TextRange, dotted: &str, level: u32) {
@@ -366,10 +386,12 @@ impl UseCollector<'_, '_> {
         // a same-named method alive.
         if is_identifier(text) {
             self.out.attribute_names.insert(text.to_owned());
+            self.record_installed_module_use(literal.range(), text);
         }
         let Some((module_name, attribute)) = split_dotted_reference(text) else {
             return;
         };
+        self.record_installed_module_use(literal.range(), module_name);
         let Some(module) = self.model.resolve_module(Some(module_name), 0) else {
             return;
         };
