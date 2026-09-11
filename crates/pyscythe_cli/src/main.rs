@@ -39,6 +39,52 @@ enum Command {
     Dupes(DupesArgs),
     /// Report imports that cross the architecture boundaries in `[tool.pyscythe.boundaries]`.
     Boundaries(AnalysisArgs),
+    /// Delete dead definitions and files. Shows a diff with --dry-run.
+    Fix(FixArgs),
+}
+
+#[derive(Debug, clap::Args)]
+struct FixArgs {
+    /// Project root, or any path inside it. Defaults to the current directory.
+    #[arg(default_value = ".")]
+    path: PathBuf,
+
+    /// Print the changes as a unified diff instead of writing them.
+    #[arg(long)]
+    dry_run: bool,
+
+    /// Only act on findings at this confidence or better.
+    #[arg(long, value_enum, default_value_t = MinConfidence::Medium)]
+    min_confidence: MinConfidence,
+
+    /// Disable framework plugins.
+    #[arg(long)]
+    no_plugins: bool,
+
+    /// Extra project-relative globs to leave alone.
+    #[arg(long, value_name = "GLOB")]
+    exclude: Vec<String>,
+
+    /// Leave findings recorded in this baseline alone.
+    #[arg(long, value_name = "FILE")]
+    baseline: Option<PathBuf>,
+}
+
+impl FixArgs {
+    fn as_analysis_args(&self) -> AnalysisArgs {
+        AnalysisArgs {
+            path: self.path.clone(),
+            format: Format::Human,
+            no_plugins: self.no_plugins,
+            show_kept: false,
+            exclude: self.exclude.clone(),
+            timings: false,
+            baseline: self.baseline.clone(),
+            write_baseline: None,
+            min_confidence: self.min_confidence,
+            since: None,
+        }
+    }
 }
 
 #[derive(Debug, clap::Args)]
@@ -227,6 +273,7 @@ fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
         Command::Cycles(args) => run_analysis(&args, out, |i, _, _| Ok(cycles(i))),
         Command::Health(args) => run_analysis(&args, out, |i, _, _| Ok(health(i))),
         Command::Boundaries(args) => run_analysis(&args, out, boundaries),
+        Command::Fix(args) => run_fix(&args, out),
         Command::Dupes(args) => {
             let options = DupesOptions {
                 mode: args.mode.into(),
@@ -324,6 +371,78 @@ fn apply_baseline(args: &AnalysisArgs, report: &mut Report, root: &Utf8Path) -> 
         .map_err(|error| anyhow::anyhow!("cannot parse baseline {}: {error}", path.display()))?;
     baseline.apply(report, root);
     Ok(())
+}
+
+/// Plans deletions for the dead-code findings and either shows or applies them.
+fn run_fix(args: &FixArgs, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
+    let analysis_args = args.as_analysis_args();
+    let mut timings = Timings::start();
+    let (index, settings) = open_project(&analysis_args, &mut timings)?;
+    index.prepare();
+    let mut report = dead_code(&index, &analysis_args, &settings);
+    let root = index.root().to_path_buf();
+    apply_baseline(&analysis_args, &mut report, &root)?;
+    let threshold: Confidence = args.min_confidence.into();
+    report
+        .findings
+        .retain(|finding| finding.confidence <= threshold);
+
+    let plan = pyscythe_core::fix::plan(&index, &report);
+    std::mem::forget(index);
+
+    for edit in &plan.edits {
+        let diff = similar::TextDiff::from_lines(&edit.before, &edit.after);
+        let relative = edit.path.strip_prefix(&root).unwrap_or(&edit.path);
+        write!(
+            out,
+            "{}",
+            diff.unified_diff()
+                .context_radius(3)
+                .header(&format!("a/{relative}"), &format!("b/{relative}"))
+        )?;
+    }
+    for path in &plan.deletions {
+        let relative = path.strip_prefix(&root).unwrap_or(path);
+        writeln!(out, "delete {relative}")?;
+    }
+    for skipped in &plan.skipped {
+        let relative = skipped
+            .finding
+            .path
+            .strip_prefix(&root)
+            .unwrap_or(&skipped.finding.path);
+        writeln!(
+            out,
+            "skip {relative}: {} ({})",
+            skipped.finding.message, skipped.reason
+        )?;
+    }
+
+    if !args.dry_run {
+        for edit in &plan.edits {
+            std::fs::write(&edit.path, &edit.after)
+                .map_err(|error| anyhow::anyhow!("cannot write {}: {error}", edit.path))?;
+        }
+        for path in &plan.deletions {
+            std::fs::remove_file(path)
+                .map_err(|error| anyhow::anyhow!("cannot delete {path}: {error}"))?;
+        }
+    }
+
+    let verb = if args.dry_run {
+        "Would remove"
+    } else {
+        "Removed"
+    };
+    writeln!(
+        out,
+        "\n{verb} {} definition(s) in {} file(s) and {} whole file(s); {} finding(s) skipped.",
+        plan.removed_definitions(),
+        plan.edits.len(),
+        plan.deletions.len(),
+        plan.skipped.len()
+    )?;
+    Ok(Outcome::Clean)
 }
 
 /// Opens the project, reads its `pyproject.toml`, and applies the file selection it asks for.

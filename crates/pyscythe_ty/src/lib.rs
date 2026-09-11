@@ -8,6 +8,7 @@ use std::sync::OnceLock;
 
 use camino::{Utf8Path, Utf8PathBuf};
 use pyscythe_core::config::{NotebookPolicy, PathPatterns};
+use pyscythe_core::edit::Deletable;
 use pyscythe_core::index::{
     Ancestry, CodebaseIndex, Import, Inheritance, NameUsage, Reference, Suppression,
 };
@@ -301,6 +302,21 @@ impl CodebaseIndex for TyIndex {
                 })
             })
             .collect()
+    }
+
+    fn deletables(&self, file: FileId) -> Vec<Deletable> {
+        let Some(ty_file) = self.ty_file(file) else {
+            return Vec::new();
+        };
+        let program_file = self.db.program_file(ty_file);
+        let module = parsed_module(&self.db, program_file.python_file(&self.db)).load(&self.db);
+        let source = source_text(&self.db, ty_file);
+        pyscythe_metrics::deletables(module.syntax(), source.as_str())
+    }
+
+    fn source(&self, file: FileId) -> Option<String> {
+        let ty_file = self.ty_file(file)?;
+        Some(source_text(&self.db, ty_file).as_str().to_owned())
     }
 
     fn clone_tokens(&self, file: FileId, mode: CloneMode) -> Vec<CloneToken> {

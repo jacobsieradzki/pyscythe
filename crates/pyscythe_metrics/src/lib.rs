@@ -8,8 +8,9 @@
 //! without a nesting bonus, and each boolean-operator sequence adds one.
 //! Nested functions are measured on their own and excluded from their parent.
 
+use pyscythe_core::edit::{BodyAfterRemoval, Deletable};
 use pyscythe_core::metrics::FunctionMetrics;
-use pyscythe_core::source::{ByteOffset, ByteSpan, Line};
+use pyscythe_core::source::{ByteOffset, ByteSpan, Column, Line};
 use pyscythe_core::symbol::SymbolName;
 use pyscythe_core::tokens::{CloneMode, CloneToken};
 use ruff_python_ast::token::{TokenKind, Tokens};
@@ -58,6 +59,121 @@ pub fn clone_tokens(tokens: &Tokens, source: &str, mode: CloneMode) -> Vec<Clone
             })
         })
         .collect()
+}
+
+/// Definitions at module or class level that can be removed as whole lines.
+///
+/// `if`/`try` bodies are not descended: a definition guarded by a condition
+/// is not safe to delete on the strength of a static reference count.
+#[must_use]
+pub fn deletables(module: &ast::ModModule, source: &str) -> Vec<Deletable> {
+    let lines = LineIndex::from_source_text(source);
+    let mut out = Vec::new();
+    collect_deletables(&module.body, None, &lines, source, &mut out);
+    out
+}
+
+fn collect_deletables(
+    body: &[Stmt],
+    class_body_len: Option<usize>,
+    lines: &LineIndex,
+    source: &str,
+    out: &mut Vec<Deletable>,
+) {
+    let body_after_removal = match class_body_len {
+        Some(len) if len <= 1 => BodyAfterRemoval::WouldBeEmpty,
+        _ => BodyAfterRemoval::StillHasStatements,
+    };
+    for statement in body {
+        let (name_identifier, range) = match statement {
+            Stmt::FunctionDef(function) => (&function.name, function.range()),
+            Stmt::ClassDef(class) => {
+                collect_deletables(&class.body, Some(class.body.len()), lines, source, out);
+                (&class.name, class.range())
+            }
+            Stmt::Assign(assign) => match assign.targets.as_slice() {
+                [Expr::Name(target)] => {
+                    push_deletable(
+                        out,
+                        target.id.as_str(),
+                        target.range(),
+                        assign.range(),
+                        body_after_removal,
+                        lines,
+                        source,
+                    );
+                    continue;
+                }
+                _ => continue,
+            },
+            Stmt::AnnAssign(assign) => match &*assign.target {
+                Expr::Name(target) => {
+                    push_deletable(
+                        out,
+                        target.id.as_str(),
+                        target.range(),
+                        assign.range(),
+                        body_after_removal,
+                        lines,
+                        source,
+                    );
+                    continue;
+                }
+                _ => continue,
+            },
+            _ => continue,
+        };
+        push_deletable(
+            out,
+            name_identifier.as_str(),
+            name_identifier.range(),
+            range,
+            body_after_removal,
+            lines,
+            source,
+        );
+    }
+}
+
+fn push_deletable(
+    out: &mut Vec<Deletable>,
+    name: &str,
+    name_range: ruff_text_size::TextRange,
+    statement_range: ruff_text_size::TextRange,
+    body_after_removal: BodyAfterRemoval,
+    lines: &LineIndex,
+    source: &str,
+) {
+    let location = lines.line_column(name_range.start(), source);
+    let (Some(line), Some(column)) = (
+        u32::try_from(location.line.get())
+            .ok()
+            .and_then(Line::from_one_based),
+        u32::try_from(location.column.get())
+            .ok()
+            .and_then(Column::from_one_based),
+    ) else {
+        return;
+    };
+    let start = lines.line_start(lines.line_index(statement_range.start()), source);
+    // Through the end of the last line, newline included; the file end when there is no next line.
+    let end_line = lines.line_index(statement_range.end());
+    let next_line = end_line.saturating_add(1);
+    let end = if next_line.get() <= lines.line_count() {
+        lines.line_start(next_line, source)
+    } else {
+        ruff_text_size::TextSize::of(source)
+    };
+    out.push(Deletable {
+        name: SymbolName::new(name),
+        line,
+        column,
+        lines: ByteSpan::new(
+            ByteOffset::new(start.to_u32()),
+            ByteOffset::new(end.to_u32()),
+        ),
+        body_after_removal,
+    });
 }
 
 /// Metrics for every function and method in `module`, in source order.
@@ -415,6 +531,29 @@ mod tests {
 
     fn first(source: &str) -> FunctionMetrics {
         metrics(source).into_iter().next().expect("one function")
+    }
+
+    #[test]
+    fn deletables_cover_whole_lines_including_decorators_and_flag_sole_methods() {
+        let source = "X = 1\n\n\n@dec\ndef f():\n    pass\n\n\nclass C:\n    def only(self):\n        pass\n\n\nclass D:\n    a = 1\n    def m(self):\n        pass\n";
+        let parsed = ruff_python_parser::parse_module(source).expect("parses");
+        let items = super::deletables(parsed.syntax(), source);
+        let names: Vec<&str> = items.iter().map(|d| d.name.as_str()).collect();
+        assert_eq!(names, ["X", "f", "only", "C", "a", "m", "D"]);
+
+        let f = &items[1];
+        assert_eq!((f.line.get(), f.column.get()), (5, 5));
+        let block = &source[f.lines.start().get() as usize..f.lines.end().get() as usize];
+        assert_eq!(block, "@dec\ndef f():\n    pass\n");
+
+        assert_eq!(
+            items[2].body_after_removal,
+            pyscythe_core::edit::BodyAfterRemoval::WouldBeEmpty
+        );
+        assert_eq!(
+            items[5].body_after_removal,
+            pyscythe_core::edit::BodyAfterRemoval::StillHasStatements
+        );
     }
 
     #[test]

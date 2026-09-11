@@ -1,5 +1,6 @@
 //! The port through which analyses see a codebase.
 
+use crate::edit::Deletable;
 use crate::finding::Rule;
 use crate::metrics::FunctionMetrics;
 use crate::source::{ByteOffset, ByteSpan, FileId, Line, Position, SourceFile};
@@ -199,6 +200,12 @@ pub trait CodebaseIndex {
 
     /// The significant tokens of `file`, normalised for `mode`.
     fn clone_tokens(&self, file: FileId, mode: CloneMode) -> Vec<CloneToken>;
+
+    /// Definitions in `file` that can be removed as whole-line blocks.
+    fn deletables(&self, file: FileId) -> Vec<Deletable>;
+
+    /// The full source text of `file`.
+    fn source(&self, file: FileId) -> Option<String>;
 
     /// Converts a byte offset in `file` to a line and column.
     fn position(&self, file: FileId, offset: ByteOffset) -> Option<Position>;

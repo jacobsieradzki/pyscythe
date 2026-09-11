@@ -2,6 +2,7 @@
 
 use camino::Utf8PathBuf;
 
+use crate::edit::{BodyAfterRemoval, Deletable};
 use crate::metrics::FunctionMetrics;
 use crate::tokens::{CloneMode, CloneToken};
 
@@ -30,6 +31,7 @@ pub(crate) struct FakeIndex {
     suppressions: Vec<(FileId, Suppression)>,
     metrics: Vec<(FileId, FunctionMetrics)>,
     tokens: Vec<(FileId, Vec<CloneToken>)>,
+    sources: Vec<(FileId, String, Vec<Deletable>)>,
 }
 
 impl FakeIndex {
@@ -140,6 +142,94 @@ impl FakeIndex {
                 scope: SuppressionScope::File,
             },
         ));
+    }
+
+    /// Attaches real source text to `file` and derives deletables from it with a
+    /// tiny reader: every `def name` or `class name` line starts a block that
+    /// runs until the next non-indented, non-blank line. Symbol positions are
+    /// rewritten to match the source so findings line up with deletables.
+    pub(crate) fn set_source_with_deletables(&mut self, file: FileId, source: &str) {
+        let lines: Vec<&str> = source.split_inclusive('\n').collect();
+        let mut offsets = Vec::with_capacity(lines.len() + 1);
+        let mut offset = 0u32;
+        for line in &lines {
+            offsets.push(offset);
+            offset += u32::try_from(line.len()).expect("short file");
+        }
+        offsets.push(offset);
+
+        let mut deletables = Vec::new();
+        let mut index = 0;
+        while index < lines.len() {
+            let line = lines[index];
+            let indent = line.len() - line.trim_start().len();
+            let word = line
+                .trim_start()
+                .split([' ', '(', ':'])
+                .next()
+                .unwrap_or("");
+            let name = line.trim_start()[word.len()..]
+                .trim_start()
+                .split(['(', ':'])
+                .next()
+                .unwrap_or("")
+                .to_owned();
+            if !matches!(word, "def" | "class") {
+                index += 1;
+                continue;
+            }
+            let mut end = index + 1;
+            while end < lines.len()
+                && (lines[end].trim().is_empty()
+                    || lines[end].len() - lines[end].trim_start().len() > indent)
+            {
+                end += 1;
+            }
+            while end > index + 1 && lines[end - 1].trim().is_empty() {
+                end -= 1;
+            }
+            let column = u32::try_from(indent + word.len() + 2).expect("short line");
+            let line_number = Line::from_one_based(u32::try_from(index + 1).expect("few lines"))
+                .expect("non-zero");
+            let start = offsets[index];
+            let name_start = start + column - 1;
+            if let Some(symbol) = self
+                .symbols
+                .iter_mut()
+                .find(|s| s.file == file && s.name.as_str() == name)
+            {
+                symbol.name_span = ByteSpan::new(
+                    ByteOffset::new(name_start),
+                    ByteOffset::new(name_start + u32::try_from(name.len()).expect("short")),
+                );
+                symbol.full_span =
+                    ByteSpan::new(ByteOffset::new(start), ByteOffset::new(offsets[end]));
+            }
+            let body_after_removal = if indent > 0 {
+                let siblings = lines[..index]
+                    .iter()
+                    .chain(lines[end..].iter())
+                    .filter(|l| l.len() - l.trim_start().len() == indent && !l.trim().is_empty())
+                    .count();
+                if siblings == 0 {
+                    BodyAfterRemoval::WouldBeEmpty
+                } else {
+                    BodyAfterRemoval::StillHasStatements
+                }
+            } else {
+                BodyAfterRemoval::StillHasStatements
+            };
+            deletables.push(Deletable {
+                name: SymbolName::new(&name),
+                line: line_number,
+                column: Column::from_one_based(column).expect("non-zero"),
+                lines: ByteSpan::new(ByteOffset::new(start), ByteOffset::new(offsets[end])),
+                body_after_removal,
+            });
+            // Keep scanning inside the block so nested definitions get their own entry.
+            index += 1;
+        }
+        self.sources.push((file, source.to_owned(), deletables));
     }
 
     /// Gives `file` one token per whitespace-separated word of `source`, each
@@ -307,6 +397,21 @@ impl CodebaseIndex for FakeIndex {
         }
     }
 
+    fn deletables(&self, file: FileId) -> Vec<Deletable> {
+        self.sources
+            .iter()
+            .find(|(f, _, _)| *f == file)
+            .map(|(_, _, d)| d.clone())
+            .unwrap_or_default()
+    }
+
+    fn source(&self, file: FileId) -> Option<String> {
+        self.sources
+            .iter()
+            .find(|(f, _, _)| *f == file)
+            .map(|(_, s, _)| s.clone())
+    }
+
     fn clone_tokens(&self, file: FileId, _mode: CloneMode) -> Vec<CloneToken> {
         self.tokens
             .iter()
@@ -346,7 +451,16 @@ impl CodebaseIndex for FakeIndex {
         }
     }
 
-    fn position(&self, _file: FileId, offset: ByteOffset) -> Option<Position> {
+    fn position(&self, file: FileId, offset: ByteOffset) -> Option<Position> {
+        if let Some((_, source, _)) = self.sources.iter().find(|(f, _, _)| *f == file) {
+            let before = source.get(..offset.get() as usize)?;
+            let line = u32::try_from(before.matches('\n').count() + 1).ok()?;
+            let column = u32::try_from(before.rsplit('\n').next().map_or(0, str::len) + 1).ok()?;
+            return Some(Position {
+                line: Line::from_one_based(line)?,
+                column: Column::from_one_based(column)?,
+            });
+        }
         Some(Position {
             line: Line::from_one_based(offset.get() / LINE_STRIDE + 1)?,
             column: Column::from_one_based(offset.get() % LINE_STRIDE + 1)?,

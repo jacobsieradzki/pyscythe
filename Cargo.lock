@@ -1238,6 +1238,7 @@ dependencies = [
  "pyscythe_pyproject",
  "pyscythe_ty",
  "serde_json",
+ "similar",
  "thiserror",
 ]
 
