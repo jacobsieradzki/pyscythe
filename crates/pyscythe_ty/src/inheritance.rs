@@ -54,6 +54,7 @@ pub(crate) fn hierarchy_of_class(
     db: &dyn ty_project::Db,
     file: File,
     name_span: ByteSpan,
+    looking_for: Option<&str>,
 ) -> Hierarchy {
     let program_file = db.program_file(file);
     let parsed = parsed_module(db, program_file.python_file(db)).load(db);
@@ -62,7 +63,7 @@ pub(crate) fn hierarchy_of_class(
             ancestors: Vec::new(),
             complete: false,
         },
-        |class_def| walk_hierarchy(db, file, class_def, None),
+        |class_def| walk_hierarchy(db, file, class_def, looking_for),
     )
 }
 
@@ -110,6 +111,11 @@ fn walk_hierarchy(
             hierarchy.complete = false;
         }
         for base in supertypes {
+            // `object` is every class's implicit root; its `__init_subclass__`
+            // registers nothing and no rule matches on it.
+            if base.name.as_str() == "object" {
+                continue;
+            }
             let base_file = base.file.file(db);
             if !visited.insert((base_file, base.selection_range)) {
                 continue;

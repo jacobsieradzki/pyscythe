@@ -1271,6 +1271,8 @@ version = "0.1.0"
 dependencies = [
  "camino",
  "pyscythe_core",
+ "ruff_python_ast",
+ "ruff_python_parser",
  "serde",
  "thiserror",
  "toml",

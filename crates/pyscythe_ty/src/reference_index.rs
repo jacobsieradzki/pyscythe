@@ -325,6 +325,12 @@ impl UseCollector<'_, '_> {
     /// use of that symbol and a deferred import of its module.
     fn record_string_reference(&mut self, literal: &ast::ExprStringLiteral) {
         let text = literal.value.to_str();
+        // Frameworks name attributes in strings: Django's `list_display`,
+        // DRF's `fields`, `getattr` lookups. Any identifier-shaped literal keeps
+        // a same-named method alive.
+        if is_identifier(text) {
+            self.out.attribute_names.insert(text.to_owned());
+        }
         let Some((module_name, attribute)) = split_dotted_reference(text) else {
             return;
         };
@@ -353,6 +359,14 @@ impl UseCollector<'_, '_> {
             self.record_definition_use(literal.range(), FileRange::new(module_file, name_range));
         }
     }
+}
+
+fn is_identifier(text: &str) -> bool {
+    let mut chars = text.chars();
+    chars
+        .next()
+        .is_some_and(|c| c.is_ascii_alphabetic() || c == '_')
+        && chars.all(|c| c.is_ascii_alphanumeric() || c == '_')
 }
 
 /// Splits `"a.b.c"` into `("a.b", Some("c"))` and `"a.b:c"` into the same,

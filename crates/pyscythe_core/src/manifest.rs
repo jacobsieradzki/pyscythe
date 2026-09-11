@@ -104,6 +104,21 @@ impl Manifest {
         }
     }
 
+    /// One manifest holding every entry point and dependency of `manifests`.
+    #[must_use]
+    pub fn merged<'a>(manifests: impl IntoIterator<Item = &'a Self>) -> Self {
+        let mut merged = Self::empty();
+        for manifest in manifests {
+            merged
+                .entry_points
+                .extend(manifest.entry_points.iter().cloned());
+            merged
+                .dependencies
+                .extend(manifest.dependencies.iter().cloned());
+        }
+        merged
+    }
+
     /// Whether `module:name` is a declared entry point.
     #[must_use]
     pub fn declares_entry_point(&self, module: &ModulePath, name: &SymbolName) -> bool {

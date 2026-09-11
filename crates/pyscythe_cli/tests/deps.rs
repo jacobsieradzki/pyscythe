@@ -52,3 +52,71 @@ fn reports_unused_declared_dependencies_and_unresolved_imports_without_an_enviro
         "typing-extensions is matched by name, ruff is a tool, json is stdlib: {report}"
     );
 }
+
+#[test]
+fn nested_projects_are_judged_against_their_own_manifest() {
+    let output = pyscythe()
+        .args(["deps", "--format", "json"])
+        .arg(fixture("monorepo"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let mut findings: Vec<(String, String)> = report["findings"]
+        .as_array()
+        .expect("findings")
+        .iter()
+        .map(|f| {
+            (
+                f["rule"].as_str().expect("rule").to_owned(),
+                f["path"]
+                    .as_str()
+                    .expect("path")
+                    .rsplit('/')
+                    .take(2)
+                    .collect::<Vec<_>>()
+                    .into_iter()
+                    .rev()
+                    .collect::<Vec<_>>()
+                    .join("/"),
+            )
+        })
+        .collect();
+    findings.sort();
+    assert_eq!(
+        findings,
+        [
+            (
+                "missing-dependency".to_owned(),
+                "scripts/tool.py".to_owned()
+            ),
+            (
+                "unused-dependency".to_owned(),
+                "backend/pyproject.toml".to_owned()
+            ),
+        ],
+        "backend declares six (used) and unused-lib; the root declares nothing: {report}"
+    );
+}
+
+#[test]
+fn setup_py_install_requires_counts_as_declared() {
+    let output = pyscythe()
+        .args(["deps", "--format", "json"])
+        .arg(fixture("setup_py"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let unused: Vec<(&str, &str)> = report["findings"]
+        .as_array()
+        .expect("findings")
+        .iter()
+        .filter(|f| f["rule"] == "unused-dependency")
+        .filter_map(|f| Some((f["message"].as_str()?, f["path"].as_str()?)))
+        .collect();
+    assert_eq!(unused.len(), 1, "{report}");
+    assert_eq!(unused[0].0, "dependency `unused-thing` is never imported");
+    assert!(
+        unused[0].1.ends_with("/setup.py"),
+        "the finding points at the file that declares it: {report}"
+    );
+}

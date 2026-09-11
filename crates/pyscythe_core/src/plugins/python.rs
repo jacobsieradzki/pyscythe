@@ -40,8 +40,16 @@ impl KeepRule for Python {
         {
             return Some("Sphinx configuration read by name");
         }
+        if context.file_role == crate::keep::FileRole::ToolConfig && symbol.is_module_level() {
+            return Some("configuration script read by the tool that runs it");
+        }
         if crate::dead_code::is_in_root_directory(context.file) {
             return Some("in a directory of scripts, examples, docs, or benchmarks");
+        }
+        if symbol.kind == crate::symbol::SymbolKind::Class
+            && context.registration == crate::index::SubclassRegistration::ByBaseHook
+        {
+            return Some("registered by a base class __init_subclass__ hook");
         }
         None
     }
@@ -69,6 +77,22 @@ mod tests {
                 .at("/p/pkg/demo.py")
                 .is_kept_by(&Python)
         );
+    }
+
+    #[test]
+    fn keeps_classes_registered_by_a_base_hook() {
+        assert!(
+            Case::class("PluginA")
+                .registered_by_base()
+                .is_kept_by(&Python)
+        );
+        assert!(!Case::class("Plain").is_kept_by(&Python));
+    }
+
+    #[test]
+    fn keeps_module_level_names_of_tool_configuration_scripts() {
+        assert!(Case::variable("bind").in_tool_config().is_kept_by(&Python));
+        assert!(!Case::variable("bind").is_kept_by(&Python));
     }
 
     #[test]

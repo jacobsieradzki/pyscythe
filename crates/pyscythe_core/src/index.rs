@@ -76,6 +76,16 @@ pub struct Import {
     pub kind: ImportKind,
 }
 
+/// Whether a base class hooks subclass creation, which registers subclasses
+/// without anyone naming them (`__init_subclass__` plugin registries).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum SubclassRegistration {
+    /// Some base class defines `__init_subclass__`.
+    ByBaseHook,
+    /// No base does.
+    NotRegistered,
+}
+
 /// Whether a method redefines something a base class already provides.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Inheritance {
@@ -218,6 +228,9 @@ pub trait CodebaseIndex {
     ///
     /// Anything that is not a class has unknown ancestry.
     fn ancestry(&self, symbol: &Symbol) -> Ancestry;
+
+    /// Whether a class symbol is registered by a base class's `__init_subclass__`.
+    fn subclass_registration(&self, symbol: &Symbol) -> SubclassRegistration;
 
     /// Every `# pyscythe: ignore` comment in `file`.
     fn suppressions(&self, file: FileId) -> Vec<Suppression>;

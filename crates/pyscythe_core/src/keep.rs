@@ -7,7 +7,7 @@
 use serde::Serialize;
 
 use crate::config::ModulePrefix;
-use crate::index::Ancestry;
+use crate::index::{Ancestry, SubclassRegistration};
 use crate::manifest::Manifest;
 use crate::source::SourceFile;
 use crate::symbol::Symbol;
@@ -72,6 +72,18 @@ pub struct KeepReason {
     pub why: &'static str,
 }
 
+/// What kind of file a symbol lives in, when it changes the rules.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum FileRole {
+    /// An ordinary module.
+    Regular,
+    /// A Django settings module, whose upper-case names are read by the framework.
+    DjangoSettings,
+    /// A tool's configuration script (`gunicorn.conf.py`, PyInstaller
+    /// `hook-*.py`), whose module-level names the tool reads.
+    ToolConfig,
+}
+
 /// Everything a rule may look at when deciding.
 #[derive(Debug, Clone, Copy)]
 pub struct KeepContext<'a> {
@@ -85,6 +97,10 @@ pub struct KeepContext<'a> {
     pub ancestry: &'a Ancestry,
     /// Modules whose public names are API.
     pub public_modules: &'a [ModulePrefix],
+    /// What kind of file the symbol lives in.
+    pub file_role: FileRole,
+    /// Whether a base class registers subclasses on creation.
+    pub registration: SubclassRegistration,
 }
 
 impl KeepContext<'_> {

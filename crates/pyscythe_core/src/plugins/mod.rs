@@ -63,8 +63,8 @@ pub(crate) fn decorated_with_from(
 pub(crate) mod testing {
     use camino::Utf8PathBuf;
 
-    use crate::index::Ancestry;
-    use crate::keep::{KeepContext, KeepRule};
+    use crate::index::{Ancestry, SubclassRegistration};
+    use crate::keep::{FileRole, KeepContext, KeepRule};
     use crate::manifest::Manifest;
     use crate::source::{ByteOffset, ByteSpan, FileId, MainGuard, ModulePath, SourceFile};
     use crate::symbol::{
@@ -82,6 +82,8 @@ pub(crate) mod testing {
         pub(crate) class_keywords: Vec<KeywordName>,
         pub(crate) ancestry: Ancestry,
         pub(crate) manifest: Manifest,
+        pub(crate) file_role: FileRole,
+        pub(crate) registration: SubclassRegistration,
     }
 
     impl Case {
@@ -97,7 +99,24 @@ pub(crate) mod testing {
                 class_keywords: Vec::new(),
                 ancestry: Ancestry::unknown(),
                 manifest: Manifest::empty(),
+                file_role: FileRole::Regular,
+                registration: SubclassRegistration::NotRegistered,
             }
+        }
+
+        pub(crate) fn in_django_settings(mut self) -> Self {
+            self.file_role = FileRole::DjangoSettings;
+            self
+        }
+
+        pub(crate) fn in_tool_config(mut self) -> Self {
+            self.file_role = FileRole::ToolConfig;
+            self
+        }
+
+        pub(crate) fn registered_by_base(mut self) -> Self {
+            self.registration = SubclassRegistration::ByBaseHook;
+            self
         }
 
         pub(crate) fn class(name: &'static str) -> Self {
@@ -208,6 +227,8 @@ pub(crate) mod testing {
                 manifest: &self.manifest,
                 ancestry: &self.ancestry,
                 public_modules: &[],
+                file_role: self.file_role,
+                registration: self.registration,
             })
         }
 

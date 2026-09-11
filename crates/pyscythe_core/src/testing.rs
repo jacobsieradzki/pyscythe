@@ -8,7 +8,7 @@ use crate::tokens::{CloneMode, CloneToken};
 
 use crate::index::{
     Ancestry, CodebaseIndex, ExternalImport, Import, ImportKind, ImportOrigin, Inheritance,
-    NameUsage, Reference, Suppression, SuppressionScope,
+    NameUsage, Reference, SubclassRegistration, Suppression, SuppressionScope,
 };
 use crate::source::{
     ByteOffset, ByteSpan, Column, FileId, Line, MainGuard, ModulePath, Position, SourceFile,
@@ -470,6 +470,10 @@ impl CodebaseIndex for FakeIndex {
             .filter(|(f, _)| *f == file)
             .map(|(_, s)| s.clone())
             .collect()
+    }
+
+    fn subclass_registration(&self, _symbol: &Symbol) -> SubclassRegistration {
+        SubclassRegistration::NotRegistered
     }
 
     fn ancestry(&self, symbol: &Symbol) -> Ancestry {

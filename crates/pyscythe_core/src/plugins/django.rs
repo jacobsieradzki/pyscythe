@@ -1,7 +1,7 @@
 //! Django reaches code by file layout and by name: migrations, management
 //! commands, app configs, models, settings, URL confs, and signal receivers.
 
-use crate::keep::{KeepContext, KeepRule, PluginName};
+use crate::keep::{FileRole, KeepContext, KeepRule, PluginName};
 use crate::plugins::decorated_with_from;
 use crate::symbol::SymbolKind;
 
@@ -80,12 +80,17 @@ const HOOK_METHODS: &[&str] = &[
     "process_template_response",
     // App config and signals
     "ready",
+    // Custom user managers
+    "create_user",
+    "create_superuser",
+    "get_by_natural_key",
 ];
 
 /// `validate_<field>`, `clean_<field>`, `get_<field>_display`-style hooks.
 fn is_prefixed_hook(name: &str) -> bool {
     name.starts_with("validate_")
         || name.starts_with("clean_")
+        || name.starts_with("formfield_for_")
         || name.starts_with("has_") && name.ends_with("_permission")
 }
 
@@ -136,7 +141,7 @@ impl KeepRule for Django {
         {
             return Some("Django model registered by the app registry");
         }
-        if file_name.starts_with("settings")
+        if (file_name.starts_with("settings") || context.file_role == FileRole::DjangoSettings)
             && matches!(symbol.kind, SymbolKind::Constant | SymbolKind::Variable)
         {
             return Some("Django setting read by name");
@@ -228,6 +233,22 @@ mod tests {
                 .at("/p/site/wsgi.py")
                 .is_kept_by(&Django)
         );
+    }
+
+    #[test]
+    fn keeps_settings_by_file_role_wherever_they_live() {
+        assert!(
+            Case::variable("DEBUG")
+                .at("/p/config/django/base.py")
+                .in_django_settings()
+                .is_kept_by(&Django)
+        );
+        assert!(
+            !Case::variable("DEBUG")
+                .at("/p/config/django/base.py")
+                .is_kept_by(&Django)
+        );
+        assert!(Case::method("create_superuser").is_kept_by(&Django));
     }
 
     #[test]

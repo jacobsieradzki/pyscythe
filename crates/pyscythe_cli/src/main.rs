@@ -324,7 +324,7 @@ fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
         Command::Deps(args) => run_analysis(&args, out, |i, _, s| {
             Ok(pyscythe_core::deps::analyze(
                 i,
-                &s.manifest,
+                &s.scopes,
                 &s.config,
                 i.root(),
             ))

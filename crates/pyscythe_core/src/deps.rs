@@ -2,7 +2,7 @@
 
 use std::collections::{BTreeMap, BTreeSet};
 
-use camino::Utf8Path;
+use camino::{Utf8Path, Utf8PathBuf};
 
 use crate::config::Config;
 use crate::finding::{Confidence, Detail, Finding, Rule};
@@ -73,41 +73,94 @@ struct ImportSurvey {
     unresolved: BTreeMap<String, Finding>,
 }
 
+/// A manifest and the directory it governs.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ManifestScope {
+    /// The `pyproject.toml`, `setup.py`, or `setup.cfg` that declares the dependencies.
+    pub manifest_path: Utf8PathBuf,
+    /// What it declares.
+    pub manifest: Manifest,
+}
+
+impl ManifestScope {
+    /// The directory the manifest governs.
+    #[must_use]
+    pub fn directory(&self) -> &Utf8Path {
+        self.manifest_path
+            .parent()
+            .unwrap_or_else(|| Utf8Path::new(""))
+    }
+}
+
 /// Runs the dependency analysis: declared-but-unused, imported-but-undeclared,
-/// and unresolved imports.
+/// and unresolved imports. Each file is judged against the deepest manifest
+/// whose directory contains it, so a `backend/pyproject.toml` governs
+/// `backend/`, and files outside every manifest fall to the first scope.
 #[must_use]
 pub fn analyze(
     index: &dyn CodebaseIndex,
-    manifest: &Manifest,
+    scopes: &[ManifestScope],
     config: &Config,
     root: &Utf8Path,
 ) -> Report {
     let files = index.files();
-    let declared: BTreeSet<&DistributionName> =
-        manifest.dependencies.iter().map(|d| &d.name).collect();
-    let survey = survey_imports(index, &declared);
+    let fallback = ManifestScope {
+        manifest_path: root.join("pyproject.toml"),
+        manifest: Manifest::empty(),
+    };
+    let scope_of = |file: &crate::source::SourceFile| -> &ManifestScope {
+        scopes
+            .iter()
+            .filter(|scope| file.path.starts_with(scope.directory()))
+            .max_by_key(|scope| scope.directory().as_str().len())
+            .or_else(|| scopes.first())
+            .unwrap_or(&fallback)
+    };
 
-    let mut findings: Vec<Finding> = manifest
-        .dependencies
-        .iter()
-        .filter(|dependency| !survey.used.contains_key(&dependency.name))
-        .filter(|dependency| !is_tool(&dependency.name, config))
-        .map(|dependency| unused_finding(dependency, &root.join("pyproject.toml")))
-        .collect();
-    for (distribution, (modules, mut finding)) in survey.undeclared {
-        let names: Vec<String> = modules.into_iter().collect();
-        finding.message = format!(
-            "`{}` is imported but `{}` is not a declared dependency",
-            names.join("`, `"),
-            distribution.as_str()
-        );
-        finding.detail = Detail::Dependency {
-            distribution: distribution.as_str().to_owned(),
-            modules: names,
-        };
-        findings.push(finding);
+    let mut findings: Vec<Finding> = Vec::new();
+    let mut surveyed: Vec<(&ManifestScope, ImportSurvey)> = Vec::new();
+    for scope in scopes.iter().chain(std::iter::once(&fallback)) {
+        let declared: BTreeSet<&DistributionName> = scope
+            .manifest
+            .dependencies
+            .iter()
+            .map(|d| &d.name)
+            .collect();
+        let members: Vec<&crate::source::SourceFile> = files
+            .iter()
+            .filter(|file| std::ptr::eq(scope_of(file), scope))
+            .collect();
+        if members.is_empty() && scope.manifest.dependencies.is_empty() {
+            continue;
+        }
+        surveyed.push((scope, survey_imports(index, &members, &declared)));
     }
-    findings.extend(survey.unresolved.into_values());
+
+    for (scope, survey) in surveyed {
+        findings.extend(
+            scope
+                .manifest
+                .dependencies
+                .iter()
+                .filter(|dependency| !survey.used.contains_key(&dependency.name))
+                .filter(|dependency| !is_tool(&dependency.name, config))
+                .map(|dependency| unused_finding(dependency, &scope.manifest_path)),
+        );
+        for (distribution, (modules, mut finding)) in survey.undeclared {
+            let names: Vec<String> = modules.into_iter().collect();
+            finding.message = format!(
+                "`{}` is imported but `{}` is not a declared dependency",
+                names.join("`, `"),
+                distribution.as_str()
+            );
+            finding.detail = Detail::Dependency {
+                distribution: distribution.as_str().to_owned(),
+                modules: names,
+            };
+            findings.push(finding);
+        }
+        findings.extend(survey.unresolved.into_values());
+    }
     findings.sort_by(|a, b| a.path.cmp(&b.path).then(a.position.cmp(&b.position)));
 
     Report {
@@ -115,7 +168,7 @@ pub fn analyze(
         kind: ReportKind::Deps,
         summary: Summary {
             files_scanned: files.len(),
-            symbols_checked: manifest.dependencies.len(),
+            symbols_checked: scopes.iter().map(|s| s.manifest.dependencies.len()).sum(),
             symbols_kept: 0,
             symbols_ignored: 0,
             suppressed: 0,
@@ -132,10 +185,11 @@ pub fn analyze(
 
 fn survey_imports(
     index: &dyn CodebaseIndex,
+    files: &[&crate::source::SourceFile],
     declared: &BTreeSet<&DistributionName>,
 ) -> ImportSurvey {
     let mut survey = ImportSurvey::default();
-    for file in index.files() {
+    for &file in files {
         for import in index.external_imports(file.id) {
             let position = index.position(file.id, import.span.start());
             let placeholder = || Finding {
@@ -198,7 +252,7 @@ fn survey_imports(
     survey
 }
 
-fn unused_finding(dependency: &crate::manifest::Dependency, pyproject: &Utf8Path) -> Finding {
+fn unused_finding(dependency: &crate::manifest::Dependency, manifest_path: &Utf8Path) -> Finding {
     let group = match &dependency.group {
         DependencyGroup::Main => String::new(),
         DependencyGroup::Optional(name) => format!(" (optional-dependencies.{name})"),
@@ -211,7 +265,7 @@ fn unused_finding(dependency: &crate::manifest::Dependency, pyproject: &Utf8Path
     };
     Finding {
         rule: Rule::UnusedDependency,
-        path: pyproject.to_path_buf(),
+        path: manifest_path.to_path_buf(),
         module: None,
         position: None,
         confidence,
@@ -270,6 +324,13 @@ mod tests {
         }
     }
 
+    fn scopes(names: &[&str]) -> Vec<super::ManifestScope> {
+        vec![super::ManifestScope {
+            manifest_path: camino::Utf8PathBuf::from("/proj/pyproject.toml"),
+            manifest: manifest(names),
+        }]
+    }
+
     fn rules(report: &crate::report::Report) -> Vec<(Rule, String)> {
         report
             .findings
@@ -299,7 +360,7 @@ mod tests {
 
         let report = analyze(
             &index,
-            &manifest(&["pydantic", "requests", "ruff"]),
+            &scopes(&["pydantic", "requests", "ruff"]),
             &Config::default(),
             Utf8Path::new("/proj"),
         );
@@ -329,7 +390,7 @@ mod tests {
 
         let report = analyze(
             &index,
-            &manifest(&["Pillow", "typing-extensions"]),
+            &scopes(&["Pillow", "typing-extensions"]),
             &Config::default(),
             Utf8Path::new("/proj"),
         );
@@ -344,6 +405,48 @@ mod tests {
     }
 
     #[test]
+    fn each_file_is_judged_against_the_nearest_manifest() {
+        let mut index = FakeIndex::new();
+        let backend = index.add_file("/proj/backend/app/main.py", "app.main");
+        let script = index.add_file("/proj/scripts/tool.py", "scripts.tool");
+        let six = || ImportOrigin::SitePackages {
+            distributions: vec![DistributionName::normalize("six")],
+        };
+        index.add_external_import(backend, "six", six());
+        index.add_external_import(script, "six", six());
+        let scopes = vec![
+            super::ManifestScope {
+                manifest_path: camino::Utf8PathBuf::from("/proj/pyproject.toml"),
+                manifest: manifest(&[]),
+            },
+            super::ManifestScope {
+                manifest_path: camino::Utf8PathBuf::from("/proj/backend/pyproject.toml"),
+                manifest: manifest(&["six", "unused-lib"]),
+            },
+        ];
+
+        let report = analyze(&index, &scopes, &Config::default(), Utf8Path::new("/proj"));
+
+        let summary: Vec<(Rule, String)> = report
+            .findings
+            .iter()
+            .map(|f| (f.rule, f.path.to_string()))
+            .collect();
+        assert_eq!(
+            summary,
+            [
+                (
+                    Rule::UnusedDependency,
+                    "/proj/backend/pyproject.toml".to_owned()
+                ),
+                (Rule::MissingDependency, "/proj/scripts/tool.py".to_owned()),
+            ],
+            "{:?}",
+            report.findings
+        );
+    }
+
+    #[test]
     fn ignored_and_tool_dependencies_are_not_reported() {
         let mut index = FakeIndex::new();
         index.add_file("/proj/pkg/a.py", "pkg.a");
@@ -354,7 +457,7 @@ mod tests {
 
         let report = analyze(
             &index,
-            &manifest(&["ruff", "my_plugin"]),
+            &scopes(&["ruff", "my_plugin"]),
             &config,
             Utf8Path::new("/proj"),
         );

@@ -405,3 +405,50 @@ fn libraries_keep_their_api_stubs_docs_and_fixtures_are_not_dead() {
         "core.pyi is not analysed: {report}"
     );
 }
+
+#[test]
+fn django_settings_modules_string_named_admin_fields_and_manager_hooks_are_kept() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("django_settings"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let symbols: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["symbol"].as_str())
+        .collect();
+    assert_eq!(symbols, ["forgotten"], "{report}");
+    let unused_file = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .any(|f| f["rule"] == "unused-file");
+    assert!(
+        !unused_file,
+        "production.py is a settings variant: {report}"
+    );
+}
+
+#[test]
+fn classes_registered_by_an_init_subclass_hook_are_kept() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("registry"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let symbols: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["symbol"].as_str())
+        .collect();
+    assert_eq!(
+        symbols,
+        ["Plain"],
+        "Alpha is registered by Plugin.__init_subclass__: {report}"
+    );
+}

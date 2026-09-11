@@ -5,9 +5,10 @@ use std::collections::{BTreeMap, BTreeSet};
 use crate::config::Config;
 use crate::finding::{Confidence, Detail, Finding, Rule};
 use crate::index::{
-    Ancestry, CodebaseIndex, Inheritance, NameUsage, Reference, Suppression, SuppressionScope,
+    Ancestry, CodebaseIndex, Inheritance, NameUsage, Reference, SubclassRegistration, Suppression,
+    SuppressionScope,
 };
-use crate::keep::{KeepContext, KeepReason, PluginName, Policy};
+use crate::keep::{FileRole, KeepContext, KeepReason, PluginName, Policy};
 use crate::manifest::Manifest;
 use crate::report::{KeptSymbol, Report, ReportKind, Summary};
 use crate::source::{Column, FileId, Line, MainGuard, Position, SourceFile};
@@ -28,8 +29,9 @@ const ROOT_FILE_NAMES: &[&str] = &[
 ];
 
 /// Directories whose files are run directly or built by tooling, never imported.
-const ROOT_DIRECTORY_PREFIXES: &[&str] =
-    &["bench", "bin", "doc", "example", "sample", "script", "tool"];
+const ROOT_DIRECTORY_PREFIXES: &[&str] = &[
+    "bench", "bin", "dev", "doc", "example", "hook", "sample", "script", "tool",
+];
 
 /// Whether the file lives under a directory of things that are run or built
 /// directly (`docs`, `examples`, `benchmarks`, `scripts`, `bin`, `tools`).
@@ -65,6 +67,7 @@ pub fn analyze(
     let mut files_with_kept_symbols: BTreeSet<FileId> = BTreeSet::new();
     let mut suppressed_files: BTreeSet<FileId> = BTreeSet::new();
     let mut stale_suppressions: Vec<(FileId, Line)> = Vec::new();
+    let settings_files = django_settings_files(index);
 
     for file in index.files() {
         let symbols = index.symbols(file.id);
@@ -88,6 +91,13 @@ pub fn analyze(
                 file,
                 owner_names: &owner_names,
                 suppressions: &suppressions,
+                file_role: if settings_files.contains(&file.id) {
+                    FileRole::DjangoSettings
+                } else if is_tool_config_file(file.file_name()) {
+                    FileRole::ToolConfig
+                } else {
+                    FileRole::Regular
+                },
             };
             match checker.verdict(symbol) {
                 Verdict::NotCandidate => {}
@@ -122,7 +132,7 @@ pub fn analyze(
 
     findings.extend(stale_suppression_findings(index, stale_suppressions));
 
-    let unused_files = unused_files(index, manifest, &files_with_kept_symbols);
+    let unused_files = unused_files(index, manifest, &files_with_kept_symbols, &settings_files);
     findings.retain(|finding| !unused_files.iter().any(|file| file.path == finding.path));
     let (suppressed_unused_files, reported_unused_files): (Vec<_>, Vec<_>) = unused_files
         .into_iter()
@@ -178,6 +188,7 @@ struct SymbolCheck<'a> {
     file: &'a SourceFile,
     owner_names: &'a BTreeMap<SymbolId, SymbolName>,
     suppressions: &'a [Suppression],
+    file_role: FileRole,
 }
 
 impl SymbolCheck<'_> {
@@ -193,10 +204,13 @@ impl SymbolCheck<'_> {
         }
 
         let position = self.index.position(self.file.id, symbol.name_span.start());
-        let ancestry = if symbol.kind == SymbolKind::Class {
-            self.index.ancestry(&symbol)
+        let (ancestry, registration) = if symbol.kind == SymbolKind::Class {
+            (
+                self.index.ancestry(&symbol),
+                self.index.subclass_registration(&symbol),
+            )
         } else {
-            Ancestry::unknown()
+            (Ancestry::unknown(), SubclassRegistration::NotRegistered)
         };
         let context = KeepContext {
             symbol: &symbol,
@@ -204,6 +218,8 @@ impl SymbolCheck<'_> {
             manifest: self.manifest,
             ancestry: &ancestry,
             public_modules: &self.config.public_modules,
+            file_role: self.file_role,
+            registration,
         };
         let reason = self
             .policy
@@ -289,10 +305,56 @@ fn unused_file_finding(file: &SourceFile) -> Finding {
 }
 
 /// Files nothing imports and nothing runs.
+/// Django settings modules: files that define the core settings names, plus
+/// their siblings made only of assignments (`production.py` next to `base.py`).
+fn django_settings_files(index: &dyn CodebaseIndex) -> BTreeSet<FileId> {
+    const CORE_SETTINGS: &[&str] = &[
+        "INSTALLED_APPS",
+        "DATABASES",
+        "SECRET_KEY",
+        "ROOT_URLCONF",
+        "MIDDLEWARE",
+    ];
+    let files = index.files();
+    let symbols: Vec<Vec<Symbol>> = files.iter().map(|f| index.symbols(f.id)).collect();
+    let mut settings: BTreeSet<FileId> = files
+        .iter()
+        .zip(&symbols)
+        .filter(|(_, symbols)| {
+            symbols
+                .iter()
+                .any(|s| s.is_module_level() && CORE_SETTINGS.contains(&s.name.as_str()))
+        })
+        .map(|(file, _)| file.id)
+        .collect();
+    let settings_dirs: BTreeSet<_> = files
+        .iter()
+        .filter(|f| settings.contains(&f.id))
+        .filter_map(|f| f.relative_path.parent().map(camino::Utf8Path::to_path_buf))
+        .collect();
+    for (file, symbols) in files.iter().zip(&symbols) {
+        let sibling = file
+            .relative_path
+            .parent()
+            .is_some_and(|dir| settings_dirs.contains(dir));
+        let only_assignments = symbols.iter().filter(|s| s.is_module_level()).all(|s| {
+            matches!(
+                s.kind,
+                SymbolKind::Variable | SymbolKind::Constant | SymbolKind::Import
+            )
+        });
+        if sibling && only_assignments && file.file_name() != "__init__.py" {
+            settings.insert(file.id);
+        }
+    }
+    settings
+}
+
 fn unused_files<'a>(
     index: &'a dyn CodebaseIndex,
     manifest: &Manifest,
     files_with_kept_symbols: &BTreeSet<FileId>,
+    settings_files: &BTreeSet<FileId>,
 ) -> Vec<&'a SourceFile> {
     let files = index.files();
     let imported: BTreeSet<FileId> = files
@@ -310,6 +372,7 @@ fn unused_files<'a>(
         .iter()
         .filter(|file| !imported.contains(&file.id))
         .filter(|file| !is_root_file(file, manifest, files_with_kept_symbols))
+        .filter(|file| !settings_files.contains(&file.id))
         .collect()
 }
 
@@ -319,15 +382,39 @@ fn is_root_file(
     files_with_kept_symbols: &BTreeSet<FileId>,
 ) -> bool {
     let name = file.file_name();
+    let under = |dir: &str| {
+        file.relative_path
+            .parent()
+            .is_some_and(|p| p.components().any(|c| c.as_str() == dir))
+    };
+    let parent_is = |dir: &str| {
+        file.relative_path
+            .parent()
+            .and_then(camino::Utf8Path::file_name)
+            .is_some_and(|p| p == dir)
+    };
     file.main_guard == MainGuard::Present
         || ROOT_FILE_NAMES.contains(&name)
         || is_in_root_directory(file)
         || is_test_file(name)
+        // Helper modules under a tests tree are for the runner, not the app.
+        || under("tests")
+        || under("test")
+        // Alembic scripts and env.
+        || is_tool_config_file(name)
+        || (name == "env.py" && (under("alembic") || under("migrations")))
+        || parent_is("versions")
         || files_with_kept_symbols.contains(&file.id)
         || file
             .module
             .as_ref()
             .is_some_and(|module| manifest.entry_points.iter().any(|ep| &ep.module == module))
+}
+
+/// `gunicorn.conf.py`, PyInstaller `hook-*.py`: scripts a tool executes for
+/// their module-level names.
+fn is_tool_config_file(name: &str) -> bool {
+    name.ends_with(".conf.py") || name.starts_with("hook-")
 }
 
 /// Whether a file name follows pytest's `test_*.py` / `*_test.py` convention.
@@ -917,6 +1004,33 @@ mod tests {
         };
         let library = analyze(&index, &Policy::builtin(), &Manifest::empty(), &config);
         assert_eq!(symbol_names(&library), ["_private"]);
+    }
+
+    #[test]
+    fn django_settings_modules_keep_their_constants_and_variants_are_roots() {
+        let mut index = FakeIndex::new();
+        let base = index.add_file("/proj/config/django/base.py", "config.django.base");
+        index.add_symbol(base, "INSTALLED_APPS", SymbolKind::Constant);
+        index.add_symbol(base, "SECRET_KEY", SymbolKind::Constant);
+        let production = index.add_file(
+            "/proj/config/django/production.py",
+            "config.django.production",
+        );
+        index.add_symbol(production, "DEBUG", SymbolKind::Constant);
+        let urls = index.add_file("/proj/config/django/helpers.py", "config.django.helpers");
+        index.add_symbol(urls, "compute", SymbolKind::Function);
+        import_from_elsewhere(&mut index, base);
+        import_from_elsewhere(&mut index, urls);
+
+        let report = analyze(
+            &index,
+            &Policy::builtin(),
+            &Manifest::empty(),
+            &Config::default(),
+        );
+
+        assert_eq!(symbol_names(&report), ["compute"], "{:?}", report.findings);
+        assert!(report.findings.iter().all(|f| f.rule != Rule::UnusedFile));
     }
 
     #[test]

@@ -7,6 +7,7 @@ use pyscythe_core::config::{
     BoundaryConfig, Config, DenyRule, HealthThresholds, ModulePrefix, NamePatterns, NotebookPolicy,
     PathPatterns, PatternError, TypeOnlyImports,
 };
+use pyscythe_core::deps::ManifestScope;
 use pyscythe_core::manifest::{
     Dependency, DependencyGroup, DistributionName, EntryPoint, EntryPointKind, Manifest,
 };
@@ -17,10 +18,12 @@ use serde::Deserialize;
 /// What `pyproject.toml` told us.
 #[derive(Debug, Clone)]
 pub struct ProjectSettings {
-    /// Entry points, including extras from `[tool.pyscythe]`.
+    /// Every entry point and dependency across the project, merged.
     pub manifest: Manifest,
-    /// User configuration from `[tool.pyscythe]`.
+    /// User configuration from the root `[tool.pyscythe]`.
     pub config: Config,
+    /// One manifest per directory that declares one, root first.
+    pub scopes: Vec<ManifestScope>,
 }
 
 /// Why a manifest could not be read.
@@ -105,23 +108,248 @@ fn boundary_config(table: BoundariesTable) -> Result<BoundaryConfig, ParseError>
     Ok(config)
 }
 
-/// Loads settings for the project rooted at `root`.
-///
-/// A project without a `pyproject.toml` yields empty settings.
+/// Loads settings for the project rooted at `root`: the root `pyproject.toml`
+/// for configuration, plus a manifest for every directory beneath that holds
+/// a `pyproject.toml`, `setup.py`, or `setup.cfg` (environments and build
+/// output skipped), so nested projects are judged against their own
+/// declarations.
 ///
 /// # Errors
 ///
-/// Returns [`ManifestError`] when the file exists but cannot be read or parsed.
+/// Returns [`ManifestError`] when a file exists but cannot be read or parsed.
 pub fn load(root: &Utf8Path) -> Result<ProjectSettings, ManifestError> {
-    let path = root.join("pyproject.toml");
-    match std::fs::read_to_string(&path) {
-        Ok(text) => parse(&text).map_err(|source| ManifestError::Parse { path, source }),
-        Err(source) if source.kind() == std::io::ErrorKind::NotFound => Ok(ProjectSettings {
-            manifest: Manifest::empty(),
-            config: Config::default(),
-        }),
-        Err(source) => Err(ManifestError::Io { path, source }),
+    let mut scopes = Vec::new();
+    let mut config = Config::default();
+    let mut directories = vec![root.to_path_buf()];
+    directories.extend(manifest_directories(root));
+    for directory in directories {
+        let Some((manifest_path, manifest)) =
+            manifest_in(&directory, &mut config, &directory == root)?
+        else {
+            continue;
+        };
+        scopes.push(ManifestScope {
+            manifest_path,
+            manifest,
+        });
     }
+    Ok(ProjectSettings {
+        manifest: Manifest::merged(scopes.iter().map(|s| &s.manifest)),
+        config,
+        scopes,
+    })
+}
+
+/// The manifest declared in `directory` and the file it came from: from
+/// `pyproject.toml` first, then `setup.py` / `setup.cfg` for dependencies
+/// when the project table has none.
+fn manifest_in(
+    directory: &Utf8Path,
+    config: &mut Config,
+    is_root: bool,
+) -> Result<Option<(camino::Utf8PathBuf, Manifest)>, ManifestError> {
+    let pyproject = directory.join("pyproject.toml");
+    let mut source_path = pyproject.clone();
+    let mut manifest = match std::fs::read_to_string(&pyproject) {
+        Ok(text) => {
+            let settings = parse(&text).map_err(|source| ManifestError::Parse {
+                path: pyproject,
+                source,
+            })?;
+            if is_root {
+                *config = settings.config;
+            }
+            Some(settings.manifest)
+        }
+        Err(source) if source.kind() == std::io::ErrorKind::NotFound => None,
+        Err(source) => {
+            return Err(ManifestError::Io {
+                path: pyproject,
+                source,
+            });
+        }
+    };
+    if manifest.as_ref().is_none_or(|m| m.dependencies.is_empty()) {
+        for (file_name, read) in [
+            (
+                "setup.py",
+                setup_py_dependencies as fn(&str) -> Vec<Dependency>,
+            ),
+            ("setup.cfg", setup_cfg_dependencies),
+        ] {
+            let path = directory.join(file_name);
+            let Ok(text) = std::fs::read_to_string(&path) else {
+                continue;
+            };
+            let legacy = read(&text);
+            if legacy.is_empty() {
+                continue;
+            }
+            source_path = path;
+            manifest
+                .get_or_insert_with(Manifest::empty)
+                .dependencies
+                .extend(legacy);
+            break;
+        }
+    }
+    Ok(manifest.map(|manifest| (source_path, manifest)))
+}
+
+/// Directories under `root` (excluding it) that carry a manifest file.
+fn manifest_directories(root: &Utf8Path) -> Vec<camino::Utf8PathBuf> {
+    const SKIP: &[&str] = &[
+        ".venv",
+        "venv",
+        "node_modules",
+        "target",
+        "build",
+        "dist",
+        "site-packages",
+        "__pycache__",
+    ];
+    let mut found = Vec::new();
+    let mut pending = vec![root.to_path_buf()];
+    while let Some(dir) = pending.pop() {
+        let Ok(entries) = dir.read_dir_utf8() else {
+            continue;
+        };
+        for entry in entries.flatten() {
+            let path = entry.path();
+            let name = path.file_name().unwrap_or_default();
+            if entry.file_type().is_ok_and(|t| t.is_dir()) {
+                if !name.starts_with('.') && !SKIP.contains(&name) {
+                    pending.push(path.to_path_buf());
+                }
+            } else if matches!(name, "pyproject.toml" | "setup.py" | "setup.cfg")
+                && dir != root
+                && !found.contains(&dir)
+            {
+                found.push(dir.clone());
+            }
+        }
+    }
+    found.sort();
+    found
+}
+
+/// `install_requires` and `extras_require` string literals in a `setup()` call.
+fn setup_py_dependencies(source: &str) -> Vec<Dependency> {
+    use ruff_python_ast::{Expr, Stmt};
+    let Ok(parsed) = ruff_python_parser::parse_module(source) else {
+        return Vec::new();
+    };
+    let mut out = Vec::new();
+    let strings = |value: &Expr| -> Vec<String> {
+        match value {
+            Expr::List(list) => list
+                .elts
+                .iter()
+                .filter_map(|e| match e {
+                    Expr::StringLiteral(s) => Some(s.value.to_str().to_owned()),
+                    _ => None,
+                })
+                .collect(),
+            Expr::Tuple(tuple) => tuple
+                .elts
+                .iter()
+                .filter_map(|e| match e {
+                    Expr::StringLiteral(s) => Some(s.value.to_str().to_owned()),
+                    _ => None,
+                })
+                .collect(),
+            _ => Vec::new(),
+        }
+    };
+    for statement in &parsed.syntax().body {
+        let Stmt::Expr(expression) = statement else {
+            continue;
+        };
+        let Expr::Call(call) = &*expression.value else {
+            continue;
+        };
+        let is_setup = match &*call.func {
+            Expr::Name(name) => name.id.as_str() == "setup",
+            Expr::Attribute(attribute) => attribute.attr.as_str() == "setup",
+            _ => false,
+        };
+        if !is_setup {
+            continue;
+        }
+        for keyword in &call.arguments.keywords {
+            match keyword.arg.as_deref() {
+                Some("install_requires") => out.extend(
+                    strings(&keyword.value)
+                        .iter()
+                        .filter_map(|r| requirement_name(r))
+                        .map(|name| Dependency {
+                            name,
+                            group: DependencyGroup::Main,
+                        }),
+                ),
+                Some("extras_require") => {
+                    if let Expr::Dict(dict) = &keyword.value {
+                        for item in &dict.items {
+                            let group = match &item.key {
+                                Some(Expr::StringLiteral(s)) => s.value.to_str().to_owned(),
+                                _ => continue,
+                            };
+                            out.extend(
+                                strings(&item.value)
+                                    .iter()
+                                    .filter_map(|r| requirement_name(r))
+                                    .map(|name| Dependency {
+                                        name,
+                                        group: DependencyGroup::Optional(group.clone()),
+                                    }),
+                            );
+                        }
+                    }
+                }
+                _ => {}
+            }
+        }
+    }
+    out
+}
+
+/// `install_requires =` under `[options]` in `setup.cfg`, one requirement per line.
+fn setup_cfg_dependencies(text: &str) -> Vec<Dependency> {
+    let mut out = Vec::new();
+    let mut in_options = false;
+    let mut in_requires = false;
+    for line in text.lines() {
+        let trimmed = line.trim();
+        if trimmed.starts_with('[') {
+            in_options = trimmed == "[options]";
+            in_requires = false;
+            continue;
+        }
+        if !in_options {
+            continue;
+        }
+        if let Some(rest) = trimmed.strip_prefix("install_requires") {
+            in_requires = true;
+            if let Some(inline) = rest.trim_start().strip_prefix('=') {
+                out.extend(requirement_name(inline).map(|name| Dependency {
+                    name,
+                    group: DependencyGroup::Main,
+                }));
+            }
+            continue;
+        }
+        if in_requires {
+            if line.starts_with(char::is_whitespace) && !trimmed.is_empty() {
+                out.extend(requirement_name(trimmed).map(|name| Dependency {
+                    name,
+                    group: DependencyGroup::Main,
+                }));
+            } else {
+                in_requires = false;
+            }
+        }
+    }
+    out
 }
 
 /// Parses `pyproject.toml` text.
@@ -219,6 +447,7 @@ pub fn parse(text: &str) -> Result<ProjectSettings, ParseError> {
             dependencies,
         },
         config,
+        scopes: Vec::new(),
     })
 }
 
@@ -580,6 +809,30 @@ ignore = ["my_plugin"]
             settings.config.ignored_dependencies[0].as_str(),
             "my-plugin"
         );
+    }
+
+    #[test]
+    fn reads_install_requires_from_setup_py_and_setup_cfg() {
+        let py = super::setup_py_dependencies(
+            "from setuptools import setup\nsetup(name='x', install_requires=['six>=1', 'Pillow'], extras_require={'dev': ['pytest']})\n",
+        );
+        let names: Vec<_> = py
+            .iter()
+            .map(|d| (d.name.as_str(), d.group.clone()))
+            .collect();
+        assert_eq!(
+            names,
+            [
+                ("six", DependencyGroup::Main),
+                ("pillow", DependencyGroup::Main),
+                ("pytest", DependencyGroup::Optional("dev".into())),
+            ]
+        );
+        let cfg = super::setup_cfg_dependencies(
+            "[metadata]\nname = x\n[options]\ninstall_requires =\n    six\n    requests>=2\nzip_safe = false\n",
+        );
+        let names: Vec<_> = cfg.iter().map(|d| d.name.as_str()).collect();
+        assert_eq!(names, ["six", "requests"]);
     }
 
     #[test]

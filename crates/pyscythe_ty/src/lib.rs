@@ -11,7 +11,7 @@ use pyscythe_core::config::{NotebookPolicy, PathPatterns};
 use pyscythe_core::edit::Deletable;
 use pyscythe_core::index::{
     Ancestry, CodebaseIndex, ExternalImport, Import, ImportOrigin, Inheritance, NameUsage,
-    Reference, Suppression,
+    Reference, SubclassRegistration, Suppression,
 };
 use pyscythe_core::metrics::FunctionMetrics;
 use pyscythe_core::source::{
@@ -390,6 +390,26 @@ impl CodebaseIndex for TyIndex {
             .collect()
     }
 
+    fn subclass_registration(&self, symbol: &Symbol) -> SubclassRegistration {
+        if symbol.kind != SymbolKind::Class {
+            return SubclassRegistration::NotRegistered;
+        }
+        let Some(ty_file) = self.ty_file(symbol.file) else {
+            return SubclassRegistration::NotRegistered;
+        };
+        let hierarchy = inheritance::hierarchy_of_class(
+            &self.db,
+            ty_file,
+            symbol.name_span,
+            Some("__init_subclass__"),
+        );
+        if hierarchy.ancestors.iter().any(|a| a.defines_name) {
+            SubclassRegistration::ByBaseHook
+        } else {
+            SubclassRegistration::NotRegistered
+        }
+    }
+
     fn ancestry(&self, symbol: &Symbol) -> Ancestry {
         if symbol.kind != SymbolKind::Class {
             return Ancestry::unknown();
@@ -397,7 +417,7 @@ impl CodebaseIndex for TyIndex {
         let Some(ty_file) = self.ty_file(symbol.file) else {
             return Ancestry::unknown();
         };
-        let hierarchy = inheritance::hierarchy_of_class(&self.db, ty_file, symbol.name_span);
+        let hierarchy = inheritance::hierarchy_of_class(&self.db, ty_file, symbol.name_span, None);
         let names = hierarchy
             .ancestors
             .into_iter()
