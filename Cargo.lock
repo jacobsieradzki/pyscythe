@@ -1238,6 +1238,7 @@ dependencies = [
  "pyscythe_pyproject",
  "pyscythe_ty",
  "serde_json",
+ "thiserror",
 ]
 
 [[package]]
@@ -1249,6 +1250,17 @@ dependencies = [
  "serde",
  "serde_json",
  "thiserror",
+]
+
+[[package]]
+name = "pyscythe_metrics"
+version = "0.1.0"
+dependencies = [
+ "pyscythe_core",
+ "ruff_python_ast",
+ "ruff_python_parser",
+ "ruff_source_file",
+ "ruff_text_size",
 ]
 
 [[package]]
@@ -1269,6 +1281,7 @@ dependencies = [
  "anyhow",
  "camino",
  "pyscythe_core",
+ "pyscythe_metrics",
  "rayon",
  "ruff_db",
  "ruff_python_ast",

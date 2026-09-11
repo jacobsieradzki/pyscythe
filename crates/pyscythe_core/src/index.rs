@@ -1,6 +1,7 @@
 //! The port through which analyses see a codebase.
 
 use crate::finding::Rule;
+use crate::metrics::FunctionMetrics;
 use crate::source::{ByteOffset, ByteSpan, FileId, Line, Position, SourceFile};
 use crate::symbol::{DottedName, Symbol, SymbolName};
 
@@ -191,6 +192,9 @@ pub trait CodebaseIndex {
 
     /// Every `# pyscythe: ignore` comment in `file`.
     fn suppressions(&self, file: FileId) -> Vec<Suppression>;
+
+    /// Size and complexity of every function in `file`, in source order.
+    fn function_metrics(&self, file: FileId) -> Vec<FunctionMetrics>;
 
     /// Converts a byte offset in `file` to a line and column.
     fn position(&self, file: FileId, offset: ByteOffset) -> Option<Position>;

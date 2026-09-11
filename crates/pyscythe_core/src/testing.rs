@@ -2,6 +2,8 @@
 
 use camino::Utf8PathBuf;
 
+use crate::metrics::FunctionMetrics;
+
 use crate::index::{
     Ancestry, CodebaseIndex, Import, ImportKind, Inheritance, NameUsage, Reference, Suppression,
     SuppressionScope,
@@ -25,6 +27,7 @@ pub(crate) struct FakeIndex {
     overriding: Vec<SymbolId>,
     ancestries: Vec<(SymbolId, Ancestry)>,
     suppressions: Vec<(FileId, Suppression)>,
+    metrics: Vec<(FileId, FunctionMetrics)>,
 }
 
 impl FakeIndex {
@@ -133,6 +136,32 @@ impl FakeIndex {
             Suppression {
                 line: Line::from_one_based(1).expect("one"),
                 scope: SuppressionScope::File,
+            },
+        ));
+    }
+
+    pub(crate) fn add_function_metrics(
+        &mut self,
+        file: FileId,
+        name: &str,
+        cyclomatic: u32,
+        cognitive: u32,
+        lines: u32,
+        parameters: u32,
+    ) {
+        let ordinal = u32::try_from(self.metrics.len()).expect("few functions");
+        let start = ordinal * LINE_STRIDE + 4;
+        self.metrics.push((
+            file,
+            FunctionMetrics {
+                name: SymbolName::new(name),
+                owner: None,
+                name_span: ByteSpan::new(ByteOffset::new(start), ByteOffset::new(start + 1)),
+                lines,
+                parameters,
+                cyclomatic,
+                cognitive,
+                max_nesting: 0,
             },
         ));
     }
@@ -254,6 +283,14 @@ impl CodebaseIndex for FakeIndex {
         } else {
             NameUsage::Unused
         }
+    }
+
+    fn function_metrics(&self, file: FileId) -> Vec<FunctionMetrics> {
+        self.metrics
+            .iter()
+            .filter(|(f, _)| *f == file)
+            .map(|(_, m)| m.clone())
+            .collect()
     }
 
     fn suppressions(&self, file: FileId) -> Vec<Suppression> {

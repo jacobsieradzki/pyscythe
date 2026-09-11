@@ -50,21 +50,42 @@ pub(crate) fn human(report: &Report, show_kept: bool, out: &mut impl Write) -> s
             format!(" ({})", parts.join(", "))
         }
         ReportKind::Cycles => String::new(),
+        ReportKind::Health => summary.health.map_or_else(String::new, |health| {
+            format!(
+                " ({} functions, max cyclomatic {}, max cognitive {})",
+                health.functions, health.max_cyclomatic, health.max_cognitive
+            )
+        }),
     };
+    let scope = summary
+        .changed_files
+        .map_or_else(String::new, |n| format!(" in {n} changed file(s)"));
+    if let (ReportKind::Health, Some(health)) = (report.kind, summary.health) {
+        writeln!(
+            out,
+            "\nHealth score {}/100 ({}) across {} files{details}; {} hotspot(s){scope}.",
+            health.score,
+            health.grade.letter(),
+            summary.files_scanned,
+            summary.findings
+        )?;
+        return Ok(());
+    }
     let subject = match report.kind {
         ReportKind::DeadCode => "dead code",
         ReportKind::Cycles => "import cycles",
+        ReportKind::Health => "hotspots",
     };
     if report.is_clean() {
         writeln!(
             out,
-            "No {subject} found in {} files{details}.",
+            "No {subject} found in {} files{details}{scope}.",
             summary.files_scanned
         )
     } else {
         writeln!(
             out,
-            "\n{} finding(s) in {} files{details}.",
+            "\n{} finding(s) in {} files{details}{scope}.",
             summary.findings, summary.files_scanned
         )
     }

@@ -13,6 +13,7 @@ use pyscythe_core::report::Report;
 use pyscythe_pyproject::ProjectSettings;
 use pyscythe_ty::{IndexOptions, TyIndex};
 
+mod git;
 mod render;
 mod sarif;
 
@@ -30,6 +31,8 @@ enum Command {
     DeadCode(AnalysisArgs),
     /// Report groups of modules that import each other at load time.
     Cycles(AnalysisArgs),
+    /// Report complexity hotspots and an overall health score.
+    Health(AnalysisArgs),
 }
 
 #[derive(Debug, clap::Args)]
@@ -69,6 +72,10 @@ struct AnalysisArgs {
     /// Only report findings at this confidence or better.
     #[arg(long, value_enum, default_value_t = MinConfidence::Low)]
     min_confidence: MinConfidence,
+
+    /// Only report findings in files changed since this git ref (plus untracked files).
+    #[arg(long, value_name = "REF")]
+    since: Option<String>,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum)]
@@ -174,6 +181,7 @@ fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
     match cli.command {
         Command::DeadCode(args) => run_analysis(&args, out, dead_code),
         Command::Cycles(args) => run_analysis(&args, out, cycles),
+        Command::Health(args) => run_analysis(&args, out, health),
     }
 }
 
@@ -192,6 +200,7 @@ fn run_analysis(
     let root = index.root().to_path_buf();
     let wrote_baseline = write_baseline(args, &report, &root)?;
     apply_baseline(args, &mut report, &root)?;
+    scope_to_changes(args, &mut report, &root)?;
     let threshold: Confidence = args.min_confidence.into();
     report
         .findings
@@ -223,6 +232,31 @@ fn write_baseline(args: &AnalysisArgs, report: &Report, root: &Utf8Path) -> anyh
     std::fs::write(path, format!("{text}\n"))
         .map_err(|error| anyhow::anyhow!("cannot write baseline {}: {error}", path.display()))?;
     Ok(true)
+}
+
+/// With `--since`, keeps only findings that touch a changed file.
+fn scope_to_changes(
+    args: &AnalysisArgs,
+    report: &mut Report,
+    root: &Utf8Path,
+) -> anyhow::Result<()> {
+    let Some(reference) = &args.since else {
+        return Ok(());
+    };
+    let changed = git::changed_files(root, reference)?;
+    let touches_change = |path: &Utf8Path| changed.contains(&git::canonical(path));
+    report.findings.retain(|finding| {
+        touches_change(&finding.path)
+            || match &finding.detail {
+                pyscythe_core::finding::Detail::Cycle { chain } => {
+                    chain.iter().any(|link| touches_change(&link.path))
+                }
+                _ => false,
+            }
+    });
+    report.summary.findings = report.findings.len();
+    report.summary.changed_files = Some(changed.len());
+    Ok(())
 }
 
 fn apply_baseline(args: &AnalysisArgs, report: &mut Report, root: &Utf8Path) -> anyhow::Result<()> {
@@ -268,6 +302,10 @@ fn dead_code(index: &TyIndex, args: &AnalysisArgs, settings: &ProjectSettings) -
 
 fn cycles(index: &TyIndex, _args: &AnalysisArgs, _settings: &ProjectSettings) -> Report {
     pyscythe_core::cycles::analyze(index)
+}
+
+fn health(index: &TyIndex, _args: &AnalysisArgs, _settings: &ProjectSettings) -> Report {
+    pyscythe_core::health::analyze(index)
 }
 
 fn emit(

@@ -14,3 +14,7 @@ def wrong_rule() -> None:
 
 def loud() -> None:
     pass
+
+
+def used() -> None:  # pyscythe: ignore
+    pass

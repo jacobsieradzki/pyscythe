@@ -6,7 +6,7 @@ Built in Rust on the [ruff](https://github.com/astral-sh/ruff) and [ty](https://
 
 ## Status
 
-Early. `pyscythe dead-code` reports functions, classes, methods, properties, variables, and whole files that nothing refers to, resolving references semantically through ty (aliased imports, attribute access, re-exports). Dotted strings such as `"pkg.settings.DEBUG"` count as references. Methods that override an inherited member (walked through ty, so library bases count) are kept, and any attribute name accessed anywhere keeps same-named methods as a duck-typing safety net. `pyscythe cycles` reports import cycles that would bite at load time. Built-in plugins keep symbols that frameworks reach by convention: pyproject entry points, pytest, FastAPI, Flask, Click/Typer, Celery, Airflow, Django, Alembic, SQLAlchemy/SQLModel, Pydantic. See [TODO.md](TODO.md) for the roadmap.
+Early. `pyscythe dead-code` reports functions, classes, methods, properties, variables, and whole files that nothing refers to, resolving references semantically through ty (aliased imports, attribute access, re-exports). Dotted strings such as `"pkg.settings.DEBUG"` count as references. Methods that override an inherited member (walked through ty, so library bases count) are kept, and any attribute name accessed anywhere keeps same-named methods as a duck-typing safety net. `pyscythe cycles` reports import cycles that would bite at load time. `pyscythe health` measures cyclomatic and cognitive complexity per function, lists hotspots, and grades the codebase 0 to 100. Built-in plugins keep symbols that frameworks reach by convention: pyproject entry points, pytest, FastAPI, Flask, Click/Typer, Celery, Airflow, Django, Alembic, SQLAlchemy/SQLModel, Pydantic. See [TODO.md](TODO.md) for the roadmap.
 
 ## Usage
 
@@ -40,6 +40,7 @@ pyscythe dead-code --format github          # GitHub Actions annotations
 pyscythe dead-code --format sarif > out.sarif
 pyscythe dead-code --format markdown        # a table for a PR comment
 pyscythe dead-code --min-confidence medium  # skip low-confidence method findings
+pyscythe dead-code --since origin/main      # only files this branch changed
 ```
 
 Adopting on an existing codebase: record what is there today, then fail only on new findings.
@@ -60,7 +61,7 @@ def another() -> None:
     ...
 ```
 
-`# pyscythe: ignore-file` anywhere in a file silences the whole file.
+`# pyscythe: ignore-file` anywhere in a file silences the whole file. A comment that silences nothing is itself reported, so suppressions do not rot.
 
 ## Developing
 
@@ -77,5 +78,6 @@ cargo fmt --all --check
 
 - `crates/pyscythe_core` — domain model and analyses. No parser, no filesystem. Analyses are written against the `CodebaseIndex` port and tested with an in-memory fake.
 - `crates/pyscythe_ty` — the adapter that implements `CodebaseIndex` on the ty project database, including the parallel reference index.
-- `crates/pyscythe_pyproject` — reads `pyproject.toml` into the manifest (entry points).
+- `crates/pyscythe_pyproject` — reads `pyproject.toml` into the manifest and config.
+- `crates/pyscythe_metrics` — per-function complexity from the ruff AST alone, unit-tested on snippets.
 - `crates/pyscythe_cli` — the `pyscythe` binary, output formats, and acceptance tests that run the real binary over fixture projects.

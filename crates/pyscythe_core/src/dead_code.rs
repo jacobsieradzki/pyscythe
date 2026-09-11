@@ -10,7 +10,7 @@ use crate::index::{
 use crate::keep::{KeepContext, KeepReason, PluginName, Policy};
 use crate::manifest::Manifest;
 use crate::report::{KeptSymbol, Report, ReportKind, Summary};
-use crate::source::{FileId, Line, MainGuard, Position, SourceFile};
+use crate::source::{Column, FileId, Line, MainGuard, Position, SourceFile};
 use crate::symbol::{Symbol, SymbolId, SymbolKind, SymbolName, SymbolScope};
 
 /// Files that are run or loaded by convention rather than imported.
@@ -45,6 +45,7 @@ pub fn analyze(
     let mut suppressed = 0;
     let mut files_with_kept_symbols: BTreeSet<FileId> = BTreeSet::new();
     let mut suppressed_files: BTreeSet<FileId> = BTreeSet::new();
+    let mut stale_suppressions: Vec<(FileId, Line)> = Vec::new();
 
     for file in index.files() {
         let symbols = index.symbols(file.id);
@@ -58,6 +59,7 @@ pub fn analyze(
             suppressed_files.insert(file.id);
         }
 
+        let mut used_suppression_lines: BTreeSet<Line> = BTreeSet::new();
         for symbol in symbols {
             let checker = SymbolCheck {
                 index,
@@ -72,9 +74,10 @@ pub fn analyze(
                 Verdict::NotCandidate => {}
                 Verdict::Ignored => symbols_ignored += 1,
                 Verdict::Used => symbols_checked += 1,
-                Verdict::Suppressed => {
+                Verdict::Suppressed(line) => {
                     symbols_checked += 1;
                     suppressed += 1;
+                    used_suppression_lines.insert(line);
                 }
                 Verdict::Kept(symbol) => {
                     symbols_checked += 1;
@@ -87,7 +90,18 @@ pub fn analyze(
                 }
             }
         }
+        if !suppressed_files.contains(&file.id) {
+            stale_suppressions.extend(
+                suppressions
+                    .iter()
+                    .filter(|s| s.scope != SuppressionScope::File)
+                    .filter(|s| !used_suppression_lines.contains(&s.line))
+                    .map(|s| (file.id, s.line)),
+            );
+        }
     }
+
+    findings.extend(stale_suppression_findings(index, stale_suppressions));
 
     let unused_files = unused_files(index, manifest, &files_with_kept_symbols);
     findings.retain(|finding| !unused_files.iter().any(|file| file.path == finding.path));
@@ -95,20 +109,7 @@ pub fn analyze(
         .into_iter()
         .partition(|file| suppressed_files.contains(&file.id));
     suppressed += suppressed_unused_files.len();
-    findings.extend(reported_unused_files.into_iter().map(|file| Finding {
-        rule: Rule::UnusedFile,
-        path: file.path.clone(),
-        module: file.module.clone(),
-        position: None,
-        confidence: Confidence::Medium,
-        message: format!(
-            "file `{}` is never imported or run",
-            file.module
-                .as_ref()
-                .map_or_else(|| file.file_name().to_owned(), |m| m.as_str().to_owned())
-        ),
-        detail: Detail::File,
-    }));
+    findings.extend(reported_unused_files.into_iter().map(unused_file_finding));
 
     findings.sort_by(|a, b| a.path.cmp(&b.path).then(a.position.cmp(&b.position)));
     kept.sort_by(|a, b| a.path.cmp(&b.path).then(a.position.cmp(&b.position)));
@@ -124,6 +125,8 @@ pub fn analyze(
             suppressed,
             baselined: 0,
             findings: findings.len(),
+            changed_files: None,
+            health: None,
         },
         findings,
         kept,
@@ -138,8 +141,8 @@ enum Verdict {
     Ignored,
     /// Something refers to it.
     Used,
-    /// Dead, but a `# pyscythe: ignore` comment covers it.
-    Suppressed,
+    /// Dead, but a `# pyscythe: ignore` comment on this line covers it.
+    Suppressed(Line),
     /// Unreferenced, but a plugin or an override keeps it.
     Kept(KeptSymbol),
     /// Unreferenced and nothing keeps it.
@@ -196,8 +199,8 @@ impl SymbolCheck<'_> {
             });
         }
 
-        if self.is_suppressed(&symbol, rule, position) {
-            return Verdict::Suppressed;
+        if let Some(line) = self.suppressing_line(&symbol, rule, position) {
+            return Verdict::Suppressed(line);
         }
 
         let owner = match symbol.scope {
@@ -220,6 +223,47 @@ impl SymbolCheck<'_> {
                 owner,
             },
         })
+    }
+}
+
+fn stale_suppression_findings(
+    index: &dyn CodebaseIndex,
+    stale: Vec<(FileId, Line)>,
+) -> Vec<Finding> {
+    stale
+        .into_iter()
+        .filter_map(|(file_id, line)| {
+            let file = index.file(file_id)?;
+            Some(Finding {
+                rule: Rule::UnusedSuppression,
+                path: file.path.clone(),
+                module: file.module.clone(),
+                position: Some(Position {
+                    line,
+                    column: Column::from_one_based(1)?,
+                }),
+                confidence: Confidence::High,
+                message: "suppression comment silences nothing".to_owned(),
+                detail: Detail::Comment,
+            })
+        })
+        .collect()
+}
+
+fn unused_file_finding(file: &SourceFile) -> Finding {
+    Finding {
+        rule: Rule::UnusedFile,
+        path: file.path.clone(),
+        module: file.module.clone(),
+        position: None,
+        confidence: Confidence::Medium,
+        message: format!(
+            "file `{}` is never imported or run",
+            file.module
+                .as_ref()
+                .map_or_else(|| file.file_name().to_owned(), |m| m.as_str().to_owned())
+        ),
+        detail: Detail::File,
     }
 }
 
@@ -270,23 +314,32 @@ fn is_test_file(name: &str) -> bool {
 }
 
 impl SymbolCheck<'_> {
-    /// A comment on the definition's name line, or on the line just above the
-    /// definition (above any decorators), silences `rule` for it.
-    fn is_suppressed(&self, symbol: &Symbol, rule: Rule, position: Option<Position>) -> bool {
+    /// The line of a comment that silences `rule` for the definition: on its
+    /// name line, on the line just above the definition (above any
+    /// decorators), or anywhere in the file for `ignore-file`.
+    fn suppressing_line(
+        &self,
+        symbol: &Symbol,
+        rule: Rule,
+        position: Option<Position>,
+    ) -> Option<Line> {
         let name_line = position.map(|p| p.line);
         let line_above = self
             .index
             .position(self.file.id, symbol.full_span.start())
             .and_then(|p| Line::from_one_based(p.line.get().saturating_sub(1)));
-        self.suppressions.iter().any(|suppression| {
-            let covers_rule = match &suppression.scope {
-                SuppressionScope::File => return true,
-                SuppressionScope::AllRules => true,
-                SuppressionScope::Rules(rules) => rules.contains(&rule),
-            };
-            covers_rule
-                && (Some(suppression.line) == name_line || Some(suppression.line) == line_above)
-        })
+        self.suppressions
+            .iter()
+            .find(|suppression| {
+                let covers_rule = match &suppression.scope {
+                    SuppressionScope::File => return true,
+                    SuppressionScope::AllRules => true,
+                    SuppressionScope::Rules(rules) => rules.contains(&rule),
+                };
+                covers_rule
+                    && (Some(suppression.line) == name_line || Some(suppression.line) == line_above)
+            })
+            .map(|suppression| suppression.line)
     }
 }
 
@@ -577,6 +630,32 @@ mod tests {
 
         assert_eq!(symbol_names(&report), ["wrong_rule", "loud"]);
         assert_eq!(report.summary.suppressed, 2);
+        let stale: Vec<_> = report
+            .findings
+            .iter()
+            .filter(|f| f.rule == Rule::UnusedSuppression)
+            .map(|f| f.position.unwrap().line.get())
+            .collect();
+        assert_eq!(
+            stale,
+            [3],
+            "the comment naming the wrong rule silences nothing"
+        );
+    }
+
+    #[test]
+    fn a_suppression_on_a_used_symbol_is_reported_as_stale() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/pkg/m.py", "pkg.m");
+        let used = index.add_symbol(file, "used", SymbolKind::Function);
+        index.add_reference(used, file);
+        index.suppress_on_name_line(used, SuppressionScope::AllRules);
+        import_from_elsewhere(&mut index, file);
+
+        let report = analyze_without_plugins(&index);
+
+        assert_eq!(report.findings.len(), 1);
+        assert_eq!(report.findings[0].rule, Rule::UnusedSuppression);
     }
 
     #[test]

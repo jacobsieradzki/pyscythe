@@ -1,0 +1,22 @@
+[package]
+name = "pyscythe_metrics"
+description = "Per-function complexity metrics computed from the ruff AST, with no semantic database"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[dependencies]
+pyscythe_core = { workspace = true }
+
+ruff_python_ast = { workspace = true }
+ruff_source_file = { workspace = true }
+ruff_text_size = { workspace = true }
+
+[dev-dependencies]
+ruff_python_parser = { workspace = true }
+
+[lints]
+workspace = true

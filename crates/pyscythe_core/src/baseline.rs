@@ -25,15 +25,22 @@ pub struct BaselineKey {
     /// The owning class, for methods.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub owner: Option<SymbolName>,
+    /// The line, only for findings that have no name of their own.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub line: Option<u32>,
 }
 
 impl BaselineKey {
     /// The key for `finding`, with its path made relative to `root`.
     #[must_use]
     pub fn of(finding: &Finding, root: &Utf8Path) -> Self {
-        let (symbol, owner) = match &finding.detail {
-            Detail::Symbol { symbol, owner } => (Some(symbol.clone()), owner.clone()),
-            Detail::Cycle { .. } | Detail::File => (None, None),
+        let (symbol, owner, line) = match &finding.detail {
+            Detail::Symbol { symbol, owner } => (Some(symbol.clone()), owner.clone(), None),
+            Detail::Metrics { function, .. } => {
+                (Some(SymbolName::new(function.clone())), None, None)
+            }
+            Detail::Comment => (None, None, finding.position.map(|p| p.line.get())),
+            Detail::Cycle { .. } | Detail::File => (None, None, None),
         };
         Self {
             rule: finding.rule,
@@ -43,6 +50,7 @@ impl BaselineKey {
                 .map_or_else(|_| finding.path.clone(), Utf8Path::to_path_buf),
             symbol,
             owner,
+            line,
         }
     }
 }
@@ -123,6 +131,8 @@ mod tests {
                 suppressed: 0,
                 baselined: 0,
                 findings: findings.len(),
+                changed_files: None,
+                health: None,
             },
             findings,
             kept: Vec::new(),

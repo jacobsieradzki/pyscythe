@@ -24,6 +24,10 @@ pub enum Rule {
     UnusedFile,
     /// A set of modules that import each other at load time.
     CircularImport,
+    /// A `# pyscythe: ignore` comment that silences nothing.
+    UnusedSuppression,
+    /// A function whose complexity is over the threshold.
+    ComplexFunction,
 }
 
 impl Rule {
@@ -45,13 +49,15 @@ impl Rule {
     }
 
     /// Every rule, in a stable order for tooling metadata.
-    pub const ALL: [Self; 6] = [
+    pub const ALL: [Self; 8] = [
         Self::UnusedFunction,
         Self::UnusedClass,
         Self::UnusedVariable,
         Self::UnusedMethod,
         Self::UnusedFile,
         Self::CircularImport,
+        Self::UnusedSuppression,
+        Self::ComplexFunction,
     ];
 
     /// The kebab-case identifier used in JSON, SARIF, and suppression comments.
@@ -64,6 +70,8 @@ impl Rule {
             Self::UnusedMethod => "unused-method",
             Self::UnusedFile => "unused-file",
             Self::CircularImport => "circular-import",
+            Self::UnusedSuppression => "unused-suppression",
+            Self::ComplexFunction => "complex-function",
         }
     }
 
@@ -85,6 +93,10 @@ impl Rule {
             }
             Self::UnusedFile => "A module that no other module imports and nothing runs.",
             Self::CircularImport => "Modules that import each other at load time.",
+            Self::UnusedSuppression => "A `# pyscythe: ignore` comment that silences nothing.",
+            Self::ComplexFunction => {
+                "A function whose cyclomatic or cognitive complexity is over the threshold."
+            }
         }
     }
 
@@ -92,12 +104,13 @@ impl Rule {
     #[must_use]
     pub const fn noun(self) -> &'static str {
         match self {
-            Self::UnusedFunction => "function",
+            Self::UnusedFunction | Self::ComplexFunction => "function",
             Self::UnusedClass => "class",
             Self::UnusedVariable => "variable",
             Self::UnusedMethod => "method",
             Self::UnusedFile => "file",
             Self::CircularImport => "import cycle",
+            Self::UnusedSuppression => "suppression comment",
         }
     }
 }
@@ -144,6 +157,23 @@ pub enum Detail {
     },
     /// A whole file.
     File,
+    /// A comment, located by its position alone.
+    Comment,
+    /// Measurements of a function.
+    Metrics {
+        /// The function, qualified by its class for methods.
+        function: String,
+        /// `McCabe` cyclomatic complexity.
+        cyclomatic: u32,
+        /// Cognitive complexity.
+        cognitive: u32,
+        /// Source lines in the definition.
+        lines: u32,
+        /// Parameter count.
+        parameters: u32,
+        /// Deepest control-flow nesting.
+        max_nesting: u32,
+    },
 }
 
 /// One actionable result.
@@ -172,7 +202,7 @@ impl Finding {
     pub const fn symbol(&self) -> Option<&SymbolName> {
         match &self.detail {
             Detail::Symbol { symbol, .. } => Some(symbol),
-            Detail::Cycle { .. } | Detail::File => None,
+            Detail::Cycle { .. } | Detail::File | Detail::Comment | Detail::Metrics { .. } => None,
         }
     }
 }

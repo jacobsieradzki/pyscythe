@@ -170,3 +170,86 @@ fn markdown_output_is_a_table() {
             "| `unused-class` | `pkg/helpers.py:13` | class `UnusedThing` is never used | medium |",
         ));
 }
+
+#[test]
+fn a_suppression_that_silences_nothing_is_reported() {
+    let report = json_report(&["dead-code", "--format", "json"], "suppressed");
+    let stale: Vec<u64> = report["findings"]
+        .as_array()
+        .expect("findings")
+        .iter()
+        .filter(|f| f["rule"] == "unused-suppression")
+        .filter_map(|f| f["position"]["line"].as_u64())
+        .collect();
+    assert_eq!(
+        stale,
+        [10, 19],
+        "wrong-rule comment and the comment on a used function: {report}"
+    );
+}
+
+#[test]
+fn since_scopes_findings_to_files_changed_after_a_ref() {
+    let scratch = std::env::temp_dir().join(format!("pyscythe-since-{}", std::process::id()));
+    let pkg = scratch.join("pkg");
+    std::fs::create_dir_all(&pkg).expect("scratch dir");
+    std::fs::write(
+        scratch.join("pyproject.toml"),
+        "[project]\nname = \"since\"\nversion = \"0\"\nrequires-python = \">=3.12\"\n",
+    )
+    .expect("write");
+    std::fs::write(pkg.join("__init__.py"), "").expect("write");
+    std::fs::write(pkg.join("a.py"), "def old():\n    pass\n").expect("write");
+    std::fs::write(pkg.join("b.py"), "def older():\n    pass\n").expect("write");
+    std::fs::write(pkg.join("__main__.py"), "import pkg.a\nimport pkg.b\n").expect("write");
+
+    let git = |args: &[&str]| {
+        let status = std::process::Command::new("git")
+            .arg("-C")
+            .arg(&scratch)
+            .args(["-c", "user.name=t", "-c", "user.email=t@example.com"])
+            .args(args)
+            .status()
+            .expect("git runs");
+        assert!(status.success(), "git {args:?}");
+    };
+    git(&["init", "-q"]);
+    git(&["add", "."]);
+    git(&["commit", "-q", "-m", "base"]);
+    std::fs::write(
+        pkg.join("b.py"),
+        "def older():\n    pass\n\n\ndef newer():\n    pass\n",
+    )
+    .expect("write");
+    std::fs::write(pkg.join("c.py"), "def untracked():\n    pass\n").expect("write");
+
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json", "--since", "HEAD"])
+        .arg(&scratch)
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("json");
+
+    let mut files: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings")
+        .iter()
+        .filter_map(|f| f["module"].as_str())
+        .collect();
+    files.sort_unstable();
+    files.dedup();
+    assert_eq!(files, ["pkg.b", "pkg.c"], "a.py is unchanged: {report}");
+    assert_eq!(report["summary"]["changed_files"], 2);
+
+    std::fs::remove_dir_all(scratch).ok();
+}
+
+#[test]
+fn since_with_a_bad_ref_is_an_error() {
+    pyscythe()
+        .args(["dead-code", "--since", "no-such-ref"])
+        .arg(fixture("simple_unused"))
+        .assert()
+        .code(2)
+        .stderr(predicate::str::contains("git diff failed"));
+}

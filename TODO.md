@@ -18,10 +18,10 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 - [x] `--exclude` on the command line; `--timings` prints phase durations.
 - [x] `[tool.pyscythe]` config: `exclude`, `ignore-names`, `entry-points`, `include-notebooks`.
 - [x] Inline suppression: `# pyscythe: ignore`, `# pyscythe: ignore[rule, ...]` on the definition line or the line above, `# pyscythe: ignore-file`.
-- [ ] Report suppression comments that no longer suppress anything.
+- [x] Stale `# pyscythe: ignore` comments are reported as `unused-suppression`.
 - [x] Baseline: `--write-baseline FILE` records current findings by rule, relative path, symbol, and owner (no line numbers); `--baseline FILE` hides them and exits 0 when nothing new.
 - [x] `--min-confidence low|medium|high`.
-- [ ] `--since <ref>` to gate only files changed since a git ref.
+- [x] `--since <ref>` keeps findings in files changed since a git ref, plus untracked files.
 - [x] Performance: single-pass inverted reference index built in parallel (also fixed aliased-import misses).
 - [x] Perf: the process forgets the salsa database at exit instead of dropping it (ty does the same), and the project is opened once. 64 files in ~180 ms wall.
 
@@ -31,7 +31,8 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 - [ ] Cycles: report every distinct simple cycle in a component, not just one; offer `--include-deferred`.
 - [ ] Unused files: treat `__init__.py` re-exports as uses of the re-exported file.
 - [ ] Duplication (token-hash / suffix-array detector over function bodies).
-- [ ] Complexity hotspots and a 0-100 health score.
+- [x] `pyscythe health`: cyclomatic and cognitive complexity per function (`pyscythe_metrics`, parser-only), hotspots over 10/15, length-weighted 0-100 score with A-F grade.
+- [ ] Health: thresholds in `[tool.pyscythe]`; per-file and per-package scores; maintainability index; trend against a baseline.
 - [ ] Architecture boundaries with layered / hexagonal presets.
 - [ ] `fix --dry-run` for safe deletions.
 

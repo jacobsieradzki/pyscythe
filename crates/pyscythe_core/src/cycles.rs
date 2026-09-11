@@ -37,6 +37,8 @@ pub fn analyze(index: &dyn CodebaseIndex) -> Report {
             suppressed: 0,
             baselined: 0,
             findings: findings.len(),
+            changed_files: None,
+            health: None,
         },
         findings,
     }

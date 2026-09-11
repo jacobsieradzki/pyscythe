@@ -10,6 +10,7 @@ authors.workspace = true
 
 [dependencies]
 pyscythe_core = { workspace = true }
+pyscythe_metrics = { workspace = true }
 
 ruff_db = { workspace = true }
 ruff_python_ast = { workspace = true }

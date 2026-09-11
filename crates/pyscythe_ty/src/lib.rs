@@ -11,6 +11,7 @@ use pyscythe_core::config::{NotebookPolicy, PathPatterns};
 use pyscythe_core::index::{
     Ancestry, CodebaseIndex, Import, Inheritance, NameUsage, Reference, Suppression,
 };
+use pyscythe_core::metrics::FunctionMetrics;
 use pyscythe_core::source::{
     ByteOffset, ByteSpan, Column, FileId, Line, MainGuard, ModulePath, Position, SourceFile,
 };
@@ -299,6 +300,16 @@ impl CodebaseIndex for TyIndex {
                 })
             })
             .collect()
+    }
+
+    fn function_metrics(&self, file: FileId) -> Vec<FunctionMetrics> {
+        let Some(ty_file) = self.ty_file(file) else {
+            return Vec::new();
+        };
+        let program_file = self.db.program_file(ty_file);
+        let module = parsed_module(&self.db, program_file.python_file(&self.db)).load(&self.db);
+        let source = source_text(&self.db, ty_file);
+        pyscythe_metrics::measure(module.syntax(), source.as_str())
     }
 
     fn suppressions(&self, file: FileId) -> Vec<Suppression> {
