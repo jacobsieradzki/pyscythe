@@ -40,6 +40,9 @@ impl KeepRule for Python {
         {
             return Some("Sphinx configuration read by name");
         }
+        if crate::dead_code::is_in_root_directory(context.file) {
+            return Some("in a directory of scripts, examples, docs, or benchmarks");
+        }
         None
     }
 }
@@ -48,6 +51,25 @@ impl KeepRule for Python {
 mod tests {
     use super::Python;
     use crate::plugins::testing::Case;
+
+    #[test]
+    fn keeps_everything_in_example_and_benchmark_directories() {
+        assert!(
+            Case::variable("console")
+                .at("/p/examples/demo.py")
+                .is_kept_by(&Python)
+        );
+        assert!(
+            Case::method("time_wrap")
+                .at("/p/benchmarks/bench.py")
+                .is_kept_by(&Python)
+        );
+        assert!(
+            !Case::variable("console")
+                .at("/p/pkg/demo.py")
+                .is_kept_by(&Python)
+        );
+    }
 
     #[test]
     fn keeps_sphinx_configuration() {

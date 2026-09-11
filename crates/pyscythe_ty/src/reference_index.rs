@@ -285,6 +285,42 @@ impl UseCollector<'_, '_> {
         }
     }
 
+    /// `f"pkg.tables.{name}"` is `importlib.import_module` territory: every
+    /// module under `pkg.tables` may be loaded, so each gets a deferred edge.
+    fn record_dynamic_package_import(&mut self, fstring: &ast::ExprFString) {
+        let Some(first) = fstring.value.iter().next() else {
+            return;
+        };
+        let ast::FStringPart::FString(part) = first else {
+            return;
+        };
+        let Some(ast::InterpolatedStringElement::Literal(literal)) = part.elements.iter().next()
+        else {
+            return;
+        };
+        let Some(prefix) = literal.value.strip_suffix('.') else {
+            return;
+        };
+        if split_dotted_reference(prefix).is_none() {
+            return;
+        }
+        let Some(package) = self.model.resolve_module(Some(prefix), 0) else {
+            return;
+        };
+        let Some(package_file) = package.file(self.db) else {
+            return;
+        };
+        self.record_import(fstring.range(), package_file, ImportKind::Deferred);
+        let submodule_files: Vec<File> = package
+            .all_submodules(self.db)
+            .iter()
+            .filter_map(|module| module.file(self.db))
+            .collect();
+        for file in submodule_files {
+            self.record_import(fstring.range(), file, ImportKind::Deferred);
+        }
+    }
+
     /// A string such as `"pkg.settings.DEBUG"` or `"pkg.cli:main"` counts as a
     /// use of that symbol and a deferred import of its module.
     fn record_string_reference(&mut self, literal: &ast::ExprStringLiteral) {
@@ -392,6 +428,9 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
             }
             AnyNodeRef::ExprStringLiteral(literal) => {
                 self.record_string_reference(literal);
+            }
+            AnyNodeRef::ExprFString(fstring) => {
+                self.record_dynamic_package_import(fstring);
             }
             AnyNodeRef::Parameter(parameter) => {
                 // A test parameter names a pytest fixture; ty resolves which one.

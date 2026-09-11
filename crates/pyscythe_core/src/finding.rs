@@ -169,6 +169,16 @@ pub struct Location {
     pub position: Option<Position>,
 }
 
+/// One more place a duplicated run appears.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct Occurrence {
+    /// Where it starts.
+    #[serde(flatten)]
+    pub location: Location,
+    /// Its last line.
+    pub end_line: u32,
+}
+
 /// What a finding is about, beyond its location.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize)]
 #[serde(untagged)]
@@ -190,7 +200,7 @@ pub enum Detail {
     File,
     /// A comment, located by its position alone.
     Comment,
-    /// A duplicated run of code and where its twin lives.
+    /// A duplicated run of code and everywhere else it appears.
     Duplicate {
         /// Lines covered by this occurrence.
         lines: u32,
@@ -198,10 +208,8 @@ pub enum Detail {
         tokens: u32,
         /// Last line of this occurrence.
         end_line: u32,
-        /// The other occurrence.
-        other: Location,
-        /// Last line of the other occurrence.
-        other_end_line: u32,
+        /// The other occurrences, in path order.
+        others: Vec<Occurrence>,
     },
     /// A distribution and the modules it was matched to.
     Dependency {

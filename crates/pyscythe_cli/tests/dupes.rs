@@ -33,8 +33,8 @@ fn renamed_copies_are_found_in_mild_mode() {
     assert_eq!(finding["module"], "pkg.first");
     assert_eq!(finding["position"]["line"], 1);
     assert!(finding["lines"].as_u64().expect("lines") >= 13, "{report}");
-    assert_eq!(finding["other"]["module"], "pkg.second");
-    assert_eq!(finding["other"]["position"]["line"], 1);
+    assert_eq!(finding["others"][0]["module"], "pkg.second");
+    assert_eq!(finding["others"][0]["position"]["line"], 1);
     let duplication = &report["summary"]["duplication"];
     assert_eq!(duplication["clones"], 1);
     assert!(duplication["percent_tenths"].as_u64().expect("percent") > 500);

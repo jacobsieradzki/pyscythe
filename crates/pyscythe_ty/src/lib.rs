@@ -349,7 +349,7 @@ impl CodebaseIndex for TyIndex {
         let program_file = self.db.program_file(ty_file);
         let module = parsed_module(&self.db, program_file.python_file(&self.db)).load(&self.db);
         let source = source_text(&self.db, ty_file);
-        pyscythe_metrics::clone_tokens(module.tokens(), source.as_str(), mode)
+        pyscythe_metrics::clone_tokens(module.tokens(), module.syntax(), source.as_str(), mode)
     }
 
     fn function_metrics(&self, file: FileId) -> Vec<FunctionMetrics> {

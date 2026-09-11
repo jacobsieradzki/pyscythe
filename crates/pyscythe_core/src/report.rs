@@ -112,8 +112,25 @@ impl Grade {
     }
 }
 
+/// One file's share of the health picture.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct FileHealth {
+    /// Absolute path.
+    pub path: Utf8PathBuf,
+    /// Module path, when resolvable.
+    pub module: Option<ModulePath>,
+    /// 0 to 100 from the same penalty scheme as the project score.
+    pub score: u8,
+    /// Maintainability index on the 0 to 100 scale radon uses.
+    pub maintainability: u8,
+    /// Functions in the file.
+    pub functions: usize,
+    /// Functions over a hotspot threshold.
+    pub hotspots: usize,
+}
+
 /// Overall complexity health, from the `health` analysis.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
 pub struct HealthSummary {
     /// 0 to 100, where 100 means every function is under every threshold.
     pub score: u8,
@@ -125,10 +142,12 @@ pub struct HealthSummary {
     pub max_cyclomatic: u32,
     /// Highest cognitive complexity seen.
     pub max_cognitive: u32,
+    /// The files with the lowest scores, worst first, at most ten.
+    pub worst_files: Vec<FileHealth>,
 }
 
 /// Counts that summarise a run.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
 pub struct Summary {
     /// First-party files the index knew about.
     pub files_scanned: usize,

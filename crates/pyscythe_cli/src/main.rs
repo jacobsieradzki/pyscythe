@@ -178,6 +178,10 @@ struct CyclesArgs {
     /// Also follow imports inside function bodies, which only bite when called.
     #[arg(long)]
     include_deferred: bool,
+
+    /// Report every simple cycle (up to 25 per tangle) instead of one shortest cycle per tangle.
+    #[arg(long)]
+    all_cycles: bool,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum)]
@@ -285,10 +289,11 @@ fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
     match cli.command {
         Command::DeadCode(args) => run_analysis(&args, out, |i, a, s| Ok(dead_code(i, a, s))),
         Command::Cycles(args) => {
-            let include_deferred = args.include_deferred;
-            run_analysis(&args.common, out, move |i, _, _| {
-                Ok(cycles(i, include_deferred))
-            })
+            let options = pyscythe_core::cycles::CycleOptions {
+                include_deferred: args.include_deferred,
+                all_cycles: args.all_cycles,
+            };
+            run_analysis(&args.common, out, move |i, _, _| Ok(cycles(i, options)))
         }
         Command::Health(args) => run_analysis(&args, out, |i, _, s| Ok(health(i, s))),
         Command::Boundaries(args) => run_analysis(&args, out, boundaries),
@@ -501,11 +506,8 @@ fn dead_code(index: &TyIndex, args: &AnalysisArgs, settings: &ProjectSettings) -
     pyscythe_core::dead_code::analyze(index, &policy, &settings.manifest, &settings.config)
 }
 
-fn cycles(index: &TyIndex, include_deferred: bool) -> Report {
-    pyscythe_core::cycles::analyze(
-        index,
-        pyscythe_core::cycles::CycleOptions { include_deferred },
-    )
+fn cycles(index: &TyIndex, options: pyscythe_core::cycles::CycleOptions) -> Report {
+    pyscythe_core::cycles::analyze(index, options)
 }
 
 fn health(index: &TyIndex, settings: &ProjectSettings) -> Report {

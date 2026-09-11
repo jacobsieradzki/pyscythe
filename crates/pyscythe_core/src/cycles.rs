@@ -11,11 +11,13 @@ use crate::index::{CodebaseIndex, Import, ImportKind};
 use crate::report::{Report, ReportKind, Summary};
 use crate::source::FileId;
 
-/// Which imports take part in the graph.
+/// Which imports take part in the graph, and how much to report.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 pub struct CycleOptions {
     /// Also follow imports inside function bodies, which only bite when called.
     pub include_deferred: bool,
+    /// Report every simple cycle instead of one shortest cycle per tangle.
+    pub all_cycles: bool,
 }
 
 /// Stop enumerating after this many cycles in one strongly connected component.
@@ -31,8 +33,27 @@ pub fn analyze(index: &dyn CodebaseIndex, options: CycleOptions) -> Report {
         .strongly_connected_components()
         .into_iter()
         .filter(|component| component.len() > 1)
-        .flat_map(|component| graph.simple_cycles(&component))
-        .filter_map(|cycle| finding_for(index, &cycle))
+        .flat_map(|component| {
+            let cycles = graph.simple_cycles(&component);
+            let members = component.len();
+            if options.all_cycles {
+                cycles
+                    .into_iter()
+                    .map(|cycle| {
+                        let length = cycle.len();
+                        (cycle, length)
+                    })
+                    .collect::<Vec<_>>()
+            } else {
+                // One tangle, one finding: its shortest cycle stands for it.
+                cycles
+                    .into_iter()
+                    .min_by_key(|cycle| (cycle.len(), cycle.first().map(|(file, _)| *file)))
+                    .map(|cycle| vec![(cycle, members)])
+                    .unwrap_or_default()
+            }
+        })
+        .filter_map(|(cycle, members)| finding_for(index, &cycle, members))
         .collect();
     findings.sort_by(|a, b| a.path.cmp(&b.path).then(a.position.cmp(&b.position)));
     findings.dedup();
@@ -229,7 +250,11 @@ impl Tarjan {
     }
 }
 
-fn finding_for(index: &dyn CodebaseIndex, cycle: &[(FileId, Import)]) -> Option<Finding> {
+fn finding_for(
+    index: &dyn CodebaseIndex,
+    cycle: &[(FileId, Import)],
+    members: usize,
+) -> Option<Finding> {
     let (first_file, first_import) = cycle.first().copied()?;
 
     let chain: Vec<Location> = cycle
@@ -266,7 +291,14 @@ fn finding_for(index: &dyn CodebaseIndex, cycle: &[(FileId, Import)]) -> Option<
         module: file.module.clone(),
         position: index.position(first_file, first_import.span.start()),
         confidence: Confidence::High,
-        message: format!("import cycle: {}", names.join(" -> ")),
+        message: if members > cycle.len() {
+            format!(
+                "import cycle among {members} modules, shortest: {}",
+                names.join(" -> ")
+            )
+        } else {
+            format!("import cycle: {}", names.join(" -> "))
+        },
         detail: Detail::Cycle { chain },
     })
 }
@@ -348,8 +380,20 @@ mod tests {
         index.add_import(c, b, ImportKind::Runtime);
         index.add_import(c, a, ImportKind::Runtime);
 
-        let report = analyze(&index, CycleOptions::default());
+        let one_per_tangle = analyze(&index, CycleOptions::default());
+        assert_eq!(one_per_tangle.findings.len(), 1);
+        assert_eq!(
+            one_per_tangle.findings[0].message,
+            "import cycle among 3 modules, shortest: pkg.a -> pkg.b -> pkg.a"
+        );
 
+        let report = analyze(
+            &index,
+            CycleOptions {
+                all_cycles: true,
+                ..CycleOptions::default()
+            },
+        );
         let mut messages: Vec<&str> = report.findings.iter().map(|f| f.message.as_str()).collect();
         messages.sort_unstable();
         assert_eq!(
@@ -375,6 +419,7 @@ mod tests {
             &index,
             CycleOptions {
                 include_deferred: true,
+                ..CycleOptions::default()
             },
         );
         assert_eq!(with_deferred.findings.len(), 1);

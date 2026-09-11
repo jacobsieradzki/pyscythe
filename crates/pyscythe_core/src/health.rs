@@ -9,7 +9,9 @@ use crate::config::HealthThresholds;
 use crate::finding::{Confidence, Detail, Finding, Rule};
 use crate::index::CodebaseIndex;
 use crate::metrics::FunctionMetrics;
-use crate::report::{Grade, HealthSummary, Report, ReportKind, Summary};
+use crate::report::{FileHealth, Grade, HealthSummary, Report, ReportKind, Summary};
+use crate::source::SourceFile;
+use crate::tokens::{CloneMode, CloneToken};
 
 /// Runs the health analysis over every file in `index`.
 #[must_use]
@@ -20,41 +22,41 @@ pub fn analyze(index: &dyn CodebaseIndex, thresholds: &HealthThresholds) -> Repo
     let mut functions = 0;
     let mut max_cyclomatic = 0;
     let mut max_cognitive = 0;
+    let mut files_health = Vec::new();
 
     for file in index.files() {
-        for metrics in index.function_metrics(file.id) {
+        let metrics = index.function_metrics(file.id);
+        let mut file_penalty: u64 = 0;
+        let mut file_weight: u64 = 0;
+        let mut hotspots = 0;
+        for function in &metrics {
             functions += 1;
-            max_cyclomatic = max_cyclomatic.max(metrics.cyclomatic);
-            max_cognitive = max_cognitive.max(metrics.cognitive);
+            max_cyclomatic = max_cyclomatic.max(function.cyclomatic);
+            max_cognitive = max_cognitive.max(function.cognitive);
 
-            let weight = u64::from(metrics.lines.max(1));
-            weighted_penalty += u64::from(penalty(&metrics, thresholds)) * weight;
-            total_weight += weight;
+            let weight = u64::from(function.lines.max(1));
+            file_penalty += u64::from(penalty(function, thresholds)) * weight;
+            file_weight += weight;
 
-            if is_hotspot(&metrics, thresholds) {
-                findings.push(Finding {
-                    rule: Rule::ComplexFunction,
-                    path: file.path.clone(),
-                    module: file.module.clone(),
-                    position: index.position(file.id, metrics.name_span.start()),
-                    confidence: Confidence::High,
-                    message: format!(
-                        "function `{}` has cyclomatic complexity {} and cognitive complexity {} over {} lines",
-                        metrics.qualified_name(),
-                        metrics.cyclomatic,
-                        metrics.cognitive,
-                        metrics.lines
-                    ),
-                    detail: Detail::Metrics {
-                        function: metrics.qualified_name(),
-                        cyclomatic: metrics.cyclomatic,
-                        cognitive: metrics.cognitive,
-                        lines: metrics.lines,
-                        parameters: metrics.parameters,
-                        max_nesting: metrics.max_nesting,
-                    },
-                });
+            if is_hotspot(function, thresholds) {
+                hotspots += 1;
+                findings.push(hotspot_finding(index, file, function));
             }
+        }
+        weighted_penalty += file_penalty;
+        total_weight += file_weight;
+        if !metrics.is_empty() {
+            files_health.push(FileHealth {
+                path: file.path.clone(),
+                module: file.module.clone(),
+                score: score_from(file_penalty, file_weight),
+                maintainability: maintainability_index(
+                    &index.clone_tokens(file.id, CloneMode::Strict),
+                    &metrics,
+                ),
+                functions: metrics.len(),
+                hotspots,
+            });
         }
     }
 
@@ -65,12 +67,15 @@ pub fn analyze(index: &dyn CodebaseIndex, thresholds: &HealthThresholds) -> Repo
             .then(a.path.cmp(&b.path))
             .then(a.position.cmp(&b.position))
     });
+    files_health.sort_by(|a, b| {
+        a.score
+            .cmp(&b.score)
+            .then(a.maintainability.cmp(&b.maintainability))
+            .then(a.path.cmp(&b.path))
+    });
+    files_health.truncate(10);
 
-    let score = weighted_penalty
-        .checked_div(total_weight)
-        .map_or(100, |average_penalty| {
-            u8::try_from(100u64.saturating_sub(average_penalty)).unwrap_or(0)
-        });
+    let score = score_from(weighted_penalty, total_weight);
 
     Report {
         schema_version: Report::SCHEMA_VERSION,
@@ -90,12 +95,93 @@ pub fn analyze(index: &dyn CodebaseIndex, thresholds: &HealthThresholds) -> Repo
                 functions,
                 max_cyclomatic,
                 max_cognitive,
+                worst_files: files_health,
             }),
             duplication: None,
         },
         findings,
         kept: Vec::new(),
     }
+}
+
+fn hotspot_finding(
+    index: &dyn CodebaseIndex,
+    file: &SourceFile,
+    metrics: &FunctionMetrics,
+) -> Finding {
+    Finding {
+        rule: Rule::ComplexFunction,
+        path: file.path.clone(),
+        module: file.module.clone(),
+        position: index.position(file.id, metrics.name_span.start()),
+        confidence: Confidence::High,
+        message: format!(
+            "function `{}` has cyclomatic complexity {} and cognitive complexity {} over {} lines",
+            metrics.qualified_name(),
+            metrics.cyclomatic,
+            metrics.cognitive,
+            metrics.lines
+        ),
+        detail: Detail::Metrics {
+            function: metrics.qualified_name(),
+            cyclomatic: metrics.cyclomatic,
+            cognitive: metrics.cognitive,
+            lines: metrics.lines,
+            parameters: metrics.parameters,
+            max_nesting: metrics.max_nesting,
+        },
+    }
+}
+
+/// 100 minus the length-weighted average penalty; 100 when nothing was measured.
+fn score_from(weighted_penalty: u64, total_weight: u64) -> u8 {
+    weighted_penalty
+        .checked_div(total_weight)
+        .map_or(100, |average| {
+            u8::try_from(100u64.saturating_sub(average)).unwrap_or(0)
+        })
+}
+
+/// The maintainability index as radon scales it: 171 minus terms for
+/// Halstead volume, total cyclomatic complexity, and lines, normalised to 0..=100.
+///
+/// Halstead operands are names and literals; everything else that is not
+/// layout is an operator.
+#[must_use]
+pub fn maintainability_index(tokens: &[CloneToken], functions: &[FunctionMetrics]) -> u8 {
+    let mut length: u64 = 0;
+    let mut distinct: std::collections::BTreeSet<&str> = std::collections::BTreeSet::new();
+    for token in tokens {
+        if matches!(token.text.as_str(), "\\n" | "\\t" | "\\d") {
+            continue;
+        }
+        length += 1;
+        distinct.insert(token.text.as_str());
+    }
+    let vocabulary = distinct.len().max(1);
+    // Halstead volume: N * log2(n). Both counts are far below 2^53.
+    #[expect(
+        clippy::cast_precision_loss,
+        reason = "token counts are small enough to be exact as f64"
+    )]
+    let volume = (length as f64) * (vocabulary as f64).log2();
+    let cyclomatic: u32 = functions.iter().map(|f| f.cyclomatic).sum();
+    let lines: u32 = functions.iter().map(|f| f.lines).sum::<u32>().max(1);
+    let raw = 16.2f64.mul_add(
+        -f64::from(lines).ln(),
+        0.23f64.mul_add(
+            -f64::from(cyclomatic),
+            5.2f64.mul_add(-volume.max(1.0).ln(), 171.0),
+        ),
+    );
+    let scaled = (raw * 100.0 / 171.0).clamp(0.0, 100.0);
+    #[expect(
+        clippy::cast_possible_truncation,
+        clippy::cast_sign_loss,
+        reason = "clamped to 0..=100 before rounding"
+    )]
+    let index = scaled.round() as u8;
+    index
 }
 
 const fn is_hotspot(metrics: &FunctionMetrics, t: &HealthThresholds) -> bool {
@@ -134,12 +220,14 @@ mod tests {
 
         let report = analyze(&index, &HealthThresholds::default());
 
-        let health = report.summary.health.expect("health summary");
+        let health = report.summary.health.as_ref().expect("health summary");
         assert_eq!(
             (health.score, health.grade, health.functions),
             (100, Grade::A, 1)
         );
         assert!(report.is_clean());
+        assert_eq!(health.worst_files.len(), 1);
+        assert_eq!(health.worst_files[0].score, 100);
     }
 
     #[test]
@@ -164,10 +252,11 @@ mod tests {
                 (Rule::ComplexFunction, "tangled")
             ]
         );
-        let health = report.summary.health.expect("health summary");
+        let health = report.summary.health.as_ref().expect("health summary");
         assert!(health.score < 60, "score was {}", health.score);
         assert_eq!(health.grade, Grade::F);
         assert_eq!((health.max_cyclomatic, health.max_cognitive), (30, 60));
+        assert_eq!(health.worst_files[0].hotspots, 2);
     }
 
     #[test]
@@ -183,6 +272,34 @@ mod tests {
 
         assert!(analyze(&index, &HealthThresholds::default()).is_clean());
         assert_eq!(analyze(&index, &strict).findings.len(), 1);
+    }
+
+    #[test]
+    fn maintainability_falls_with_volume_and_complexity() {
+        use crate::metrics::FunctionMetrics;
+        use crate::source::{ByteOffset, ByteSpan, Line};
+        use crate::symbol::SymbolName;
+        use crate::tokens::CloneToken;
+        let token = |text: &str| CloneToken {
+            text: text.to_owned(),
+            line: Line::from_one_based(1).unwrap(),
+        };
+        let function = |cyclomatic: u32, lines: u32| FunctionMetrics {
+            name: SymbolName::new("f"),
+            owner: None,
+            name_span: ByteSpan::new(ByteOffset::new(0), ByteOffset::new(1)),
+            lines,
+            parameters: 1,
+            cyclomatic,
+            cognitive: 0,
+            max_nesting: 0,
+        };
+        let tiny =
+            super::maintainability_index(&[token("x"), token("="), token("1")], &[function(1, 2)]);
+        let big_tokens: Vec<_> = (0..2000).map(|i| token(&format!("name{i}"))).collect();
+        let big = super::maintainability_index(&big_tokens, &[function(40, 400)]);
+        assert!(tiny > big, "{tiny} vs {big}");
+        assert!(tiny >= 80);
     }
 
     #[test]

@@ -6,7 +6,7 @@
 
 use std::collections::{BTreeMap, BTreeSet, HashMap};
 
-use crate::finding::{Confidence, Detail, Finding, Location, Rule};
+use crate::finding::{Confidence, Detail, Finding, Location, Occurrence, Rule};
 use crate::index::CodebaseIndex;
 use crate::report::{DuplicationSummary, Report, ReportKind, Summary};
 use crate::source::{FileId, Line};
@@ -140,11 +140,11 @@ impl TokenStream {
     }
 }
 
-/// A clone: `length` tokens starting at `a` and again at `b`, with `a` first.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+/// A run of `length` tokens that appears at every position in `occurrences`,
+/// sorted so the first occurrence is the one reported.
+#[derive(Debug, Clone, PartialEq, Eq)]
 struct Clone {
-    a: Position,
-    b: Position,
+    occurrences: Vec<Position>,
     length: usize,
 }
 
@@ -152,6 +152,14 @@ struct Clone {
 struct Position {
     stream: usize,
     token: usize,
+}
+
+/// A candidate pair before grouping.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+struct Pair {
+    a: Position,
+    b: Position,
+    length: usize,
 }
 
 fn maximal_clones(streams: &[TokenStream], options: &DupesOptions) -> Vec<Clone> {
@@ -166,7 +174,7 @@ fn maximal_clones(streams: &[TokenStream], options: &DupesOptions) -> Vec<Clone>
         }
     }
 
-    let mut candidates: Vec<Clone> = Vec::new();
+    let mut candidates: Vec<Pair> = Vec::new();
     for positions in by_window.values().filter(|p| p.len() > 1) {
         for (i, &a) in positions.iter().enumerate() {
             for &b in positions.iter().skip(i + 1) {
@@ -175,11 +183,10 @@ fn maximal_clones(streams: &[TokenStream], options: &DupesOptions) -> Vec<Clone>
                     // Overlapping runs inside one file are self-similarity, not a clone.
                     continue;
                 }
-                candidates.push(Clone { a, b, length });
+                candidates.push(Pair { a, b, length });
             }
         }
     }
-
     candidates.sort_by(|x, y| {
         y.length
             .cmp(&x.length)
@@ -187,30 +194,64 @@ fn maximal_clones(streams: &[TokenStream], options: &DupesOptions) -> Vec<Clone>
             .then(x.b.cmp(&y.b))
     });
 
+    // Greedy tiling, but a pair that shares an occurrence with an accepted
+    // clone of the same length joins that clone as a further occurrence.
     let mut claimed: Vec<Vec<bool>> = streams.iter().map(|s| vec![false; s.ids.len()]).collect();
-    let mut kept = Vec::new();
-    for clone in candidates {
-        if !meets_line_minimum(streams, clone, options.min_lines) {
+    let mut kept: Vec<Clone> = Vec::new();
+    for pair in candidates {
+        if !meets_line_minimum(streams, pair.a, pair.length, options.min_lines) {
             continue;
         }
-        let taken = |position: Position| {
+        let is_free = |position: Position| {
             claimed
                 .get(position.stream)
-                .and_then(|flags| flags.get(position.token..position.token + clone.length))
-                .is_some_and(|window| window.iter().any(|&f| f))
+                .and_then(|flags| flags.get(position.token..position.token + pair.length))
+                .is_some_and(|window| !window.iter().any(|&f| f))
         };
-        if taken(clone.a) || taken(clone.b) {
-            continue;
-        }
-        for position in [clone.a, clone.b] {
+        let group_of = |kept: &[Clone], position: Position| {
+            kept.iter().position(|clone| {
+                clone.length == pair.length && clone.occurrences.contains(&position)
+            })
+        };
+        let joined = match (is_free(pair.a), is_free(pair.b)) {
+            (true, true) => {
+                kept.push(Clone {
+                    occurrences: vec![pair.a, pair.b],
+                    length: pair.length,
+                });
+                vec![pair.a, pair.b]
+            }
+            (false, true) => match group_of(&kept, pair.a) {
+                Some(group) => {
+                    if let Some(clone) = kept.get_mut(group) {
+                        clone.occurrences.push(pair.b);
+                    }
+                    vec![pair.b]
+                }
+                None => continue,
+            },
+            (true, false) => match group_of(&kept, pair.b) {
+                Some(group) => {
+                    if let Some(clone) = kept.get_mut(group) {
+                        clone.occurrences.push(pair.a);
+                    }
+                    vec![pair.a]
+                }
+                None => continue,
+            },
+            (false, false) => continue,
+        };
+        for position in joined {
             if let Some(window) = claimed
                 .get_mut(position.stream)
-                .and_then(|flags| flags.get_mut(position.token..position.token + clone.length))
+                .and_then(|flags| flags.get_mut(position.token..position.token + pair.length))
             {
                 window.fill(true);
             }
         }
-        kept.push(clone);
+    }
+    for clone in &mut kept {
+        clone.occurrences.sort_unstable();
     }
     kept
 }
@@ -236,15 +277,20 @@ fn line_span(streams: &[TokenStream], position: Position, length: usize) -> Opti
     Some((start, end))
 }
 
-fn meets_line_minimum(streams: &[TokenStream], clone: Clone, min_lines: u32) -> bool {
-    line_span(streams, clone.a, clone.length)
+fn meets_line_minimum(
+    streams: &[TokenStream],
+    position: Position,
+    length: usize,
+    min_lines: u32,
+) -> bool {
+    line_span(streams, position, length)
         .is_some_and(|(start, end)| end.get() - start.get() + 1 >= min_lines)
 }
 
 fn duplicated_lines(streams: &[TokenStream], clones: &[Clone]) -> u32 {
     let mut covered: Vec<BTreeSet<u32>> = streams.iter().map(|_| BTreeSet::default()).collect();
     for clone in clones {
-        for position in [clone.a, clone.b] {
+        for &position in &clone.occurrences {
             if let (Some((start, end)), Some(set)) = (
                 line_span(streams, position, clone.length),
                 covered.get_mut(position.stream),
@@ -264,24 +310,49 @@ fn finding_for(
     streams: &[TokenStream],
     clone: &Clone,
 ) -> Option<Finding> {
-    let (a_start, a_end) = line_span(streams, clone.a, clone.length)?;
-    let (b_start, b_end) = line_span(streams, clone.b, clone.length)?;
-    let file_a = index.file(streams.get(clone.a.stream)?.file)?;
-    let file_b = index.file(streams.get(clone.b.stream)?.file)?;
+    let (&first, rest) = clone.occurrences.split_first()?;
+    let (a_start, a_end) = line_span(streams, first, clone.length)?;
+    let file_a = index.file(streams.get(first.stream)?.file)?;
     let column = crate::source::Column::from_one_based(1)?;
-    let other = Location {
-        path: file_b.path.clone(),
-        module: file_b.module.clone(),
-        position: Some(crate::source::Position {
-            line: b_start,
-            column,
-        }),
-    };
+
+    let mut others = Vec::new();
+    let mut places = Vec::new();
+    for &position in rest {
+        let (start, end) = line_span(streams, position, clone.length)?;
+        let file = index.file(streams.get(position.stream)?.file)?;
+        let display = file
+            .module
+            .as_ref()
+            .map_or_else(|| file.path.to_string(), |m| m.as_str().to_owned());
+        places.push(format!("{display}:{}", start.get()));
+        others.push(Occurrence {
+            location: Location {
+                path: file.path.clone(),
+                module: file.module.clone(),
+                position: Some(crate::source::Position {
+                    line: start,
+                    column,
+                }),
+            },
+            end_line: end.get(),
+        });
+    }
+
     let lines = a_end.get() - a_start.get() + 1;
-    let other_display = file_b
-        .module
-        .as_ref()
-        .map_or_else(|| file_b.path.to_string(), |m| m.as_str().to_owned());
+    let message = if others.len() == 1 {
+        format!(
+            "{lines} lines ({} tokens) duplicated at {}",
+            clone.length,
+            places.join(", ")
+        )
+    } else {
+        format!(
+            "{lines} lines ({} tokens) duplicated in {} other places: {}",
+            clone.length,
+            others.len(),
+            places.join(", ")
+        )
+    };
     Some(Finding {
         rule: Rule::DuplicateCode,
         path: file_a.path.clone(),
@@ -291,17 +362,12 @@ fn finding_for(
             column,
         }),
         confidence: Confidence::High,
-        message: format!(
-            "{lines} lines ({} tokens) duplicated at {other_display}:{}",
-            clone.length,
-            b_start.get()
-        ),
+        message,
         detail: Detail::Duplicate {
             lines,
             tokens: u32::try_from(clone.length).unwrap_or(u32::MAX),
             end_line: a_end.get(),
-            other,
-            other_end_line: b_end.get(),
+            others,
         },
     })
 }
@@ -339,17 +405,39 @@ mod tests {
         let Detail::Duplicate {
             lines,
             tokens,
-            other,
+            others,
             ..
         } = &finding.detail
         else {
             panic!("expected a duplicate detail");
         };
         assert_eq!((*lines, *tokens), (5, 15));
-        assert_eq!(other.position.unwrap().line.get(), 1);
+        assert_eq!(others.len(), 1);
+        assert_eq!(others[0].location.position.unwrap().line.get(), 1);
         let duplication = report.summary.duplication.unwrap();
         assert_eq!(duplication.clones, 1);
         assert_eq!(duplication.duplicated_lines, 10);
+    }
+
+    #[test]
+    fn three_copies_form_one_group() {
+        let mut index = FakeIndex::new();
+        let a = index.add_file("/proj/pkg/a.py", "pkg.a");
+        let b = index.add_file("/proj/pkg/b.py", "pkg.b");
+        let c = index.add_file("/proj/pkg/c.py", "pkg.c");
+        for file in [a, b, c] {
+            index.set_tokens(file, BLOCK);
+        }
+
+        let report = analyze(&index, &options(10, 3));
+
+        assert_eq!(report.findings.len(), 1, "{:?}", report.findings);
+        let Detail::Duplicate { others, .. } = &report.findings[0].detail else {
+            panic!("expected a duplicate detail");
+        };
+        assert_eq!(others.len(), 2);
+        assert!(report.findings[0].message.contains("in 2 other places"));
+        assert_eq!(report.summary.duplication.unwrap().duplicated_lines, 15);
     }
 
     #[test]

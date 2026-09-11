@@ -18,14 +18,28 @@ use ruff_python_ast::{self as ast, Expr, Stmt};
 use ruff_source_file::LineIndex;
 use ruff_text_size::Ranged;
 
-/// The significant tokens of a module for clone detection: comments and
-/// blank lines are dropped, structure tokens are kept, and identifiers or
-/// literals are replaced by placeholders according to `mode`.
+/// The significant tokens of a module for clone detection.
+///
+/// Comments, blank lines, docstrings, and import statements are dropped,
+/// structure tokens are kept, and identifiers or literals are replaced by
+/// placeholders according to `mode`.
 #[must_use]
-pub fn clone_tokens(tokens: &Tokens, source: &str, mode: CloneMode) -> Vec<CloneToken> {
+pub fn clone_tokens(
+    tokens: &Tokens,
+    module: &ast::ModModule,
+    source: &str,
+    mode: CloneMode,
+) -> Vec<CloneToken> {
     let lines = LineIndex::from_source_text(source);
+    let mut skipped: Vec<ruff_text_size::TextRange> = Vec::new();
+    collect_boilerplate_ranges(&module.body, true, &mut skipped);
     tokens
         .iter()
+        .filter(|token| {
+            !skipped
+                .iter()
+                .any(|range| range.contains_range(token.range()))
+        })
         .filter(|token| {
             !matches!(
                 token.kind(),
@@ -59,6 +73,40 @@ pub fn clone_tokens(tokens: &Tokens, source: &str, mode: CloneMode) -> Vec<Clone
             })
         })
         .collect()
+}
+
+/// Ranges of docstrings and import statements: the parts every file repeats.
+fn collect_boilerplate_ranges(
+    body: &[Stmt],
+    docstring_position: bool,
+    out: &mut Vec<ruff_text_size::TextRange>,
+) {
+    for (index, statement) in body.iter().enumerate() {
+        match statement {
+            Stmt::Expr(expression) if index == 0 && docstring_position => {
+                if matches!(&*expression.value, Expr::StringLiteral(_)) {
+                    out.push(statement.range());
+                }
+            }
+            Stmt::Import(_) | Stmt::ImportFrom(_) => out.push(statement.range()),
+            Stmt::FunctionDef(function) => collect_boilerplate_ranges(&function.body, true, out),
+            Stmt::ClassDef(class) => collect_boilerplate_ranges(&class.body, true, out),
+            Stmt::If(if_statement) => {
+                collect_boilerplate_ranges(&if_statement.body, false, out);
+                for clause in &if_statement.elif_else_clauses {
+                    collect_boilerplate_ranges(&clause.body, false, out);
+                }
+            }
+            Stmt::Try(try_statement) => {
+                collect_boilerplate_ranges(&try_statement.body, false, out);
+                for handler in &try_statement.handlers {
+                    let ast::ExceptHandler::ExceptHandler(handler) = handler;
+                    collect_boilerplate_ranges(&handler.body, false, out);
+                }
+            }
+            _ => {}
+        }
+    }
 }
 
 /// Definitions at module or class level that can be removed as whole lines.
@@ -492,10 +540,23 @@ mod tests {
 
     fn texts(source: &str, mode: CloneMode) -> Vec<String> {
         let parsed = ruff_python_parser::parse_module(source).expect("fixture parses");
-        clone_tokens(parsed.tokens(), source, mode)
+        clone_tokens(parsed.tokens(), parsed.syntax(), source, mode)
             .into_iter()
             .map(|t| t.text)
             .collect()
+    }
+
+    #[test]
+    fn docstrings_and_imports_are_not_clone_material() {
+        let tokens = texts(
+            "\"\"\"Module doc.\"\"\"\nimport os\nfrom sys import argv\n\ndef f():\n    \"\"\"Doc.\"\"\"\n    return os\n",
+            CloneMode::Strict,
+        );
+        assert!(
+            !tokens.iter().any(|t| t == "import" || t.contains("doc")),
+            "{tokens:?}"
+        );
+        assert!(tokens.iter().any(|t| t == "return"));
     }
 
     #[test]
@@ -519,7 +580,12 @@ mod tests {
     #[test]
     fn tokens_carry_their_line() {
         let parsed = ruff_python_parser::parse_module("a\n\nb\n").expect("parses");
-        let tokens = clone_tokens(parsed.tokens(), "a\n\nb\n", CloneMode::Strict);
+        let tokens = clone_tokens(
+            parsed.tokens(),
+            parsed.syntax(),
+            "a\n\nb\n",
+            CloneMode::Strict,
+        );
         let lines: Vec<u32> = tokens.iter().map(|t| t.line.get()).collect();
         assert_eq!(lines, [1, 1, 3, 3]);
     }

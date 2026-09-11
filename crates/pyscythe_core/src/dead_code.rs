@@ -31,7 +31,10 @@ const ROOT_FILE_NAMES: &[&str] = &[
 const ROOT_DIRECTORY_PREFIXES: &[&str] =
     &["bench", "bin", "doc", "example", "sample", "script", "tool"];
 
-fn is_in_root_directory(file: &SourceFile) -> bool {
+/// Whether the file lives under a directory of things that are run or built
+/// directly (`docs`, `examples`, `benchmarks`, `scripts`, `bin`, `tools`).
+#[must_use]
+pub fn is_in_root_directory(file: &SourceFile) -> bool {
     file.path.parent().is_some_and(|dir| {
         dir.components().any(|component| {
             let name = component.as_str();
