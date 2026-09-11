@@ -2,7 +2,7 @@
 //! DAGs and tasks itself.
 
 use crate::keep::{KeepContext, KeepRule, PluginName};
-use crate::plugins::decorated_with;
+use crate::plugins::decorated_with_from;
 use crate::symbol::SymbolKind;
 
 pub(crate) struct Airflow;
@@ -22,7 +22,8 @@ impl KeepRule for Airflow {
         let is_task_decorator = symbol.has_decorator(|d| {
             let mut segments = d.name.segments();
             let first = segments.next().unwrap_or_default();
-            DECORATORS.contains(&first) || decorated_with(symbol, DECORATORS, false)
+            DECORATORS.contains(&first)
+                || decorated_with_from(symbol, DECORATORS, false, &["airflow"])
         });
         if is_task_decorator {
             return Some("Airflow DAG or task decorator");

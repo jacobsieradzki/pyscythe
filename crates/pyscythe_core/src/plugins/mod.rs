@@ -38,18 +38,24 @@ pub fn all() -> Vec<Box<dyn KeepRule>> {
     ]
 }
 
-/// Whether the symbol has a decorator whose last segment is one of `names`.
+/// Whether the symbol has a decorator whose last segment is one of `names`
+/// and, when ty resolved it, that comes from one of `packages`.
 ///
 /// When `require_receiver` is set the decorator must be an attribute access
 /// such as `router.get`, which rules out a bare function called `get`.
-pub(crate) fn decorated_with(
+/// Unresolved decorators still match by name, so a project without its
+/// dependencies installed keeps working. An empty `packages` list accepts any
+/// origin.
+pub(crate) fn decorated_with_from(
     symbol: &crate::symbol::Symbol,
     names: &[&str],
     require_receiver: bool,
+    packages: &[&str],
 ) -> bool {
     symbol.has_decorator(|decorator| {
         (!require_receiver || decorator.name.has_receiver())
             && names.contains(&decorator.name.last_segment())
+            && (packages.is_empty() || decorator.comes_from_any(packages))
     })
 }
 
@@ -132,10 +138,18 @@ pub(crate) mod testing {
             self
         }
 
+        /// A decorator ty resolved to a definition in `module`.
+        pub(crate) fn decorated_from(mut self, name: &str, module: &str) -> Self {
+            self.decorators
+                .push(Decorator::named(name).from_module(module));
+            self
+        }
+
         pub(crate) fn decorated_with_keywords(mut self, name: &str, keywords: &[&str]) -> Self {
             self.decorators.push(Decorator {
                 name: DottedName::new(name),
                 keywords: keywords.iter().map(|k| KeywordName::new(*k)).collect(),
+                module: None,
             });
             self
         }

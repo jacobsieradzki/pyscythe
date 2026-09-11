@@ -334,3 +334,24 @@ fn exclude_flag_adds_to_configured_exclusions() {
         "{report}"
     );
 }
+
+#[test]
+fn a_decorator_resolved_to_a_local_lookalike_does_not_count_as_a_framework_hook() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("lookalike"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let symbols: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["symbol"].as_str())
+        .collect();
+    assert_eq!(
+        symbols,
+        ["handler"],
+        "router.get resolves to pkg.local_router, not fastapi: {report}"
+    );
+}

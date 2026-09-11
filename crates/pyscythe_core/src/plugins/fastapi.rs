@@ -1,7 +1,10 @@
 //! `FastAPI` registers handlers through `app.<verb>` and `router.<verb>` decorators.
 
 use crate::keep::{KeepContext, KeepRule, PluginName};
-use crate::plugins::decorated_with;
+use crate::plugins::decorated_with_from;
+
+/// Where `FastAPI`'s decorators live; Starlette provides some of the underlying ones.
+const PACKAGES: &[&str] = &["fastapi", "starlette"];
 
 pub(crate) struct FastApi;
 
@@ -27,10 +30,10 @@ impl KeepRule for FastApi {
     }
 
     fn keep(&self, context: KeepContext<'_>) -> Option<&'static str> {
-        if decorated_with(context.symbol, ROUTE_DECORATORS, true) {
+        if decorated_with_from(context.symbol, ROUTE_DECORATORS, true, PACKAGES) {
             return Some("registered as a route handler");
         }
-        if decorated_with(context.symbol, HOOK_DECORATORS, true) {
+        if decorated_with_from(context.symbol, HOOK_DECORATORS, true, PACKAGES) {
             return Some("registered as an application hook");
         }
         None
@@ -82,6 +85,14 @@ mod tests {
                 .decorated("get")
                 .is_kept_by(&FastApi)
         );
+    }
+
+    #[test]
+    fn a_resolved_decorator_from_elsewhere_is_not_a_route() {
+        let lookalike = Case::function("handler").decorated_from("router.get", "pkg.local_router");
+        assert!(!lookalike.is_kept_by(&FastApi));
+        let real = Case::function("handler").decorated_from("router.get", "fastapi.routing");
+        assert!(real.is_kept_by(&FastApi));
     }
 
     #[test]

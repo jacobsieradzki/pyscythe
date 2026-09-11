@@ -2,7 +2,7 @@
 //! reference: typing overload stubs.
 
 use crate::keep::{KeepContext, KeepRule, PluginName};
-use crate::plugins::decorated_with;
+use crate::plugins::decorated_with_from;
 
 pub(crate) struct Python;
 
@@ -12,7 +12,13 @@ impl KeepRule for Python {
     }
 
     fn keep(&self, context: KeepContext<'_>) -> Option<&'static str> {
-        decorated_with(context.symbol, &["overload"], false).then_some("typing overload stub")
+        decorated_with_from(
+            context.symbol,
+            &["overload"],
+            false,
+            &["typing", "typing_extensions"],
+        )
+        .then_some("typing overload stub")
     }
 }
 

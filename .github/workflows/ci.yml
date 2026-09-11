@@ -1,0 +1,32 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo fmt --all --check
+      - run: cargo clippy --workspace --all-targets
+      - run: cargo test --workspace
+  dogfood:
+    runs-on: ubuntu-latest
+    needs: check
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo build --release -p pyscythe
+      - name: Run every analysis on the fixture projects
+        run: |
+          for fixture in crates/pyscythe_cli/tests/fixtures/*/; do
+            ./target/release/pyscythe dead-code "$fixture" --format github || true
+            ./target/release/pyscythe cycles "$fixture" --format github || true
+            ./target/release/pyscythe health "$fixture" --format github || true
+          done

@@ -116,16 +116,42 @@ pub struct Decorator {
     pub name: DottedName,
     /// Keyword argument names passed to the decorator call, if it was called.
     pub keywords: Vec<KeywordName>,
+    /// The module that defines the decorator, when it could be resolved:
+    /// `fastapi.routing` for `@router.get`, regardless of what `router` is called.
+    pub module: Option<crate::source::ModulePath>,
 }
 
 impl Decorator {
-    /// A decorator with no call arguments.
+    /// A decorator with no call arguments and no resolved origin.
     #[must_use]
     pub fn named(name: impl Into<String>) -> Self {
         Self {
             name: DottedName::new(name),
             keywords: Vec::new(),
+            module: None,
         }
+    }
+
+    /// The same decorator, known to come from `module`.
+    #[must_use]
+    pub fn from_module(mut self, module: impl Into<String>) -> Self {
+        self.module = Some(crate::source::ModulePath::new(module));
+        self
+    }
+
+    /// Whether the decorator is defined in `package` or a submodule of it, or
+    /// could not be resolved at all (in which case the name has to do).
+    #[must_use]
+    pub fn comes_from_any(&self, packages: &[&str]) -> bool {
+        self.module.as_ref().is_none_or(|module| {
+            packages.iter().any(|package| {
+                module.as_str() == *package
+                    || module
+                        .as_str()
+                        .strip_prefix(package)
+                        .is_some_and(|rest| rest.starts_with('.'))
+            })
+        })
     }
 
     /// Whether the decorator call passed a keyword argument named `keyword`.

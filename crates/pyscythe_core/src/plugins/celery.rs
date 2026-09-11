@@ -1,7 +1,7 @@
 //! Celery discovers tasks through decorators and wires signals with `.connect`.
 
 use crate::keep::{KeepContext, KeepRule, PluginName};
-use crate::plugins::decorated_with;
+use crate::plugins::decorated_with_from;
 use crate::symbol::SymbolKind;
 
 pub(crate) struct Celery;
@@ -26,12 +26,12 @@ impl KeepRule for Celery {
 
     fn keep(&self, context: KeepContext<'_>) -> Option<&'static str> {
         let symbol = context.symbol;
-        if decorated_with(symbol, TASK_WITH_RECEIVER, true)
-            || decorated_with(symbol, TASK_BARE, false)
+        if decorated_with_from(symbol, TASK_WITH_RECEIVER, true, &["celery"])
+            || decorated_with_from(symbol, TASK_BARE, false, &["celery"])
         {
             return Some("registered as a Celery task");
         }
-        if decorated_with(symbol, &["connect"], true) {
+        if decorated_with_from(symbol, &["connect"], true, &["celery"]) {
             return Some("connected to a signal");
         }
         if symbol.kind == SymbolKind::Method && TASK_METHODS.contains(&symbol.name.as_str()) {

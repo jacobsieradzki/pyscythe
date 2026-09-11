@@ -2,7 +2,9 @@
 //! `autouse` fixtures without anyone naming them.
 
 use crate::keep::{KeepContext, KeepRule, PluginName};
-use crate::plugins::decorated_with;
+use crate::plugins::decorated_with_from;
+
+const PACKAGES: &[&str] = &["pytest", "_pytest"];
 use crate::symbol::SymbolKind;
 
 pub(crate) struct Pytest;
@@ -63,7 +65,7 @@ impl KeepRule for Pytest {
         {
             return Some("autouse fixture");
         }
-        if decorated_with(symbol, &["hookimpl"], true) {
+        if decorated_with_from(symbol, &["hookimpl"], true, PACKAGES) {
             return Some("pytest hook implementation");
         }
         None

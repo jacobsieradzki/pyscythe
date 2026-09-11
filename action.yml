@@ -1,0 +1,57 @@
+name: pyscythe
+description: Codebase intelligence for Python. Dead code, import cycles, complexity, duplication, boundaries, and dependencies.
+branding:
+  icon: scissors
+  color: green
+inputs:
+  command:
+    description: Which analysis to run. One of dead-code, cycles, health, dupes, boundaries, deps.
+    default: dead-code
+  path:
+    description: Project root, or any path inside it.
+    default: .
+  args:
+    description: Extra arguments, for example "--min-confidence medium --baseline .pyscythe-baseline.json".
+    default: ""
+  since:
+    description: Only report findings in files changed since this git ref. Leave empty to report everything.
+    default: ""
+  format:
+    description: Output format. github writes workflow annotations; sarif writes a file you can upload to code scanning.
+    default: github
+  sarif-file:
+    description: Where to write the SARIF log when format is sarif.
+    default: pyscythe.sarif
+  version:
+    description: Git ref of pyscythe to install.
+    default: main
+runs:
+  using: composite
+  steps:
+    - name: Install Rust
+      uses: dtolnay/rust-toolchain@stable
+    - name: Cache the pyscythe binary
+      id: cache
+      uses: actions/cache@v4
+      with:
+        path: ~/.cargo/bin/pyscythe
+        key: pyscythe-${{ runner.os }}-${{ inputs.version }}
+    - name: Install pyscythe
+      if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: cargo install --locked --git https://github.com/jacobsieradzki/pyscythe --rev "${{ inputs.version }}" pyscythe
+    - name: Run pyscythe
+      shell: bash
+      run: |
+        set -o pipefail
+        since=""
+        if [ -n "${{ inputs.since }}" ]; then
+          git fetch --no-tags --depth=1 origin "${{ inputs.since }}" || true
+          since="--since ${{ inputs.since }}"
+        fi
+        if [ "${{ inputs.format }}" = "sarif" ]; then
+          pyscythe "${{ inputs.command }}" "${{ inputs.path }}" --format sarif $since ${{ inputs.args }} > "${{ inputs.sarif-file }}" || true
+          echo "Wrote ${{ inputs.sarif-file }}"
+        else
+          pyscythe "${{ inputs.command }}" "${{ inputs.path }}" --format "${{ inputs.format }}" $since ${{ inputs.args }}
+        fi

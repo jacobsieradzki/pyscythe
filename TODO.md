@@ -11,7 +11,7 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 - [x] Entry points from `[project.scripts]`, `[project.gui-scripts]`, `[project.entry-points]`. Still to do: `setup.py` / `setup.cfg` entry points.
 - [x] Framework plugins (convention-based, by decorator name, base class name, and file layout): FastAPI, Pydantic, Typer/Click, pytest, Flask, Airflow, Django, Celery, SQLAlchemy/SQLModel, Alembic.
 - [x] Base-class identity resolved through ty: plugins match qualified ancestors such as `sqlalchemy.orm.decl_api.DeclarativeBase` and only fall back to base-name text when a base cannot be resolved.
-- [ ] Decorator identity resolved through ty, so `from fastapi import APIRouter as R` and re-exported decorators are recognised.
+- [x] Decorator identity resolved through ty: each decorator carries the module that defines it, and plugins only accept decorators from their own packages (unresolved ones still match by name).
 - [x] String references: a literal `"pkg.module.attr"` or `"pkg.module:attr"` anywhere in the project counts as a use of the symbol and a deferred import of the module.
 - [x] Django `INSTALLED_APPS`, middleware, and context-processor strings are covered by dotted-string references.
 - [x] `--show-kept` lists what plugins suppressed and why; JSON always carries `kept`.
@@ -44,7 +44,7 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 
 - [x] `--format sarif|github|markdown` alongside `human` and `json`.
 - [x] `--format pr-comment`: Markdown with a `<!-- pyscythe:<analysis> -->` marker.
-- [ ] GitHub Action.
+- [x] Composite GitHub Action (`action.yml`) that installs from git and runs any analysis with annotations or SARIF; CI workflow for this repo.
 
 ## Deferred by decision
 

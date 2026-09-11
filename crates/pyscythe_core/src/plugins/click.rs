@@ -1,7 +1,9 @@
 //! Click and Typer register commands by decorating functions.
 
 use crate::keep::{KeepContext, KeepRule, PluginName};
-use crate::plugins::decorated_with;
+use crate::plugins::decorated_with_from;
+
+const PACKAGES: &[&str] = &["click", "typer"];
 
 pub(crate) struct Click;
 
@@ -14,8 +16,8 @@ impl KeepRule for Click {
     }
 
     fn keep(&self, context: KeepContext<'_>) -> Option<&'static str> {
-        (decorated_with(context.symbol, WITH_RECEIVER, true)
-            || decorated_with(context.symbol, BARE, false))
+        (decorated_with_from(context.symbol, WITH_RECEIVER, true, PACKAGES)
+            || decorated_with_from(context.symbol, BARE, false, PACKAGES))
         .then_some("registered as a CLI command")
     }
 }

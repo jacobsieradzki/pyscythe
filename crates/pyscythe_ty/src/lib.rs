@@ -233,7 +233,7 @@ fn module_of(db: &ProjectDatabase, file: File) -> Option<ModulePath> {
 }
 
 /// The dotted module name `file` resolves to on the search paths, if any.
-pub(crate) fn module_name_of(db: &dyn ty_project::Db, file: File) -> Option<String> {
+pub(crate) fn module_name_of(db: &dyn ty_python_semantic::Db, file: File) -> Option<String> {
     let program_file = db.program_file(file);
     let resolver_file = program_file.resolver_file(db);
     ty_module_resolver::file_to_module(db, resolver_file)
@@ -252,7 +252,8 @@ impl CodebaseIndex for TyIndex {
         let program_file = self.db.program_file(ty_file);
         let tree = document_symbols(&self.db, program_file).to_hierarchical();
         let module = parsed_module(&self.db, program_file.python_file(&self.db)).load(&self.db);
-        let declarations = declarations::declarations_by_name_range(module.syntax());
+        let model = ty_python_semantic::SemanticModel::new(&self.db, program_file);
+        let declarations = declarations::declarations_by_name_range(module.syntax(), &model);
 
         let mut collector = SymbolCollector {
             file,

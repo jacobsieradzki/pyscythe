@@ -2,7 +2,7 @@
 //! runs, and invokes event listeners registered through `event.listens_for`.
 
 use crate::keep::{KeepContext, KeepRule, PluginName};
-use crate::plugins::decorated_with;
+use crate::plugins::decorated_with_from;
 use crate::symbol::SymbolKind;
 
 pub(crate) struct SqlAlchemy;
@@ -35,12 +35,12 @@ impl KeepRule for SqlAlchemy {
                 return Some("ORM model registered with declarative metadata");
             }
         }
-        if decorated_with(symbol, &["listens_for"], true)
-            || decorated_with(symbol, &["listens_for"], false)
+        if decorated_with_from(symbol, &["listens_for"], true, &["sqlalchemy"])
+            || decorated_with_from(symbol, &["listens_for"], false, &["sqlalchemy"])
         {
             return Some("registered as a SQLAlchemy event listener");
         }
-        if decorated_with(symbol, METHOD_DECORATORS, false) {
+        if decorated_with_from(symbol, METHOD_DECORATORS, false, &["sqlalchemy"]) {
             return Some("SQLAlchemy mapped attribute or validator");
         }
         None

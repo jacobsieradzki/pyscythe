@@ -2,7 +2,7 @@
 //! commands, app configs, models, settings, URL confs, and signal receivers.
 
 use crate::keep::{KeepContext, KeepRule, PluginName};
-use crate::plugins::decorated_with;
+use crate::plugins::decorated_with_from;
 use crate::symbol::SymbolKind;
 
 pub(crate) struct Django;
@@ -152,10 +152,10 @@ impl KeepRule for Django {
         {
             return Some("Django hook method called by name");
         }
-        if decorated_with(symbol, &["register"], true) {
+        if decorated_with_from(symbol, &["register"], true, &["django"]) {
             return Some("registered with the Django admin");
         }
-        if decorated_with(symbol, &["receiver"], false) {
+        if decorated_with_from(symbol, &["receiver"], false, &["django"]) {
             return Some("connected as a Django signal receiver");
         }
         if (file_name == "tests.py" || context.is_under_directory("tests"))

@@ -1,7 +1,7 @@
 //! Pydantic calls validators and serializers itself; they are never referenced.
 
 use crate::keep::{KeepContext, KeepRule, PluginName};
-use crate::plugins::decorated_with;
+use crate::plugins::decorated_with_from;
 
 pub(crate) struct Pydantic;
 
@@ -21,7 +21,8 @@ impl KeepRule for Pydantic {
     }
 
     fn keep(&self, context: KeepContext<'_>) -> Option<&'static str> {
-        decorated_with(context.symbol, DECORATORS, false).then_some("invoked by Pydantic")
+        decorated_with_from(context.symbol, DECORATORS, false, &["pydantic"])
+            .then_some("invoked by Pydantic")
     }
 }
 

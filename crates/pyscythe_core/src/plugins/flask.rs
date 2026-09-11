@@ -2,7 +2,7 @@
 //! and a family of request lifecycle decorators.
 
 use crate::keep::{KeepContext, KeepRule, PluginName};
-use crate::plugins::decorated_with;
+use crate::plugins::decorated_with_from;
 use crate::symbol::SymbolKind;
 
 pub(crate) struct Flask;
@@ -54,7 +54,7 @@ impl KeepRule for Flask {
 
     fn keep(&self, context: KeepContext<'_>) -> Option<&'static str> {
         let symbol = context.symbol;
-        if decorated_with(symbol, DECORATORS, true) {
+        if decorated_with_from(symbol, DECORATORS, true, &["flask"]) {
             return Some("registered with a Flask app or blueprint");
         }
         if symbol.kind == SymbolKind::Method && VIEW_METHODS.contains(&symbol.name.as_str()) {

@@ -52,6 +52,16 @@ Exit codes: `0` clean, `1` findings, `2` error.
 
 ### In CI
 
+As a GitHub Action (the repository is private for now, so the runner needs access to it):
+
+```yaml
+- uses: jacobsieradzki/pyscythe@main
+  with:
+    command: dead-code
+    since: origin/${{ github.base_ref }}
+    args: --min-confidence medium
+```
+
 ```bash
 pyscythe dead-code --format github          # GitHub Actions annotations
 pyscythe dead-code --format sarif > out.sarif
