@@ -37,6 +37,8 @@ enum Command {
     Health(AnalysisArgs),
     /// Report duplicated code.
     Dupes(DupesArgs),
+    /// Report imports that cross the architecture boundaries in `[tool.pyscythe.boundaries]`.
+    Boundaries(AnalysisArgs),
 }
 
 #[derive(Debug, clap::Args)]
@@ -221,9 +223,10 @@ fn main() -> ExitCode {
 
 fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
     match cli.command {
-        Command::DeadCode(args) => run_analysis(&args, out, dead_code),
-        Command::Cycles(args) => run_analysis(&args, out, cycles),
-        Command::Health(args) => run_analysis(&args, out, health),
+        Command::DeadCode(args) => run_analysis(&args, out, |i, a, s| Ok(dead_code(i, a, s))),
+        Command::Cycles(args) => run_analysis(&args, out, |i, _, _| Ok(cycles(i))),
+        Command::Health(args) => run_analysis(&args, out, |i, _, _| Ok(health(i))),
+        Command::Boundaries(args) => run_analysis(&args, out, boundaries),
         Command::Dupes(args) => {
             let options = DupesOptions {
                 mode: args.mode.into(),
@@ -231,7 +234,7 @@ fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
                 min_lines: args.min_lines,
             };
             run_analysis(&args.common, out, move |index, _, _| {
-                pyscythe_core::dupes::analyze(index, &options)
+                Ok(pyscythe_core::dupes::analyze(index, &options))
             })
         }
     }
@@ -240,13 +243,13 @@ fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
 fn run_analysis(
     args: &AnalysisArgs,
     out: &mut impl std::io::Write,
-    analysis: impl FnOnce(&TyIndex, &AnalysisArgs, &ProjectSettings) -> Report,
+    analysis: impl FnOnce(&TyIndex, &AnalysisArgs, &ProjectSettings) -> anyhow::Result<Report>,
 ) -> anyhow::Result<Outcome> {
     let mut timings = Timings::start();
     let (index, settings) = open_project(args, &mut timings)?;
     index.prepare();
     timings.mark("reference index");
-    let mut report = analysis(&index, args, &settings);
+    let mut report = analysis(&index, args, &settings)?;
     timings.mark("analysis");
 
     let root = index.root().to_path_buf();
@@ -352,12 +355,25 @@ fn dead_code(index: &TyIndex, args: &AnalysisArgs, settings: &ProjectSettings) -
     pyscythe_core::dead_code::analyze(index, &policy, &settings.manifest, &settings.config)
 }
 
-fn cycles(index: &TyIndex, _args: &AnalysisArgs, _settings: &ProjectSettings) -> Report {
+fn cycles(index: &TyIndex) -> Report {
     pyscythe_core::cycles::analyze(index)
 }
 
-fn health(index: &TyIndex, _args: &AnalysisArgs, _settings: &ProjectSettings) -> Report {
+fn health(index: &TyIndex) -> Report {
     pyscythe_core::health::analyze(index)
+}
+
+fn boundaries(
+    index: &TyIndex,
+    _args: &AnalysisArgs,
+    settings: &ProjectSettings,
+) -> anyhow::Result<Report> {
+    let config = settings.config.boundaries.as_ref().ok_or_else(|| {
+        anyhow::anyhow!(
+            "no boundaries configured: add `layers`, `rules`, or a `preset` under [tool.pyscythe.boundaries] in pyproject.toml"
+        )
+    })?;
+    Ok(pyscythe_core::boundaries::analyze(index, config))
 }
 
 fn emit(

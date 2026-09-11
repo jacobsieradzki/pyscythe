@@ -37,6 +37,8 @@ pub enum ReportKind {
     Health,
     /// Duplicated code.
     Dupes,
+    /// Architecture boundary violations.
+    Boundaries,
 }
 
 /// How much of the project is duplicated, from the `dupes` analysis.

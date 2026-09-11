@@ -42,6 +42,9 @@ impl BaselineKey {
             Detail::Comment | Detail::Duplicate { .. } => {
                 (None, None, finding.position.map(|p| p.line.get()))
             }
+            Detail::Import { to_module, .. } => {
+                (Some(SymbolName::new(to_module.as_str())), None, None)
+            }
             Detail::Cycle { .. } | Detail::File => (None, None, None),
         };
         Self {

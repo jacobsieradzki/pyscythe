@@ -6,7 +6,7 @@ Built in Rust on the [ruff](https://github.com/astral-sh/ruff) and [ty](https://
 
 ## Status
 
-Early. `pyscythe dead-code` reports functions, classes, methods, properties, variables, and whole files that nothing refers to, resolving references semantically through ty (aliased imports, attribute access, re-exports). Dotted strings such as `"pkg.settings.DEBUG"` count as references. Methods that override an inherited member (walked through ty, so library bases count) are kept, and any attribute name accessed anywhere keeps same-named methods as a duck-typing safety net. `pyscythe cycles` reports import cycles that would bite at load time. `pyscythe health` measures cyclomatic and cognitive complexity per function, lists hotspots, and grades the codebase 0 to 100. `pyscythe dupes` finds copied code, including renamed copies, and reports the duplicated percentage. Built-in plugins keep symbols that frameworks reach by convention: pyproject entry points, pytest, FastAPI, Flask, Click/Typer, Celery, Airflow, Django, Alembic, SQLAlchemy/SQLModel, Pydantic. See [TODO.md](TODO.md) for the roadmap.
+Early. `pyscythe dead-code` reports functions, classes, methods, properties, variables, and whole files that nothing refers to, resolving references semantically through ty (aliased imports, attribute access, re-exports). Dotted strings such as `"pkg.settings.DEBUG"` count as references. Methods that override an inherited member (walked through ty, so library bases count) are kept, and any attribute name accessed anywhere keeps same-named methods as a duck-typing safety net. `pyscythe cycles` reports import cycles that would bite at load time. `pyscythe health` measures cyclomatic and cognitive complexity per function, lists hotspots, and grades the codebase 0 to 100. `pyscythe dupes` finds copied code, including renamed copies, and reports the duplicated percentage. `pyscythe boundaries` enforces layering rules from `pyproject.toml`. Built-in plugins keep symbols that frameworks reach by convention: pyproject entry points, pytest, FastAPI, Flask, Click/Typer, Celery, Airflow, Django, Alembic, SQLAlchemy/SQLModel, Pydantic. See [TODO.md](TODO.md) for the roadmap.
 
 ## Usage
 
@@ -29,6 +29,14 @@ exclude = ["scripts", "**/legacy_*.py"]   # left out of reports; their reference
 ignore-names = ["deprecated_*"]           # symbols never reported
 entry-points = ["pkg.worker:run"]         # extra roots beyond [project.scripts]
 include-notebooks = false
+
+[tool.pyscythe.boundaries]
+layers = ["app.api", ["app.services", "app.workers"], "app.domain"]  # top to bottom
+# or: preset = "hexagonal" with root = "app"
+
+[[tool.pyscythe.boundaries.rules]]
+from = "app.domain"
+deny = ["app.infra"]
 ```
 
 Exit codes: `0` clean, `1` findings, `2` error.

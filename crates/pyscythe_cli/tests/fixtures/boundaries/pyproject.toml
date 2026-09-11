@@ -1,0 +1,11 @@
+[project]
+name = "boundaries"
+version = "0.0.0"
+requires-python = ">=3.12"
+
+[tool.pyscythe.boundaries]
+layers = ["app.api", "app.services", "app.domain"]
+
+[[tool.pyscythe.boundaries.rules]]
+from = "app.domain"
+deny = ["app.util"]

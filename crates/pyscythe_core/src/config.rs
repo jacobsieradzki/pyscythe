@@ -135,6 +135,100 @@ pub enum NotebookPolicy {
     Include,
 }
 
+/// A module and everything beneath it: `app.domain` covers `app.domain.orders`.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ModulePrefix(String);
+
+impl ModulePrefix {
+    /// Wraps a dotted module path.
+    #[must_use]
+    pub fn new(dotted: impl Into<String>) -> Self {
+        Self(dotted.into())
+    }
+
+    /// The prefix as text.
+    #[must_use]
+    pub fn as_str(&self) -> &str {
+        &self.0
+    }
+
+    /// Whether `module` is this module or lives inside it.
+    #[must_use]
+    pub fn covers(&self, module: &str) -> bool {
+        module == self.0
+            || module
+                .strip_prefix(self.0.as_str())
+                .is_some_and(|rest| rest.starts_with('.'))
+    }
+}
+
+/// Whether imports under `if TYPE_CHECKING:` are held to boundary rules.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum TypeOnlyImports {
+    /// Type-only imports may cross boundaries; they never run.
+    Allow,
+    /// Type-only imports are checked like any other.
+    Check,
+}
+
+/// One explicit prohibition.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct DenyRule {
+    /// Modules the rule applies to.
+    pub from: ModulePrefix,
+    /// Modules they may not import.
+    pub deny: Vec<ModulePrefix>,
+}
+
+/// Architecture boundaries from `[tool.pyscythe.boundaries]`.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct BoundaryConfig {
+    /// Ranks from top to bottom; a module may import its own rank and any rank below.
+    /// Several prefixes may share a rank.
+    pub layers: Vec<Vec<ModulePrefix>>,
+    /// Explicit prohibitions, checked in addition to the layers.
+    pub rules: Vec<DenyRule>,
+    /// How type-only imports are treated.
+    pub type_only: TypeOnlyImports,
+}
+
+impl BoundaryConfig {
+    /// Whether anything is configured at all.
+    #[must_use]
+    pub const fn is_empty(&self) -> bool {
+        self.layers.is_empty() && self.rules.is_empty()
+    }
+
+    /// The hexagonal preset under `root`: adapters, api, and infrastructure on
+    /// top; application beneath; domain at the bottom importing nothing above it.
+    #[must_use]
+    pub fn hexagonal(root: &str) -> Self {
+        let under = |name: &str| ModulePrefix::new(format!("{root}.{name}"));
+        Self {
+            layers: vec![
+                vec![
+                    under("adapters"),
+                    under("api"),
+                    under("infrastructure"),
+                    under("infra"),
+                ],
+                vec![under("application"), under("services")],
+                vec![under("domain")],
+            ],
+            rules: Vec::new(),
+            type_only: TypeOnlyImports::Allow,
+        }
+    }
+
+    /// The rank of `module`, if it lives in a configured layer.
+    #[must_use]
+    pub fn rank_of(&self, module: &str) -> Option<usize> {
+        self.layers
+            .iter()
+            .position(|rank| rank.iter().any(|prefix| prefix.covers(module)))
+    }
+}
+
 /// Everything the user can tune.
 #[derive(Debug, Clone)]
 pub struct Config {
@@ -144,6 +238,8 @@ pub struct Config {
     pub ignore_names: NamePatterns,
     /// Whether notebooks are analysed.
     pub notebooks: NotebookPolicy,
+    /// Architecture boundaries, when configured.
+    pub boundaries: Option<BoundaryConfig>,
 }
 
 impl Default for Config {
@@ -152,6 +248,7 @@ impl Default for Config {
             exclude: PathPatterns::none(),
             ignore_names: NamePatterns::none(),
             notebooks: NotebookPolicy::Exclude,
+            boundaries: None,
         }
     }
 }
@@ -198,6 +295,24 @@ mod tests {
         assert!(patterns.matches("legacy_handler"));
         assert!(patterns.matches("parse_v1"));
         assert!(!patterns.matches("handler"));
+    }
+
+    #[test]
+    fn module_prefixes_cover_themselves_and_submodules_only() {
+        let prefix = super::ModulePrefix::new("app.domain");
+        assert!(prefix.covers("app.domain"));
+        assert!(prefix.covers("app.domain.orders"));
+        assert!(!prefix.covers("app.domainx"));
+        assert!(!prefix.covers("app"));
+    }
+
+    #[test]
+    fn hexagonal_preset_ranks_domain_lowest() {
+        let config = super::BoundaryConfig::hexagonal("app");
+        assert_eq!(config.rank_of("app.api.routes"), Some(0));
+        assert_eq!(config.rank_of("app.services.orders"), Some(1));
+        assert_eq!(config.rank_of("app.domain.order"), Some(2));
+        assert_eq!(config.rank_of("app.cli"), None);
     }
 
     #[test]

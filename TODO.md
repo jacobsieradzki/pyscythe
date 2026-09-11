@@ -34,7 +34,8 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 - [ ] Dupes: report clone groups (three or more occurrences) as one finding; ignore docstrings and import blocks by default.
 - [x] `pyscythe health`: cyclomatic and cognitive complexity per function (`pyscythe_metrics`, parser-only), hotspots over 10/15, length-weighted 0-100 score with A-F grade.
 - [ ] Health: thresholds in `[tool.pyscythe]`; per-file and per-package scores; maintainability index; trend against a baseline.
-- [ ] Architecture boundaries with layered / hexagonal presets.
+- [x] `pyscythe boundaries`: `layers` (ranks, several prefixes per rank), `rules` with `from`/`deny`, `preset = "hexagonal"` with `root`, type-only imports allowed unless `check-type-only`.
+- [ ] Boundaries: `pyscythe boundaries --suggest` to propose layers from the import graph; per-rule allow lists.
 - [ ] `fix --dry-run` for safe deletions.
 
 ## Output and integration

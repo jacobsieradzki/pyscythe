@@ -3,7 +3,10 @@
 use std::collections::BTreeMap;
 
 use camino::Utf8Path;
-use pyscythe_core::config::{Config, NamePatterns, NotebookPolicy, PathPatterns, PatternError};
+use pyscythe_core::config::{
+    BoundaryConfig, Config, DenyRule, ModulePrefix, NamePatterns, NotebookPolicy, PathPatterns,
+    PatternError, TypeOnlyImports,
+};
 use pyscythe_core::manifest::{EntryPoint, EntryPointKind, Manifest};
 use pyscythe_core::source::ModulePath;
 use pyscythe_core::symbol::SymbolName;
@@ -50,6 +53,53 @@ pub enum ParseError {
     /// A glob in `[tool.pyscythe]` did not parse.
     #[error(transparent)]
     Pattern(#[from] PatternError),
+    /// `[tool.pyscythe.boundaries]` is inconsistent.
+    #[error("invalid [tool.pyscythe.boundaries]: {0}")]
+    Boundaries(String),
+}
+
+fn boundary_config(table: BoundariesTable) -> Result<BoundaryConfig, ParseError> {
+    let mut config = match table.preset.as_deref() {
+        None => BoundaryConfig {
+            layers: Vec::new(),
+            rules: Vec::new(),
+            type_only: TypeOnlyImports::Allow,
+        },
+        Some("hexagonal") => {
+            let root = table.root.as_deref().ok_or_else(|| {
+                ParseError::Boundaries(
+                    "preset \"hexagonal\" needs `root`, the package it applies to".into(),
+                )
+            })?;
+            BoundaryConfig::hexagonal(root)
+        }
+        Some(other) => {
+            return Err(ParseError::Boundaries(format!(
+                "unknown preset \"{other}\"; only \"hexagonal\" is built in"
+            )));
+        }
+    };
+    config
+        .layers
+        .extend(table.layers.into_iter().map(|rank| match rank {
+            LayerEntry::One(name) => vec![ModulePrefix::new(name)],
+            LayerEntry::Many(names) => names.into_iter().map(ModulePrefix::new).collect(),
+        }));
+    config
+        .rules
+        .extend(table.rules.into_iter().map(|rule| DenyRule {
+            from: ModulePrefix::new(rule.from),
+            deny: rule.deny.into_iter().map(ModulePrefix::new).collect(),
+        }));
+    if table.check_type_only {
+        config.type_only = TypeOnlyImports::Check;
+    }
+    if config.is_empty() {
+        return Err(ParseError::Boundaries(
+            "configure `layers`, `rules`, or a `preset`".into(),
+        ));
+    }
+    Ok(config)
 }
 
 /// Loads settings for the project rooted at `root`.
@@ -104,6 +154,7 @@ pub fn parse(text: &str) -> Result<ProjectSettings, ParseError> {
         } else {
             NotebookPolicy::Exclude
         },
+        boundaries: tool.boundaries.map(boundary_config).transpose()?,
     };
 
     Ok(ProjectSettings {
@@ -165,6 +216,41 @@ struct PyscytheTable {
     /// Analyse notebook cells like modules.
     #[serde(default)]
     include_notebooks: bool,
+    /// Architecture boundaries.
+    boundaries: Option<BoundariesTable>,
+}
+
+/// `[tool.pyscythe.boundaries]`.
+#[derive(Debug, Default, Deserialize)]
+#[serde(rename_all = "kebab-case", deny_unknown_fields)]
+struct BoundariesTable {
+    /// A built-in shape: currently `hexagonal`.
+    preset: Option<String>,
+    /// The package a preset applies to.
+    root: Option<String>,
+    /// Ranks from top to bottom; each entry is one prefix or several sharing a rank.
+    #[serde(default)]
+    layers: Vec<LayerEntry>,
+    /// Explicit prohibitions.
+    #[serde(default)]
+    rules: Vec<RuleTable>,
+    /// Hold `if TYPE_CHECKING:` imports to the rules too.
+    #[serde(default)]
+    check_type_only: bool,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(untagged)]
+enum LayerEntry {
+    One(String),
+    Many(Vec<String>),
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "kebab-case", deny_unknown_fields)]
+struct RuleTable {
+    from: String,
+    deny: Vec<String>,
 }
 
 #[derive(Debug, Default, Deserialize)]
@@ -181,7 +267,7 @@ struct Project {
 #[cfg(test)]
 mod tests {
     use super::parse;
-    use pyscythe_core::config::NotebookPolicy;
+    use pyscythe_core::config::{NotebookPolicy, TypeOnlyImports};
     use pyscythe_core::manifest::EntryPointKind;
     use pyscythe_core::symbol::SymbolName;
 
@@ -276,6 +362,45 @@ include-notebooks = true
             })
             .collect();
         assert_eq!(roots, [("pkg.worker", Some("run")), ("pkg.plugin", None)]);
+    }
+
+    #[test]
+    fn reads_boundaries_with_layers_rules_and_presets() {
+        let settings = parse(
+            r#"
+[tool.pyscythe.boundaries]
+layers = ["app.api", ["app.services", "app.workers"], "app.domain"]
+check-type-only = true
+
+[[tool.pyscythe.boundaries.rules]]
+from = "app.domain"
+deny = ["app.infra"]
+"#,
+        )
+        .unwrap();
+        let boundaries = settings.config.boundaries.expect("boundaries");
+        assert_eq!(boundaries.layers.len(), 3);
+        assert_eq!(boundaries.rank_of("app.workers.jobs"), Some(1));
+        assert_eq!(boundaries.rules.len(), 1);
+        assert_eq!(boundaries.type_only, TypeOnlyImports::Check);
+
+        let preset =
+            parse("[tool.pyscythe.boundaries]\npreset = \"hexagonal\"\nroot = \"app\"\n").unwrap();
+        assert_eq!(
+            preset
+                .config
+                .boundaries
+                .expect("preset")
+                .rank_of("app.domain.x"),
+            Some(2)
+        );
+    }
+
+    #[test]
+    fn empty_or_unknown_boundaries_are_errors() {
+        assert!(parse("[tool.pyscythe.boundaries]\n").is_err());
+        assert!(parse("[tool.pyscythe.boundaries]\npreset = \"onion\"\nroot = \"app\"\n").is_err());
+        assert!(parse("[tool.pyscythe.boundaries]\npreset = \"hexagonal\"\n").is_err());
     }
 
     #[test]

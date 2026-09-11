@@ -30,6 +30,8 @@ pub enum Rule {
     ComplexFunction,
     /// A run of tokens that also appears elsewhere.
     DuplicateCode,
+    /// An import that crosses a configured architecture boundary.
+    BoundaryViolation,
 }
 
 impl Rule {
@@ -51,7 +53,7 @@ impl Rule {
     }
 
     /// Every rule, in a stable order for tooling metadata.
-    pub const ALL: [Self; 9] = [
+    pub const ALL: [Self; 10] = [
         Self::UnusedFunction,
         Self::UnusedClass,
         Self::UnusedVariable,
@@ -61,6 +63,7 @@ impl Rule {
         Self::UnusedSuppression,
         Self::ComplexFunction,
         Self::DuplicateCode,
+        Self::BoundaryViolation,
     ];
 
     /// The kebab-case identifier used in JSON, SARIF, and suppression comments.
@@ -76,6 +79,7 @@ impl Rule {
             Self::UnusedSuppression => "unused-suppression",
             Self::ComplexFunction => "complex-function",
             Self::DuplicateCode => "duplicate-code",
+            Self::BoundaryViolation => "boundary-violation",
         }
     }
 
@@ -102,6 +106,7 @@ impl Rule {
                 "A function whose cyclomatic or cognitive complexity is over the threshold."
             }
             Self::DuplicateCode => "A run of code that also appears elsewhere in the project.",
+            Self::BoundaryViolation => "An import that crosses a configured architecture boundary.",
         }
     }
 
@@ -117,6 +122,7 @@ impl Rule {
             Self::CircularImport => "import cycle",
             Self::UnusedSuppression => "suppression comment",
             Self::DuplicateCode => "duplicate",
+            Self::BoundaryViolation => "boundary violation",
         }
     }
 }
@@ -178,6 +184,15 @@ pub enum Detail {
         /// Last line of the other occurrence.
         other_end_line: u32,
     },
+    /// An import edge that breaks a rule.
+    Import {
+        /// The importing module.
+        from_module: ModulePath,
+        /// The imported module.
+        to_module: ModulePath,
+        /// The rule that forbids it, in words.
+        rule_text: String,
+    },
     /// Measurements of a function.
     Metrics {
         /// The function, qualified by its class for methods.
@@ -225,7 +240,8 @@ impl Finding {
             | Detail::File
             | Detail::Comment
             | Detail::Metrics { .. }
-            | Detail::Duplicate { .. } => None,
+            | Detail::Duplicate { .. }
+            | Detail::Import { .. } => None,
         }
     }
 }

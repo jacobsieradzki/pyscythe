@@ -5,6 +5,7 @@
 //! driven by a real adapter in production and by an in-memory fake in tests.
 
 pub mod baseline;
+pub mod boundaries;
 pub mod config;
 pub mod cycles;
 pub mod dead_code;
