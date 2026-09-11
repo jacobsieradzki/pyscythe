@@ -58,6 +58,9 @@ pub struct SourceFile {
     pub id: FileId,
     /// Absolute path on disk.
     pub path: Utf8PathBuf,
+    /// Path relative to the project root; directory heuristics look at this,
+    /// never at the absolute path, so a project under `~/Documents` is not "docs".
+    pub relative_path: Utf8PathBuf,
     /// The module this file resolves to, when it lives on a search path.
     pub module: Option<ModulePath>,
     /// Whether the file has a `__main__` guard.

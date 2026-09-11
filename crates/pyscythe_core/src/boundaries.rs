@@ -130,6 +130,18 @@ impl Suggestion {
 pub fn suggest(index: &dyn CodebaseIndex) -> Suggestion {
     let files = index.files();
     let package_of = |file: &crate::source::SourceFile| -> Option<ModulePrefix> {
+        // Tests, docs, examples, and entry scripts are consumers of the
+        // architecture, not layers in it.
+        if crate::dead_code::is_in_root_directory(file)
+            || crate::dead_code::is_test_file(file.file_name())
+            || matches!(file.file_name(), "__main__.py" | "conftest.py")
+            || file
+                .relative_path
+                .components()
+                .any(|c| matches!(c.as_str(), "tests" | "test"))
+        {
+            return None;
+        }
         let module = file.module.as_ref()?;
         let mut segments = module.as_str().split('.');
         let (first, second) = (segments.next()?, segments.next()?);
@@ -379,6 +391,23 @@ mod tests {
                 .to_toml()
                 .contains("[\"app.services\", \"app.workers\"],")
         );
+    }
+
+    #[test]
+    fn tests_docs_and_entry_scripts_do_not_become_layers() {
+        let mut index = FakeIndex::new();
+        let api = index.add_file("/p/app/api/routes.py", "app.api.routes");
+        let test = index.add_file("/p/tests/test_api.py", "tests.test_api");
+        let main = index.add_file("/p/app/__main__.py", "app.__main__");
+        let docs = index.add_file("/p/docs/conf.py", "docs.conf");
+        index.add_import(test, api, ImportKind::Runtime);
+        index.add_import(main, api, ImportKind::Runtime);
+        index.add_import(docs, api, ImportKind::Runtime);
+
+        let suggestion = super::suggest(&index);
+
+        assert_eq!(suggestion.layers.len(), 1);
+        assert_eq!(suggestion.layers[0][0].as_str(), "app.api");
     }
 
     #[test]

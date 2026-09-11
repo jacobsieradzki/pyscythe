@@ -35,7 +35,7 @@ const ROOT_DIRECTORY_PREFIXES: &[&str] =
 /// directly (`docs`, `examples`, `benchmarks`, `scripts`, `bin`, `tools`).
 #[must_use]
 pub fn is_in_root_directory(file: &SourceFile) -> bool {
-    file.path.parent().is_some_and(|dir| {
+    file.relative_path.parent().is_some_and(|dir| {
         dir.components().any(|component| {
             let name = component.as_str();
             ROOT_DIRECTORY_PREFIXES
@@ -330,7 +330,9 @@ fn is_root_file(
             .is_some_and(|module| manifest.entry_points.iter().any(|ep| &ep.module == module))
 }
 
-fn is_test_file(name: &str) -> bool {
+/// Whether a file name follows pytest's `test_*.py` / `*_test.py` convention.
+#[must_use]
+pub fn is_test_file(name: &str) -> bool {
     name.strip_suffix(".py")
         .is_some_and(|stem| stem.starts_with("test_") || stem.ends_with("_test"))
 }

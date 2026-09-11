@@ -51,9 +51,11 @@ impl FakeIndex {
 
     fn push_file(&mut self, path: &str, module: &str, main_guard: MainGuard) -> FileId {
         let id = FileId::new(u32::try_from(self.files.len()).expect("fewer than u32::MAX files"));
+        let relative_path: Utf8PathBuf = Utf8PathBuf::from(path).components().skip(2).collect();
         self.files.push(SourceFile {
             id,
             path: Utf8PathBuf::from(path),
+            relative_path,
             module: Some(ModulePath::new(module)),
             main_guard,
             exports: Vec::new(),

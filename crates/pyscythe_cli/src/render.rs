@@ -112,7 +112,8 @@ fn health_summary(
     let worst: Vec<&pyscythe_core::report::FileHealth> = health
         .worst_files
         .iter()
-        .filter(|file| file.score < 100 || file.maintainability < 65)
+        // radon ranks maintainability B below 20 and C below 10.
+        .filter(|file| file.score < 100 || file.maintainability < 20)
         .take(5)
         .collect();
     if !worst.is_empty() {

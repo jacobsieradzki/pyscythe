@@ -184,9 +184,14 @@ impl TyIndex {
             ids.insert(*file, id);
             let program_file = db.program_file(*file);
             let module = parsed_module(db, program_file.python_file(db)).load(db);
+            let path = Utf8PathBuf::from(file.path(db).to_string());
+            let relative_path = path
+                .strip_prefix(&project_root)
+                .map_or_else(|_| path.clone(), Utf8Path::to_path_buf);
             sources.push(SourceFile {
                 id,
-                path: Utf8PathBuf::from(file.path(db).to_string()),
+                path,
+                relative_path,
                 module: module_of(db, *file),
                 main_guard: if declarations::has_main_guard(module.syntax()) {
                     MainGuard::Present

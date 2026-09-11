@@ -103,11 +103,11 @@ impl KeepContext<'_> {
         self.file.file_name()
     }
 
-    /// Whether any directory on the file's path is named `name`.
+    /// Whether any directory on the file's project-relative path is named `name`.
     #[must_use]
     pub fn is_under_directory(&self, name: &str) -> bool {
         self.file
-            .path
+            .relative_path
             .parent()
             .is_some_and(|dir| dir.components().any(|c| c.as_str() == name))
     }
@@ -117,7 +117,7 @@ impl KeepContext<'_> {
     #[must_use]
     pub fn is_under_directory_starting_with(&self, prefix: &str) -> bool {
         self.file
-            .path
+            .relative_path
             .parent()
             .is_some_and(|dir| dir.components().any(|c| c.as_str().starts_with(prefix)))
     }
@@ -126,7 +126,7 @@ impl KeepContext<'_> {
     #[must_use]
     pub fn parent_directory_is(&self, name: &str) -> bool {
         self.file
-            .path
+            .relative_path
             .parent()
             .and_then(|dir| dir.file_name())
             .is_some_and(|dir| dir == name)

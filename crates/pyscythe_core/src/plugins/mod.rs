@@ -179,6 +179,7 @@ pub(crate) mod testing {
             let file = SourceFile {
                 id: FileId::new(0),
                 path: Utf8PathBuf::from(self.path),
+                relative_path: Utf8PathBuf::from(self.path).components().skip(2).collect(),
                 module: self.module.map(ModulePath::new),
                 main_guard: MainGuard::Absent,
                 exports: Vec::new(),

@@ -144,6 +144,21 @@ pub struct HealthSummary {
     pub max_cognitive: u32,
     /// The files with the lowest scores, worst first, at most ten.
     pub worst_files: Vec<FileHealth>,
+    /// Every second-level package (`app.api`), worst first.
+    pub packages: Vec<PackageHealth>,
+}
+
+/// A package's share of the health picture.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct PackageHealth {
+    /// The package, such as `app.services`.
+    pub package: ModulePath,
+    /// Length-weighted score across its functions.
+    pub score: u8,
+    /// Functions in the package.
+    pub functions: usize,
+    /// Functions over a hotspot threshold.
+    pub hotspots: usize,
 }
 
 /// Counts that summarise a run.

@@ -9,8 +9,8 @@ use crate::config::HealthThresholds;
 use crate::finding::{Confidence, Detail, Finding, Rule};
 use crate::index::CodebaseIndex;
 use crate::metrics::FunctionMetrics;
-use crate::report::{FileHealth, Grade, HealthSummary, Report, ReportKind, Summary};
-use crate::source::SourceFile;
+use crate::report::{FileHealth, Grade, HealthSummary, PackageHealth, Report, ReportKind, Summary};
+use crate::source::{ModulePath, SourceFile};
 use crate::tokens::{CloneMode, CloneToken};
 
 /// Runs the health analysis over every file in `index`.
@@ -23,6 +23,8 @@ pub fn analyze(index: &dyn CodebaseIndex, thresholds: &HealthThresholds) -> Repo
     let mut max_cyclomatic = 0;
     let mut max_cognitive = 0;
     let mut files_health = Vec::new();
+    let mut package_totals: std::collections::BTreeMap<String, (u64, u64, usize, usize)> =
+        std::collections::BTreeMap::new();
 
     for file in index.files() {
         let metrics = index.function_metrics(file.id);
@@ -45,6 +47,15 @@ pub fn analyze(index: &dyn CodebaseIndex, thresholds: &HealthThresholds) -> Repo
         }
         weighted_penalty += file_penalty;
         total_weight += file_weight;
+        if let Some(package) = package_of(file)
+            && !metrics.is_empty()
+        {
+            let totals = package_totals.entry(package).or_default();
+            totals.0 += file_penalty;
+            totals.1 += file_weight;
+            totals.2 += metrics.len();
+            totals.3 += hotspots;
+        }
         if !metrics.is_empty() {
             files_health.push(FileHealth {
                 path: file.path.clone(),
@@ -75,6 +86,19 @@ pub fn analyze(index: &dyn CodebaseIndex, thresholds: &HealthThresholds) -> Repo
     });
     files_health.truncate(10);
 
+    let mut packages: Vec<PackageHealth> = package_totals
+        .into_iter()
+        .map(
+            |(package, (penalty, weight, functions, hotspots))| PackageHealth {
+                package: ModulePath::new(package),
+                score: score_from(penalty, weight),
+                functions,
+                hotspots,
+            },
+        )
+        .collect();
+    packages.sort_by(|a, b| a.score.cmp(&b.score).then(a.package.cmp(&b.package)));
+
     let score = score_from(weighted_penalty, total_weight);
 
     Report {
@@ -96,12 +120,21 @@ pub fn analyze(index: &dyn CodebaseIndex, thresholds: &HealthThresholds) -> Repo
                 max_cyclomatic,
                 max_cognitive,
                 worst_files: files_health,
+                packages,
             }),
             duplication: None,
         },
         findings,
         kept: Vec::new(),
     }
+}
+
+/// The second-level package a file belongs to, such as `app.services`.
+fn package_of(file: &SourceFile) -> Option<String> {
+    let module = file.module.as_ref()?;
+    let mut segments = module.as_str().split('.');
+    let (first, second) = (segments.next()?, segments.next()?);
+    Some(format!("{first}.{second}"))
 }
 
 fn hotspot_finding(
@@ -253,6 +286,9 @@ mod tests {
             ]
         );
         let health = report.summary.health.as_ref().expect("health summary");
+        assert_eq!(health.packages.len(), 1);
+        assert_eq!(health.packages[0].package.as_str(), "pkg.a");
+        assert_eq!(health.packages[0].hotspots, 2);
         assert!(health.score < 60, "score was {}", health.score);
         assert_eq!(health.grade, Grade::F);
         assert_eq!((health.max_cyclomatic, health.max_cognitive), (30, 60));
