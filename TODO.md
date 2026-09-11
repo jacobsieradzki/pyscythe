@@ -4,7 +4,7 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 
 ## Dead code
 
-- [ ] Unused imports and re-exports (`from x import y` never used, `__all__` entries that do not exist).
+- [x] Unused imports and phantom `__all__` entries: left to ruff (F401, F822), which every project already runs. Names in `__all__` are treated as exports and kept.
 - [x] Unused methods and properties. Resolved references plus a textual attribute-name safety net for duck typing; overrides of inherited members (walked through ty, so stdlib and third-party bases count) are kept; `.setter`/`.deleter` halves are not candidates. Class attributes and instance fields are still to do.
 - [x] Unused files: modules nothing imports (including by dotted string) and nothing runs. Roots: `__main__` guard, package/test/conftest/manage/wsgi/asgi files, entry-point modules, files with plugin-kept symbols.
 - [x] `pyscythe deps`: unused declared dependencies, imported-but-undeclared distributions (owner read from site-packages `RECORD`/`top_level.txt`), and unresolved imports; PEP 508 names, optional-dependencies, PEP 735 groups with include-group; tool distributions and `[tool.pyscythe.deps] ignore` are exempt; typeshed-bundled stubs such as typing_extensions still count as dependencies.

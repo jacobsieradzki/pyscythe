@@ -56,8 +56,16 @@ impl FakeIndex {
             path: Utf8PathBuf::from(path),
             module: Some(ModulePath::new(module)),
             main_guard,
+            exports: Vec::new(),
         });
         id
+    }
+
+    /// Sets the names listed in `file`'s `__all__`.
+    pub(crate) fn set_exports(&mut self, file: FileId, names: &[&str]) {
+        if let Some(source) = self.files.iter_mut().find(|f| f.id == file) {
+            source.exports = names.iter().map(|n| SymbolName::new(*n)).collect();
+        }
     }
 
     pub(crate) fn add_import(&mut self, from: FileId, to: FileId, kind: ImportKind) {

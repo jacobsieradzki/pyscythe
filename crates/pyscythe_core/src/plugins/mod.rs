@@ -181,6 +181,7 @@ pub(crate) mod testing {
                 path: Utf8PathBuf::from(self.path),
                 module: self.module.map(ModulePath::new),
                 main_guard: MainGuard::Absent,
+                exports: Vec::new(),
             };
             let symbol = Symbol {
                 id: SymbolId::new(file.id, 0),
@@ -205,6 +206,7 @@ pub(crate) mod testing {
                 file: &file,
                 manifest: &self.manifest,
                 ancestry: &self.ancestry,
+                public_modules: &[],
             })
         }
 

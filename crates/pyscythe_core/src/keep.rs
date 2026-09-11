@@ -6,6 +6,7 @@
 
 use serde::Serialize;
 
+use crate::config::ModulePrefix;
 use crate::index::Ancestry;
 use crate::manifest::Manifest;
 use crate::source::SourceFile;
@@ -82,6 +83,8 @@ pub struct KeepContext<'a> {
     pub manifest: &'a Manifest,
     /// Resolved base classes, for class symbols.
     pub ancestry: &'a Ancestry,
+    /// Modules whose public names are API.
+    pub public_modules: &'a [ModulePrefix],
 }
 
 impl KeepContext<'_> {
@@ -107,6 +110,16 @@ impl KeepContext<'_> {
             .path
             .parent()
             .is_some_and(|dir| dir.components().any(|c| c.as_str() == name))
+    }
+
+    /// Whether any directory on the file's path starts with `prefix`, such as
+    /// `docs` or `docs_src` for `doc`.
+    #[must_use]
+    pub fn is_under_directory_starting_with(&self, prefix: &str) -> bool {
+        self.file
+            .path
+            .parent()
+            .is_some_and(|dir| dir.components().any(|c| c.as_str().starts_with(prefix)))
     }
 
     /// Whether the immediate parent directory is named `name`.

@@ -204,12 +204,17 @@ fn unused_finding(dependency: &crate::manifest::Dependency, pyproject: &Utf8Path
         DependencyGroup::Optional(name) => format!(" (optional-dependencies.{name})"),
         DependencyGroup::Group(name) => format!(" (dependency-groups.{name})"),
     };
+    // Development groups hold runners and plugins that are rarely imported.
+    let confidence = match dependency.group {
+        DependencyGroup::Main | DependencyGroup::Optional(_) => Confidence::Medium,
+        DependencyGroup::Group(_) => Confidence::Low,
+    };
     Finding {
         rule: Rule::UnusedDependency,
         path: pyproject.to_path_buf(),
         module: None,
         position: None,
-        confidence: Confidence::Medium,
+        confidence,
         message: format!(
             "dependency `{}`{group} is never imported",
             dependency.name.as_str()

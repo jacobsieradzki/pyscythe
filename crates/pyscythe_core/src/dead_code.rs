@@ -18,6 +18,7 @@ const ROOT_FILE_NAMES: &[&str] = &[
     "__init__.py",
     "__main__.py",
     "conftest.py",
+    "conf.py",
     "setup.py",
     "manage.py",
     "wsgi.py",
@@ -25,6 +26,21 @@ const ROOT_FILE_NAMES: &[&str] = &[
     "noxfile.py",
     "tasks.py",
 ];
+
+/// Directories whose files are run directly or built by tooling, never imported.
+const ROOT_DIRECTORY_PREFIXES: &[&str] =
+    &["bench", "bin", "doc", "example", "sample", "script", "tool"];
+
+fn is_in_root_directory(file: &SourceFile) -> bool {
+    file.path.parent().is_some_and(|dir| {
+        dir.components().any(|component| {
+            let name = component.as_str();
+            ROOT_DIRECTORY_PREFIXES
+                .iter()
+                .any(|prefix| name.starts_with(prefix))
+        })
+    })
+}
 
 /// Runs the dead-code analysis over every file in `index`.
 ///
@@ -184,6 +200,7 @@ impl SymbolCheck<'_> {
             file: self.file,
             manifest: self.manifest,
             ancestry: &ancestry,
+            public_modules: &self.config.public_modules,
         };
         let reason = self
             .policy
@@ -301,6 +318,7 @@ fn is_root_file(
     let name = file.file_name();
     file.main_guard == MainGuard::Present
         || ROOT_FILE_NAMES.contains(&name)
+        || is_in_root_directory(file)
         || is_test_file(name)
         || files_with_kept_symbols.contains(&file.id)
         || file
@@ -848,6 +866,52 @@ mod tests {
         let report = analyze(&index, &Policy::none(), &manifest, &Config::default());
 
         assert!(report.is_clean(), "{:?}", report.findings);
+    }
+
+    #[test]
+    fn documentation_example_and_script_directories_are_roots() {
+        let mut index = FakeIndex::new();
+        index.add_file("/proj/docs/conf.py", "docs.conf");
+        index.add_file("/proj/examples/demo.py", "examples.demo");
+        index.add_file("/proj/benchmarks/bench_it.py", "benchmarks.bench_it");
+        index.add_file("/proj/docs_src/tutorial/one.py", "docs_src.tutorial.one");
+        index.add_file("/proj/pkg/orphan.py", "pkg.orphan");
+
+        let report = analyze_without_plugins(&index);
+
+        let files: Vec<_> = report
+            .findings
+            .iter()
+            .filter_map(|f| f.module.as_ref())
+            .map(ModulePath::as_str)
+            .collect();
+        assert_eq!(files, ["pkg.orphan"]);
+    }
+
+    #[test]
+    fn names_in_dunder_all_and_public_module_names_are_api() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/lib/api.py", "lib.api");
+        index.add_symbol(file, "exported", SymbolKind::Function);
+        index.add_symbol(file, "also_public", SymbolKind::Function);
+        index.add_symbol(file, "_private", SymbolKind::Function);
+        index.set_exports(file, &["exported"]);
+        import_from_elsewhere(&mut index, file);
+
+        let plain = analyze(
+            &index,
+            &Policy::builtin(),
+            &Manifest::empty(),
+            &Config::default(),
+        );
+        assert_eq!(symbol_names(&plain), ["also_public", "_private"]);
+
+        let config = Config {
+            public_modules: vec![crate::config::ModulePrefix::new("lib")],
+            ..Config::default()
+        };
+        let library = analyze(&index, &Policy::builtin(), &Manifest::empty(), &config);
+        assert_eq!(symbol_names(&library), ["_private"]);
     }
 
     #[test]

@@ -73,10 +73,14 @@ impl Graph {
             .files()
             .iter()
             .map(|file| {
+                // Several statements may import the same module; one edge per target
+                // keeps every cycle from being reported once per statement.
+                let mut seen = std::collections::BTreeSet::new();
                 let imports = index
                     .imports(file.id)
                     .into_iter()
                     .filter(|import| counts(import.kind) && import.target != file.id)
+                    .filter(|import| seen.insert(import.target))
                     .collect();
                 (file.id, imports)
             })
@@ -374,6 +378,19 @@ mod tests {
             },
         );
         assert_eq!(with_deferred.findings.len(), 1);
+    }
+
+    #[test]
+    fn several_imports_of_the_same_module_report_one_cycle() {
+        let mut index = FakeIndex::new();
+        let a = index.add_file("/proj/pkg/a.py", "pkg.a");
+        let b = index.add_file("/proj/pkg/b.py", "pkg.b");
+        index.add_import(a, b, ImportKind::Runtime);
+        index.add_import(a, b, ImportKind::Runtime);
+        index.add_import(b, a, ImportKind::Runtime);
+        index.add_import(b, a, ImportKind::Runtime);
+
+        assert_eq!(analyze(&index, CycleOptions::default()).findings.len(), 1);
     }
 
     #[test]

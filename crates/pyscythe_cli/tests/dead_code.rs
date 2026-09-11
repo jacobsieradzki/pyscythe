@@ -355,3 +355,53 @@ fn a_decorator_resolved_to_a_local_lookalike_does_not_count_as_a_framework_hook(
         "router.get resolves to pkg.local_router, not fastapi: {report}"
     );
 }
+
+#[test]
+fn libraries_keep_their_api_stubs_docs_and_fixtures_are_not_dead() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json", "--show-kept"])
+        .arg(fixture("library"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let symbols: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["symbol"].as_str())
+        .collect();
+    assert_eq!(symbols, ["_private_helper"], "{report}");
+    let unused_file_reported = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .any(|f| f["rule"] == "unused-file");
+    assert!(
+        !unused_file_reported,
+        "docs/conf.py and stubs are not unused files: {report}"
+    );
+    let kept: Vec<(&str, &str)> = report["kept"]
+        .as_array()
+        .expect("kept")
+        .iter()
+        .map(|k| {
+            (
+                k["symbol"].as_str().unwrap_or(""),
+                k["why"].as_str().unwrap_or(""),
+            )
+        })
+        .collect();
+    assert!(kept.contains(&("connect", "listed in __all__")), "{kept:?}");
+    assert!(
+        kept.contains(&("helper", "public name of a module configured as API")),
+        "{kept:?}"
+    );
+    assert!(
+        !kept.iter().any(|(name, _)| *name == "make_client"),
+        "the test parameter resolves to the fixture, so it is simply used: {kept:?}"
+    );
+    assert_eq!(
+        report["summary"]["files_scanned"], 4,
+        "core.pyi is not analysed: {report}"
+    );
+}

@@ -1,5 +1,6 @@
 //! Conventions of Python itself that make a definition reachable without a
-//! reference: typing overload stubs.
+//! reference: typing overload stubs, names exported through `__all__`, and
+//! the public names of modules configured as the project's API.
 
 use crate::keep::{KeepContext, KeepRule, PluginName};
 use crate::plugins::decorated_with_from;
@@ -12,13 +13,34 @@ impl KeepRule for Python {
     }
 
     fn keep(&self, context: KeepContext<'_>) -> Option<&'static str> {
-        decorated_with_from(
-            context.symbol,
+        let symbol = context.symbol;
+        if decorated_with_from(
+            symbol,
             &["overload"],
             false,
             &["typing", "typing_extensions"],
-        )
-        .then_some("typing overload stub")
+        ) {
+            return Some("typing overload stub");
+        }
+        if symbol.is_module_level() && context.file.exports.contains(&symbol.name) {
+            return Some("listed in __all__");
+        }
+        let in_public_module = context.file.module.as_ref().is_some_and(|module| {
+            context
+                .public_modules
+                .iter()
+                .any(|prefix| prefix.covers(module.as_str()))
+        });
+        if symbol.is_module_level() && !symbol.name.is_private() && in_public_module {
+            return Some("public name of a module configured as API");
+        }
+        if context.file_name() == "conf.py"
+            && context.is_under_directory_starting_with("doc")
+            && symbol.is_module_level()
+        {
+            return Some("Sphinx configuration read by name");
+        }
+        None
     }
 }
 
@@ -26,6 +48,20 @@ impl KeepRule for Python {
 mod tests {
     use super::Python;
     use crate::plugins::testing::Case;
+
+    #[test]
+    fn keeps_sphinx_configuration() {
+        assert!(
+            Case::variable("project")
+                .at("/p/docs/conf.py")
+                .is_kept_by(&Python)
+        );
+        assert!(
+            !Case::variable("project")
+                .at("/p/pkg/conf.py")
+                .is_kept_by(&Python)
+        );
+    }
 
     #[test]
     fn keeps_overload_stubs() {

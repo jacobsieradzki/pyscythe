@@ -65,6 +65,9 @@ impl KeepRule for Pytest {
         {
             return Some("autouse fixture");
         }
+        if symbol.has_decorator(|d| d.name.last_segment() == "fixture" && d.has_keyword("name")) {
+            return Some("fixture exposed under another name");
+        }
         if decorated_with_from(symbol, &["hookimpl"], true, PACKAGES) {
             return Some("pytest hook implementation");
         }
@@ -167,6 +170,15 @@ mod tests {
         assert!(
             !Case::function("user")
                 .decorated("pytest.fixture")
+                .is_kept_by(&Pytest)
+        );
+    }
+
+    #[test]
+    fn fixtures_with_an_explicit_name_are_kept() {
+        assert!(
+            Case::function("get_mod")
+                .decorated_with_keywords("pytest.fixture", &["name", "params"])
                 .is_kept_by(&Pytest)
         );
     }

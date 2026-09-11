@@ -62,6 +62,8 @@ pub struct SourceFile {
     pub module: Option<ModulePath>,
     /// Whether the file has a `__main__` guard.
     pub main_guard: MainGuard,
+    /// Names listed in the file's `__all__`, in order.
+    pub exports: Vec<crate::symbol::SymbolName>,
 }
 
 impl SourceFile {

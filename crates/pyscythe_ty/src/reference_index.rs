@@ -16,7 +16,7 @@ use ty_ide::document_symbols;
 use ty_project::parallel::{ParallelIteratorExt, minimum_parallel_job_len};
 use ty_python_semantic::{
     ImportAliasResolution, ResolvedDefinition, SemanticModel, definitions_for_attribute,
-    definitions_for_imported_symbol, definitions_for_name,
+    definitions_for_imported_symbol, definitions_for_name, fixture_bindings_for_parameter,
 };
 
 use rayon::prelude::*;
@@ -392,6 +392,17 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
             }
             AnyNodeRef::ExprStringLiteral(literal) => {
                 self.record_string_reference(literal);
+            }
+            AnyNodeRef::Parameter(parameter) => {
+                // A test parameter names a pytest fixture; ty resolves which one.
+                let index = ty_python_core::semantic_index(self.db, self.model.program_file());
+                let definition = index.expect_single_definition(parameter);
+                let fixtures: Vec<ResolvedDefinition<'_>> =
+                    fixture_bindings_for_parameter(self.db, definition)
+                        .iter()
+                        .map(|binding| ResolvedDefinition::Definition(binding.fixture()))
+                        .collect();
+                self.record(parameter.range(), parameter.range(), fixtures);
             }
             AnyNodeRef::StmtImportFrom(import) => {
                 let module_name = import.module.as_deref().unwrap_or_default();

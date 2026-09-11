@@ -166,6 +166,10 @@ impl TyIndex {
             .copied()
             .filter(|file| {
                 let path = Utf8PathBuf::from(file.path(db).to_string());
+                // Stubs declare, they do not define: nothing in them is dead or alive.
+                if path.extension() == Some("pyi") {
+                    return false;
+                }
                 let relative = path.strip_prefix(&project_root).unwrap_or(&path);
                 !options.exclude.matches(relative)
             })
@@ -189,6 +193,10 @@ impl TyIndex {
                 } else {
                     MainGuard::Absent
                 },
+                exports: declarations::dunder_all_names(module.syntax())
+                    .into_iter()
+                    .map(SymbolName::new)
+                    .collect(),
             });
         }
 
@@ -254,6 +262,7 @@ impl CodebaseIndex for TyIndex {
         let module = parsed_module(&self.db, program_file.python_file(&self.db)).load(&self.db);
         let model = ty_python_semantic::SemanticModel::new(&self.db, program_file);
         let declarations = declarations::declarations_by_name_range(module.syntax(), &model);
+        let assigned = declarations::assignment_target_ranges(module.syntax());
 
         let mut collector = SymbolCollector {
             file,
@@ -264,6 +273,15 @@ impl CodebaseIndex for TyIndex {
         for (id, info) in tree.iter() {
             collector.visit(id, &info, SymbolScope::Module);
         }
+        // A loop or `with` target is a variable to ty, but it is consumed by its
+        // own statement; only assignments can be dead.
+        collector.out.retain(|symbol| {
+            !matches!(symbol.kind, SymbolKind::Variable | SymbolKind::Constant)
+                || assigned.contains(&TextRange::new(
+                    TextSize::new(symbol.name_span.start().get()),
+                    TextSize::new(symbol.name_span.end().get()),
+                ))
+        });
         collector.out
     }
 

@@ -6,7 +6,7 @@ use pyscythe_core::symbol::{Decorator, DottedName, KeywordName};
 use ruff_python_ast::name::UnqualifiedName;
 use ruff_python_ast::{self as ast, AnyNodeRef, Expr, Stmt};
 use ruff_text_size::{Ranged, TextRange};
-use rustc_hash::FxHashMap;
+use rustc_hash::{FxHashMap, FxHashSet};
 use ty_python_semantic::{
     ImportAliasResolution, ResolvedDefinition, SemanticModel, definitions_for_attribute,
     definitions_for_name,
@@ -18,6 +18,110 @@ pub(crate) struct Declaration {
     pub(crate) decorators: Vec<Decorator>,
     pub(crate) bases: Vec<DottedName>,
     pub(crate) class_keywords: Vec<KeywordName>,
+}
+
+/// The names listed in `__all__` at module level: `__all__ = [...]`,
+/// `__all__ += [...]`, and `__all__.extend([...])`, string literals only.
+pub(crate) fn dunder_all_names(module: &ast::ModModule) -> Vec<String> {
+    let mut names = Vec::new();
+    let mut push_all = |value: &Expr| {
+        let elements = match value {
+            Expr::List(list) => &list.elts,
+            Expr::Tuple(tuple) => &tuple.elts,
+            _ => return,
+        };
+        for element in elements {
+            if let Expr::StringLiteral(literal) = element {
+                names.push(literal.value.to_str().to_owned());
+            }
+        }
+    };
+    for statement in &module.body {
+        match statement {
+            Stmt::Assign(assign) if assign.targets.iter().any(is_dunder_all) => {
+                push_all(&assign.value);
+            }
+            Stmt::AugAssign(assign) if is_dunder_all(&assign.target) => push_all(&assign.value),
+            Stmt::Expr(expression) => {
+                if let Expr::Call(call) = &*expression.value
+                    && let Expr::Attribute(attribute) = &*call.func
+                    && attribute.attr.as_str() == "extend"
+                    && is_dunder_all(&attribute.value)
+                    && let Some(argument) = call.arguments.args.first()
+                {
+                    push_all(argument);
+                }
+            }
+            _ => {}
+        }
+    }
+    names
+}
+
+fn is_dunder_all(expr: &Expr) -> bool {
+    matches!(expr, Expr::Name(name) if name.id.as_str() == "__all__")
+}
+
+/// Name ranges bound by plain, annotated, or augmented assignment statements
+/// at module level and in class bodies, including inside `if`/`try`/`with`
+/// blocks. Loop targets, `with ... as`, walrus, and `except ... as` are not.
+pub(crate) fn assignment_target_ranges(module: &ast::ModModule) -> FxHashSet<TextRange> {
+    let mut out = FxHashSet::default();
+    collect_assignment_targets(&module.body, &mut out);
+    out
+}
+
+fn collect_assignment_targets(body: &[Stmt], out: &mut FxHashSet<TextRange>) {
+    for statement in body {
+        match statement {
+            Stmt::Assign(assign) => {
+                for target in &assign.targets {
+                    collect_name_targets(target, out);
+                }
+            }
+            Stmt::AnnAssign(assign) => collect_name_targets(&assign.target, out),
+            Stmt::AugAssign(assign) => collect_name_targets(&assign.target, out),
+            Stmt::TypeAlias(alias) => collect_name_targets(&alias.name, out),
+            Stmt::ClassDef(class) => collect_assignment_targets(&class.body, out),
+            Stmt::If(if_statement) => {
+                collect_assignment_targets(&if_statement.body, out);
+                for clause in &if_statement.elif_else_clauses {
+                    collect_assignment_targets(&clause.body, out);
+                }
+            }
+            Stmt::Try(try_statement) => {
+                collect_assignment_targets(&try_statement.body, out);
+                for handler in &try_statement.handlers {
+                    let ast::ExceptHandler::ExceptHandler(handler) = handler;
+                    collect_assignment_targets(&handler.body, out);
+                }
+                collect_assignment_targets(&try_statement.orelse, out);
+                collect_assignment_targets(&try_statement.finalbody, out);
+            }
+            Stmt::With(with_statement) => collect_assignment_targets(&with_statement.body, out),
+            _ => {}
+        }
+    }
+}
+
+fn collect_name_targets(target: &Expr, out: &mut FxHashSet<TextRange>) {
+    match target {
+        Expr::Name(name) => {
+            out.insert(name.range());
+        }
+        Expr::Tuple(tuple) => {
+            for element in &tuple.elts {
+                collect_name_targets(element, out);
+            }
+        }
+        Expr::List(list) => {
+            for element in &list.elts {
+                collect_name_targets(element, out);
+            }
+        }
+        Expr::Starred(starred) => collect_name_targets(&starred.value, out),
+        _ => {}
+    }
 }
 
 /// Whether `module` has a top-level `if __name__ == "__main__":` block.

@@ -188,6 +188,11 @@ pub fn parse(text: &str) -> Result<ProjectSettings, ParseError> {
             NotebookPolicy::Exclude
         },
         boundaries: tool.boundaries.map(boundary_config).transpose()?,
+        public_modules: tool
+            .public_modules
+            .iter()
+            .map(|name| ModulePrefix::new(name.as_str()))
+            .collect(),
         ignored_dependencies: tool
             .deps
             .unwrap_or_default()
@@ -318,6 +323,9 @@ struct PyscytheTable {
     /// Analyse notebook cells like modules.
     #[serde(default)]
     include_notebooks: bool,
+    /// Modules whose public names are the project's API.
+    #[serde(default)]
+    public_modules: Vec<String>,
     /// Architecture boundaries.
     boundaries: Option<BoundariesTable>,
     /// Health thresholds.
