@@ -16,6 +16,7 @@ use pyscythe_core::source::{
     ByteOffset, ByteSpan, Column, FileId, Line, MainGuard, ModulePath, Position, SourceFile,
 };
 use pyscythe_core::symbol::{DottedName, Symbol, SymbolId, SymbolKind, SymbolName, SymbolScope};
+use pyscythe_core::tokens::{CloneMode, CloneToken};
 use ruff_db::files::File;
 use ruff_db::parsed::parsed_module;
 use ruff_db::source::{line_index, source_text};
@@ -300,6 +301,16 @@ impl CodebaseIndex for TyIndex {
                 })
             })
             .collect()
+    }
+
+    fn clone_tokens(&self, file: FileId, mode: CloneMode) -> Vec<CloneToken> {
+        let Some(ty_file) = self.ty_file(file) else {
+            return Vec::new();
+        };
+        let program_file = self.db.program_file(ty_file);
+        let module = parsed_module(&self.db, program_file.python_file(&self.db)).load(&self.db);
+        let source = source_text(&self.db, ty_file);
+        pyscythe_metrics::clone_tokens(module.tokens(), source.as_str(), mode)
     }
 
     fn function_metrics(&self, file: FileId) -> Vec<FunctionMetrics> {

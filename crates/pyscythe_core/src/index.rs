@@ -4,6 +4,7 @@ use crate::finding::Rule;
 use crate::metrics::FunctionMetrics;
 use crate::source::{ByteOffset, ByteSpan, FileId, Line, Position, SourceFile};
 use crate::symbol::{DottedName, Symbol, SymbolName};
+use crate::tokens::{CloneMode, CloneToken};
 
 /// Whether an attribute name appears anywhere, regardless of what it resolves to.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -195,6 +196,9 @@ pub trait CodebaseIndex {
 
     /// Size and complexity of every function in `file`, in source order.
     fn function_metrics(&self, file: FileId) -> Vec<FunctionMetrics>;
+
+    /// The significant tokens of `file`, normalised for `mode`.
+    fn clone_tokens(&self, file: FileId, mode: CloneMode) -> Vec<CloneToken>;
 
     /// Converts a byte offset in `file` to a line and column.
     fn position(&self, file: FileId, offset: ByteOffset) -> Option<Position>;

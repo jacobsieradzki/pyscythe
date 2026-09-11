@@ -56,6 +56,15 @@ pub(crate) fn human(report: &Report, show_kept: bool, out: &mut impl Write) -> s
                 health.functions, health.max_cyclomatic, health.max_cognitive
             )
         }),
+        ReportKind::Dupes => summary.duplication.map_or_else(String::new, |d| {
+            format!(
+                " ({}.{}% duplicated: {} of {} lines)",
+                d.percent_tenths / 10,
+                d.percent_tenths % 10,
+                d.duplicated_lines,
+                d.total_lines
+            )
+        }),
     };
     let scope = summary
         .changed_files
@@ -75,6 +84,7 @@ pub(crate) fn human(report: &Report, show_kept: bool, out: &mut impl Write) -> s
         ReportKind::DeadCode => "dead code",
         ReportKind::Cycles => "import cycles",
         ReportKind::Health => "hotspots",
+        ReportKind::Dupes => "duplicated code",
     };
     if report.is_clean() {
         writeln!(

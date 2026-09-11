@@ -30,7 +30,8 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 - [x] Circular imports: `pyscythe cycles`, Tarjan SCCs over runtime imports; `TYPE_CHECKING` and function-local imports are excluded.
 - [ ] Cycles: report every distinct simple cycle in a component, not just one; offer `--include-deferred`.
 - [ ] Unused files: treat `__init__.py` re-exports as uses of the re-exported file.
-- [ ] Duplication (token-hash / suffix-array detector over function bodies).
+- [x] `pyscythe dupes`: windowed token hashing with maximal-match extension; `--mode strict|mild|weak`, `--min-tokens`, `--min-lines`; duplication percentage in the summary.
+- [ ] Dupes: report clone groups (three or more occurrences) as one finding; ignore docstrings and import blocks by default.
 - [x] `pyscythe health`: cyclomatic and cognitive complexity per function (`pyscythe_metrics`, parser-only), hotspots over 10/15, length-weighted 0-100 score with A-F grade.
 - [ ] Health: thresholds in `[tool.pyscythe]`; per-file and per-package scores; maintainability index; trend against a baseline.
 - [ ] Architecture boundaries with layered / hexagonal presets.

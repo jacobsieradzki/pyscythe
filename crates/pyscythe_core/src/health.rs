@@ -99,6 +99,7 @@ pub fn analyze(index: &dyn CodebaseIndex) -> Report {
                 max_cyclomatic,
                 max_cognitive,
             }),
+            duplication: None,
         },
         findings,
         kept: Vec::new(),

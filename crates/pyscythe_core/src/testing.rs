@@ -3,6 +3,7 @@
 use camino::Utf8PathBuf;
 
 use crate::metrics::FunctionMetrics;
+use crate::tokens::{CloneMode, CloneToken};
 
 use crate::index::{
     Ancestry, CodebaseIndex, Import, ImportKind, Inheritance, NameUsage, Reference, Suppression,
@@ -28,6 +29,7 @@ pub(crate) struct FakeIndex {
     ancestries: Vec<(SymbolId, Ancestry)>,
     suppressions: Vec<(FileId, Suppression)>,
     metrics: Vec<(FileId, FunctionMetrics)>,
+    tokens: Vec<(FileId, Vec<CloneToken>)>,
 }
 
 impl FakeIndex {
@@ -138,6 +140,26 @@ impl FakeIndex {
                 scope: SuppressionScope::File,
             },
         ));
+    }
+
+    /// Gives `file` one token per whitespace-separated word of `source`, each
+    /// line of `source` on its own line.
+    pub(crate) fn set_tokens(&mut self, file: FileId, source: &str) {
+        let tokens = source
+            .lines()
+            .enumerate()
+            .flat_map(|(index, line)| {
+                let number = Line::from_one_based(u32::try_from(index + 1).expect("few lines"))
+                    .expect("non-zero");
+                line.split_whitespace()
+                    .map(move |word| CloneToken {
+                        text: word.to_owned(),
+                        line: number,
+                    })
+                    .collect::<Vec<_>>()
+            })
+            .collect();
+        self.tokens.push((file, tokens));
     }
 
     pub(crate) fn add_function_metrics(
@@ -283,6 +305,14 @@ impl CodebaseIndex for FakeIndex {
         } else {
             NameUsage::Unused
         }
+    }
+
+    fn clone_tokens(&self, file: FileId, _mode: CloneMode) -> Vec<CloneToken> {
+        self.tokens
+            .iter()
+            .find(|(f, _)| *f == file)
+            .map(|(_, tokens)| tokens.clone())
+            .unwrap_or_default()
     }
 
     fn function_metrics(&self, file: FileId) -> Vec<FunctionMetrics> {

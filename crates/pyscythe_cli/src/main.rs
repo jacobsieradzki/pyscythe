@@ -7,9 +7,11 @@ use std::process::ExitCode;
 use camino::Utf8Path;
 use clap::{Parser, Subcommand, ValueEnum};
 use pyscythe_core::baseline::Baseline;
+use pyscythe_core::dupes::DupesOptions;
 use pyscythe_core::finding::Confidence;
 use pyscythe_core::keep::Policy;
 use pyscythe_core::report::Report;
+use pyscythe_core::tokens::CloneMode;
 use pyscythe_pyproject::ProjectSettings;
 use pyscythe_ty::{IndexOptions, TyIndex};
 
@@ -33,6 +35,46 @@ enum Command {
     Cycles(AnalysisArgs),
     /// Report complexity hotspots and an overall health score.
     Health(AnalysisArgs),
+    /// Report duplicated code.
+    Dupes(DupesArgs),
+}
+
+#[derive(Debug, clap::Args)]
+struct DupesArgs {
+    #[command(flatten)]
+    common: AnalysisArgs,
+
+    /// How tokens are compared: exact, identifiers interchangeable, or identifiers and literals interchangeable.
+    #[arg(long, value_enum, default_value_t = CloneModeArg::Mild)]
+    mode: CloneModeArg,
+
+    /// Shortest run of tokens that counts as a clone.
+    #[arg(long, default_value_t = 50)]
+    min_tokens: usize,
+
+    /// Shortest run of lines that counts as a clone.
+    #[arg(long, default_value_t = 5)]
+    min_lines: u32,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum)]
+enum CloneModeArg {
+    /// Tokens must match exactly.
+    Strict,
+    /// Renamed identifiers still match.
+    Mild,
+    /// Identifiers and literals are interchangeable.
+    Weak,
+}
+
+impl From<CloneModeArg> for CloneMode {
+    fn from(value: CloneModeArg) -> Self {
+        match value {
+            CloneModeArg::Strict => Self::Strict,
+            CloneModeArg::Mild => Self::Mild,
+            CloneModeArg::Weak => Self::Weak,
+        }
+    }
 }
 
 #[derive(Debug, clap::Args)]
@@ -182,6 +224,16 @@ fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
         Command::DeadCode(args) => run_analysis(&args, out, dead_code),
         Command::Cycles(args) => run_analysis(&args, out, cycles),
         Command::Health(args) => run_analysis(&args, out, health),
+        Command::Dupes(args) => {
+            let options = DupesOptions {
+                mode: args.mode.into(),
+                min_tokens: args.min_tokens,
+                min_lines: args.min_lines,
+            };
+            run_analysis(&args.common, out, move |index, _, _| {
+                pyscythe_core::dupes::analyze(index, &options)
+            })
+        }
     }
 }
 

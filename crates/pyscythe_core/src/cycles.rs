@@ -39,6 +39,7 @@ pub fn analyze(index: &dyn CodebaseIndex) -> Report {
             findings: findings.len(),
             changed_files: None,
             health: None,
+            duplication: None,
         },
         findings,
     }

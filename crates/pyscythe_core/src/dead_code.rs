@@ -127,6 +127,7 @@ pub fn analyze(
             findings: findings.len(),
             changed_files: None,
             health: None,
+            duplication: None,
         },
         findings,
         kept,

@@ -39,7 +39,9 @@ impl BaselineKey {
             Detail::Metrics { function, .. } => {
                 (Some(SymbolName::new(function.clone())), None, None)
             }
-            Detail::Comment => (None, None, finding.position.map(|p| p.line.get())),
+            Detail::Comment | Detail::Duplicate { .. } => {
+                (None, None, finding.position.map(|p| p.line.get()))
+            }
             Detail::Cycle { .. } | Detail::File => (None, None, None),
         };
         Self {
@@ -133,6 +135,7 @@ mod tests {
                 findings: findings.len(),
                 changed_files: None,
                 health: None,
+                duplication: None,
             },
             findings,
             kept: Vec::new(),

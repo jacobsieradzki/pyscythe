@@ -28,6 +28,8 @@ pub enum Rule {
     UnusedSuppression,
     /// A function whose complexity is over the threshold.
     ComplexFunction,
+    /// A run of tokens that also appears elsewhere.
+    DuplicateCode,
 }
 
 impl Rule {
@@ -49,7 +51,7 @@ impl Rule {
     }
 
     /// Every rule, in a stable order for tooling metadata.
-    pub const ALL: [Self; 8] = [
+    pub const ALL: [Self; 9] = [
         Self::UnusedFunction,
         Self::UnusedClass,
         Self::UnusedVariable,
@@ -58,6 +60,7 @@ impl Rule {
         Self::CircularImport,
         Self::UnusedSuppression,
         Self::ComplexFunction,
+        Self::DuplicateCode,
     ];
 
     /// The kebab-case identifier used in JSON, SARIF, and suppression comments.
@@ -72,6 +75,7 @@ impl Rule {
             Self::CircularImport => "circular-import",
             Self::UnusedSuppression => "unused-suppression",
             Self::ComplexFunction => "complex-function",
+            Self::DuplicateCode => "duplicate-code",
         }
     }
 
@@ -97,6 +101,7 @@ impl Rule {
             Self::ComplexFunction => {
                 "A function whose cyclomatic or cognitive complexity is over the threshold."
             }
+            Self::DuplicateCode => "A run of code that also appears elsewhere in the project.",
         }
     }
 
@@ -111,6 +116,7 @@ impl Rule {
             Self::UnusedFile => "file",
             Self::CircularImport => "import cycle",
             Self::UnusedSuppression => "suppression comment",
+            Self::DuplicateCode => "duplicate",
         }
     }
 }
@@ -159,6 +165,19 @@ pub enum Detail {
     File,
     /// A comment, located by its position alone.
     Comment,
+    /// A duplicated run of code and where its twin lives.
+    Duplicate {
+        /// Lines covered by this occurrence.
+        lines: u32,
+        /// Tokens in the run.
+        tokens: u32,
+        /// Last line of this occurrence.
+        end_line: u32,
+        /// The other occurrence.
+        other: Location,
+        /// Last line of the other occurrence.
+        other_end_line: u32,
+    },
     /// Measurements of a function.
     Metrics {
         /// The function, qualified by its class for methods.
@@ -202,7 +221,11 @@ impl Finding {
     pub const fn symbol(&self) -> Option<&SymbolName> {
         match &self.detail {
             Detail::Symbol { symbol, .. } => Some(symbol),
-            Detail::Cycle { .. } | Detail::File | Detail::Comment | Detail::Metrics { .. } => None,
+            Detail::Cycle { .. }
+            | Detail::File
+            | Detail::Comment
+            | Detail::Metrics { .. }
+            | Detail::Duplicate { .. } => None,
         }
     }
 }

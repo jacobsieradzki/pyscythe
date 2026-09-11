@@ -9,11 +9,56 @@
 //! Nested functions are measured on their own and excluded from their parent.
 
 use pyscythe_core::metrics::FunctionMetrics;
-use pyscythe_core::source::{ByteOffset, ByteSpan};
+use pyscythe_core::source::{ByteOffset, ByteSpan, Line};
 use pyscythe_core::symbol::SymbolName;
+use pyscythe_core::tokens::{CloneMode, CloneToken};
+use ruff_python_ast::token::{TokenKind, Tokens};
 use ruff_python_ast::{self as ast, Expr, Stmt};
 use ruff_source_file::LineIndex;
 use ruff_text_size::Ranged;
+
+/// The significant tokens of a module for clone detection: comments and
+/// blank lines are dropped, structure tokens are kept, and identifiers or
+/// literals are replaced by placeholders according to `mode`.
+#[must_use]
+pub fn clone_tokens(tokens: &Tokens, source: &str, mode: CloneMode) -> Vec<CloneToken> {
+    let lines = LineIndex::from_source_text(source);
+    tokens
+        .iter()
+        .filter(|token| {
+            !matches!(
+                token.kind(),
+                TokenKind::Comment | TokenKind::NonLogicalNewline | TokenKind::EndOfFile
+            )
+        })
+        .filter_map(|token| {
+            let text = match token.kind() {
+                TokenKind::Newline => "\\n".to_owned(),
+                TokenKind::Indent => "\\t".to_owned(),
+                TokenKind::Dedent => "\\d".to_owned(),
+                TokenKind::Name if mode != CloneMode::Strict => "$name".to_owned(),
+                TokenKind::Int
+                | TokenKind::Float
+                | TokenKind::Complex
+                | TokenKind::String
+                | TokenKind::FStringMiddle
+                | TokenKind::TStringMiddle
+                    if mode == CloneMode::Weak =>
+                {
+                    "$literal".to_owned()
+                }
+                _ => source
+                    .get(std::ops::Range::<usize>::from(token.range()))?
+                    .to_owned(),
+            };
+            let line = lines.line_column(token.start(), source).line.get();
+            Some(CloneToken {
+                text,
+                line: Line::from_one_based(u32::try_from(line).ok()?)?,
+            })
+        })
+        .collect()
+}
 
 /// Metrics for every function and method in `module`, in source order.
 #[must_use]
@@ -325,8 +370,43 @@ impl Counter<'_> {
 
 #[cfg(test)]
 mod tests {
-    use super::measure;
+    use super::{clone_tokens, measure};
     use pyscythe_core::metrics::FunctionMetrics;
+    use pyscythe_core::tokens::CloneMode;
+
+    fn texts(source: &str, mode: CloneMode) -> Vec<String> {
+        let parsed = ruff_python_parser::parse_module(source).expect("fixture parses");
+        clone_tokens(parsed.tokens(), source, mode)
+            .into_iter()
+            .map(|t| t.text)
+            .collect()
+    }
+
+    #[test]
+    fn strict_tokens_keep_text_and_drop_comments() {
+        let tokens = texts("x = 1  # note\n", CloneMode::Strict);
+        assert_eq!(tokens, ["x", "=", "1", "\\n"]);
+    }
+
+    #[test]
+    fn mild_normalises_identifiers_and_weak_also_literals() {
+        assert_eq!(
+            texts("x = 1\n", CloneMode::Mild),
+            ["$name", "=", "1", "\\n"]
+        );
+        assert_eq!(
+            texts("x = 'a'\n", CloneMode::Weak),
+            ["$name", "=", "$literal", "\\n"]
+        );
+    }
+
+    #[test]
+    fn tokens_carry_their_line() {
+        let parsed = ruff_python_parser::parse_module("a\n\nb\n").expect("parses");
+        let tokens = clone_tokens(parsed.tokens(), "a\n\nb\n", CloneMode::Strict);
+        let lines: Vec<u32> = tokens.iter().map(|t| t.line.get()).collect();
+        assert_eq!(lines, [1, 1, 3, 3]);
+    }
 
     fn metrics(source: &str) -> Vec<FunctionMetrics> {
         let parsed = ruff_python_parser::parse_module(source).expect("fixture parses");

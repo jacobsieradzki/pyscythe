@@ -35,6 +35,21 @@ pub enum ReportKind {
     Cycles,
     /// Complexity hotspots and an overall score.
     Health,
+    /// Duplicated code.
+    Dupes,
+}
+
+/// How much of the project is duplicated, from the `dupes` analysis.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+pub struct DuplicationSummary {
+    /// Clone pairs found.
+    pub clones: usize,
+    /// Lines covered by some clone occurrence.
+    pub duplicated_lines: u32,
+    /// Lines of code considered.
+    pub total_lines: u32,
+    /// `duplicated_lines / total_lines`, in tenths of a percent.
+    pub percent_tenths: u32,
 }
 
 /// A letter grade for a health score.
@@ -116,6 +131,9 @@ pub struct Summary {
     /// Present for the `health` analysis.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub health: Option<HealthSummary>,
+    /// Present for the `dupes` analysis.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub duplication: Option<DuplicationSummary>,
 }
 
 /// A complete, serialisable analysis result.

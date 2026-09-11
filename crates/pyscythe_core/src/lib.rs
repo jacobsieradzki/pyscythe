@@ -8,6 +8,7 @@ pub mod baseline;
 pub mod config;
 pub mod cycles;
 pub mod dead_code;
+pub mod dupes;
 pub mod finding;
 pub mod health;
 pub mod index;
@@ -18,6 +19,7 @@ pub mod plugins;
 pub mod report;
 pub mod source;
 pub mod symbol;
+pub mod tokens;
 
 #[cfg(test)]
 pub(crate) mod testing;
