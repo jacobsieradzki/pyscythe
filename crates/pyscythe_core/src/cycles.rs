@@ -9,21 +9,33 @@ use std::collections::BTreeMap;
 use crate::finding::{Confidence, Detail, Finding, Location, Rule};
 use crate::index::{CodebaseIndex, Import, ImportKind};
 use crate::report::{Report, ReportKind, Summary};
-use crate::source::{FileId, SourceFile};
+use crate::source::FileId;
+
+/// Which imports take part in the graph.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub struct CycleOptions {
+    /// Also follow imports inside function bodies, which only bite when called.
+    pub include_deferred: bool,
+}
+
+/// Stop enumerating after this many cycles in one strongly connected component.
+const MAX_CYCLES_PER_COMPONENT: usize = 25;
 
 /// Runs the circular-import analysis over every file in `index`.
 #[must_use]
-pub fn analyze(index: &dyn CodebaseIndex) -> Report {
+pub fn analyze(index: &dyn CodebaseIndex, options: CycleOptions) -> Report {
     let files = index.files();
-    let graph = Graph::runtime_imports(index);
+    let graph = Graph::imports(index, options);
 
     let mut findings: Vec<Finding> = graph
         .strongly_connected_components()
         .into_iter()
         .filter(|component| component.len() > 1)
-        .filter_map(|component| finding_for(index, files, &graph, &component))
+        .flat_map(|component| graph.simple_cycles(&component))
+        .filter_map(|cycle| finding_for(index, &cycle))
         .collect();
     findings.sort_by(|a, b| a.path.cmp(&b.path).then(a.position.cmp(&b.position)));
+    findings.dedup();
 
     Report {
         schema_version: Report::SCHEMA_VERSION,
@@ -51,7 +63,12 @@ struct Graph {
 }
 
 impl Graph {
-    fn runtime_imports(index: &dyn CodebaseIndex) -> Self {
+    fn imports(index: &dyn CodebaseIndex, options: CycleOptions) -> Self {
+        let counts = |kind: ImportKind| match kind {
+            ImportKind::Runtime => true,
+            ImportKind::Deferred => options.include_deferred,
+            ImportKind::TypeOnly => false,
+        };
         let edges = index
             .files()
             .iter()
@@ -59,7 +76,7 @@ impl Graph {
                 let imports = index
                     .imports(file.id)
                     .into_iter()
-                    .filter(|import| import.kind == ImportKind::Runtime && import.target != file.id)
+                    .filter(|import| counts(import.kind) && import.target != file.id)
                     .collect();
                 (file.id, imports)
             })
@@ -82,32 +99,61 @@ impl Graph {
         state.components
     }
 
-    /// A simple cycle through `component` starting at `start`, as the edges that close it.
-    fn cycle_from(&self, start: FileId, component: &[FileId]) -> Vec<(FileId, Import)> {
-        let in_component = |file: FileId| component.contains(&file);
-        let mut path: Vec<(FileId, Import)> = Vec::new();
-        let mut visited = vec![start];
-        let mut current = start;
-        loop {
-            let Some(next) = self.successors(current).find(|import| {
-                in_component(import.target)
-                    && (import.target == start || !visited.contains(&import.target))
-            }) else {
-                // Dead end inside the component; back up one step.
-                match path.pop() {
-                    Some((previous, _)) => {
-                        current = previous;
-                        continue;
-                    }
-                    None => return Vec::new(),
-                }
-            };
-            path.push((current, *next));
-            if next.target == start {
-                return path;
+    /// Every simple cycle inside `component`, each as the edges that form it,
+    /// capped at [`MAX_CYCLES_PER_COMPONENT`]. Cycles through the smallest
+    /// node are enumerated first, then that node is removed and the rest
+    /// recursed, so no rotation of the same cycle appears twice.
+    fn simple_cycles(&self, component: &[FileId]) -> Vec<Vec<(FileId, Import)>> {
+        let mut remaining: Vec<FileId> = component.to_vec();
+        remaining.sort_unstable();
+        let mut cycles = Vec::new();
+        while let Some(&start) = remaining.first() {
+            let mut path: Vec<(FileId, Import)> = Vec::new();
+            let mut on_path: Vec<FileId> = vec![start];
+            self.cycles_from(
+                start,
+                start,
+                &remaining,
+                &mut path,
+                &mut on_path,
+                &mut cycles,
+            );
+            if cycles.len() >= MAX_CYCLES_PER_COMPONENT {
+                break;
             }
-            visited.push(next.target);
-            current = next.target;
+            remaining.remove(0);
+        }
+        cycles.truncate(MAX_CYCLES_PER_COMPONENT);
+        cycles
+    }
+
+    fn cycles_from(
+        &self,
+        start: FileId,
+        current: FileId,
+        allowed: &[FileId],
+        path: &mut Vec<(FileId, Import)>,
+        on_path: &mut Vec<FileId>,
+        out: &mut Vec<Vec<(FileId, Import)>>,
+    ) {
+        for import in self.successors(current) {
+            if out.len() >= MAX_CYCLES_PER_COMPONENT {
+                return;
+            }
+            if import.target == start {
+                let mut cycle = path.clone();
+                cycle.push((current, *import));
+                out.push(cycle);
+                continue;
+            }
+            if !allowed.contains(&import.target) || on_path.contains(&import.target) {
+                continue;
+            }
+            path.push((current, *import));
+            on_path.push(import.target);
+            self.cycles_from(start, import.target, allowed, path, on_path, out);
+            on_path.pop();
+            path.pop();
         }
     }
 }
@@ -179,16 +225,7 @@ impl Tarjan {
     }
 }
 
-fn finding_for(
-    index: &dyn CodebaseIndex,
-    files: &[SourceFile],
-    graph: &Graph,
-    component: &[FileId],
-) -> Option<Finding> {
-    let start = *component
-        .iter()
-        .min_by_key(|id| files.get(id.index()).map(|f| &f.path))?;
-    let cycle = graph.cycle_from(start, component);
+fn finding_for(index: &dyn CodebaseIndex, cycle: &[(FileId, Import)]) -> Option<Finding> {
     let (first_file, first_import) = cycle.first().copied()?;
 
     let chain: Vec<Location> = cycle
@@ -232,7 +269,7 @@ fn finding_for(
 
 #[cfg(test)]
 mod tests {
-    use super::analyze;
+    use super::{CycleOptions, analyze};
     use crate::finding::Detail;
     use crate::index::ImportKind;
     use crate::testing::FakeIndex;
@@ -245,7 +282,7 @@ mod tests {
         index.add_import(a, b, ImportKind::Runtime);
         index.add_import(b, a, ImportKind::Runtime);
 
-        let report = analyze(&index);
+        let report = analyze(&index, CycleOptions::default());
 
         assert_eq!(report.findings.len(), 1);
         assert_eq!(
@@ -269,7 +306,7 @@ mod tests {
         index.add_import(a, c, ImportKind::Runtime);
         index.add_import(c, a, ImportKind::Deferred);
 
-        assert!(analyze(&index).is_clean());
+        assert!(analyze(&index, CycleOptions::default()).is_clean());
     }
 
     #[test]
@@ -282,7 +319,7 @@ mod tests {
         index.add_import(b, c, ImportKind::Runtime);
         index.add_import(c, a, ImportKind::Runtime);
 
-        let report = analyze(&index);
+        let report = analyze(&index, CycleOptions::default());
 
         assert_eq!(report.findings.len(), 1);
         assert_eq!(
@@ -296,12 +333,56 @@ mod tests {
     }
 
     #[test]
+    fn every_distinct_cycle_in_a_component_is_reported() {
+        let mut index = FakeIndex::new();
+        let a = index.add_file("/proj/pkg/a.py", "pkg.a");
+        let b = index.add_file("/proj/pkg/b.py", "pkg.b");
+        let c = index.add_file("/proj/pkg/c.py", "pkg.c");
+        index.add_import(a, b, ImportKind::Runtime);
+        index.add_import(b, a, ImportKind::Runtime);
+        index.add_import(b, c, ImportKind::Runtime);
+        index.add_import(c, b, ImportKind::Runtime);
+        index.add_import(c, a, ImportKind::Runtime);
+
+        let report = analyze(&index, CycleOptions::default());
+
+        let mut messages: Vec<&str> = report.findings.iter().map(|f| f.message.as_str()).collect();
+        messages.sort_unstable();
+        assert_eq!(
+            messages,
+            [
+                "import cycle: pkg.a -> pkg.b -> pkg.a",
+                "import cycle: pkg.a -> pkg.b -> pkg.c -> pkg.a",
+                "import cycle: pkg.b -> pkg.c -> pkg.b",
+            ]
+        );
+    }
+
+    #[test]
+    fn deferred_imports_count_when_asked() {
+        let mut index = FakeIndex::new();
+        let a = index.add_file("/proj/pkg/a.py", "pkg.a");
+        let b = index.add_file("/proj/pkg/b.py", "pkg.b");
+        index.add_import(a, b, ImportKind::Runtime);
+        index.add_import(b, a, ImportKind::Deferred);
+
+        assert!(analyze(&index, CycleOptions::default()).is_clean());
+        let with_deferred = analyze(
+            &index,
+            CycleOptions {
+                include_deferred: true,
+            },
+        );
+        assert_eq!(with_deferred.findings.len(), 1);
+    }
+
+    #[test]
     fn a_chain_without_a_loop_is_clean() {
         let mut index = FakeIndex::new();
         let a = index.add_file("/proj/pkg/a.py", "pkg.a");
         let b = index.add_file("/proj/pkg/b.py", "pkg.b");
         index.add_import(a, b, ImportKind::Runtime);
 
-        assert!(analyze(&index).is_clean());
+        assert!(analyze(&index, CycleOptions::default()).is_clean());
     }
 }

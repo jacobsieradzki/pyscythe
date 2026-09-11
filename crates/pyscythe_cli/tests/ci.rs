@@ -253,3 +253,37 @@ fn since_with_a_bad_ref_is_an_error() {
         .code(2)
         .stderr(predicate::str::contains("git diff failed"));
 }
+
+#[test]
+fn init_reexports_keep_the_implementation_module_and_symbol_alive() {
+    pyscythe()
+        .arg("dead-code")
+        .arg(fixture("reexport"))
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("No dead code found"));
+}
+
+#[test]
+fn pr_comment_format_starts_with_a_marker() {
+    pyscythe()
+        .args(["dead-code", "--format", "pr-comment"])
+        .arg(fixture("simple_unused"))
+        .assert()
+        .code(1)
+        .stdout(predicate::str::starts_with(
+            "<!-- pyscythe:dead-code -->\n**pyscythe**: 2 finding(s)",
+        ));
+}
+
+#[test]
+fn health_thresholds_come_from_pyproject() {
+    pyscythe()
+        .arg("health")
+        .arg(fixture("reexport"))
+        .assert()
+        .code(1)
+        .stdout(predicate::str::contains(
+            "function `thing` has cyclomatic complexity 2",
+        ));
+}

@@ -30,6 +30,12 @@ ignore-names = ["deprecated_*"]           # symbols never reported
 entry-points = ["pkg.worker:run"]         # extra roots beyond [project.scripts]
 include-notebooks = false
 
+[tool.pyscythe.health]
+max-cyclomatic = 10
+max-cognitive = 15
+max-lines = 50
+max-parameters = 6
+
 [tool.pyscythe.boundaries]
 layers = ["app.api", ["app.services", "app.workers"], "app.domain"]  # top to bottom
 # or: preset = "hexagonal" with root = "app"
@@ -46,7 +52,7 @@ Exit codes: `0` clean, `1` findings, `2` error.
 ```bash
 pyscythe dead-code --format github          # GitHub Actions annotations
 pyscythe dead-code --format sarif > out.sarif
-pyscythe dead-code --format markdown        # a table for a PR comment
+pyscythe dead-code --format pr-comment      # a table with a marker a bot can find and update
 pyscythe dead-code --min-confidence medium  # skip low-confidence method findings
 pyscythe dead-code --since origin/main      # only files this branch changed
 ```

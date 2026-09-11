@@ -60,3 +60,27 @@ fn a_project_without_cycles_is_clean() {
         .success()
         .stdout(predicate::str::contains("No import cycles found"));
 }
+
+#[test]
+fn include_deferred_follows_function_local_imports() {
+    let output = pyscythe()
+        .args(["cycles", "--format", "json", "--include-deferred"])
+        .arg(fixture("cycles"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let messages: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings")
+        .iter()
+        .filter_map(|f| f["message"].as_str())
+        .collect();
+    assert!(
+        messages.contains(&"import cycle: pkg.a -> pkg.b -> pkg.a"),
+        "{report}"
+    );
+    assert!(
+        messages.contains(&"import cycle: pkg.c -> pkg.d -> pkg.c"),
+        "{report}"
+    );
+}

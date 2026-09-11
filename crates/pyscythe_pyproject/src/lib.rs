@@ -4,8 +4,8 @@ use std::collections::BTreeMap;
 
 use camino::Utf8Path;
 use pyscythe_core::config::{
-    BoundaryConfig, Config, DenyRule, ModulePrefix, NamePatterns, NotebookPolicy, PathPatterns,
-    PatternError, TypeOnlyImports,
+    BoundaryConfig, Config, DenyRule, HealthThresholds, ModulePrefix, NamePatterns, NotebookPolicy,
+    PathPatterns, PatternError, TypeOnlyImports,
 };
 use pyscythe_core::manifest::{EntryPoint, EntryPointKind, Manifest};
 use pyscythe_core::source::ModulePath;
@@ -155,6 +155,16 @@ pub fn parse(text: &str) -> Result<ProjectSettings, ParseError> {
             NotebookPolicy::Exclude
         },
         boundaries: tool.boundaries.map(boundary_config).transpose()?,
+        health: {
+            let defaults = HealthThresholds::default();
+            let table = tool.health.unwrap_or_default();
+            HealthThresholds {
+                max_cyclomatic: table.cyclomatic.unwrap_or(defaults.max_cyclomatic),
+                max_cognitive: table.cognitive.unwrap_or(defaults.max_cognitive),
+                max_lines: table.lines.unwrap_or(defaults.max_lines),
+                max_parameters: table.parameters.unwrap_or(defaults.max_parameters),
+            }
+        },
     };
 
     Ok(ProjectSettings {
@@ -218,6 +228,22 @@ struct PyscytheTable {
     include_notebooks: bool,
     /// Architecture boundaries.
     boundaries: Option<BoundariesTable>,
+    /// Health thresholds.
+    health: Option<HealthTable>,
+}
+
+/// `[tool.pyscythe.health]`.
+#[derive(Debug, Default, Deserialize)]
+#[serde(rename_all = "kebab-case", deny_unknown_fields)]
+struct HealthTable {
+    #[serde(rename = "max-cyclomatic")]
+    cyclomatic: Option<u32>,
+    #[serde(rename = "max-cognitive")]
+    cognitive: Option<u32>,
+    #[serde(rename = "max-lines")]
+    lines: Option<u32>,
+    #[serde(rename = "max-parameters")]
+    parameters: Option<u32>,
 }
 
 /// `[tool.pyscythe.boundaries]`.
@@ -394,6 +420,13 @@ deny = ["app.infra"]
                 .rank_of("app.domain.x"),
             Some(2)
         );
+    }
+
+    #[test]
+    fn reads_health_thresholds_with_defaults_for_the_rest() {
+        let settings = parse("[tool.pyscythe.health]\nmax-cyclomatic = 4\n").unwrap();
+        assert_eq!(settings.config.health.max_cyclomatic, 4);
+        assert_eq!(settings.config.health.max_cognitive, 15);
     }
 
     #[test]

@@ -41,6 +41,20 @@ pub enum ReportKind {
     Boundaries,
 }
 
+impl ReportKind {
+    /// The kebab-case name used in JSON and comment markers.
+    #[must_use]
+    pub const fn code(self) -> &'static str {
+        match self {
+            Self::DeadCode => "dead-code",
+            Self::Cycles => "cycles",
+            Self::Health => "health",
+            Self::Dupes => "dupes",
+            Self::Boundaries => "boundaries",
+        }
+    }
+}
+
 /// How much of the project is duplicated, from the `dupes` analysis.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
 pub struct DuplicationSummary {

@@ -32,7 +32,7 @@ enum Command {
     /// Report module-level definitions and files that nothing refers to.
     DeadCode(AnalysisArgs),
     /// Report groups of modules that import each other at load time.
-    Cycles(AnalysisArgs),
+    Cycles(CyclesArgs),
     /// Report complexity hotspots and an overall health score.
     Health(AnalysisArgs),
     /// Report duplicated code.
@@ -168,6 +168,16 @@ struct AnalysisArgs {
     since: Option<String>,
 }
 
+#[derive(Debug, clap::Args)]
+struct CyclesArgs {
+    #[command(flatten)]
+    common: AnalysisArgs,
+
+    /// Also follow imports inside function bodies, which only bite when called.
+    #[arg(long)]
+    include_deferred: bool,
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum)]
 enum MinConfidence {
     /// Everything.
@@ -232,6 +242,8 @@ enum Format {
     Github,
     /// A Markdown table, for pull request comments.
     Markdown,
+    /// Markdown with a leading `<!-- pyscythe:<analysis> -->` marker so a bot can find and update its comment.
+    PrComment,
 }
 
 /// Process exit statuses, mirroring the fallow convention.
@@ -270,8 +282,13 @@ fn main() -> ExitCode {
 fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
     match cli.command {
         Command::DeadCode(args) => run_analysis(&args, out, |i, a, s| Ok(dead_code(i, a, s))),
-        Command::Cycles(args) => run_analysis(&args, out, |i, _, _| Ok(cycles(i))),
-        Command::Health(args) => run_analysis(&args, out, |i, _, _| Ok(health(i))),
+        Command::Cycles(args) => {
+            let include_deferred = args.include_deferred;
+            run_analysis(&args.common, out, move |i, _, _| {
+                Ok(cycles(i, include_deferred))
+            })
+        }
+        Command::Health(args) => run_analysis(&args, out, |i, _, s| Ok(health(i, s))),
         Command::Boundaries(args) => run_analysis(&args, out, boundaries),
         Command::Fix(args) => run_fix(&args, out),
         Command::Dupes(args) => {
@@ -474,12 +491,15 @@ fn dead_code(index: &TyIndex, args: &AnalysisArgs, settings: &ProjectSettings) -
     pyscythe_core::dead_code::analyze(index, &policy, &settings.manifest, &settings.config)
 }
 
-fn cycles(index: &TyIndex) -> Report {
-    pyscythe_core::cycles::analyze(index)
+fn cycles(index: &TyIndex, include_deferred: bool) -> Report {
+    pyscythe_core::cycles::analyze(
+        index,
+        pyscythe_core::cycles::CycleOptions { include_deferred },
+    )
 }
 
-fn health(index: &TyIndex) -> Report {
-    pyscythe_core::health::analyze(index)
+fn health(index: &TyIndex, settings: &ProjectSettings) -> Report {
+    pyscythe_core::health::analyze(index, &settings.config.health)
 }
 
 fn boundaries(
@@ -513,6 +533,10 @@ fn emit(
         }
         Format::Github => render::github_annotations(report, root, out)?,
         Format::Markdown => render::markdown(report, root, out)?,
+        Format::PrComment => {
+            writeln!(out, "<!-- pyscythe:{} -->", report.kind.code())?;
+            render::markdown(report, root, out)?;
+        }
     }
     Ok(())
 }

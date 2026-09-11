@@ -229,6 +229,30 @@ impl BoundaryConfig {
     }
 }
 
+/// Where a function starts costing health points.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct HealthThresholds {
+    /// Above this cyclomatic complexity a function is a hotspot.
+    pub max_cyclomatic: u32,
+    /// Above this cognitive complexity a function is a hotspot.
+    pub max_cognitive: u32,
+    /// Above this many lines a function loses points.
+    pub max_lines: u32,
+    /// Above this many parameters a function loses points.
+    pub max_parameters: u32,
+}
+
+impl Default for HealthThresholds {
+    fn default() -> Self {
+        Self {
+            max_cyclomatic: 10,
+            max_cognitive: 15,
+            max_lines: 50,
+            max_parameters: 6,
+        }
+    }
+}
+
 /// Everything the user can tune.
 #[derive(Debug, Clone)]
 pub struct Config {
@@ -240,6 +264,8 @@ pub struct Config {
     pub notebooks: NotebookPolicy,
     /// Architecture boundaries, when configured.
     pub boundaries: Option<BoundaryConfig>,
+    /// Health thresholds.
+    pub health: HealthThresholds,
 }
 
 impl Default for Config {
@@ -249,6 +275,7 @@ impl Default for Config {
             ignore_names: NamePatterns::none(),
             notebooks: NotebookPolicy::Exclude,
             boundaries: None,
+            health: HealthThresholds::default(),
         }
     }
 }

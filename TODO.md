@@ -28,12 +28,13 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 ## Other analyses
 
 - [x] Circular imports: `pyscythe cycles`, Tarjan SCCs over runtime imports; `TYPE_CHECKING` and function-local imports are excluded.
-- [ ] Cycles: report every distinct simple cycle in a component, not just one; offer `--include-deferred`.
-- [ ] Unused files: treat `__init__.py` re-exports as uses of the re-exported file.
+- [x] Cycles: every simple cycle per component (capped at 25), `--include-deferred`.
+- [x] `__init__.py` re-exports count as uses of the re-exported module and symbol (covered by an acceptance test).
 - [x] `pyscythe dupes`: windowed token hashing with maximal-match extension; `--mode strict|mild|weak`, `--min-tokens`, `--min-lines`; duplication percentage in the summary.
 - [ ] Dupes: report clone groups (three or more occurrences) as one finding; ignore docstrings and import blocks by default.
 - [x] `pyscythe health`: cyclomatic and cognitive complexity per function (`pyscythe_metrics`, parser-only), hotspots over 10/15, length-weighted 0-100 score with A-F grade.
-- [ ] Health: thresholds in `[tool.pyscythe]`; per-file and per-package scores; maintainability index; trend against a baseline.
+- [x] Health thresholds in `[tool.pyscythe.health]`.
+- [ ] Health: per-file and per-package scores; maintainability index; trend against a baseline.
 - [x] `pyscythe boundaries`: `layers` (ranks, several prefixes per rank), `rules` with `from`/`deny`, `preset = "hexagonal"` with `root`, type-only imports allowed unless `check-type-only`.
 - [ ] Boundaries: `pyscythe boundaries --suggest` to propose layers from the import graph; per-rule allow lists.
 - [x] `pyscythe fix [--dry-run]`: removes dead definitions (whole lines, decorators included, gap preserved) and unused files; skips nested definitions and methods whose removal would empty a class; medium confidence and better by default.
@@ -42,7 +43,7 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 ## Output and integration
 
 - [x] `--format sarif|github|markdown` alongside `human` and `json`.
-- [ ] PR-comment format with a stable marker for updating an existing comment.
+- [x] `--format pr-comment`: Markdown with a `<!-- pyscythe:<analysis> -->` marker.
 - [ ] GitHub Action.
 
 ## Deferred by decision

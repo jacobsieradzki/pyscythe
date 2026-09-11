@@ -2,26 +2,18 @@
 //!
 //! The score starts at 100 for every function and loses points for each unit
 //! over a threshold; functions are weighted by length so one long tangled
-//! function costs more than a short one. Thresholds are the common defaults:
-//! cyclomatic 10, cognitive 15, 50 lines, 6 parameters.
+//! function costs more than a short one. Default thresholds are the common
+//! ones: cyclomatic 10, cognitive 15, 50 lines, 6 parameters.
 
+use crate::config::HealthThresholds;
 use crate::finding::{Confidence, Detail, Finding, Rule};
 use crate::index::CodebaseIndex;
 use crate::metrics::FunctionMetrics;
 use crate::report::{Grade, HealthSummary, Report, ReportKind, Summary};
 
-/// Above this cyclomatic complexity a function is a hotspot.
-pub const CYCLOMATIC_THRESHOLD: u32 = 10;
-/// Above this cognitive complexity a function is a hotspot.
-pub const COGNITIVE_THRESHOLD: u32 = 15;
-/// Above this many lines a function starts losing points.
-pub const LINES_THRESHOLD: u32 = 50;
-/// Above this many parameters a function starts losing points.
-pub const PARAMETERS_THRESHOLD: u32 = 6;
-
 /// Runs the health analysis over every file in `index`.
 #[must_use]
-pub fn analyze(index: &dyn CodebaseIndex) -> Report {
+pub fn analyze(index: &dyn CodebaseIndex, thresholds: &HealthThresholds) -> Report {
     let mut findings = Vec::new();
     let mut weighted_penalty: u64 = 0;
     let mut total_weight: u64 = 0;
@@ -36,10 +28,10 @@ pub fn analyze(index: &dyn CodebaseIndex) -> Report {
             max_cognitive = max_cognitive.max(metrics.cognitive);
 
             let weight = u64::from(metrics.lines.max(1));
-            weighted_penalty += u64::from(penalty(&metrics)) * weight;
+            weighted_penalty += u64::from(penalty(&metrics, thresholds)) * weight;
             total_weight += weight;
 
-            if is_hotspot(&metrics) {
+            if is_hotspot(&metrics, thresholds) {
                 findings.push(Finding {
                     rule: Rule::ComplexFunction,
                     path: file.path.clone(),
@@ -106,16 +98,16 @@ pub fn analyze(index: &dyn CodebaseIndex) -> Report {
     }
 }
 
-const fn is_hotspot(metrics: &FunctionMetrics) -> bool {
-    metrics.cyclomatic > CYCLOMATIC_THRESHOLD || metrics.cognitive > COGNITIVE_THRESHOLD
+const fn is_hotspot(metrics: &FunctionMetrics, t: &HealthThresholds) -> bool {
+    metrics.cyclomatic > t.max_cyclomatic || metrics.cognitive > t.max_cognitive
 }
 
 /// Points a function loses, capped at 100.
-fn penalty(metrics: &FunctionMetrics) -> u32 {
-    let over_cyclomatic = metrics.cyclomatic.saturating_sub(CYCLOMATIC_THRESHOLD) * 5;
-    let over_cognitive = metrics.cognitive.saturating_sub(COGNITIVE_THRESHOLD) * 3;
-    let over_lines = metrics.lines.saturating_sub(LINES_THRESHOLD) / 2;
-    let over_parameters = metrics.parameters.saturating_sub(PARAMETERS_THRESHOLD) * 5;
+fn penalty(metrics: &FunctionMetrics, t: &HealthThresholds) -> u32 {
+    let over_cyclomatic = metrics.cyclomatic.saturating_sub(t.max_cyclomatic) * 5;
+    let over_cognitive = metrics.cognitive.saturating_sub(t.max_cognitive) * 3;
+    let over_lines = metrics.lines.saturating_sub(t.max_lines) / 2;
+    let over_parameters = metrics.parameters.saturating_sub(t.max_parameters) * 5;
     (over_cyclomatic + over_cognitive + over_lines + over_parameters).min(100)
 }
 
@@ -129,6 +121,7 @@ const fn cognitive_of(finding: &Finding) -> u32 {
 #[cfg(test)]
 mod tests {
     use super::analyze;
+    use crate::config::HealthThresholds;
     use crate::finding::Rule;
     use crate::report::Grade;
     use crate::testing::FakeIndex;
@@ -139,7 +132,7 @@ mod tests {
         let file = index.add_file("/proj/pkg/a.py", "pkg.a");
         index.add_function_metrics(file, "tidy", 3, 4, 20, 2);
 
-        let report = analyze(&index);
+        let report = analyze(&index, &HealthThresholds::default());
 
         let health = report.summary.health.expect("health summary");
         assert_eq!(
@@ -157,7 +150,7 @@ mod tests {
         index.add_function_metrics(file, "worse", 30, 60, 200, 9);
         index.add_function_metrics(file, "fine", 2, 1, 10, 1);
 
-        let report = analyze(&index);
+        let report = analyze(&index, &HealthThresholds::default());
 
         let names: Vec<_> = report
             .findings
@@ -178,10 +171,28 @@ mod tests {
     }
 
     #[test]
+    fn thresholds_are_configurable() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/pkg/a.py", "pkg.a");
+        index.add_function_metrics(file, "busy", 8, 12, 30, 2);
+        let strict = HealthThresholds {
+            max_cyclomatic: 5,
+            max_cognitive: 5,
+            ..HealthThresholds::default()
+        };
+
+        assert!(analyze(&index, &HealthThresholds::default()).is_clean());
+        assert_eq!(analyze(&index, &strict).findings.len(), 1);
+    }
+
+    #[test]
     fn a_project_without_functions_is_healthy() {
         let mut index = FakeIndex::new();
         index.add_file("/proj/pkg/empty.py", "pkg.empty");
-        let health = analyze(&index).summary.health.expect("health summary");
+        let health = analyze(&index, &HealthThresholds::default())
+            .summary
+            .health
+            .expect("health summary");
         assert_eq!(health.score, 100);
         assert_eq!(health.functions, 0);
     }
