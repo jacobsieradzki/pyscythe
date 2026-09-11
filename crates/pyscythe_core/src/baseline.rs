@@ -45,6 +45,9 @@ impl BaselineKey {
             Detail::Import { to_module, .. } => {
                 (Some(SymbolName::new(to_module.as_str())), None, None)
             }
+            Detail::Dependency { distribution, .. } => {
+                (Some(SymbolName::new(distribution.clone())), None, None)
+            }
             Detail::Cycle { .. } | Detail::File => (None, None, None),
         };
         Self {

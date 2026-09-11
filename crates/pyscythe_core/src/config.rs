@@ -266,6 +266,8 @@ pub struct Config {
     pub boundaries: Option<BoundaryConfig>,
     /// Health thresholds.
     pub health: HealthThresholds,
+    /// Distributions never reported as unused, on top of the built-in tool list.
+    pub ignored_dependencies: Vec<crate::manifest::DistributionName>,
 }
 
 impl Default for Config {
@@ -276,6 +278,7 @@ impl Default for Config {
             notebooks: NotebookPolicy::Exclude,
             boundaries: None,
             health: HealthThresholds::default(),
+            ignored_dependencies: Vec::new(),
         }
     }
 }

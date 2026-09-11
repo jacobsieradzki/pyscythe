@@ -7,13 +7,13 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 - [ ] Unused imports and re-exports (`from x import y` never used, `__all__` entries that do not exist).
 - [x] Unused methods and properties. Resolved references plus a textual attribute-name safety net for duck typing; overrides of inherited members (walked through ty, so stdlib and third-party bases count) are kept; `.setter`/`.deleter` halves are not candidates. Class attributes and instance fields are still to do.
 - [x] Unused files: modules nothing imports (including by dotted string) and nothing runs. Roots: `__main__` guard, package/test/conftest/manage/wsgi/asgi files, entry-point modules, files with plugin-kept symbols.
-- [ ] Unused dependencies: distributions in `pyproject.toml` that no import resolves into.
+- [x] `pyscythe deps`: unused declared dependencies, imported-but-undeclared distributions (owner read from site-packages `RECORD`/`top_level.txt`), and unresolved imports; PEP 508 names, optional-dependencies, PEP 735 groups with include-group; tool distributions and `[tool.pyscythe.deps] ignore` are exempt; typeshed-bundled stubs such as typing_extensions still count as dependencies.
 - [x] Entry points from `[project.scripts]`, `[project.gui-scripts]`, `[project.entry-points]`. Still to do: `setup.py` / `setup.cfg` entry points.
 - [x] Framework plugins (convention-based, by decorator name, base class name, and file layout): FastAPI, Pydantic, Typer/Click, pytest, Flask, Airflow, Django, Celery, SQLAlchemy/SQLModel, Alembic.
 - [x] Base-class identity resolved through ty: plugins match qualified ancestors such as `sqlalchemy.orm.decl_api.DeclarativeBase` and only fall back to base-name text when a base cannot be resolved.
 - [ ] Decorator identity resolved through ty, so `from fastapi import APIRouter as R` and re-exported decorators are recognised.
 - [x] String references: a literal `"pkg.module.attr"` or `"pkg.module:attr"` anywhere in the project counts as a use of the symbol and a deferred import of the module.
-- [ ] Django: `INSTALLED_APPS`, middleware, and context-processor strings once string references land.
+- [x] Django `INSTALLED_APPS`, middleware, and context-processor strings are covered by dotted-string references.
 - [x] `--show-kept` lists what plugins suppressed and why; JSON always carries `kept`.
 - [x] `--exclude` on the command line; `--timings` prints phase durations.
 - [x] `[tool.pyscythe]` config: `exclude`, `ignore-names`, `entry-points`, `include-notebooks`.

@@ -39,6 +39,8 @@ pub enum ReportKind {
     Dupes,
     /// Architecture boundary violations.
     Boundaries,
+    /// Declared versus imported dependencies.
+    Deps,
 }
 
 impl ReportKind {
@@ -51,6 +53,7 @@ impl ReportKind {
             Self::Health => "health",
             Self::Dupes => "dupes",
             Self::Boundaries => "boundaries",
+            Self::Deps => "deps",
         }
     }
 }

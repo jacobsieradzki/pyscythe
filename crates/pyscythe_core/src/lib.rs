@@ -9,6 +9,7 @@ pub mod boundaries;
 pub mod config;
 pub mod cycles;
 pub mod dead_code;
+pub mod deps;
 pub mod dupes;
 pub mod edit;
 pub mod finding;

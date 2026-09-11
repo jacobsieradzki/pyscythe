@@ -7,8 +7,8 @@ use crate::metrics::FunctionMetrics;
 use crate::tokens::{CloneMode, CloneToken};
 
 use crate::index::{
-    Ancestry, CodebaseIndex, Import, ImportKind, Inheritance, NameUsage, Reference, Suppression,
-    SuppressionScope,
+    Ancestry, CodebaseIndex, ExternalImport, Import, ImportKind, ImportOrigin, Inheritance,
+    NameUsage, Reference, Suppression, SuppressionScope,
 };
 use crate::source::{
     ByteOffset, ByteSpan, Column, FileId, Line, MainGuard, ModulePath, Position, SourceFile,
@@ -32,6 +32,7 @@ pub(crate) struct FakeIndex {
     metrics: Vec<(FileId, FunctionMetrics)>,
     tokens: Vec<(FileId, Vec<CloneToken>)>,
     sources: Vec<(FileId, String, Vec<Deletable>)>,
+    external_imports: Vec<(FileId, ExternalImport)>,
 }
 
 impl FakeIndex {
@@ -140,6 +141,23 @@ impl FakeIndex {
             Suppression {
                 line: Line::from_one_based(1).expect("one"),
                 scope: SuppressionScope::File,
+            },
+        ));
+    }
+
+    pub(crate) fn add_external_import(
+        &mut self,
+        file: FileId,
+        top_level: &str,
+        origin: ImportOrigin,
+    ) {
+        let ordinal = u32::try_from(self.external_imports.len()).expect("few imports");
+        self.external_imports.push((
+            file,
+            ExternalImport {
+                top_level: top_level.to_owned(),
+                span: ByteSpan::new(ByteOffset::new(ordinal), ByteOffset::new(ordinal + 1)),
+                origin,
             },
         ));
     }
@@ -386,6 +404,14 @@ impl CodebaseIndex for FakeIndex {
             .iter()
             .filter(|(from, _)| *from == file)
             .map(|(_, import)| *import)
+            .collect()
+    }
+
+    fn external_imports(&self, file: FileId) -> Vec<ExternalImport> {
+        self.external_imports
+            .iter()
+            .filter(|(f, _)| *f == file)
+            .map(|(_, i)| i.clone())
             .collect()
     }
 

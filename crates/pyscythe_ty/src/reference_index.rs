@@ -37,6 +37,17 @@ pub(crate) struct DefinitionKey {
     pub(crate) name_range: TextRange,
 }
 
+/// An import of something outside the project and the standard library.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub(crate) struct ExternalImportRecord {
+    /// First segment of the imported name.
+    pub(crate) top_level: String,
+    /// The statement's range.
+    pub(crate) range: TextRange,
+    /// The resolved file in site-packages, or `None` when unresolved.
+    pub(crate) site_packages_file: Option<File>,
+}
+
 /// One file importing another.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub(crate) struct ImportEdge {
@@ -51,6 +62,7 @@ pub(crate) struct ImportEdge {
 pub(crate) struct ReferenceIndex {
     uses: FxHashMap<DefinitionKey, Vec<Use>>,
     imports: FxHashMap<File, Vec<ImportEdge>>,
+    external_imports: FxHashMap<File, Vec<ExternalImportRecord>>,
     attribute_names: FxHashSet<String>,
 }
 
@@ -76,6 +88,9 @@ impl ReferenceIndex {
                 index.uses.entry(key).or_default().push(use_site);
             }
             index.imports.insert(file, file_uses.imports);
+            index
+                .external_imports
+                .insert(file, file_uses.external_imports);
             index.attribute_names.extend(file_uses.attribute_names);
         }
         index
@@ -95,12 +110,18 @@ impl ReferenceIndex {
     pub(crate) fn imports_from(&self, file: File) -> &[ImportEdge] {
         self.imports.get(&file).map_or(&[], Vec::as_slice)
     }
+
+    /// Every external import in `file`.
+    pub(crate) fn external_imports_in(&self, file: File) -> &[ExternalImportRecord] {
+        self.external_imports.get(&file).map_or(&[], Vec::as_slice)
+    }
 }
 
 #[derive(Debug, Default)]
 struct FileUses {
     uses: Vec<(DefinitionKey, Use)>,
     imports: Vec<ImportEdge>,
+    external_imports: Vec<ExternalImportRecord>,
     attribute_names: FxHashSet<String>,
 }
 
@@ -196,9 +217,56 @@ impl UseCollector<'_, '_> {
         }
     }
 
+    /// Notes an absolute import of `dotted` when it lands outside the project
+    /// and the standard library, or nowhere at all.
+    fn record_external(&mut self, range: TextRange, dotted: &str, level: u32) {
+        if level > 0 || dotted.is_empty() {
+            return;
+        }
+        let top_level = dotted.split('.').next().unwrap_or(dotted).to_owned();
+        // `__future__` and friends are interpreter features, not distributions.
+        if top_level.starts_with("__") {
+            return;
+        }
+        let module = self.model.resolve_module(Some(&top_level), 0);
+        let site_packages_file = match module {
+            Some(module) => {
+                let search_path = module.search_path(self.db);
+                let in_environment =
+                    search_path.is_some_and(|p| p.is_site_packages() || p.is_editable());
+                let in_stdlib =
+                    search_path.is_some_and(ty_module_resolver::SearchPath::is_standard_library);
+                // typeshed bundles stubs for a few third-party distributions,
+                // typing_extensions above all; those are still dependencies.
+                let minor = self.model.program_file().python_version(self.db).minor;
+                let really_stdlib = in_stdlib
+                    && ruff_python_stdlib::sys::is_known_standard_library(minor, &top_level);
+                if really_stdlib {
+                    return;
+                }
+                if !in_environment && !in_stdlib {
+                    // First-party or an extra path: not a dependency question.
+                    return;
+                }
+                let file = module.file(self.db).filter(|_| in_environment);
+                if file.is_some_and(|file| self.project_files.contains(&file)) {
+                    return;
+                }
+                file
+            }
+            None => None,
+        };
+        self.out.external_imports.push(ExternalImportRecord {
+            top_level,
+            range,
+            site_packages_file,
+        });
+    }
+
     /// Records an edge to `dotted` and every package above it, since importing
     /// `a.b.c` also executes `a/__init__.py` and `a/b/__init__.py`.
     fn record_module_and_ancestors(&mut self, range: TextRange, dotted: &str, level: u32) {
+        self.record_external(range, dotted, level);
         let kind = self.import_kind();
         let segments: Vec<&str> = dotted.split('.').collect();
         for end in 1..=segments.len() {

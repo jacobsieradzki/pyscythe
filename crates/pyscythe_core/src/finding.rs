@@ -32,6 +32,12 @@ pub enum Rule {
     DuplicateCode,
     /// An import that crosses a configured architecture boundary.
     BoundaryViolation,
+    /// A declared dependency nothing imports.
+    UnusedDependency,
+    /// An imported distribution that is not declared.
+    MissingDependency,
+    /// An import nothing on the search path provides.
+    UnresolvedImport,
 }
 
 impl Rule {
@@ -53,7 +59,7 @@ impl Rule {
     }
 
     /// Every rule, in a stable order for tooling metadata.
-    pub const ALL: [Self; 10] = [
+    pub const ALL: [Self; 13] = [
         Self::UnusedFunction,
         Self::UnusedClass,
         Self::UnusedVariable,
@@ -64,6 +70,9 @@ impl Rule {
         Self::ComplexFunction,
         Self::DuplicateCode,
         Self::BoundaryViolation,
+        Self::UnusedDependency,
+        Self::MissingDependency,
+        Self::UnresolvedImport,
     ];
 
     /// The kebab-case identifier used in JSON, SARIF, and suppression comments.
@@ -80,6 +89,9 @@ impl Rule {
             Self::ComplexFunction => "complex-function",
             Self::DuplicateCode => "duplicate-code",
             Self::BoundaryViolation => "boundary-violation",
+            Self::UnusedDependency => "unused-dependency",
+            Self::MissingDependency => "missing-dependency",
+            Self::UnresolvedImport => "unresolved-import",
         }
     }
 
@@ -107,6 +119,11 @@ impl Rule {
             }
             Self::DuplicateCode => "A run of code that also appears elsewhere in the project.",
             Self::BoundaryViolation => "An import that crosses a configured architecture boundary.",
+            Self::UnusedDependency => "A declared dependency that nothing in the project imports.",
+            Self::MissingDependency => {
+                "An imported distribution that pyproject.toml does not declare."
+            }
+            Self::UnresolvedImport => "An import that nothing on the search path provides.",
         }
     }
 
@@ -123,6 +140,8 @@ impl Rule {
             Self::UnusedSuppression => "suppression comment",
             Self::DuplicateCode => "duplicate",
             Self::BoundaryViolation => "boundary violation",
+            Self::UnusedDependency | Self::MissingDependency => "dependency",
+            Self::UnresolvedImport => "import",
         }
     }
 }
@@ -184,6 +203,13 @@ pub enum Detail {
         /// Last line of the other occurrence.
         other_end_line: u32,
     },
+    /// A distribution and the modules it was matched to.
+    Dependency {
+        /// The distribution, normalised.
+        distribution: String,
+        /// Top-level modules involved.
+        modules: Vec<String>,
+    },
     /// An import edge that breaks a rule.
     Import {
         /// The importing module.
@@ -241,7 +267,8 @@ impl Finding {
             | Detail::Comment
             | Detail::Metrics { .. }
             | Detail::Duplicate { .. }
-            | Detail::Import { .. } => None,
+            | Detail::Import { .. }
+            | Detail::Dependency { .. } => None,
         }
     }
 }

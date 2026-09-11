@@ -2,10 +2,34 @@
 
 use crate::edit::Deletable;
 use crate::finding::Rule;
+use crate::manifest::DistributionName;
 use crate::metrics::FunctionMetrics;
 use crate::source::{ByteOffset, ByteSpan, FileId, Line, Position, SourceFile};
 use crate::symbol::{DottedName, Symbol, SymbolName};
 use crate::tokens::{CloneMode, CloneToken};
+
+/// Where an import of a module outside the project landed.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum ImportOrigin {
+    /// A package in the environment; the distributions whose files provide it.
+    SitePackages {
+        /// Owning distributions, from `RECORD`; empty when metadata is missing.
+        distributions: Vec<DistributionName>,
+    },
+    /// Nothing on the search path provides it.
+    Unresolved,
+}
+
+/// An import whose target is not a project file or the standard library.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ExternalImport {
+    /// The first segment of the imported name, such as `pydantic` in `pydantic.fields`.
+    pub top_level: String,
+    /// Where the import statement sits.
+    pub span: ByteSpan,
+    /// What it resolved to.
+    pub origin: ImportOrigin,
+}
 
 /// Whether an attribute name appears anywhere, regardless of what it resolves to.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -174,6 +198,9 @@ pub trait CodebaseIndex {
 
     /// Every module `file` imports, including deferred and type-only imports.
     fn imports(&self, file: FileId) -> Vec<Import>;
+
+    /// Imports in `file` of modules outside the project and the standard library.
+    fn external_imports(&self, file: FileId) -> Vec<ExternalImport>;
 
     /// Whether `name` is accessed as an attribute anywhere, by any receiver.
     ///

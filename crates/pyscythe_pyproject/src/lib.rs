@@ -7,7 +7,9 @@ use pyscythe_core::config::{
     BoundaryConfig, Config, DenyRule, HealthThresholds, ModulePrefix, NamePatterns, NotebookPolicy,
     PathPatterns, PatternError, TypeOnlyImports,
 };
-use pyscythe_core::manifest::{EntryPoint, EntryPointKind, Manifest};
+use pyscythe_core::manifest::{
+    Dependency, DependencyGroup, DistributionName, EntryPoint, EntryPointKind, Manifest,
+};
 use pyscythe_core::source::ModulePath;
 use pyscythe_core::symbol::SymbolName;
 use serde::Deserialize;
@@ -146,6 +148,37 @@ pub fn parse(text: &str) -> Result<ProjectSettings, ParseError> {
             .map(|target| entry_point(EntryPointKind::Plugin, target)),
     );
 
+    let mut dependencies: Vec<Dependency> = project
+        .dependencies
+        .iter()
+        .filter_map(|requirement| requirement_name(requirement))
+        .map(|name| Dependency {
+            name,
+            group: DependencyGroup::Main,
+        })
+        .collect();
+    for (group, requirements) in &project.optional_dependencies {
+        dependencies.extend(
+            requirements
+                .iter()
+                .filter_map(|r| requirement_name(r))
+                .map(|name| Dependency {
+                    name,
+                    group: DependencyGroup::Optional(group.clone()),
+                }),
+        );
+    }
+    let groups = document.dependency_groups.unwrap_or_default();
+    for group in groups.keys() {
+        let mut visited = Vec::new();
+        for name in group_requirements(&groups, group, &mut visited) {
+            dependencies.push(Dependency {
+                name,
+                group: DependencyGroup::Group(group.clone()),
+            });
+        }
+    }
+
     let config = Config {
         exclude: PathPatterns::parse(tool.exclude.iter().map(String::as_str))?,
         ignore_names: NamePatterns::parse(tool.ignore_names.iter().map(String::as_str))?,
@@ -155,6 +188,13 @@ pub fn parse(text: &str) -> Result<ProjectSettings, ParseError> {
             NotebookPolicy::Exclude
         },
         boundaries: tool.boundaries.map(boundary_config).transpose()?,
+        ignored_dependencies: tool
+            .deps
+            .unwrap_or_default()
+            .ignore
+            .iter()
+            .map(|name| DistributionName::normalize(name))
+            .collect(),
         health: {
             let defaults = HealthThresholds::default();
             let table = tool.health.unwrap_or_default();
@@ -168,9 +208,45 @@ pub fn parse(text: &str) -> Result<ProjectSettings, ParseError> {
     };
 
     Ok(ProjectSettings {
-        manifest: Manifest { entry_points },
+        manifest: Manifest {
+            entry_points,
+            dependencies,
+        },
         config,
     })
+}
+
+/// The requirements of a PEP 735 group, following `include-group` entries.
+fn group_requirements(
+    groups: &BTreeMap<String, Vec<GroupEntry>>,
+    group: &str,
+    visited: &mut Vec<String>,
+) -> Vec<DistributionName> {
+    if visited.iter().any(|seen| seen == group) {
+        return Vec::new();
+    }
+    visited.push(group.to_owned());
+    let mut names = Vec::new();
+    for entry in groups.get(group).map(Vec::as_slice).unwrap_or_default() {
+        match entry {
+            GroupEntry::Requirement(requirement) => names.extend(requirement_name(requirement)),
+            GroupEntry::Include(include) => {
+                names.extend(group_requirements(groups, &include.include_group, visited));
+            }
+        }
+    }
+    names
+}
+
+/// The project name at the front of a PEP 508 requirement such as
+/// `fastapi[standard]>=0.104; python_version < "3.13"`.
+fn requirement_name(requirement: &str) -> Option<DistributionName> {
+    let name: String = requirement
+        .trim_start()
+        .chars()
+        .take_while(|c| c.is_ascii_alphanumeric() || matches!(c, '-' | '_' | '.'))
+        .collect();
+    (!name.is_empty()).then(|| DistributionName::normalize(&name))
 }
 
 fn targets(
@@ -203,6 +279,22 @@ fn entry_point(kind: EntryPointKind, target: &str) -> EntryPoint {
 struct PyProject {
     project: Option<Project>,
     tool: Option<Tool>,
+    #[serde(rename = "dependency-groups")]
+    dependency_groups: Option<BTreeMap<String, Vec<GroupEntry>>>,
+}
+
+/// A PEP 735 group entry: a requirement string or an `{include-group = ...}` table.
+#[derive(Debug, Deserialize)]
+#[serde(untagged)]
+enum GroupEntry {
+    Requirement(String),
+    Include(IncludeGroup),
+}
+
+#[derive(Debug, Deserialize)]
+struct IncludeGroup {
+    #[serde(rename = "include-group")]
+    include_group: String,
 }
 
 #[derive(Debug, Deserialize)]
@@ -230,6 +322,17 @@ struct PyscytheTable {
     boundaries: Option<BoundariesTable>,
     /// Health thresholds.
     health: Option<HealthTable>,
+    /// Dependency analysis settings.
+    deps: Option<DepsTable>,
+}
+
+/// `[tool.pyscythe.deps]`.
+#[derive(Debug, Default, Deserialize)]
+#[serde(rename_all = "kebab-case", deny_unknown_fields)]
+struct DepsTable {
+    /// Distributions never reported as unused.
+    #[serde(default)]
+    ignore: Vec<String>,
 }
 
 /// `[tool.pyscythe.health]`.
@@ -283,6 +386,10 @@ struct RuleTable {
 #[serde(rename_all = "kebab-case")]
 struct Project {
     #[serde(default)]
+    dependencies: Vec<String>,
+    #[serde(default)]
+    optional_dependencies: BTreeMap<String, Vec<String>>,
+    #[serde(default)]
     scripts: BTreeMap<String, String>,
     #[serde(default)]
     gui_scripts: BTreeMap<String, String>,
@@ -294,7 +401,7 @@ struct Project {
 mod tests {
     use super::parse;
     use pyscythe_core::config::{NotebookPolicy, TypeOnlyImports};
-    use pyscythe_core::manifest::EntryPointKind;
+    use pyscythe_core::manifest::{DependencyGroup, EntryPointKind};
     use pyscythe_core::symbol::SymbolName;
 
     #[test]
@@ -419,6 +526,48 @@ deny = ["app.infra"]
                 .expect("preset")
                 .rank_of("app.domain.x"),
             Some(2)
+        );
+    }
+
+    #[test]
+    fn reads_dependencies_from_every_table() {
+        let settings = parse(
+            r#"
+[project]
+name = "demo"
+dependencies = ["fastapi[standard]>=0.104", "Pillow", "python_dateutil ; python_version < '3.13'"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[dependency-groups]
+lint = ["ruff", {include-group = "dev"}]
+
+[tool.pyscythe.deps]
+ignore = ["my_plugin"]
+"#,
+        )
+        .unwrap();
+        let names: Vec<(&str, DependencyGroup)> = settings
+            .manifest
+            .dependencies
+            .iter()
+            .map(|d| (d.name.as_str(), d.group.clone()))
+            .collect();
+        assert_eq!(
+            names,
+            [
+                ("fastapi", DependencyGroup::Main),
+                ("pillow", DependencyGroup::Main),
+                ("python-dateutil", DependencyGroup::Main),
+                ("pytest", DependencyGroup::Optional("dev".into())),
+                ("ruff", DependencyGroup::Group("lint".into())),
+            ],
+            "include-group = \"dev\" refers to an optional-dependencies name, not a group, so it adds nothing"
+        );
+        assert_eq!(
+            settings.config.ignored_dependencies[0].as_str(),
+            "my-plugin"
         );
     }
 

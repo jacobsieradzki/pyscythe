@@ -41,6 +41,8 @@ enum Command {
     Boundaries(AnalysisArgs),
     /// Delete dead definitions and files. Shows a diff with --dry-run.
     Fix(FixArgs),
+    /// Compare declared dependencies with what the code imports.
+    Deps(AnalysisArgs),
 }
 
 #[derive(Debug, clap::Args)]
@@ -291,6 +293,14 @@ fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
         Command::Health(args) => run_analysis(&args, out, |i, _, s| Ok(health(i, s))),
         Command::Boundaries(args) => run_analysis(&args, out, boundaries),
         Command::Fix(args) => run_fix(&args, out),
+        Command::Deps(args) => run_analysis(&args, out, |i, _, s| {
+            Ok(pyscythe_core::deps::analyze(
+                i,
+                &s.manifest,
+                &s.config,
+                i.root(),
+            ))
+        }),
         Command::Dupes(args) => {
             let options = DupesOptions {
                 mode: args.mode.into(),

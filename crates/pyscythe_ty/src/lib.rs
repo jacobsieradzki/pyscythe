@@ -10,7 +10,8 @@ use camino::{Utf8Path, Utf8PathBuf};
 use pyscythe_core::config::{NotebookPolicy, PathPatterns};
 use pyscythe_core::edit::Deletable;
 use pyscythe_core::index::{
-    Ancestry, CodebaseIndex, Import, Inheritance, NameUsage, Reference, Suppression,
+    Ancestry, CodebaseIndex, ExternalImport, Import, ImportOrigin, Inheritance, NameUsage,
+    Reference, Suppression,
 };
 use pyscythe_core::metrics::FunctionMetrics;
 use pyscythe_core::source::{
@@ -33,6 +34,7 @@ use ty_python_semantic::Db as _;
 use crate::reference_index::{DefinitionKey, ReferenceIndex};
 
 mod declarations;
+mod distributions;
 mod inheritance;
 mod reference_index;
 
@@ -81,6 +83,7 @@ pub struct TyIndex {
     ids: FxHashMap<File, FileId>,
     sources: Vec<SourceFile>,
     references: OnceLock<ReferenceIndex>,
+    distributions: std::sync::Mutex<distributions::DistributionIndex>,
 }
 
 impl std::fmt::Debug for TyIndex {
@@ -129,6 +132,7 @@ impl TyIndex {
             ids: FxHashMap::default(),
             sources: Vec::new(),
             references: OnceLock::new(),
+            distributions: std::sync::Mutex::new(distributions::DistributionIndex::default()),
         };
         index.select_files(&IndexOptions::default())?;
         Ok(index)
@@ -399,6 +403,36 @@ impl CodebaseIndex for TyIndex {
         } else {
             Inheritance::Fresh
         }
+    }
+
+    fn external_imports(&self, file: FileId) -> Vec<ExternalImport> {
+        let Some(ty_file) = self.ty_file(file) else {
+            return Vec::new();
+        };
+        let records = self.reference_index().external_imports_in(ty_file);
+        let mut distributions = match self.distributions.lock() {
+            Ok(guard) => guard,
+            Err(poisoned) => poisoned.into_inner(),
+        };
+        records
+            .iter()
+            .map(|record| {
+                let origin = record.site_packages_file.map_or_else(
+                    || ImportOrigin::Unresolved,
+                    |module_file| ImportOrigin::SitePackages {
+                        distributions: distributions.owners(
+                            Utf8Path::new(&module_file.path(&self.db).to_string()),
+                            &record.top_level,
+                        ),
+                    },
+                );
+                ExternalImport {
+                    top_level: record.top_level.clone(),
+                    span: span_of(record.range),
+                    origin,
+                }
+            })
+            .collect()
     }
 
     fn attribute_name_usage(&self, name: &SymbolName) -> NameUsage {

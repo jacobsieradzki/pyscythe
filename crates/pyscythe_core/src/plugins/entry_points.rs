@@ -33,6 +33,7 @@ mod tests {
                 module: ModulePath::new(module),
                 attribute: Some(SymbolName::new(attribute)),
             }],
+            dependencies: Vec::new(),
         }
     }
 

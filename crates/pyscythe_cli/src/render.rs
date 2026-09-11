@@ -49,7 +49,7 @@ pub(crate) fn human(report: &Report, show_kept: bool, out: &mut impl Write) -> s
             }
             format!(" ({})", parts.join(", "))
         }
-        ReportKind::Cycles | ReportKind::Boundaries => String::new(),
+        ReportKind::Cycles | ReportKind::Boundaries | ReportKind::Deps => String::new(),
         ReportKind::Health => summary.health.map_or_else(String::new, |health| {
             format!(
                 " ({} functions, max cyclomatic {}, max cognitive {})",
@@ -86,6 +86,7 @@ pub(crate) fn human(report: &Report, show_kept: bool, out: &mut impl Write) -> s
         ReportKind::Health => "hotspots",
         ReportKind::Dupes => "duplicated code",
         ReportKind::Boundaries => "boundary violations",
+        ReportKind::Deps => "dependency problems",
     };
     if report.is_clean() {
         writeln!(

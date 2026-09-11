@@ -784,6 +784,7 @@ mod tests {
                 module: ModulePath::new("pkg.cli"),
                 attribute: Some(SymbolName::new("main")),
             }],
+            dependencies: Vec::new(),
         };
 
         let report = analyze(&index, &Policy::builtin(), &manifest, &Config::default());
@@ -841,6 +842,7 @@ mod tests {
                 module: ModulePath::new("pkg.cli"),
                 attribute: None,
             }],
+            dependencies: Vec::new(),
         };
 
         let report = analyze(&index, &Policy::none(), &manifest, &Config::default());
