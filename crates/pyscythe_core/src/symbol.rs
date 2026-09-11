@@ -109,6 +109,17 @@ impl KeywordName {
     }
 }
 
+/// Where a decorator's definition lives, as far as the resolver could tell.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum Provenance {
+    /// Not resolved: the import is missing or the name is built dynamically.
+    Unknown,
+    /// The standard library: `functools.cache`, `dataclasses.dataclass`.
+    StandardLibrary,
+    /// The project itself or an installed distribution.
+    Package,
+}
+
 /// A decorator applied to a definition.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Decorator {
@@ -119,6 +130,8 @@ pub struct Decorator {
     /// The module that defines the decorator, when it could be resolved:
     /// `fastapi.routing` for `@router.get`, regardless of what `router` is called.
     pub module: Option<crate::source::ModulePath>,
+    /// What kind of place `module` is.
+    pub provenance: Provenance,
 }
 
 impl Decorator {
@@ -129,14 +142,32 @@ impl Decorator {
             name: DottedName::new(name),
             keywords: Vec::new(),
             module: None,
+            provenance: Provenance::Unknown,
         }
     }
 
-    /// The same decorator, known to come from `module`.
+    /// The same decorator, known to come from `module` in the project or a dependency.
     #[must_use]
     pub fn from_module(mut self, module: impl Into<String>) -> Self {
         self.module = Some(crate::source::ModulePath::new(module));
+        self.provenance = Provenance::Package;
         self
+    }
+
+    /// The same decorator, known to come from standard library `module`.
+    #[must_use]
+    pub fn from_standard_library(mut self, module: impl Into<String>) -> Self {
+        self.module = Some(crate::source::ModulePath::new(module));
+        self.provenance = Provenance::StandardLibrary;
+        self
+    }
+
+    /// Whether the decorator is a method call on some object, `@app.command()`
+    /// or `@registry.handler("GET")`, which usually registers the definition
+    /// with that object rather than merely wrapping it.
+    #[must_use]
+    pub fn registers_with_receiver(&self) -> bool {
+        self.name.has_receiver() && self.provenance != Provenance::StandardLibrary
     }
 
     /// Whether the decorator is defined in `package` or a submodule of it, or

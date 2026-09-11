@@ -68,7 +68,8 @@ pub(crate) mod testing {
     use crate::manifest::Manifest;
     use crate::source::{ByteOffset, ByteSpan, FileId, MainGuard, ModulePath, SourceFile};
     use crate::symbol::{
-        Decorator, DottedName, KeywordName, Symbol, SymbolId, SymbolKind, SymbolName, SymbolScope,
+        Decorator, DottedName, KeywordName, Provenance, Symbol, SymbolId, SymbolKind, SymbolName,
+        SymbolScope,
     };
 
     pub(crate) struct Case {
@@ -169,6 +170,7 @@ pub(crate) mod testing {
                 name: DottedName::new(name),
                 keywords: keywords.iter().map(|k| KeywordName::new(*k)).collect(),
                 module: None,
+                provenance: Provenance::Unknown,
             });
             self
         }

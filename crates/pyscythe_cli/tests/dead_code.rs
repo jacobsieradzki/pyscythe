@@ -452,3 +452,24 @@ fn classes_registered_by_an_init_subclass_hook_are_kept() {
         "Alpha is registered by Plugin.__init_subclass__: {report}"
     );
 }
+
+#[test]
+fn registration_decorators_lower_confidence_and_http_handlers_are_kept() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("decorated"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let findings: Vec<(&str, &str)> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| Some((f["symbol"].as_str()?, f["confidence"].as_str()?)))
+        .collect();
+    assert_eq!(
+        findings,
+        [("get_headers", "low"), ("helper", "low")],
+        "do_GET is dispatched by BaseHTTPRequestHandler: {report}"
+    );
+}

@@ -7,8 +7,8 @@ use crate::metrics::FunctionMetrics;
 use crate::tokens::{CloneMode, CloneToken};
 
 use crate::index::{
-    Ancestry, CodebaseIndex, ExternalImport, Import, ImportKind, ImportOrigin, Inheritance,
-    NameUsage, Reference, SubclassRegistration, Suppression, SuppressionScope,
+    Ancestry, CodebaseIndex, ExternalImport, Import, ImportKind, ImportOrigin, ImportedNames,
+    Inheritance, NameUsage, Reference, SubclassRegistration, Suppression, SuppressionScope,
 };
 use crate::source::{
     ByteOffset, ByteSpan, Column, FileId, Line, MainGuard, ModulePath, Position, SourceFile,
@@ -71,6 +71,15 @@ impl FakeIndex {
     }
 
     pub(crate) fn add_import(&mut self, from: FileId, to: FileId, kind: ImportKind) {
+        self.add_import_of(from, to, kind, ImportedNames::Explicit);
+    }
+
+    /// `from to import *` at module level of `from`.
+    pub(crate) fn add_wildcard_import(&mut self, from: FileId, to: FileId) {
+        self.add_import_of(from, to, ImportKind::Runtime, ImportedNames::Wildcard);
+    }
+
+    fn add_import_of(&mut self, from: FileId, to: FileId, kind: ImportKind, names: ImportedNames) {
         let ordinal = u32::try_from(self.imports.len()).expect("few imports");
         self.imports.push((
             from,
@@ -78,6 +87,7 @@ impl FakeIndex {
                 target: to,
                 span: ByteSpan::new(ByteOffset::new(ordinal), ByteOffset::new(ordinal + 1)),
                 kind,
+                names,
             },
         ));
     }

@@ -46,6 +46,15 @@ impl KeepRule for Python {
         if crate::dead_code::is_in_root_directory(context.file) {
             return Some("in a directory of scripts, examples, docs, or benchmarks");
         }
+        if crate::dead_code::is_test_data_file(context.file) {
+            return Some("test data or helper script under the tests tree");
+        }
+        if symbol.kind == crate::symbol::SymbolKind::Method
+            && symbol.name.as_str().starts_with("do_")
+            && context.ancestry.has_ancestor_in("http.server")
+        {
+            return Some("request handler dispatched by HTTP method name");
+        }
         if symbol.kind == crate::symbol::SymbolKind::Class
             && context.registration == crate::index::SubclassRegistration::ByBaseHook
         {
@@ -93,6 +102,35 @@ mod tests {
     fn keeps_module_level_names_of_tool_configuration_scripts() {
         assert!(Case::variable("bind").in_tool_config().is_kept_by(&Python));
         assert!(!Case::variable("bind").is_kept_by(&Python));
+    }
+
+    #[test]
+    fn keeps_test_data_and_helper_scripts_under_a_tests_tree() {
+        assert!(
+            Case::function("load")
+                .at("/p/test/mitmproxy/data/addonscripts/addon.py")
+                .is_kept_by(&Python)
+        );
+        assert!(
+            !Case::function("load")
+                .at("/p/pkg/data/loader.py")
+                .is_kept_by(&Python)
+        );
+    }
+
+    #[test]
+    fn keeps_http_method_handlers_on_request_handler_subclasses() {
+        assert!(
+            Case::method("do_GET")
+                .with_ancestors(&["http.server.BaseHTTPRequestHandler"])
+                .is_kept_by(&Python)
+        );
+        assert!(!Case::method("do_GET").is_kept_by(&Python));
+        assert!(
+            !Case::method("helper")
+                .with_ancestors(&["http.server.BaseHTTPRequestHandler"])
+                .is_kept_by(&Python)
+        );
     }
 
     #[test]

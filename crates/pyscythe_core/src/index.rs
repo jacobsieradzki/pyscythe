@@ -65,6 +65,15 @@ pub enum ImportKind {
     TypeOnly,
 }
 
+/// Which names an import statement binds.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum ImportedNames {
+    /// The module itself or named members: `import a`, `from a import b`.
+    Explicit,
+    /// Everything public: `from a import *`.
+    Wildcard,
+}
+
 /// One module importing another.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Import {
@@ -74,6 +83,8 @@ pub struct Import {
     pub span: ByteSpan,
     /// When the import happens.
     pub kind: ImportKind,
+    /// Which names it binds.
+    pub names: ImportedNames,
 }
 
 /// Whether a base class hooks subclass creation, which registers subclasses

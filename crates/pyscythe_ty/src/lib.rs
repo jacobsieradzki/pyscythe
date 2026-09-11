@@ -327,6 +327,7 @@ impl CodebaseIndex for TyIndex {
                     target: *self.ids.get(&edge.target)?,
                     span: span_of(edge.range),
                     kind: edge.kind,
+                    names: edge.names,
                 })
             })
             .collect()
@@ -411,13 +412,18 @@ impl CodebaseIndex for TyIndex {
     }
 
     fn ancestry(&self, symbol: &Symbol) -> Ancestry {
-        if symbol.kind != SymbolKind::Class {
-            return Ancestry::unknown();
-        }
         let Some(ty_file) = self.ty_file(symbol.file) else {
             return Ancestry::unknown();
         };
-        let hierarchy = inheritance::hierarchy_of_class(&self.db, ty_file, symbol.name_span, None);
+        let hierarchy = match symbol.kind {
+            SymbolKind::Class => {
+                inheritance::hierarchy_of_class(&self.db, ty_file, symbol.name_span, None)
+            }
+            SymbolKind::Method => {
+                inheritance::hierarchy_of_enclosing_class(&self.db, ty_file, symbol.name_span, None)
+            }
+            _ => return Ancestry::unknown(),
+        };
         let names = hierarchy
             .ancestors
             .into_iter()

@@ -37,16 +37,29 @@ pub(crate) fn overrides_inherited_member(
     method_span: ByteSpan,
     name: &str,
 ) -> bool {
-    let program_file = db.program_file(file);
-    let parsed = parsed_module(db, program_file.python_file(db)).load(db);
-    let method_range = to_text_range(method_span);
-    let Some(class_def) = innermost_class_enclosing(&parsed.syntax().body, method_range) else {
-        return false;
-    };
-    walk_hierarchy(db, file, class_def, Some(name))
+    hierarchy_of_enclosing_class(db, file, method_span, Some(name))
         .ancestors
         .iter()
         .any(|ancestor| ancestor.defines_name)
+}
+
+/// The hierarchy of the innermost class enclosing `span` in `file`: for a
+/// method, the class that defines it.
+pub(crate) fn hierarchy_of_enclosing_class(
+    db: &dyn ty_project::Db,
+    file: File,
+    span: ByteSpan,
+    looking_for: Option<&str>,
+) -> Hierarchy {
+    let program_file = db.program_file(file);
+    let parsed = parsed_module(db, program_file.python_file(db)).load(db);
+    innermost_class_enclosing(&parsed.syntax().body, to_text_range(span)).map_or_else(
+        || Hierarchy {
+            ancestors: Vec::new(),
+            complete: false,
+        },
+        |class_def| walk_hierarchy(db, file, class_def, looking_for),
+    )
 }
 
 /// The hierarchy of the class whose name occupies `name_span` in `file`.

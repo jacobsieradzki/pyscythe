@@ -1,6 +1,6 @@
 //! Turns `pyproject.toml` into a [`Manifest`] and a [`Config`].
 
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
 
 use camino::Utf8Path;
 use pyscythe_core::config::{
@@ -193,7 +193,115 @@ fn manifest_in(
             break;
         }
     }
+    if manifest.as_ref().is_none_or(|m| m.dependencies.is_empty())
+        && let Some((path, pinned)) = requirements_dependencies(directory)
+    {
+        source_path = path;
+        manifest
+            .get_or_insert_with(Manifest::empty)
+            .dependencies
+            .extend(pinned);
+    }
     Ok(manifest.map(|manifest| (source_path, manifest)))
+}
+
+/// Dependencies from pip requirements files: `requirements.txt`,
+/// `requirements-*.txt`, `requirements_*.txt`, and `requirements/*.txt`,
+/// following `-r` includes. Returns the entry file (`requirements.txt` when
+/// there is one) alongside them.
+fn requirements_dependencies(
+    directory: &Utf8Path,
+) -> Option<(camino::Utf8PathBuf, Vec<Dependency>)> {
+    let mut files: Vec<camino::Utf8PathBuf> = Vec::new();
+    if let Ok(entries) = directory.read_dir_utf8() {
+        for entry in entries.flatten() {
+            let path = entry.path();
+            let name = path.file_name().unwrap_or_default();
+            let variant = (name.starts_with("requirements-") || name.starts_with("requirements_"))
+                && name.ends_with(".txt");
+            if name == "requirements.txt" || variant {
+                files.push(path.to_path_buf());
+            }
+        }
+    }
+    if let Ok(entries) = directory.join("requirements").read_dir_utf8() {
+        files.extend(
+            entries
+                .flatten()
+                .map(|entry| entry.path().to_path_buf())
+                .filter(|path| path.extension() == Some("txt")),
+        );
+    }
+    files.sort();
+    if let Some(index) = files
+        .iter()
+        .position(|path| path.file_name() == Some("requirements.txt"))
+    {
+        files.swap(0, index);
+    }
+    let entry = files.first()?.clone();
+    let mut seen = BTreeSet::new();
+    let mut out = Vec::new();
+    for file in &files {
+        read_requirements(file, &mut seen, &mut out);
+    }
+    Some((entry, out))
+}
+
+fn read_requirements(
+    path: &Utf8Path,
+    seen: &mut BTreeSet<camino::Utf8PathBuf>,
+    out: &mut Vec<Dependency>,
+) {
+    if !seen.insert(path.to_path_buf()) {
+        return;
+    }
+    let Ok(text) = std::fs::read_to_string(path) else {
+        return;
+    };
+    let group = requirements_group(path);
+    for raw in text.lines() {
+        let line = raw.split('#').next().unwrap_or_default().trim();
+        if line.is_empty() {
+            continue;
+        }
+        if let Some(include) = line
+            .strip_prefix("-r ")
+            .or_else(|| line.strip_prefix("--requirement "))
+        {
+            let included = path.parent().map_or_else(
+                || camino::Utf8PathBuf::from(include.trim()),
+                |dir| dir.join(include.trim()),
+            );
+            read_requirements(&included, seen, out);
+            continue;
+        }
+        // Options, editable installs, and bare URLs name no distribution.
+        if line.starts_with('-') || line.starts_with("git+") || line.starts_with("http") {
+            continue;
+        }
+        if let Some(name) = requirement_name(line)
+            && !out.iter().any(|d| d.name == name && d.group == group)
+        {
+            out.push(Dependency {
+                name,
+                group: group.clone(),
+            });
+        }
+    }
+}
+
+/// `requirements.txt` and `base.txt` are the runtime set; any other file is a
+/// group named after it (`requirements-dev.txt` is `dev`).
+fn requirements_group(path: &Utf8Path) -> DependencyGroup {
+    match path.file_stem().unwrap_or_default() {
+        "requirements" | "base" | "main" | "prod" | "production" => DependencyGroup::Main,
+        stem => DependencyGroup::Group(
+            stem.strip_prefix("requirements")
+                .map_or(stem, |rest| rest.trim_start_matches(['-', '_']))
+                .to_owned(),
+        ),
+    }
 }
 
 /// Directories under `root` (excluding it) that carry a manifest file.
@@ -221,8 +329,10 @@ fn manifest_directories(root: &Utf8Path) -> Vec<camino::Utf8PathBuf> {
                 if !name.starts_with('.') && !SKIP.contains(&name) {
                     pending.push(path.to_path_buf());
                 }
-            } else if matches!(name, "pyproject.toml" | "setup.py" | "setup.cfg")
-                && dir != root
+            } else if matches!(
+                name,
+                "pyproject.toml" | "setup.py" | "setup.cfg" | "requirements.txt"
+            ) && dir != root
                 && !found.contains(&dir)
             {
                 found.push(dir.clone());

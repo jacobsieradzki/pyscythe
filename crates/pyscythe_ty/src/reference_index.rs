@@ -5,7 +5,7 @@
 //! Building this once is far cheaper than searching the workspace per symbol,
 //! and resolving from the use site handles aliased imports uniformly.
 
-use pyscythe_core::index::ImportKind;
+use pyscythe_core::index::{ImportKind, ImportedNames};
 use ruff_db::files::{File, FileRange};
 use ruff_db::parsed::parsed_module;
 use ruff_python_ast::visitor::source_order::{SourceOrderVisitor, TraversalSignal, walk_body};
@@ -54,6 +54,7 @@ pub(crate) struct ImportEdge {
     pub(crate) target: File,
     pub(crate) range: TextRange,
     pub(crate) kind: ImportKind,
+    pub(crate) names: ImportedNames,
 }
 
 /// Uses of every project definition, the import graph, and every attribute
@@ -185,12 +186,19 @@ impl UseCollector<'_, '_> {
         ));
     }
 
-    fn record_import(&mut self, range: TextRange, target: File, kind: ImportKind) {
+    fn record_import(
+        &mut self,
+        range: TextRange,
+        target: File,
+        kind: ImportKind,
+        names: ImportedNames,
+    ) {
         if self.project_files.contains(&target) {
             self.out.imports.push(ImportEdge {
                 target,
                 range,
                 kind,
+                names,
             });
         }
     }
@@ -211,7 +219,12 @@ impl UseCollector<'_, '_> {
                 }
                 ResolvedDefinition::Module(module) => {
                     let kind = self.import_kind();
-                    self.record_import(import_range, module.file(self.db), kind);
+                    self.record_import(
+                        import_range,
+                        module.file(self.db),
+                        kind,
+                        ImportedNames::Explicit,
+                    );
                 }
             }
         }
@@ -265,23 +278,36 @@ impl UseCollector<'_, '_> {
 
     /// Records an edge to `dotted` and every package above it, since importing
     /// `a.b.c` also executes `a/__init__.py` and `a/b/__init__.py`.
-    fn record_module_and_ancestors(&mut self, range: TextRange, dotted: &str, level: u32) {
+    /// `names` describes the import of `dotted` itself; the packages above it
+    /// are only loaded on the way.
+    fn record_module_and_ancestors(
+        &mut self,
+        range: TextRange,
+        dotted: &str,
+        level: u32,
+        names: ImportedNames,
+    ) {
         self.record_external(range, dotted, level);
         let kind = self.import_kind();
         let segments: Vec<&str> = dotted.split('.').collect();
         for end in 1..=segments.len() {
             let prefix = segments.get(..end).map(|s| s.join(".")).unwrap_or_default();
+            let edge_names = if end == segments.len() {
+                names
+            } else {
+                ImportedNames::Explicit
+            };
             if let Some(module) = self.model.resolve_module(Some(prefix.as_str()), level)
                 && let Some(module_file) = module.file(self.db)
             {
-                self.record_import(range, module_file, kind);
+                self.record_import(range, module_file, kind, edge_names);
             }
         }
         if dotted.is_empty()
             && let Some(module) = self.model.resolve_module(None, level)
             && let Some(module_file) = module.file(self.db)
         {
-            self.record_import(range, module_file, kind);
+            self.record_import(range, module_file, kind, names);
         }
     }
 
@@ -310,14 +336,24 @@ impl UseCollector<'_, '_> {
         let Some(package_file) = package.file(self.db) else {
             return;
         };
-        self.record_import(fstring.range(), package_file, ImportKind::Deferred);
+        self.record_import(
+            fstring.range(),
+            package_file,
+            ImportKind::Deferred,
+            ImportedNames::Explicit,
+        );
         let submodule_files: Vec<File> = package
             .all_submodules(self.db)
             .iter()
             .filter_map(|module| module.file(self.db))
             .collect();
         for file in submodule_files {
-            self.record_import(fstring.range(), file, ImportKind::Deferred);
+            self.record_import(
+                fstring.range(),
+                file,
+                ImportKind::Deferred,
+                ImportedNames::Explicit,
+            );
         }
     }
 
@@ -340,7 +376,12 @@ impl UseCollector<'_, '_> {
         let Some(module_file) = module.file(self.db) else {
             return;
         };
-        self.record_import(literal.range(), module_file, ImportKind::Deferred);
+        self.record_import(
+            literal.range(),
+            module_file,
+            ImportKind::Deferred,
+            ImportedNames::Explicit,
+        );
 
         let Some(attribute) = attribute else {
             return;
@@ -459,7 +500,12 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
             }
             AnyNodeRef::StmtImportFrom(import) => {
                 let module_name = import.module.as_deref().unwrap_or_default();
-                self.record_module_and_ancestors(import.range(), module_name, import.level);
+                let names = if import.names.iter().any(|alias| alias.name.as_str() == "*") {
+                    ImportedNames::Wildcard
+                } else {
+                    ImportedNames::Explicit
+                };
+                self.record_module_and_ancestors(import.range(), module_name, import.level, names);
                 for alias in &import.names {
                     let name = alias.name.as_str();
                     if name == "*" {
@@ -476,7 +522,12 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
             }
             AnyNodeRef::StmtImport(import) => {
                 for alias in &import.names {
-                    self.record_module_and_ancestors(alias.range(), alias.name.id.as_str(), 0);
+                    self.record_module_and_ancestors(
+                        alias.range(),
+                        alias.name.id.as_str(),
+                        0,
+                        ImportedNames::Explicit,
+                    );
                 }
             }
             _ => {}

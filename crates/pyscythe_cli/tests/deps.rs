@@ -120,3 +120,35 @@ fn setup_py_install_requires_counts_as_declared() {
         "the finding points at the file that declares it: {report}"
     );
 }
+
+#[test]
+fn requirements_files_count_as_declared_when_nothing_else_does() {
+    let output = pyscythe()
+        .args(["deps", "--format", "json"])
+        .arg(fixture("requirements_txt"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let mut unused: Vec<(&str, &str, &str)> = report["findings"]
+        .as_array()
+        .expect("findings")
+        .iter()
+        .filter(|f| f["rule"] == "unused-dependency")
+        .filter_map(|f| {
+            Some((
+                f["distribution"].as_str()?,
+                f["confidence"].as_str()?,
+                f["path"].as_str()?.rsplit('/').next()?,
+            ))
+        })
+        .collect();
+    unused.sort_unstable();
+    assert_eq!(
+        unused,
+        [
+            ("unused-local-req", "low", "requirements.txt"),
+            ("unused-req", "medium", "requirements.txt"),
+        ],
+        "six is imported; unused-req (base) and unused-local-req (local group) are not: {report}"
+    );
+}

@@ -5,8 +5,8 @@ use std::collections::{BTreeMap, BTreeSet};
 use crate::config::Config;
 use crate::finding::{Confidence, Detail, Finding, Rule};
 use crate::index::{
-    Ancestry, CodebaseIndex, Inheritance, NameUsage, Reference, SubclassRegistration, Suppression,
-    SuppressionScope,
+    Ancestry, CodebaseIndex, ImportedNames, Inheritance, NameUsage, Reference,
+    SubclassRegistration, Suppression, SuppressionScope,
 };
 use crate::keep::{FileRole, KeepContext, KeepReason, PluginName, Policy};
 use crate::manifest::Manifest;
@@ -204,13 +204,15 @@ impl SymbolCheck<'_> {
         }
 
         let position = self.index.position(self.file.id, symbol.name_span.start());
-        let (ancestry, registration) = if symbol.kind == SymbolKind::Class {
-            (
-                self.index.ancestry(&symbol),
-                self.index.subclass_registration(&symbol),
-            )
+        let ancestry = if matches!(symbol.kind, SymbolKind::Class | SymbolKind::Method) {
+            self.index.ancestry(&symbol)
         } else {
-            (Ancestry::unknown(), SubclassRegistration::NotRegistered)
+            Ancestry::unknown()
+        };
+        let registration = if symbol.kind == SymbolKind::Class {
+            self.index.subclass_registration(&symbol)
+        } else {
+            SubclassRegistration::NotRegistered
         };
         let context = KeepContext {
             symbol: &symbol,
@@ -347,7 +349,46 @@ fn django_settings_files(index: &dyn CodebaseIndex) -> BTreeSet<FileId> {
             settings.insert(file.id);
         }
     }
+    // `from config.settings.celery import *` in a settings module pulls in
+    // another one, wherever it lives.
+    let mut pending: Vec<FileId> = settings.iter().copied().collect();
+    while let Some(file) = pending.pop() {
+        for import in index.imports(file) {
+            if import.names == ImportedNames::Wildcard && settings.insert(import.target) {
+                pending.push(import.target);
+            }
+        }
+    }
     settings
+}
+
+/// Whether the file is data or a helper script under a tests tree: an addon
+/// the tests load by path, a fixture module, a one-off leak hunter.
+#[must_use]
+pub fn is_test_data_file(file: &SourceFile) -> bool {
+    const DATA_DIRECTORIES: &[&str] = &[
+        "data",
+        "fixtures",
+        "testdata",
+        "test_data",
+        "helper_tools",
+        "tools",
+        "scripts",
+    ];
+    let Some(dir) = file.relative_path.parent() else {
+        return false;
+    };
+    let mut in_tests = false;
+    for component in dir.components() {
+        let name = component.as_str();
+        if in_tests && DATA_DIRECTORIES.contains(&name) {
+            return true;
+        }
+        if name == "tests" || name == "test" {
+            in_tests = true;
+        }
+    }
+    false
 }
 
 fn unused_files<'a>(
@@ -511,6 +552,15 @@ fn is_used(index: &dyn CodebaseIndex, symbol: &Symbol) -> bool {
 }
 
 fn confidence_for(symbol: &Symbol) -> Confidence {
+    // `@registry.handler("GET")` hands the function to something that will
+    // call it; without knowing that something, absence of callers proves little.
+    if symbol
+        .decorators
+        .iter()
+        .any(crate::symbol::Decorator::registers_with_receiver)
+    {
+        return Confidence::Low;
+    }
     match (symbol.scope, symbol.name.is_private()) {
         (SymbolScope::Module, true) => Confidence::High,
         (SymbolScope::Module, false) | (SymbolScope::Nested { .. }, true) => Confidence::Medium,
@@ -546,6 +596,56 @@ mod tests {
             .iter()
             .filter_map(|f| f.symbol().map(SymbolName::as_str))
             .collect()
+    }
+
+    #[test]
+    fn wildcard_imports_from_a_settings_module_make_settings_modules() {
+        let mut index = FakeIndex::new();
+        let base = index.add_file("/proj/config/django/base.py", "config.django.base");
+        let celery = index.add_file("/proj/config/settings/celery.py", "config.settings.celery");
+        let other = index.add_file("/proj/pkg/other.py", "pkg.other");
+        index.add_symbol(base, "INSTALLED_APPS", SymbolKind::Constant);
+        index.add_symbol(celery, "CELERY_BROKER_URL", SymbolKind::Constant);
+        index.add_symbol(other, "THING", SymbolKind::Constant);
+        index.add_wildcard_import(base, celery);
+        index.add_import(base, other, ImportKind::Runtime);
+
+        let settings = super::django_settings_files(&index);
+
+        assert!(settings.contains(&base));
+        assert!(
+            settings.contains(&celery),
+            "wildcard-imported into settings"
+        );
+        assert!(
+            !settings.contains(&other),
+            "a named import is not a settings module"
+        );
+    }
+
+    #[test]
+    fn a_decorator_that_is_a_method_call_lowers_confidence() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/tests/utils/server.py", "tests.utils.server");
+        index.add_decorated_symbol(
+            file,
+            "get_headers",
+            SymbolKind::Function,
+            &["TestHandler.handler"],
+        );
+        index.add_decorated_symbol(file, "cached", SymbolKind::Function, &["cache"]);
+
+        let report = analyze_without_plugins(&index);
+
+        let confidence = |name: &str| {
+            report
+                .findings
+                .iter()
+                .find(|f| f.symbol().is_some_and(|s| s.as_str() == name))
+                .map(|f| f.confidence)
+        };
+        assert_eq!(confidence("get_headers"), Some(Confidence::Low));
+        assert_eq!(confidence("cached"), Some(Confidence::Medium));
     }
 
     /// Marks `file` as imported by another file so it is not reported as unused.

@@ -25,6 +25,19 @@ const TEST_LIFECYCLE_METHODS: &[&str] = &[
     "runTest",
 ];
 
+/// Fixtures that pytest plugins define and projects override by name.
+const PLUGIN_FIXTURES: &[&str] = &[
+    "event_loop",
+    "event_loop_policy",
+    "anyio_backend",
+    "celery_config",
+    "celery_app",
+    "celery_worker_parameters",
+    "celery_includes",
+    "django_db_setup",
+    "django_db_modify_db_settings",
+];
+
 fn is_test_file(name: &str) -> bool {
     let Some(stem) = name.strip_suffix(".py") else {
         return false;
@@ -68,6 +81,11 @@ impl KeepRule for Pytest {
         if symbol.has_decorator(|d| d.name.last_segment() == "fixture" && d.has_keyword("name")) {
             return Some("fixture exposed under another name");
         }
+        if PLUGIN_FIXTURES.contains(&name)
+            && symbol.has_decorator(|d| d.name.last_segment() == "fixture")
+        {
+            return Some("overrides a fixture a pytest plugin provides");
+        }
         if decorated_with_from(symbol, &["hookimpl"], true, PACKAGES) {
             return Some("pytest hook implementation");
         }
@@ -79,6 +97,16 @@ impl KeepRule for Pytest {
 mod tests {
     use super::Pytest;
     use crate::plugins::testing::Case;
+
+    #[test]
+    fn keeps_overrides_of_plugin_fixtures() {
+        assert!(
+            Case::function("event_loop_policy")
+                .decorated("pytest.fixture")
+                .is_kept_by(&Pytest)
+        );
+        assert!(!Case::function("event_loop_policy").is_kept_by(&Pytest));
+    }
 
     #[test]
     fn keeps_test_functions_in_test_files() {

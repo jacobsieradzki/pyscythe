@@ -2,7 +2,7 @@
 //! keywords) from a parsed module, keyed by each definition's name range.
 
 use pyscythe_core::source::ModulePath;
-use pyscythe_core::symbol::{Decorator, DottedName, KeywordName};
+use pyscythe_core::symbol::{Decorator, DottedName, KeywordName, Provenance};
 use ruff_python_ast::name::UnqualifiedName;
 use ruff_python_ast::{self as ast, AnyNodeRef, Expr, Stmt};
 use ruff_text_size::{Ranged, TextRange};
@@ -223,8 +223,9 @@ fn decorators_of(list: &[ast::Decorator], model: &SemanticModel<'_>) -> Vec<Deco
         .collect()
 }
 
-/// The module defining what `callee` refers to, when ty can resolve it.
-fn defining_module(callee: &Expr, model: &SemanticModel<'_>) -> Option<ModulePath> {
+/// The module defining what `callee` refers to, when ty can resolve it, and
+/// whether that module is part of the standard library.
+fn defining_module(callee: &Expr, model: &SemanticModel<'_>) -> Option<(ModulePath, Provenance)> {
     let resolved = match callee {
         Expr::Name(name) => definitions_for_name(
             model,
@@ -250,7 +251,15 @@ fn defining_module(callee: &Expr, model: &SemanticModel<'_>) -> Option<ModulePat
             ResolvedDefinition::Module(module) => module.file(db),
             ResolvedDefinition::FileWithRange(range) => range.file(),
         };
-        crate::module_name_of(db, file).map(ModulePath::new)
+        let module = crate::module_name_of(db, file)?;
+        let top_level = module.split('.').next().unwrap_or(module.as_str());
+        let minor = model.program_file().python_version(db).minor;
+        let provenance = if ruff_python_stdlib::sys::is_known_standard_library(minor, top_level) {
+            Provenance::StandardLibrary
+        } else {
+            Provenance::Package
+        };
+        Some((ModulePath::new(module), provenance))
     })
 }
 
@@ -267,10 +276,15 @@ fn decorator_of(decorator: &ast::Decorator, model: &SemanticModel<'_>) -> Option
         ),
         other => (other, Vec::new()),
     };
+    let (module, provenance) = defining_module(callee, model)
+        .map_or((None, Provenance::Unknown), |(module, provenance)| {
+            (Some(module), provenance)
+        });
     Some(Decorator {
         name: dotted_name_of(callee)?,
         keywords,
-        module: defining_module(callee, model),
+        module,
+        provenance,
     })
 }
 
