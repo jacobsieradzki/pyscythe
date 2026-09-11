@@ -31,7 +31,7 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 - [x] Cycles: every simple cycle per component (capped at 25), `--include-deferred`.
 - [x] `__init__.py` re-exports count as uses of the re-exported module and symbol (covered by an acceptance test).
 - [x] `pyscythe dupes`: windowed token hashing with maximal-match extension; `--mode strict|mild|weak`, `--min-tokens`, `--min-lines`; duplication percentage in the summary.
-- [ ] Dupes: report clone groups (three or more occurrences) as one finding; ignore docstrings and import blocks by default.
+- [x] Dupes: clone groups (three or more occurrences) are one finding listing every place; docstrings and import statements are never clone material.
 - [x] `pyscythe health`: cyclomatic and cognitive complexity per function (`pyscythe_metrics`, parser-only), hotspots over 10/15, length-weighted 0-100 score with A-F grade.
 - [x] Health thresholds in `[tool.pyscythe.health]`.
 - [x] Health: per-file and per-package scores, radon-style maintainability index; trend is the JSON `score` diffed across runs.
