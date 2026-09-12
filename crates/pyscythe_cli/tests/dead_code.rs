@@ -396,10 +396,23 @@ fn libraries_keep_their_api_stubs_docs_and_fixtures_are_not_dead() {
         kept.contains(&("helper", "public name of a module configured as API")),
         "{kept:?}"
     );
-    assert!(
-        !kept.iter().any(|(name, _)| *name == "make_client"),
-        "the test parameter resolves to the fixture, so it is simply used: {kept:?}"
-    );
+    // With pytest installed on the machine, ty binds the test's parameters to
+    // their fixtures and both are simply used; without it, the plugin keeps
+    // them by the `name=` keyword and the parameter name. Neither is dead.
+    for (fixture, fallback) in [
+        ("make_client", "fixture exposed under another name"),
+        ("unnamed", "fixture requested by a test parameter"),
+    ] {
+        let reasons: Vec<&str> = kept
+            .iter()
+            .filter(|(name, _)| *name == fixture)
+            .map(|(_, why)| *why)
+            .collect();
+        assert!(
+            reasons.is_empty() || reasons == [fallback],
+            "{fixture} is used or kept by the fallback, never dead: {kept:?}"
+        );
+    }
     assert_eq!(
         report["summary"]["files_scanned"], 4,
         "core.pyi is not analysed: {report}"
