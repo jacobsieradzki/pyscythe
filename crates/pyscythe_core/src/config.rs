@@ -126,6 +126,124 @@ fn glob(pattern: &str) -> Result<Glob, PatternError> {
     })
 }
 
+/// pytest's rule for class and function names: a plain entry is a prefix
+/// (`Test` collects `TestLogin`), an entry with glob characters is a glob.
+#[derive(Debug, Clone)]
+pub struct NameHeads {
+    prefixes: Vec<String>,
+    globs: NamePatterns,
+}
+
+impl NameHeads {
+    /// Matches nothing.
+    #[must_use]
+    pub const fn none() -> Self {
+        Self {
+            prefixes: Vec::new(),
+            globs: NamePatterns::none(),
+        }
+    }
+
+    /// Compiles `entries` as pytest reads `python_classes` and `python_functions`.
+    ///
+    /// # Errors
+    ///
+    /// Returns the first glob entry that fails to parse.
+    pub fn parse<'a>(entries: impl IntoIterator<Item = &'a str>) -> Result<Self, PatternError> {
+        let mut prefixes = Vec::new();
+        let mut globs = Vec::new();
+        for entry in entries {
+            if entry.contains(['*', '?', '[']) {
+                globs.push(entry);
+            } else {
+                prefixes.push(entry.to_owned());
+            }
+        }
+        Ok(Self {
+            prefixes,
+            globs: NamePatterns::parse(globs)?,
+        })
+    }
+
+    /// Whether pytest would collect something named `name`.
+    #[must_use]
+    pub fn matches(&self, name: &str) -> bool {
+        self.prefixes
+            .iter()
+            .any(|prefix| name.starts_with(prefix.as_str()))
+            || self.globs.matches(name)
+    }
+}
+
+/// How pytest picks tests up: `python_files`, `python_classes`, and
+/// `python_functions` from its configuration, or pytest's defaults.
+#[derive(Debug, Clone)]
+pub struct TestCollection {
+    files: NamePatterns,
+    classes: NameHeads,
+    functions: NameHeads,
+}
+
+impl TestCollection {
+    /// pytest's default `python_files`.
+    pub const DEFAULT_FILES: &'static [&'static str] = &["test_*.py", "*_test.py"];
+    /// pytest's default `python_classes`.
+    pub const DEFAULT_CLASSES: &'static [&'static str] = &["Test"];
+    /// pytest's default `python_functions`.
+    pub const DEFAULT_FUNCTIONS: &'static [&'static str] = &["test"];
+
+    /// Compiles the three entry lists.
+    ///
+    /// # Errors
+    ///
+    /// Returns the first glob that fails to parse.
+    pub fn parse<'a>(
+        files: impl IntoIterator<Item = &'a str>,
+        classes: impl IntoIterator<Item = &'a str>,
+        functions: impl IntoIterator<Item = &'a str>,
+    ) -> Result<Self, PatternError> {
+        Ok(Self {
+            files: NamePatterns::parse(files)?,
+            classes: NameHeads::parse(classes)?,
+            functions: NameHeads::parse(functions)?,
+        })
+    }
+
+    /// Whether pytest would collect a file called `file_name`.
+    #[must_use]
+    pub fn is_test_file(&self, file_name: &str) -> bool {
+        self.files.matches(file_name)
+    }
+
+    /// Whether pytest would collect a class called `name` in a test file.
+    #[must_use]
+    pub fn collects_class(&self, name: &str) -> bool {
+        self.classes.matches(name)
+    }
+
+    /// Whether pytest would collect a function or method called `name`.
+    #[must_use]
+    pub fn collects_function(&self, name: &str) -> bool {
+        self.functions.matches(name)
+    }
+}
+
+impl Default for TestCollection {
+    fn default() -> Self {
+        // The default literals always parse; matching nothing is the total fallback.
+        Self::parse(
+            Self::DEFAULT_FILES.iter().copied(),
+            Self::DEFAULT_CLASSES.iter().copied(),
+            Self::DEFAULT_FUNCTIONS.iter().copied(),
+        )
+        .unwrap_or_else(|_| Self {
+            files: NamePatterns::none(),
+            classes: NameHeads::none(),
+            functions: NameHeads::none(),
+        })
+    }
+}
+
 /// Whether notebooks take part in analysis.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum NotebookPolicy {
@@ -273,6 +391,8 @@ pub struct Config {
     /// Modules whose public names are the project's API and so never dead:
     /// what a library exports to the world.
     pub public_modules: Vec<ModulePrefix>,
+    /// How pytest collects tests in this project.
+    pub tests: TestCollection,
 }
 
 impl Default for Config {
@@ -285,6 +405,7 @@ impl Default for Config {
             health: HealthThresholds::default(),
             ignored_dependencies: Vec::new(),
             public_modules: Vec::new(),
+            tests: TestCollection::default(),
         }
     }
 }
@@ -293,7 +414,25 @@ impl Default for Config {
 mod tests {
     use camino::Utf8Path;
 
-    use super::{NamePatterns, PathPatterns};
+    use super::{NameHeads, NamePatterns, PathPatterns, TestCollection};
+
+    #[test]
+    fn name_heads_are_prefixes_unless_they_carry_glob_characters() {
+        let heads = NameHeads::parse(["Test", "*Suite"]).unwrap();
+        assert!(heads.matches("TestLogin"));
+        assert!(heads.matches("LoginSuite"));
+        assert!(!heads.matches("Login"));
+    }
+
+    #[test]
+    fn the_default_collection_is_pytests() {
+        let tests = TestCollection::default();
+        assert!(tests.is_test_file("test_login.py"));
+        assert!(tests.is_test_file("login_test.py"));
+        assert!(!tests.is_test_file("check_login.py"));
+        assert!(tests.collects_function("test_it"));
+        assert!(tests.collects_class("TestIt"));
+    }
 
     #[test]
     fn a_bare_directory_pattern_matches_everything_beneath_it() {

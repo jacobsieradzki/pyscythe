@@ -32,6 +32,7 @@ use ty_project::{Db as _, ProjectDatabase, ProjectMetadata};
 use ty_python_semantic::Db as _;
 
 use crate::reference_index::{DefinitionKey, ReferenceIndex};
+use pyscythe_core::manifest::DistributionName;
 
 mod declarations;
 mod distributions;
@@ -491,6 +492,22 @@ impl CodebaseIndex for TyIndex {
         } else {
             NameUsage::Unused
         }
+    }
+
+    fn parameter_name_usage(&self, name: &SymbolName) -> NameUsage {
+        if self.reference_index().parameter_name_is_used(name.as_str()) {
+            NameUsage::Used
+        } else {
+            NameUsage::Unused
+        }
+    }
+
+    fn distribution_requirements(&self, distribution: &DistributionName) -> Vec<DistributionName> {
+        let distributions = match self.distributions.lock() {
+            Ok(guard) => guard,
+            Err(poisoned) => poisoned.into_inner(),
+        };
+        distributions.requirements_of(distribution)
     }
 
     fn position(&self, file: FileId, offset: ByteOffset) -> Option<Position> {

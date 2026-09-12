@@ -162,7 +162,7 @@ pub fn analyze(
     };
 
     let mut findings: Vec<Finding> = Vec::new();
-    let mut surveyed: Vec<(&ManifestScope, ImportSurvey)> = Vec::new();
+    let mut surveyed: Vec<(&ManifestScope, ImportSurvey, BTreeSet<&DistributionName>)> = Vec::new();
     for scope in scopes.iter().chain(std::iter::once(&fallback)) {
         let declared: BTreeSet<&DistributionName> = scope
             .manifest
@@ -177,10 +177,11 @@ pub fn analyze(
         if members.is_empty() && scope.manifest.dependencies.is_empty() {
             continue;
         }
-        surveyed.push((scope, survey_imports(index, &members, &declared)));
+        let survey = survey_imports(index, &members, &declared);
+        surveyed.push((scope, survey, declared));
     }
 
-    for (scope, survey) in surveyed {
+    for (scope, survey, declared) in surveyed {
         findings.extend(
             scope
                 .manifest
@@ -192,11 +193,22 @@ pub fn analyze(
         );
         for (distribution, (modules, mut finding)) in survey.undeclared {
             let names: Vec<String> = modules.into_iter().collect();
-            finding.message = format!(
-                "`{}` is imported but `{}` is not a declared dependency",
-                names.join("`, `"),
-                distribution.as_str()
-            );
+            let imported = format!("`{}` is imported but", names.join("`, `"));
+            finding.message = match declared_carrier(index, &declared, &distribution) {
+                Some(carrier) => {
+                    // Present today only because something declared pulls it in.
+                    finding.confidence = Confidence::Low;
+                    format!(
+                        "{imported} `{}` is not a declared dependency; it arrives through `{}`",
+                        distribution.as_str(),
+                        carrier.as_str()
+                    )
+                }
+                None => format!(
+                    "{imported} `{}` is not a declared dependency",
+                    distribution.as_str()
+                ),
+            };
             finding.detail = Detail::Dependency {
                 distribution: distribution.as_str().to_owned(),
                 modules: names,
@@ -225,6 +237,32 @@ pub fn analyze(
         findings,
         kept: Vec::new(),
     }
+}
+
+/// The declared dependency whose own requirements, transitively, bring in
+/// `wanted`: `fastapi` for an import of `starlette`.
+fn declared_carrier(
+    index: &dyn CodebaseIndex,
+    declared: &BTreeSet<&DistributionName>,
+    wanted: &DistributionName,
+) -> Option<DistributionName> {
+    const MAX_VISITED: usize = 500;
+    declared.iter().find_map(|&root| {
+        let mut seen: BTreeSet<DistributionName> = BTreeSet::new();
+        let mut pending = vec![root.clone()];
+        while let Some(current) = pending.pop() {
+            if seen.len() >= MAX_VISITED || !seen.insert(current.clone()) {
+                continue;
+            }
+            for requirement in index.distribution_requirements(&current) {
+                if &requirement == wanted {
+                    return Some(root.clone());
+                }
+                pending.push(requirement);
+            }
+        }
+        None
+    })
 }
 
 fn survey_imports(
@@ -450,6 +488,39 @@ mod tests {
                 Rule::UnresolvedImport,
                 "import `mystery` resolves to nothing on the search path".to_owned()
             )]
+        );
+    }
+
+    #[test]
+    fn imports_reachable_through_a_declared_dependency_are_low_confidence() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/app/main.py", "app.main");
+        index.add_external_import(
+            file,
+            "starlette",
+            ImportOrigin::SitePackages {
+                distributions: vec![DistributionName::normalize("starlette")],
+            },
+        );
+        index.add_requirement("fastapi", "starlette");
+
+        let report = analyze(
+            &index,
+            &scopes(&["fastapi"]),
+            &Config::default(),
+            Utf8Path::new("/proj"),
+        );
+
+        let finding = report
+            .findings
+            .iter()
+            .find(|f| f.rule == Rule::MissingDependency)
+            .expect("starlette is undeclared");
+        assert_eq!(finding.confidence, crate::finding::Confidence::Low);
+        assert!(
+            finding.message.ends_with("it arrives through `fastapi`"),
+            "{}",
+            finding.message
         );
     }
 

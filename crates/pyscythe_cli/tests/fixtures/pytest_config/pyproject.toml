@@ -1,0 +1,9 @@
+[project]
+name = "pytest-config"
+version = "0.0.0"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+python_files = ["check_*.py"]
+python_classes = ["Check"]
+python_functions = ["check_"]

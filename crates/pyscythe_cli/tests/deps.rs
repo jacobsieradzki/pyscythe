@@ -173,3 +173,36 @@ fn distributions_named_in_configuration_strings_count_as_used() {
         "whitenoise is named in MIDDLEWARE and corsheaders in INSTALLED_APPS: {report}"
     );
 }
+
+#[test]
+fn imports_that_arrive_through_a_declared_dependency_are_low_confidence() {
+    let output = pyscythe()
+        .args(["deps", "--format", "json"])
+        .arg(fixture("transitive_deps"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let findings: Vec<(&str, &str, &str, &str)> = report["findings"]
+        .as_array()
+        .expect("findings")
+        .iter()
+        .filter_map(|f| {
+            Some((
+                f["rule"].as_str()?,
+                f["distribution"].as_str()?,
+                f["confidence"].as_str()?,
+                f["message"].as_str()?,
+            ))
+        })
+        .collect();
+    assert_eq!(findings.len(), 1, "{report}");
+    assert_eq!(
+        (findings[0].0, findings[0].1, findings[0].2),
+        ("missing-dependency", "starlette", "low")
+    );
+    assert!(
+        findings[0].3.ends_with("it arrives through `fastapi`"),
+        "{}",
+        findings[0].3
+    );
+}

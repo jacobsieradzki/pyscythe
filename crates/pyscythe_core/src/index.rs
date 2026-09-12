@@ -230,6 +230,14 @@ pub trait CodebaseIndex {
     /// name still shows up.
     fn attribute_name_usage(&self, name: &SymbolName) -> NameUsage;
 
+    /// Whether a function parameter named `name` exists anywhere: how tests
+    /// request pytest fixtures.
+    fn parameter_name_usage(&self, name: &SymbolName) -> NameUsage;
+
+    /// What `distribution` itself requires, from the environment's metadata;
+    /// empty when it is not installed or declares nothing.
+    fn distribution_requirements(&self, distribution: &DistributionName) -> Vec<DistributionName>;
+
     /// Whether a method or property overrides an inherited member.
     ///
     /// Only meaningful for symbols nested in a class; anything else is `Fresh`.

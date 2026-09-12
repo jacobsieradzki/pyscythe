@@ -5,7 +5,7 @@ use std::collections::{BTreeMap, BTreeSet};
 use camino::Utf8Path;
 use pyscythe_core::config::{
     BoundaryConfig, Config, DenyRule, HealthThresholds, ModulePrefix, NamePatterns, NotebookPolicy,
-    PathPatterns, PatternError, TypeOnlyImports,
+    PathPatterns, PatternError, TestCollection, TypeOnlyImports,
 };
 use pyscythe_core::deps::ManifestScope;
 use pyscythe_core::manifest::{
@@ -15,9 +15,16 @@ use pyscythe_core::source::ModulePath;
 use pyscythe_core::symbol::SymbolName;
 use serde::Deserialize;
 
+mod pytest_config;
+
+pub use pytest_config::PyprojectPytest;
+
 /// What `pyproject.toml` told us.
 #[derive(Debug, Clone)]
 pub struct ProjectSettings {
+    /// Whether the root `pyproject.toml` configured pytest, which decides
+    /// whether `tox.ini` and `setup.cfg` are consulted.
+    pub pytest: PyprojectPytest,
     /// Every entry point and dependency across the project, merged.
     pub manifest: Manifest,
     /// User configuration from the root `[tool.pyscythe]`.
@@ -120,12 +127,12 @@ fn boundary_config(table: BoundariesTable) -> Result<BoundaryConfig, ParseError>
 /// Returns [`ManifestError`] when a file exists but cannot be read or parsed.
 pub fn load(root: &Utf8Path) -> Result<ProjectSettings, ManifestError> {
     let mut scopes = Vec::new();
-    let mut config = Config::default();
+    let mut root_settings = RootSettings::default();
     let mut directories = vec![root.to_path_buf()];
     directories.extend(manifest_directories(root));
     for directory in directories {
         let Some((manifest_path, manifest)) =
-            manifest_in(&directory, &mut config, directory.as_path() == root)?
+            manifest_in(&directory, &mut root_settings, directory.as_path() == root)?
         else {
             continue;
         };
@@ -134,19 +141,41 @@ pub fn load(root: &Utf8Path) -> Result<ProjectSettings, ManifestError> {
             manifest,
         });
     }
+    let RootSettings { mut config, pytest } = root_settings;
+    config.tests =
+        pytest_config::resolve(root, pytest, config.tests.clone()).map_err(|source| {
+            ManifestError::Parse {
+                path: root.join("pytest.ini"),
+                source: ParseError::Pattern(source),
+            }
+        })?;
     Ok(ProjectSettings {
         manifest: Manifest::merged(scopes.iter().map(|s| &s.manifest)),
         config,
         scopes,
+        pytest,
     })
 }
 
 /// The manifest declared in `directory` and the file it came from: from
 /// `pyproject.toml` first, then `setup.py` / `setup.cfg` for dependencies
 /// when the project table has none.
+/// What the root `pyproject.toml` contributes besides its manifest.
+#[derive(Debug, Default)]
+struct RootSettings {
+    config: Config,
+    pytest: PyprojectPytest,
+}
+
+impl Default for PyprojectPytest {
+    fn default() -> Self {
+        Self::Absent
+    }
+}
+
 fn manifest_in(
     directory: &Utf8Path,
-    config: &mut Config,
+    root_settings: &mut RootSettings,
     is_root: bool,
 ) -> Result<Option<(camino::Utf8PathBuf, Manifest)>, ManifestError> {
     let pyproject = directory.join("pyproject.toml");
@@ -158,7 +187,8 @@ fn manifest_in(
                 source,
             })?;
             if is_root {
-                *config = settings.config;
+                root_settings.config = settings.config;
+                root_settings.pytest = settings.pytest;
             }
             Some(settings.manifest)
         }
@@ -479,6 +509,13 @@ pub fn parse(text: &str) -> Result<ProjectSettings, ParseError> {
     let tables = document.tool.unwrap_or_default();
     let tool = tables.pyscythe.unwrap_or_default();
     let poetry = tables.poetry.unwrap_or_default();
+    let (tests, pytest) = match tables.pytest.and_then(|table| table.ini_options) {
+        Some(options) => (
+            pytest_config::from_ini_options(&options)?,
+            PyprojectPytest::Configured,
+        ),
+        None => (TestCollection::default(), PyprojectPytest::Absent),
+    };
 
     let mut entry_points = Vec::new();
     entry_points.extend(targets(&project.scripts, EntryPointKind::Script));
@@ -539,6 +576,7 @@ pub fn parse(text: &str) -> Result<ProjectSettings, ParseError> {
             .iter()
             .map(|name| ModulePrefix::new(name.as_str()))
             .collect(),
+        tests,
         ignored_dependencies: tool
             .deps
             .unwrap_or_default()
@@ -565,6 +603,7 @@ pub fn parse(text: &str) -> Result<ProjectSettings, ParseError> {
         },
         config,
         scopes: Vec::new(),
+        pytest,
     })
 }
 
@@ -653,6 +692,14 @@ struct IncludeGroup {
 struct Tool {
     pyscythe: Option<PyscytheTable>,
     poetry: Option<PoetryTable>,
+    pytest: Option<PytestTool>,
+}
+
+/// `[tool.pytest]`; only `ini_options` matters here.
+#[derive(Debug, Default, Deserialize)]
+struct PytestTool {
+    #[serde(default)]
+    ini_options: Option<pytest_config::IniOptions>,
 }
 
 /// `[tool.poetry]`: dependencies keyed by name (the value is a constraint or

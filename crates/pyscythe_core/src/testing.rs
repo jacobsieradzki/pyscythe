@@ -10,6 +10,7 @@ use crate::index::{
     Ancestry, CodebaseIndex, ExternalImport, Import, ImportKind, ImportOrigin, ImportedNames,
     Inheritance, NameUsage, Reference, SubclassRegistration, Suppression, SuppressionScope,
 };
+use crate::manifest::DistributionName;
 use crate::source::{
     ByteOffset, ByteSpan, Column, FileId, Line, MainGuard, ModulePath, Position, SourceFile,
 };
@@ -33,6 +34,8 @@ pub(crate) struct FakeIndex {
     tokens: Vec<(FileId, Vec<CloneToken>)>,
     sources: Vec<(FileId, String, Vec<Deletable>)>,
     external_imports: Vec<(FileId, ExternalImport)>,
+    parameter_names: Vec<String>,
+    requirements: Vec<(DistributionName, DistributionName)>,
 }
 
 impl FakeIndex {
@@ -162,6 +165,19 @@ impl FakeIndex {
                 line: Line::from_one_based(1).expect("one"),
                 scope: SuppressionScope::File,
             },
+        ));
+    }
+
+    /// A function somewhere takes a parameter called `name`.
+    pub(crate) fn add_parameter_name(&mut self, name: &str) {
+        self.parameter_names.push(name.to_owned());
+    }
+
+    /// The installed `distribution` declares `requires` in its metadata.
+    pub(crate) fn add_requirement(&mut self, distribution: &str, requires: &str) {
+        self.requirements.push((
+            DistributionName::normalize(distribution),
+            DistributionName::normalize(requires),
         ));
     }
 
@@ -441,6 +457,22 @@ impl CodebaseIndex for FakeIndex {
         } else {
             NameUsage::Unused
         }
+    }
+
+    fn parameter_name_usage(&self, name: &SymbolName) -> NameUsage {
+        if self.parameter_names.iter().any(|n| n == name.as_str()) {
+            NameUsage::Used
+        } else {
+            NameUsage::Unused
+        }
+    }
+
+    fn distribution_requirements(&self, distribution: &DistributionName) -> Vec<DistributionName> {
+        self.requirements
+            .iter()
+            .filter(|(from, _)| from == distribution)
+            .map(|(_, requires)| requires.clone())
+            .collect()
     }
 
     fn deletables(&self, file: FileId) -> Vec<Deletable> {

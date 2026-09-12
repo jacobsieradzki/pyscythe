@@ -65,6 +65,7 @@ pub(crate) struct ReferenceIndex {
     imports: FxHashMap<File, Vec<ImportEdge>>,
     external_imports: FxHashMap<File, Vec<ExternalImportRecord>>,
     attribute_names: FxHashSet<String>,
+    parameter_names: FxHashSet<String>,
 }
 
 impl ReferenceIndex {
@@ -93,6 +94,7 @@ impl ReferenceIndex {
                 .external_imports
                 .insert(file, file_uses.external_imports);
             index.attribute_names.extend(file_uses.attribute_names);
+            index.parameter_names.extend(file_uses.parameter_names);
         }
         index
     }
@@ -100,6 +102,11 @@ impl ReferenceIndex {
     /// Whether `x.<name>` or `getattr(x, "<name>")` appears anywhere.
     pub(crate) fn attribute_name_is_used(&self, name: &str) -> bool {
         self.attribute_names.contains(name)
+    }
+
+    /// Whether any function takes a parameter called `name`.
+    pub(crate) fn parameter_name_is_used(&self, name: &str) -> bool {
+        self.parameter_names.contains(name)
     }
 
     /// Every recorded use of the definition whose name occupies `key`.
@@ -124,6 +131,7 @@ struct FileUses {
     imports: Vec<ImportEdge>,
     external_imports: Vec<ExternalImportRecord>,
     attribute_names: FxHashSet<String>,
+    parameter_names: FxHashSet<String>,
 }
 
 /// Builtins whose second argument names an attribute.
@@ -510,6 +518,9 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
                 self.record_dynamic_package_import(fstring);
             }
             AnyNodeRef::Parameter(parameter) => {
+                self.out
+                    .parameter_names
+                    .insert(parameter.name.as_str().to_owned());
                 // A test parameter names a pytest fixture; ty resolves which one.
                 let index = ty_python_core::semantic_index(self.db, self.model.program_file());
                 let definition = index.expect_single_definition(parameter);

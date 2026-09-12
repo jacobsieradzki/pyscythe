@@ -6,8 +6,8 @@
 
 use serde::Serialize;
 
-use crate::config::ModulePrefix;
-use crate::index::{Ancestry, SubclassRegistration};
+use crate::config::{ModulePrefix, TestCollection};
+use crate::index::{Ancestry, NameUsage, SubclassRegistration};
 use crate::manifest::Manifest;
 use crate::source::SourceFile;
 use crate::symbol::Symbol;
@@ -104,6 +104,11 @@ pub struct KeepContext<'a> {
     pub file_role: FileRole,
     /// Whether a base class registers subclasses on creation.
     pub registration: SubclassRegistration,
+    /// How pytest collects tests in this project.
+    pub tests: &'a TestCollection,
+    /// Whether some function parameter anywhere shares the symbol's name,
+    /// the way tests request fixtures.
+    pub requested_as_parameter: NameUsage,
 }
 
 impl KeepContext<'_> {
@@ -120,6 +125,12 @@ impl KeepContext<'_> {
     #[must_use]
     pub fn file_name(&self) -> &str {
         self.file.file_name()
+    }
+
+    /// Whether pytest would collect this file, by its configured `python_files`.
+    #[must_use]
+    pub fn is_test_file(&self) -> bool {
+        self.tests.is_test_file(self.file_name())
     }
 
     /// Whether any directory on the file's project-relative path is named `name`.

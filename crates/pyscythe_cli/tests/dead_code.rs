@@ -473,3 +473,24 @@ fn registration_decorators_lower_confidence_and_http_handlers_are_kept() {
         "do_GET is dispatched by BaseHTTPRequestHandler: {report}"
     );
 }
+
+#[test]
+fn pytest_collection_settings_decide_what_counts_as_a_test() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("pytest_config"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let symbols: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["symbol"].as_str())
+        .collect();
+    assert_eq!(
+        symbols,
+        ["helper", "test_stale"],
+        "python_files = check_*.py collects check_thing.py, not test_stale.py: {report}"
+    );
+}

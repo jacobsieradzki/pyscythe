@@ -1,6 +1,7 @@
 //! pytest collects tests by name, loads `conftest.py` implicitly, and runs
 //! `autouse` fixtures without anyone naming them.
 
+use crate::index::NameUsage;
 use crate::keep::{KeepContext, KeepRule, PluginName};
 use crate::plugins::decorated_with_from;
 
@@ -38,13 +39,6 @@ const PLUGIN_FIXTURES: &[&str] = &[
     "django_db_modify_db_settings",
 ];
 
-fn is_test_file(name: &str) -> bool {
-    let Some(stem) = name.strip_suffix(".py") else {
-        return false;
-    };
-    stem.starts_with("test_") || stem.ends_with("_test")
-}
-
 impl KeepRule for Pytest {
     fn plugin(&self) -> PluginName {
         PluginName::Pytest
@@ -58,13 +52,13 @@ impl KeepRule for Pytest {
         if file_name == "conftest.py" {
             return Some("conftest.py is loaded by pytest");
         }
-        if is_test_file(file_name) {
+        if context.is_test_file() {
             if matches!(symbol.kind, SymbolKind::Function | SymbolKind::Method)
-                && name.starts_with("test")
+                && context.tests.collects_function(name)
             {
                 return Some("collected as a test");
             }
-            if symbol.kind == SymbolKind::Class && name.starts_with("Test") {
+            if symbol.kind == SymbolKind::Class && context.tests.collects_class(name) {
                 return Some("collected as a test class");
             }
             if symbol.kind == SymbolKind::Method && TEST_LIFECYCLE_METHODS.contains(&name) {
@@ -80,6 +74,13 @@ impl KeepRule for Pytest {
         }
         if symbol.has_decorator(|d| d.name.last_segment() == "fixture" && d.has_keyword("name")) {
             return Some("fixture exposed under another name");
+        }
+        // Without pytest installed, ty cannot bind a parameter to its fixture;
+        // a same-named parameter somewhere is the next best evidence.
+        if context.requested_as_parameter == NameUsage::Used
+            && symbol.has_decorator(|d| d.name.last_segment() == "fixture")
+        {
+            return Some("fixture requested by a test parameter");
         }
         if PLUGIN_FIXTURES.contains(&name)
             && symbol.has_decorator(|d| d.name.last_segment() == "fixture")
@@ -97,6 +98,48 @@ impl KeepRule for Pytest {
 mod tests {
     use super::Pytest;
     use crate::plugins::testing::Case;
+
+    #[test]
+    fn honours_configured_collection_patterns() {
+        let configured = |name: &'static str, path: &'static str| {
+            Case::function(name)
+                .at(path)
+                .collecting(&["check_*.py"], &["Check"], &["check_"])
+        };
+        assert!(configured("check_login", "/p/tests/check_auth.py").is_kept_by(&Pytest));
+        assert!(
+            !Case::function("check_login")
+                .at("/p/tests/check_auth.py")
+                .is_kept_by(&Pytest)
+        );
+        assert!(!configured("test_login", "/p/tests/test_auth.py").is_kept_by(&Pytest));
+        assert!(
+            Case::class("CheckSuite")
+                .at("/p/tests/check_auth.py")
+                .collecting(&["check_*.py"], &["Check"], &["check_"])
+                .is_kept_by(&Pytest)
+        );
+    }
+
+    #[test]
+    fn keeps_fixtures_that_some_parameter_requests() {
+        assert!(
+            Case::function("client")
+                .decorated("pytest.fixture")
+                .requested_as_parameter()
+                .is_kept_by(&Pytest)
+        );
+        assert!(
+            !Case::function("client")
+                .decorated("pytest.fixture")
+                .is_kept_by(&Pytest)
+        );
+        assert!(
+            !Case::function("client")
+                .requested_as_parameter()
+                .is_kept_by(&Pytest)
+        );
+    }
 
     #[test]
     fn keeps_overrides_of_plugin_fixtures() {

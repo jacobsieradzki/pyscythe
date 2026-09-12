@@ -6,10 +6,19 @@ use std::collections::BTreeMap;
 use camino::{Utf8Path, Utf8PathBuf};
 use pyscythe_core::manifest::DistributionName;
 
-/// Top-level module -> owning distributions, per site-packages directory.
+/// What one site-packages directory's metadata says.
+#[derive(Debug, Default)]
+struct SitePackages {
+    /// Top-level module -> owning distributions.
+    owners: BTreeMap<String, Vec<DistributionName>>,
+    /// Distribution -> what its `Requires-Dist` lines name.
+    requirements: BTreeMap<DistributionName, Vec<DistributionName>>,
+}
+
+/// Distribution metadata per site-packages directory, read on demand.
 #[derive(Debug, Default)]
 pub(crate) struct DistributionIndex {
-    by_site_packages: BTreeMap<Utf8PathBuf, BTreeMap<String, Vec<DistributionName>>>,
+    by_site_packages: BTreeMap<Utf8PathBuf, SitePackages>,
 }
 
 impl DistributionIndex {
@@ -27,7 +36,16 @@ impl DistributionIndex {
             .by_site_packages
             .entry(site_packages.clone())
             .or_insert_with(|| scan(&site_packages));
-        table.get(top_level).cloned().unwrap_or_default()
+        table.owners.get(top_level).cloned().unwrap_or_default()
+    }
+
+    /// What `distribution` requires, from whichever scanned site-packages
+    /// holds it; empty when none does.
+    pub(crate) fn requirements_of(&self, distribution: &DistributionName) -> Vec<DistributionName> {
+        self.by_site_packages
+            .values()
+            .find_map(|site| site.requirements.get(distribution).cloned())
+            .unwrap_or_default()
     }
 }
 
@@ -45,8 +63,8 @@ fn site_packages_of(module_file: &Utf8Path, top_level: &str) -> Option<Utf8PathB
 }
 
 /// Reads every `*.dist-info` under `site_packages` once.
-fn scan(site_packages: &Utf8Path) -> BTreeMap<String, Vec<DistributionName>> {
-    let mut table: BTreeMap<String, Vec<DistributionName>> = BTreeMap::new();
+fn scan(site_packages: &Utf8Path) -> SitePackages {
+    let mut table = SitePackages::default();
     let Ok(entries) = site_packages.read_dir_utf8() else {
         return table;
     };
@@ -55,25 +73,52 @@ fn scan(site_packages: &Utf8Path) -> BTreeMap<String, Vec<DistributionName>> {
         let Some(name) = dir.file_name().and_then(|n| n.strip_suffix(".dist-info")) else {
             continue;
         };
-        let distribution = distribution_name(dir)
+        let metadata = std::fs::read_to_string(dir.join("METADATA")).unwrap_or_default();
+        let distribution = distribution_name(&metadata)
             .unwrap_or_else(|| DistributionName::normalize(name.split('-').next().unwrap_or(name)));
         for module in top_level_modules(dir) {
-            let owners = table.entry(module).or_default();
+            let owners = table.owners.entry(module).or_default();
             if !owners.contains(&distribution) {
                 owners.push(distribution.clone());
             }
         }
+        table
+            .requirements
+            .insert(distribution, requires_dist(&metadata));
     }
     table
 }
 
-/// `Name:` from `METADATA`.
-fn distribution_name(dist_info: &Utf8Path) -> Option<DistributionName> {
-    let metadata = std::fs::read_to_string(dist_info.join("METADATA")).ok()?;
+/// `Name:` from `METADATA` text.
+fn distribution_name(metadata: &str) -> Option<DistributionName> {
     metadata
         .lines()
         .find_map(|line| line.strip_prefix("Name:"))
         .map(|name| DistributionName::normalize(name.trim()))
+}
+
+/// The distributions named by `Requires-Dist:` lines, extras included: an
+/// extra a project asked for is as installed as anything else.
+fn requires_dist(metadata: &str) -> Vec<DistributionName> {
+    let mut names: Vec<DistributionName> = Vec::new();
+    for requirement in metadata
+        .lines()
+        .filter_map(|line| line.strip_prefix("Requires-Dist:"))
+    {
+        let name: String = requirement
+            .trim_start()
+            .chars()
+            .take_while(|c| c.is_ascii_alphanumeric() || matches!(c, '-' | '_' | '.'))
+            .collect();
+        if name.is_empty() {
+            continue;
+        }
+        let name = DistributionName::normalize(&name);
+        if !names.contains(&name) {
+            names.push(name);
+        }
+    }
+    names
 }
 
 /// Top-level importable names from `top_level.txt`, else from `RECORD`.
@@ -116,7 +161,17 @@ fn top_level_modules(dist_info: &Utf8Path) -> Vec<String> {
 mod tests {
     use camino::Utf8Path;
 
-    use super::site_packages_of;
+    use super::{requires_dist, site_packages_of};
+
+    #[test]
+    fn reads_requirement_names_from_metadata() {
+        let metadata = "Name: fastapi\nRequires-Dist: starlette (>=0.40.0,<0.47.0)\nRequires-Dist: pydantic>=1.7.4,!=1.8\nRequires-Dist: httpx>=0.23.0; extra == \"all\"\nRequires-Dist: starlette\n";
+        let names: Vec<String> = requires_dist(metadata)
+            .iter()
+            .map(|n| n.as_str().to_owned())
+            .collect();
+        assert_eq!(names, ["starlette", "pydantic", "httpx"]);
+    }
 
     #[test]
     fn finds_the_directory_holding_the_top_level_package_or_module() {

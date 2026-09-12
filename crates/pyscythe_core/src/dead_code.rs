@@ -2,7 +2,7 @@
 
 use std::collections::{BTreeMap, BTreeSet};
 
-use crate::config::Config;
+use crate::config::{Config, TestCollection};
 use crate::finding::{Confidence, Detail, Finding, Rule};
 use crate::index::{
     Ancestry, CodebaseIndex, ImportedNames, Inheritance, NameUsage, Reference,
@@ -126,7 +126,7 @@ pub fn analyze(
 
     findings.extend(stale_suppression_findings(index, stale_suppressions));
 
-    let unused_files = unused_files(index, manifest, &files_with_kept_symbols, &roles);
+    let unused_files = unused_files(index, manifest, config, &files_with_kept_symbols, &roles);
     findings.retain(|finding| !unused_files.iter().any(|file| file.path == finding.path));
     let (suppressed_unused_files, reported_unused_files): (Vec<_>, Vec<_>) = unused_files
         .into_iter()
@@ -216,6 +216,8 @@ impl SymbolCheck<'_> {
             public_modules: &self.config.public_modules,
             file_role: self.file_role,
             registration,
+            tests: &self.config.tests,
+            requested_as_parameter: self.index.parameter_name_usage(&symbol.name),
         };
         let reason = self
             .policy
@@ -388,6 +390,7 @@ pub fn is_test_data_file(file: &SourceFile) -> bool {
 fn unused_files<'a>(
     index: &'a dyn CodebaseIndex,
     manifest: &Manifest,
+    config: &Config,
     files_with_kept_symbols: &BTreeSet<FileId>,
     roles: &BTreeMap<FileId, FileRole>,
 ) -> Vec<&'a SourceFile> {
@@ -406,7 +409,7 @@ fn unused_files<'a>(
     files
         .iter()
         .filter(|file| !imported.contains(&file.id))
-        .filter(|file| !is_root_file(file, manifest, files_with_kept_symbols))
+        .filter(|file| !is_root_file(file, manifest, &config.tests, files_with_kept_symbols))
         // Settings, Alembic scripts, tool configuration: loaded by name or path.
         .filter(|file| !roles.contains_key(&file.id))
         .collect()
@@ -468,6 +471,7 @@ fn alembic_script_files(index: &dyn CodebaseIndex) -> BTreeSet<FileId> {
 fn is_root_file(
     file: &SourceFile,
     manifest: &Manifest,
+    tests: &TestCollection,
     files_with_kept_symbols: &BTreeSet<FileId>,
 ) -> bool {
     let name = file.file_name();
@@ -485,7 +489,7 @@ fn is_root_file(
     file.main_guard == MainGuard::Present
         || ROOT_FILE_NAMES.contains(&name)
         || is_in_root_directory(file)
-        || is_test_file(name)
+        || tests.is_test_file(name)
         // Helper modules under a tests tree are for the runner, not the app.
         || under("tests")
         || under("test")
@@ -506,7 +510,8 @@ fn is_tool_config_file(name: &str) -> bool {
     name.ends_with(".conf.py") || name.starts_with("hook-")
 }
 
-/// Whether a file name follows pytest's `test_*.py` / `*_test.py` convention.
+/// Whether a file name follows pytest's default `test_*.py` / `*_test.py`
+/// convention; analyses with a [`Config`] use its `tests` collection instead.
 #[must_use]
 pub fn is_test_file(name: &str) -> bool {
     name.strip_suffix(".py")
@@ -664,6 +669,24 @@ mod tests {
             !scripts.contains(&other),
             "an env.py with no versions/ is not Alembic's"
         );
+    }
+
+    #[test]
+    fn a_fixture_that_some_parameter_requests_is_kept_without_resolution() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/tests/test_core.py", "tests.test_core");
+        index.add_decorated_symbol(file, "unnamed", SymbolKind::Function, &["pytest.fixture"]);
+        index.add_decorated_symbol(file, "orphan", SymbolKind::Function, &["pytest.fixture"]);
+        index.add_parameter_name("unnamed");
+
+        let report = analyze(
+            &index,
+            &Policy::builtin(),
+            &Manifest::empty(),
+            &Config::default(),
+        );
+
+        assert_eq!(symbol_names(&report), ["orphan"]);
     }
 
     #[test]

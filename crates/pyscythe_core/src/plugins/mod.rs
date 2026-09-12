@@ -63,7 +63,8 @@ pub(crate) fn decorated_with_from(
 pub(crate) mod testing {
     use camino::Utf8PathBuf;
 
-    use crate::index::{Ancestry, SubclassRegistration};
+    use crate::config::TestCollection;
+    use crate::index::{Ancestry, NameUsage, SubclassRegistration};
     use crate::keep::{FileRole, KeepContext, KeepRule};
     use crate::manifest::Manifest;
     use crate::source::{ByteOffset, ByteSpan, FileId, MainGuard, ModulePath, SourceFile};
@@ -85,6 +86,8 @@ pub(crate) mod testing {
         pub(crate) manifest: Manifest,
         pub(crate) file_role: FileRole,
         pub(crate) registration: SubclassRegistration,
+        pub(crate) tests: TestCollection,
+        pub(crate) requested_as_parameter: NameUsage,
     }
 
     impl Case {
@@ -102,7 +105,30 @@ pub(crate) mod testing {
                 manifest: Manifest::empty(),
                 file_role: FileRole::Regular,
                 registration: SubclassRegistration::NotRegistered,
+                tests: TestCollection::default(),
+                requested_as_parameter: NameUsage::Unused,
             }
+        }
+
+        /// pytest configured with these `python_files`, `python_classes`, `python_functions`.
+        pub(crate) fn collecting(
+            mut self,
+            files: &[&str],
+            classes: &[&str],
+            functions: &[&str],
+        ) -> Self {
+            self.tests = TestCollection::parse(
+                files.iter().copied(),
+                classes.iter().copied(),
+                functions.iter().copied(),
+            )
+            .expect("valid patterns");
+            self
+        }
+
+        pub(crate) fn requested_as_parameter(mut self) -> Self {
+            self.requested_as_parameter = NameUsage::Used;
+            self
         }
 
         pub(crate) fn in_django_settings(mut self) -> Self {
@@ -236,6 +262,8 @@ pub(crate) mod testing {
                 public_modules: &[],
                 file_role: self.file_role,
                 registration: self.registration,
+                tests: &self.tests,
+                requested_as_parameter: self.requested_as_parameter,
             })
         }
 
