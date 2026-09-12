@@ -500,7 +500,7 @@ fn is_root_file(
             .is_some_and(|module| manifest.entry_points.iter().any(|ep| &ep.module == module))
 }
 
-/// `gunicorn.conf.py`, PyInstaller `hook-*.py`: scripts a tool executes for
+/// `gunicorn.conf.py`, `PyInstaller` `hook-*.py`: scripts a tool executes for
 /// their module-level names.
 fn is_tool_config_file(name: &str) -> bool {
     name.ends_with(".conf.py") || name.starts_with("hook-")

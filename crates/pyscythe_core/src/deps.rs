@@ -65,7 +65,7 @@ const TOOL_DISTRIBUTIONS: &[&str] = &[
 ];
 
 /// Distributions a framework loads by configuration rather than an import:
-/// database drivers named in a URL, validators FastAPI and Pydantic pull in
+/// database drivers named in a URL, validators `FastAPI` and Pydantic pull in
 /// when a field asks for them, servers' event loops and parsers.
 const LOADED_BY_CONFIGURATION: &[&str] = &[
     "aiosqlite",
@@ -135,7 +135,9 @@ impl ManifestScope {
 }
 
 /// Runs the dependency analysis: declared-but-unused, imported-but-undeclared,
-/// and unresolved imports. Each file is judged against the deepest manifest
+/// and unresolved imports.
+///
+/// Each file is judged against the deepest manifest
 /// whose directory contains it, so a `backend/pyproject.toml` governs
 /// `backend/`, and files outside every manifest fall to the first scope.
 #[must_use]

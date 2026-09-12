@@ -741,8 +741,12 @@ struct ImportBinding {
     spelling: String,
 }
 
+/// A module-level import statement, its head (`from x import `), and the names it binds.
+type ImportStatement = (ruff_text_size::TextRange, String, Vec<ImportBinding>);
+
 /// `source` with import bindings removed that appear as names in
 /// `removed_text` but nowhere in `source` outside import statements.
+///
 /// A statement that loses every binding goes entirely; otherwise it is
 /// rewritten on one line with the survivors.
 #[must_use]
@@ -760,9 +764,28 @@ pub fn prune_orphaned_imports(source: &str, removed_text: &str) -> String {
         .filter_map(|t| removed_text.get(std::ops::Range::<usize>::from(t.range())))
         .collect();
 
-    // Import statements at module level and the names they bind.
-    let mut statements: Vec<(ruff_text_size::TextRange, String, Vec<ImportBinding>)> = Vec::new();
-    for statement in &parsed.syntax().body {
+    let statements = import_statements(&parsed.syntax().body);
+    let inside_import = |range: ruff_text_size::TextRange| {
+        statements
+            .iter()
+            .any(|(statement, _, _)| statement.contains_range(range))
+    };
+    let mut live: std::collections::BTreeSet<&str> = std::collections::BTreeSet::new();
+    for token in parsed.tokens() {
+        if token.kind() == TokenKind::Name
+            && !inside_import(token.range())
+            && let Some(text) = source.get(std::ops::Range::<usize>::from(token.range()))
+        {
+            live.insert(text);
+        }
+    }
+    prune_statements(source, &statements, &live, &removed_names)
+}
+
+/// Import statements at module level and the names they bind.
+fn import_statements(body: &[Stmt]) -> Vec<ImportStatement> {
+    let mut statements: Vec<ImportStatement> = Vec::new();
+    for statement in body {
         match statement {
             Stmt::Import(import) => {
                 let bindings = import
@@ -771,7 +794,7 @@ pub fn prune_orphaned_imports(source: &str, removed_text: &str) -> String {
                     .map(|alias| ImportBinding {
                         bound: alias.asname.as_ref().map_or_else(
                             || alias.name.split('.').next().unwrap_or("").to_owned(),
-                            |asname| asname.to_string(),
+                            ToString::to_string,
                         ),
                         spelling: alias.asname.as_ref().map_or_else(
                             || alias.name.to_string(),
@@ -806,22 +829,16 @@ pub fn prune_orphaned_imports(source: &str, removed_text: &str) -> String {
             _ => {}
         }
     }
+    statements
+}
 
-    let inside_import = |range: ruff_text_size::TextRange| {
-        statements
-            .iter()
-            .any(|(statement, _, _)| statement.contains_range(range))
-    };
-    let mut live: std::collections::BTreeSet<&str> = std::collections::BTreeSet::new();
-    for token in parsed.tokens().iter() {
-        if token.kind() == TokenKind::Name
-            && !inside_import(token.range())
-            && let Some(text) = source.get(std::ops::Range::<usize>::from(token.range()))
-        {
-            live.insert(text);
-        }
-    }
-
+/// The rewriting half of [`prune_orphaned_imports`].
+fn prune_statements(
+    source: &str,
+    statements: &[ImportStatement],
+    live: &std::collections::BTreeSet<&str>,
+    removed_names: &std::collections::BTreeSet<&str>,
+) -> String {
     let mut result = source.to_owned();
     for (range, head, bindings) in statements.iter().rev() {
         let survivors: Vec<&ImportBinding> = bindings

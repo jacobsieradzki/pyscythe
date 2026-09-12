@@ -79,7 +79,7 @@ pub enum FileRole {
     Regular,
     /// A Django settings module, whose upper-case names are read by the framework.
     DjangoSettings,
-    /// A tool's configuration script (`gunicorn.conf.py`, PyInstaller
+    /// A tool's configuration script (`gunicorn.conf.py`, `PyInstaller`
     /// `hook-*.py`), whose module-level names the tool reads.
     ToolConfig,
     /// An Alembic `env.py` or a migration under `versions/`, which Alembic

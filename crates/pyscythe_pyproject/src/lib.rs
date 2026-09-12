@@ -108,11 +108,12 @@ fn boundary_config(table: BoundariesTable) -> Result<BoundaryConfig, ParseError>
     Ok(config)
 }
 
-/// Loads settings for the project rooted at `root`: the root `pyproject.toml`
-/// for configuration, plus a manifest for every directory beneath that holds
-/// a `pyproject.toml`, `setup.py`, or `setup.cfg` (environments and build
-/// output skipped), so nested projects are judged against their own
-/// declarations.
+/// Loads settings for the project rooted at `root`.
+///
+/// The root `pyproject.toml` supplies configuration, and every directory
+/// beneath that holds a `pyproject.toml`, `setup.py`, `setup.cfg`, or
+/// `requirements.txt` (environments and build output skipped) supplies a
+/// manifest, so nested projects are judged against their own declarations.
 ///
 /// # Errors
 ///
@@ -124,7 +125,7 @@ pub fn load(root: &Utf8Path) -> Result<ProjectSettings, ManifestError> {
     directories.extend(manifest_directories(root));
     for directory in directories {
         let Some((manifest_path, manifest)) =
-            manifest_in(&directory, &mut config, &directory == root)?
+            manifest_in(&directory, &mut config, directory.as_path() == root)?
         else {
             continue;
         };
@@ -218,7 +219,9 @@ fn requirements_dependencies(
             let path = entry.path();
             let name = path.file_name().unwrap_or_default();
             let variant = (name.starts_with("requirements-") || name.starts_with("requirements_"))
-                && name.ends_with(".txt");
+                && path
+                    .extension()
+                    .is_some_and(|extension| extension.eq_ignore_ascii_case("txt"));
             if name == "requirements.txt" || variant {
                 files.push(path.to_path_buf());
             }
@@ -229,7 +232,10 @@ fn requirements_dependencies(
             entries
                 .flatten()
                 .map(|entry| entry.path().to_path_buf())
-                .filter(|path| path.extension() == Some("txt")),
+                .filter(|path| {
+                    path.extension()
+                        .is_some_and(|extension| extension.eq_ignore_ascii_case("txt"))
+                }),
         );
     }
     files.sort();

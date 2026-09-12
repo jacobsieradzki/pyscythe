@@ -71,34 +71,8 @@ pub fn analyze(index: &dyn CodebaseIndex, thresholds: &HealthThresholds) -> Repo
         }
     }
 
-    // Worst first, so the top of the report is where the effort should go.
-    findings.sort_by(|a, b| {
-        cognitive_of(b)
-            .cmp(&cognitive_of(a))
-            .then(a.path.cmp(&b.path))
-            .then(a.position.cmp(&b.position))
-    });
-    files_health.sort_by(|a, b| {
-        a.score
-            .cmp(&b.score)
-            .then(a.maintainability.cmp(&b.maintainability))
-            .then(a.path.cmp(&b.path))
-    });
-    files_health.truncate(10);
-
-    let mut packages: Vec<PackageHealth> = package_totals
-        .into_iter()
-        .map(
-            |(package, (penalty, weight, functions, hotspots))| PackageHealth {
-                package: ModulePath::new(package),
-                score: score_from(penalty, weight),
-                functions,
-                hotspots,
-            },
-        )
-        .collect();
-    packages.sort_by(|a, b| a.score.cmp(&b.score).then(a.package.cmp(&b.package)));
-
+    sort_worst_first(&mut findings, &mut files_health);
+    let packages = package_health(package_totals);
     let score = score_from(weighted_penalty, total_weight);
 
     Report {
@@ -219,6 +193,43 @@ pub fn maintainability_index(tokens: &[CloneToken], functions: &[FunctionMetrics
 
 const fn is_hotspot(metrics: &FunctionMetrics, t: &HealthThresholds) -> bool {
     metrics.cyclomatic > t.max_cyclomatic || metrics.cognitive > t.max_cognitive
+}
+
+/// Worst first, so the top of the report is where the effort should go;
+/// only the ten worst files are worth listing.
+fn sort_worst_first(findings: &mut [Finding], files_health: &mut Vec<FileHealth>) {
+    findings.sort_by(|a, b| {
+        cognitive_of(b)
+            .cmp(&cognitive_of(a))
+            .then(a.path.cmp(&b.path))
+            .then(a.position.cmp(&b.position))
+    });
+    files_health.sort_by(|a, b| {
+        a.score
+            .cmp(&b.score)
+            .then(a.maintainability.cmp(&b.maintainability))
+            .then(a.path.cmp(&b.path))
+    });
+    files_health.truncate(10);
+}
+
+/// Per-package scores from (penalty, weight, functions, hotspots) totals.
+fn package_health(
+    totals: std::collections::BTreeMap<String, (u64, u64, usize, usize)>,
+) -> Vec<PackageHealth> {
+    let mut packages: Vec<PackageHealth> = totals
+        .into_iter()
+        .map(
+            |(package, (penalty, weight, functions, hotspots))| PackageHealth {
+                package: ModulePath::new(package),
+                score: score_from(penalty, weight),
+                functions,
+                hotspots,
+            },
+        )
+        .collect();
+    packages.sort_by(|a, b| a.score.cmp(&b.score).then(a.package.cmp(&b.package)));
+    packages
 }
 
 /// Points a function loses, capped at 100.

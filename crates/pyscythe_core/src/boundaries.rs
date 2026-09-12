@@ -104,20 +104,31 @@ impl Suggestion {
     /// The proposal as a `[tool.pyscythe.boundaries]` table.
     #[must_use]
     pub fn to_toml(&self) -> String {
-        let mut out = String::from("[tool.pyscythe.boundaries]\nlayers = [\n");
-        for rank in &self.layers {
-            let names: Vec<String> = rank.iter().map(|p| format!("\"{}\"", p.as_str())).collect();
-            out.push_str(&format!("    [{}],\n", names.join(", ")));
-        }
-        out.push_str("]\n");
-        for tangle in &self.tangles {
-            let names: Vec<&str> = tangle.iter().map(ModulePrefix::as_str).collect();
-            out.push_str(&format!(
-                "# {} import each other; they share a rank until the cycle is broken.\n",
-                names.join(", ")
-            ));
-        }
-        out
+        let layers: Vec<String> = self
+            .layers
+            .iter()
+            .map(|rank| {
+                let names: Vec<String> =
+                    rank.iter().map(|p| format!("\"{}\"", p.as_str())).collect();
+                format!("    [{}],\n", names.join(", "))
+            })
+            .collect();
+        let tangles: Vec<String> = self
+            .tangles
+            .iter()
+            .map(|tangle| {
+                let names: Vec<&str> = tangle.iter().map(ModulePrefix::as_str).collect();
+                format!(
+                    "# {} import each other; they share a rank until the cycle is broken.\n",
+                    names.join(", ")
+                )
+            })
+            .collect();
+        format!(
+            "[tool.pyscythe.boundaries]\nlayers = [\n{}]\n{}",
+            layers.concat(),
+            tangles.concat()
+        )
     }
 }
 
@@ -155,10 +166,10 @@ pub fn suggest(index: &dyn CodebaseIndex) -> Suggestion {
 
     let mut edges: Vec<Vec<usize>> = vec![Vec::new(); packages.len()];
     for file in files {
-        let (Some(from), Some(from_index)) = (
-            package_of(file),
-            package_of(file).and_then(|p| position(&p)),
-        ) else {
+        let Some(from) = package_of(file) else {
+            continue;
+        };
+        let Some(from_index) = position(&from) else {
             continue;
         };
         for import in index.imports(file.id) {
@@ -172,59 +183,80 @@ pub fn suggest(index: &dyn CodebaseIndex) -> Suggestion {
                 continue;
             }
             if let Some(to_index) = position(&to)
-                && !edges[from_index].contains(&to_index)
+                && let Some(targets) = edges.get_mut(from_index)
+                && !targets.contains(&to_index)
             {
-                edges[from_index].push(to_index);
+                targets.push(to_index);
             }
         }
     }
 
     let components = crate::graph::strongly_connected_components(&edges);
-    let component_of: Vec<usize> = {
-        let mut lookup = vec![0; packages.len()];
-        for (index, component) in components.iter().enumerate() {
-            for &node in component {
-                lookup[node] = index;
-            }
-        }
-        lookup
-    };
-    // Condensed DAG: rank = longest chain of importers above.
-    let mut condensed: Vec<Vec<usize>> = vec![Vec::new(); components.len()];
-    for (from, targets) in edges.iter().enumerate() {
-        for &to in targets {
-            let (a, b) = (component_of[from], component_of[to]);
-            if a != b && !condensed[a].contains(&b) {
-                condensed[a].push(b);
-            }
-        }
-    }
-    let mut rank = vec![0usize; components.len()];
-    for _ in 0..components.len() {
-        for (from, targets) in condensed.iter().enumerate() {
-            for &to in targets {
-                if rank[to] < rank[from] + 1 {
-                    rank[to] = rank[from] + 1;
-                }
-            }
-        }
-    }
-
+    let rank = component_ranks(&edges, &components);
     let depth = rank.iter().copied().max().map_or(0, |max| max + 1);
     let mut layers: Vec<Vec<ModulePrefix>> = vec![Vec::new(); depth];
     let mut tangles = Vec::new();
     for (index, component) in components.iter().enumerate() {
-        let members: Vec<ModulePrefix> = component.iter().map(|&n| packages[n].clone()).collect();
+        let members: Vec<ModulePrefix> = component
+            .iter()
+            .filter_map(|&n| packages.get(n).cloned())
+            .collect();
         if members.len() > 1 {
             tangles.push(members.clone());
         }
-        layers[rank[index]].extend(members);
+        if let Some(layer) = rank.get(index).and_then(|&r| layers.get_mut(r)) {
+            layer.extend(members);
+        }
     }
     for layer in &mut layers {
         layer.sort_by(|a, b| a.as_str().cmp(b.as_str()));
     }
     layers.retain(|layer| !layer.is_empty());
     Suggestion { layers, tangles }
+}
+
+/// The rank of each strongly connected component in the condensed DAG:
+/// the longest chain of importers above it, so importers rank higher.
+fn component_ranks(edges: &[Vec<usize>], components: &[Vec<usize>]) -> Vec<usize> {
+    let mut component_of = vec![0; edges.len()];
+    for (index, component) in components.iter().enumerate() {
+        for &node in component {
+            if let Some(slot) = component_of.get_mut(node) {
+                *slot = index;
+            }
+        }
+    }
+    let mut condensed: Vec<Vec<usize>> = vec![Vec::new(); components.len()];
+    for (from, targets) in edges.iter().enumerate() {
+        let Some(&a) = component_of.get(from) else {
+            continue;
+        };
+        for &to in targets {
+            let Some(&b) = component_of.get(to) else {
+                continue;
+            };
+            if a != b
+                && let Some(out) = condensed.get_mut(a)
+                && !out.contains(&b)
+            {
+                out.push(b);
+            }
+        }
+    }
+    let mut rank = vec![0usize; components.len()];
+    for _ in 0..components.len() {
+        for (from, targets) in condensed.iter().enumerate() {
+            let above = rank.get(from).copied().unwrap_or(0) + 1;
+            for &to in targets {
+                if let Some(to_rank) = rank.get_mut(to)
+                    && *to_rank < above
+                {
+                    *to_rank = above;
+                }
+            }
+        }
+    }
+    rank
 }
 
 /// Why `from` may not import `to`, if it may not.
