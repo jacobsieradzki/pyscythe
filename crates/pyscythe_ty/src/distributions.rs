@@ -97,13 +97,16 @@ fn distribution_name(metadata: &str) -> Option<DistributionName> {
         .map(|name| DistributionName::normalize(name.trim()))
 }
 
-/// The distributions named by `Requires-Dist:` lines, extras included: an
-/// extra a project asked for is as installed as anything else.
+/// The distributions named by unconditional `Requires-Dist:` lines. Lines
+/// behind `extra == "..."` are skipped: nobody knows which extras were asked
+/// for, and following them all links everything to everything (sentry-sdk's
+/// extras alone name sqlalchemy, langchain, and forty others).
 fn requires_dist(metadata: &str) -> Vec<DistributionName> {
     let mut names: Vec<DistributionName> = Vec::new();
     for requirement in metadata
         .lines()
         .filter_map(|line| line.strip_prefix("Requires-Dist:"))
+        .filter(|requirement| !requirement.contains("extra =="))
     {
         let name: String = requirement
             .trim_start()
@@ -170,7 +173,7 @@ mod tests {
             .iter()
             .map(|n| n.as_str().to_owned())
             .collect();
-        assert_eq!(names, ["starlette", "pydantic", "httpx"]);
+        assert_eq!(names, ["starlette", "pydantic"], "httpx is behind an extra");
     }
 
     #[test]

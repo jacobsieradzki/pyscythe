@@ -9,23 +9,24 @@ use pyscythe_core::config::{PatternError, TestCollection};
 use serde::Deserialize;
 
 /// Whether the root `pyproject.toml` carried a `[tool.pytest.ini_options]` table.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 pub enum PyprojectPytest {
     /// It did, so the ini files below it in precedence do not apply.
     Configured,
     /// It did not.
+    #[default]
     Absent,
 }
 
 /// `[tool.pytest.ini_options]`, the keys that shape collection.
 #[derive(Debug, Default, Deserialize)]
 pub(crate) struct IniOptions {
-    #[serde(default)]
-    python_files: Option<OneOrMany>,
-    #[serde(default)]
-    python_classes: Option<OneOrMany>,
-    #[serde(default)]
-    python_functions: Option<OneOrMany>,
+    #[serde(default, rename = "python_files")]
+    files: Option<OneOrMany>,
+    #[serde(default, rename = "python_classes")]
+    classes: Option<OneOrMany>,
+    #[serde(default, rename = "python_functions")]
+    functions: Option<OneOrMany>,
 }
 
 /// pytest accepts `"a b"` or `["a", "b"]` for these keys.
@@ -75,9 +76,9 @@ fn collection(
 /// The collection a `[tool.pytest.ini_options]` table configures.
 pub(crate) fn from_ini_options(options: &IniOptions) -> Result<TestCollection, PatternError> {
     collection(
-        options.python_files.as_ref().map(OneOrMany::entries),
-        options.python_classes.as_ref().map(OneOrMany::entries),
-        options.python_functions.as_ref().map(OneOrMany::entries),
+        options.files.as_ref().map(OneOrMany::entries),
+        options.classes.as_ref().map(OneOrMany::entries),
+        options.functions.as_ref().map(OneOrMany::entries),
     )
 }
 

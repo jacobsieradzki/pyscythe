@@ -167,12 +167,6 @@ struct RootSettings {
     pytest: PyprojectPytest,
 }
 
-impl Default for PyprojectPytest {
-    fn default() -> Self {
-        Self::Absent
-    }
-}
-
 fn manifest_in(
     directory: &Utf8Path,
     root_settings: &mut RootSettings,
