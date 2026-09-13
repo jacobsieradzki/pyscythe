@@ -1,7 +1,7 @@
 files_scanned=18735
 symbols_checked=53
 symbols_kept=0
-findings=1216
+findings=1214
 --
 unresolved-import	low	homeassistant/auth/mfa_modules/notify.py:54:12		import `pyotp` resolves to nothing on the search path
 unresolved-import	low	homeassistant/auth/mfa_modules/totp.py:41:12		import `pyqrcode` resolves to nothing on the search path
@@ -1196,8 +1196,7 @@ unresolved-import	low	tests/auth/test_auth_store.py:7:1		import `freezegun` reso
 unresolved-import	low	tests/common.py:35:1		import `syrupy` resolves to nothing on the search path
 unresolved-import	low	tests/components/abode/conftest.py:8:1		import `requests_mock` resolves to nothing on the search path
 unresolved-import	low	tests/components/bang_olufsen/util.py:3:1		import `inflection` resolves to nothing on the search path
-missing-dependency	low	tests/components/bluetooth/__init__.py:94:55	pyobjc-framework-corebluetooth	`CoreBluetooth` is imported but `pyobjc-framework-corebluetooth` is not a declared dependency; it arrives through `home-assistant-bluetooth`
-unresolved-import	low	tests/components/bluetooth/conftest.py:6:1		import `dbus_fast` resolves to nothing on the search path
+missing-dependency	low	tests/components/bluetooth/conftest.py:6:1	dbus-fast	`dbus_fast` is imported but `dbus-fast` is not a declared dependency; it arrives through `home-assistant-bluetooth`
 missing-dependency	low	tests/components/cloud/test_http_api.py:2881:23	snitun	`snitun` is imported but `snitun` is not a declared dependency; it arrives through `hass-nabucasa`
 unresolved-import	low	tests/components/dhcp/test_init.py:11:1		import `scapy` resolves to nothing on the search path
 unresolved-import	low	tests/components/elmax/conftest.py:16:8		import `respx` resolves to nothing on the search path
@@ -1206,7 +1205,6 @@ missing-dependency	low	tests/components/mcp_server/test_http.py:18:8	voluptuous	
 unresolved-import	low	tests/components/plugwise/conftest.py:8:1		import `munch` resolves to nothing on the search path
 unresolved-import	low	tests/components/rainforest_raven/const.py:13:1		import `iso4217` resolves to nothing on the search path
 unresolved-import	low	tests/components/roborock/mock_data.py:28:1		import `vacuum_map_parser_roborock` resolves to nothing on the search path
-missing-dependency	low	tests/components/simplisafe/test_diagnostics.py:61:21	pyobjc-framework-libdispatch	`dispatch` is imported but `pyobjc-framework-libdispatch` is not a declared dependency; it arrives through `home-assistant-bluetooth`
 missing-dependency	low	tests/components/ws66i/test_media_player.py:47:10	six	`six` is imported but `six` is not a declared dependency; it arrives through `hass-nabucasa`
 unresolved-import	low	tests/components/xiaomi_miio/test_select.py:5:1		import `arrow` resolves to nothing on the search path
 unresolved-import	low	tests/conftest.py:39:8		import `pytest_asyncio` resolves to nothing on the search path

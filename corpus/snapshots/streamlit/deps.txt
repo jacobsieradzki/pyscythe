@@ -1,7 +1,7 @@
 files_scanned=892
 symbols_checked=138
 symbols_kept=0
-findings=64
+findings=63
 --
 unresolved-import	low	e2e_playwright/app_hotkeys_test.py:17:1		import `e2e_playwright` resolves to nothing on the search path
 missing-dependency	low	e2e_playwright/bidi_components/basics.py:19:8	pandas	`pandas` is imported but `pandas` is not a declared dependency; it arrives through `streamlit`
@@ -64,6 +64,5 @@ unused-dependency	low	pyproject.toml	scipy	dependency `scipy` (dependency-groups
 unused-dependency	low	pyproject.toml	sqlalchemy	dependency `sqlalchemy` (dependency-groups.integration) is never imported
 unused-dependency	medium	pyproject.toml	streamlit	dependency `streamlit` is never imported
 unused-dependency	low	pyproject.toml	testfixtures	dependency `testfixtures` (dependency-groups.dev) is never imported
-unused-dependency	low	pyproject.toml	watchdog	dependency `watchdog` (dependency-groups.dev) is never imported
 unused-dependency	low	pyproject.toml	xarray	dependency `xarray` (dependency-groups.integration) is never imported
 unresolved-import	low	scripts/verify_version.py:36:12		import `tomllib` resolves to nothing on the search path

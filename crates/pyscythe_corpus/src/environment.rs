@@ -1,8 +1,9 @@
 //! Building each project's virtual environment from its lock file with uv.
 //!
-//! The lock file pins every third-party distribution, so ty resolves the same
-//! packages on every machine. The project's own code is installed editable
-//! without dependencies afterwards, because a lock cannot pin a checkout.
+//! The lock file pins every third-party distribution and every environment is
+//! installed as if for Linux, so ty resolves the same packages on every
+//! machine. The project's own code is installed editable without dependencies
+//! afterwards, because a lock cannot pin a checkout.
 
 use std::fs;
 use std::io::Write;
@@ -15,6 +16,11 @@ use crate::manifest::{Project, ProjectName, Requirement};
 use crate::process;
 
 const STAMP: &str = "pyscythe-corpus.stamp";
+
+/// Every environment installs the packages a Linux machine would, whatever the host, so
+/// platform-conditional dependencies (`sys_platform == "darwin"`) resolve the same everywhere.
+/// ty only reads the files, so wheels built for another platform are no problem.
+const TARGET_PLATFORM: &str = "linux";
 
 /// The lock file for a project.
 pub(crate) fn lock_file(locks: &Utf8Path, name: &ProjectName) -> Utf8PathBuf {
@@ -103,7 +109,13 @@ pub(crate) fn ensure(
     process::run(
         uv(&root)
             .env("VIRTUAL_ENV", &venv)
-            .args(["pip", "sync", "--quiet"])
+            .args([
+                "pip",
+                "sync",
+                "--quiet",
+                "--python-platform",
+                TARGET_PLATFORM,
+            ])
             .arg(lock_file),
     )?;
     if !project.editable.is_empty() {
@@ -136,7 +148,7 @@ fn stamp_for(project: &Project, lock: &str) -> String {
         .collect::<Vec<_>>()
         .join(",");
     format!(
-        "python={}\neditable={editable}\n{lock}",
+        "python={}\nplatform={TARGET_PLATFORM}\neditable={editable}\n{lock}",
         project.python.as_str()
     )
 }

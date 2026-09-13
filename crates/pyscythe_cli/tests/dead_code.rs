@@ -532,3 +532,21 @@ fn home_assistant_integrations_keep_their_hooks_constants_and_flow_steps() {
         "platform modules load by name, hooks and steps by convention: {report}"
     );
 }
+
+#[test]
+fn code_behind_platform_checks_is_reachable_on_every_platform() {
+    // ty would otherwise assume the host platform, and a Windows-only import would be dead
+    // on macOS and alive on Windows. The same code must produce the same report everywhere.
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("platforms"))
+        .output()
+        .expect("runs");
+
+    assert_eq!(
+        output.status.code(),
+        Some(0),
+        "{}",
+        String::from_utf8_lossy(&output.stdout)
+    );
+}

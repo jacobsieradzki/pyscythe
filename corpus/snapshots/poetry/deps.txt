@@ -1,7 +1,7 @@
 files_scanned=447
 symbols_checked=35
 symbols_kept=0
-findings=15
+findings=16
 --
 unused-dependency	low	pyproject.toml	jaraco-classes	dependency `jaraco-classes` (dependency-groups.test) is never imported
 unused-dependency	medium	pyproject.toml	poetry-core	dependency `poetry-core` is never imported
@@ -18,3 +18,4 @@ missing-dependency	low	tests/puzzle/test_solver.py:4238:55	idna	`idna` is import
 missing-dependency	low	tests/puzzle/test_solver.py:5179:29	crashtest	`crashtest` is imported but `crashtest` is not a declared dependency; it arrives through `cleo`
 missing-dependency	low	tests/repositories/fixtures/pypi.org/generate.py:672:13	pluggy	`pluggy` is imported but `pluggy` is not a declared dependency; it arrives through `pytest`
 missing-dependency	low	tests/repositories/test_legacy_repository.py:432:20	pygments	`pygments` is imported but `pygments` is not a declared dependency; it arrives through `pytest`
+missing-dependency	low	tests/repositories/test_pypi_repository.py:347:24	cryptography	`cryptography` is imported but `cryptography` is not a declared dependency; it arrives through `keyring`

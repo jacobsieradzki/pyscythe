@@ -24,11 +24,14 @@ use ruff_db::parsed::parsed_module;
 use ruff_db::source::{line_index, source_text};
 use ruff_db::system::{OsSystem, System as _, SystemPath};
 use ruff_python_ast::token::TokenKind;
+use ruff_ranged_value::RangedValue;
 use ruff_text_size::{Ranged, TextRange, TextSize};
 use rustc_hash::FxHashMap;
 use ty_ide::{HierarchicalSymbols, SymbolInfo, document_symbols};
 use ty_project::metadata::ProjectMetadataError;
+use ty_project::metadata::options::{EnvironmentOptions, Options};
 use ty_project::{Db as _, ProjectDatabase, ProjectMetadata};
+use ty_python_core::platform::PythonPlatform;
 use ty_python_semantic::Db as _;
 
 use crate::reference_index::{DefinitionKey, ReferenceIndex};
@@ -134,6 +137,16 @@ impl TyIndex {
         metadata
             .apply_configuration_files(&system)
             .map_err(|error| OpenError::Configuration(error.into()))?;
+        // Code behind `sys.platform` checks is reachable on some machine, so every branch
+        // counts unless the project pins a platform in `[tool.ty.environment]`. ty would
+        // otherwise assume the host platform and the results would differ by machine.
+        metadata.apply_fallback_options(Options {
+            environment: Some(EnvironmentOptions {
+                python_platform: Some(RangedValue::cli(PythonPlatform::All)),
+                ..EnvironmentOptions::default()
+            }),
+            ..Options::default()
+        });
 
         let mut db =
             ProjectDatabase::fallible(metadata, system).map_err(OpenError::Configuration)?;

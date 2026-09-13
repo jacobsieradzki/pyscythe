@@ -1,7 +1,7 @@
 files_scanned=583
 symbols_checked=5888
 symbols_kept=1086
-findings=47
+findings=45
 --
 unused-variable	medium	mitmproxy/addons/core.py:18:1	CONF_DIR	variable `CONF_DIR` is never used
 unused-variable	medium	mitmproxy/addons/core.py:19:1	LISTEN_PORT	variable `LISTEN_PORT` is never used
@@ -26,8 +26,6 @@ unused-variable	low	mitmproxy/io/har.py:13:1	logger	variable `logger` is never u
 unused-function	low	mitmproxy/net/http/multipart.py:78:5	encode	function `encode` is never used
 unused-function	low	mitmproxy/net/http/multipart.py:88:5	decode	function `decode` is never used
 unused-variable	low	mitmproxy/net/http/validate.py:9:1	logger	variable `logger` is never used
-unused-function	low	mitmproxy/platform/openbsd.py:1:5	original_addr	function `original_addr` is never used
-unused-class	low	mitmproxy/platform/windows.py:48:7	Resolver	class `Resolver` is never used
 unused-variable	medium	mitmproxy/proxy/layers/modes.py:109:1	SOCKS5_REP_HOST_UNREACHABLE	variable `SOCKS5_REP_HOST_UNREACHABLE` is never used
 unused-variable	low	mitmproxy/utils/signals.py:25:1	R	variable `R` is never used
 unused-file	medium	release/deploy-microsoft-store.py	-	file `deploy-microsoft-store.py` is never imported or run
