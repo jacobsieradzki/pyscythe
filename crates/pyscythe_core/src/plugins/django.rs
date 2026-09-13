@@ -103,6 +103,16 @@ const HOOK_METHODS: &[&str] = &[
     "get_by_natural_key",
 ];
 
+/// `@register.filter`, `@register.simple_tag`: a template `Library` hands
+/// the function to templates, which name it in `{% %}` and `{{ | }}`.
+const TEMPLATE_LIBRARY_DECORATORS: &[&str] = &[
+    "tag",
+    "filter",
+    "simple_tag",
+    "simple_block_tag",
+    "inclusion_tag",
+];
+
 /// `validate_<field>`, `clean_<field>`, `get_<field>_display`-style hooks.
 fn is_prefixed_hook(name: &str) -> bool {
     name.starts_with("validate_")
@@ -128,11 +138,11 @@ impl KeepRule for Django {
         let name = symbol.name.as_str();
         let file_name = context.file_name();
 
-        if context.parent_directory_is("migrations")
-            && symbol.kind == SymbolKind::Class
-            && name == "Migration"
+        if symbol.kind == SymbolKind::Class
+            && ((context.parent_directory_is("migrations") && name == "Migration")
+                || context.ancestry.has_ancestor_in("django.db.migrations"))
         {
-            return Some("Django migration");
+            return Some("Django migration loaded by the migration loader");
         }
         if context.parent_directory_is("commands")
             && context.is_under_directory("management")
@@ -163,7 +173,7 @@ impl KeepRule for Django {
         {
             return Some("Django setting read by name");
         }
-        if file_name == "urls.py" && name == "urlpatterns" {
+        if name == "urlpatterns" && symbol.is_module_level() {
             return Some("Django URL configuration");
         }
         if (file_name == "wsgi.py" || file_name == "asgi.py") && name == "application" {
@@ -174,8 +184,11 @@ impl KeepRule for Django {
         {
             return Some("Django hook method called by name");
         }
-        if decorated_with_from(symbol, &["register"], true, &["django"]) {
-            return Some("registered with the Django admin");
+        if decorated_with_from(symbol, &["register"], false, &["django"]) {
+            return Some("registered with Django (admin, checks)");
+        }
+        if decorated_with_from(symbol, TEMPLATE_LIBRARY_DECORATORS, true, &["django"]) {
+            return Some("Django template tag or filter used by name in templates");
         }
         if decorated_with_from(symbol, &["receiver"], false, &["django"]) {
             return Some("connected as a Django signal receiver");
@@ -194,6 +207,41 @@ impl KeepRule for Django {
 mod tests {
     use super::Django;
     use crate::plugins::testing::Case;
+
+    #[test]
+    fn keeps_template_library_registrations_migrations_and_url_confs() {
+        assert!(
+            Case::function("money")
+                .decorated("register.filter")
+                .is_kept_by(&Django)
+        );
+        assert!(
+            Case::function("badge")
+                .decorated_with_keywords("register.simple_tag", &["takes_context"])
+                .is_kept_by(&Django)
+        );
+        assert!(
+            !Case::function("money")
+                .decorated_from("cache.filter", "cachetools")
+                .is_kept_by(&Django)
+        );
+        assert!(
+            Case::class("Migration")
+                .at("/p/tests/test_migrations_squashed/app1/1_auto.py")
+                .with_ancestors(&["django.db.migrations.migration.Migration"])
+                .is_kept_by(&Django)
+        );
+        assert!(
+            Case::variable("urlpatterns")
+                .at("/p/django/conf/urls/i18n.py")
+                .is_kept_by(&Django)
+        );
+        assert!(
+            Case::function("check_all_models")
+                .decorated_from("register", "django.core.checks.registry")
+                .is_kept_by(&Django)
+        );
+    }
 
     #[test]
     fn keeps_layout_conventions() {

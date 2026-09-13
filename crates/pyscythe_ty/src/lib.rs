@@ -38,6 +38,7 @@ mod declarations;
 mod distributions;
 mod inheritance;
 mod reference_index;
+mod templates;
 
 /// Why a project could not be opened.
 #[derive(Debug, thiserror::Error)]
@@ -245,8 +246,11 @@ impl TyIndex {
     }
 
     fn reference_index(&self) -> &ReferenceIndex {
-        self.references
-            .get_or_init(|| ReferenceIndex::build(&self.db, &self.all_files))
+        self.references.get_or_init(|| {
+            let mut index = ReferenceIndex::build(&self.db, &self.all_files);
+            index.extend_attribute_names(templates::attribute_names(self.root()));
+            index
+        })
     }
 }
 

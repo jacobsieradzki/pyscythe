@@ -185,8 +185,9 @@ pub struct TestCollection {
 }
 
 impl TestCollection {
-    /// pytest's default `python_files`.
-    pub const DEFAULT_FILES: &'static [&'static str] = &["test_*.py", "*_test.py"];
+    /// pytest's default `python_files`, plus `tests.py`, which unittest's
+    /// `test*.py` discovery and Django's runner collect.
+    pub const DEFAULT_FILES: &'static [&'static str] = &["test_*.py", "*_test.py", "tests.py"];
     /// pytest's default `python_classes`.
     pub const DEFAULT_CLASSES: &'static [&'static str] = &["Test"];
     /// pytest's default `python_functions`.

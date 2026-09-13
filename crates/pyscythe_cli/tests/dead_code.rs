@@ -433,7 +433,11 @@ fn django_settings_modules_string_named_admin_fields_and_manager_hooks_are_kept(
         .iter()
         .filter_map(|f| f["symbol"].as_str())
         .collect();
-    assert_eq!(symbols, ["forgotten"], "{report}");
+    assert_eq!(
+        symbols,
+        ["forgotten", "unused_line"],
+        "summary_line is named in a template, money and badge are registered template tags: {report}"
+    );
     let unused_file = report["findings"]
         .as_array()
         .expect("findings array")

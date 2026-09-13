@@ -251,7 +251,7 @@ impl SymbolCheck<'_> {
             path: self.file.path.clone(),
             module: self.file.module.clone(),
             position,
-            confidence: confidence_for(&symbol),
+            confidence: confidence_for(&symbol, self.index.attribute_name_usage(&symbol.name)),
             message: format!("{} `{qualified}` is never used", rule.noun()),
             detail: Detail::Symbol {
                 symbol: symbol.name,
@@ -493,6 +493,8 @@ fn is_root_file(
         // Helper modules under a tests tree are for the runner, not the app.
         || under("tests")
         || under("test")
+        // Django loads template tag modules by `{% load %}` name.
+        || parent_is("templatetags")
         // Alembic scripts and env.
         || is_tool_config_file(name)
         || (name == "env.py" && (under("alembic") || under("migrations")))
@@ -604,7 +606,7 @@ fn is_used(index: &dyn CodebaseIndex, symbol: &Symbol) -> bool {
         && index.attribute_name_usage(&symbol.name) == NameUsage::Used
 }
 
-fn confidence_for(symbol: &Symbol) -> Confidence {
+fn confidence_for(symbol: &Symbol, name_as_attribute: NameUsage) -> Confidence {
     // `@registry.handler("GET")` hands the function to something that will
     // call it; without knowing that something, absence of callers proves little.
     if symbol
@@ -612,6 +614,11 @@ fn confidence_for(symbol: &Symbol) -> Confidence {
         .iter()
         .any(crate::symbol::Decorator::registers_with_receiver)
     {
+        return Confidence::Low;
+    }
+    // `module.Serializer`, `getattr(backend, "activate")`: some object that
+    // could not be resolved is asked for this very name.
+    if symbol.is_module_level() && name_as_attribute == NameUsage::Used {
         return Confidence::Low;
     }
     match (symbol.scope, symbol.name.is_private()) {
@@ -712,6 +719,33 @@ mod tests {
             !settings.contains(&other),
             "a named import is not a settings module"
         );
+    }
+
+    #[test]
+    fn a_module_level_name_accessed_as_an_attribute_somewhere_is_low_confidence() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/pkg/serializers/xml.py", "pkg.serializers.xml");
+        index.add_symbol(file, "Serializer", SymbolKind::Class);
+        index.add_symbol(file, "Helper", SymbolKind::Class);
+        index.mark_attribute_name_used("Serializer");
+        import_from_elsewhere(&mut index, file);
+
+        let report = analyze_without_plugins(&index);
+
+        let confidence = |name: &str| {
+            report
+                .findings
+                .iter()
+                .find(|f| f.symbol().is_some_and(|s| s.as_str() == name))
+                .map(|f| f.confidence)
+        };
+        assert_eq!(
+            confidence("Serializer"),
+            Some(Confidence::Low),
+            "{:?}",
+            symbol_names(&report)
+        );
+        assert_eq!(confidence("Helper"), Some(Confidence::Medium));
     }
 
     #[test]

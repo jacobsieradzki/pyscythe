@@ -65,6 +65,18 @@ impl KeepRule for Pytest {
                 return Some("test lifecycle hook");
             }
         }
+        // unittest and Django run `test*` methods and the lifecycle hooks of
+        // any TestCase subclass, wherever the file lives.
+        if symbol.kind == SymbolKind::Method
+            && (context.ancestry.has_ancestor_in("unittest")
+                || context.ancestry.has_ancestor_in("django.test"))
+            && (context.tests.collects_function(name) || TEST_LIFECYCLE_METHODS.contains(&name))
+        {
+            return Some("test method of a TestCase subclass");
+        }
+        if symbol.is_module_level() && name == "__unittest" {
+            return Some("unittest traceback marker read by name");
+        }
         if symbol.kind == SymbolKind::Function && name.starts_with("pytest_") {
             return Some("pytest hook");
         }
@@ -137,6 +149,42 @@ mod tests {
         assert!(
             !Case::function("client")
                 .requested_as_parameter()
+                .is_kept_by(&Pytest)
+        );
+    }
+
+    #[test]
+    fn keeps_test_methods_of_test_case_subclasses_anywhere() {
+        assert!(
+            Case::method("test_total")
+                .at("/p/shop/checks.py")
+                .with_ancestors(&["unittest.case.TestCase"])
+                .is_kept_by(&Pytest)
+        );
+        assert!(
+            Case::method("setUp")
+                .at("/p/shop/checks.py")
+                .with_ancestors(&["django.test.testcases.TestCase"])
+                .is_kept_by(&Pytest)
+        );
+        assert!(
+            !Case::method("make_order")
+                .at("/p/shop/checks.py")
+                .with_ancestors(&["unittest.case.TestCase"])
+                .is_kept_by(&Pytest)
+        );
+        assert!(
+            !Case::method("test_total")
+                .at("/p/shop/checks.py")
+                .is_kept_by(&Pytest)
+        );
+    }
+
+    #[test]
+    fn tests_py_is_a_test_module() {
+        assert!(
+            Case::function("test_it")
+                .at("/p/shop/tests.py")
                 .is_kept_by(&Pytest)
         );
     }

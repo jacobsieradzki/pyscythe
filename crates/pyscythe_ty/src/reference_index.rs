@@ -104,6 +104,11 @@ impl ReferenceIndex {
         self.attribute_names.contains(name)
     }
 
+    /// Adds names that non-Python sources, templates above all, refer to.
+    pub(crate) fn extend_attribute_names(&mut self, names: impl IntoIterator<Item = String>) {
+        self.attribute_names.extend(names);
+    }
+
     /// Whether any function takes a parameter called `name`.
     pub(crate) fn parameter_name_is_used(&self, name: &str) -> bool {
         self.parameter_names.contains(name)
@@ -352,7 +357,13 @@ impl UseCollector<'_, '_> {
         else {
             return;
         };
-        let Some(prefix) = literal.value.strip_suffix('.') else {
+        self.record_package_wide_import(fstring.range(), &literal.value);
+    }
+
+    /// `"django.conf.locale."` followed by something computed: every module
+    /// under the package may be loaded, so each gets a deferred edge.
+    fn record_package_wide_import(&mut self, range: TextRange, head: &str) {
+        let Some(prefix) = head.strip_suffix('.') else {
             return;
         };
         if split_dotted_reference(prefix).is_none() {
@@ -365,7 +376,7 @@ impl UseCollector<'_, '_> {
             return;
         };
         self.record_import(
-            fstring.range(),
+            range,
             package_file,
             ImportKind::Deferred,
             ImportedNames::Explicit,
@@ -376,12 +387,7 @@ impl UseCollector<'_, '_> {
             .filter_map(|module| module.file(self.db))
             .collect();
         for file in submodule_files {
-            self.record_import(
-                fstring.range(),
-                file,
-                ImportKind::Deferred,
-                ImportedNames::Explicit,
-            );
+            self.record_import(range, file, ImportKind::Deferred, ImportedNames::Explicit);
         }
     }
 
@@ -389,6 +395,11 @@ impl UseCollector<'_, '_> {
     /// use of that symbol and a deferred import of its module.
     fn record_string_reference(&mut self, literal: &ast::ExprStringLiteral) {
         let text = literal.value.to_str();
+        // `"django.conf.locale.%s"`, `"{}.formats"`: a module path with a hole
+        // for `%` or `str.format` to fill is a dynamic import of the package.
+        if let Some(head) = formatted_module_head(text) {
+            self.record_package_wide_import(literal.range(), head);
+        }
         // Frameworks name attributes in strings: Django's `list_display`,
         // DRF's `fields`, `getattr` lookups. Any identifier-shaped literal keeps
         // a same-named method alive.
@@ -430,6 +441,21 @@ impl UseCollector<'_, '_> {
             self.record_definition_use(literal.range(), FileRange::new(module_file, name_range));
         }
     }
+}
+
+/// The literal head of a module path template, up to and including the dot
+/// before the first `%s`, `%(name)s`, or `{}` placeholder: `"pkg.locale."`
+/// for `"pkg.locale.%s"`. `None` when the text has no placeholder or no
+/// dotted head before it.
+fn formatted_module_head(text: &str) -> Option<&str> {
+    let hole = text.find(['%', '{'])?;
+    let head = text.get(..hole)?;
+    if !head.ends_with('.') || head.contains(char::is_whitespace) {
+        return None;
+    }
+    let dotted = head.strip_suffix('.')?;
+    let mut segments = dotted.split('.');
+    segments.all(is_identifier).then_some(head)
 }
 
 fn is_identifier(text: &str) -> bool {
@@ -581,6 +607,19 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn formatted_module_heads_are_dotted_paths_before_a_placeholder() {
+        use super::formatted_module_head;
+        assert_eq!(
+            formatted_module_head("django.conf.locale.%s"),
+            Some("django.conf.locale.")
+        );
+        assert_eq!(formatted_module_head("pkg.tables.{}"), Some("pkg.tables."));
+        assert_eq!(formatted_module_head("%s.formats"), None);
+        assert_eq!(formatted_module_head("pkg.tables"), None);
+        assert_eq!(formatted_module_head("Total: %s items."), None);
+    }
+
     use super::split_dotted_reference;
 
     #[test]

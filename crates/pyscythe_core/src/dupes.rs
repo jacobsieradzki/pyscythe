@@ -162,6 +162,12 @@ struct Pair {
     length: usize,
 }
 
+/// A window that recurs this often is data, not code: generated tables of
+/// literals repeat the same few tokens tens of thousands of times, and pairing
+/// every occurrence with every other never finishes. A real clone longer than
+/// the window still surfaces through its rarer windows.
+const MAX_POSITIONS_PER_WINDOW: usize = 64;
+
 fn maximal_clones(streams: &[TokenStream], options: &DupesOptions) -> Vec<Clone> {
     let window = options.min_tokens.max(1);
     let mut by_window: BTreeMap<Vec<u32>, Vec<Position>> = BTreeMap::new();
@@ -175,7 +181,10 @@ fn maximal_clones(streams: &[TokenStream], options: &DupesOptions) -> Vec<Clone>
     }
 
     let mut candidates: Vec<Pair> = Vec::new();
-    for positions in by_window.values().filter(|p| p.len() > 1) {
+    for positions in by_window
+        .values()
+        .filter(|p| p.len() > 1 && p.len() <= MAX_POSITIONS_PER_WINDOW)
+    {
         for (i, &a) in positions.iter().enumerate() {
             for &b in positions.iter().skip(i + 1) {
                 let length = common_prefix(streams, a, b);
