@@ -122,6 +122,8 @@ pub struct ManifestScope {
     pub manifest_path: Utf8PathBuf,
     /// What it declares.
     pub manifest: Manifest,
+    /// The project's own distribution name, when the manifest says.
+    pub name: Option<DistributionName>,
 }
 
 impl ManifestScope {
@@ -151,6 +153,7 @@ pub fn analyze(
     let fallback = ManifestScope {
         manifest_path: root.join("pyproject.toml"),
         manifest: Manifest::empty(),
+        name: None,
     };
     let scope_of = |file: &crate::source::SourceFile| -> &ManifestScope {
         scopes
@@ -182,6 +185,9 @@ pub fn analyze(
     }
 
     for (scope, survey, declared) in surveyed {
+        // A name declared in several groups is one dependency; `celery[redis]`
+        // in celery's own extras names the project itself.
+        let mut reported: BTreeSet<&DistributionName> = BTreeSet::new();
         findings.extend(
             scope
                 .manifest
@@ -189,6 +195,8 @@ pub fn analyze(
                 .iter()
                 .filter(|dependency| !survey.used.contains_key(&dependency.name))
                 .filter(|dependency| !is_tool(&dependency.name, config))
+                .filter(|dependency| scope.name.as_ref() != Some(&dependency.name))
+                .filter(|dependency| reported.insert(&dependency.name))
                 .map(|dependency| unused_finding(dependency, &scope.manifest_path)),
         );
         for (distribution, (modules, mut finding)) in survey.undeclared {
@@ -340,10 +348,11 @@ fn unused_finding(dependency: &crate::manifest::Dependency, manifest_path: &Utf8
         DependencyGroup::Optional(name) => format!(" (optional-dependencies.{name})"),
         DependencyGroup::Group(name) => format!(" (dependency-groups.{name})"),
     };
-    // Development groups hold runners and plugins that are rarely imported.
+    // Development groups hold runners and plugins that are rarely imported,
+    // and extras are imported lazily, by name, when a user installs them.
     let confidence = match dependency.group {
-        DependencyGroup::Main | DependencyGroup::Optional(_) => Confidence::Medium,
-        DependencyGroup::Group(_) => Confidence::Low,
+        DependencyGroup::Main => Confidence::Medium,
+        DependencyGroup::Optional(_) | DependencyGroup::Group(_) => Confidence::Low,
     };
     Finding {
         rule: Rule::UnusedDependency,
@@ -415,6 +424,7 @@ mod tests {
         vec![super::ManifestScope {
             manifest_path: camino::Utf8PathBuf::from("/proj/pyproject.toml"),
             manifest: manifest(names),
+            name: None,
         }]
     }
 
@@ -492,6 +502,31 @@ mod tests {
     }
 
     #[test]
+    fn a_project_naming_itself_in_extras_and_repeated_declarations_are_not_unused() {
+        let index = FakeIndex::new();
+        let mut manifest = manifest(&["celery", "six"]);
+        manifest.dependencies.push(Dependency {
+            name: DistributionName::normalize("six"),
+            group: DependencyGroup::Optional("extra".into()),
+        });
+        let scopes = vec![super::ManifestScope {
+            manifest_path: camino::Utf8PathBuf::from("/proj/pyproject.toml"),
+            manifest,
+            name: Some(DistributionName::normalize("celery")),
+        }];
+
+        let report = analyze(&index, &scopes, &Config::default(), Utf8Path::new("/proj"));
+
+        assert_eq!(
+            rules(&report),
+            [(
+                Rule::UnusedDependency,
+                "dependency `six` is never imported".to_owned()
+            )]
+        );
+    }
+
+    #[test]
     fn imports_reachable_through_a_declared_dependency_are_low_confidence() {
         let mut index = FakeIndex::new();
         let file = index.add_file("/proj/app/main.py", "app.main");
@@ -538,10 +573,12 @@ mod tests {
             super::ManifestScope {
                 manifest_path: camino::Utf8PathBuf::from("/proj/pyproject.toml"),
                 manifest: manifest(&[]),
+                name: None,
             },
             super::ManifestScope {
                 manifest_path: camino::Utf8PathBuf::from("/proj/backend/pyproject.toml"),
                 manifest: manifest(&["six", "unused-lib"]),
+                name: None,
             },
         ];
 

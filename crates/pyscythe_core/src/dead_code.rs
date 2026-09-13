@@ -30,7 +30,7 @@ const ROOT_FILE_NAMES: &[&str] = &[
 
 /// Directories whose files are run directly or built by tooling, never imported.
 const ROOT_DIRECTORY_PREFIXES: &[&str] = &[
-    "bench", "bin", "dev", "doc", "example", "hook", "sample", "script", "tool",
+    "bench", "bin", "dev", "doc", "e2e", "example", "hook", "prof", "sample", "script", "tool",
 ];
 
 /// Whether the file lives under a directory of things that are run or built
@@ -132,7 +132,11 @@ pub fn analyze(
         .into_iter()
         .partition(|file| suppressed_files.contains(&file.id));
     suppressed += suppressed_unused_files.len();
-    findings.extend(reported_unused_files.into_iter().map(unused_file_finding));
+    findings.extend(
+        reported_unused_files
+            .into_iter()
+            .map(|file| unused_file_finding(file, config)),
+    );
 
     findings.sort_by(|a, b| a.path.cmp(&b.path).then(a.position.cmp(&b.position)));
     kept.sort_by(|a, b| a.path.cmp(&b.path).then(a.position.cmp(&b.position)));
@@ -285,13 +289,25 @@ fn stale_suppression_findings(
         .collect()
 }
 
-fn unused_file_finding(file: &SourceFile) -> Finding {
+fn unused_file_finding(file: &SourceFile, config: &Config) -> Finding {
+    // A library's own modules are entry points for its users: nothing in the
+    // repository imports `django.templatetags.tz`, every Django site may.
+    let is_library_module = file.module.as_ref().is_some_and(|module| {
+        config
+            .library_packages
+            .iter()
+            .any(|package| package.covers(module.as_str()))
+    });
     Finding {
         rule: Rule::UnusedFile,
         path: file.path.clone(),
         module: file.module.clone(),
         position: None,
-        confidence: Confidence::Medium,
+        confidence: if is_library_module {
+            Confidence::Low
+        } else {
+            Confidence::Medium
+        },
         message: format!(
             "file `{}` is never imported or run",
             file.module
@@ -370,6 +386,11 @@ pub fn is_test_data_file(file: &SourceFile) -> bool {
         "helper_tools",
         "tools",
         "scripts",
+        "inputs",
+        "outputs",
+        "cases",
+        "samples",
+        "snapshots",
     ];
     let Some(dir) = file.relative_path.parent() else {
         return false;
@@ -419,6 +440,7 @@ fn unused_files<'a>(
 fn file_roles(index: &dyn CodebaseIndex) -> BTreeMap<FileId, FileRole> {
     let settings = django_settings_files(index);
     let alembic = alembic_script_files(index);
+    let by_path = files_named_by_path(index);
     index
         .files()
         .iter()
@@ -427,6 +449,10 @@ fn file_roles(index: &dyn CodebaseIndex) -> BTreeMap<FileId, FileRole> {
                 FileRole::DjangoSettings
             } else if alembic.contains(&file.id) {
                 FileRole::AlembicScript
+            } else if is_home_assistant_integration(file) {
+                FileRole::HomeAssistantIntegration
+            } else if by_path.contains(&file.id) {
+                FileRole::LoadedByPath
             } else if is_tool_config_file(file.file_name()) {
                 FileRole::ToolConfig
             } else {
@@ -435,6 +461,47 @@ fn file_roles(index: &dyn CodebaseIndex) -> BTreeMap<FileId, FileRole> {
             Some((file.id, role))
         })
         .collect()
+}
+
+/// `homeassistant.components.<domain>.*` and `custom_components.<domain>.*`:
+/// Home Assistant imports integrations and their platform modules by name.
+fn is_home_assistant_integration(file: &SourceFile) -> bool {
+    file.module.as_ref().is_some_and(|module| {
+        let module = module.as_str();
+        module.starts_with("homeassistant.components.") || module.starts_with("custom_components.")
+    })
+}
+
+/// Files that a string literal somewhere names by path: test inputs a runner
+/// opens, apps a browser test launches, scripts a subprocess runs. A bare
+/// `"__init__.py"` or `"setup.py"` names nothing in particular, and a name
+/// matching more than a handful of files is a pattern, not a path.
+fn files_named_by_path(index: &dyn CodebaseIndex) -> BTreeSet<FileId> {
+    const GENERIC: &[&str] = &["__init__.py", "__main__.py", "conftest.py", "setup.py"];
+    const MAX_MATCHES: usize = 16;
+    let files = index.files();
+    let mut named = BTreeSet::new();
+    for literal in index.path_literals() {
+        let literal = literal.trim_start_matches("./");
+        if !literal.contains('/') && GENERIC.contains(&literal) {
+            continue;
+        }
+        let matches: Vec<FileId> = files
+            .iter()
+            .filter(|file| {
+                let path = file.relative_path.as_str();
+                path == literal
+                    || path
+                        .strip_suffix(literal)
+                        .is_some_and(|head| head.ends_with('/'))
+            })
+            .map(|file| file.id)
+            .collect();
+        if matches.len() <= MAX_MATCHES {
+            named.extend(matches);
+        }
+    }
+    named
 }
 
 /// Alembic loads `env.py` and every script under `versions/` by path. A
@@ -607,12 +674,13 @@ fn is_used(index: &dyn CodebaseIndex, symbol: &Symbol) -> bool {
 }
 
 fn confidence_for(symbol: &Symbol, name_as_attribute: NameUsage) -> Confidence {
-    // `@registry.handler("GET")` hands the function to something that will
-    // call it; without knowing that something, absence of callers proves little.
+    // `@registry.handler("GET")` or `@control_command()` hands the function to
+    // something that will call it; without knowing that something, absence
+    // of callers proves little.
     if symbol
         .decorators
         .iter()
-        .any(crate::symbol::Decorator::registers_with_receiver)
+        .any(crate::symbol::Decorator::looks_like_registration)
     {
         return Confidence::Low;
     }
@@ -656,6 +724,83 @@ mod tests {
             .iter()
             .filter_map(|f| f.symbol().map(SymbolName::as_str))
             .collect()
+    }
+
+    #[test]
+    fn files_named_by_a_path_literal_are_loaded_by_path() {
+        let mut index = FakeIndex::new();
+        let app = index.add_file("/proj/e2e/apps/slider.py", "e2e.apps.slider");
+        let other = index.add_file("/proj/e2e/apps/other.py", "e2e.apps.other");
+        let init = index.add_file("/proj/pkg/__init__.py", "pkg");
+        index.add_path_literal("apps/slider.py");
+        index.add_path_literal("__init__.py");
+
+        let named = super::files_named_by_path(&index);
+
+        assert!(named.contains(&app));
+        assert!(!named.contains(&other));
+        assert!(!named.contains(&init), "a bare __init__.py names nothing");
+    }
+
+    #[test]
+    fn a_library_module_nobody_imports_is_low_confidence() {
+        let mut index = FakeIndex::new();
+        index.add_file("/proj/django/utils/tz.py", "django.utils.tz");
+        index.add_file("/proj/otherpkg/lonely.py", "otherpkg.lonely");
+        let config = Config {
+            library_packages: vec![crate::config::ModulePrefix::new("django")],
+            ..Config::default()
+        };
+
+        let report = analyze(&index, &Policy::none(), &Manifest::empty(), &config);
+
+        let confidences: Vec<(&str, Confidence)> = report
+            .findings
+            .iter()
+            .filter_map(|f| Some((f.module.as_ref()?.as_str(), f.confidence)))
+            .collect();
+        assert_eq!(
+            confidences,
+            [
+                ("django.utils.tz", Confidence::Low),
+                ("otherpkg.lonely", Confidence::Medium)
+            ]
+        );
+    }
+
+    #[test]
+    fn a_called_third_party_decorator_lowers_confidence() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/celery/worker/control.py", "celery.worker.control");
+        index.add_symbol_decorated_by(
+            file,
+            "query_task",
+            SymbolKind::Function,
+            crate::symbol::Decorator::named("control_command")
+                .from_module("celery.worker.control")
+                .called(),
+        );
+        index.add_symbol_decorated_by(
+            file,
+            "cached",
+            SymbolKind::Function,
+            crate::symbol::Decorator::named("lru_cache")
+                .from_standard_library("functools")
+                .called(),
+        );
+        import_from_elsewhere(&mut index, file);
+
+        let report = analyze_without_plugins(&index);
+
+        let confidence = |name: &str| {
+            report
+                .findings
+                .iter()
+                .find(|f| f.symbol().is_some_and(|s| s.as_str() == name))
+                .map(|f| f.confidence)
+        };
+        assert_eq!(confidence("query_task"), Some(Confidence::Low));
+        assert_eq!(confidence("cached"), Some(Confidence::Medium));
     }
 
     #[test]

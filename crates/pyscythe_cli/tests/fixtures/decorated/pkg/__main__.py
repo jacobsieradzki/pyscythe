@@ -1,3 +1,3 @@
-from pkg.server import MockHandler, Registry
+from pkg.server import MockHandler, Registry, Visitor
 
-print(MockHandler, Registry)
+print(MockHandler, Registry, Visitor)

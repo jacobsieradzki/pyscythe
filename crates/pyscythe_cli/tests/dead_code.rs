@@ -486,8 +486,8 @@ fn registration_decorators_lower_confidence_and_http_handlers_are_kept() {
         .collect();
     assert_eq!(
         findings,
-        [("get_headers", "low"), ("helper", "low")],
-        "do_GET is dispatched by BaseHTTPRequestHandler: {report}"
+        [("get_headers", "low"), ("helper", "low"), ("visit", "low")],
+        "do_GET is dispatched by BaseHTTPRequestHandler, visit_Name by an f-string prefix: {report}"
     );
 }
 
@@ -509,5 +509,26 @@ fn pytest_collection_settings_decide_what_counts_as_a_test() {
         symbols,
         ["helper", "test_stale"],
         "python_files = check_*.py collects check_thing.py, not test_stale.py: {report}"
+    );
+}
+
+#[test]
+fn home_assistant_integrations_keep_their_hooks_constants_and_flow_steps() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("homeassistant"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let findings: Vec<(&str, &str)> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| Some((f["rule"].as_str()?, f["symbol"].as_str().unwrap_or(""))))
+        .collect();
+    assert_eq!(
+        findings,
+        [("unused-function", "unused_helper")],
+        "platform modules load by name, hooks and steps by convention: {report}"
     );
 }

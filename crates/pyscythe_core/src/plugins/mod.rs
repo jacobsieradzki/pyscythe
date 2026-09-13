@@ -14,6 +14,7 @@ mod django;
 mod entry_points;
 mod fastapi;
 mod flask;
+mod homeassistant;
 mod pydantic;
 mod pytest;
 mod python;
@@ -32,6 +33,7 @@ pub fn all() -> Vec<Box<dyn KeepRule>> {
         Box::new(celery::Celery),
         Box::new(airflow::Airflow),
         Box::new(django::Django),
+        Box::new(homeassistant::HomeAssistant),
         Box::new(alembic::Alembic),
         Box::new(sqlalchemy::SqlAlchemy),
         Box::new(pydantic::Pydantic),
@@ -69,8 +71,8 @@ pub(crate) mod testing {
     use crate::manifest::Manifest;
     use crate::source::{ByteOffset, ByteSpan, FileId, MainGuard, ModulePath, SourceFile};
     use crate::symbol::{
-        Decorator, DottedName, KeywordName, Provenance, Symbol, SymbolId, SymbolKind, SymbolName,
-        SymbolScope,
+        Decorator, DecoratorCall, DottedName, KeywordName, Provenance, Symbol, SymbolId,
+        SymbolKind, SymbolName, SymbolScope,
     };
 
     pub(crate) struct Case {
@@ -146,6 +148,11 @@ pub(crate) mod testing {
             self
         }
 
+        pub(crate) fn in_role(mut self, role: FileRole) -> Self {
+            self.file_role = role;
+            self
+        }
+
         pub(crate) fn registered_by_base(mut self) -> Self {
             self.registration = SubclassRegistration::ByBaseHook;
             self
@@ -202,6 +209,7 @@ pub(crate) mod testing {
                 keywords: keywords.iter().map(|k| KeywordName::new(*k)).collect(),
                 module: None,
                 provenance: Provenance::Unknown,
+                call: DecoratorCall::Called,
             });
             self
         }

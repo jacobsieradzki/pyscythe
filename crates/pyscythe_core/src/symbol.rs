@@ -120,6 +120,15 @@ pub enum Provenance {
     Package,
 }
 
+/// Whether a decorator was applied bare (`@cache`) or called (`@cache(maxsize=1)`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum DecoratorCall {
+    /// `@name`.
+    Bare,
+    /// `@name(...)`.
+    Called,
+}
+
 /// A decorator applied to a definition.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Decorator {
@@ -132,6 +141,8 @@ pub struct Decorator {
     pub module: Option<crate::source::ModulePath>,
     /// What kind of place `module` is.
     pub provenance: Provenance,
+    /// Whether it was called with arguments.
+    pub call: DecoratorCall,
 }
 
 impl Decorator {
@@ -143,7 +154,15 @@ impl Decorator {
             keywords: Vec::new(),
             module: None,
             provenance: Provenance::Unknown,
+            call: DecoratorCall::Bare,
         }
+    }
+
+    /// The same decorator, called with arguments.
+    #[must_use]
+    pub const fn called(mut self) -> Self {
+        self.call = DecoratorCall::Called;
+        self
     }
 
     /// The same decorator, known to come from `module` in the project or a dependency.
@@ -162,12 +181,14 @@ impl Decorator {
         self
     }
 
-    /// Whether the decorator is a method call on some object, `@app.command()`
-    /// or `@registry.handler("GET")`, which usually registers the definition
-    /// with that object rather than merely wrapping it.
+    /// Whether the decorator looks like a registration rather than a plain
+    /// wrapper: a method call on some object (`@app.command()`,
+    /// `@registry.handler("GET")`) or a call with arguments from outside the
+    /// standard library (`@control_command()`, `@register(Tags.models)`).
     #[must_use]
-    pub fn registers_with_receiver(&self) -> bool {
-        self.name.has_receiver() && self.provenance != Provenance::StandardLibrary
+    pub fn looks_like_registration(&self) -> bool {
+        self.provenance != Provenance::StandardLibrary
+            && (self.name.has_receiver() || self.call == DecoratorCall::Called)
     }
 
     /// Whether the decorator is defined in `package` or a submodule of it, or

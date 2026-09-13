@@ -31,6 +31,8 @@ pub struct ProjectSettings {
     pub config: Config,
     /// One manifest per directory that declares one, root first.
     pub scopes: Vec<ManifestScope>,
+    /// The project's distribution name from `[project]` or `[tool.poetry]`.
+    pub name: Option<DistributionName>,
 }
 
 /// Why a manifest could not be read.
@@ -131,15 +133,11 @@ pub fn load(root: &Utf8Path) -> Result<ProjectSettings, ManifestError> {
     let mut directories = vec![root.to_path_buf()];
     directories.extend(manifest_directories(root));
     for directory in directories {
-        let Some((manifest_path, manifest)) =
-            manifest_in(&directory, &mut root_settings, directory.as_path() == root)?
+        let Some(scope) = manifest_in(&directory, &mut root_settings, directory.as_path() == root)?
         else {
             continue;
         };
-        scopes.push(ManifestScope {
-            manifest_path,
-            manifest,
-        });
+        scopes.push(scope);
     }
     let RootSettings { mut config, pytest } = root_settings;
     config.tests =
@@ -149,17 +147,36 @@ pub fn load(root: &Utf8Path) -> Result<ProjectSettings, ManifestError> {
                 source: ParseError::Pattern(source),
             }
         })?;
+    let name = scopes.first().and_then(|scope| scope.name.clone());
     Ok(ProjectSettings {
         manifest: Manifest::merged(scopes.iter().map(|s| &s.manifest)),
         config,
         scopes,
         pytest,
+        name,
     })
 }
 
 /// The manifest declared in `directory` and the file it came from: from
 /// `pyproject.toml` first, then `setup.py` / `setup.cfg` for dependencies
 /// when the project table has none.
+/// `[tool.pyscythe.health]` over the defaults.
+fn health_thresholds(table: &HealthTable) -> HealthThresholds {
+    let defaults = HealthThresholds::default();
+    HealthThresholds {
+        max_cyclomatic: table.cyclomatic.unwrap_or(defaults.max_cyclomatic),
+        max_cognitive: table.cognitive.unwrap_or(defaults.max_cognitive),
+        max_lines: table.lines.unwrap_or(defaults.max_lines),
+        max_parameters: table.parameters.unwrap_or(defaults.max_parameters),
+    }
+}
+
+/// The import name a distribution conventionally installs as: `Django` is
+/// `django`, `langchain-classic` is `langchain_classic`.
+fn package_name_of(distribution: &str) -> String {
+    distribution.trim().to_lowercase().replace(['-', '.'], "_")
+}
+
 /// What the root `pyproject.toml` contributes besides its manifest.
 #[derive(Debug, Default)]
 struct RootSettings {
@@ -171,9 +188,10 @@ fn manifest_in(
     directory: &Utf8Path,
     root_settings: &mut RootSettings,
     is_root: bool,
-) -> Result<Option<(camino::Utf8PathBuf, Manifest)>, ManifestError> {
+) -> Result<Option<ManifestScope>, ManifestError> {
     let pyproject = directory.join("pyproject.toml");
     let mut source_path = pyproject.clone();
+    let mut name = None;
     let mut manifest = match std::fs::read_to_string(&pyproject) {
         Ok(text) => {
             let settings = parse(&text).map_err(|source| ManifestError::Parse {
@@ -183,7 +201,14 @@ fn manifest_in(
             if is_root {
                 root_settings.config = settings.config;
                 root_settings.pytest = settings.pytest;
+            } else {
+                // A nested project's package is a library package too.
+                root_settings
+                    .config
+                    .library_packages
+                    .extend(settings.config.library_packages);
             }
+            name = settings.name;
             Some(settings.manifest)
         }
         Err(source) if source.kind() == std::io::ErrorKind::NotFound => None,
@@ -227,7 +252,11 @@ fn manifest_in(
             .dependencies
             .extend(pinned);
     }
-    Ok(manifest.map(|manifest| (source_path, manifest)))
+    Ok(manifest.map(|manifest| ManifestScope {
+        manifest_path: source_path,
+        manifest,
+        name,
+    }))
 }
 
 /// Dependencies from pip requirements files: `requirements.txt`,
@@ -356,7 +385,10 @@ fn manifest_directories(root: &Utf8Path) -> Vec<camino::Utf8PathBuf> {
             let path = entry.path();
             let name = path.file_name().unwrap_or_default();
             if entry.file_type().is_ok_and(|t| t.is_dir()) {
-                if !name.starts_with('.') && !SKIP.contains(&name) {
+                // Projects under a tests tree are fixtures for the tests, not
+                // part of the code base.
+                let is_test_tree = matches!(name, "tests" | "test" | "fixtures" | "testdata");
+                if !name.starts_with('.') && !SKIP.contains(&name) && !is_test_tree {
                     pending.push(path.to_path_buf());
                 }
             } else if matches!(
@@ -571,6 +603,13 @@ pub fn parse(text: &str) -> Result<ProjectSettings, ParseError> {
             .map(|name| ModulePrefix::new(name.as_str()))
             .collect(),
         tests,
+        library_packages: project
+            .name
+            .as_deref()
+            .or(poetry.name.as_deref())
+            .map(|name| ModulePrefix::new(package_name_of(name)))
+            .into_iter()
+            .collect(),
         ignored_dependencies: tool
             .deps
             .unwrap_or_default()
@@ -578,16 +617,7 @@ pub fn parse(text: &str) -> Result<ProjectSettings, ParseError> {
             .iter()
             .map(|name| DistributionName::normalize(name))
             .collect(),
-        health: {
-            let defaults = HealthThresholds::default();
-            let table = tool.health.unwrap_or_default();
-            HealthThresholds {
-                max_cyclomatic: table.cyclomatic.unwrap_or(defaults.max_cyclomatic),
-                max_cognitive: table.cognitive.unwrap_or(defaults.max_cognitive),
-                max_lines: table.lines.unwrap_or(defaults.max_lines),
-                max_parameters: table.parameters.unwrap_or(defaults.max_parameters),
-            }
-        },
+        health: health_thresholds(&tool.health.unwrap_or_default()),
     };
 
     Ok(ProjectSettings {
@@ -598,6 +628,11 @@ pub fn parse(text: &str) -> Result<ProjectSettings, ParseError> {
         config,
         scopes: Vec::new(),
         pytest,
+        name: project
+            .name
+            .as_deref()
+            .or(poetry.name.as_deref())
+            .map(DistributionName::normalize),
     })
 }
 
@@ -701,6 +736,8 @@ struct PytestTool {
 #[derive(Debug, Default, Deserialize)]
 #[serde(rename_all = "kebab-case")]
 struct PoetryTable {
+    #[serde(default)]
+    name: Option<String>,
     #[serde(default)]
     dependencies: BTreeMap<String, toml::Value>,
     #[serde(default)]
@@ -833,6 +870,8 @@ struct RuleTable {
 #[derive(Debug, Default, Deserialize)]
 #[serde(rename_all = "kebab-case")]
 struct Project {
+    #[serde(default)]
+    name: Option<String>,
     #[serde(default)]
     dependencies: Vec<String>,
     #[serde(default)]

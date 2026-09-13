@@ -394,6 +394,10 @@ pub struct Config {
     pub public_modules: Vec<ModulePrefix>,
     /// How pytest collects tests in this project.
     pub tests: TestCollection,
+    /// Top-level packages named after the project itself (`django` for the
+    /// distribution `Django`): a library's modules are entry points for its
+    /// users, so an unimported one is only a low-confidence finding.
+    pub library_packages: Vec<ModulePrefix>,
 }
 
 impl Default for Config {
@@ -407,6 +411,7 @@ impl Default for Config {
             ignored_dependencies: Vec::new(),
             public_modules: Vec::new(),
             tests: TestCollection::default(),
+            library_packages: Vec::new(),
         }
     }
 }

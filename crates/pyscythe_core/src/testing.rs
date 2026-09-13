@@ -36,6 +36,7 @@ pub(crate) struct FakeIndex {
     external_imports: Vec<(FileId, ExternalImport)>,
     parameter_names: Vec<String>,
     requirements: Vec<(DistributionName, DistributionName)>,
+    path_literals: Vec<String>,
 }
 
 impl FakeIndex {
@@ -166,6 +167,22 @@ impl FakeIndex {
                 scope: SuppressionScope::File,
             },
         ));
+    }
+
+    /// A string literal somewhere names a `.py` file.
+    pub(crate) fn add_path_literal(&mut self, path: &str) {
+        self.path_literals.push(path.to_owned());
+    }
+
+    /// A symbol with one fully described decorator.
+    pub(crate) fn add_symbol_decorated_by(
+        &mut self,
+        file: FileId,
+        name: &str,
+        kind: SymbolKind,
+        decorator: Decorator,
+    ) -> SymbolId {
+        self.push_symbol(file, name, kind, SymbolScope::Module, vec![decorator])
     }
 
     /// A function somewhere takes a parameter called `name`.
@@ -465,6 +482,10 @@ impl CodebaseIndex for FakeIndex {
         } else {
             NameUsage::Unused
         }
+    }
+
+    fn path_literals(&self) -> Vec<String> {
+        self.path_literals.clone()
     }
 
     fn distribution_requirements(&self, distribution: &DistributionName) -> Vec<DistributionName> {

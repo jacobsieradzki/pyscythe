@@ -25,3 +25,11 @@ class MockHandler(BaseHTTPRequestHandler):
 
     def helper(self) -> None:
         pass
+
+
+class Visitor:
+    def visit(self, node: object) -> None:
+        getattr(self, f"visit_{type(node).__name__}")(node)
+
+    def visit_Name(self, node: object) -> None:
+        pass

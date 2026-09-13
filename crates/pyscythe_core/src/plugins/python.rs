@@ -43,6 +43,9 @@ impl KeepRule for Python {
         if context.file_role == crate::keep::FileRole::ToolConfig && symbol.is_module_level() {
             return Some("configuration script read by the tool that runs it");
         }
+        if context.file_role == crate::keep::FileRole::LoadedByPath && symbol.is_module_level() {
+            return Some("script that a string names by path");
+        }
         if crate::dead_code::is_in_root_directory(context.file) {
             return Some("in a directory of scripts, examples, docs, or benchmarks");
         }
@@ -129,6 +132,20 @@ mod tests {
         assert!(
             !Case::method("helper")
                 .with_ancestors(&["http.server.BaseHTTPRequestHandler"])
+                .is_kept_by(&Python)
+        );
+    }
+
+    #[test]
+    fn keeps_module_level_names_of_scripts_named_by_path() {
+        assert!(
+            Case::function("main")
+                .in_role(crate::keep::FileRole::LoadedByPath)
+                .is_kept_by(&Python)
+        );
+        assert!(
+            !Case::method("helper")
+                .in_role(crate::keep::FileRole::LoadedByPath)
                 .is_kept_by(&Python)
         );
     }

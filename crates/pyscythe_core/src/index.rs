@@ -234,6 +234,10 @@ pub trait CodebaseIndex {
     /// request pytest fixtures.
     fn parameter_name_usage(&self, name: &SymbolName) -> NameUsage;
 
+    /// Every string literal in the project that names a `.py` file, such as
+    /// `"plugin_success.py"` or `"scripts/migrate.py"`: scripts run by path.
+    fn path_literals(&self) -> Vec<String>;
+
     /// What `distribution` itself requires, from the environment's metadata;
     /// empty when it is not installed or declares nothing.
     fn distribution_requirements(&self, distribution: &DistributionName) -> Vec<DistributionName>;

@@ -512,6 +512,13 @@ impl CodebaseIndex for TyIndex {
         }
     }
 
+    fn path_literals(&self) -> Vec<String> {
+        self.reference_index()
+            .script_paths()
+            .map(str::to_owned)
+            .collect()
+    }
+
     fn parameter_name_usage(&self, name: &SymbolName) -> NameUsage {
         if self.reference_index().parameter_name_is_used(name.as_str()) {
             NameUsage::Used

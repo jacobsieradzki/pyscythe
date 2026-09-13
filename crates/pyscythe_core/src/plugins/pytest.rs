@@ -77,6 +77,23 @@ impl KeepRule for Pytest {
         if symbol.is_module_level() && name == "__unittest" {
             return Some("unittest traceback marker read by name");
         }
+        if symbol.is_module_level() && name == "pytestmark" {
+            return Some("module-level pytest marks");
+        }
+        if symbol.kind == SymbolKind::Class
+            && (context.ancestry.has_ancestor_in("unittest")
+                || context.ancestry.has_ancestor_in("django.test"))
+        {
+            return Some("TestCase subclass");
+        }
+        // pandas-style test mixins: `test_*` methods on a class under the
+        // tests tree, collected once a test module subclasses it.
+        if symbol.kind == SymbolKind::Method
+            && context.tests.collects_function(name)
+            && (context.is_under_directory("tests") || context.is_under_directory("test"))
+        {
+            return Some("test method collected through a subclass");
+        }
         if symbol.kind == SymbolKind::Function && name.starts_with("pytest_") {
             return Some("pytest hook");
         }
@@ -176,6 +193,31 @@ mod tests {
         assert!(
             !Case::method("test_total")
                 .at("/p/shop/checks.py")
+                .is_kept_by(&Pytest)
+        );
+    }
+
+    #[test]
+    fn keeps_marks_test_case_classes_and_mixin_test_methods() {
+        assert!(
+            Case::variable("pytestmark")
+                .at("/p/tests/test_x.py")
+                .is_kept_by(&Pytest)
+        );
+        assert!(
+            Case::class("BlackDTestCase")
+                .at("/p/tests/test_blackd.py")
+                .with_ancestors(&["unittest.case.TestCase"])
+                .is_kept_by(&Pytest)
+        );
+        assert!(
+            Case::method("test_getitem_mask")
+                .at("/p/pandas/tests/extension/base/getitem.py")
+                .is_kept_by(&Pytest)
+        );
+        assert!(
+            !Case::method("test_getitem_mask")
+                .at("/p/pandas/core/getitem.py")
                 .is_kept_by(&Pytest)
         );
     }

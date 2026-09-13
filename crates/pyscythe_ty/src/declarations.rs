@@ -2,7 +2,7 @@
 //! keywords) from a parsed module, keyed by each definition's name range.
 
 use pyscythe_core::source::ModulePath;
-use pyscythe_core::symbol::{Decorator, DottedName, KeywordName, Provenance};
+use pyscythe_core::symbol::{Decorator, DecoratorCall, DottedName, KeywordName, Provenance};
 use ruff_python_ast::name::UnqualifiedName;
 use ruff_python_ast::{self as ast, AnyNodeRef, Expr, Stmt};
 use ruff_text_size::{Ranged, TextRange};
@@ -170,6 +170,9 @@ fn collect_body(
                         ..Declaration::default()
                     },
                 );
+                // Classes defined inside functions (test bodies above all)
+                // carry decorators and bases too.
+                collect_body(&function.body, model, out);
             }
             Stmt::ClassDef(class) => {
                 let (bases, class_keywords) = class.arguments.as_ref().map_or_else(
@@ -264,7 +267,7 @@ fn defining_module(callee: &Expr, model: &SemanticModel<'_>) -> Option<(ModulePa
 }
 
 fn decorator_of(decorator: &ast::Decorator, model: &SemanticModel<'_>) -> Option<Decorator> {
-    let (callee, keywords) = match &decorator.expression {
+    let (callee, keywords, call) = match &decorator.expression {
         Expr::Call(call) => (
             &*call.func,
             call.arguments
@@ -273,8 +276,9 @@ fn decorator_of(decorator: &ast::Decorator, model: &SemanticModel<'_>) -> Option
                 .filter_map(|keyword| keyword.arg.as_ref())
                 .map(|arg| KeywordName::new(arg.as_str()))
                 .collect(),
+            DecoratorCall::Called,
         ),
-        other => (other, Vec::new()),
+        other => (other, Vec::new(), DecoratorCall::Bare),
     };
     let (module, provenance) = defining_module(callee, model)
         .map_or((None, Provenance::Unknown), |(module, provenance)| {
@@ -285,6 +289,7 @@ fn decorator_of(decorator: &ast::Decorator, model: &SemanticModel<'_>) -> Option
         keywords,
         module,
         provenance,
+        call,
     })
 }
 

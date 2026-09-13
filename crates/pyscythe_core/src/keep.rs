@@ -40,6 +40,8 @@ pub enum PluginName {
     SqlAlchemy,
     /// Pydantic validators and serializers.
     Pydantic,
+    /// Home Assistant integrations: platforms, setup hooks, config flows.
+    HomeAssistant,
 }
 
 impl PluginName {
@@ -58,6 +60,7 @@ impl PluginName {
             Self::Django => "django",
             Self::Alembic => "alembic",
             Self::SqlAlchemy => "sqlalchemy",
+            Self::HomeAssistant => "homeassistant",
             Self::Pydantic => "pydantic",
         }
     }
@@ -85,6 +88,12 @@ pub enum FileRole {
     /// An Alembic `env.py` or a migration under `versions/`, which Alembic
     /// loads by path.
     AlembicScript,
+    /// A file that a string literal somewhere names by path: a test input, an
+    /// app a browser test launches, a script a subprocess runs.
+    LoadedByPath,
+    /// A module of a Home Assistant integration, imported by domain and
+    /// platform name.
+    HomeAssistantIntegration,
 }
 
 /// Everything a rule may look at when deciding.

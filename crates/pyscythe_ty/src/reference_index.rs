@@ -65,7 +65,9 @@ pub(crate) struct ReferenceIndex {
     imports: FxHashMap<File, Vec<ImportEdge>>,
     external_imports: FxHashMap<File, Vec<ExternalImportRecord>>,
     attribute_names: FxHashSet<String>,
+    attribute_prefixes: FxHashSet<String>,
     parameter_names: FxHashSet<String>,
+    script_paths: FxHashSet<String>,
 }
 
 impl ReferenceIndex {
@@ -94,14 +96,28 @@ impl ReferenceIndex {
                 .external_imports
                 .insert(file, file_uses.external_imports);
             index.attribute_names.extend(file_uses.attribute_names);
+            index
+                .attribute_prefixes
+                .extend(file_uses.attribute_prefixes);
             index.parameter_names.extend(file_uses.parameter_names);
+            index.script_paths.extend(file_uses.script_paths);
         }
         index
     }
 
-    /// Whether `x.<name>` or `getattr(x, "<name>")` appears anywhere.
+    /// Whether `x.<name>` or `getattr(x, "<name>")` appears anywhere, or a
+    /// name is built from a prefix of it (`getattr(self, f"visit_{kind}")`).
     pub(crate) fn attribute_name_is_used(&self, name: &str) -> bool {
         self.attribute_names.contains(name)
+            || self
+                .attribute_prefixes
+                .iter()
+                .any(|prefix| name.starts_with(prefix.as_str()))
+    }
+
+    /// Every string literal that names a `.py` file.
+    pub(crate) fn script_paths(&self) -> impl Iterator<Item = &str> {
+        self.script_paths.iter().map(String::as_str)
     }
 
     /// Adds names that non-Python sources, templates above all, refer to.
@@ -136,7 +152,9 @@ struct FileUses {
     imports: Vec<ImportEdge>,
     external_imports: Vec<ExternalImportRecord>,
     attribute_names: FxHashSet<String>,
+    attribute_prefixes: FxHashSet<String>,
     parameter_names: FxHashSet<String>,
+    script_paths: FxHashSet<String>,
 }
 
 /// Builtins whose second argument names an attribute.
@@ -357,6 +375,9 @@ impl UseCollector<'_, '_> {
         else {
             return;
         };
+        if let Some(prefix) = attribute_prefix(&literal.value) {
+            self.out.attribute_prefixes.insert(prefix.to_owned());
+        }
         self.record_package_wide_import(fstring.range(), &literal.value);
     }
 
@@ -399,6 +420,23 @@ impl UseCollector<'_, '_> {
         // for `%` or `str.format` to fill is a dynamic import of the package.
         if let Some(head) = formatted_module_head(text) {
             self.record_package_wide_import(literal.range(), head);
+        }
+        // `"poetry.console.commands." + name`: the same, by concatenation.
+        if text.ends_with('.') {
+            self.record_package_wide_import(literal.range(), text);
+        }
+        // `"_dt_" + name`, `"_get_current_%s" % kind`: a name built from a
+        // prefix reaches every attribute that starts with it.
+        let head = text.split(['%', '{']).next().unwrap_or(text);
+        if let Some(prefix) = attribute_prefix(head) {
+            self.out.attribute_prefixes.insert(prefix.to_owned());
+        }
+        // `"plugin_success.py"`, `"scripts/migrate.py"`: a script run by path.
+        let is_script = std::path::Path::new(text)
+            .extension()
+            .is_some_and(|extension| extension.eq_ignore_ascii_case("py"));
+        if is_script && text.len() <= 200 && !text.contains(char::is_whitespace) {
+            self.out.script_paths.insert(text.replace('\\', "/"));
         }
         // Frameworks name attributes in strings: Django's `list_display`,
         // DRF's `fields`, `getattr` lookups. Any identifier-shaped literal keeps
@@ -456,6 +494,12 @@ fn formatted_module_head(text: &str) -> Option<&str> {
     let dotted = head.strip_suffix('.')?;
     let mut segments = dotted.split('.');
     segments.all(is_identifier).then_some(head)
+}
+
+/// `visit_`, `_dt_`, `_get_current_`: an identifier-shaped head ending in an
+/// underscore, long enough to mean something, that a name is built from.
+fn attribute_prefix(head: &str) -> Option<&str> {
+    (head.len() >= 3 && head.ends_with('_') && is_identifier(head)).then_some(head)
 }
 
 fn is_identifier(text: &str) -> bool {
@@ -607,6 +651,16 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn attribute_prefixes_are_identifier_heads_ending_in_an_underscore() {
+        use super::attribute_prefix;
+        assert_eq!(attribute_prefix("visit_"), Some("visit_"));
+        assert_eq!(attribute_prefix("_dt_"), Some("_dt_"));
+        assert_eq!(attribute_prefix("x_"), None, "too short to mean anything");
+        assert_eq!(attribute_prefix("visit"), None);
+        assert_eq!(attribute_prefix("a.b_"), None);
+    }
+
     #[test]
     fn formatted_module_heads_are_dotted_paths_before_a_placeholder() {
         use super::formatted_module_head;
