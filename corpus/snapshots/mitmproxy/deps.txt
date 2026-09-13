@@ -1,0 +1,26 @@
+files_scanned=583
+symbols_checked=50
+symbols_kept=0
+findings=21
+--
+unresolved-import	low	docs/scripts/clirecording/clidirector.py:8:8		import `libtmux` resolves to nothing on the search path
+unresolved-import	low	examples/contrib/modify_body_inject_iframe.py:2:1		import `bs4` resolves to nothing on the search path
+unresolved-import	low	examples/contrib/ntlm_upstream_proxy.py:8:1		import `ntlm_auth` resolves to nothing on the search path
+unresolved-import	low	examples/contrib/remote-debug.py:20:12		import `pydevd_pycharm` resolves to nothing on the search path
+unresolved-import	low	examples/contrib/test_jsondump.py:4:8		import `requests_mock` resolves to nothing on the search path
+unresolved-import	low	examples/contrib/upstream_pac.py:17:8		import `pypac` resolves to nothing on the search path
+unresolved-import	low	examples/contrib/webscanner_helper/proxyauth_selenium.py:9:1		import `selenium` resolves to nothing on the search path
+missing-dependency	low	mitmproxy/addons/core.py:131:23	attrs	`attr` is imported but `attrs` is not a declared dependency; it arrives through `aioquic`
+missing-dependency	low	mitmproxy/addons/maplocal.py:9:1	werkzeug	`werkzeug` is imported but `werkzeug` is not a declared dependency; it arrives through `flask`
+missing-dependency	low	mitmproxy/contentviews/_view_http3.py:5:8	pylsqpack	`pylsqpack` is imported but `pylsqpack` is not a declared dependency; it arrives through `aioquic`
+unresolved-import	low	mitmproxy/net/encoding.py:16:5		import `compression` resolves to nothing on the search path
+missing-dependency	low	mitmproxy/tools/main.py:60:27	hpack	`hpack` is imported but `hpack` is not a declared dependency; it arrives through `h2`
+unresolved-import	low	mitmproxy/utils/debug.py:41:20		import `psutil` resolves to nothing on the search path
+unused-dependency	low	pyproject.toml	awscli	dependency `awscli` (dependency-groups.deploy) is never imported
+unused-dependency	medium	pyproject.toml	backports-zstd	dependency `backports-zstd` is never imported
+unused-dependency	low	pyproject.toml	pyinstaller-hooks-contrib	dependency `pyinstaller-hooks-contrib` (dependency-groups.dev) is never imported
+unused-dependency	medium	pyproject.toml	ruamel-yaml	dependency `ruamel-yaml` is never imported
+unused-dependency	low	pyproject.toml	tox-uv	dependency `tox-uv` (dependency-groups.dev) is never imported
+unresolved-import	low	test/helper_tools/memoryleak.py:5:1		import `pympler` resolves to nothing on the search path
+unresolved-import	low	test/helper_tools/memoryleak2.py:4:8		import `objgraph` resolves to nothing on the search path
+unresolved-import	low	test/mitmproxy/data/addonscripts/import_error.py:1:8		import `nonexistent` resolves to nothing on the search path

@@ -1,5 +1,12 @@
 [files]
-extend-exclude = ["crates/pyscythe_cli/tests/fixtures/**", "target/**"]
+extend-exclude = [
+    "crates/pyscythe_cli/tests/fixtures/**",
+    "target/**",
+    # Package names and identifiers from other projects.
+    "corpus/cache/**",
+    "corpus/locks/**",
+    "corpus/snapshots/**",
+]
 
 [default]
 extend-ignore-re = ["[0-9a-f]{40}"]

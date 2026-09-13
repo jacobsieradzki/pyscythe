@@ -32,6 +32,14 @@ run = "typos"
 description = "Build the PyPI wheel into target/wheels"
 run = "uvx maturin build --release --out target/wheels"
 
+[tasks.corpus]
+description = "Analyse the pinned public projects in corpus/ and compare with the snapshots"
+run = "cargo build --release -p pyscythe && cargo run --release -p pyscythe_corpus -- check"
+
+[tasks."corpus:update"]
+description = "Rewrite corpus/snapshots after a deliberate change in output"
+run = "cargo build --release -p pyscythe && cargo run --release -p pyscythe_corpus -- update"
+
 [tasks.check]
 description = "Everything CI checks"
 depends = ["fmt", "lint", "test", "doc", "deps", "spell"]

@@ -1,0 +1,10 @@
+annotated-types==0.8.0
+colorama==0.4.6 ; sys_platform == 'win32'
+iniconfig==2.3.0
+packaging==26.3
+pluggy==1.6.0
+pydantic-core==2.49.0
+pygments==2.21.0
+pytest==9.1.1
+typing-extensions==4.16.0
+typing-inspection==0.4.4

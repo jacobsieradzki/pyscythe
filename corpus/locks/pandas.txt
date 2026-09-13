@@ -1,0 +1,11 @@
+colorama==0.4.6 ; sys_platform == 'win32'
+iniconfig==2.3.0
+numpy==2.5.3
+packaging==26.3
+pandas==3.0.5
+pluggy==1.6.0
+pygments==2.21.0
+pytest==9.1.1
+python-dateutil==2.9.0.post0
+six==1.17.0
+tzdata==2026.4 ; sys_platform == 'emscripten' or sys_platform == 'win32'

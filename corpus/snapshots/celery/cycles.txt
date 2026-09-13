@@ -1,0 +1,8 @@
+files_scanned=427
+symbols_checked=0
+symbols_kept=0
+findings=3
+--
+circular-import	high	celery/app/__init__.py:6:1	-	import cycle among 3 modules, shortest: celery.app -> celery.app.base -> celery.app
+circular-import	high	celery/utils/__init__.py:9:1	-	import cycle among 3 modules, shortest: celery.utils -> celery.utils.functional -> celery.utils
+circular-import	high	celery/worker/__init__.py:2:1	-	import cycle: celery.worker -> celery.worker.worker -> celery.worker

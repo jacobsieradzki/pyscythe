@@ -1,0 +1,628 @@
+files_scanned=1581
+symbols_checked=4767
+symbols_kept=767
+findings=623
+--
+unused-file	low	langchain_classic/_api/path.py	-	file `langchain_classic._api.path` is never imported or run
+unused-file	low	langchain_classic/adapters/openai.py	-	file `langchain_classic.adapters.openai` is never imported or run
+unused-variable	low	langchain_classic/agents/agent.py:1009:1	RunnableAgentType	variable `RunnableAgentType` is never used
+unused-method	low	langchain_classic/agents/agent.py:1177:9	save_agent	method `AgentExecutor.save_agent` is never used
+unused-file	low	langchain_classic/agents/agent_toolkits/ainetwork/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.ainetwork.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/amadeus/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.amadeus.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/azure_cognitive_services.py	-	file `langchain_classic.agents.agent_toolkits.azure_cognitive_services` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/base.py	-	file `langchain_classic.agents.agent_toolkits.base` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/clickup/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.clickup.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/conversational_retrieval/tool.py	-	file `langchain_classic.agents.agent_toolkits.conversational_retrieval.tool` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/file_management/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.file_management.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/github/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.github.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/gitlab/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.gitlab.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/gmail/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.gmail.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/jira/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.jira.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/json/base.py	-	file `langchain_classic.agents.agent_toolkits.json.base` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/json/prompt.py	-	file `langchain_classic.agents.agent_toolkits.json.prompt` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/json/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.json.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/multion/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.multion.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/nasa/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.nasa.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/nla/tool.py	-	file `langchain_classic.agents.agent_toolkits.nla.tool` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/nla/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.nla.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/office365/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.office365.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/openapi/base.py	-	file `langchain_classic.agents.agent_toolkits.openapi.base` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/openapi/planner.py	-	file `langchain_classic.agents.agent_toolkits.openapi.planner` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/openapi/planner_prompt.py	-	file `langchain_classic.agents.agent_toolkits.openapi.planner_prompt` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/openapi/prompt.py	-	file `langchain_classic.agents.agent_toolkits.openapi.prompt` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/openapi/spec.py	-	file `langchain_classic.agents.agent_toolkits.openapi.spec` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/openapi/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.openapi.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/playwright/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.playwright.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/powerbi/base.py	-	file `langchain_classic.agents.agent_toolkits.powerbi.base` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/powerbi/chat_base.py	-	file `langchain_classic.agents.agent_toolkits.powerbi.chat_base` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/powerbi/prompt.py	-	file `langchain_classic.agents.agent_toolkits.powerbi.prompt` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/powerbi/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.powerbi.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/slack/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.slack.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/spark_sql/base.py	-	file `langchain_classic.agents.agent_toolkits.spark_sql.base` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/spark_sql/prompt.py	-	file `langchain_classic.agents.agent_toolkits.spark_sql.prompt` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/spark_sql/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.spark_sql.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/sql/base.py	-	file `langchain_classic.agents.agent_toolkits.sql.base` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/sql/prompt.py	-	file `langchain_classic.agents.agent_toolkits.sql.prompt` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/sql/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.sql.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/steam/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.steam.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/agent_toolkits/zapier/toolkit.py	-	file `langchain_classic.agents.agent_toolkits.zapier.toolkit` is never imported or run
+unused-file	low	langchain_classic/agents/load_tools.py	-	file `langchain_classic.agents.load_tools` is never imported or run
+unused-variable	medium	langchain_classic/agents/loading.py:19:1	URL_BASE	variable `URL_BASE` is never used
+unused-method	low	langchain_classic/agents/mrkl/base.py:188:9	from_chains	method `MRKLChain.from_chains` is never used
+unused-method	low	langchain_classic/agents/xml/base.py:52:9	get_default_prompt	method `XMLAgent.get_default_prompt` is never used
+unused-method	low	langchain_classic/agents/xml/base.py:60:9	get_default_output_parser	method `XMLAgent.get_default_output_parser` is never used
+unused-file	low	langchain_classic/base_language.py	-	file `langchain_classic.base_language` is never imported or run
+unused-file	low	langchain_classic/cache.py	-	file `langchain_classic.cache` is never imported or run
+unused-file	low	langchain_classic/callbacks/aim_callback.py	-	file `langchain_classic.callbacks.aim_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/argilla_callback.py	-	file `langchain_classic.callbacks.argilla_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/arize_callback.py	-	file `langchain_classic.callbacks.arize_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/arthur_callback.py	-	file `langchain_classic.callbacks.arthur_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/base.py	-	file `langchain_classic.callbacks.base` is never imported or run
+unused-file	low	langchain_classic/callbacks/clearml_callback.py	-	file `langchain_classic.callbacks.clearml_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/comet_ml_callback.py	-	file `langchain_classic.callbacks.comet_ml_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/confident_callback.py	-	file `langchain_classic.callbacks.confident_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/context_callback.py	-	file `langchain_classic.callbacks.context_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/file.py	-	file `langchain_classic.callbacks.file` is never imported or run
+unused-file	low	langchain_classic/callbacks/flyte_callback.py	-	file `langchain_classic.callbacks.flyte_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/human.py	-	file `langchain_classic.callbacks.human` is never imported or run
+unused-file	low	langchain_classic/callbacks/infino_callback.py	-	file `langchain_classic.callbacks.infino_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/labelstudio_callback.py	-	file `langchain_classic.callbacks.labelstudio_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/llmonitor_callback.py	-	file `langchain_classic.callbacks.llmonitor_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/mlflow_callback.py	-	file `langchain_classic.callbacks.mlflow_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/openai_info.py	-	file `langchain_classic.callbacks.openai_info` is never imported or run
+unused-file	low	langchain_classic/callbacks/promptlayer_callback.py	-	file `langchain_classic.callbacks.promptlayer_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/sagemaker_callback.py	-	file `langchain_classic.callbacks.sagemaker_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/stdout.py	-	file `langchain_classic.callbacks.stdout` is never imported or run
+unused-method	low	langchain_classic/callbacks/streaming_aiter.py:22:9	always_verbose	method `AsyncIteratorCallbackHandler.always_verbose` is never used
+unused-method	low	langchain_classic/callbacks/streaming_aiter.py:59:15	aiter	method `AsyncIteratorCallbackHandler.aiter` is never used
+unused-class	medium	langchain_classic/callbacks/streaming_aiter_final_only.py:13:7	AsyncFinalIteratorCallbackHandler	class `AsyncFinalIteratorCallbackHandler` is never used
+unused-file	low	langchain_classic/callbacks/streaming_stdout.py	-	file `langchain_classic.callbacks.streaming_stdout` is never imported or run
+unused-function	low	langchain_classic/callbacks/streamlit/__init__.py:12:5	StreamlitCallbackHandler	function `StreamlitCallbackHandler` is never used
+unused-file	low	langchain_classic/callbacks/streamlit/mutable_expander.py	-	file `langchain_classic.callbacks.streamlit.mutable_expander` is never imported or run
+unused-file	low	langchain_classic/callbacks/streamlit/streamlit_callback_handler.py	-	file `langchain_classic.callbacks.streamlit.streamlit_callback_handler` is never imported or run
+unused-file	low	langchain_classic/callbacks/tracers/base.py	-	file `langchain_classic.callbacks.tracers.base` is never imported or run
+unused-file	low	langchain_classic/callbacks/tracers/comet.py	-	file `langchain_classic.callbacks.tracers.comet` is never imported or run
+unused-file	low	langchain_classic/callbacks/tracers/evaluation.py	-	file `langchain_classic.callbacks.tracers.evaluation` is never imported or run
+unused-file	low	langchain_classic/callbacks/tracers/langchain.py	-	file `langchain_classic.callbacks.tracers.langchain` is never imported or run
+unused-file	low	langchain_classic/callbacks/tracers/log_stream.py	-	file `langchain_classic.callbacks.tracers.log_stream` is never imported or run
+unused-file	low	langchain_classic/callbacks/tracers/root_listeners.py	-	file `langchain_classic.callbacks.tracers.root_listeners` is never imported or run
+unused-file	low	langchain_classic/callbacks/tracers/run_collector.py	-	file `langchain_classic.callbacks.tracers.run_collector` is never imported or run
+unused-file	low	langchain_classic/callbacks/tracers/schemas.py	-	file `langchain_classic.callbacks.tracers.schemas` is never imported or run
+unused-file	low	langchain_classic/callbacks/tracers/stdout.py	-	file `langchain_classic.callbacks.tracers.stdout` is never imported or run
+unused-file	low	langchain_classic/callbacks/tracers/wandb.py	-	file `langchain_classic.callbacks.tracers.wandb` is never imported or run
+unused-file	low	langchain_classic/callbacks/trubrics_callback.py	-	file `langchain_classic.callbacks.trubrics_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/utils.py	-	file `langchain_classic.callbacks.utils` is never imported or run
+unused-file	low	langchain_classic/callbacks/wandb_callback.py	-	file `langchain_classic.callbacks.wandb_callback` is never imported or run
+unused-file	low	langchain_classic/callbacks/whylabs_callback.py	-	file `langchain_classic.callbacks.whylabs_callback` is never imported or run
+unused-method	low	langchain_classic/chains/api/base.py:362:13	from_llm_and_api_docs	method `APIChain.from_llm_and_api_docs` is never used
+unused-file	low	langchain_classic/chains/api/news_docs.py	-	file `langchain_classic.chains.api.news_docs` is never imported or run
+unused-file	low	langchain_classic/chains/api/open_meteo_docs.py	-	file `langchain_classic.chains.api.open_meteo_docs` is never imported or run
+unused-file	low	langchain_classic/chains/api/openapi/chain.py	-	file `langchain_classic.chains.api.openapi.chain` is never imported or run
+unused-file	low	langchain_classic/chains/api/openapi/prompts.py	-	file `langchain_classic.chains.api.openapi.prompts` is never imported or run
+unused-file	low	langchain_classic/chains/api/openapi/requests_chain.py	-	file `langchain_classic.chains.api.openapi.requests_chain` is never imported or run
+unused-file	low	langchain_classic/chains/api/openapi/response_chain.py	-	file `langchain_classic.chains.api.openapi.response_chain` is never imported or run
+unused-file	low	langchain_classic/chains/api/podcast_docs.py	-	file `langchain_classic.chains.api.podcast_docs` is never imported or run
+unused-file	low	langchain_classic/chains/api/tmdb_docs.py	-	file `langchain_classic.chains.api.tmdb_docs` is never imported or run
+unused-variable	medium	langchain_classic/chains/base.py:43:1	logger	variable `logger` is never used
+unused-file	low	langchain_classic/chains/chat_vector_db/prompts.py	-	file `langchain_classic.chains.chat_vector_db.prompts` is never imported or run
+unused-method	low	langchain_classic/chains/constitutional_ai/base.py:205:9	get_principles	method `ConstitutionalChain.get_principles` is never used
+unused-variable	medium	langchain_classic/chains/conversational_retrieval/prompts.py:17:1	QA_PROMPT	variable `QA_PROMPT` is never used
+unused-file	low	langchain_classic/chains/ernie_functions/base.py	-	file `langchain_classic.chains.ernie_functions.base` is never imported or run
+unused-file	low	langchain_classic/chains/graph_qa/arangodb.py	-	file `langchain_classic.chains.graph_qa.arangodb` is never imported or run
+unused-file	low	langchain_classic/chains/graph_qa/base.py	-	file `langchain_classic.chains.graph_qa.base` is never imported or run
+unused-file	low	langchain_classic/chains/graph_qa/cypher.py	-	file `langchain_classic.chains.graph_qa.cypher` is never imported or run
+unused-file	low	langchain_classic/chains/graph_qa/cypher_utils.py	-	file `langchain_classic.chains.graph_qa.cypher_utils` is never imported or run
+unused-file	low	langchain_classic/chains/graph_qa/falkordb.py	-	file `langchain_classic.chains.graph_qa.falkordb` is never imported or run
+unused-file	low	langchain_classic/chains/graph_qa/gremlin.py	-	file `langchain_classic.chains.graph_qa.gremlin` is never imported or run
+unused-file	low	langchain_classic/chains/graph_qa/hugegraph.py	-	file `langchain_classic.chains.graph_qa.hugegraph` is never imported or run
+unused-file	low	langchain_classic/chains/graph_qa/kuzu.py	-	file `langchain_classic.chains.graph_qa.kuzu` is never imported or run
+unused-file	low	langchain_classic/chains/graph_qa/nebulagraph.py	-	file `langchain_classic.chains.graph_qa.nebulagraph` is never imported or run
+unused-file	low	langchain_classic/chains/graph_qa/neptune_cypher.py	-	file `langchain_classic.chains.graph_qa.neptune_cypher` is never imported or run
+unused-file	low	langchain_classic/chains/graph_qa/neptune_sparql.py	-	file `langchain_classic.chains.graph_qa.neptune_sparql` is never imported or run
+unused-file	low	langchain_classic/chains/graph_qa/ontotext_graphdb.py	-	file `langchain_classic.chains.graph_qa.ontotext_graphdb` is never imported or run
+unused-file	low	langchain_classic/chains/graph_qa/prompts.py	-	file `langchain_classic.chains.graph_qa.prompts` is never imported or run
+unused-file	low	langchain_classic/chains/graph_qa/sparql.py	-	file `langchain_classic.chains.graph_qa.sparql` is never imported or run
+unused-file	low	langchain_classic/chains/history_aware_retriever.py	-	file `langchain_classic.chains.history_aware_retriever` is never imported or run
+unused-method	low	langchain_classic/chains/llm.py:334:9	predict_and_parse	method `LLMChain.predict_and_parse` is never used
+unused-method	low	langchain_classic/chains/llm.py:410:9	from_string	method `LLMChain.from_string` is never used
+unused-variable	medium	langchain_classic/chains/loading.py:69:1	URL_BASE	variable `URL_BASE` is never used
+unused-method	low	langchain_classic/chains/mapreduce.py:50:9	from_params	method `MapReduceChain.from_params` is never used
+unused-method	low	langchain_classic/chains/natbot/base.py:78:9	from_default	method `NatBotChain.from_default` is never used
+unused-file	low	langchain_classic/chains/natbot/crawler.py	-	file `langchain_classic.chains.natbot.crawler` is never imported or run
+unused-method	low	langchain_classic/chains/openai_functions/citation_fuzzy_match.py:47:9	get_spans	method `FactWithEvidence.get_spans` is never used
+unused-function	medium	langchain_classic/chains/prompt_selector.py:44:5	is_llm	function `is_llm` is never used
+unused-function	low	langchain_classic/chains/query_constructor/base.py:273:5	load_query_constructor_chain	function `load_query_constructor_chain` is never used
+unused-file	low	langchain_classic/chains/query_constructor/ir.py	-	file `langchain_classic.chains.query_constructor.ir` is never imported or run
+unused-method	low	langchain_classic/chains/query_constructor/parser.py:107:9	func_call	method `QueryTransformer.func_call` is never used
+unused-method	low	langchain_classic/chains/query_constructor/parser.py:189:9	int	method `QueryTransformer.int` is never used
+unused-method	low	langchain_classic/chains/query_constructor/parser.py:197:9	float	method `QueryTransformer.float` is never used
+unused-file	low	langchain_classic/chains/retrieval.py	-	file `langchain_classic.chains.retrieval` is never imported or run
+unused-file	low	langchain_classic/chains/retrieval_qa/prompt.py	-	file `langchain_classic.chains.retrieval_qa.prompt` is never imported or run
+unused-method	low	langchain_classic/chains/router/embedding_router.py:56:9	from_names_and_descriptions	method `EmbeddingRouterChain.from_names_and_descriptions` is never used
+unused-method	low	langchain_classic/chains/router/embedding_router.py:76:15	afrom_names_and_descriptions	method `EmbeddingRouterChain.afrom_names_and_descriptions` is never used
+unused-method	low	langchain_classic/chains/router/multi_prompt.py:160:9	from_prompts	method `MultiPromptChain.from_prompts` is never used
+unused-method	low	langchain_classic/chains/router/multi_retrieval_qa.py:47:9	from_retrievers	method `MultiRetrievalQAChain.from_retrievers` is never used
+unused-variable	medium	langchain_classic/chains/sql_database/prompt.py:37:1	DECIDER_PROMPT	variable `DECIDER_PROMPT` is never used
+unused-file	low	langchain_classic/chains/sql_database/query.py	-	file `langchain_classic.chains.sql_database.query` is never imported or run
+unused-file	low	langchain_classic/chat_loaders/base.py	-	file `langchain_classic.chat_loaders.base` is never imported or run
+unused-file	low	langchain_classic/chat_loaders/facebook_messenger.py	-	file `langchain_classic.chat_loaders.facebook_messenger` is never imported or run
+unused-file	low	langchain_classic/chat_loaders/gmail.py	-	file `langchain_classic.chat_loaders.gmail` is never imported or run
+unused-file	low	langchain_classic/chat_loaders/imessage.py	-	file `langchain_classic.chat_loaders.imessage` is never imported or run
+unused-file	low	langchain_classic/chat_loaders/langsmith.py	-	file `langchain_classic.chat_loaders.langsmith` is never imported or run
+unused-file	low	langchain_classic/chat_loaders/slack.py	-	file `langchain_classic.chat_loaders.slack` is never imported or run
+unused-file	low	langchain_classic/chat_loaders/telegram.py	-	file `langchain_classic.chat_loaders.telegram` is never imported or run
+unused-file	low	langchain_classic/chat_loaders/utils.py	-	file `langchain_classic.chat_loaders.utils` is never imported or run
+unused-file	low	langchain_classic/chat_loaders/whatsapp.py	-	file `langchain_classic.chat_loaders.whatsapp` is never imported or run
+unused-file	low	langchain_classic/chat_models/anthropic.py	-	file `langchain_classic.chat_models.anthropic` is never imported or run
+unused-file	low	langchain_classic/chat_models/anyscale.py	-	file `langchain_classic.chat_models.anyscale` is never imported or run
+unused-file	low	langchain_classic/chat_models/azure_openai.py	-	file `langchain_classic.chat_models.azure_openai` is never imported or run
+unused-file	low	langchain_classic/chat_models/azureml_endpoint.py	-	file `langchain_classic.chat_models.azureml_endpoint` is never imported or run
+unused-file	low	langchain_classic/chat_models/baichuan.py	-	file `langchain_classic.chat_models.baichuan` is never imported or run
+unused-file	low	langchain_classic/chat_models/baidu_qianfan_endpoint.py	-	file `langchain_classic.chat_models.baidu_qianfan_endpoint` is never imported or run
+unused-file	low	langchain_classic/chat_models/bedrock.py	-	file `langchain_classic.chat_models.bedrock` is never imported or run
+unused-file	low	langchain_classic/chat_models/cohere.py	-	file `langchain_classic.chat_models.cohere` is never imported or run
+unused-file	low	langchain_classic/chat_models/databricks.py	-	file `langchain_classic.chat_models.databricks` is never imported or run
+unused-file	low	langchain_classic/chat_models/ernie.py	-	file `langchain_classic.chat_models.ernie` is never imported or run
+unused-file	low	langchain_classic/chat_models/everlyai.py	-	file `langchain_classic.chat_models.everlyai` is never imported or run
+unused-file	low	langchain_classic/chat_models/fake.py	-	file `langchain_classic.chat_models.fake` is never imported or run
+unused-file	low	langchain_classic/chat_models/fireworks.py	-	file `langchain_classic.chat_models.fireworks` is never imported or run
+unused-file	low	langchain_classic/chat_models/gigachat.py	-	file `langchain_classic.chat_models.gigachat` is never imported or run
+unused-file	low	langchain_classic/chat_models/google_palm.py	-	file `langchain_classic.chat_models.google_palm` is never imported or run
+unused-file	low	langchain_classic/chat_models/human.py	-	file `langchain_classic.chat_models.human` is never imported or run
+unused-file	low	langchain_classic/chat_models/hunyuan.py	-	file `langchain_classic.chat_models.hunyuan` is never imported or run
+unused-file	low	langchain_classic/chat_models/javelin_ai_gateway.py	-	file `langchain_classic.chat_models.javelin_ai_gateway` is never imported or run
+unused-file	low	langchain_classic/chat_models/jinachat.py	-	file `langchain_classic.chat_models.jinachat` is never imported or run
+unused-file	low	langchain_classic/chat_models/konko.py	-	file `langchain_classic.chat_models.konko` is never imported or run
+unused-file	low	langchain_classic/chat_models/litellm.py	-	file `langchain_classic.chat_models.litellm` is never imported or run
+unused-file	low	langchain_classic/chat_models/meta.py	-	file `langchain_classic.chat_models.meta` is never imported or run
+unused-file	low	langchain_classic/chat_models/minimax.py	-	file `langchain_classic.chat_models.minimax` is never imported or run
+unused-file	low	langchain_classic/chat_models/mlflow.py	-	file `langchain_classic.chat_models.mlflow` is never imported or run
+unused-file	low	langchain_classic/chat_models/mlflow_ai_gateway.py	-	file `langchain_classic.chat_models.mlflow_ai_gateway` is never imported or run
+unused-file	low	langchain_classic/chat_models/ollama.py	-	file `langchain_classic.chat_models.ollama` is never imported or run
+unused-file	low	langchain_classic/chat_models/openai.py	-	file `langchain_classic.chat_models.openai` is never imported or run
+unused-file	low	langchain_classic/chat_models/pai_eas_endpoint.py	-	file `langchain_classic.chat_models.pai_eas_endpoint` is never imported or run
+unused-file	low	langchain_classic/chat_models/promptlayer_openai.py	-	file `langchain_classic.chat_models.promptlayer_openai` is never imported or run
+unused-file	low	langchain_classic/chat_models/tongyi.py	-	file `langchain_classic.chat_models.tongyi` is never imported or run
+unused-file	low	langchain_classic/chat_models/vertexai.py	-	file `langchain_classic.chat_models.vertexai` is never imported or run
+unused-file	low	langchain_classic/chat_models/volcengine_maas.py	-	file `langchain_classic.chat_models.volcengine_maas` is never imported or run
+unused-file	low	langchain_classic/chat_models/yandex.py	-	file `langchain_classic.chat_models.yandex` is never imported or run
+unused-variable	medium	langchain_classic/embeddings/__init__.py:76:1	logger	variable `logger` is never used
+unused-file	low	langchain_classic/embeddings/aleph_alpha.py	-	file `langchain_classic.embeddings.aleph_alpha` is never imported or run
+unused-file	low	langchain_classic/embeddings/awa.py	-	file `langchain_classic.embeddings.awa` is never imported or run
+unused-file	low	langchain_classic/embeddings/azure_openai.py	-	file `langchain_classic.embeddings.azure_openai` is never imported or run
+unused-file	low	langchain_classic/embeddings/baidu_qianfan_endpoint.py	-	file `langchain_classic.embeddings.baidu_qianfan_endpoint` is never imported or run
+unused-file	low	langchain_classic/embeddings/bedrock.py	-	file `langchain_classic.embeddings.bedrock` is never imported or run
+unused-file	low	langchain_classic/embeddings/bookend.py	-	file `langchain_classic.embeddings.bookend` is never imported or run
+unused-file	low	langchain_classic/embeddings/clarifai.py	-	file `langchain_classic.embeddings.clarifai` is never imported or run
+unused-file	low	langchain_classic/embeddings/cloudflare_workersai.py	-	file `langchain_classic.embeddings.cloudflare_workersai` is never imported or run
+unused-file	low	langchain_classic/embeddings/cohere.py	-	file `langchain_classic.embeddings.cohere` is never imported or run
+unused-file	low	langchain_classic/embeddings/dashscope.py	-	file `langchain_classic.embeddings.dashscope` is never imported or run
+unused-file	low	langchain_classic/embeddings/databricks.py	-	file `langchain_classic.embeddings.databricks` is never imported or run
+unused-file	low	langchain_classic/embeddings/deepinfra.py	-	file `langchain_classic.embeddings.deepinfra` is never imported or run
+unused-file	low	langchain_classic/embeddings/edenai.py	-	file `langchain_classic.embeddings.edenai` is never imported or run
+unused-file	low	langchain_classic/embeddings/elasticsearch.py	-	file `langchain_classic.embeddings.elasticsearch` is never imported or run
+unused-file	low	langchain_classic/embeddings/embaas.py	-	file `langchain_classic.embeddings.embaas` is never imported or run
+unused-file	low	langchain_classic/embeddings/ernie.py	-	file `langchain_classic.embeddings.ernie` is never imported or run
+unused-file	low	langchain_classic/embeddings/fake.py	-	file `langchain_classic.embeddings.fake` is never imported or run
+unused-file	low	langchain_classic/embeddings/fastembed.py	-	file `langchain_classic.embeddings.fastembed` is never imported or run
+unused-file	low	langchain_classic/embeddings/google_palm.py	-	file `langchain_classic.embeddings.google_palm` is never imported or run
+unused-file	low	langchain_classic/embeddings/gpt4all.py	-	file `langchain_classic.embeddings.gpt4all` is never imported or run
+unused-file	low	langchain_classic/embeddings/gradient_ai.py	-	file `langchain_classic.embeddings.gradient_ai` is never imported or run
+unused-file	low	langchain_classic/embeddings/huggingface.py	-	file `langchain_classic.embeddings.huggingface` is never imported or run
+unused-file	low	langchain_classic/embeddings/huggingface_hub.py	-	file `langchain_classic.embeddings.huggingface_hub` is never imported or run
+unused-file	low	langchain_classic/embeddings/infinity.py	-	file `langchain_classic.embeddings.infinity` is never imported or run
+unused-file	low	langchain_classic/embeddings/javelin_ai_gateway.py	-	file `langchain_classic.embeddings.javelin_ai_gateway` is never imported or run
+unused-file	low	langchain_classic/embeddings/jina.py	-	file `langchain_classic.embeddings.jina` is never imported or run
+unused-file	low	langchain_classic/embeddings/johnsnowlabs.py	-	file `langchain_classic.embeddings.johnsnowlabs` is never imported or run
+unused-file	low	langchain_classic/embeddings/llamacpp.py	-	file `langchain_classic.embeddings.llamacpp` is never imported or run
+unused-file	low	langchain_classic/embeddings/llm_rails.py	-	file `langchain_classic.embeddings.llm_rails` is never imported or run
+unused-file	low	langchain_classic/embeddings/localai.py	-	file `langchain_classic.embeddings.localai` is never imported or run
+unused-file	low	langchain_classic/embeddings/minimax.py	-	file `langchain_classic.embeddings.minimax` is never imported or run
+unused-file	low	langchain_classic/embeddings/mlflow.py	-	file `langchain_classic.embeddings.mlflow` is never imported or run
+unused-file	low	langchain_classic/embeddings/mlflow_gateway.py	-	file `langchain_classic.embeddings.mlflow_gateway` is never imported or run
+unused-file	low	langchain_classic/embeddings/modelscope_hub.py	-	file `langchain_classic.embeddings.modelscope_hub` is never imported or run
+unused-file	low	langchain_classic/embeddings/mosaicml.py	-	file `langchain_classic.embeddings.mosaicml` is never imported or run
+unused-file	low	langchain_classic/embeddings/nlpcloud.py	-	file `langchain_classic.embeddings.nlpcloud` is never imported or run
+unused-file	low	langchain_classic/embeddings/octoai_embeddings.py	-	file `langchain_classic.embeddings.octoai_embeddings` is never imported or run
+unused-file	low	langchain_classic/embeddings/ollama.py	-	file `langchain_classic.embeddings.ollama` is never imported or run
+unused-file	low	langchain_classic/embeddings/openai.py	-	file `langchain_classic.embeddings.openai` is never imported or run
+unused-file	low	langchain_classic/embeddings/sagemaker_endpoint.py	-	file `langchain_classic.embeddings.sagemaker_endpoint` is never imported or run
+unused-file	low	langchain_classic/embeddings/self_hosted.py	-	file `langchain_classic.embeddings.self_hosted` is never imported or run
+unused-file	low	langchain_classic/embeddings/self_hosted_hugging_face.py	-	file `langchain_classic.embeddings.self_hosted_hugging_face` is never imported or run
+unused-file	low	langchain_classic/embeddings/sentence_transformer.py	-	file `langchain_classic.embeddings.sentence_transformer` is never imported or run
+unused-file	low	langchain_classic/embeddings/spacy_embeddings.py	-	file `langchain_classic.embeddings.spacy_embeddings` is never imported or run
+unused-file	low	langchain_classic/embeddings/tensorflow_hub.py	-	file `langchain_classic.embeddings.tensorflow_hub` is never imported or run
+unused-file	low	langchain_classic/embeddings/vertexai.py	-	file `langchain_classic.embeddings.vertexai` is never imported or run
+unused-file	low	langchain_classic/embeddings/voyageai.py	-	file `langchain_classic.embeddings.voyageai` is never imported or run
+unused-file	low	langchain_classic/embeddings/xinference.py	-	file `langchain_classic.embeddings.xinference` is never imported or run
+unused-file	low	langchain_classic/env.py	-	file `langchain_classic.env` is never imported or run
+unused-method	medium	langchain_classic/evaluation/embedding_distance/base.py:105:9	_validate_tiktoken_installed	method `_EmbeddingDistanceChainMixin._validate_tiktoken_installed` is never used
+unused-variable	medium	langchain_classic/evaluation/qa/eval_prompt.py:76:1	SQL_PROMPT	variable `SQL_PROMPT` is never used
+unused-variable	medium	langchain_classic/evaluation/schema.py:18:1	logger	variable `logger` is never used
+unused-method	low	langchain_classic/evaluation/schema.py:478:15	aevaluate_agent_trajectory	method `AgentTrajectoryEvaluator.aevaluate_agent_trajectory` is never used
+unused-file	low	langchain_classic/example_generator.py	-	file `langchain_classic.example_generator` is never imported or run
+unused-file	low	langchain_classic/formatting.py	-	file `langchain_classic.formatting` is never imported or run
+unused-file	low	langchain_classic/graphs/arangodb_graph.py	-	file `langchain_classic.graphs.arangodb_graph` is never imported or run
+unused-file	low	langchain_classic/graphs/falkordb_graph.py	-	file `langchain_classic.graphs.falkordb_graph` is never imported or run
+unused-file	low	langchain_classic/graphs/graph_document.py	-	file `langchain_classic.graphs.graph_document` is never imported or run
+unused-file	low	langchain_classic/graphs/graph_store.py	-	file `langchain_classic.graphs.graph_store` is never imported or run
+unused-file	low	langchain_classic/graphs/hugegraph.py	-	file `langchain_classic.graphs.hugegraph` is never imported or run
+unused-file	low	langchain_classic/graphs/kuzu_graph.py	-	file `langchain_classic.graphs.kuzu_graph` is never imported or run
+unused-file	low	langchain_classic/graphs/memgraph_graph.py	-	file `langchain_classic.graphs.memgraph_graph` is never imported or run
+unused-file	low	langchain_classic/graphs/nebula_graph.py	-	file `langchain_classic.graphs.nebula_graph` is never imported or run
+unused-file	low	langchain_classic/graphs/neo4j_graph.py	-	file `langchain_classic.graphs.neo4j_graph` is never imported or run
+unused-file	low	langchain_classic/graphs/neptune_graph.py	-	file `langchain_classic.graphs.neptune_graph` is never imported or run
+unused-file	low	langchain_classic/graphs/networkx_graph.py	-	file `langchain_classic.graphs.networkx_graph` is never imported or run
+unused-file	low	langchain_classic/graphs/rdf_graph.py	-	file `langchain_classic.graphs.rdf_graph` is never imported or run
+unused-function	low	langchain_classic/hub.py:19:5	push	function `push` is never used
+unused-file	low	langchain_classic/indexes/_api.py	-	file `langchain_classic.indexes._api` is never imported or run
+unused-file	low	langchain_classic/indexes/graph.py	-	file `langchain_classic.indexes.graph` is never imported or run
+unused-file	low	langchain_classic/indexes/prompts/entity_extraction.py	-	file `langchain_classic.indexes.prompts.entity_extraction` is never imported or run
+unused-file	low	langchain_classic/indexes/prompts/entity_summarization.py	-	file `langchain_classic.indexes.prompts.entity_summarization` is never imported or run
+unused-file	low	langchain_classic/indexes/prompts/knowledge_triplet_extraction.py	-	file `langchain_classic.indexes.prompts.knowledge_triplet_extraction` is never imported or run
+unused-method	low	langchain_classic/indexes/vectorstore.py:69:15	aquery	method `VectorStoreIndexWrapper.aquery` is never used
+unused-method	low	langchain_classic/indexes/vectorstore.py:104:9	query_with_sources	method `VectorStoreIndexWrapper.query_with_sources` is never used
+unused-method	low	langchain_classic/indexes/vectorstore.py:139:15	aquery_with_sources	method `VectorStoreIndexWrapper.aquery_with_sources` is never used
+unused-method	low	langchain_classic/indexes/vectorstore.py:208:9	from_loaders	method `VectorstoreIndexCreator.from_loaders` is never used
+unused-method	low	langchain_classic/indexes/vectorstore.py:222:15	afrom_loaders	method `VectorstoreIndexCreator.afrom_loaders` is never used
+unused-file	low	langchain_classic/input.py	-	file `langchain_classic.input` is never imported or run
+unused-function	high	langchain_classic/llms/__init__.py:172:5	_import_fireworks	function `_import_fireworks` is never used
+unused-function	high	langchain_classic/llms/__init__.py:264:5	_import_manifest	function `_import_manifest` is never used
+unused-function	high	langchain_classic/llms/__init__.py:312:5	_import_octoai_endpoint	function `_import_octoai_endpoint` is never used
+unused-function	high	langchain_classic/llms/__init__.py:342:5	_import_openai_chat	function `_import_openai_chat` is never used
+unused-function	high	langchain_classic/llms/__init__.py:384:5	_import_predictionguard	function `_import_predictionguard` is never used
+unused-function	high	langchain_classic/llms/__init__.py:390:5	_import_promptlayer	function `_import_promptlayer` is never used
+unused-function	high	langchain_classic/llms/__init__.py:396:5	_import_promptlayer_chat	function `_import_promptlayer_chat` is never used
+unused-file	low	langchain_classic/llms/ai21.py	-	file `langchain_classic.llms.ai21` is never imported or run
+unused-file	low	langchain_classic/llms/aleph_alpha.py	-	file `langchain_classic.llms.aleph_alpha` is never imported or run
+unused-file	low	langchain_classic/llms/amazon_api_gateway.py	-	file `langchain_classic.llms.amazon_api_gateway` is never imported or run
+unused-file	low	langchain_classic/llms/anthropic.py	-	file `langchain_classic.llms.anthropic` is never imported or run
+unused-file	low	langchain_classic/llms/anyscale.py	-	file `langchain_classic.llms.anyscale` is never imported or run
+unused-file	low	langchain_classic/llms/arcee.py	-	file `langchain_classic.llms.arcee` is never imported or run
+unused-file	low	langchain_classic/llms/aviary.py	-	file `langchain_classic.llms.aviary` is never imported or run
+unused-file	low	langchain_classic/llms/azureml_endpoint.py	-	file `langchain_classic.llms.azureml_endpoint` is never imported or run
+unused-file	low	langchain_classic/llms/baidu_qianfan_endpoint.py	-	file `langchain_classic.llms.baidu_qianfan_endpoint` is never imported or run
+unused-file	low	langchain_classic/llms/bananadev.py	-	file `langchain_classic.llms.bananadev` is never imported or run
+unused-file	low	langchain_classic/llms/baseten.py	-	file `langchain_classic.llms.baseten` is never imported or run
+unused-file	low	langchain_classic/llms/beam.py	-	file `langchain_classic.llms.beam` is never imported or run
+unused-file	low	langchain_classic/llms/bedrock.py	-	file `langchain_classic.llms.bedrock` is never imported or run
+unused-file	low	langchain_classic/llms/bittensor.py	-	file `langchain_classic.llms.bittensor` is never imported or run
+unused-file	low	langchain_classic/llms/cerebriumai.py	-	file `langchain_classic.llms.cerebriumai` is never imported or run
+unused-file	low	langchain_classic/llms/chatglm.py	-	file `langchain_classic.llms.chatglm` is never imported or run
+unused-file	low	langchain_classic/llms/clarifai.py	-	file `langchain_classic.llms.clarifai` is never imported or run
+unused-file	low	langchain_classic/llms/cloudflare_workersai.py	-	file `langchain_classic.llms.cloudflare_workersai` is never imported or run
+unused-file	low	langchain_classic/llms/cohere.py	-	file `langchain_classic.llms.cohere` is never imported or run
+unused-file	low	langchain_classic/llms/ctransformers.py	-	file `langchain_classic.llms.ctransformers` is never imported or run
+unused-file	low	langchain_classic/llms/ctranslate2.py	-	file `langchain_classic.llms.ctranslate2` is never imported or run
+unused-file	low	langchain_classic/llms/databricks.py	-	file `langchain_classic.llms.databricks` is never imported or run
+unused-file	low	langchain_classic/llms/deepinfra.py	-	file `langchain_classic.llms.deepinfra` is never imported or run
+unused-file	low	langchain_classic/llms/deepsparse.py	-	file `langchain_classic.llms.deepsparse` is never imported or run
+unused-file	low	langchain_classic/llms/edenai.py	-	file `langchain_classic.llms.edenai` is never imported or run
+unused-file	low	langchain_classic/llms/fake.py	-	file `langchain_classic.llms.fake` is never imported or run
+unused-file	low	langchain_classic/llms/fireworks.py	-	file `langchain_classic.llms.fireworks` is never imported or run
+unused-file	low	langchain_classic/llms/forefrontai.py	-	file `langchain_classic.llms.forefrontai` is never imported or run
+unused-file	low	langchain_classic/llms/gigachat.py	-	file `langchain_classic.llms.gigachat` is never imported or run
+unused-file	low	langchain_classic/llms/google_palm.py	-	file `langchain_classic.llms.google_palm` is never imported or run
+unused-file	low	langchain_classic/llms/gooseai.py	-	file `langchain_classic.llms.gooseai` is never imported or run
+unused-file	low	langchain_classic/llms/gpt4all.py	-	file `langchain_classic.llms.gpt4all` is never imported or run
+unused-file	low	langchain_classic/llms/gradient_ai.py	-	file `langchain_classic.llms.gradient_ai` is never imported or run
+unused-file	low	langchain_classic/llms/huggingface_endpoint.py	-	file `langchain_classic.llms.huggingface_endpoint` is never imported or run
+unused-file	low	langchain_classic/llms/huggingface_hub.py	-	file `langchain_classic.llms.huggingface_hub` is never imported or run
+unused-file	low	langchain_classic/llms/huggingface_pipeline.py	-	file `langchain_classic.llms.huggingface_pipeline` is never imported or run
+unused-file	low	langchain_classic/llms/huggingface_text_gen_inference.py	-	file `langchain_classic.llms.huggingface_text_gen_inference` is never imported or run
+unused-file	low	langchain_classic/llms/human.py	-	file `langchain_classic.llms.human` is never imported or run
+unused-file	low	langchain_classic/llms/javelin_ai_gateway.py	-	file `langchain_classic.llms.javelin_ai_gateway` is never imported or run
+unused-file	low	langchain_classic/llms/koboldai.py	-	file `langchain_classic.llms.koboldai` is never imported or run
+unused-file	low	langchain_classic/llms/llamacpp.py	-	file `langchain_classic.llms.llamacpp` is never imported or run
+unused-file	low	langchain_classic/llms/loading.py	-	file `langchain_classic.llms.loading` is never imported or run
+unused-file	low	langchain_classic/llms/manifest.py	-	file `langchain_classic.llms.manifest` is never imported or run
+unused-file	low	langchain_classic/llms/minimax.py	-	file `langchain_classic.llms.minimax` is never imported or run
+unused-file	low	langchain_classic/llms/mlflow.py	-	file `langchain_classic.llms.mlflow` is never imported or run
+unused-file	low	langchain_classic/llms/mlflow_ai_gateway.py	-	file `langchain_classic.llms.mlflow_ai_gateway` is never imported or run
+unused-file	low	langchain_classic/llms/modal.py	-	file `langchain_classic.llms.modal` is never imported or run
+unused-file	low	langchain_classic/llms/mosaicml.py	-	file `langchain_classic.llms.mosaicml` is never imported or run
+unused-file	low	langchain_classic/llms/nlpcloud.py	-	file `langchain_classic.llms.nlpcloud` is never imported or run
+unused-file	low	langchain_classic/llms/octoai_endpoint.py	-	file `langchain_classic.llms.octoai_endpoint` is never imported or run
+unused-file	low	langchain_classic/llms/ollama.py	-	file `langchain_classic.llms.ollama` is never imported or run
+unused-file	low	langchain_classic/llms/opaqueprompts.py	-	file `langchain_classic.llms.opaqueprompts` is never imported or run
+unused-file	low	langchain_classic/llms/openai.py	-	file `langchain_classic.llms.openai` is never imported or run
+unused-file	low	langchain_classic/llms/openllm.py	-	file `langchain_classic.llms.openllm` is never imported or run
+unused-file	low	langchain_classic/llms/openlm.py	-	file `langchain_classic.llms.openlm` is never imported or run
+unused-file	low	langchain_classic/llms/pai_eas_endpoint.py	-	file `langchain_classic.llms.pai_eas_endpoint` is never imported or run
+unused-file	low	langchain_classic/llms/petals.py	-	file `langchain_classic.llms.petals` is never imported or run
+unused-file	low	langchain_classic/llms/pipelineai.py	-	file `langchain_classic.llms.pipelineai` is never imported or run
+unused-file	low	langchain_classic/llms/predibase.py	-	file `langchain_classic.llms.predibase` is never imported or run
+unused-file	low	langchain_classic/llms/predictionguard.py	-	file `langchain_classic.llms.predictionguard` is never imported or run
+unused-file	low	langchain_classic/llms/promptlayer_openai.py	-	file `langchain_classic.llms.promptlayer_openai` is never imported or run
+unused-file	low	langchain_classic/llms/replicate.py	-	file `langchain_classic.llms.replicate` is never imported or run
+unused-file	low	langchain_classic/llms/rwkv.py	-	file `langchain_classic.llms.rwkv` is never imported or run
+unused-file	low	langchain_classic/llms/sagemaker_endpoint.py	-	file `langchain_classic.llms.sagemaker_endpoint` is never imported or run
+unused-file	low	langchain_classic/llms/self_hosted.py	-	file `langchain_classic.llms.self_hosted` is never imported or run
+unused-file	low	langchain_classic/llms/self_hosted_hugging_face.py	-	file `langchain_classic.llms.self_hosted_hugging_face` is never imported or run
+unused-file	low	langchain_classic/llms/stochasticai.py	-	file `langchain_classic.llms.stochasticai` is never imported or run
+unused-file	low	langchain_classic/llms/symblai_nebula.py	-	file `langchain_classic.llms.symblai_nebula` is never imported or run
+unused-file	low	langchain_classic/llms/textgen.py	-	file `langchain_classic.llms.textgen` is never imported or run
+unused-file	low	langchain_classic/llms/titan_takeoff.py	-	file `langchain_classic.llms.titan_takeoff` is never imported or run
+unused-file	low	langchain_classic/llms/titan_takeoff_pro.py	-	file `langchain_classic.llms.titan_takeoff_pro` is never imported or run
+unused-file	low	langchain_classic/llms/together.py	-	file `langchain_classic.llms.together` is never imported or run
+unused-file	low	langchain_classic/llms/tongyi.py	-	file `langchain_classic.llms.tongyi` is never imported or run
+unused-file	low	langchain_classic/llms/utils.py	-	file `langchain_classic.llms.utils` is never imported or run
+unused-file	low	langchain_classic/llms/vertexai.py	-	file `langchain_classic.llms.vertexai` is never imported or run
+unused-file	low	langchain_classic/llms/vllm.py	-	file `langchain_classic.llms.vllm` is never imported or run
+unused-file	low	langchain_classic/llms/volcengine_maas.py	-	file `langchain_classic.llms.volcengine_maas` is never imported or run
+unused-file	low	langchain_classic/llms/watsonxllm.py	-	file `langchain_classic.llms.watsonxllm` is never imported or run
+unused-file	low	langchain_classic/llms/writer.py	-	file `langchain_classic.llms.writer` is never imported or run
+unused-file	low	langchain_classic/llms/xinference.py	-	file `langchain_classic.llms.xinference` is never imported or run
+unused-file	low	langchain_classic/llms/yandex.py	-	file `langchain_classic.llms.yandex` is never imported or run
+unused-file	low	langchain_classic/load/dump.py	-	file `langchain_classic.load.dump` is never imported or run
+unused-file	low	langchain_classic/load/load.py	-	file `langchain_classic.load.load` is never imported or run
+unused-file	low	langchain_classic/load/serializable.py	-	file `langchain_classic.load.serializable` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/astradb.py	-	file `langchain_classic.memory.chat_message_histories.astradb` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/cassandra.py	-	file `langchain_classic.memory.chat_message_histories.cassandra` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/cosmos_db.py	-	file `langchain_classic.memory.chat_message_histories.cosmos_db` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/dynamodb.py	-	file `langchain_classic.memory.chat_message_histories.dynamodb` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/elasticsearch.py	-	file `langchain_classic.memory.chat_message_histories.elasticsearch` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/file.py	-	file `langchain_classic.memory.chat_message_histories.file` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/firestore.py	-	file `langchain_classic.memory.chat_message_histories.firestore` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/in_memory.py	-	file `langchain_classic.memory.chat_message_histories.in_memory` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/momento.py	-	file `langchain_classic.memory.chat_message_histories.momento` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/mongodb.py	-	file `langchain_classic.memory.chat_message_histories.mongodb` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/neo4j.py	-	file `langchain_classic.memory.chat_message_histories.neo4j` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/postgres.py	-	file `langchain_classic.memory.chat_message_histories.postgres` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/redis.py	-	file `langchain_classic.memory.chat_message_histories.redis` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/rocksetdb.py	-	file `langchain_classic.memory.chat_message_histories.rocksetdb` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/singlestoredb.py	-	file `langchain_classic.memory.chat_message_histories.singlestoredb` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/sql.py	-	file `langchain_classic.memory.chat_message_histories.sql` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/streamlit.py	-	file `langchain_classic.memory.chat_message_histories.streamlit` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/upstash_redis.py	-	file `langchain_classic.memory.chat_message_histories.upstash_redis` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/xata.py	-	file `langchain_classic.memory.chat_message_histories.xata` is never imported or run
+unused-file	low	langchain_classic/memory/chat_message_histories/zep.py	-	file `langchain_classic.memory.chat_message_histories.zep` is never imported or run
+unused-file	low	langchain_classic/memory/kg.py	-	file `langchain_classic.memory.kg` is never imported or run
+unused-file	low	langchain_classic/memory/motorhead_memory.py	-	file `langchain_classic.memory.motorhead_memory` is never imported or run
+unused-method	low	langchain_classic/memory/vectorstore_token_buffer_memory.py:157:9	save_remainder	method `ConversationVectorStoreTokenBufferMemory.save_remainder` is never used
+unused-file	low	langchain_classic/memory/zep_memory.py	-	file `langchain_classic.memory.zep_memory` is never imported or run
+unused-file	low	langchain_classic/model_laboratory.py	-	file `langchain_classic.model_laboratory` is never imported or run
+unused-method	medium	langchain_classic/output_parsers/enum.py:16:9	_raise_deprecation	method `EnumOutputParser._raise_deprecation` is never used
+unused-file	low	langchain_classic/output_parsers/ernie_functions.py	-	file `langchain_classic.output_parsers.ernie_functions` is never imported or run
+unused-variable	medium	langchain_classic/output_parsers/format_instructions.py:17:1	PYDANTIC_FORMAT_INSTRUCTIONS	variable `PYDANTIC_FORMAT_INSTRUCTIONS` is never used
+unused-file	low	langchain_classic/output_parsers/json.py	-	file `langchain_classic.output_parsers.json` is never imported or run
+unused-file	low	langchain_classic/output_parsers/list.py	-	file `langchain_classic.output_parsers.list` is never imported or run
+unused-file	low	langchain_classic/output_parsers/loading.py	-	file `langchain_classic.output_parsers.loading` is never imported or run
+unused-file	low	langchain_classic/output_parsers/openai_functions.py	-	file `langchain_classic.output_parsers.openai_functions` is never imported or run
+unused-file	low	langchain_classic/output_parsers/openai_tools.py	-	file `langchain_classic.output_parsers.openai_tools` is never imported or run
+unused-file	low	langchain_classic/output_parsers/pydantic.py	-	file `langchain_classic.output_parsers.pydantic` is never imported or run
+unused-file	low	langchain_classic/output_parsers/rail_parser.py	-	file `langchain_classic.output_parsers.rail_parser` is never imported or run
+unused-file	low	langchain_classic/output_parsers/xml.py	-	file `langchain_classic.output_parsers.xml` is never imported or run
+unused-file	low	langchain_classic/python.py	-	file `langchain_classic.python` is never imported or run
+unused-file	low	langchain_classic/requests.py	-	file `langchain_classic.requests` is never imported or run
+unused-file	low	langchain_classic/retrievers/arcee.py	-	file `langchain_classic.retrievers.arcee` is never imported or run
+unused-file	low	langchain_classic/retrievers/arxiv.py	-	file `langchain_classic.retrievers.arxiv` is never imported or run
+unused-file	low	langchain_classic/retrievers/azure_ai_search.py	-	file `langchain_classic.retrievers.azure_ai_search` is never imported or run
+unused-file	low	langchain_classic/retrievers/bedrock.py	-	file `langchain_classic.retrievers.bedrock` is never imported or run
+unused-file	low	langchain_classic/retrievers/bm25.py	-	file `langchain_classic.retrievers.bm25` is never imported or run
+unused-file	low	langchain_classic/retrievers/chaindesk.py	-	file `langchain_classic.retrievers.chaindesk` is never imported or run
+unused-file	low	langchain_classic/retrievers/chatgpt_plugin_retriever.py	-	file `langchain_classic.retrievers.chatgpt_plugin_retriever` is never imported or run
+unused-file	low	langchain_classic/retrievers/cohere_rag_retriever.py	-	file `langchain_classic.retrievers.cohere_rag_retriever` is never imported or run
+unused-file	low	langchain_classic/retrievers/databerry.py	-	file `langchain_classic.retrievers.databerry` is never imported or run
+unused-file	low	langchain_classic/retrievers/docarray.py	-	file `langchain_classic.retrievers.docarray` is never imported or run
+unused-file	low	langchain_classic/retrievers/elastic_search_bm25.py	-	file `langchain_classic.retrievers.elastic_search_bm25` is never imported or run
+unused-file	low	langchain_classic/retrievers/embedchain.py	-	file `langchain_classic.retrievers.embedchain` is never imported or run
+unused-file	low	langchain_classic/retrievers/google_cloud_documentai_warehouse.py	-	file `langchain_classic.retrievers.google_cloud_documentai_warehouse` is never imported or run
+unused-file	low	langchain_classic/retrievers/google_vertex_ai_search.py	-	file `langchain_classic.retrievers.google_vertex_ai_search` is never imported or run
+unused-file	low	langchain_classic/retrievers/kay.py	-	file `langchain_classic.retrievers.kay` is never imported or run
+unused-file	low	langchain_classic/retrievers/kendra.py	-	file `langchain_classic.retrievers.kendra` is never imported or run
+unused-file	low	langchain_classic/retrievers/knn.py	-	file `langchain_classic.retrievers.knn` is never imported or run
+unused-file	low	langchain_classic/retrievers/llama_index.py	-	file `langchain_classic.retrievers.llama_index` is never imported or run
+unused-file	low	langchain_classic/retrievers/metal.py	-	file `langchain_classic.retrievers.metal` is never imported or run
+unused-file	low	langchain_classic/retrievers/milvus.py	-	file `langchain_classic.retrievers.milvus` is never imported or run
+unused-file	low	langchain_classic/retrievers/outline.py	-	file `langchain_classic.retrievers.outline` is never imported or run
+unused-file	low	langchain_classic/retrievers/pinecone_hybrid_search.py	-	file `langchain_classic.retrievers.pinecone_hybrid_search` is never imported or run
+unused-file	low	langchain_classic/retrievers/pubmed.py	-	file `langchain_classic.retrievers.pubmed` is never imported or run
+unused-file	low	langchain_classic/retrievers/pupmed.py	-	file `langchain_classic.retrievers.pupmed` is never imported or run
+unused-file	low	langchain_classic/retrievers/remote_retriever.py	-	file `langchain_classic.retrievers.remote_retriever` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/astradb.py	-	file `langchain_classic.retrievers.self_query.astradb` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/chroma.py	-	file `langchain_classic.retrievers.self_query.chroma` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/dashvector.py	-	file `langchain_classic.retrievers.self_query.dashvector` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/databricks_vector_search.py	-	file `langchain_classic.retrievers.self_query.databricks_vector_search` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/deeplake.py	-	file `langchain_classic.retrievers.self_query.deeplake` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/dingo.py	-	file `langchain_classic.retrievers.self_query.dingo` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/elasticsearch.py	-	file `langchain_classic.retrievers.self_query.elasticsearch` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/milvus.py	-	file `langchain_classic.retrievers.self_query.milvus` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/mongodb_atlas.py	-	file `langchain_classic.retrievers.self_query.mongodb_atlas` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/myscale.py	-	file `langchain_classic.retrievers.self_query.myscale` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/opensearch.py	-	file `langchain_classic.retrievers.self_query.opensearch` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/pgvector.py	-	file `langchain_classic.retrievers.self_query.pgvector` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/pinecone.py	-	file `langchain_classic.retrievers.self_query.pinecone` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/qdrant.py	-	file `langchain_classic.retrievers.self_query.qdrant` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/redis.py	-	file `langchain_classic.retrievers.self_query.redis` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/supabase.py	-	file `langchain_classic.retrievers.self_query.supabase` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/tencentvectordb.py	-	file `langchain_classic.retrievers.self_query.tencentvectordb` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/timescalevector.py	-	file `langchain_classic.retrievers.self_query.timescalevector` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/vectara.py	-	file `langchain_classic.retrievers.self_query.vectara` is never imported or run
+unused-file	low	langchain_classic/retrievers/self_query/weaviate.py	-	file `langchain_classic.retrievers.self_query.weaviate` is never imported or run
+unused-file	low	langchain_classic/retrievers/svm.py	-	file `langchain_classic.retrievers.svm` is never imported or run
+unused-file	low	langchain_classic/retrievers/tavily_search_api.py	-	file `langchain_classic.retrievers.tavily_search_api` is never imported or run
+unused-file	low	langchain_classic/retrievers/tfidf.py	-	file `langchain_classic.retrievers.tfidf` is never imported or run
+unused-file	low	langchain_classic/retrievers/vespa_retriever.py	-	file `langchain_classic.retrievers.vespa_retriever` is never imported or run
+unused-file	low	langchain_classic/retrievers/weaviate_hybrid_search.py	-	file `langchain_classic.retrievers.weaviate_hybrid_search` is never imported or run
+unused-file	low	langchain_classic/retrievers/web_research.py	-	file `langchain_classic.retrievers.web_research` is never imported or run
+unused-file	low	langchain_classic/retrievers/wikipedia.py	-	file `langchain_classic.retrievers.wikipedia` is never imported or run
+unused-file	low	langchain_classic/retrievers/you.py	-	file `langchain_classic.retrievers.you` is never imported or run
+unused-file	low	langchain_classic/retrievers/zep.py	-	file `langchain_classic.retrievers.zep` is never imported or run
+unused-file	low	langchain_classic/retrievers/zilliz.py	-	file `langchain_classic.retrievers.zilliz` is never imported or run
+unused-file	low	langchain_classic/schema/callbacks/base.py	-	file `langchain_classic.schema.callbacks.base` is never imported or run
+unused-file	low	langchain_classic/schema/callbacks/manager.py	-	file `langchain_classic.schema.callbacks.manager` is never imported or run
+unused-file	low	langchain_classic/schema/callbacks/stdout.py	-	file `langchain_classic.schema.callbacks.stdout` is never imported or run
+unused-file	low	langchain_classic/schema/callbacks/streaming_stdout.py	-	file `langchain_classic.schema.callbacks.streaming_stdout` is never imported or run
+unused-file	low	langchain_classic/schema/callbacks/tracers/base.py	-	file `langchain_classic.schema.callbacks.tracers.base` is never imported or run
+unused-file	low	langchain_classic/schema/callbacks/tracers/evaluation.py	-	file `langchain_classic.schema.callbacks.tracers.evaluation` is never imported or run
+unused-file	low	langchain_classic/schema/callbacks/tracers/langchain.py	-	file `langchain_classic.schema.callbacks.tracers.langchain` is never imported or run
+unused-file	low	langchain_classic/schema/callbacks/tracers/log_stream.py	-	file `langchain_classic.schema.callbacks.tracers.log_stream` is never imported or run
+unused-file	low	langchain_classic/schema/callbacks/tracers/root_listeners.py	-	file `langchain_classic.schema.callbacks.tracers.root_listeners` is never imported or run
+unused-file	low	langchain_classic/schema/callbacks/tracers/run_collector.py	-	file `langchain_classic.schema.callbacks.tracers.run_collector` is never imported or run
+unused-file	low	langchain_classic/schema/callbacks/tracers/schemas.py	-	file `langchain_classic.schema.callbacks.tracers.schemas` is never imported or run
+unused-file	low	langchain_classic/schema/callbacks/tracers/stdout.py	-	file `langchain_classic.schema.callbacks.tracers.stdout` is never imported or run
+unused-file	low	langchain_classic/serpapi.py	-	file `langchain_classic.serpapi` is never imported or run
+unused-class	medium	langchain_classic/smith/evaluation/runner_utils.py:364:7	ChatModelInput	class `ChatModelInput` is never used
+unused-file	low	langchain_classic/sql_database.py	-	file `langchain_classic.sql_database` is never imported or run
+unused-file	low	langchain_classic/storage/redis.py	-	file `langchain_classic.storage.redis` is never imported or run
+unused-file	low	langchain_classic/storage/upstash_redis.py	-	file `langchain_classic.storage.upstash_redis` is never imported or run
+unused-file	low	langchain_classic/utilities/alpha_vantage.py	-	file `langchain_classic.utilities.alpha_vantage` is never imported or run
+unused-file	low	langchain_classic/utilities/anthropic.py	-	file `langchain_classic.utilities.anthropic` is never imported or run
+unused-file	low	langchain_classic/utilities/apify.py	-	file `langchain_classic.utilities.apify` is never imported or run
+unused-file	low	langchain_classic/utilities/arcee.py	-	file `langchain_classic.utilities.arcee` is never imported or run
+unused-file	low	langchain_classic/utilities/arxiv.py	-	file `langchain_classic.utilities.arxiv` is never imported or run
+unused-file	low	langchain_classic/utilities/awslambda.py	-	file `langchain_classic.utilities.awslambda` is never imported or run
+unused-file	low	langchain_classic/utilities/bibtex.py	-	file `langchain_classic.utilities.bibtex` is never imported or run
+unused-file	low	langchain_classic/utilities/bing_search.py	-	file `langchain_classic.utilities.bing_search` is never imported or run
+unused-file	low	langchain_classic/utilities/brave_search.py	-	file `langchain_classic.utilities.brave_search` is never imported or run
+unused-file	low	langchain_classic/utilities/clickup.py	-	file `langchain_classic.utilities.clickup` is never imported or run
+unused-file	low	langchain_classic/utilities/dalle_image_generator.py	-	file `langchain_classic.utilities.dalle_image_generator` is never imported or run
+unused-file	low	langchain_classic/utilities/dataforseo_api_search.py	-	file `langchain_classic.utilities.dataforseo_api_search` is never imported or run
+unused-file	low	langchain_classic/utilities/duckduckgo_search.py	-	file `langchain_classic.utilities.duckduckgo_search` is never imported or run
+unused-file	low	langchain_classic/utilities/github.py	-	file `langchain_classic.utilities.github` is never imported or run
+unused-file	low	langchain_classic/utilities/gitlab.py	-	file `langchain_classic.utilities.gitlab` is never imported or run
+unused-file	low	langchain_classic/utilities/golden_query.py	-	file `langchain_classic.utilities.golden_query` is never imported or run
+unused-file	low	langchain_classic/utilities/google_finance.py	-	file `langchain_classic.utilities.google_finance` is never imported or run
+unused-file	low	langchain_classic/utilities/google_jobs.py	-	file `langchain_classic.utilities.google_jobs` is never imported or run
+unused-file	low	langchain_classic/utilities/google_lens.py	-	file `langchain_classic.utilities.google_lens` is never imported or run
+unused-file	low	langchain_classic/utilities/google_places_api.py	-	file `langchain_classic.utilities.google_places_api` is never imported or run
+unused-file	low	langchain_classic/utilities/google_scholar.py	-	file `langchain_classic.utilities.google_scholar` is never imported or run
+unused-file	low	langchain_classic/utilities/google_search.py	-	file `langchain_classic.utilities.google_search` is never imported or run
+unused-file	low	langchain_classic/utilities/google_serper.py	-	file `langchain_classic.utilities.google_serper` is never imported or run
+unused-file	low	langchain_classic/utilities/google_trends.py	-	file `langchain_classic.utilities.google_trends` is never imported or run
+unused-file	low	langchain_classic/utilities/graphql.py	-	file `langchain_classic.utilities.graphql` is never imported or run
+unused-file	low	langchain_classic/utilities/jira.py	-	file `langchain_classic.utilities.jira` is never imported or run
+unused-file	low	langchain_classic/utilities/max_compute.py	-	file `langchain_classic.utilities.max_compute` is never imported or run
+unused-file	low	langchain_classic/utilities/merriam_webster.py	-	file `langchain_classic.utilities.merriam_webster` is never imported or run
+unused-file	low	langchain_classic/utilities/metaphor_search.py	-	file `langchain_classic.utilities.metaphor_search` is never imported or run
+unused-file	low	langchain_classic/utilities/nasa.py	-	file `langchain_classic.utilities.nasa` is never imported or run
+unused-file	low	langchain_classic/utilities/opaqueprompts.py	-	file `langchain_classic.utilities.opaqueprompts` is never imported or run
+unused-file	low	langchain_classic/utilities/openapi.py	-	file `langchain_classic.utilities.openapi` is never imported or run
+unused-file	low	langchain_classic/utilities/openweathermap.py	-	file `langchain_classic.utilities.openweathermap` is never imported or run
+unused-file	low	langchain_classic/utilities/outline.py	-	file `langchain_classic.utilities.outline` is never imported or run
+unused-file	low	langchain_classic/utilities/portkey.py	-	file `langchain_classic.utilities.portkey` is never imported or run
+unused-file	low	langchain_classic/utilities/powerbi.py	-	file `langchain_classic.utilities.powerbi` is never imported or run
+unused-file	low	langchain_classic/utilities/pubmed.py	-	file `langchain_classic.utilities.pubmed` is never imported or run
+unused-file	low	langchain_classic/utilities/python.py	-	file `langchain_classic.utilities.python` is never imported or run
+unused-file	low	langchain_classic/utilities/reddit_search.py	-	file `langchain_classic.utilities.reddit_search` is never imported or run
+unused-file	low	langchain_classic/utilities/redis.py	-	file `langchain_classic.utilities.redis` is never imported or run
+unused-file	low	langchain_classic/utilities/requests.py	-	file `langchain_classic.utilities.requests` is never imported or run
+unused-file	low	langchain_classic/utilities/scenexplain.py	-	file `langchain_classic.utilities.scenexplain` is never imported or run
+unused-file	low	langchain_classic/utilities/searchapi.py	-	file `langchain_classic.utilities.searchapi` is never imported or run
+unused-file	low	langchain_classic/utilities/searx_search.py	-	file `langchain_classic.utilities.searx_search` is never imported or run
+unused-file	low	langchain_classic/utilities/serpapi.py	-	file `langchain_classic.utilities.serpapi` is never imported or run
+unused-file	low	langchain_classic/utilities/spark_sql.py	-	file `langchain_classic.utilities.spark_sql` is never imported or run
+unused-file	low	langchain_classic/utilities/sql_database.py	-	file `langchain_classic.utilities.sql_database` is never imported or run
+unused-file	low	langchain_classic/utilities/stackexchange.py	-	file `langchain_classic.utilities.stackexchange` is never imported or run
+unused-file	low	langchain_classic/utilities/steam.py	-	file `langchain_classic.utilities.steam` is never imported or run
+unused-file	low	langchain_classic/utilities/tavily_search.py	-	file `langchain_classic.utilities.tavily_search` is never imported or run
+unused-file	low	langchain_classic/utilities/tensorflow_datasets.py	-	file `langchain_classic.utilities.tensorflow_datasets` is never imported or run
+unused-file	low	langchain_classic/utilities/twilio.py	-	file `langchain_classic.utilities.twilio` is never imported or run
+unused-file	low	langchain_classic/utilities/vertexai.py	-	file `langchain_classic.utilities.vertexai` is never imported or run
+unused-file	low	langchain_classic/utilities/wikipedia.py	-	file `langchain_classic.utilities.wikipedia` is never imported or run
+unused-file	low	langchain_classic/utilities/wolfram_alpha.py	-	file `langchain_classic.utilities.wolfram_alpha` is never imported or run
+unused-file	low	langchain_classic/utilities/zapier.py	-	file `langchain_classic.utilities.zapier` is never imported or run
+unused-file	low	langchain_classic/utils/aiter.py	-	file `langchain_classic.utils.aiter` is never imported or run
+unused-file	low	langchain_classic/utils/env.py	-	file `langchain_classic.utils.env` is never imported or run
+unused-file	low	langchain_classic/utils/ernie_functions.py	-	file `langchain_classic.utils.ernie_functions` is never imported or run
+unused-file	low	langchain_classic/utils/formatting.py	-	file `langchain_classic.utils.formatting` is never imported or run
+unused-file	low	langchain_classic/utils/html.py	-	file `langchain_classic.utils.html` is never imported or run
+unused-file	low	langchain_classic/utils/input.py	-	file `langchain_classic.utils.input` is never imported or run
+unused-file	low	langchain_classic/utils/iter.py	-	file `langchain_classic.utils.iter` is never imported or run
+unused-file	low	langchain_classic/utils/json_schema.py	-	file `langchain_classic.utils.json_schema` is never imported or run
+unused-file	low	langchain_classic/utils/math.py	-	file `langchain_classic.utils.math` is never imported or run
+unused-file	low	langchain_classic/utils/openai.py	-	file `langchain_classic.utils.openai` is never imported or run
+unused-file	low	langchain_classic/utils/openai_functions.py	-	file `langchain_classic.utils.openai_functions` is never imported or run
+unused-file	low	langchain_classic/utils/strings.py	-	file `langchain_classic.utils.strings` is never imported or run
+unused-file	low	langchain_classic/utils/utils.py	-	file `langchain_classic.utils.utils` is never imported or run
+unused-file	low	langchain_classic/vectorstores/alibabacloud_opensearch.py	-	file `langchain_classic.vectorstores.alibabacloud_opensearch` is never imported or run
+unused-file	low	langchain_classic/vectorstores/analyticdb.py	-	file `langchain_classic.vectorstores.analyticdb` is never imported or run
+unused-file	low	langchain_classic/vectorstores/annoy.py	-	file `langchain_classic.vectorstores.annoy` is never imported or run
+unused-file	low	langchain_classic/vectorstores/astradb.py	-	file `langchain_classic.vectorstores.astradb` is never imported or run
+unused-file	low	langchain_classic/vectorstores/atlas.py	-	file `langchain_classic.vectorstores.atlas` is never imported or run
+unused-file	low	langchain_classic/vectorstores/awadb.py	-	file `langchain_classic.vectorstores.awadb` is never imported or run
+unused-file	low	langchain_classic/vectorstores/azure_cosmos_db.py	-	file `langchain_classic.vectorstores.azure_cosmos_db` is never imported or run
+unused-file	low	langchain_classic/vectorstores/azuresearch.py	-	file `langchain_classic.vectorstores.azuresearch` is never imported or run
+unused-file	low	langchain_classic/vectorstores/bageldb.py	-	file `langchain_classic.vectorstores.bageldb` is never imported or run
+unused-file	low	langchain_classic/vectorstores/baiducloud_vector_search.py	-	file `langchain_classic.vectorstores.baiducloud_vector_search` is never imported or run
+unused-file	low	langchain_classic/vectorstores/base.py	-	file `langchain_classic.vectorstores.base` is never imported or run
+unused-file	low	langchain_classic/vectorstores/cassandra.py	-	file `langchain_classic.vectorstores.cassandra` is never imported or run
+unused-file	low	langchain_classic/vectorstores/chroma.py	-	file `langchain_classic.vectorstores.chroma` is never imported or run
+unused-file	low	langchain_classic/vectorstores/clarifai.py	-	file `langchain_classic.vectorstores.clarifai` is never imported or run
+unused-file	low	langchain_classic/vectorstores/clickhouse.py	-	file `langchain_classic.vectorstores.clickhouse` is never imported or run
+unused-file	low	langchain_classic/vectorstores/dashvector.py	-	file `langchain_classic.vectorstores.dashvector` is never imported or run
+unused-file	low	langchain_classic/vectorstores/databricks_vector_search.py	-	file `langchain_classic.vectorstores.databricks_vector_search` is never imported or run
+unused-file	low	langchain_classic/vectorstores/deeplake.py	-	file `langchain_classic.vectorstores.deeplake` is never imported or run
+unused-file	low	langchain_classic/vectorstores/dingo.py	-	file `langchain_classic.vectorstores.dingo` is never imported or run
+unused-file	low	langchain_classic/vectorstores/elastic_vector_search.py	-	file `langchain_classic.vectorstores.elastic_vector_search` is never imported or run
+unused-file	low	langchain_classic/vectorstores/elasticsearch.py	-	file `langchain_classic.vectorstores.elasticsearch` is never imported or run
+unused-file	low	langchain_classic/vectorstores/epsilla.py	-	file `langchain_classic.vectorstores.epsilla` is never imported or run
+unused-file	low	langchain_classic/vectorstores/faiss.py	-	file `langchain_classic.vectorstores.faiss` is never imported or run
+unused-file	low	langchain_classic/vectorstores/hippo.py	-	file `langchain_classic.vectorstores.hippo` is never imported or run
+unused-file	low	langchain_classic/vectorstores/hologres.py	-	file `langchain_classic.vectorstores.hologres` is never imported or run
+unused-file	low	langchain_classic/vectorstores/lancedb.py	-	file `langchain_classic.vectorstores.lancedb` is never imported or run
+unused-file	low	langchain_classic/vectorstores/llm_rails.py	-	file `langchain_classic.vectorstores.llm_rails` is never imported or run
+unused-file	low	langchain_classic/vectorstores/marqo.py	-	file `langchain_classic.vectorstores.marqo` is never imported or run
+unused-file	low	langchain_classic/vectorstores/matching_engine.py	-	file `langchain_classic.vectorstores.matching_engine` is never imported or run
+unused-file	low	langchain_classic/vectorstores/meilisearch.py	-	file `langchain_classic.vectorstores.meilisearch` is never imported or run
+unused-file	low	langchain_classic/vectorstores/milvus.py	-	file `langchain_classic.vectorstores.milvus` is never imported or run
+unused-file	low	langchain_classic/vectorstores/momento_vector_index.py	-	file `langchain_classic.vectorstores.momento_vector_index` is never imported or run
+unused-file	low	langchain_classic/vectorstores/mongodb_atlas.py	-	file `langchain_classic.vectorstores.mongodb_atlas` is never imported or run
+unused-file	low	langchain_classic/vectorstores/myscale.py	-	file `langchain_classic.vectorstores.myscale` is never imported or run
+unused-file	low	langchain_classic/vectorstores/neo4j_vector.py	-	file `langchain_classic.vectorstores.neo4j_vector` is never imported or run
+unused-file	low	langchain_classic/vectorstores/nucliadb.py	-	file `langchain_classic.vectorstores.nucliadb` is never imported or run
+unused-file	low	langchain_classic/vectorstores/opensearch_vector_search.py	-	file `langchain_classic.vectorstores.opensearch_vector_search` is never imported or run
+unused-file	low	langchain_classic/vectorstores/pgembedding.py	-	file `langchain_classic.vectorstores.pgembedding` is never imported or run
+unused-file	low	langchain_classic/vectorstores/pgvecto_rs.py	-	file `langchain_classic.vectorstores.pgvecto_rs` is never imported or run
+unused-file	low	langchain_classic/vectorstores/pgvector.py	-	file `langchain_classic.vectorstores.pgvector` is never imported or run
+unused-file	low	langchain_classic/vectorstores/pinecone.py	-	file `langchain_classic.vectorstores.pinecone` is never imported or run
+unused-file	low	langchain_classic/vectorstores/qdrant.py	-	file `langchain_classic.vectorstores.qdrant` is never imported or run
+unused-file	low	langchain_classic/vectorstores/redis/base.py	-	file `langchain_classic.vectorstores.redis.base` is never imported or run
+unused-file	low	langchain_classic/vectorstores/redis/filters.py	-	file `langchain_classic.vectorstores.redis.filters` is never imported or run
+unused-file	low	langchain_classic/vectorstores/redis/schema.py	-	file `langchain_classic.vectorstores.redis.schema` is never imported or run
+unused-file	low	langchain_classic/vectorstores/rocksetdb.py	-	file `langchain_classic.vectorstores.rocksetdb` is never imported or run
+unused-file	low	langchain_classic/vectorstores/scann.py	-	file `langchain_classic.vectorstores.scann` is never imported or run
+unused-file	low	langchain_classic/vectorstores/semadb.py	-	file `langchain_classic.vectorstores.semadb` is never imported or run
+unused-file	low	langchain_classic/vectorstores/singlestoredb.py	-	file `langchain_classic.vectorstores.singlestoredb` is never imported or run
+unused-file	low	langchain_classic/vectorstores/sklearn.py	-	file `langchain_classic.vectorstores.sklearn` is never imported or run
+unused-file	low	langchain_classic/vectorstores/sqlitevss.py	-	file `langchain_classic.vectorstores.sqlitevss` is never imported or run
+unused-file	low	langchain_classic/vectorstores/starrocks.py	-	file `langchain_classic.vectorstores.starrocks` is never imported or run
+unused-file	low	langchain_classic/vectorstores/supabase.py	-	file `langchain_classic.vectorstores.supabase` is never imported or run
+unused-file	low	langchain_classic/vectorstores/tair.py	-	file `langchain_classic.vectorstores.tair` is never imported or run
+unused-file	low	langchain_classic/vectorstores/tencentvectordb.py	-	file `langchain_classic.vectorstores.tencentvectordb` is never imported or run
+unused-file	low	langchain_classic/vectorstores/tiledb.py	-	file `langchain_classic.vectorstores.tiledb` is never imported or run
+unused-file	low	langchain_classic/vectorstores/timescalevector.py	-	file `langchain_classic.vectorstores.timescalevector` is never imported or run
+unused-file	low	langchain_classic/vectorstores/typesense.py	-	file `langchain_classic.vectorstores.typesense` is never imported or run
+unused-file	low	langchain_classic/vectorstores/usearch.py	-	file `langchain_classic.vectorstores.usearch` is never imported or run
+unused-file	low	langchain_classic/vectorstores/utils.py	-	file `langchain_classic.vectorstores.utils` is never imported or run
+unused-file	low	langchain_classic/vectorstores/vald.py	-	file `langchain_classic.vectorstores.vald` is never imported or run
+unused-file	low	langchain_classic/vectorstores/vearch.py	-	file `langchain_classic.vectorstores.vearch` is never imported or run
+unused-file	low	langchain_classic/vectorstores/vectara.py	-	file `langchain_classic.vectorstores.vectara` is never imported or run
+unused-file	low	langchain_classic/vectorstores/vespa.py	-	file `langchain_classic.vectorstores.vespa` is never imported or run
+unused-file	low	langchain_classic/vectorstores/weaviate.py	-	file `langchain_classic.vectorstores.weaviate` is never imported or run
+unused-file	low	langchain_classic/vectorstores/xata.py	-	file `langchain_classic.vectorstores.xata` is never imported or run
+unused-file	low	langchain_classic/vectorstores/yellowbrick.py	-	file `langchain_classic.vectorstores.yellowbrick` is never imported or run
+unused-file	low	langchain_classic/vectorstores/zep.py	-	file `langchain_classic.vectorstores.zep` is never imported or run
+unused-file	low	langchain_classic/vectorstores/zilliz.py	-	file `langchain_classic.vectorstores.zilliz` is never imported or run
+unused-variable	medium	tests/data.py:10:1	HELLO_PDF	variable `HELLO_PDF` is never used
+unused-variable	medium	tests/data.py:11:1	LAYOUT_PARSER_PAPER_PDF	variable `LAYOUT_PARSER_PAPER_PDF` is never used
+unused-variable	medium	tests/data.py:12:1	DUPLICATE_CHARS	variable `DUPLICATE_CHARS` is never used
+unused-variable	medium	tests/integration_tests/cache/fake_embeddings.py:8:1	fake_texts	variable `fake_texts` is never used
+unused-class	medium	tests/integration_tests/cache/fake_embeddings.py:51:7	ConsistentFakeEmbeddings	class `ConsistentFakeEmbeddings` is never used
+unused-class	medium	tests/integration_tests/cache/fake_embeddings.py:90:7	AngularTwoDimensionalEmbeddings	class `AngularTwoDimensionalEmbeddings` is never used
+unused-method	low	tests/integration_tests/chat_models/test_base.py:44:9	chat_model_class	method `TestStandard.chat_model_class` is never used
+unused-method	low	tests/integration_tests/chat_models/test_base.py:48:9	chat_model_params	method `TestStandard.chat_model_params` is never used
+unused-method	low	tests/integration_tests/chat_models/test_base.py:52:9	supports_image_inputs	method `TestStandard.supports_image_inputs` is never used
+unused-method	low	tests/integration_tests/chat_models/test_base.py:56:9	has_tool_calling	method `TestStandard.has_tool_calling` is never used
+unused-method	low	tests/integration_tests/chat_models/test_base.py:60:9	has_structured_output	method `TestStandard.has_structured_output` is never used
+unused-function	medium	tests/unit_tests/__init__.py:6:5	assert_all_importable	function `assert_all_importable` is never used
+unused-class	medium	tests/unit_tests/load/test_dump.py:52:7	NotSerializable	class `NotSerializable` is never used
+unused-variable	medium	tests/unit_tests/output_parsers/test_json.py:59:1	JSON_WITH_MARKDOWN_CODE_BLOCK	variable `JSON_WITH_MARKDOWN_CODE_BLOCK` is never used
+unused-variable	medium	tests/unit_tests/output_parsers/test_json.py:65:1	JSON_WITH_MARKDOWN_CODE_BLOCK_AND_NEWLINES	variable `JSON_WITH_MARKDOWN_CODE_BLOCK_AND_NEWLINES` is never used
+unused-variable	medium	tests/unit_tests/output_parsers/test_json.py:86:1	JSON_WITH_PYTHON_DICT	variable `JSON_WITH_PYTHON_DICT` is never used
+unused-variable	medium	tests/unit_tests/output_parsers/test_json.py:126:1	TEXT_BEFORE_AND_AFTER	variable `TEXT_BEFORE_AND_AFTER` is never used
+unused-variable	medium	tests/unit_tests/output_parsers/test_json.py:135:1	TEST_CASES	variable `TEST_CASES` is never used
+unused-variable	medium	tests/unit_tests/output_parsers/test_json.py:148:1	TEST_CASES_ESCAPED_QUOTES	variable `TEST_CASES_ESCAPED_QUOTES` is never used
+unused-variable	medium	tests/unit_tests/output_parsers/test_json.py:155:1	TEST_CASES_PARTIAL	variable `TEST_CASES_PARTIAL` is never used
+unused-variable	low	tests/unit_tests/output_parsers/test_retry.py:21:1	T	variable `T` is never used

@@ -1,0 +1,15 @@
+files_scanned=447
+symbols_checked=0
+symbols_kept=0
+findings=10
+--
+circular-import	high	src/poetry/console/logging/formatters/__init__.py:3:1	-	import cycle: poetry.console.logging.formatters -> poetry.console.logging.formatters.builder_formatter -> poetry.console.logging.formatters
+circular-import	high	src/poetry/installation/__init__.py:3:1	-	import cycle among 7 modules, shortest: poetry.installation -> poetry.installation.installer -> poetry.installation
+circular-import	high	src/poetry/layouts/__init__.py:4:1	-	import cycle: poetry.layouts -> poetry.layouts.src -> poetry.layouts
+circular-import	high	src/poetry/mixology/__init__.py:5:1	-	import cycle among 7 modules, shortest: poetry.mixology -> poetry.mixology.version_solver -> poetry.mixology
+circular-import	high	src/poetry/packages/__init__.py:4:1	-	import cycle among 3 modules, shortest: poetry.packages -> poetry.packages.locker -> poetry.packages
+circular-import	high	src/poetry/plugins/__init__.py:3:1	-	import cycle among 3 modules, shortest: poetry.plugins -> poetry.plugins.application_plugin -> poetry.plugins
+circular-import	high	src/poetry/publishing/__init__.py:3:1	-	import cycle among 3 modules, shortest: poetry.publishing -> poetry.publishing.publisher -> poetry.publishing
+circular-import	high	src/poetry/puzzle/__init__.py:3:1	-	import cycle among 3 modules, shortest: poetry.puzzle -> poetry.puzzle.solver -> poetry.puzzle
+circular-import	high	src/poetry/repositories/__init__.py:3:1	-	import cycle among 4 modules, shortest: poetry.repositories -> poetry.repositories.repository -> poetry.repositories
+circular-import	high	src/poetry/utils/env/__init__.py:8:1	-	import cycle among 10 modules, shortest: poetry.utils.env -> poetry.utils.env.base_env -> poetry.utils.env

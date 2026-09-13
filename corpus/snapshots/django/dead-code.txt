@@ -1,0 +1,299 @@
+files_scanned=2932
+symbols_checked=39739
+symbols_kept=3290
+findings=294
+--
+unused-file	low	django/conf/locale/ar/formats.py	-	file `django.conf.locale.ar.formats` is never imported or run
+unused-file	low	django/conf/locale/ar_DZ/formats.py	-	file `django.conf.locale.ar_DZ.formats` is never imported or run
+unused-file	low	django/conf/locale/az/formats.py	-	file `django.conf.locale.az.formats` is never imported or run
+unused-file	low	django/conf/locale/bg/formats.py	-	file `django.conf.locale.bg.formats` is never imported or run
+unused-file	low	django/conf/locale/bn/formats.py	-	file `django.conf.locale.bn.formats` is never imported or run
+unused-file	low	django/conf/locale/bs/formats.py	-	file `django.conf.locale.bs.formats` is never imported or run
+unused-file	low	django/conf/locale/ca/formats.py	-	file `django.conf.locale.ca.formats` is never imported or run
+unused-file	low	django/conf/locale/ckb/formats.py	-	file `django.conf.locale.ckb.formats` is never imported or run
+unused-file	low	django/conf/locale/cs/formats.py	-	file `django.conf.locale.cs.formats` is never imported or run
+unused-file	low	django/conf/locale/cy/formats.py	-	file `django.conf.locale.cy.formats` is never imported or run
+unused-file	low	django/conf/locale/da/formats.py	-	file `django.conf.locale.da.formats` is never imported or run
+unused-file	low	django/conf/locale/de/formats.py	-	file `django.conf.locale.de.formats` is never imported or run
+unused-file	low	django/conf/locale/de_CH/formats.py	-	file `django.conf.locale.de_CH.formats` is never imported or run
+unused-file	low	django/conf/locale/el/formats.py	-	file `django.conf.locale.el.formats` is never imported or run
+unused-file	low	django/conf/locale/en/formats.py	-	file `django.conf.locale.en.formats` is never imported or run
+unused-file	low	django/conf/locale/en_AU/formats.py	-	file `django.conf.locale.en_AU.formats` is never imported or run
+unused-file	low	django/conf/locale/en_CA/formats.py	-	file `django.conf.locale.en_CA.formats` is never imported or run
+unused-file	low	django/conf/locale/en_GB/formats.py	-	file `django.conf.locale.en_GB.formats` is never imported or run
+unused-file	low	django/conf/locale/en_IE/formats.py	-	file `django.conf.locale.en_IE.formats` is never imported or run
+unused-file	low	django/conf/locale/eo/formats.py	-	file `django.conf.locale.eo.formats` is never imported or run
+unused-file	low	django/conf/locale/es/formats.py	-	file `django.conf.locale.es.formats` is never imported or run
+unused-file	low	django/conf/locale/es_AR/formats.py	-	file `django.conf.locale.es_AR.formats` is never imported or run
+unused-file	low	django/conf/locale/es_CO/formats.py	-	file `django.conf.locale.es_CO.formats` is never imported or run
+unused-file	low	django/conf/locale/es_MX/formats.py	-	file `django.conf.locale.es_MX.formats` is never imported or run
+unused-file	low	django/conf/locale/es_NI/formats.py	-	file `django.conf.locale.es_NI.formats` is never imported or run
+unused-file	low	django/conf/locale/es_PR/formats.py	-	file `django.conf.locale.es_PR.formats` is never imported or run
+unused-file	low	django/conf/locale/et/formats.py	-	file `django.conf.locale.et.formats` is never imported or run
+unused-file	low	django/conf/locale/eu/formats.py	-	file `django.conf.locale.eu.formats` is never imported or run
+unused-file	low	django/conf/locale/fa/formats.py	-	file `django.conf.locale.fa.formats` is never imported or run
+unused-file	low	django/conf/locale/fi/formats.py	-	file `django.conf.locale.fi.formats` is never imported or run
+unused-file	low	django/conf/locale/fr/formats.py	-	file `django.conf.locale.fr.formats` is never imported or run
+unused-file	low	django/conf/locale/fr_BE/formats.py	-	file `django.conf.locale.fr_BE.formats` is never imported or run
+unused-file	low	django/conf/locale/fr_CA/formats.py	-	file `django.conf.locale.fr_CA.formats` is never imported or run
+unused-file	low	django/conf/locale/fr_CH/formats.py	-	file `django.conf.locale.fr_CH.formats` is never imported or run
+unused-file	low	django/conf/locale/fy/formats.py	-	file `django.conf.locale.fy.formats` is never imported or run
+unused-file	low	django/conf/locale/ga/formats.py	-	file `django.conf.locale.ga.formats` is never imported or run
+unused-file	low	django/conf/locale/gd/formats.py	-	file `django.conf.locale.gd.formats` is never imported or run
+unused-file	low	django/conf/locale/gl/formats.py	-	file `django.conf.locale.gl.formats` is never imported or run
+unused-file	low	django/conf/locale/he/formats.py	-	file `django.conf.locale.he.formats` is never imported or run
+unused-file	low	django/conf/locale/hi/formats.py	-	file `django.conf.locale.hi.formats` is never imported or run
+unused-file	low	django/conf/locale/hr/formats.py	-	file `django.conf.locale.hr.formats` is never imported or run
+unused-file	low	django/conf/locale/ht/formats.py	-	file `django.conf.locale.ht.formats` is never imported or run
+unused-file	low	django/conf/locale/hu/formats.py	-	file `django.conf.locale.hu.formats` is never imported or run
+unused-file	low	django/conf/locale/id/formats.py	-	file `django.conf.locale.id.formats` is never imported or run
+unused-file	low	django/conf/locale/ig/formats.py	-	file `django.conf.locale.ig.formats` is never imported or run
+unused-file	medium	django/conf/locale/is/formats.py	-	file `formats.py` is never imported or run
+unused-file	low	django/conf/locale/it/formats.py	-	file `django.conf.locale.it.formats` is never imported or run
+unused-file	low	django/conf/locale/ja/formats.py	-	file `django.conf.locale.ja.formats` is never imported or run
+unused-file	low	django/conf/locale/ka/formats.py	-	file `django.conf.locale.ka.formats` is never imported or run
+unused-file	low	django/conf/locale/km/formats.py	-	file `django.conf.locale.km.formats` is never imported or run
+unused-file	low	django/conf/locale/kn/formats.py	-	file `django.conf.locale.kn.formats` is never imported or run
+unused-file	low	django/conf/locale/ko/formats.py	-	file `django.conf.locale.ko.formats` is never imported or run
+unused-file	low	django/conf/locale/ky/formats.py	-	file `django.conf.locale.ky.formats` is never imported or run
+unused-file	low	django/conf/locale/lt/formats.py	-	file `django.conf.locale.lt.formats` is never imported or run
+unused-file	low	django/conf/locale/lv/formats.py	-	file `django.conf.locale.lv.formats` is never imported or run
+unused-file	low	django/conf/locale/mk/formats.py	-	file `django.conf.locale.mk.formats` is never imported or run
+unused-file	low	django/conf/locale/ml/formats.py	-	file `django.conf.locale.ml.formats` is never imported or run
+unused-file	low	django/conf/locale/mn/formats.py	-	file `django.conf.locale.mn.formats` is never imported or run
+unused-file	low	django/conf/locale/ms/formats.py	-	file `django.conf.locale.ms.formats` is never imported or run
+unused-file	low	django/conf/locale/nb/formats.py	-	file `django.conf.locale.nb.formats` is never imported or run
+unused-file	low	django/conf/locale/nl/formats.py	-	file `django.conf.locale.nl.formats` is never imported or run
+unused-file	low	django/conf/locale/nn/formats.py	-	file `django.conf.locale.nn.formats` is never imported or run
+unused-file	low	django/conf/locale/pl/formats.py	-	file `django.conf.locale.pl.formats` is never imported or run
+unused-file	low	django/conf/locale/pt/formats.py	-	file `django.conf.locale.pt.formats` is never imported or run
+unused-file	low	django/conf/locale/pt_BR/formats.py	-	file `django.conf.locale.pt_BR.formats` is never imported or run
+unused-file	low	django/conf/locale/ro/formats.py	-	file `django.conf.locale.ro.formats` is never imported or run
+unused-file	low	django/conf/locale/ru/formats.py	-	file `django.conf.locale.ru.formats` is never imported or run
+unused-file	low	django/conf/locale/sk/formats.py	-	file `django.conf.locale.sk.formats` is never imported or run
+unused-file	low	django/conf/locale/sl/formats.py	-	file `django.conf.locale.sl.formats` is never imported or run
+unused-file	low	django/conf/locale/sq/formats.py	-	file `django.conf.locale.sq.formats` is never imported or run
+unused-file	low	django/conf/locale/sr/formats.py	-	file `django.conf.locale.sr.formats` is never imported or run
+unused-file	low	django/conf/locale/sr_Latn/formats.py	-	file `django.conf.locale.sr_Latn.formats` is never imported or run
+unused-file	low	django/conf/locale/sv/formats.py	-	file `django.conf.locale.sv.formats` is never imported or run
+unused-file	low	django/conf/locale/ta/formats.py	-	file `django.conf.locale.ta.formats` is never imported or run
+unused-file	low	django/conf/locale/te/formats.py	-	file `django.conf.locale.te.formats` is never imported or run
+unused-file	low	django/conf/locale/tg/formats.py	-	file `django.conf.locale.tg.formats` is never imported or run
+unused-file	low	django/conf/locale/th/formats.py	-	file `django.conf.locale.th.formats` is never imported or run
+unused-file	low	django/conf/locale/tk/formats.py	-	file `django.conf.locale.tk.formats` is never imported or run
+unused-file	low	django/conf/locale/tr/formats.py	-	file `django.conf.locale.tr.formats` is never imported or run
+unused-file	low	django/conf/locale/ug/formats.py	-	file `django.conf.locale.ug.formats` is never imported or run
+unused-file	low	django/conf/locale/uk/formats.py	-	file `django.conf.locale.uk.formats` is never imported or run
+unused-file	low	django/conf/locale/uz/formats.py	-	file `django.conf.locale.uz.formats` is never imported or run
+unused-file	low	django/conf/locale/vi/formats.py	-	file `django.conf.locale.vi.formats` is never imported or run
+unused-file	low	django/conf/locale/zh_Hans/formats.py	-	file `django.conf.locale.zh_Hans.formats` is never imported or run
+unused-file	low	django/conf/locale/zh_Hant/formats.py	-	file `django.conf.locale.zh_Hant.formats` is never imported or run
+unused-file	low	django/contrib/gis/db/backends/mysql/base.py	-	file `django.contrib.gis.db.backends.mysql.base` is never imported or run
+unused-file	low	django/contrib/gis/db/backends/oracle/base.py	-	file `django.contrib.gis.db.backends.oracle.base` is never imported or run
+unused-method	low	django/contrib/gis/db/backends/postgis/operations.py:374:9	proj_version_tuple	method `PostGISOperations.proj_version_tuple` is never used
+unused-file	low	django/contrib/gis/db/backends/spatialite/base.py	-	file `django.contrib.gis.db.backends.spatialite.base` is never imported or run
+unused-method	low	django/contrib/gis/db/backends/spatialite/operations.py:167:9	geos_version	method `SpatiaLiteOperations.geos_version` is never used
+unused-method	low	django/contrib/gis/db/backends/spatialite/operations.py:171:9	proj_version	method `SpatiaLiteOperations.proj_version` is never used
+unused-method	low	django/contrib/gis/gdal/driver.py:90:9	driver_count	method `Driver.driver_count` is never used
+unused-variable	medium	django/contrib/gis/gdal/field.py:266:1	ROGRFieldTypes	variable `ROGRFieldTypes` is never used
+unused-variable	medium	django/contrib/gis/gdal/prototypes/ds.py:29:1	GDAL_OF_ALL	variable `GDAL_OF_ALL` is never used
+unused-variable	medium	django/contrib/gis/gdal/prototypes/ds.py:30:1	GDAL_OF_RASTER	variable `GDAL_OF_RASTER` is never used
+unused-variable	medium	django/contrib/gis/gdal/prototypes/ds.py:35:1	cleanup_all	variable `cleanup_all` is never used
+unused-variable	medium	django/contrib/gis/gdal/prototypes/ds.py:84:1	clone_feature	variable `clone_feature` is never used
+unused-variable	low	django/contrib/gis/gdal/prototypes/ds.py:91:1	get_field_as_datetime	variable `get_field_as_datetime` is never used
+unused-variable	low	django/contrib/gis/gdal/prototypes/geom.py:123:1	set_coord_dim	variable `set_coord_dim` is never used
+unused-variable	low	django/contrib/gis/gdal/prototypes/raster.py:40:1	add_band_ds	variable `add_band_ds` is never used
+unused-variable	low	django/contrib/gis/gdal/prototypes/raster.py:62:1	set_ds_metadata	variable `set_ds_metadata` is never used
+unused-variable	low	django/contrib/gis/gdal/prototypes/raster.py:68:1	get_ds_metadata_item	variable `get_ds_metadata_item` is never used
+unused-variable	low	django/contrib/gis/gdal/prototypes/raster.py:96:1	get_band_index	variable `get_band_index` is never used
+unused-variable	low	django/contrib/gis/gdal/prototypes/raster.py:98:1	get_band_ds	variable `get_band_ds` is never used
+unused-variable	medium	django/contrib/gis/gdal/prototypes/srs.py:35:1	destroy_srs	variable `destroy_srs` is never used
+unused-method	low	django/contrib/gis/gdal/raster/band.py:56:9	pixel_count	method `GDALBand.pixel_count` is never used
+unused-method	low	django/contrib/gis/gdal/srs.py:309:9	import_proj	method `SpatialReference.import_proj` is never used
+unused-method	low	django/contrib/gis/gdal/srs.py:321:9	import_xml	method `SpatialReference.import_xml` is never used
+unused-method	low	django/contrib/gis/geos/coordseq.py:180:9	setX	method `GEOSCoordSeq.setX` is never used
+unused-method	low	django/contrib/gis/geos/coordseq.py:188:9	setY	method `GEOSCoordSeq.setY` is never used
+unused-method	low	django/contrib/gis/geos/coordseq.py:196:9	setZ	method `GEOSCoordSeq.setZ` is never used
+unused-method	low	django/contrib/gis/geos/geometry.py:623:9	simplify	method `GEOSGeometryBase.simplify` is never used
+unused-class	medium	django/contrib/gis/geos/prototypes/io.py:35:7	WKBWriter_st	class `WKBWriter_st` is never used
+unused-file	low	django/contrib/gis/serializers/geojson.py	-	file `django.contrib.gis.serializers.geojson` is never imported or run
+unused-file	low	django/contrib/postgres/aggregates/mixins.py	-	file `django.contrib.postgres.aggregates.mixins` is never imported or run
+unused-class	medium	django/contrib/sessions/exceptions.py:10:7	SuspiciousSession	class `SuspiciousSession` is never used
+unused-class	medium	django/contrib/syndication/views.py:25:7	FeedDoesNotExist	class `FeedDoesNotExist` is never used
+unused-method	low	django/core/files/base.py:65:9	multiple_chunks	method `File.multiple_chunks` is never used
+unused-class	low	django/core/serializers/jsonl.py:13:7	Serializer	class `Serializer` is never used
+unused-class	low	django/core/serializers/pyyaml.py:42:7	Serializer	class `Serializer` is never used
+unused-class	low	django/core/serializers/xml_serializer.py:18:7	Serializer	class `Serializer` is never used
+unused-file	low	django/db/backends/dummy/base.py	-	file `django.db.backends.dummy.base` is never imported or run
+unused-method	low	django/db/backends/oracle/base.py:407:9	oracledb_version	method `DatabaseWrapper.oracledb_version` is never used
+unused-function	low	django/db/transaction.py:78:5	savepoint_commit	function `savepoint_commit` is never used
+unused-function	low	django/db/transaction.py:86:5	clean_savepoints	function `clean_savepoints` is never used
+unused-method	low	django/forms/widgets.py:220:9	absolute_path	method `Media.absolute_path` is never used
+unused-variable	low	django/tasks/backends/immediate.py:13:1	logger	variable `logger` is never used
+unused-function	low	django/template/context_processors.py:83:5	media	function `media` is never used
+unused-method	medium	django/test/runner.py:361:9	_exc_info_to_string	method `RemoteTestResult._exc_info_to_string` is never used
+unused-method	low	django/utils/feedgenerator.py:215:9	num_items	method `SyndicationFeed.num_items` is never used
+unused-variable	medium	django/utils/safestring.py:53:1	SafeText	variable `SafeText` is never used
+unused-variable	low	django/utils/translation/trans_null.py:12:1	gettext_noop	variable `gettext_noop` is never used
+unused-variable	low	django/utils/translation/trans_null.py:12:16	gettext_lazy	variable `gettext_lazy` is never used
+unused-variable	low	django/utils/translation/trans_null.py:12:31	_	variable `_` is never used
+unused-variable	low	django/utils/translation/trans_null.py:21:1	ngettext_lazy	variable `ngettext_lazy` is never used
+unused-function	low	django/utils/translation/trans_null.py:24:5	pgettext	function `pgettext` is never used
+unused-function	low	django/utils/translation/trans_null.py:28:5	npgettext	function `npgettext` is never used
+unused-function	low	django/utils/translation/trans_null.py:32:5	activate	function `activate` is never used
+unused-variable	low	django/utils/translation/trans_null.py:40:1	deactivate_all	variable `deactivate_all` is never used
+unused-function	low	django/utils/translation/trans_null.py:43:5	get_language	function `get_language` is never used
+unused-function	low	django/utils/translation/trans_real.py:299:5	activate	function `activate` is never used
+unused-function	low	django/utils/translation/trans_real.py:309:5	deactivate	function `deactivate` is never used
+unused-function	low	django/utils/translation/trans_real.py:318:5	deactivate_all	function `deactivate_all` is never used
+unused-function	low	django/utils/translation/trans_real.py:341:5	get_language_bidi	function `get_language_bidi` is never used
+unused-function	low	django/utils/translation/trans_real.py:398:5	pgettext	function `pgettext` is never used
+unused-function	low	django/utils/translation/trans_real.py:409:5	gettext_noop	function `gettext_noop` is never used
+unused-function	low	django/utils/translation/trans_real.py:438:5	npgettext	function `npgettext` is never used
+unused-function	low	django/utils/translation/trans_real.py:575:5	get_language_from_request	function `get_language_from_request` is never used
+unused-variable	medium	django/utils/version.py:16:1	PY310	variable `PY310` is never used
+unused-variable	medium	django/utils/version.py:17:1	PY311	variable `PY311` is never used
+unused-variable	low	django/views/generic/base.py:19:1	logger	variable `logger` is never used
+unused-variable	medium	django/views/static.py:68:1	template_translatable	variable `template_translatable` is never used
+unused-method	low	tests/admin_checks/tests.py:845:17	awesome_song	method `SongAdmin.awesome_song` is never used
+unused-method	low	tests/admin_docs/models.py:64:9	dummy_function	method `Person.dummy_function` is never used
+unused-method	low	tests/admin_docs/models.py:67:9	dummy_function_keyword_only_arg	method `Person.dummy_function_keyword_only_arg` is never used
+unused-method	low	tests/admin_docs/models.py:70:9	all_kinds_arg_function	method `Person.all_kinds_arg_function` is never used
+unused-method	low	tests/admin_docs/models.py:81:9	suffix_company_name	method `Person.suffix_company_name` is never used
+unused-method	low	tests/admin_docs/models.py:90:9	save_changes	method `Person.save_changes` is never used
+unused-variable	low	tests/admin_scripts/app_with_urls/urls_cbv.py:5:1	app_name	variable `app_name` is never used
+unused-variable	low	tests/admin_scripts/app_with_urls/urls_namespaced.py:5:1	app_name	variable `app_name` is never used
+unused-variable	low	tests/admin_scripts/app_with_urls/urls_nons.py:5:1	app_name	variable `app_name` is never used
+unused-method	low	tests/admin_views/tests.py:1282:21	is_published	method `BookAdmin.is_published` is never used
+unused-class	medium	tests/apps/two_configs_app/apps.py:8:7	TwoConfigBis	class `TwoConfigBis` is never used
+unused-class	medium	tests/apps/two_configs_one_default_app/apps.py:9:7	TwoConfigAlt	class `TwoConfigAlt` is never used
+unused-class	medium	tests/apps/two_default_configs_app/apps.py:9:7	TwoConfigBis	class `TwoConfigBis` is never used
+unused-variable	low	tests/asgi/urls.py:66:1	handler403	variable `handler403` is never used
+unused-class	medium	tests/auth_tests/test_auth_backends.py:1086:7	TypeErrorValidator	class `TypeErrorValidator` is never used
+unused-method	low	tests/backends/base/test_creation.py:310:9	skip_function	method `SkipTestClass.skip_function` is never used
+unused-method	low	tests/builtin_server/tests.py:48:9	log_request	method `DummyHandler.log_request` is never used
+unused-variable	low	tests/check_framework/template_test_apps/different_tags_app/templatetags/different_tags.py:3:1	register	variable `register` is never used
+unused-variable	low	tests/check_framework/template_test_apps/same_tags_app_1/templatetags/same_tags.py:3:1	register	variable `register` is never used
+unused-variable	low	tests/check_framework/template_test_apps/same_tags_app_2/templatetags/same_tags.py:3:1	register	variable `register` is never used
+unused-variable	low	tests/check_framework/urls/bad_class_based_error_handlers.py:13:1	handler400	variable `handler400` is never used
+unused-variable	low	tests/check_framework/urls/bad_class_based_error_handlers.py:14:1	handler403	variable `handler403` is never used
+unused-variable	low	tests/check_framework/urls/bad_class_based_error_handlers.py:15:1	handler404	variable `handler404` is never used
+unused-variable	low	tests/check_framework/urls/bad_class_based_error_handlers.py:16:1	handler500	variable `handler500` is never used
+unused-variable	low	tests/check_framework/urls/bad_error_handlers_invalid_path.py:3:1	handler400	variable `handler400` is never used
+unused-variable	low	tests/check_framework/urls/bad_error_handlers_invalid_path.py:4:1	handler403	variable `handler403` is never used
+unused-variable	low	tests/check_framework/urls/bad_error_handlers_invalid_path.py:5:1	handler404	variable `handler404` is never used
+unused-variable	low	tests/check_framework/urls/bad_error_handlers_invalid_path.py:6:1	handler500	variable `handler500` is never used
+unused-variable	low	tests/check_framework/urls/bad_function_based_error_handlers.py:3:1	handler400	variable `handler400` is never used
+unused-variable	low	tests/check_framework/urls/bad_function_based_error_handlers.py:4:1	handler403	variable `handler403` is never used
+unused-variable	low	tests/check_framework/urls/bad_function_based_error_handlers.py:5:1	handler404	variable `handler404` is never used
+unused-variable	low	tests/check_framework/urls/bad_function_based_error_handlers.py:6:1	handler500	variable `handler500` is never used
+unused-function	medium	tests/check_framework/urls/bad_function_based_error_handlers.py:9:5	bad_handler	function `bad_handler` is never used
+unused-variable	low	tests/check_framework/urls/good_class_based_error_handlers.py:6:1	handler400	variable `handler400` is never used
+unused-variable	low	tests/check_framework/urls/good_class_based_error_handlers.py:7:1	handler403	variable `handler403` is never used
+unused-variable	low	tests/check_framework/urls/good_class_based_error_handlers.py:8:1	handler404	variable `handler404` is never used
+unused-variable	low	tests/check_framework/urls/good_class_based_error_handlers.py:9:1	handler500	variable `handler500` is never used
+unused-variable	low	tests/check_framework/urls/good_error_handler_deferred_annotations.py:8:1	handler400	variable `handler400` is never used
+unused-variable	low	tests/check_framework/urls/good_error_handler_deferred_annotations.py:9:1	handler403	variable `handler403` is never used
+unused-variable	low	tests/check_framework/urls/good_error_handler_deferred_annotations.py:10:1	handler404	variable `handler404` is never used
+unused-variable	low	tests/check_framework/urls/good_error_handler_deferred_annotations.py:11:1	handler500	variable `handler500` is never used
+unused-function	medium	tests/check_framework/urls/good_error_handler_deferred_annotations.py:14:5	good_handler_deferred_annotations	function `good_handler_deferred_annotations` is never used
+unused-variable	low	tests/check_framework/urls/good_function_based_error_handlers.py:3:1	handler400	variable `handler400` is never used
+unused-variable	low	tests/check_framework/urls/good_function_based_error_handlers.py:4:1	handler403	variable `handler403` is never used
+unused-variable	low	tests/check_framework/urls/good_function_based_error_handlers.py:5:1	handler404	variable `handler404` is never used
+unused-variable	low	tests/check_framework/urls/good_function_based_error_handlers.py:6:1	handler500	variable `handler500` is never used
+unused-function	medium	tests/check_framework/urls/good_function_based_error_handlers.py:9:5	good_handler	function `good_handler` is never used
+unused-variable	low	tests/csrf_tests/csrf_token_error_handler_urls.py:3:1	handler404	variable `handler404` is never used
+unused-method	low	tests/custom_migration_operations/more_operations.py:21:9	state_backwards	method `TestOperation.state_backwards` is never used
+unused-method	low	tests/custom_migration_operations/operations.py:21:9	state_backwards	method `TestOperation.state_backwards` is never used
+unused-function	low	tests/forms_tests/models.py:11:5	callable_default	function `callable_default` is never used
+unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:16:5	api_get_distance	function `api_get_distance` is never used
+unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:20:5	api_get_buffer	function `api_get_buffer` is never used
+unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:24:5	api_get_geom_typeid	function `api_get_geom_typeid` is never used
+unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:28:5	api_get_num_coords	function `api_get_num_coords` is never used
+unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:32:5	api_get_centroid	function `api_get_centroid` is never used
+unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:36:5	api_get_empty	function `api_get_empty` is never used
+unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:40:5	api_get_valid	function `api_get_valid` is never used
+unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:44:5	api_get_simple	function `api_get_simple` is never used
+unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:48:5	api_get_ring	function `api_get_ring` is never used
+unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:52:5	api_get_boundary	function `api_get_boundary` is never used
+unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:56:5	api_get_convex_hull	function `api_get_convex_hull` is never used
+unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:60:5	api_get_extent	function `api_get_extent` is never used
+unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:64:5	api_get_area	function `api_get_area` is never used
+unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:68:5	api_get_length	function `api_get_length` is never used
+unused-variable	low	tests/handlers/tests_custom_error_handlers.py:31:1	handler403	variable `handler403` is never used
+unused-variable	medium	tests/i18n/commands/__init__.py:5:1	dummy1	variable `dummy1` is never used
+unused-variable	low	tests/i18n/commands/__init__.py:8:1	dummy2	variable `dummy2` is never used
+unused-variable	low	tests/i18n/commands/__init__.py:13:1	dummy3	variable `dummy3` is never used
+unused-variable	medium	tests/i18n/commands/__init__.py:15:1	dummy4	variable `dummy4` is never used
+unused-variable	medium	tests/i18n/commands/__init__.py:18:1	dummy5	variable `dummy5` is never used
+unused-variable	medium	tests/i18n/exclude/__init__.py:9:1	dummy1	variable `dummy1` is never used
+unused-variable	low	tests/i18n/exclude/__init__.py:12:1	dummy2	variable `dummy2` is never used
+unused-variable	medium	tests/i18n/obsolete_translations/__init__.py:3:1	string1	variable `string1` is never used
+unused-variable	low	tests/i18n/other/locale/fr/formats.py:2:1	CUSTOM_DAY_FORMAT	variable `CUSTOM_DAY_FORMAT` is never used
+unused-variable	low	tests/i18n/patterns/urls/namespace.py:7:1	app_name	variable `app_name` is never used
+unused-variable	low	tests/i18n/patterns/urls/wrong_namespace.py:8:1	app_name	variable `app_name` is never used
+unused-variable	low	tests/i18n/project_dir/__init__.py:4:1	string	variable `string` is never used
+unused-variable	low	tests/i18n/project_dir/app_no_locale/models.py:3:1	string	variable `string` is never used
+unused-variable	low	tests/i18n/project_dir/app_with_locale/models.py:3:1	string	variable `string` is never used
+unused-variable	medium	tests/i18n/unchanged/__init__.py:3:1	string1	variable `string1` is never used
+unused-variable	medium	tests/i18n/unchanged/__init__.py:4:1	string2	variable `string2` is never used
+unused-method	low	tests/invalid_models_tests/test_models.py:1498:17	filling_id	method `Cheese.filling_id` is never used
+unused-class	medium	tests/logging_tests/logconfig.py:7:7	MyHandler	class `MyHandler` is never used
+unused-method	low	tests/mail/test_backends.py:572:15	handle_DATA	method `SMTPHandler.handle_DATA` is never used
+unused-method	low	tests/mail/tests.py:151:9	assertStartsWith	method `MailTestsMixin.assertStartsWith` is never used
+unused-class	medium	tests/middleware_exceptions/middleware.py:41:7	ProcessExceptionExcMiddleware	class `ProcessExceptionExcMiddleware` is never used
+unused-method	low	tests/schema/tests.py:313:9	assert_column_comment_not_exists	method `SchemaTests.assert_column_comment_not_exists` is never used
+unused-method	low	tests/servers/test_basehttp.py:15:9	sendall	method `Stub.sendall` is never used
+unused-class	low	tests/sessions_tests/no_clear_expired.py:4:7	SessionStore	class `SessionStore` is never used
+unused-function	low	tests/staticfiles_tests/test_handlers.py:30:5	handler404	function `handler404` is never used
+unused-function	low	tests/staticfiles_tests/test_storage.py:28:5	hashed_file_path	function `hashed_file_path` is never used
+unused-method	low	tests/syndication_tests/feeds.py:169:9	item_enclosure_size	method `TestSingleEnclosureRSSFeed.item_enclosure_size` is never used
+unused-method	low	tests/syndication_tests/feeds.py:172:9	item_mime_type	method `TestSingleEnclosureRSSFeed.item_mime_type` is never used
+unused-method	low	tests/syndication_tests/feeds.py:307:9	item_enclosure_size	method `TestSingleEnclosureAtomFeed.item_enclosure_size` is never used
+unused-method	low	tests/syndication_tests/feeds.py:310:9	item_mime_type	method `TestSingleEnclosureAtomFeed.item_mime_type` is never used
+unused-variable	low	tests/template_backends/apps/good/templatetags/good_tags.py:3:1	register	variable `register` is never used
+unused-variable	low	tests/template_backends/apps/good/templatetags/override.py:3:1	register	variable `register` is never used
+unused-variable	low	tests/template_backends/apps/good/templatetags/subpackage/tags.py:3:1	register	variable `register` is never used
+unused-method	low	tests/template_tests/tests.py:239:17	uses_deferred_annotations	method `MyObject.uses_deferred_annotations` is never used
+unused-method	low	tests/template_tests/utils.py:109:9	method2	method `SomeClass.method2` is never used
+unused-method	low	tests/template_tests/utils.py:112:9	method3	method `SomeClass.method3` is never used
+unused-method	low	tests/template_tests/utils.py:115:9	method4	method `SomeClass.method4` is never used
+unused-method	low	tests/template_tests/utils.py:118:9	method5	method `SomeClass.method5` is never used
+unused-method	low	tests/template_tests/utils.py:129:9	silent_fail_attribute	method `SomeClass.silent_fail_attribute` is never used
+unused-method	low	tests/template_tests/utils.py:133:9	noisy_fail_attribute	method `SomeClass.noisy_fail_attribute` is never used
+unused-method	low	tests/template_tests/utils.py:137:9	attribute_error_attribute	method `SomeClass.attribute_error_attribute` is never used
+unused-method	low	tests/template_tests/utils.py:141:9	type_error_attribute	method `SomeClass.type_error_attribute` is never used
+unused-method	low	tests/template_tests/utils.py:151:9	is_true	method `TestObj.is_true` is never used
+unused-method	low	tests/template_tests/utils.py:154:9	is_false	method `TestObj.is_false` is never used
+unused-method	low	tests/template_tests/utils.py:157:9	is_bad	method `TestObj.is_bad` is never used
+unused-class	low	tests/test_client_regress/session.py:4:7	SessionStore	class `SessionStore` is never used
+unused-variable	low	tests/urlpatterns_reverse/included_app_urls.py:5:1	app_name	variable `app_name` is never used
+unused-variable	low	tests/urlpatterns_reverse/included_namespace_urls.py:9:1	app_name	variable `app_name` is never used
+unused-class	medium	tests/urlpatterns_reverse/middleware.py:8:7	ChangeURLconfMiddleware	class `ChangeURLconfMiddleware` is never used
+unused-class	medium	tests/urlpatterns_reverse/middleware.py:13:7	NullChangeURLconfMiddleware	class `NullChangeURLconfMiddleware` is never used
+unused-class	medium	tests/urlpatterns_reverse/middleware.py:18:7	ReverseInnerInResponseMiddleware	class `ReverseInnerInResponseMiddleware` is never used
+unused-class	medium	tests/urlpatterns_reverse/middleware.py:23:7	ReverseOuterInResponseMiddleware	class `ReverseOuterInResponseMiddleware` is never used
+unused-class	medium	tests/urlpatterns_reverse/middleware.py:28:7	ReverseInnerInStreaming	class `ReverseInnerInStreaming` is never used
+unused-class	medium	tests/urlpatterns_reverse/middleware.py:36:7	ReverseOuterInStreaming	class `ReverseOuterInStreaming` is never used
+unused-variable	low	tests/urlpatterns_reverse/namespace_urls.py:15:1	app_name	variable `app_name` is never used
+unused-variable	low	tests/urlpatterns_reverse/urls_error_handlers.py:5:1	handler400	variable `handler400` is never used
+unused-variable	low	tests/urlpatterns_reverse/urls_error_handlers.py:6:1	handler403	variable `handler403` is never used
+unused-variable	low	tests/urlpatterns_reverse/urls_error_handlers.py:7:1	handler404	variable `handler404` is never used
+unused-variable	low	tests/urlpatterns_reverse/urls_error_handlers.py:8:1	handler500	variable `handler500` is never used
+unused-variable	low	tests/urlpatterns_reverse/urls_error_handlers_callables.py:7:1	handler400	variable `handler400` is never used
+unused-variable	low	tests/urlpatterns_reverse/urls_error_handlers_callables.py:8:1	handler403	variable `handler403` is never used
+unused-variable	low	tests/urlpatterns_reverse/urls_error_handlers_callables.py:9:1	handler404	variable `handler404` is never used
+unused-variable	low	tests/urlpatterns_reverse/urls_error_handlers_callables.py:10:1	handler500	variable `handler500` is never used
+unused-function	medium	tests/urlpatterns_reverse/views.py:25:5	erroneous_view	function `erroneous_view` is never used
+unused-variable	medium	tests/utils_tests/test_csp.py:11:1	alt_config	variable `alt_config` is never used
+unused-method	medium	tests/utils_tests/test_functional.py:115:17	__value	method `Class.__value` is never used
+unused-variable	low	tests/utils_tests/test_module/another_bad_module.py:3:1	content	variable `content` is never used
+unused-variable	low	tests/utils_tests/test_module/another_good_module.py:3:1	content	variable `content` is never used
+unused-variable	low	tests/utils_tests/test_module/bad_module.py:3:1	content	variable `content` is never used
+unused-variable	low	tests/utils_tests/test_module/child_module/grandchild_module.py:1:1	content	variable `content` is never used
+unused-variable	low	tests/utils_tests/test_module/collision/collider.py:1:1	content	variable `content` is never used
+unused-variable	medium	tests/utils_tests/test_text.py:12:1	IS_WIDE_BUILD	variable `IS_WIDE_BUILD` is never used
+unused-variable	medium	tests/view_tests/generic_urls.py:14:1	object_list_dict	variable `object_list_dict` is never used
+unused-variable	medium	tests/view_tests/generic_urls.py:19:1	object_list_no_paginate_by	variable `object_list_no_paginate_by` is never used
+unused-variable	medium	tests/view_tests/generic_urls.py:23:1	numeric_days_info_dict	variable `numeric_days_info_dict` is never used
+unused-variable	medium	tests/view_tests/generic_urls.py:25:1	date_based_datefield_info_dict	variable `date_based_datefield_info_dict` is never used

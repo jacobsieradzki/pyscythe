@@ -1,0 +1,11 @@
+files_scanned=43
+symbols_checked=23
+symbols_kept=0
+findings=6
+--
+missing-dependency	low	backend/app/alembic/env.py:5:1	sqlalchemy	`sqlalchemy` is imported but `sqlalchemy` is not a declared dependency; it arrives through `alembic`
+missing-dependency	low	backend/app/main.py:6:1	starlette	`starlette` is imported but `starlette` is not a declared dependency; it arrives through `fastapi`
+unused-dependency	medium	backend/pyproject.toml	httpx	dependency `httpx` is never imported
+unused-dependency	low	pyproject.toml	prek	dependency `prek` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	smokeshow	dependency `smokeshow` (dependency-groups.github-actions) is never imported
+unused-dependency	low	pyproject.toml	zizmor	dependency `zizmor` (dependency-groups.dev) is never imported

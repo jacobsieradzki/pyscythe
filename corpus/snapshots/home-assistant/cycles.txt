@@ -1,0 +1,32 @@
+files_scanned=18735
+symbols_checked=0
+symbols_kept=0
+findings=27
+--
+circular-import	high	homeassistant/auth/__init__.py:24:1	-	import cycle among 5 modules, shortest: homeassistant.auth -> homeassistant.auth.auth_store -> homeassistant.auth
+circular-import	high	homeassistant/components/august/__init__.py:28:1	-	import cycle: homeassistant.components.august -> homeassistant.components.august.util -> homeassistant.components.august
+circular-import	high	homeassistant/components/auth/__init__.py:161:1	-	import cycle among 4 modules, shortest: homeassistant.components.auth -> homeassistant.components.auth.login_flow -> homeassistant.components.auth
+circular-import	high	homeassistant/components/backup/__init__.py:25:1	-	import cycle among 5 modules, shortest: homeassistant.components.backup -> homeassistant.components.backup.http -> homeassistant.components.backup
+circular-import	high	homeassistant/components/blueprint/__init__.py:7:1	-	import cycle: homeassistant.components.blueprint -> homeassistant.components.blueprint.websocket_api -> homeassistant.components.blueprint
+circular-import	high	homeassistant/components/cloud/__init__.py:56:1	-	import cycle among 6 modules, shortest: homeassistant.components.cloud -> homeassistant.components.cloud.client -> homeassistant.components.cloud
+circular-import	high	homeassistant/components/conversation/__init__.py:32:1	-	import cycle among 7 modules, shortest: homeassistant.components.conversation -> homeassistant.components.conversation.chat_log -> homeassistant.components.conversation
+circular-import	high	homeassistant/components/energy/__init__.py:9:1	-	import cycle: homeassistant.components.energy -> homeassistant.components.energy.websocket_api -> homeassistant.components.energy.validate -> homeassistant.components.energy
+circular-import	high	homeassistant/components/eurotronic_cometblue/__init__.py:20:1	-	import cycle among 4 modules, shortest: homeassistant.components.eurotronic_cometblue -> homeassistant.components.eurotronic_cometblue.services -> homeassistant.components.eurotronic_cometblue.entity -> homeassistant.components.eurotronic_cometblue
+circular-import	high	homeassistant/components/google_assistant/__init__.py:32:1	-	import cycle among 5 modules, shortest: homeassistant.components.google_assistant -> homeassistant.components.google_assistant.http -> homeassistant.components.google_assistant.helpers -> homeassistant.components.google_assistant
+circular-import	high	homeassistant/components/homeassistant_hardware/__init__.py:8:1	-	import cycle: homeassistant.components.homeassistant_hardware -> homeassistant.components.homeassistant_hardware.helpers -> homeassistant.components.homeassistant_hardware
+circular-import	high	homeassistant/components/iotty/__init__.py:12:1	-	import cycle: homeassistant.components.iotty -> homeassistant.components.iotty.coordinator -> homeassistant.components.iotty
+circular-import	high	homeassistant/components/mobile_app/__init__.py:63:1	-	import cycle: homeassistant.components.mobile_app -> homeassistant.components.mobile_app.timers -> homeassistant.components.mobile_app
+circular-import	high	homeassistant/components/mqtt/__init__.py:107:1	-	import cycle: homeassistant.components.mqtt -> homeassistant.components.mqtt.subscription -> homeassistant.components.mqtt
+circular-import	high	homeassistant/components/recorder/__init__.py:45:1	-	import cycle among 7 modules, shortest: homeassistant.components.recorder -> homeassistant.components.recorder.core -> homeassistant.components.recorder
+circular-import	high	homeassistant/components/smappee/__init__.py:19:1	-	import cycle: homeassistant.components.smappee -> homeassistant.components.smappee.config_flow -> homeassistant.components.smappee
+circular-import	high	homeassistant/components/sonos/__init__.py:65:1	-	import cycle: homeassistant.components.sonos -> homeassistant.components.sonos.services -> homeassistant.components.sonos.media_player -> homeassistant.components.sonos
+circular-import	high	homeassistant/components/tasmota/__init__.py:27:1	-	import cycle: homeassistant.components.tasmota -> homeassistant.components.tasmota.device_automation -> homeassistant.components.tasmota
+circular-import	high	homeassistant/components/thread/__init__.py:9:1	-	import cycle among 3 modules, shortest: homeassistant.components.thread -> homeassistant.components.thread.dataset_store -> homeassistant.components.thread
+circular-import	high	homeassistant/components/toon/__init__.py:23:1	-	import cycle: homeassistant.components.toon -> homeassistant.components.toon.oauth2 -> homeassistant.components.toon
+circular-import	high	homeassistant/components/vesync/__init__.py:22:1	-	import cycle: homeassistant.components.vesync -> homeassistant.components.vesync.services -> homeassistant.components.vesync
+circular-import	high	homeassistant/components/websocket_api/__init__.py:9:1	-	import cycle among 10 modules, shortest: homeassistant.components.websocket_api -> homeassistant.components.websocket_api.commands -> homeassistant.components.websocket_api
+circular-import	high	homeassistant/components/yale/__init__.py:30:1	-	import cycle: homeassistant.components.yale -> homeassistant.components.yale.util -> homeassistant.components.yale
+circular-import	high	homeassistant/components/yolink/__init__.py:31:1	-	import cycle: homeassistant.components.yolink -> homeassistant.components.yolink.device_trigger -> homeassistant.components.yolink
+circular-import	high	homeassistant/components/zha/__init__.py:58:1	-	import cycle among 6 modules, shortest: homeassistant.components.zha -> homeassistant.components.zha.radio_manager -> homeassistant.components.zha
+circular-import	high	homeassistant/components/zwave_js/__init__.py:136:1	-	import cycle: homeassistant.components.zwave_js -> homeassistant.components.zwave_js.services -> homeassistant.components.zwave_js
+circular-import	high	homeassistant/helpers/config_validation.py:115:1	-	import cycle among 13 modules, shortest: homeassistant.helpers.config_validation -> homeassistant.helpers.template -> homeassistant.helpers.template.helpers -> homeassistant.helpers.config_validation

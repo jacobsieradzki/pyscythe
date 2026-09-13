@@ -1255,6 +1255,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "pyscythe_corpus"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "camino",
+ "clap",
+ "serde",
+ "serde_json",
+ "similar",
+ "toml",
+]
+
+[[package]]
 name = "pyscythe_metrics"
 version = "0.1.0"
 dependencies = [

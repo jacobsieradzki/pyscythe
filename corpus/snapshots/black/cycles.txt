@@ -1,0 +1,6 @@
+files_scanned=333
+symbols_checked=0
+symbols_kept=0
+findings=1
+--
+circular-import	high	src/black/__init__.py:30:1	-	import cycle among 15 modules, shortest: black -> black.cache -> black

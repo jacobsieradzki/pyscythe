@@ -1,0 +1,39 @@
+files_scanned=333
+symbols_checked=49
+symbols_kept=0
+findings=34
+--
+unresolved-import	low	action/main.py:60:12		import `tomllib` resolves to nothing on the search path
+unused-dependency	low	pyproject.toml	docutils	dependency `docutils` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	furo	dependency `furo` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	hatch-fancy-pypi-readme	dependency `hatch-fancy-pypi-readme` (dependency-groups.hatch) is never imported
+unused-dependency	low	pyproject.toml	hatch-vcs	dependency `hatch-vcs` (dependency-groups.hatch) is never imported
+unused-dependency	low	pyproject.toml	myst-parser	dependency `myst-parser` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	pypyp	dependency `pypyp` (dependency-groups.cibw) is never imported
+unused-dependency	low	pyproject.toml	sphinx-copybutton	dependency `sphinx-copybutton` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	sphinxcontrib-programoutput	dependency `sphinxcontrib-programoutput` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	virtualenv	dependency `virtualenv` (dependency-groups.hatch) is never imported
+unresolved-import	low	scripts/check_pre_commit_rev_in_example.py:15:8		import `commonmark` resolves to nothing on the search path
+unresolved-import	low	scripts/check_pre_commit_rev_in_example.py:16:8		import `yaml` resolves to nothing on the search path
+unresolved-import	low	scripts/check_pre_commit_rev_in_example.py:17:1		import `bs4` resolves to nothing on the search path
+unresolved-import	low	scripts/fuzz.py:64:16		import `atheris` resolves to nothing on the search path
+unresolved-import	low	scripts/release_tests.py:10:1		import `release` resolves to nothing on the search path
+unresolved-import	low	src/blackd/__init__.py:11:5		import `multidict` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/collections.py:1:8		import `core` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/collections.py:1:20		import `a` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/collections.py:6:1		import `foo` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/comments.py:16:1		import `b` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/comments.py:19:12		import `fast` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/comments.py:21:12		import `slow` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/comments.py:38:12		import `inner_imports` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/comments2.py:1:1		import `com` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/fmtonoff.py:5:1		import `third_party` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/fmtonoff.py:7:1		import `library` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/fmtonoff.py:63:5		import `hello` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/fmtskip_after_bracket_with_comment.py:6:1		import `m` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/import_line_collapse.py:1:1		import `middleman` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/import_spacing.py:26:1		import `some_library` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/import_spacing.py:29:1		import `name_of_a_company` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/pattern_matching_extras.py:2:8		import `match` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/python315.py:3:1		import `package` resolves to nothing on the search path
+unresolved-import	low	tests/data/cases/type_ignore_with_other_comment.py:1:8		import `pandas` resolves to nothing on the search path

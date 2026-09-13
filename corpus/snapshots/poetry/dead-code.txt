@@ -1,0 +1,56 @@
+files_scanned=447
+symbols_checked=3584
+symbols_kept=1626
+findings=51
+--
+unused-class	medium	src/poetry/console/commands/about.py:6:7	AboutCommand	class `AboutCommand` is never used
+unused-file	low	src/poetry/console/commands/cache/clear.py	-	file `poetry.console.commands.cache.clear` is never imported or run
+unused-file	low	src/poetry/console/commands/cache/list.py	-	file `poetry.console.commands.cache.list` is never imported or run
+unused-class	medium	src/poetry/console/commands/check.py:18:7	CheckCommand	class `CheckCommand` is never used
+unused-file	low	src/poetry/console/commands/debug/info.py	-	file `poetry.console.commands.debug.info` is never imported or run
+unused-file	low	src/poetry/console/commands/debug/resolve.py	-	file `poetry.console.commands.debug.resolve` is never imported or run
+unused-file	low	src/poetry/console/commands/debug/tags.py	-	file `poetry.console.commands.debug.tags` is never imported or run
+unused-file	low	src/poetry/console/commands/env/info.py	-	file `poetry.console.commands.env.info` is never imported or run
+unused-file	low	src/poetry/console/commands/env/list.py	-	file `poetry.console.commands.env.list` is never imported or run
+unused-file	low	src/poetry/console/commands/env/remove.py	-	file `poetry.console.commands.env.remove` is never imported or run
+unused-class	medium	src/poetry/console/commands/new.py:17:7	NewCommand	class `NewCommand` is never used
+unused-class	medium	src/poetry/console/commands/publish.py:16:7	PublishCommand	class `PublishCommand` is never used
+unused-class	medium	src/poetry/console/commands/python/install.py:26:7	PythonInstallCommand	class `PythonInstallCommand` is never used
+unused-file	low	src/poetry/console/commands/python/list.py	-	file `poetry.console.commands.python.list` is never imported or run
+unused-class	medium	src/poetry/console/commands/run.py:17:7	RunCommand	class `RunCommand` is never used
+unused-class	medium	src/poetry/console/commands/search.py:15:7	SearchCommand	class `SearchCommand` is never used
+unused-file	low	src/poetry/console/commands/self/add.py	-	file `poetry.console.commands.self.add` is never imported or run
+unused-file	low	src/poetry/console/commands/self/lock.py	-	file `poetry.console.commands.self.lock` is never imported or run
+unused-file	low	src/poetry/console/commands/self/remove.py	-	file `poetry.console.commands.self.remove` is never imported or run
+unused-class	medium	src/poetry/console/commands/self/show/__init__.py:17:7	SelfShowCommand	class `SelfShowCommand` is never used
+unused-file	low	src/poetry/console/commands/self/show/plugins.py	-	file `poetry.console.commands.self.show.plugins` is never imported or run
+unused-file	low	src/poetry/console/commands/self/update.py	-	file `poetry.console.commands.self.update` is never imported or run
+unused-file	low	src/poetry/console/commands/source/add.py	-	file `poetry.console.commands.source.add` is never imported or run
+unused-file	low	src/poetry/console/commands/source/remove.py	-	file `poetry.console.commands.source.remove` is never imported or run
+unused-file	low	src/poetry/console/commands/source/show.py	-	file `poetry.console.commands.source.show` is never imported or run
+unused-file	low	src/poetry/console/events/console_events.py	-	file `poetry.console.events.console_events` is never imported or run
+unused-class	medium	src/poetry/installation/chef.py:27:7	ChefError	class `ChefError` is never used
+unused-method	low	src/poetry/installation/installer.py:165:9	is_updating	method `Installer.is_updating` is never used
+unused-file	low	src/poetry/masonry/api.py	-	file `poetry.masonry.api` is never imported or run
+unused-method	low	src/poetry/packages/locker.py:137:9	set_local_config	method `Locker.set_local_config` is never used
+unused-variable	medium	src/poetry/puzzle/provider.py:60:1	logger	variable `logger` is never used
+unused-method	medium	src/poetry/puzzle/provider.py:116:9	_formatter_context	method `Indicator._formatter_context` is never used
+unused-variable	medium	src/poetry/repositories/pypi_repository.py:28:1	logger	variable `logger` is never used
+unused-method	low	src/poetry/utils/env/base_env.py:390:9	is_valid_for_marker	method `Env.is_valid_for_marker` is never used
+unused-method	low	src/poetry/utils/env/site_packages.py:87:9	candidates	method `SitePackages.candidates` is never used
+unused-method	low	src/poetry/utils/env/site_packages.py:158:9	find_distribution_direct_url_json_files	method `SitePackages.find_distribution_direct_url_json_files` is never used
+unused-method	low	src/poetry/utils/env/virtual_env.py:155:9	temp_environ	method `VirtualEnv.temp_environ` is never used
+unused-variable	medium	src/poetry/utils/wheel.py:16:1	logger	variable `logger` is never used
+unused-variable	low	tests/console/commands/cache/test_clear.py:18:1	T	variable `T` is never used
+unused-function	low	tests/console/commands/test_check.py:379:5	pyproject_with_empty_readme_file	function `pyproject_with_empty_readme_file` is never used
+unused-function	low	tests/inspection/test_info.py:72:5	demo_setup_cfg	function `demo_setup_cfg` is never used
+unused-variable	medium	tests/installation/test_chooser.py:27:1	JSON_FIXTURES	variable `JSON_FIXTURES` is never used
+unused-variable	medium	tests/installation/test_chooser.py:31:1	LEGACY_FIXTURES	variable `LEGACY_FIXTURES` is never used
+unused-variable	medium	tests/integration/test_utils_vcs_git.py:76:1	REF_TO_REVISION_MAP	variable `REF_TO_REVISION_MAP` is never used
+unused-function	low	tests/integration/test_utils_vcs_git.py:129:5	remote_default_branch	function `remote_default_branch` is never used
+unused-class	medium	tests/plugins/test_plugin_manager.py:56:7	MyCommandPlugin	class `MyCommandPlugin` is never used
+unused-class	medium	tests/types.py:49:7	SourcesFactory	class `SourcesFactory` is never used
+unused-function	medium	tests/utils/env/python/test_manager.py:111:5	find_downloadable_versions_include_incompatible	function `find_downloadable_versions_include_incompatible` is never used
+unused-variable	medium	tests/utils/env/test_env.py:47:1	ERRORING_SCRIPT	variable `ERRORING_SCRIPT` is never used
+unused-class	medium	tests/utils/env/test_env.py:54:7	MockVirtualEnv	class `MockVirtualEnv` is never used
+unused-variable	low	tests/utils/test_cache.py:30:1	T	variable `T` is never used

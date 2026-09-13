@@ -1,0 +1,9 @@
+files_scanned=190
+symbols_checked=216
+symbols_kept=0
+findings=3
+health: score=99 grade=A functions=216 max_cyclomatic=12 max_cognitive=15
+--
+complex-function	high	styleguide_example/blog_examples/google_login_server_flow/raw/views.py:30:9	GoogleLoginApi.get	function `GoogleLoginApi.get` has cyclomatic complexity 12 and cognitive complexity 11 over 50 lines
+complex-function	high	styleguide_example/blog_examples/google_login_server_flow/sdk/views.py:30:9	GoogleLoginApi.get	function `GoogleLoginApi.get` has cyclomatic complexity 12 and cognitive complexity 11 over 50 lines
+complex-function	high	styleguide_example/common/services.py:9:5	model_update	function `model_update` has cyclomatic complexity 12 and cognitive complexity 15 over 79 lines

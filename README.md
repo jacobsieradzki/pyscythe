@@ -116,6 +116,19 @@ mise run check
 
 For Rust, the tools that map onto oxlint, oxfmt, and fallow are clippy, rustfmt, and rustc's own `dead_code` and `unreachable_pub` lints plus `cargo shear`; all are wired in here.
 
+### The corpus
+
+`corpus/corpus.toml` pins thirteen public projects (Django, Home Assistant, pandas, pydantic, and others chosen for the shapes they add) at a commit each, with the environment for each pinned in `corpus/locks`. `mise run corpus` clones them into `corpus/cache`, builds their environments with uv, runs every analysis, and compares the reports with `corpus/snapshots`: one sorted line per finding, paths relative to the project. The `corpus` workflow does the same on every push and pull request, so a change in output over real code is always a visible diff in the pull request.
+
+```bash
+mise run corpus                              # check every project
+mise run corpus -- --project django          # one project
+mise run corpus:update                       # accept a deliberate change
+cargo run -p pyscythe_corpus -- lock --project django   # re-resolve an environment
+```
+
+When a rule changes, the snapshot diff is the review: read it, make sure every line that moved is one you meant to move, then update. To add a project, add its entry to the manifest, run `lock` for it, then `update`.
+
 ### Releasing
 
 Bump `version` in the workspace `Cargo.toml`, commit, then tag and push:

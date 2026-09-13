@@ -1,0 +1,52 @@
+files_scanned=583
+symbols_checked=5888
+symbols_kept=1086
+findings=47
+--
+unused-variable	medium	mitmproxy/addons/core.py:18:1	CONF_DIR	variable `CONF_DIR` is never used
+unused-variable	medium	mitmproxy/addons/core.py:19:1	LISTEN_PORT	variable `LISTEN_PORT` is never used
+unused-variable	low	mitmproxy/contentviews/_api.py:17:1	logger	variable `logger` is never used
+unused-variable	low	mitmproxy/contentviews/_view_css.py:75:5	x	variable `x` is never used
+unused-function	medium	mitmproxy/contentviews/base.py:124:5	format_text	function `format_text` is never used
+unused-method	low	mitmproxy/contrib/kaitaistruct/exif.py:83:17	next_ifd	method `Ifd.next_ifd` is never used
+unused-method	low	mitmproxy/contrib/kaitaistruct/gif.py:156:13	has_interlace	method `LocalImageDescriptor.has_interlace` is never used
+unused-method	low	mitmproxy/contrib/kaitaistruct/gif.py:164:13	has_sorted_color_table	method `LocalImageDescriptor.has_sorted_color_table` is never used
+unused-method	low	mitmproxy/contrib/kaitaistruct/gif.py:257:13	transparent_color_flag	method `ExtGraphicControl.transparent_color_flag` is never used
+unused-method	low	mitmproxy/contrib/kaitaistruct/gif.py:265:13	user_input_flag	method `ExtGraphicControl.user_input_flag` is never used
+unused-file	low	mitmproxy/contrib/kaitaistruct/google_protobuf.py	-	file `mitmproxy.contrib.kaitaistruct.google_protobuf` is never imported or run
+unused-method	low	mitmproxy/contrib/kaitaistruct/jpeg.py:201:17	sampling_x	method `Component.sampling_x` is never used
+unused-method	low	mitmproxy/contrib/kaitaistruct/jpeg.py:209:17	sampling_y	method `Component.sampling_y` is never used
+unused-method	low	mitmproxy/contrib/kaitaistruct/png.py:347:13	gamma_ratio	method `GamaChunk.gamma_ratio` is never used
+unused-method	low	mitmproxy/contrib/kaitaistruct/vlq_base128_le.py:104:9	value_signed	method `VlqBase128Le.value_signed` is never used
+unused-method	low	mitmproxy/contrib/wbxml/ASCommandResponse.py:46:6	getWBXMLBytes	method `ASCommandResponse.getWBXMLBytes` is never used
+unused-method	low	mitmproxy/contrib/wbxml/ASCommandResponse.py:49:6	getXMLString	method `ASCommandResponse.getXMLString` is never used
+unused-method	low	mitmproxy/contrib/wbxml/ASWBXML.py:817:6	loadXml	method `ASWBXML.loadXml` is never used
+unused-method	low	mitmproxy/contrib/wbxml/ASWBXMLCodePage.py:41:6	getToken	method `ASWBXMLCodePage.getToken` is never used
+unused-variable	low	mitmproxy/io/har.py:13:1	logger	variable `logger` is never used
+unused-function	low	mitmproxy/net/http/multipart.py:78:5	encode	function `encode` is never used
+unused-function	low	mitmproxy/net/http/multipart.py:88:5	decode	function `decode` is never used
+unused-variable	low	mitmproxy/net/http/validate.py:9:1	logger	variable `logger` is never used
+unused-function	low	mitmproxy/platform/openbsd.py:1:5	original_addr	function `original_addr` is never used
+unused-class	low	mitmproxy/platform/windows.py:48:7	Resolver	class `Resolver` is never used
+unused-variable	medium	mitmproxy/proxy/layers/modes.py:109:1	SOCKS5_REP_HOST_UNREACHABLE	variable `SOCKS5_REP_HOST_UNREACHABLE` is never used
+unused-variable	low	mitmproxy/utils/signals.py:25:1	R	variable `R` is never used
+unused-file	medium	release/deploy-microsoft-store.py	-	file `deploy-microsoft-store.py` is never imported or run
+unused-method	low	test/mitmproxy/addons/test_keepserving.py:22:9	creplay	method `Dummy.creplay` is never used
+unused-method	low	test/mitmproxy/addons/test_keepserving.py:26:9	sreplay	method `Dummy.sreplay` is never used
+unused-variable	low	test/mitmproxy/addons/test_tlsconfig.py:70:1	here	variable `here` is never used
+unused-function	medium	test/mitmproxy/io/test_tnetstring.py:132:5	suite	function `suite` is never used
+unused-function	low	test/mitmproxy/proxy/bench.py:18:5	test_bench_http_roundtrip	function `test_bench_http_roundtrip` is never used
+unused-function	low	test/mitmproxy/proxy/bench.py:23:5	test_bench_http2_roundtrip	function `test_bench_http2_roundtrip` is never used
+unused-function	low	test/mitmproxy/proxy/bench.py:28:5	test_bench_tcp_roundtrip	function `test_bench_tcp_roundtrip` is never used
+unused-function	low	test/mitmproxy/proxy/bench.py:33:5	test_bench_server_tls	function `test_bench_server_tls` is never used
+unused-function	low	test/mitmproxy/proxy/bench.py:38:5	test_bench_client_tls	function `test_bench_client_tls` is never used
+unused-function	low	test/mitmproxy/proxy/bench.py:43:5	test_bench_tls_both	function `test_bench_tls_both` is never used
+unused-variable	medium	test/mitmproxy/proxy/layers/http/hyper_h2_test_helpers.py:24:1	SAMPLE_SETTINGS	variable `SAMPLE_SETTINGS` is never used
+unused-method	low	test/mitmproxy/proxy/layers/http/hyper_h2_test_helpers.py:41:9	refresh_encoder	method `FrameFactory.refresh_encoder` is never used
+unused-method	low	test/mitmproxy/proxy/layers/http/hyper_h2_test_helpers.py:106:9	build_ping_frame	method `FrameFactory.build_ping_frame` is never used
+unused-method	low	test/mitmproxy/proxy/layers/http/hyper_h2_test_helpers.py:167:9	change_table_size	method `FrameFactory.change_table_size` is never used
+unused-variable	medium	test/mitmproxy/proxy/layers/http/test_http_version_interop.py:30:1	h2f	variable `h2f` is never used
+unused-method	low	test/mitmproxy/test_command.py:52:9	choose	method `TAddon.choose` is never used
+unused-method	low	test/mitmproxy/test_flow.py:29:9	websocket_start	method `State.websocket_start` is never used
+unused-method	medium	test/mitmproxy/test_http.py:794:9	_2host	method `TestHeaders._2host` is never used
+unused-class	low	test/mitmproxy/utils/test_typecheck.py:19:7	T	class `T` is never used

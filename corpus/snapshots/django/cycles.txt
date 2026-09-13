@@ -1,0 +1,25 @@
+files_scanned=2932
+symbols_checked=0
+symbols_kept=0
+findings=20
+--
+circular-import	high	django/__init__.py:1:1	-	import cycle among 3 modules, shortest: django -> django.utils.version -> django
+circular-import	high	django/contrib/admin/__init__.py:1:1	-	import cycle among 10 modules, shortest: django.contrib.admin -> django.contrib.admin.decorators -> django.contrib.admin
+circular-import	high	django/contrib/gis/db/models/__init__.py:3:8	-	import cycle among 6 modules, shortest: django.contrib.gis.db.models -> django.contrib.gis.db.models.functions -> django.contrib.gis.db.models
+circular-import	high	django/contrib/gis/gdal/__init__.py:29:1	-	import cycle among 21 modules, shortest: django.contrib.gis.gdal -> django.contrib.gis.gdal.datasource -> django.contrib.gis.gdal
+circular-import	high	django/contrib/gis/geos/__init__.py:6:1	-	import cycle among 20 modules, shortest: django.contrib.gis.geos -> django.contrib.gis.geos.collections -> django.contrib.gis.geos
+circular-import	high	django/contrib/messages/__init__.py:1:1	-	import cycle among 4 modules, shortest: django.contrib.messages -> django.contrib.messages.api -> django.contrib.messages
+circular-import	high	django/contrib/postgres/fields/__init__.py:3:1	-	import cycle: django.contrib.postgres.fields -> django.contrib.postgres.fields.hstore -> django.contrib.postgres.fields
+circular-import	high	django/core/checks/__init__.py:17:8	-	import cycle among 15 modules, shortest: django.core.checks -> django.core.checks.async_checks -> django.core.checks
+circular-import	high	django/core/files/__init__.py:1:1	-	import cycle: django.core.files -> django.core.files.base -> django.core.files
+circular-import	high	django/core/mail/__init__.py:10:1	-	import cycle among 3 modules, shortest: django.core.mail -> django.core.mail.handler -> django.core.mail
+circular-import	high	django/core/management/__init__.py:19:1	-	import cycle: django.core.management -> django.core.management.base -> django.core.management
+circular-import	high	django/db/backends/oracle/base.py:65:1	-	import cycle among 3 modules, shortest: django.db.backends.oracle.base -> django.db.backends.oracle.operations -> django.db.backends.oracle.base
+circular-import	high	django/db/backends/postgresql/base.py:81:1	-	import cycle: django.db.backends.postgresql.base -> django.db.backends.postgresql.introspection -> django.db.backends.postgresql.base
+circular-import	high	django/db/backends/sqlite3/base.py:22:1	-	import cycle among 3 modules, shortest: django.db.backends.sqlite3.base -> django.db.backends.sqlite3.features -> django.db.backends.sqlite3.base
+circular-import	high	django/db/migrations/__init__.py:1:1	-	import cycle among 6 modules, shortest: django.db.migrations -> django.db.migrations.migration -> django.db.migrations
+circular-import	high	django/db/models/__init__.py:2:1	-	import cycle among 45 modules, shortest: django.db.models -> django.db.models.signals -> django.db.models
+circular-import	high	django/http/__init__.py:2:1	-	import cycle among 3 modules, shortest: django.http -> django.http.request -> django.http
+circular-import	high	django/template/__init__.py:55:1	-	import cycle among 7 modules, shortest: django.template -> django.template.base -> django.template
+circular-import	high	django/test/__init__.py:3:1	-	import cycle among 4 modules, shortest: django.test -> django.test.client -> django.test
+circular-import	high	django/views/__init__.py:1:1	-	import cycle among 6 modules, shortest: django.views -> django.views.generic -> django.views

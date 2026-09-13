@@ -1,0 +1,65 @@
+files_scanned=427
+symbols_checked=77
+symbols_kept=0
+findings=60
+--
+unresolved-import	low	celery/app/base.py:65:12		import `annotationlib` resolves to nothing on the search path
+missing-dependency	low	celery/app/base.py:1385:27	amqp	`amqp` is imported but `amqp` is not a declared dependency; it arrives through `kombu`
+unresolved-import	low	celery/backends/azureblockblob.py:12:12		import `azure` resolves to nothing on the search path
+unresolved-import	low	celery/backends/cache.py:36:24		import `memcache` resolves to nothing on the search path
+unresolved-import	low	celery/backends/cassandra.py:13:12		import `cassandra` resolves to nothing on the search path
+unresolved-import	low	celery/backends/consul.py:14:12		import `consul` resolves to nothing on the search path
+unresolved-import	low	celery/backends/couchbase.py:10:5		import `couchbase` resolves to nothing on the search path
+unresolved-import	low	celery/backends/couchbase.py:16:5		import `couchbase_core` resolves to nothing on the search path
+unresolved-import	low	celery/backends/database/__init__.py:19:5		import `sqlalchemy` resolves to nothing on the search path
+unresolved-import	low	celery/backends/dynamodb.py:16:5		import `botocore` resolves to nothing on the search path
+unresolved-import	low	celery/backends/gcs.py:20:12		import `requests` resolves to nothing on the search path
+unresolved-import	low	celery/backends/mongodb.py:14:12		import `pymongo` resolves to nothing on the search path
+unresolved-import	low	celery/backends/mongodb.py:20:9		import `bson` resolves to nothing on the search path
+unresolved-import	low	celery/backends/redis.py:12:1		import `redis` resolves to nothing on the search path
+missing-dependency	low	celery/bin/base.py:23:5	pygments	`pygments` is imported but `pygments` is not a declared dependency; it arrives through `pytest`
+unresolved-import	low	celery/bin/shell.py:27:12		import `bpython` resolves to nothing on the search path
+unresolved-import	low	celery/bin/shell.py:42:5		import `IPython` resolves to nothing on the search path
+unresolved-import	low	celery/bootsteps.py:15:5		import `greenlet` resolves to nothing on the search path
+unresolved-import	low	celery/concurrency/asynpool.py:48:5		import `_billiard` resolves to nothing on the search path
+unresolved-import	low	celery/contrib/sphinx.py:51:1		import `docutils` resolves to nothing on the search path
+unresolved-import	low	celery/utils/debug.py:13:5		import `psutil` resolves to nothing on the search path
+unresolved-import	low	celery/utils/serialization.py:14:12		import `cPickle` resolves to nothing on the search path
+unresolved-import	low	celery/utils/threads.py:20:13		import `thread` resolves to nothing on the search path
+unresolved-import	low	celery/utils/threads.py:23:17		import `_dummy_thread` resolves to nothing on the search path
+unresolved-import	low	celery/utils/threads.py:25:17		import `dummy_thread` resolves to nothing on the search path
+unresolved-import	low	celery/utils/time.py:29:5		import `backports` resolves to nothing on the search path
+unresolved-import	low	celery/worker/control.py:516:16		import `objgraph` resolves to nothing on the search path
+unresolved-import	low	docs/changelog_formatter.py:8:1		import `colorama` resolves to nothing on the search path
+unresolved-import	low	examples/celery_http_gateway/manage.py:6:12		import `settings` resolves to nothing on the search path
+unresolved-import	low	examples/celery_http_gateway/urls.py:3:1		import `djcelery` resolves to nothing on the search path
+unused-dependency	medium	examples/django/requirements.txt	celery	dependency `celery` is never imported
+unused-dependency	medium	examples/django/requirements.txt	django	dependency `django` is never imported
+unused-dependency	medium	examples/django/requirements.txt	sqlalchemy	dependency `sqlalchemy` is never imported
+unresolved-import	low	examples/eventlet/webcrawler.py:27:1		import `pybloom_live` resolves to nothing on the search path
+unresolved-import	low	examples/eventlet/webcrawler.py:34:5		import `urlparse` resolves to nothing on the search path
+unused-dependency	medium	examples/next-steps/setup.py	celery	dependency `celery` is never imported
+unresolved-import	low	examples/next-steps/setup.py:9:1		import `setuptools` resolves to nothing on the search path
+missing-dependency	medium	examples/next-steps/setup.py:22:16	pytest	`pytest` is imported but `pytest` is not a declared dependency
+unused-dependency	low	requirements/constraints.txt	azure-identity	dependency `azure-identity` (dependency-groups.azureblockblob) is never imported
+unused-dependency	low	requirements/constraints.txt	azure-storage-blob	dependency `azure-storage-blob` (dependency-groups.azureblockblob) is never imported
+unused-dependency	low	requirements/constraints.txt	cassandra-driver	dependency `cassandra-driver` (dependency-groups.cassandra) is never imported
+unused-dependency	low	requirements/constraints.txt	ephem	dependency `ephem` (dependency-groups.solar) is never imported
+unused-dependency	low	requirements/constraints.txt	flake8-docstrings	dependency `flake8-docstrings` (dependency-groups.pkgutils) is never imported
+unused-dependency	low	requirements/constraints.txt	futures	dependency `futures` (dependency-groups.thread) is never imported
+unused-dependency	low	requirements/constraints.txt	google-cloud-firestore	dependency `google-cloud-firestore` (dependency-groups.gcs) is never imported
+unused-dependency	low	requirements/constraints.txt	grpcio	dependency `grpcio` (dependency-groups.gcs) is never imported
+unused-dependency	low	requirements/constraints.txt	mock	dependency `mock` (dependency-groups.mock) is never imported
+unused-dependency	low	requirements/constraints.txt	pycurl	dependency `pycurl` (dependency-groups.test-ci-default) is never imported
+unused-dependency	low	requirements/constraints.txt	pydocstyle	dependency `pydocstyle` (dependency-groups.pkgutils) is never imported
+unused-dependency	low	requirements/constraints.txt	python-consul2	dependency `python-consul2` (dependency-groups.consul) is never imported
+unused-dependency	low	requirements/constraints.txt	python-memcached	dependency `python-memcached` (dependency-groups.pymemcache) is never imported
+unused-dependency	low	requirements/constraints.txt	softlayer-messaging	dependency `softlayer-messaging` (dependency-groups.slmq) is never imported
+unused-dependency	low	requirements/constraints.txt	sphinx-autobuild	dependency `sphinx-autobuild` (dependency-groups.sphinxautobuild) is never imported
+unused-dependency	low	requirements/constraints.txt	sphinx-click	dependency `sphinx-click` (dependency-groups.docs) is never imported
+unused-dependency	low	requirements/constraints.txt	sphinx2rst	dependency `sphinx2rst` (dependency-groups.pkgutils) is never imported
+unresolved-import	low	t/smoke/conftest.py:8:1		import `pytest_docker_tools` resolves to nothing on the search path
+unresolved-import	low	t/smoke/tests/test_chord_headers_exchange.py:8:1		import `tenacity` resolves to nothing on the search path
+unresolved-import	low	t/unit/backends/test_mongodb.py:5:8		import `dns` resolves to nothing on the search path
+unresolved-import	low	t/unit/contrib/proj/foo.py:1:1		import `xyzzy` resolves to nothing on the search path
+unresolved-import	low	t/unit/tasks/test_tasks.py:21:5		import `urllib2` resolves to nothing on the search path

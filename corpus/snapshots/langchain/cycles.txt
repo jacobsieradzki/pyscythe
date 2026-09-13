@@ -1,0 +1,22 @@
+files_scanned=1581
+symbols_checked=0
+symbols_kept=0
+findings=17
+--
+circular-import	high	langchain_classic/_api/__init__.py:19:1	-	import cycle: langchain_classic._api -> langchain_classic._api.module_import -> langchain_classic._api
+circular-import	high	langchain_classic/agents/__init__.py:18:1	-	import cycle among 42 modules, shortest: langchain_classic.agents -> langchain_classic.agents.agent -> langchain_classic.agents
+circular-import	high	langchain_classic/chains/combine_documents/__init__.py:3:1	-	import cycle among 3 modules, shortest: langchain_classic.chains.combine_documents -> langchain_classic.chains.combine_documents.reduce -> langchain_classic.chains.combine_documents
+circular-import	high	langchain_classic/chains/elasticsearch_database/__init__.py:1:1	-	import cycle: langchain_classic.chains.elasticsearch_database -> langchain_classic.chains.elasticsearch_database.base -> langchain_classic.chains.elasticsearch_database
+circular-import	high	langchain_classic/chains/openai_functions/__init__.py:7:1	-	import cycle among 5 modules, shortest: langchain_classic.chains.openai_functions -> langchain_classic.chains.openai_functions.citation_fuzzy_match -> langchain_classic.chains.openai_functions
+circular-import	high	langchain_classic/chains/qa_with_sources/__init__.py:3:1	-	import cycle: langchain_classic.chains.qa_with_sources -> langchain_classic.chains.qa_with_sources.loading -> langchain_classic.chains.qa_with_sources
+circular-import	high	langchain_classic/chains/query_constructor/__init__.py:1:1	-	import cycle: langchain_classic.chains.query_constructor -> langchain_classic.chains.query_constructor.base -> langchain_classic.chains.query_constructor
+circular-import	high	langchain_classic/chains/question_answering/__init__.py:1:1	-	import cycle: langchain_classic.chains.question_answering -> langchain_classic.chains.question_answering.chain -> langchain_classic.chains.question_answering
+circular-import	high	langchain_classic/chains/router/__init__.py:2:1	-	import cycle among 4 modules, shortest: langchain_classic.chains.router -> langchain_classic.chains.router.llm_router -> langchain_classic.chains.router
+circular-import	high	langchain_classic/chains/summarize/__init__.py:1:1	-	import cycle: langchain_classic.chains.summarize -> langchain_classic.chains.summarize.chain -> langchain_classic.chains.summarize
+circular-import	high	langchain_classic/evaluation/__init__.py:57:1	-	import cycle among 22 modules, shortest: langchain_classic.evaluation -> langchain_classic.evaluation.agents -> langchain_classic.evaluation
+circular-import	high	langchain_classic/memory/__init__.py:6:1	-	import cycle among 11 modules, shortest: langchain_classic.memory -> langchain_classic.memory.buffer -> langchain_classic.memory
+circular-import	high	langchain_classic/output_parsers/__init__.py:24:1	-	import cycle among 5 modules, shortest: langchain_classic.output_parsers -> langchain_classic.output_parsers.fix -> langchain_classic.output_parsers
+circular-import	high	langchain_classic/retrievers/__init__.py:18:1	-	import cycle: langchain_classic.retrievers -> langchain_classic.retrievers.parent_document_retriever -> langchain_classic.retrievers
+circular-import	high	langchain_classic/retrievers/document_compressors/__init__.py:7:1	-	import cycle among 4 modules, shortest: langchain_classic.retrievers.document_compressors -> langchain_classic.retrievers.document_compressors.chain_extract -> langchain_classic.retrievers.document_compressors
+circular-import	high	langchain_classic/smith/__init__.py:106:1	-	import cycle among 3 modules, shortest: langchain_classic.smith -> langchain_classic.smith.evaluation -> langchain_classic.smith
+circular-import	high	langchain_classic/storage/__init__.py:18:1	-	import cycle among 3 modules, shortest: langchain_classic.storage -> langchain_classic.storage._lc_store -> langchain_classic.storage

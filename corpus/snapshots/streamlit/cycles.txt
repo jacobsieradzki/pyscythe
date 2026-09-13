@@ -1,0 +1,7 @@
+files_scanned=892
+symbols_checked=0
+symbols_kept=0
+findings=2
+--
+circular-import	high	lib/streamlit/__init__.py:62:1	-	import cycle among 202 modules, shortest: streamlit -> streamlit.config -> streamlit
+circular-import	high	lib/streamlit/testing/v1/__init__.py:15:1	-	import cycle among 4 modules, shortest: streamlit.testing.v1 -> streamlit.testing.v1.app_test -> streamlit.testing.v1

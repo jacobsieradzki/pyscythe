@@ -1,6 +1,8 @@
 [workspace]
 resolver = "3"
 members = ["crates/*"]
+# Corpus clones may contain Rust crates of their own; they are not ours.
+exclude = ["corpus/cache"]
 
 [workspace.package]
 version = "0.1.0"

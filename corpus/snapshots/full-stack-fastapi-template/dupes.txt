@@ -1,0 +1,27 @@
+files_scanned=43
+symbols_checked=0
+symbols_kept=0
+findings=21
+duplication: clones=21 duplicated_lines=521 total_lines=2939 percent_tenths=177
+--
+duplicate-code	high	backend/app/alembic/versions/d98dd8ec85a3_edit_replace_id_integers_in_all_models_.py:48:1	-	10 lines (52 tokens) duplicated at backend.app.alembic.versions.d98dd8ec85a3_edit_replace_id_integers_in_all_models_:83
+duplicate-code	high	backend/app/api/routes/items.py:22:1	-	6 lines (75 tokens) duplicated at backend.app.api.routes.users:42
+duplicate-code	high	backend/app/api/routes/items.py:48:1	-	11 lines (86 tokens) duplicated at backend.app.api.routes.items:99
+duplicate-code	high	backend/tests/api/routes/test_items.py:24:1	-	14 lines (78 tokens) duplicated at backend.tests.api.routes.test_items:126
+duplicate-code	high	backend/tests/api/routes/test_items.py:40:1	-	29 lines (157 tokens) duplicated at backend.tests.api.routes.test_items:139
+duplicate-code	high	backend/tests/api/routes/test_items.py:79:1	-	14 lines (81 tokens) duplicated at backend.tests.api.routes.test_items:111
+duplicate-code	high	backend/tests/api/routes/test_login.py:130:1	-	12 lines (56 tokens) duplicated at backend.tests.crud.test_user:96
+duplicate-code	high	backend/tests/api/routes/test_login.py:146:1	-	12 lines (64 tokens) duplicated at backend.tests.api.routes.test_login:180
+duplicate-code	high	backend/tests/api/routes/test_users.py:15:1	-	8 lines (65 tokens) duplicated at backend.tests.api.routes.test_users:26
+duplicate-code	high	backend/tests/api/routes/test_users.py:44:1	-	10 lines (53 tokens) duplicated at backend.tests.api.routes.test_users:167
+duplicate-code	high	backend/tests/api/routes/test_users.py:60:1	-	13 lines (97 tokens) duplicated at backend.tests.api.routes.test_users:463
+duplicate-code	high	backend/tests/api/routes/test_users.py:76:1	-	12 lines (64 tokens) duplicated at backend.tests.api.routes.test_users:479
+duplicate-code	high	backend/tests/api/routes/test_users.py:87:1	-	21 lines (137 tokens) duplicated at backend.tests.api.routes.test_users:417
+duplicate-code	high	backend/tests/api/routes/test_users.py:143:1	-	12 lines (67 tokens) duplicated at backend.tests.api.routes.test_users:176
+duplicate-code	high	backend/tests/api/routes/test_users.py:209:1	-	13 lines (84 tokens) duplicated at backend.tests.api.routes.test_users:325
+duplicate-code	high	backend/tests/api/routes/test_users.py:279:1	-	12 lines (70 tokens) duplicated at backend.tests.api.routes.test_users:355
+duplicate-code	high	backend/tests/api/routes/test_users.py:394:1	-	12 lines (70 tokens) duplicated at backend.tests.api.routes.test_users:505
+duplicate-code	high	backend/tests/crud/test_user.py:11:1	-	6 lines (56 tokens) duplicated at backend.tests.crud.test_user:37
+duplicate-code	high	backend/tests/crud/test_user.py:48:1	-	10 lines (81 tokens) duplicated at backend.tests.crud.test_user:64
+duplicate-code	high	backend/tests/utils/user.py:13:1	-	10 lines (54 tokens) duplicated at backend.tests.utils.utils:21
+duplicate-code	high	scripts/prepare_release.py:130:1	-	17 lines (56 tokens) duplicated at scripts.prepare_release:150

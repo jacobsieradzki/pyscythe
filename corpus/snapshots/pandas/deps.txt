@@ -1,0 +1,47 @@
+files_scanned=1527
+symbols_checked=82
+symbols_kept=0
+findings=42
+--
+unresolved-import	low	asv_bench/benchmarks/io/excel.py:4:1		import `odf` resolves to nothing on the search path
+unresolved-import	low	doc/make.py:24:8		import `docutils` resolves to nothing on the search path
+unresolved-import	low	doc/scripts/eval_performance.py:4:8		import `seaborn` resolves to nothing on the search path
+unresolved-import	low	doc/source/conf.py:22:1		import `numpydoc` resolves to nothing on the search path
+unresolved-import	low	doc/source/conf.py:24:1		import `sphinx` resolves to nothing on the search path
+unresolved-import	low	doc/source/conf.py:160:12		import `nbconvert` resolves to nothing on the search path
+unresolved-import	low	doc/sphinxext/announce.py:41:1		import `git` resolves to nothing on the search path
+unresolved-import	low	generate_pxi.py:4:1		import `Cython` resolves to nothing on the search path
+unresolved-import	low	generate_version.py:8:8		import `versioneer` resolves to nothing on the search path
+unresolved-import	low	generate_version.py:18:16		import `_version_meson` resolves to nothing on the search path
+unresolved-import	low	pandas/conftest.py:1927:5		import `IPython` resolves to nothing on the search path
+unresolved-import	low	pandas/conftest.py:1932:5		import `traitlets` resolves to nothing on the search path
+unresolved-import	low	pandas/io/clipboard/__init__.py:150:13		import `PyQt4` resolves to nothing on the search path
+unresolved-import	low	pandas/io/clipboard/__init__.py:569:20		import `AppKit` resolves to nothing on the search path
+unresolved-import	low	pandas/io/clipboard/__init__.py:570:20		import `Foundation` resolves to nothing on the search path
+unresolved-import	low	pandas/io/common.py:439:13		import `botocore` resolves to nothing on the search path
+unresolved-import	low	pandas/io/formats/style_render.py:51:1		import `markupsafe` resolves to nothing on the search path
+unresolved-import	low	pandas/io/sql.py:2187:9		import `adbc_driver_manager` resolves to nothing on the search path
+missing-dependency	low	pandas/tests/frame/methods/test_to_records.py:37:56	six	`six` is imported but `six` is not a declared dependency; it arrives through `python-dateutil`
+unresolved-import	low	pandas/tests/plotting/frame/test_frame.py:2343:9		import `mpl_toolkits` resolves to nothing on the search path
+unresolved-import	low	pandas/tests/plotting/frame/test_frame_color.py:683:16		import `cycler` resolves to nothing on the search path
+unused-dependency	low	pyproject.toml	bottleneck	dependency `bottleneck` (optional-dependencies.all) is never imported
+unused-dependency	low	pyproject.toml	gcsfs	dependency `gcsfs` (optional-dependencies.all) is never imported
+unused-dependency	low	pyproject.toml	html5lib	dependency `html5lib` (optional-dependencies.all) is never imported
+unused-dependency	low	pyproject.toml	odfpy	dependency `odfpy` (optional-dependencies.all) is never imported
+unused-dependency	low	pyproject.toml	pyiceberg	dependency `pyiceberg` (optional-dependencies.all) is never imported
+unused-dependency	low	pyproject.toml	pyreadstat	dependency `pyreadstat` (optional-dependencies.all) is never imported
+unused-dependency	low	pyproject.toml	pytz	dependency `pytz` (optional-dependencies.all) is never imported
+unused-dependency	low	pyproject.toml	tabulate	dependency `tabulate` (optional-dependencies.all) is never imported
+unused-dependency	medium	pyproject.toml	tzdata	dependency `tzdata` is never imported
+unused-dependency	low	pyproject.toml	xarray	dependency `xarray` (optional-dependencies.all) is never imported
+unused-dependency	low	pyproject.toml	zstandard	dependency `zstandard` (optional-dependencies.all) is never imported
+unresolved-import	low	scripts/check_for_inconsistent_pandas_namespace.py:63:5		import `tokenize_rt` resolves to nothing on the search path
+unresolved-import	low	scripts/generate_pip_deps_from_conda.py:21:8		import `yaml` resolves to nothing on the search path
+unresolved-import	low	scripts/run_vulture.py:6:1		import `vulture` resolves to nothing on the search path
+unresolved-import	low	scripts/validate_min_versions_in_sync.py:44:8		import `_exceptions` resolves to nothing on the search path
+unresolved-import	low	scripts/validate_min_versions_in_sync.py:45:8		import `version` resolves to nothing on the search path
+unresolved-import	low	scripts/validate_min_versions_in_sync.py:49:8		import `_optional` resolves to nothing on the search path
+unresolved-import	low	web/pandas_web.py:42:8		import `feedparser` resolves to nothing on the search path
+unresolved-import	low	web/pandas_web.py:44:8		import `markdown` resolves to nothing on the search path
+missing-dependency	low	web/pandas_web.py:46:1	packaging	`packaging` is imported but `packaging` is not a declared dependency; it arrives through `pytest`
+unresolved-import	low	web/pandas_web.py:47:8		import `requests` resolves to nothing on the search path

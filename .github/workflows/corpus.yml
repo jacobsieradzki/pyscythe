@@ -1,0 +1,27 @@
+name: corpus
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  corpus:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.8.3"
+          enable-cache: true
+          cache-dependency-glob: corpus/locks/*.txt
+      - run: cargo build --release -p pyscythe -p pyscythe_corpus
+      - run: ./target/release/pyscythe-corpus check
+      - name: Keep the diffs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: corpus-diffs
+          path: corpus/cache/*.diff
+          if-no-files-found: ignore

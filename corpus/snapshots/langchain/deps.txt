@@ -1,0 +1,42 @@
+files_scanned=1581
+symbols_checked=64
+symbols_kept=0
+findings=37
+--
+unresolved-import	low	langchain_classic/agents/agent.py:42:1		import `typing_extensions` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/agents/openai_assistant/base.py:23:12		import `openai` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/callbacks/streamlit/__init__.py:9:5		import `streamlit` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/chains/elasticsearch_database/base.py:23:5		import `elasticsearch` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/chains/llm_math/base.py:171:20		import `numexpr` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/chains/openai_functions/citation_fuzzy_match.py:33:16		import `regex` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/chains/openai_functions/openapi.py:26:5		import `openapi_pydantic` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/chat_models/base.py:496:9		import `langchain_nvidia_ai_endpoints` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/chat_models/base.py:501:9		import `langchain_ibm` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/chat_models/base.py:516:9		import `langchain_upstage` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/evaluation/embedding_distance/base.py:141:24		import `tiktoken` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/evaluation/embedding_distance/base.py:210:17		import `scipy` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/evaluation/loading.py:76:9		import `datasets` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/evaluation/parsing/json_distance.py:60:17		import `rapidfuzz` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/evaluation/parsing/json_schema.py:44:20		import `jsonschema` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/memory/entity.py:144:13		import `upstash_redis` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/memory/entity.py:266:20		import `redis` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/retrievers/document_compressors/cohere_rerank.py:46:24		import `cohere` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/retrievers/self_query/base.py:137:9		import `langchain_astradb` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/retrievers/self_query/base.py:145:9		import `langchain_elasticsearch` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/retrievers/self_query/base.py:153:9		import `langchain_pinecone` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/retrievers/self_query/base.py:161:9		import `langchain_milvus` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/retrievers/self_query/base.py:169:9		import `langchain_mongodb` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/retrievers/self_query/base.py:177:9		import `langchain_neo4j` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/retrievers/self_query/base.py:186:9		import `langchain_chroma` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/retrievers/self_query/base.py:194:9		import `langchain_postgres` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/retrievers/self_query/base.py:203:9		import `langchain_qdrant` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/retrievers/self_query/base.py:222:9		import `langchain_weaviate` resolves to nothing on the search path
+unresolved-import	low	langchain_classic/smith/evaluation/runner_utils.py:1364:9		import `IPython` resolves to nothing on the search path
+unused-dependency	low	pyproject.toml	cassio	dependency `cassio` (dependency-groups.test_integration) is never imported
+unused-dependency	low	pyproject.toml	mypy-protobuf	dependency `mypy-protobuf` (dependency-groups.typing) is never imported
+unused-dependency	low	pyproject.toml	requests-mock	dependency `requests-mock` (dependency-groups.test) is never imported
+unused-dependency	low	pyproject.toml	responses	dependency `responses` (dependency-groups.test) is never imported
+unused-dependency	low	pyproject.toml	vcrpy	dependency `vcrpy` (dependency-groups.test_integration) is never imported
+unused-dependency	low	pyproject.toml	wrapt	dependency `wrapt` (dependency-groups.test_integration) is never imported
+unresolved-import	low	tests/mock_servers/robot/server.py:7:8		import `uvicorn` resolves to nothing on the search path
+missing-dependency	low	tests/unit_tests/load/test_load.py:162:12	httpx	`httpx` is imported but `httpx` is not a declared dependency; it arrives through `langchain-core`

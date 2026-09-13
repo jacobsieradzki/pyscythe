@@ -1,0 +1,69 @@
+files_scanned=892
+symbols_checked=138
+symbols_kept=0
+findings=64
+--
+unresolved-import	low	e2e_playwright/app_hotkeys_test.py:17:1		import `e2e_playwright` resolves to nothing on the search path
+missing-dependency	low	e2e_playwright/bidi_components/basics.py:19:8	pandas	`pandas` is imported but `pandas` is not a declared dependency; it arrives through `streamlit`
+missing-dependency	low	e2e_playwright/conftest.py:41:1	pillow	`PIL` is imported but `pillow` is not a declared dependency; it arrives through `streamlit`
+unresolved-import	low	e2e_playwright/conftest.py:54:1		import `typing_extensions` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/custom_components/component_errors.py:15:1		import `streamlit_ace` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/custom_components/popular_components.py:85:5		import `st_aggrid` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/custom_components/popular_components.py:95:12		import `streamlit_antd_components` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/custom_components/popular_components.py:110:5		import `streamlit_autorefresh` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/custom_components/popular_components.py:130:5		import `streamlit_chat` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/custom_components/popular_components.py:137:5		import `streamlit_echarts` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/custom_components/popular_components.py:151:5		import `extra_streamlit_components` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/custom_components/popular_components.py:157:12		import `folium` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/custom_components/popular_components.py:158:5		import `streamlit_folium` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/custom_components/popular_components.py:171:5		import `streamlit_option_menu` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/custom_components/popular_components.py:193:5		import `streamlit_url_fragment` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/custom_components/popular_components.py:200:5		import `bokeh` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/custom_components/popular_components.py:201:5		import `streamlit_bokeh` resolves to nothing on the search path
+missing-dependency	low	e2e_playwright/host_config_bypass.py:19:8	pydeck	`pydeck` is imported but `pydeck` is not a declared dependency; it arrives through `streamlit`
+missing-dependency	low	e2e_playwright/lazy_loaded_modules.py:21:5	altair	`altair` is imported but `altair` is not a declared dependency; it arrives through `streamlit`
+missing-dependency	low	e2e_playwright/lazy_loaded_modules.py:34:5	pyarrow	`pyarrow` is imported but `pyarrow` is not a declared dependency; it arrives through `streamlit`
+unresolved-import	low	e2e_playwright/mega_tester_app.py:380:16		import `matplotlib` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/mega_tester_app.py:459:16		import `plotly` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/mega_tester_app.py:493:16		import `graphviz` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/shared/oidc_mock_server.py:25:1		import `cryptography` resolves to nothing on the search path
+missing-dependency	low	e2e_playwright/st_app_advanced.py:25:1	starlette	`starlette` is imported but `starlette` is not a declared dependency; it arrives through `streamlit`
+unresolved-import	low	e2e_playwright/st_data_editor_column_types.py:20:1		import `shared` resolves to nothing on the search path
+missing-dependency	low	e2e_playwright/st_echarts_chart_test.py:223:13	click	`click` is imported but `click` is not a declared dependency; it arrives through `streamlit`
+missing-dependency	low	e2e_playwright/st_multiselect.py:133:5	six	`six` is imported but `six` is not a declared dependency; it arrives through `streamlit`
+unresolved-import	low	e2e_playwright/theming/custom_dark_sidebar_theme.py:16:8		import `theme_tester_app` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/theming/theme_chart_colors.py:15:1		import `theme_chart_colors_app` resolves to nothing on the search path
+unresolved-import	low	e2e_playwright/theming/theme_font_weights.py:16:1		import `size_and_weight_test_app` resolves to nothing on the search path
+unused-dependency	low	lib/pyproject.toml	httpx	dependency `httpx` (optional-dependencies.auth) is never imported
+unused-dependency	low	lib/pyproject.toml	orjson	dependency `orjson` (optional-dependencies.charts) is never imported
+unused-dependency	medium	lib/pyproject.toml	protobuf	dependency `protobuf` is never imported
+unused-dependency	low	lib/pyproject.toml	snowflake-connector-python	dependency `snowflake-connector-python` (optional-dependencies.snowflake) is never imported
+unused-dependency	low	lib/pyproject.toml	snowflake-snowpark-python	dependency `snowflake-snowpark-python` (optional-dependencies.snowflake) is never imported
+unresolved-import	low	lib/streamlit/.agents/skills/developing-with-streamlit/assets/templates/apps/dashboard-seattle-weather/streamlit_app.py:19:8		import `vega_datasets` resolves to nothing on the search path
+unresolved-import	low	lib/streamlit/.agents/skills/developing-with-streamlit/assets/templates/apps/dashboard-stock-peers/streamlit_app.py:21:8		import `yfinance` resolves to nothing on the search path
+unresolved-import	low	lib/streamlit/auth_util.py:265:5		import `joserfc` resolves to nothing on the search path
+unresolved-import	low	lib/streamlit/connections/snowflake_connection.py:39:5		import `snowflake` resolves to nothing on the search path
+unresolved-import	low	lib/streamlit/dataframe/lazy_df_adapters.py:89:20		import `polars` resolves to nothing on the search path
+unresolved-import	low	lib/streamlit/dataframe_util.py:1595:16		import `xarray` resolves to nothing on the search path
+missing-dependency	low	lib/streamlit/elements/help.py:394:33	attrs	`attr` is imported but `attrs` is not a declared dependency; it arrives through `altair`
+unresolved-import	low	lib/streamlit/elements/markdown.py:33:12		import `sympy` resolves to nothing on the search path
+unresolved-import	low	lib/streamlit/elements/write.py:514:17		import `tensorflow` resolves to nothing on the search path
+unresolved-import	low	lib/streamlit/runtime/state/query_params.py:30:5		import `_typeshed` resolves to nothing on the search path
+unresolved-import	low	lib/streamlit/type_util.py:319:9		import `annotationlib` resolves to nothing on the search path
+unused-dependency	low	pyproject.toml	dask	dependency `dask` (dependency-groups.integration) is never imported
+unused-dependency	low	pyproject.toml	duckdb	dependency `duckdb` (dependency-groups.integration) is never imported
+unused-dependency	low	pyproject.toml	httpx2	dependency `httpx2` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	hypothesis	dependency `hypothesis` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	mypy-protobuf	dependency `mypy-protobuf` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	parameterized	dependency `parameterized` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	polars	dependency `polars` (dependency-groups.integration) is never imported
+unused-dependency	low	pyproject.toml	pydantic	dependency `pydantic` (dependency-groups.integration) is never imported
+unused-dependency	low	pyproject.toml	requests-mock	dependency `requests-mock` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	rich	dependency `rich` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	scipy	dependency `scipy` (dependency-groups.integration) is never imported
+unused-dependency	low	pyproject.toml	sqlalchemy	dependency `sqlalchemy` (dependency-groups.integration) is never imported
+unused-dependency	medium	pyproject.toml	streamlit	dependency `streamlit` is never imported
+unused-dependency	low	pyproject.toml	testfixtures	dependency `testfixtures` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	watchdog	dependency `watchdog` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	xarray	dependency `xarray` (dependency-groups.integration) is never imported
+unresolved-import	low	scripts/verify_version.py:36:12		import `tomllib` resolves to nothing on the search path

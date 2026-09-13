@@ -1,0 +1,11 @@
+files_scanned=583
+symbols_checked=0
+symbols_kept=0
+findings=6
+--
+circular-import	high	mitmproxy/addonmanager.py:15:1	-	import cycle among 3 modules, shortest: mitmproxy.addonmanager -> mitmproxy.hooks -> mitmproxy.addonmanager
+circular-import	high	mitmproxy/addons/__init__.py:1:1	-	import cycle among 105 modules, shortest: mitmproxy.addons -> mitmproxy.addons.anticache -> mitmproxy.ctx -> mitmproxy.master -> mitmproxy.addons
+circular-import	high	mitmproxy/io/__init__.py:1:1	-	import cycle: mitmproxy.io -> mitmproxy.io.io -> mitmproxy.io
+circular-import	high	mitmproxy/platform/__init__.py:24:5	-	import cycle: mitmproxy.platform -> mitmproxy.platform.osx -> mitmproxy.platform
+circular-import	high	mitmproxy/proxy/commands.py:114:26	-	import cycle among 3 modules, shortest: mitmproxy.proxy.commands -> mitmproxy.proxy.layer -> mitmproxy.proxy.commands
+circular-import	high	mitmproxy/tools/web/__init__.py:1:1	-	import cycle among 5 modules, shortest: mitmproxy.tools.web -> mitmproxy.tools.web.master -> mitmproxy.tools.web

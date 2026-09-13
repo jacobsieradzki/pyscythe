@@ -1,0 +1,6 @@
+files_scanned=190
+symbols_checked=0
+symbols_kept=0
+findings=1
+--
+circular-import	high	styleguide_example/testing_examples/services/__init__.py:5:1	-	import cycle: styleguide_example.testing_examples.services -> styleguide_example.testing_examples.services.students -> styleguide_example.testing_examples.services

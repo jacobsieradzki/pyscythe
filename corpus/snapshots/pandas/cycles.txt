@@ -1,0 +1,8 @@
+files_scanned=1527
+symbols_checked=0
+symbols_kept=0
+findings=3
+--
+circular-import	high	pandas/__init__.py:22:5	-	import cycle among 219 modules, shortest: pandas -> pandas.compat -> pandas
+circular-import	high	pandas/core/_numba/kernels/__init__.py:1:1	-	import cycle among 4 modules, shortest: pandas.core._numba.kernels -> pandas.core._numba.kernels.mean_ -> pandas.core._numba.kernels
+circular-import	high	pandas/plotting/_matplotlib/__init__.py:5:1	-	import cycle among 7 modules, shortest: pandas.plotting._matplotlib -> pandas.plotting._matplotlib.boxplot -> pandas.plotting._matplotlib

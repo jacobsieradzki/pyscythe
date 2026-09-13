@@ -1,0 +1,53 @@
+files_scanned=2932
+symbols_checked=10
+symbols_kept=0
+findings=48
+--
+unresolved-import	low	django/contrib/admindocs/utils.py:17:12		import `docutils` resolves to nothing on the search path
+unresolved-import	low	django/contrib/gis/db/backends/mysql/introspection.py:1:1		import `MySQLdb` resolves to nothing on the search path
+unresolved-import	low	django/contrib/gis/db/backends/oracle/adapter.py:1:8		import `oracledb` resolves to nothing on the search path
+unresolved-import	low	django/contrib/gis/db/backends/postgis/adapter.py:29:9		import `psycopg2` resolves to nothing on the search path
+unresolved-import	low	django/contrib/gis/db/backends/postgis/base.py:23:5		import `psycopg` resolves to nothing on the search path
+unresolved-import	low	django/contrib/gis/geoip2.py:27:12		import `geoip2` resolves to nothing on the search path
+unresolved-import	low	django/contrib/gis/shortcuts.py:10:12		import `numpy` resolves to nothing on the search path
+unresolved-import	low	django/core/cache/backends/memcached.py:149:16		import `pylibmc` resolves to nothing on the search path
+unresolved-import	low	django/core/cache/backends/memcached.py:178:16		import `pymemcache` resolves to nothing on the search path
+unresolved-import	low	django/core/cache/backends/redis.py:41:16		import `redis` resolves to nothing on the search path
+unresolved-import	low	django/core/files/images.py:41:5		import `PIL` resolves to nothing on the search path
+unresolved-import	low	django/core/management/color.py:12:12		import `colorama` resolves to nothing on the search path
+unresolved-import	low	django/core/management/commands/shell.py:59:9		import `IPython` resolves to nothing on the search path
+unresolved-import	low	django/core/management/commands/shell.py:64:16		import `bpython` resolves to nothing on the search path
+unresolved-import	low	django/core/management/commands/shell.py:244:20		import `isort` resolves to nothing on the search path
+unresolved-import	low	django/core/serializers/pyyaml.py:10:8		import `yaml` resolves to nothing on the search path
+unresolved-import	low	django/db/backends/postgresql/base.py:209:17		import `psycopg_pool` resolves to nothing on the search path
+unresolved-import	low	django/template/backends/jinja2.py:3:8		import `jinja2` resolves to nothing on the search path
+unresolved-import	low	django/test/runner.py:35:12		import `ipdb` resolves to nothing on the search path
+unresolved-import	low	django/test/runner.py:40:12		import `tblib` resolves to nothing on the search path
+unresolved-import	low	django/utils/autoreload.py:46:12		import `pywatchman` resolves to nothing on the search path
+unresolved-import	low	django/utils/inspect.py:9:12		import `annotationlib` resolves to nothing on the search path
+unresolved-import	low	docs/_ext/djangodocs.py:7:1		import `docutils` resolves to nothing on the search path
+unresolved-import	low	docs/conf.py:38:8		import `github_links` resolves to nothing on the search path
+unresolved-import	low	docs/lint.py:7:1		import `sphinxlint` resolves to nothing on the search path
+unused-dependency	medium	docs/requirements.txt	blacken-docs	dependency `blacken-docs` is never imported
+unused-dependency	medium	docs/requirements.txt	pyenchant	dependency `pyenchant` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinx-lint	dependency `sphinx-lint` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinxcontrib-spelling	dependency `sphinxcontrib-spelling` is never imported
+unused-dependency	low	pyproject.toml	argon2-cffi	dependency `argon2-cffi` (optional-dependencies.argon2) is never imported
+unused-dependency	medium	pyproject.toml	tzdata	dependency `tzdata` is never imported
+unresolved-import	low	scripts/check_migrations.py:9:5		import `runtests` resolves to nothing on the search path
+unresolved-import	low	scripts/do_django_release.py:70:5		import `build` resolves to nothing on the search path
+unresolved-import	low	scripts/manage_translations.py:32:8		import `requests` resolves to nothing on the search path
+unresolved-import	low	tests/admin_scripts/tests.py:179:20		import `black` resolves to nothing on the search path
+unresolved-import	low	tests/auth_tests/test_hashers.py:32:12		import `argon2` resolves to nothing on the search path
+unresolved-import	low	tests/mail/test_backends.py:27:5		import `aiosmtpd` resolves to nothing on the search path
+unresolved-import	low	tests/playwright_tests/admin.py:89:9		import `playwright` resolves to nothing on the search path
+unresolved-import	low	tests/project_template/test_settings.py:32:13		import `test_settings` resolves to nothing on the search path
+unresolved-import	low	tests/proxy_model_inheritance/app1/models.py:1:1		import `app2` resolves to nothing on the search path
+unresolved-import	low	tests/proxy_model_inheritance/tests.py:29:17		import `app1` resolves to nothing on the search path
+unresolved-import	low	tests/sitecustomize.py:2:12		import `coverage` resolves to nothing on the search path
+unresolved-import	low	tests/sphinx_tests/test_djangodocs.py:18:16		import `djangodocs` resolves to nothing on the search path
+unresolved-import	low	tests/sphinx_tests/test_github_links.py:20:16		import `github_links` resolves to nothing on the search path
+unresolved-import	low	tests/sphinx_tests/tests.py:7:12		import `sphinx` resolves to nothing on the search path
+unresolved-import	low	tests/template_backends/apps/importerror/templatetags/broken_tags.py:1:8		import `DoesNotExist` resolves to nothing on the search path
+unresolved-import	low	tests/urlpatterns_reverse/views.py:26:12		import `non_existent` resolves to nothing on the search path
+unresolved-import	low	tests/utils_tests/test_module/bad_module.py:1:8		import `a_package_name_that_does_not_exist` resolves to nothing on the search path

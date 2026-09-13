@@ -1,0 +1,48 @@
+files_scanned=333
+symbols_checked=4623
+symbols_kept=3218
+findings=43
+--
+unused-file	medium	action/main.py	-	file `action.main` is never imported or run
+unused-method	medium	src/black/lines.py:209:9	_is_triple_quoted_string	method `Line._is_triple_quoted_string` is never used
+unused-variable	medium	src/black/nodes.py:24:1	LeafID	variable `LeafID` is never used
+unused-function	medium	src/black/strings.py:259:5	normalize_fstring_quotes	function `normalize_fstring_quotes` is never used
+unused-variable	high	src/blackd/__init__.py:28:1	_stop_signal	variable `_stop_signal` is never used
+unused-file	medium	src/blib2to3/pgen2/conv.py	-	file `blib2to3.pgen2.conv` is never imported or run
+unused-method	low	src/blib2to3/pgen2/driver.py:195:9	parse_file	method `Driver.parse_file` is never used
+unused-method	low	src/blib2to3/pgen2/grammar.py:153:9	report	method `Grammar.report` is never used
+unused-variable	medium	src/blib2to3/pgen2/parse.py:27:1	Results	variable `Results` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:34:1	BACKQUOTE	variable `BACKQUOTE` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:47:1	MINEQUAL	variable `MINEQUAL` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:48:1	STAREQUAL	variable `STAREQUAL` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:49:1	SLASHEQUAL	variable `SLASHEQUAL` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:50:1	PERCENTEQUAL	variable `PERCENTEQUAL` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:51:1	AMPEREQUAL	variable `AMPEREQUAL` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:52:1	VBAREQUAL	variable `VBAREQUAL` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:53:1	CIRCUMFLEXEQUAL	variable `CIRCUMFLEXEQUAL` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:54:1	LEFTSHIFTEQUAL	variable `LEFTSHIFTEQUAL` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:55:1	RIGHTSHIFTEQUAL	variable `RIGHTSHIFTEQUAL` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:56:1	DOUBLESTAREQUAL	variable `DOUBLESTAREQUAL` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:58:1	DOUBLESLASHEQUAL	variable `DOUBLESLASHEQUAL` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:60:1	ATEQUAL	variable `ATEQUAL` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:68:1	ERRORTOKEN	variable `ERRORTOKEN` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:77:1	N_TOKENS	variable `N_TOKENS` is never used
+unused-variable	medium	src/blib2to3/pgen2/token.py:78:1	NT_OFFSET	variable `NT_OFFSET` is never used
+unused-variable	medium	src/blib2to3/pygram.py:167:1	pattern_symbols	variable `pattern_symbols` is never used
+unused-method	low	src/blib2to3/pytree.py:111:9	post_order	method `Base.post_order` is never used
+unused-method	low	src/blib2to3/pytree.py:236:9	get_suffix	method `Base.get_suffix` is never used
+unused-class	medium	src/blib2to3/pytree.py:687:7	LeafPattern	class `LeafPattern` is never used
+unused-class	medium	src/blib2to3/pytree.py:1012:7	NegatedPattern	class `NegatedPattern` is never used
+unused-variable	medium	tests/test_black.py:65:1	THIS_FILE	variable `THIS_FILE` is never used
+unused-variable	medium	tests/test_black.py:68:1	DEFAULT_EXCLUDE	variable `DEFAULT_EXCLUDE` is never used
+unused-variable	low	tests/test_black.py:70:1	T	variable `T` is never used
+unused-variable	low	tests/test_black.py:71:1	R	variable `R` is never used
+unused-function	medium	tests/test_black.py:3437:5	tracefunc	function `tracefunc` is never used
+unused-class	low	tests/test_blackd.py:27:7	BlackDTestCase	class `BlackDTestCase` is never used
+unused-method	low	tests/test_blackd.py:40:15	get_application	method `BlackDTestCase.get_application` is never used
+unused-class	low	tests/test_blackd.py:288:7	BlackDConfiguredCorsTestCase	class `BlackDConfiguredCorsTestCase` is never used
+unused-method	low	tests/test_blackd.py:293:15	get_application	method `BlackDConfiguredCorsTestCase.get_application` is never used
+unused-class	low	tests/test_blackd.py:328:7	BlackDSmallBodyLimitTestCase	class `BlackDSmallBodyLimitTestCase` is never used
+unused-method	low	tests/test_blackd.py:333:15	get_application	method `BlackDSmallBodyLimitTestCase.get_application` is never used
+unused-class	low	tests/test_blackd.py:342:7	BlackDClientTestCase	class `BlackDClientTestCase` is never used
+unused-method	low	tests/test_blackd.py:348:15	get_application	method `BlackDClientTestCase.get_application` is never used

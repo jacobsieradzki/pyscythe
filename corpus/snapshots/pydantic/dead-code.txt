@@ -1,0 +1,143 @@
+files_scanned=449
+symbols_checked=9873
+symbols_kept=5291
+findings=138
+--
+unused-function	medium	.github/actions/people/people.py:451:5	get_issues_experts	function `get_issues_experts` is never used
+unused-variable	medium	.github/actions/people/people.py:679:19	pr_commentors	variable `pr_commentors` is never used
+unused-variable	low	.github/actions/people/people.py:771:5	result	variable `result` is never used
+unused-class	medium	pydantic-core/python/pydantic_core/__init__.py:114:7	ErrorTypeInfo	class `ErrorTypeInfo` is never used
+unused-class	medium	pydantic-core/python/pydantic_core/__init__.py:133:7	MultiHostHost	class `MultiHostHost` is never used
+unused-variable	low	pydantic-core/python/pydantic_core/__init__.py:148:1	MISSING	variable `MISSING` is never used
+unused-file	medium	pydantic-core/src/self_schema.py	-	file `src.self_schema` is never imported or run
+unused-variable	medium	pydantic-core/tests/serializers/test_model_root.py:16:5	IsStrictDict	variable `IsStrictDict` is never used
+unused-function	medium	pydantic-core/tests/test_typing.py:28:5	validator_deprecated	function `validator_deprecated` is never used
+unused-function	medium	pydantic-core/tests/validators/test_enums.py:467:5	support_custom_new_method	function `support_custom_new_method` is never used
+unused-function	medium	pydantic-core/tests/validators/test_model_fields.py:714:5	get_int_key	function `get_int_key` is never used
+unused-function	medium	pydantic-core/tests/validators/test_model_fields.py:733:5	get_custom_getitem	function `get_custom_getitem` is never used
+unused-method	low	pydantic-core/tests/validators/test_model_fields.py:1156:13	property_error	method `Foobar.property_error` is never used
+unused-method	low	pydantic-core/tests/validators/test_model_fields.py:1159:13	bound_method	method `Foobar.bound_method` is never used
+unused-method	low	pydantic-core/tests/validators/test_model_fields.py:1163:13	static_method	method `Foobar.static_method` is never used
+unused-method	low	pydantic-core/tests/validators/test_model_fields.py:1170:13	class_method	method `Foobar.class_method` is never used
+unused-function	medium	pydantic-core/tests/validators/test_typed_dict.py:586:5	get_int_key	function `get_int_key` is never used
+unused-function	medium	pydantic-core/tests/validators/test_typed_dict.py:605:5	get_custom_getitem	function `get_custom_getitem` is never used
+unused-function	medium	pydantic-core/tests/validators/test_uuid.py:233:5	uuid_safety_unknown	function `uuid_safety_unknown` is never used
+unused-file	medium	pydantic-core/wasm-preview/run_tests.py	-	file `run_tests.py` is never imported or run
+unused-variable	medium	pydantic/_internal/_core_utils.py:12:1	AnyFunctionSchema	variable `AnyFunctionSchema` is never used
+unused-variable	medium	pydantic/_internal/_core_utils.py:156:1	pps	variable `pps` is never used
+unused-class	medium	pydantic/_internal/_generics.py:61:11	DeepChainMap	class `DeepChainMap` is never used
+unused-class	medium	pydantic/_internal/_generics.py:66:11	DeepChainMap	class `DeepChainMap` is never used
+unused-variable	medium	pydantic/_internal/_known_annotated_metadata.py:42:1	SEQUENCE_CONSTRAINTS	variable `SEQUENCE_CONSTRAINTS` is never used
+unused-function	medium	pydantic/_internal/_known_annotated_metadata.py:383:5	check_metadata	function `check_metadata` is never used
+unused-function	low	pydantic/_internal/_typing_extra.py:41:5	is_annotated	function `is_annotated` is never used
+unused-variable	medium	pydantic/_internal/_typing_extra.py:117:1	origin_is_union	variable `origin_is_union` is never used
+unused-function	medium	pydantic/_internal/_typing_extra.py:407:5	eval_type_lenient	function `eval_type_lenient` is never used
+unused-function	low	pydantic/_internal/_utils.py:95:5	lenient_isinstance	function `lenient_isinstance` is never used
+unused-variable	medium	pydantic/deprecated/class_validators.py:54:5	V1RootValidator	variable `V1RootValidator` is never used
+unused-variable	low	pydantic/deprecated/copy_internals.py:20:5	AnyClassMethod	variable `AnyClassMethod` is never used
+unused-variable	low	pydantic/deprecated/copy_internals.py:24:5	IncEx	variable `IncEx` is never used
+unused-variable	medium	pydantic/deprecated/decorator.py:18:5	DeprecationWarning	variable `DeprecationWarning` is never used
+unused-variable	low	pydantic/deprecated/decorator.py:25:5	AnyCallableT	variable `AnyCallableT` is never used
+unused-variable	low	pydantic/deprecated/decorator.py:26:5	ConfigType	variable `ConfigType` is never used
+unused-variable	medium	pydantic/deprecated/json.py:25:5	DeprecationWarning	variable `DeprecationWarning` is never used
+unused-variable	medium	pydantic/deprecated/parse.py:18:5	DeprecationWarning	variable `DeprecationWarning` is never used
+unused-file	low	pydantic/env_settings.py	-	file `pydantic.env_settings` is never imported or run
+unused-method	low	pydantic/experimental/pipeline.py:292:9	datetime_tz	method `_Pipeline.datetime_tz` is never used
+unused-method	low	pydantic/experimental/pipeline.py:302:9	datetime_with_tz	method `_Pipeline.datetime_with_tz` is never used
+unused-variable	high	pydantic/functional_serializers.py:185:5	_Partial	variable `_Partial` is never used
+unused-variable	medium	pydantic/functional_serializers.py:312:5	ModelPlainSerializerWithInfo	variable `ModelPlainSerializerWithInfo` is never used
+unused-variable	medium	pydantic/functional_serializers.py:315:5	ModelPlainSerializerWithoutInfo	variable `ModelPlainSerializerWithoutInfo` is never used
+unused-variable	medium	pydantic/functional_serializers.py:321:5	ModelWrapSerializerWithInfo	variable `ModelWrapSerializerWithInfo` is never used
+unused-variable	medium	pydantic/functional_serializers.py:324:5	ModelWrapSerializerWithoutInfo	variable `ModelWrapSerializerWithoutInfo` is never used
+unused-method	low	pydantic/json_schema.py:1226:9	function_before_schema	method `GenerateJsonSchema.function_before_schema` is never used
+unused-method	low	pydantic/json_schema.py:1240:9	function_after_schema	method `GenerateJsonSchema.function_after_schema` is never used
+unused-method	low	pydantic/json_schema.py:1251:9	function_plain_schema	method `GenerateJsonSchema.function_plain_schema` is never used
+unused-method	low	pydantic/json_schema.py:1267:9	function_wrap_schema	method `GenerateJsonSchema.function_wrap_schema` is never used
+unused-method	low	pydantic/json_schema.py:1281:9	default_schema	method `GenerateJsonSchema.default_schema` is never used
+unused-method	low	pydantic/json_schema.py:1676:9	typed_dict_field_schema	method `GenerateJsonSchema.typed_dict_field_schema` is never used
+unused-method	low	pydantic/json_schema.py:1687:9	dataclass_field_schema	method `GenerateJsonSchema.dataclass_field_schema` is never used
+unused-method	low	pydantic/json_schema.py:1709:9	computed_field_schema	method `GenerateJsonSchema.computed_field_schema` is never used
+unused-method	low	pydantic/json_schema.py:1952:9	named_tuple_field_schema	method `GenerateJsonSchema.named_tuple_field_schema` is never used
+unused-method	low	pydantic/json_schema.py:2270:9	definition_ref_schema	method `GenerateJsonSchema.definition_ref_schema` is never used
+unused-file	low	pydantic/mypy.py	-	file `pydantic.mypy` is never imported or run
+unused-file	low	pydantic/parse.py	-	file `pydantic.parse` is never imported or run
+unused-variable	medium	pydantic/plugin/_schema_validator.py:19:1	events	variable `events` is never used
+unused-file	low	pydantic/schema.py	-	file `pydantic.schema` is never imported or run
+unused-variable	low	pydantic/type_adapter.py:38:1	R	variable `R` is never used
+unused-variable	low	pydantic/type_adapter.py:39:1	P	variable `P` is never used
+unused-variable	low	pydantic/type_adapter.py:40:1	TypeAdapterT	variable `TypeAdapterT` is never used
+unused-file	low	pydantic/v1/_hypothesis_plugin.py	-	file `pydantic.v1._hypothesis_plugin` is never imported or run
+unused-variable	low	pydantic/v1/config.py:17:5	ConfigType	variable `ConfigType` is never used
+unused-class	low	pydantic/v1/config.py:19:11	SchemaExtraCallable	class `SchemaExtraCallable` is never used
+unused-variable	low	pydantic/v1/config.py:29:5	SchemaExtraCallable	variable `SchemaExtraCallable` is never used
+unused-variable	low	pydantic/v1/dataclasses.py:62:5	DataclassT	variable `DataclassT` is never used
+unused-variable	low	pydantic/v1/dataclasses.py:64:5	DataclassClassOrWrapper	variable `DataclassClassOrWrapper` is never used
+unused-variable	low	pydantic/v1/decorator.py:16:5	AnyCallableT	variable `AnyCallableT` is never used
+unused-variable	low	pydantic/v1/decorator.py:17:5	ConfigType	variable `ConfigType` is never used
+unused-class	low	pydantic/v1/error_wrappers.py:21:11	ErrorDict	class `ErrorDict` is never used
+unused-variable	low	pydantic/v1/fields.py:92:5	ValidateReturn	variable `ValidateReturn` is never used
+unused-variable	low	pydantic/v1/fields.py:93:5	LocStr	variable `LocStr` is never used
+unused-variable	low	pydantic/v1/fields.py:94:5	BoolUndefined	variable `BoolUndefined` is never used
+unused-file	low	pydantic/v1/mypy.py	-	file `pydantic.v1.mypy` is never imported or run
+unused-variable	low	pydantic/v1/networks.py:42:5	CallableGenerator	variable `CallableGenerator` is never used
+unused-class	low	pydantic/v1/networks.py:56:11	HostParts	class `HostParts` is never used
+unused-variable	medium	pydantic/v1/schema.py:89:1	default_prefix	variable `default_prefix` is never used
+unused-function	low	pydantic/v1/schema.py:109:5	schema	function `schema` is never used
+unused-variable	medium	pydantic/v1/schema.py:801:1	json_scheme	variable `json_scheme` is never used
+unused-method	low	pydantic/v1/types.py:911:9	display	method `SecretStr.display` is never used
+unused-method	low	pydantic/v1/types.py:955:9	display	method `SecretBytes.display` is never used
+unused-variable	low	pydantic/v1/utils.py:54:5	RichReprResult	variable `RichReprResult` is never used
+unused-function	low	pydantic/v1/utils.py:141:5	truncate	function `truncate` is never used
+unused-variable	low	pydantic/v1/validators.py:55:5	AnyOrderedDict	variable `AnyOrderedDict` is never used
+unused-variable	low	pydantic/v1/validators.py:56:5	Number	variable `Number` is never used
+unused-variable	low	pydantic/v1/validators.py:57:5	StrBytes	variable `StrBytes` is never used
+unused-file	low	pydantic/validators.py	-	file `pydantic.validators` is never imported or run
+unused-function	medium	release/push.py:87:5	create_github_release	function `create_github_release` is never used
+unused-method	low	tests/mypy/modules/create_model_var.py:31:9	composite	method `ClassmethodModel.composite` is never used
+unused-method	low	tests/mypy/modules/plugin_fail_baseConfig.py:19:13	config_method	method `Config.config_method` is never used
+unused-method	low	tests/mypy/modules/plugin_success.py:259:9	from_orm_optional	method `OrmMixin.from_orm_optional` is never used
+unused-variable	medium	tests/mypy/test_mypy.py:36:1	MYPY_VERSION_TUPLE	variable `MYPY_VERSION_TUPLE` is never used
+unused-variable	medium	tests/plugin/example_plugin.py:31:1	plugin	variable `plugin` is never used
+unused-method	low	tests/test_abc.py:20:13	my_abstract_method	method `Model.my_abstract_method` is never used
+unused-method	low	tests/test_abc.py:25:13	my_abstract_classmethod	method `Model.my_abstract_classmethod` is never used
+unused-method	low	tests/test_abc.py:30:13	my_abstract_staticmethod	method `Model.my_abstract_staticmethod` is never used
+unused-method	low	tests/test_dataclasses.py:206:13	prop3	method `MyDataclass.prop3` is never used
+unused-method	low	tests/test_docs_extraction.py:48:13	dummy_method	method `MyModel.dummy_method` is never used
+unused-method	low	tests/test_docs_extraction.py:230:13	dummy_method	method `MyModel.dummy_method` is never used
+unused-class	medium	tests/test_edge_cases.py:1635:7	DisplayGen	class `DisplayGen` is never used
+unused-class	medium	tests/test_main.py:2107:7	MyDict	class `MyDict` is never used
+unused-variable	medium	tests/test_pickle.py:31:1	TEST_DATA_DIR	variable `TEST_DATA_DIR` is never used
+unused-function	low	tests/test_serialize.py:1306:5	smart_union_serialization	function `smart_union_serialization` is never used
+unused-variable	low	tests/test_serialize_as_any.py:19:1	user	variable `user` is never used
+unused-variable	low	tests/test_type_adapter.py:67:1	IntList	variable `IntList` is never used
+unused-method	low	tests/test_types.py:801:13	decrypt_value	method `DecryptableStr.decrypt_value` is never used
+unused-variable	low	tests/test_types_typeddict.py:526:1	T	variable `T` is never used
+unused-variable	medium	tests/test_typing.py:25:1	ALL_TYPEDDICT_KINDS	variable `ALL_TYPEDDICT_KINDS` is never used
+unused-function	medium	tests/test_validate_call.py:70:5	validate_bare_none	function `validate_bare_none` is never used
+unused-variable	low	tests/test_validate_call.py:1284:1	M	variable `M` is never used
+unused-variable	low	tests/typechecking/base_model.py:19:1	m2	variable `m2` is never used
+unused-variable	medium	tests/typechecking/base_model.py:21:1	m3	variable `m3` is never used
+unused-variable	low	tests/typechecking/computed_field.py:23:1	y	variable `y` is never used
+unused-variable	low	tests/typechecking/computed_field.py:24:1	z	variable `z` is never used
+unused-variable	medium	tests/typechecking/computed_field.py:25:1	y_cached	variable `y_cached` is never used
+unused-variable	medium	tests/typechecking/computed_field.py:26:1	z_cached	variable `z_cached` is never used
+unused-variable	low	tests/typechecking/fields.py:10:1	m	variable `m` is never used
+unused-variable	medium	tests/typechecking/json_schema_examples.py:3:1	e_good	variable `e_good` is never used
+unused-variable	medium	tests/typechecking/json_schema_examples.py:4:1	e_deprecated	variable `e_deprecated` is never used
+unused-function	low	tests/typechecking/misc.py:13:5	func	function `func` is never used
+unused-variable	low	tests/typechecking/pipeline_api.py:10:1	a1	variable `a1` is never used
+unused-variable	low	tests/typechecking/pipeline_api.py:11:1	a2	variable `a2` is never used
+unused-variable	low	tests/typechecking/pipeline_api.py:12:1	a3	variable `a3` is never used
+unused-variable	medium	tests/typechecking/pipeline_api.py:14:1	a4	variable `a4` is never used
+unused-variable	medium	tests/typechecking/pipeline_api.py:15:1	a5	variable `a5` is never used
+unused-variable	medium	tests/typechecking/pipeline_api.py:16:1	a6	variable `a6` is never used
+unused-variable	medium	tests/typechecking/pipeline_api.py:25:1	a7	variable `a7` is never used
+unused-variable	medium	tests/typechecking/pipeline_api.py:26:1	a8	variable `a8` is never used
+unused-variable	medium	tests/typechecking/pipeline_api.py:27:1	a9	variable `a9` is never used
+unused-variable	medium	tests/typechecking/root_model.py:8:1	bad_root_model	variable `bad_root_model` is never used
+unused-function	medium	tests/typechecking/secret.py:7:5	secret_usage	function `secret_usage` is never used
+unused-variable	low	tests/typechecking/type_form.py:5:1	Model	variable `Model` is never used
+unused-class	low	tests/typechecking/with_config_decorator.py:14:7	Model2	class `Model2` is never used
+unused-class	low	tests/typechecking/with_config_decorator.py:19:7	Model3	class `Model3` is never used
+unused-method	low	tests/types/unions/test_union.py:303:13	do_something	method `ABC_1.do_something` is never used
+unused-method	low	tests/types/unions/test_union.py:308:13	do_something_else	method `ABC_2.do_something_else` is never used

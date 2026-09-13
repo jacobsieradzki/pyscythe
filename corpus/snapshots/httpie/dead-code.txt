@@ -1,0 +1,25 @@
+files_scanned=133
+symbols_checked=1457
+symbols_kept=468
+findings=20
+--
+unused-variable	medium	httpie/cli/constants.py:45:1	SEPARATOR_GROUP_DATA_EMBED_ITEMS	variable `SEPARATOR_GROUP_DATA_EMBED_ITEMS` is never used
+unused-method	low	httpie/downloads.py:355:9	has_finished	method `DownloadStatus.has_finished` is never used
+unused-function	low	httpie/output/ui/palette.py:255:5	boldify	function `boldify` is never used
+unused-variable	medium	httpie/output/ui/rich_help.py:15:1	SEPARATORS	variable `SEPARATORS` is never used
+unused-variable	medium	httpie/output/ui/rich_help.py:19:1	STYLE_PROGRAM_NAME	variable `STYLE_PROGRAM_NAME` is never used
+unused-variable	medium	httpie/output/ui/rich_help.py:31:1	LEFT_PADDING_5	variable `LEFT_PADDING_5` is never used
+unused-function	medium	httpie/output/ui/rich_help.py:128:5	to_help_message	function `to_help_message` is never used
+unused-function	medium	httpie/output/ui/rich_utils.py:23:5	enable_highlighter	function `enable_highlighter` is never used
+unused-variable	medium	httpie/sessions.py:30:1	DEFAULT_SESSIONS_DIR	variable `DEFAULT_SESSIONS_DIR` is never used
+unused-function	medium	httpie/utils.py:80:5	humanize_bytes	function `humanize_bytes` is never used
+unused-variable	medium	tests/test_httpie_cli.py:11:1	OLD_SESSION_FILES_PATH	variable `OLD_SESSION_FILES_PATH` is never used
+unused-function	low	tests/test_update_warnings.py:239:5	lower_build_channel	function `lower_build_channel` is never used
+unused-variable	medium	tests/utils/__init__.py:43:1	HTTP_OK_COLOR	variable `HTTP_OK_COLOR` is never used
+unused-function	low	tests/utils/http_server.py:37:5	get_headers	function `get_headers` is never used
+unused-function	low	tests/utils/http_server.py:46:5	chunked_drip	function `chunked_drip` is never used
+unused-function	low	tests/utils/http_server.py:62:5	random_encoding	function `random_encoding` is never used
+unused-function	low	tests/utils/http_server.py:83:5	status_custom_msg	function `status_custom_msg` is never used
+unused-function	low	tests/utils/http_server.py:92:5	get_cookies	function `get_cookies` is never used
+unused-function	low	tests/utils/http_server.py:109:5	set_cookies	function `set_cookies` is never used
+unused-function	low	tests/utils/http_server.py:120:5	set_cookie_and_redirect	function `set_cookie_and_redirect` is never used

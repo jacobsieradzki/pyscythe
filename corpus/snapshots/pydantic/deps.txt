@@ -1,0 +1,38 @@
+files_scanned=449
+symbols_checked=127
+symbols_kept=0
+findings=33
+--
+unresolved-import	low	.github/actions/people/people.py:20:8		import `yaml` resolves to nothing on the search path
+unresolved-import	low	.github/actions/people/people.py:21:1		import `github` resolves to nothing on the search path
+unresolved-import	low	docs/plugins/main.py:19:1		import `jinja2` resolves to nothing on the search path
+unused-dependency	low	pydantic-core/pyproject.toml	griffe	dependency `griffe` (dependency-groups.linting) is never imported
+unused-dependency	low	pydantic-core/pyproject.toml	python-dateutil	dependency `python-dateutil` (dependency-groups.testing-extra) is never imported
+unused-dependency	low	pydantic-core/pyproject.toml	tzdata	dependency `tzdata` (dependency-groups.testing-extra) is never imported
+missing-dependency	medium	pydantic-core/python/pydantic_core/core_schema.py:32:5	pydantic-core	`pydantic_core` is imported but `pydantic-core` is not a declared dependency
+unresolved-import	low	pydantic-core/wasm-preview/run_tests.py:10:8		import `micropip` resolves to nothing on the search path
+unresolved-import	low	pydantic-core/wasm-preview/run_tests.py:11:8		import `pyodide` resolves to nothing on the search path
+unresolved-import	low	pydantic/_internal/_core_utils.py:10:5		import `rich` resolves to nothing on the search path
+unresolved-import	low	pydantic/_internal/_dataclasses.py:36:5		import `_typeshed` resolves to nothing on the search path
+unresolved-import	low	pydantic/_internal/_typing_extra.py:25:12		import `annotationlib` resolves to nothing on the search path
+unresolved-import	low	pydantic/mypy.py:1454:16		import `tomllib` resolves to nothing on the search path
+unresolved-import	low	pydantic/v1/_hypothesis_plugin.py:33:8		import `hypothesis` resolves to nothing on the search path
+unresolved-import	low	pydantic/v1/env_settings.py:330:9		import `dotenv` resolves to nothing on the search path
+unresolved-import	low	pydantic/v1/mypy.py:941:24		import `toml` resolves to nothing on the search path
+unresolved-import	low	pydantic/v1/version.py:6:12		import `cython` resolves to nothing on the search path
+unused-dependency	low	pyproject.toml	memray	dependency `memray` (dependency-groups.all) is never imported
+unused-dependency	low	pyproject.toml	mike	dependency `mike` (dependency-groups.all) is never imported
+unused-dependency	low	pyproject.toml	mkdocs-exclude	dependency `mkdocs-exclude` (dependency-groups.all) is never imported
+unused-dependency	low	pyproject.toml	mkdocs-llmstxt	dependency `mkdocs-llmstxt` (dependency-groups.all) is never imported
+unused-dependency	low	pyproject.toml	mkdocs-redirects	dependency `mkdocs-redirects` (dependency-groups.all) is never imported
+unused-dependency	low	pyproject.toml	mkdocstrings-python	dependency `mkdocstrings-python` (dependency-groups.all) is never imported
+unused-dependency	low	pyproject.toml	pydantic-docs	dependency `pydantic-docs` (dependency-groups.all) is never imported
+unused-dependency	low	pyproject.toml	pydantic-extra-types	dependency `pydantic-extra-types` (dependency-groups.all) is never imported
+unused-dependency	low	pyproject.toml	pyodide-build	dependency `pyodide-build` (dependency-groups.all) is never imported
+unused-dependency	low	pyproject.toml	pyrefly	dependency `pyrefly` (dependency-groups.all) is never imported
+unused-dependency	low	pyproject.toml	tweepy	dependency `tweepy` (dependency-groups.tweet) is never imported
+unused-dependency	low	pyproject.toml	tzdata	dependency `tzdata` (optional-dependencies.timezone) is never imported
+unresolved-import	low	tests/benchmarks/basemodel_eq_performance.py:17:12		import `matplotlib` resolves to nothing on the search path
+unresolved-import	low	tests/benchmarks/basemodel_eq_performance.py:18:12		import `numpy` resolves to nothing on the search path
+unresolved-import	low	tests/benchmarks/basemodel_eq_performance.py:521:12		import `tqdm` resolves to nothing on the search path
+unresolved-import	low	tests/test_forward_ref.py:1406:9		import `module_1` resolves to nothing on the search path

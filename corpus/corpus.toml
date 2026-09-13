@@ -1,0 +1,118 @@
+# Public projects that `pyscythe-corpus` analyses at a pinned commit.
+#
+# Each project's third-party packages are pinned in corpus/locks/<name>.txt
+# (`pyscythe-corpus lock --project <name>` re-resolves them) and the expected
+# reports live in corpus/snapshots/<name>/ (`pyscythe-corpus update` rewrites
+# them). `mise run corpus` checks every project. Pick projects for the shape
+# they add, not their fame: each one should exercise a layout or framework the
+# others do not.
+
+# A framework with a huge test tree, template tags, settings modules, and a
+# `django.contrib` full of registrations.
+[projects.django]
+repository = "https://github.com/django/django"
+commit = "2b30f6255b5ef84afbd827993643d52ef2c0963a"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A small Django application with settings under `config/` and layered
+# requirements files.
+[projects.django-styleguide-example]
+repository = "https://github.com/HackSoftware/Django-Styleguide-Example"
+commit = "a70ef43d7df03706c1211d4fcfd70b4b0120ba1e"
+python = "3.12"
+requirements = ["-r requirements/local.txt"]
+
+# A uv workspace whose Python lives under `backend/`, with Alembic and FastAPI.
+[projects.full-stack-fastapi-template]
+repository = "https://github.com/fastapi/full-stack-fastapi-template"
+commit = "cb740b656d7a0a6c5e12c7bf8e50343ec94ee9c7"
+python = "3.14"
+requirements = ["pytest"]
+editable = ["backend"]
+
+# A setup.py project: a command-line tool with plugins and an `extras` tree.
+[projects.httpie]
+repository = "https://github.com/httpie/cli"
+commit = "5b604c37c6c67e18e7c3e9aee6c88a8c22b98345"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# Addons discovered by name, a `test/` tree rather than `tests/`, and a web UI.
+[projects.mitmproxy]
+repository = "https://github.com/mitmproxy/mitmproxy"
+commit = "b506c68108e287104045333ade476d92c39c275e"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A library whose public API is re-exported from `__init__`, with validators
+# declared inside functions.
+[projects.pydantic]
+repository = "https://github.com/pydantic/pydantic"
+commit = "0c0541b342c971dc5c6148f5345db7b0e02e103a"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# Generated data files of several megabytes, which the duplicate finder must
+# not choke on.
+[projects.black]
+repository = "https://github.com/psf/black"
+commit = "20622e1259c29bda81831962ace1348ba1921c84"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A Poetry manifest and a `src/` layout.
+[projects.poetry]
+repository = "https://github.com/python-poetry/poetry"
+commit = "be56ff07db06e9b82574648433ca228e4cac549b"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# Tasks registered by decorator, a legacy `t/` test tree, and many optional
+# dependency groups.
+[projects.celery]
+repository = "https://github.com/celery/celery"
+commit = "ea1db4a551a40c3ec1192abeed4785853833cda5"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A package inside a monorepo, analysed from its own directory with its
+# sibling `core` package installed.
+[projects.langchain]
+repository = "https://github.com/langchain-ai/langchain"
+commit = "348c9dc572599947d2d7d33d6a5b8b936e92a1d4"
+python = "3.12"
+root = "libs/langchain"
+requirements = ["pytest"]
+editable = ["libs/core", "libs/langchain"]
+
+# Compiled extensions and a large `pandas/tests` tree; the released package
+# stands in for the editable build.
+[projects.pandas]
+repository = "https://github.com/pandas-dev/pandas"
+commit = "fab71f1372abaa7d39d9fc6f09edb046f1da1cdd"
+python = "3.12"
+requirements = ["pandas", "pytest"]
+
+# A `lib/` layout with a frontend beside it; the released package stands in
+# for the editable build.
+[projects.streamlit]
+repository = "https://github.com/streamlit/streamlit"
+commit = "dd7b2fc5e6b951e052f59cb32fc4710d1a70b8ec"
+python = "3.12"
+requirements = ["streamlit", "pytest"]
+
+# The largest project: thousands of integrations found by convention rather
+# than by import, on the newest Python.
+[projects.home-assistant]
+repository = "https://github.com/home-assistant/core"
+commit = "14f9b7e699d6de2b33901a3decb6a0ca9c8c21df"
+python = "3.14"
+requirements = ["-r requirements.txt", "pytest"]

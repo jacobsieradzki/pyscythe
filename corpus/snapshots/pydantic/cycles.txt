@@ -1,0 +1,7 @@
+files_scanned=449
+symbols_checked=0
+symbols_kept=0
+findings=2
+--
+circular-import	high	pydantic/__init__.py:5:1	-	import cycle: pydantic -> pydantic._migration -> pydantic
+circular-import	high	pydantic/v1/__init__.py:2:1	-	import cycle among 21 modules, shortest: pydantic.v1 -> pydantic.v1.dataclasses -> pydantic.v1
