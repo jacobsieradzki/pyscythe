@@ -1,0 +1,94 @@
+# Cut a release: build the binary wheel for every platform, publish to PyPI
+# through trusted publishing (no token in the repo), and attach everything to
+# a GitHub Release. Runs on a `v*` tag; the version comes from Cargo.toml and
+# must match the tag.
+name: release
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: The tag must match the workspace version
+        if: github.ref_type == 'tag'
+        run: |
+          version=$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)
+          tag="${GITHUB_REF_NAME#v}"
+          if [ "$version" != "$tag" ]; then
+            echo "Cargo.toml says $version but the tag is v$tag" >&2
+            exit 1
+          fi
+
+  wheels:
+    needs: check-version
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-latest, target: x86_64-unknown-linux-gnu, manylinux: "2_28" }
+          - { os: ubuntu-latest, target: aarch64-unknown-linux-gnu, manylinux: "2_28" }
+          - { os: macos-latest, target: aarch64-apple-darwin }
+          - { os: macos-latest, target: x86_64-apple-darwin }
+          - { os: windows-latest, target: x86_64-pc-windows-msvc }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: PyO3/maturin-action@v1
+        with:
+          target: ${{ matrix.target }}
+          manylinux: ${{ matrix.manylinux || 'auto' }}
+          args: --release --locked --out dist
+      - name: The wheel runs
+        if: matrix.target != 'aarch64-unknown-linux-gnu' && matrix.target != 'x86_64-apple-darwin'
+        shell: bash
+        run: |
+          pip install --no-index --find-links dist pyscythe
+          pyscythe --version
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheel-${{ matrix.target }}
+          path: dist/*.whl
+
+  sdist:
+    needs: check-version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: PyO3/maturin-action@v1
+        with:
+          command: sdist
+          args: --out dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sdist
+          path: dist/*.tar.gz
+
+  publish:
+    needs: [wheels, sdist]
+    if: github.ref_type == 'tag'
+    runs-on: ubuntu-latest
+    # The `pypi` environment is what PyPI's trusted publisher is bound to.
+    environment: pypi
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: What is being published
+        run: ls -l dist
+      - uses: pypa/gh-action-pypi-publish@release/v1
+      - name: GitHub Release with the same files
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          generate_release_notes: true

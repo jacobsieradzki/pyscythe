@@ -1,0 +1,32 @@
+# Packaging for PyPI: a wheel that holds only the `pyscythe` binary, built by
+# maturin from the CLI crate. Version and metadata come from Cargo.toml.
+[build-system]
+requires = ["maturin>=1.7,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "pyscythe"
+description = "Codebase intelligence for Python: dead code, circular imports, duplication, complexity, architecture boundaries, and dependencies"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [{ name = "Jacob Sieradzki" }]
+keywords = ["dead-code", "linter", "static-analysis", "circular-imports", "duplication", "complexity"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python",
+  "Programming Language :: Rust",
+  "Topic :: Software Development :: Quality Assurance",
+]
+dynamic = ["version"]
+
+[project.urls]
+Repository = "https://github.com/jacobsieradzki/pyscythe"
+Changelog = "https://github.com/jacobsieradzki/pyscythe/releases"
+
+[tool.maturin]
+bindings = "bin"
+manifest-path = "crates/pyscythe_cli/Cargo.toml"
+strip = true

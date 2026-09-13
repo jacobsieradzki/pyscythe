@@ -28,6 +28,10 @@ run = "cargo shear"
 description = "Spelling in code and docs"
 run = "typos"
 
+[tasks.wheel]
+description = "Build the PyPI wheel into target/wheels"
+run = "uvx maturin build --release --out target/wheels"
+
 [tasks.check]
 description = "Everything CI checks"
 depends = ["fmt", "lint", "test", "doc", "deps", "spell"]

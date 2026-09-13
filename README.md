@@ -8,6 +8,18 @@ Built in Rust on the [ruff](https://github.com/astral-sh/ruff) and [ty](https://
 
 Early. `pyscythe dead-code` reports functions, classes, methods, properties, variables, and whole files that nothing refers to, resolving references semantically through ty (aliased imports, attribute access, re-exports). Dotted strings such as `"pkg.settings.DEBUG"` count as references. Methods that override an inherited member (walked through ty, so library bases count) are kept, and any attribute name accessed anywhere keeps same-named methods as a duck-typing safety net. `pyscythe cycles` reports import cycles that would bite at load time. `pyscythe health` measures cyclomatic and cognitive complexity per function, lists hotspots, and grades the codebase 0 to 100. `pyscythe dupes` finds copied code, including renamed copies, and reports the duplicated percentage. `pyscythe boundaries` enforces layering rules from `pyproject.toml`. `pyscythe fix --dry-run` shows the diff that would delete the dead code, and `pyscythe fix` applies it. `pyscythe deps` compares what `pyproject.toml` (PEP 621 or Poetry tables, or `setup.py`, `setup.cfg`, or pip `requirements*.txt` files) declares with what the code imports, per nested project in a monorepo, using the installed environment's metadata when there is one; an import that only arrives through a declared dependency (`starlette` via `fastapi`) is reported at low confidence. pytest's `python_files`, `python_classes`, and `python_functions` are honoured from `pytest.ini`, `pyproject.toml`, `tox.ini`, or `setup.cfg`. Built-in plugins keep symbols that frameworks reach by convention: pyproject entry points, pytest, FastAPI, Flask, Click/Typer, Celery, Airflow, Django, Alembic, SQLAlchemy/SQLModel, Pydantic. See [TODO.md](TODO.md) for the roadmap.
 
+## Install
+
+The binary ships as a wheel on PyPI, so any Python tool runner works, and no Python is needed at runtime:
+
+```bash
+uvx pyscythe dead-code .            # run without installing
+uv tool install pyscythe            # or: pipx install pyscythe
+cargo install --locked --git https://github.com/jacobsieradzki/pyscythe pyscythe   # from source
+```
+
+Wheels are built for Linux (x86_64, aarch64), macOS (Intel, Apple silicon), and Windows (x86_64). crates.io is not an option while the ruff and ty crates are git dependencies.
+
 ## Usage
 
 ```bash
@@ -54,12 +66,13 @@ Exit codes: `0` clean, `1` findings, `2` error.
 
 ### In CI
 
-As a GitHub Action (the repository is private for now, so the runner needs access to it):
+As a GitHub Action, which installs the PyPI wheel with uv (the action itself lives in this repository, so the runner needs access to it while the repository is private):
 
 ```yaml
 - uses: jacobsieradzki/pyscythe@main
   with:
     command: dead-code
+    version: 0.1.0                      # omit for the latest release
     since: origin/${{ github.base_ref }}
     args: --min-confidence medium
 ```
@@ -102,6 +115,16 @@ mise run check
 ```
 
 For Rust, the tools that map onto oxlint, oxfmt, and fallow are clippy, rustfmt, and rustc's own `dead_code` and `unreachable_pub` lints plus `cargo shear`; all are wired in here.
+
+### Releasing
+
+Bump `version` in the workspace `Cargo.toml`, commit, then tag and push:
+
+```bash
+git tag v0.2.0 && git push origin v0.2.0
+```
+
+The `release` workflow builds the wheels and sdist with maturin, publishes them to PyPI through trusted publishing (the `pypi` environment, no token stored anywhere), and attaches the same files to a GitHub Release. `uvx maturin build --release` builds a wheel locally into `target/wheels`.
 
 ## Layout
 

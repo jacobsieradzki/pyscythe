@@ -23,23 +23,22 @@ inputs:
     description: Where to write the SARIF log when format is sarif.
     default: pyscythe.sarif
   version:
-    description: Git ref of pyscythe to install.
-    default: main
+    description: The pyscythe release to install from PyPI, such as 0.1.0. Leave empty for the latest.
+    default: ""
 runs:
   using: composite
   steps:
-    - name: Install Rust
-      uses: dtolnay/rust-toolchain@stable
-    - name: Cache the pyscythe binary
-      id: cache
-      uses: actions/cache@v4
-      with:
-        path: ~/.cargo/bin/pyscythe
-        key: pyscythe-${{ runner.os }}-${{ inputs.version }}
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
     - name: Install pyscythe
-      if: steps.cache.outputs.cache-hit != 'true'
       shell: bash
-      run: cargo install --locked --git https://github.com/jacobsieradzki/pyscythe --rev "${{ inputs.version }}" pyscythe
+      run: |
+        spec="pyscythe"
+        if [ -n "${{ inputs.version }}" ]; then
+          spec="pyscythe==${{ inputs.version }}"
+        fi
+        uv tool install "$spec"
+        pyscythe --version
     - name: Run pyscythe
       shell: bash
       run: |

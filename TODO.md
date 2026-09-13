@@ -48,6 +48,7 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 
 ## Deferred by decision
 
-- [ ] Distribution: PyPI wheel via maturin, `cargo install`, Homebrew tap. (Held off on 2026-09-05.)
+- [x] Distribution: PyPI wheel via maturin (`release.yml` on `v*` tags, trusted publishing, GitHub Release), `cargo install --git`. First release v0.1.0 on 2026-09-13.
+- [ ] Homebrew tap and a `curl | sh` installer through cargo-dist once the repository is public; crates.io waits on the ruff and ty crates being published.
 - [ ] Agent integration: MCP server, Claude Code skill, `actions[]` in JSON. (Not a priority as of 2026-09-05.)
 - [ ] Runtime layer from coverage.py data.

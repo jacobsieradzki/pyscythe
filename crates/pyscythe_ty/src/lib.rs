@@ -22,7 +22,7 @@ use pyscythe_core::tokens::{CloneMode, CloneToken};
 use ruff_db::files::File;
 use ruff_db::parsed::parsed_module;
 use ruff_db::source::{line_index, source_text};
-use ruff_db::system::{OsSystem, SystemPath};
+use ruff_db::system::{OsSystem, System as _, SystemPath};
 use ruff_python_ast::token::TokenKind;
 use ruff_text_size::{Ranged, TextRange, TextSize};
 use rustc_hash::FxHashMap;
@@ -115,7 +115,21 @@ impl TyIndex {
         let root = SystemPath::new(root);
         let system = OsSystem::new(root);
 
-        let mut metadata = ProjectMetadata::discover(root, &system)?;
+        // The directory asked for is the project when it carries a manifest
+        // of its own, even a setup.py or requirements.txt; otherwise the
+        // closest pyproject.toml above it is. ty's default discovery would
+        // ask uv for the workspace root and prefer that, which lets a
+        // monorepo root (or this repository, packaged for PyPI) swallow the
+        // project actually asked for; nested manifests are handled here.
+        let has_own_manifest = ["setup.py", "setup.cfg", "requirements.txt"]
+            .iter()
+            .any(|name| system.is_file(&root.join(name)))
+            && !system.is_file(&root.join("pyproject.toml"));
+        let mut metadata = if has_own_manifest {
+            ProjectMetadata::new(root.file_name().unwrap_or("root"), root.to_path_buf())
+        } else {
+            ProjectMetadata::discover_without_uv(root, &system)?
+        };
         metadata
             .apply_configuration_files(&system)
             .map_err(|error| OpenError::Configuration(error.into()))?;
