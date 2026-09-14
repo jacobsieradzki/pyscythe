@@ -7,7 +7,7 @@ unresolved-import	low	docs/contributors/generate.py:6:1		import `jinja2` resolve
 unresolved-import	low	docs/installation/generate.py:6:8		import `yaml` resolves to nothing on the search path
 unresolved-import	low	extras/packaging/linux/scripts/hooks/hook-pip.py:2:1		import `PyInstaller` resolves to nothing on the search path
 unresolved-import	low	extras/profiling/benchmarks.py:48:8		import `pyperf` resolves to nothing on the search path
-missing-dependency	low	httpie/client.py:12:8	urllib3	`urllib3` is imported but `urllib3` is not a declared dependency; it arrives through `requests`
+missing-dependency	low	httpie/client.py:12:8	urllib3	`urllib3` is imported but `urllib3` is not a declared dependency; it arrives through a declared dependency
 missing-dependency	medium	tests/conftest.py:3:8	pytest	`_pytest`, `pytest` is imported but `pytest` is not a declared dependency
 unresolved-import	low	tests/conftest.py:4:1		import `pytest_httpbin` resolves to nothing on the search path
 unresolved-import	low	tests/test_encoding.py:6:8		import `responses` resolves to nothing on the search path

@@ -3,7 +3,7 @@ symbols_checked=82
 symbols_kept=0
 findings=34
 --
-missing-dependency	low	docs/scripts/generate_api_schema.py:1:8	pyyaml	`yaml` is imported but `pyyaml` is not a declared dependency; it arrives through `schemathesis`
+missing-dependency	low	docs/scripts/generate_api_schema.py:1:8	pyyaml	`yaml` is imported but `pyyaml` is not a declared dependency; it arrives through a declared dependency
 unused-dependency	medium	pyproject.toml	aiocache	dependency `aiocache` is never imported
 unused-dependency	medium	pyproject.toml	aiofiles	dependency `aiofiles` is never imported
 unused-dependency	medium	pyproject.toml	aiohttp	dependency `aiohttp` is never imported
@@ -29,11 +29,11 @@ unused-dependency	medium	pyproject.toml	schemathesis	dependency `schemathesis` i
 unused-dependency	medium	pyproject.toml	thinc	dependency `thinc` is never imported
 unused-dependency	medium	pyproject.toml	typing-extensions	dependency `typing-extensions` is never imported
 unused-dependency	medium	pyproject.toml	validators	dependency `validators` is never imported
-missing-dependency	low	src/dispatch/api.py:5:1	starlette	`starlette` is imported but `starlette` is not a declared dependency; it arrives through `fastapi`
+missing-dependency	low	src/dispatch/api.py:5:1	starlette	`starlette` is imported but `starlette` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	src/dispatch/config.py:35:12		import `metatron` resolves to nothing on the search path
-missing-dependency	low	src/dispatch/database/service.py:11:1	six	`six` is imported but `six` is not a declared dependency; it arrives through `boto3`
-missing-dependency	low	src/dispatch/database/service.py:12:1	sortedcontainers	`sortedcontainers` is imported but `sortedcontainers` is not a declared dependency; it arrives through `schemathesis`
-missing-dependency	low	src/dispatch/entity/service.py:251:10	regex	`regex` is imported but `regex` is not a declared dependency; it arrives through `tiktoken`
-missing-dependency	low	src/dispatch/messaging/email/filters.py:7:1	markupsafe	`markupsafe` is imported but `markupsafe` is not a declared dependency; it arrives through `alembic`
-missing-dependency	low	src/dispatch/plugins/dispatch_test/document.py:4:1	httplib2	`httplib2` is imported but `httplib2` is not a declared dependency; it arrives through `google-api-python-client`
+missing-dependency	low	src/dispatch/database/service.py:11:1	six	`six` is imported but `six` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	src/dispatch/database/service.py:12:1	sortedcontainers	`sortedcontainers` is imported but `sortedcontainers` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	src/dispatch/entity/service.py:251:10	regex	`regex` is imported but `regex` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	src/dispatch/messaging/email/filters.py:7:1	markupsafe	`markupsafe` is imported but `markupsafe` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	src/dispatch/plugins/dispatch_test/document.py:4:1	httplib2	`httplib2` is imported but `httplib2` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	tests/factories.py:4:1		import `factory` resolves to nothing on the search path

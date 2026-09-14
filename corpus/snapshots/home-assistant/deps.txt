@@ -5,7 +5,7 @@ findings=1214
 --
 unresolved-import	low	homeassistant/auth/mfa_modules/notify.py:54:12		import `pyotp` resolves to nothing on the search path
 unresolved-import	low	homeassistant/auth/mfa_modules/totp.py:41:12		import `pyqrcode` resolves to nothing on the search path
-missing-dependency	low	homeassistant/bootstrap.py:116:5	anyio	`anyio` is imported but `anyio` is not a declared dependency; it arrives through `httpx`
+missing-dependency	low	homeassistant/bootstrap.py:116:5	anyio	`anyio` is imported but `anyio` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/bootstrap.py:121:12		import `trio` resolves to nothing on the search path
 unresolved-import	low	homeassistant/bootstrap.py:592:13		import `colorlog` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/abode/__init__.py:7:1		import `jaraco` resolves to nothing on the search path
@@ -25,16 +25,16 @@ unresolved-import	low	homeassistant/components/aidot/config_flow.py:5:1		import 
 unresolved-import	low	homeassistant/components/airgradient/__init__.py:3:1		import `airgradient` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/airly/config_flow.py:9:1		import `airly` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/airnow/config_flow.py:7:1		import `pyairnow` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/airnow/sensor.py:7:1	python-dateutil	`dateutil` is imported but `python-dateutil` is not a declared dependency; it arrives through `hass-nabucasa`
+missing-dependency	low	homeassistant/components/airnow/sensor.py:7:1	python-dateutil	`dateutil` is imported but `python-dateutil` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/airobot/button.py:7:1		import `pyairobotrest` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/airos/__init__.py:6:1		import `airos` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/airpatrol/config_flow.py:6:1		import `airpatrol` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/airq/config_flow.py:6:1		import `aioairq` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/airthings/__init__.py:6:1		import `airthings` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/airthings_ble/config_flow.py:7:1		import `airthings_ble` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/airthings_ble/config_flow.py:12:1	bleak	`bleak` is imported but `bleak` is not a declared dependency; it arrives through `home-assistant-bluetooth`
-missing-dependency	low	homeassistant/components/airthings_ble/config_flow.py:13:1	habluetooth	`habluetooth` is imported but `habluetooth` is not a declared dependency; it arrives through `home-assistant-bluetooth`
-missing-dependency	low	homeassistant/components/airthings_ble/coordinator.py:9:1	bleak-retry-connector	`bleak_retry_connector` is imported but `bleak-retry-connector` is not a declared dependency; it arrives through `home-assistant-bluetooth`
+missing-dependency	low	homeassistant/components/airthings_ble/config_flow.py:12:1	bleak	`bleak` is imported but `bleak` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	homeassistant/components/airthings_ble/config_flow.py:13:1	habluetooth	`habluetooth` is imported but `habluetooth` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	homeassistant/components/airthings_ble/coordinator.py:9:1	bleak-retry-connector	`bleak_retry_connector` is imported but `bleak-retry-connector` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/airtouch4/__init__.py:3:1		import `airtouch4pyapi` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/airtouch5/__init__.py:3:1		import `airtouch5py` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/airvisual/__init__.py:8:1		import `pyairvisual` resolves to nothing on the search path
@@ -46,8 +46,8 @@ unresolved-import	low	homeassistant/components/alarmdecoder/__init__.py:9:1		imp
 unresolved-import	low	homeassistant/components/alexa_devices/binary_sensor.py:7:1		import `aioamazondevices` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/alpha_vantage/sensor.py:6:1		import `alpha_vantage` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/altruist/config_flow.py:6:1		import `altruistclient` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/amazon_polly/tts.py:7:8	boto3	`boto3` is imported but `boto3` is not a declared dependency; it arrives through `hass-nabucasa`
-missing-dependency	low	homeassistant/components/amazon_polly/tts.py:8:8	botocore	`botocore` is imported but `botocore` is not a declared dependency; it arrives through `hass-nabucasa`
+missing-dependency	low	homeassistant/components/amazon_polly/tts.py:7:8	boto3	`boto3` is imported but `boto3` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	homeassistant/components/amazon_polly/tts.py:8:8	botocore	`botocore` is imported but `botocore` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/amberelectric/__init__.py:3:8		import `amberelectric` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/ambient_network/__init__.py:3:1		import `aioambient` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/amcrest/__init__.py:13:1		import `amcrest` resolves to nothing on the search path
@@ -66,7 +66,7 @@ unresolved-import	low	homeassistant/components/aosmith/__init__.py:3:1		import `
 unresolved-import	low	homeassistant/components/apache_kafka/__init__.py:7:1		import `aiokafka` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/apcupsd/config_flow.py:6:8		import `aioapcaccess` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/apple_tv/__init__.py:8:1		import `pyatv` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/apple_tv/config_flow.py:479:28	backoff	`backoff` is imported but `backoff` is not a declared dependency; it arrives through `aiogithubapi`
+missing-dependency	low	homeassistant/components/apple_tv/config_flow.py:479:28	backoff	`backoff` is imported but `backoff` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/apprise/notify.py:6:8		import `apprise` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/aprilaire/__init__.py:5:1		import `pyaprilaire` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/aprs/device_tracker.py:7:8		import `aprslib` resolves to nothing on the search path
@@ -77,7 +77,7 @@ unresolved-import	low	homeassistant/components/aqualogic/__init__.py:10:1		impor
 unresolved-import	low	homeassistant/components/aquostv/media_player.py:8:8		import `sharp_aquos_rc` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/aqvify/__init__.py:5:1		import `pyaqvify` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/aranet/__init__.py:5:1		import `aranet4` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/aranet/config_flow.py:6:1	bluetooth-data-tools	`bluetooth_data_tools` is imported but `bluetooth-data-tools` is not a declared dependency; it arrives through `home-assistant-bluetooth`
+missing-dependency	low	homeassistant/components/aranet/config_flow.py:6:1	bluetooth-data-tools	`bluetooth_data_tools` is imported but `bluetooth-data-tools` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/arcam_fmj/__init__.py:8:1		import `arcam` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/arris_tg2492lg/device_tracker.py:6:1		import `arris_tg2492lg` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/aruba/device_tracker.py:7:8		import `pexpect` resolves to nothing on the search path
@@ -98,7 +98,7 @@ unresolved-import	low	homeassistant/components/aurora_abb_powerone/config_flow.p
 unresolved-import	low	homeassistant/components/aurora_abb_powerone/coordinator.py:8:1		import `serial` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/aussie_broadband/__init__.py:4:1		import `aussiebb` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/autarco/__init__.py:5:1		import `autarco` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/auth/__init__.py:135:1	multidict	`multidict` is imported but `multidict` is not a declared dependency; it arrives through `aiogithubapi`
+missing-dependency	low	homeassistant/components/auth/__init__.py:135:1	multidict	`multidict` is imported but `multidict` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/autoskope/__init__.py:4:1		import `autoskope_client` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/avea/__init__.py:3:8		import `avea` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/awair/config_flow.py:8:1		import `python_awair` resolves to nothing on the search path
@@ -124,13 +124,13 @@ unresolved-import	low	homeassistant/components/blockchain/sensor.py:7:1		import 
 unresolved-import	low	homeassistant/components/blue_current/__init__.py:7:1		import `bluecurrent_api` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/bluemaestro/__init__.py:5:1		import `bluemaestro_ble` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/bluesound/__init__.py:4:1		import `pyblu` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/bluetooth/__init__.py:9:1	bluetooth-adapters	`bluetooth_adapters` is imported but `bluetooth-adapters` is not a declared dependency; it arrives through `home-assistant-bluetooth`
+missing-dependency	low	homeassistant/components/bluetooth/__init__.py:9:1	bluetooth-adapters	`bluetooth_adapters` is imported but `bluetooth-adapters` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/bond/__init__.py:8:1		import `bond_async` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/bosch_alarm/__init__.py:5:1		import `bosch_alarm_mode2` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/bosch_shc/__init__.py:6:1		import `boschshcpy` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/braviatv/__init__.py:6:1		import `pybravia` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/bring/__init__.py:5:1		import `bring_api` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/bring/coordinator.py:19:1	mashumaro	`mashumaro` is imported but `mashumaro` is not a declared dependency; it arrives through `hass-nabucasa`
+missing-dependency	low	homeassistant/components/bring/coordinator.py:19:1	mashumaro	`mashumaro` is imported but `mashumaro` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/broadlink/config_flow.py:10:8		import `broadlink` resolves to nothing on the search path
 missing-dependency	medium	homeassistant/components/broadlink/radio_frequency.py:7:1	rf-protocols	`rf_protocols` is imported but `rf-protocols` is not a declared dependency
 unresolved-import	low	homeassistant/components/brother/__init__.py:5:1		import `brother` resolves to nothing on the search path
@@ -210,7 +210,7 @@ unresolved-import	low	homeassistant/components/dlink/__init__.py:3:1		import `py
 unresolved-import	low	homeassistant/components/dlna_dmr/config_flow.py:11:1		import `async_upnp_client` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/dlna_dmr/config_flow.py:14:1		import `getmac` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/dlna_dmr/media_player.py:19:1		import `didl_lite` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/dnsip/sensor.py:11:8	pycares	`pycares` is imported but `pycares` is not a declared dependency; it arrives through `aiodns`
+missing-dependency	low	homeassistant/components/dnsip/sensor.py:11:8	pycares	`pycares` is imported but `pycares` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/doods/image_processing.py:11:1		import `pydoods` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/doorbird/__init__.py:7:1		import `doorbirdpy` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/dormakaba_dkey/__init__.py:3:1		import `py_dormakaba_dkey` resolves to nothing on the search path
@@ -248,7 +248,7 @@ unresolved-import	low	homeassistant/components/ekeybionyx/config_flow.py:11:8		i
 unresolved-import	low	homeassistant/components/electrasmart/__init__.py:3:1		import `electrasmart` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/electric_kiwi/__init__.py:3:1		import `electrickiwi_api` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/elevenlabs/__init__.py:6:1		import `elevenlabs` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/elevenlabs/tts.py:13:1	sentence-stream	`sentence_stream` is imported but `sentence-stream` is not a declared dependency; it arrives through `hass-nabucasa`
+missing-dependency	low	homeassistant/components/elevenlabs/tts.py:13:1	sentence-stream	`sentence_stream` is imported but `sentence-stream` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/elgato/button.py:7:1		import `elgato` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/elkm1/__init__.py:8:1		import `elkm1_lib` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/elmax/__init__.py:3:1		import `elmax_api` resolves to nothing on the search path
@@ -372,7 +372,7 @@ unresolved-import	low	homeassistant/components/google/coordinator.py:14:1		impor
 unresolved-import	low	homeassistant/components/google_air_quality/__init__.py:5:1		import `google_air_quality_api` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/google_assistant_sdk/__init__.py:6:1		import `gassist_text` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/google_assistant_sdk/__init__.py:7:1		import `google` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/google_assistant_sdk/helpers.py:12:1	grpcio	`grpc` is imported but `grpcio` is not a declared dependency; it arrives through `hass-nabucasa`
+missing-dependency	low	homeassistant/components/google_assistant_sdk/helpers.py:12:1	grpcio	`grpc` is imported but `grpcio` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/google_drive/__init__.py:5:1		import `google_drive_api` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/google_health/__init__.py:7:1		import `google_health_api` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/google_mail/api.py:7:1		import `googleapiclient` resolves to nothing on the search path
@@ -625,7 +625,7 @@ unresolved-import	low	homeassistant/components/minecraft_server/api.py:8:1		impo
 unresolved-import	low	homeassistant/components/minio/minio_helper.py:13:1		import `minio` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/mitsubishi_comfort/__init__.py:7:1		import `mitsubishi_comfort` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/moat/__init__.py:5:1		import `moat_ble` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/mobile_app/helpers.py:9:1	pynacl	`nacl` is imported but `pynacl` is not a declared dependency; it arrives through `securetar`
+missing-dependency	low	homeassistant/components/mobile_app/helpers.py:9:1	pynacl	`nacl` is imported but `pynacl` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/mochad/__init__.py:7:1		import `pymochad` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/modbus/modbus.py:7:1		import `pymodbus` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/modem_callerid/__init__.py:3:1		import `phone_modem` resolves to nothing on the search path
@@ -687,7 +687,7 @@ unresolved-import	low	homeassistant/components/nina/config_flow.py:6:1		import `
 unresolved-import	low	homeassistant/components/nintendo_parental_controls/__init__.py:3:1		import `pynintendoauth` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/nintendo_parental_controls/__init__.py:7:1		import `pynintendoparental` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/nissan_leaf/__init__.py:11:1		import `pycarwings2` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/nmap_tracker/__init__.py:10:8	aiooui	`aiooui` is imported but `aiooui` is not a declared dependency; it arrives through `home-assistant-bluetooth`
+missing-dependency	low	homeassistant/components/nmap_tracker/__init__.py:10:8	aiooui	`aiooui` is imported but `aiooui` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/nmap_tracker/__init__.py:12:1		import `nmap` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/nmbs/__init__.py:6:1		import `pyrail` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/noaa_tides/sensor.py:7:8		import `noaa_coops` resolves to nothing on the search path
@@ -769,7 +769,7 @@ unresolved-import	low	homeassistant/components/philips_js/__init__.py:5:1		impor
 unresolved-import	low	homeassistant/components/pi_hole/__init__.py:6:1		import `hole` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/picnic/__init__.py:3:1		import `python_picnic_api2` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/pilight/__init__.py:10:1		import `pilight` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/ping/__init__.py:5:1	icmplib	`icmplib` is imported but `icmplib` is not a declared dependency; it arrives through `hass-nabucasa`
+missing-dependency	low	homeassistant/components/ping/__init__.py:5:1	icmplib	`icmplib` is imported but `icmplib` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/pjlink/config_flow.py:7:1		import `pypjlink` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/plaato/__init__.py:8:1		import `pyplaato` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/playstation_network/config_flow.py:8:1		import `psnawp_api` resolves to nothing on the search path
@@ -880,7 +880,7 @@ unresolved-import	low	homeassistant/components/samsungtv/entity.py:5:1		import `
 unresolved-import	low	homeassistant/components/sanix/__init__.py:3:1		import `sanix` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/satel_integra/__init__.py:5:1		import `satel_integra` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/saunum/__init__.py:3:1		import `pysaunum` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/schlage/__init__.py:4:1	pycognito	`pycognito` is imported but `pycognito` is not a declared dependency; it arrives through `hass-nabucasa`
+missing-dependency	low	homeassistant/components/schlage/__init__.py:4:1	pycognito	`pycognito` is imported but `pycognito` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/schlage/__init__.py:5:8		import `pyschlage` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/schluter/__init__.py:7:1		import `schluter` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/scorpiontrack/__init__.py:3:1		import `pyscorpiontrack` resolves to nothing on the search path
@@ -990,7 +990,7 @@ unresolved-import	low	homeassistant/components/syncthru/__init__.py:3:1		import 
 unresolved-import	low	homeassistant/components/synology_dsm/__init__.py:7:1		import `synology_dsm` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/synology_srm/device_tracker.py:7:8		import `synology_srm` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/system_bridge/__init__.py:7:1		import `systembridgeconnector` resolves to nothing on the search path
-missing-dependency	low	homeassistant/components/systemmonitor/const.py:3:1	psutil	`psutil` is imported but `psutil` is not a declared dependency; it arrives through `psutil-home-assistant`
+missing-dependency	low	homeassistant/components/systemmonitor/const.py:3:1	psutil	`psutil` is imported but `psutil` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/components/systemnexa2/config_flow.py:10:1		import `sn2` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/tado/__init__.py:6:8		import `PyTado` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/tailscale/binary_sensor.py:7:1		import `tailscale` resolves to nothing on the search path
@@ -1169,7 +1169,7 @@ unresolved-import	low	homeassistant/components/zoneminder/__init__.py:7:1		impor
 unresolved-import	low	homeassistant/components/zonneplan/__init__.py:3:1		import `pyzonneplan` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/zwave_js/__init__.py:10:1		import `zwave_js_server` resolves to nothing on the search path
 unresolved-import	low	homeassistant/components/zwave_me/binary_sensor.py:5:1		import `zwave_me_ws` resolves to nothing on the search path
-missing-dependency	low	homeassistant/helpers/httpx_client.py:10:8	httpcore	`httpcore` is imported but `httpcore` is not a declared dependency; it arrives through `httpx`
+missing-dependency	low	homeassistant/helpers/httpx_client.py:10:8	httpcore	`httpcore` is imported but `httpcore` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	homeassistant/loader.py:311:16		import `custom_components` resolves to nothing on the search path
 unresolved-import	low	mypy_plugins/enum_identity_compare.py:35:1		import `mypy` resolves to nothing on the search path
 missing-dependency	medium	pylint/plugins/pylint_home_assistant/checkers/decorator.py:31:51	pytest	`_pytest`, `pytest` is imported but `pytest` is not a declared dependency
@@ -1183,7 +1183,7 @@ unused-dependency	medium	pyproject.toml	typing-extensions	dependency `typing-ext
 unresolved-import	low	script/check_requirements/gate.py:15:1		import `github` resolves to nothing on the search path
 unused-dependency	medium	script/check_requirements/requirements.txt	pygithub	dependency `pygithub` is never imported
 unresolved-import	low	script/hassfest/requirements.py:15:1		import `tqdm` resolves to nothing on the search path
-missing-dependency	low	script/hassfest/requirements.py:40:5	pytz	`pytz` is imported but `pytz` is not a declared dependency; it arrives through `astral`
+missing-dependency	low	script/hassfest/requirements.py:40:5	pytz	`pytz` is imported but `pytz` is not a declared dependency; it arrives through a declared dependency
 missing-dependency	medium	script/hassfest/requirements.py:110:5	pytest	`_pytest`, `py`, `pytest` is imported but `pytest` is not a declared dependency
 unresolved-import	low	script/licenses.py:13:1		import `license_expression` resolves to nothing on the search path
 unresolved-import	low	script/lint_and_test.py:45:5		import `gen_requirements_all` resolves to nothing on the search path
@@ -1196,24 +1196,24 @@ unresolved-import	low	tests/auth/test_auth_store.py:7:1		import `freezegun` reso
 unresolved-import	low	tests/common.py:35:1		import `syrupy` resolves to nothing on the search path
 unresolved-import	low	tests/components/abode/conftest.py:8:1		import `requests_mock` resolves to nothing on the search path
 unresolved-import	low	tests/components/bang_olufsen/util.py:3:1		import `inflection` resolves to nothing on the search path
-missing-dependency	low	tests/components/bluetooth/conftest.py:6:1	dbus-fast	`dbus_fast` is imported but `dbus-fast` is not a declared dependency; it arrives through `home-assistant-bluetooth`
-missing-dependency	low	tests/components/cloud/test_http_api.py:2881:23	snitun	`snitun` is imported but `snitun` is not a declared dependency; it arrives through `hass-nabucasa`
+missing-dependency	low	tests/components/bluetooth/conftest.py:6:1	dbus-fast	`dbus_fast` is imported but `dbus-fast` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	tests/components/cloud/test_http_api.py:2881:23	snitun	`snitun` is imported but `snitun` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	tests/components/dhcp/test_init.py:11:1		import `scapy` resolves to nothing on the search path
 unresolved-import	low	tests/components/elmax/conftest.py:16:8		import `respx` resolves to nothing on the search path
-missing-dependency	low	tests/components/esphome/test_manager.py:2149:38	acme	`acme` is imported but `acme` is not a declared dependency; it arrives through `hass-nabucasa`
-missing-dependency	low	tests/components/mcp_server/test_http.py:18:8	voluptuous	`voluptuous` is imported but `voluptuous` is not a declared dependency; it arrives through `annotatedyaml`
+missing-dependency	low	tests/components/esphome/test_manager.py:2149:38	acme	`acme` is imported but `acme` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	tests/components/mcp_server/test_http.py:18:8	voluptuous	`voluptuous` is imported but `voluptuous` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	tests/components/plugwise/conftest.py:8:1		import `munch` resolves to nothing on the search path
 unresolved-import	low	tests/components/rainforest_raven/const.py:13:1		import `iso4217` resolves to nothing on the search path
 unresolved-import	low	tests/components/roborock/mock_data.py:28:1		import `vacuum_map_parser_roborock` resolves to nothing on the search path
-missing-dependency	low	tests/components/ws66i/test_media_player.py:47:10	six	`six` is imported but `six` is not a declared dependency; it arrives through `hass-nabucasa`
+missing-dependency	low	tests/components/ws66i/test_media_player.py:47:10	six	`six` is imported but `six` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	tests/components/xiaomi_miio/test_select.py:5:1		import `arrow` resolves to nothing on the search path
 unresolved-import	low	tests/conftest.py:39:8		import `pytest_asyncio` resolves to nothing on the search path
 unresolved-import	low	tests/conftest.py:40:8		import `pytest_socket` resolves to nothing on the search path
 unresolved-import	low	tests/conftest.py:1667:16		import `sqlalchemy_utils` resolves to nothing on the search path
-missing-dependency	low	tests/conftest.py:2020:15	bluetooth-auto-recovery	`bluetooth_auto_recovery` is imported but `bluetooth-auto-recovery` is not a declared dependency; it arrives through `home-assistant-bluetooth`
+missing-dependency	low	tests/conftest.py:2020:15	bluetooth-auto-recovery	`bluetooth_auto_recovery` is imported but `bluetooth-auto-recovery` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	tests/pylint/__init__.py:5:1		import `astroid` resolves to nothing on the search path
 unresolved-import	low	tests/pylint/actions/test_service_registration.py:5:1		import `pylint_home_assistant` resolves to nothing on the search path
 unresolved-import	low	tests/scripts/check_requirements/test_gate.py:7:1		import `github` resolves to nothing on the search path
 unresolved-import	low	tests/sqlite3_shim.py:13:1		import `ha_sqlite3_vendor` resolves to nothing on the search path
-missing-dependency	low	tests/test_core.py:648:37	async-timeout	`async_timeout` is imported but `async-timeout` is not a declared dependency; it arrives through `aiogithubapi`
+missing-dependency	low	tests/test_core.py:648:37	async-timeout	`async_timeout` is imported but `async-timeout` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	tests/test_loader.py:1297:16		import `check_config_not_in_path` resolves to nothing on the search path

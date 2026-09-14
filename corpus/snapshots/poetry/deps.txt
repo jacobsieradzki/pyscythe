@@ -8,14 +8,14 @@ unused-dependency	medium	pyproject.toml	poetry-core	dependency `poetry-core` is 
 unresolved-import	low	src/poetry/inspection/lazy_wheel.py:35:5		import `typing_extensions` resolves to nothing on the search path
 unresolved-import	low	src/poetry/utils/_compat.py:15:12		import `tomllib` resolves to nothing on the search path
 unresolved-import	low	src/poetry/utils/env/site_packages.py:34:16		import `importlib_metadata` resolves to nothing on the search path
-missing-dependency	low	tests/console/commands/test_add.py:92:42	msgpack	`msgpack` is imported but `msgpack` is not a declared dependency; it arrives through `cachecontrol`
-missing-dependency	low	tests/console/test_application.py:270:12	urllib3	`urllib3` is imported but `urllib3` is not a declared dependency; it arrives through `cachecontrol`
-missing-dependency	low	tests/console/test_application_global_options.py:145:12	certifi	`certifi` is imported but `certifi` is not a declared dependency; it arrives through `cachecontrol`
+missing-dependency	low	tests/console/commands/test_add.py:92:42	msgpack	`msgpack` is imported but `msgpack` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	tests/console/test_application.py:270:12	urllib3	`urllib3` is imported but `urllib3` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	tests/console/test_application_global_options.py:145:12	certifi	`certifi` is imported but `certifi` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	tests/fixtures/extended_with_no_setup/build.py:6:1		import `setuptools` resolves to nothing on the search path
 missing-dependency	medium	tests/packages/test_locker.py:1412:9	httpx	`httpx` is imported but `httpx` is not a declared dependency
 missing-dependency	medium	tests/puzzle/test_solver.py:1226:28	httpcore	`httpcore` is imported but `httpcore` is not a declared dependency
-missing-dependency	low	tests/puzzle/test_solver.py:4238:55	idna	`idna` is imported but `idna` is not a declared dependency; it arrives through `cachecontrol`
-missing-dependency	low	tests/puzzle/test_solver.py:5179:29	crashtest	`crashtest` is imported but `crashtest` is not a declared dependency; it arrives through `cleo`
-missing-dependency	low	tests/repositories/fixtures/pypi.org/generate.py:672:13	pluggy	`pluggy` is imported but `pluggy` is not a declared dependency; it arrives through `pytest`
-missing-dependency	low	tests/repositories/test_legacy_repository.py:432:20	pygments	`pygments` is imported but `pygments` is not a declared dependency; it arrives through `pytest`
-missing-dependency	low	tests/repositories/test_pypi_repository.py:347:24	cryptography	`cryptography` is imported but `cryptography` is not a declared dependency; it arrives through `keyring`
+missing-dependency	low	tests/puzzle/test_solver.py:4238:55	idna	`idna` is imported but `idna` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	tests/puzzle/test_solver.py:5179:29	crashtest	`crashtest` is imported but `crashtest` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	tests/repositories/fixtures/pypi.org/generate.py:672:13	pluggy	`pluggy` is imported but `pluggy` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	tests/repositories/test_legacy_repository.py:432:20	pygments	`pygments` is imported but `pygments` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	tests/repositories/test_pypi_repository.py:347:24	cryptography	`cryptography` is imported but `cryptography` is not a declared dependency; it arrives through a declared dependency

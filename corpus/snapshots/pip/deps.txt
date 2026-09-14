@@ -37,7 +37,7 @@ unresolved-import	low	src/pip/_vendor/distlib/util.py:30:12		import `dummy_threa
 unresolved-import	low	src/pip/_vendor/distlib/util.py:1980:9		import `_aix_support` resolves to nothing on the search path
 unresolved-import	low	src/pip/_vendor/platformdirs/android.py:179:13		import `android` resolves to nothing on the search path
 unresolved-import	low	src/pip/_vendor/platformdirs/android.py:189:13		import `jnius` resolves to nothing on the search path
-missing-dependency	low	src/pip/_vendor/pygments/formatters/_mapping.py:5:25	pygments	`pygments` is imported but `pygments` is not a declared dependency; it arrives through `rich`
+missing-dependency	low	src/pip/_vendor/pygments/formatters/_mapping.py:5:25	pygments	`pygments` is imported but `pygments` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	src/pip/_vendor/requests/help.py:27:12		import `OpenSSL` resolves to nothing on the search path
 unresolved-import	low	src/pip/_vendor/rich/jupyter.py:89:9		import `IPython` resolves to nothing on the search path
 unresolved-import	low	src/pip/_vendor/rich/live.py:252:21		import `ipywidgets` resolves to nothing on the search path

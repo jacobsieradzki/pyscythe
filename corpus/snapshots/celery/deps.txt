@@ -4,7 +4,7 @@ symbols_kept=0
 findings=60
 --
 unresolved-import	low	celery/app/base.py:65:12		import `annotationlib` resolves to nothing on the search path
-missing-dependency	low	celery/app/base.py:1385:27	amqp	`amqp` is imported but `amqp` is not a declared dependency; it arrives through `kombu`
+missing-dependency	low	celery/app/base.py:1385:27	amqp	`amqp` is imported but `amqp` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	celery/backends/azureblockblob.py:12:12		import `azure` resolves to nothing on the search path
 unresolved-import	low	celery/backends/cache.py:36:24		import `memcache` resolves to nothing on the search path
 unresolved-import	low	celery/backends/cassandra.py:13:12		import `cassandra` resolves to nothing on the search path
@@ -17,7 +17,7 @@ unresolved-import	low	celery/backends/gcs.py:20:12		import `requests` resolves t
 unresolved-import	low	celery/backends/mongodb.py:14:12		import `pymongo` resolves to nothing on the search path
 unresolved-import	low	celery/backends/mongodb.py:20:9		import `bson` resolves to nothing on the search path
 unresolved-import	low	celery/backends/redis.py:12:1		import `redis` resolves to nothing on the search path
-missing-dependency	low	celery/bin/base.py:23:5	pygments	`pygments` is imported but `pygments` is not a declared dependency; it arrives through `pytest`
+missing-dependency	low	celery/bin/base.py:23:5	pygments	`pygments` is imported but `pygments` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	celery/bin/shell.py:27:12		import `bpython` resolves to nothing on the search path
 unresolved-import	low	celery/bin/shell.py:42:5		import `IPython` resolves to nothing on the search path
 unresolved-import	low	celery/bootsteps.py:15:5		import `greenlet` resolves to nothing on the search path

@@ -17,9 +17,9 @@ unresolved-import	low	sphinx/builders/_epub_base.py:34:5		import `PIL` resolves 
 unresolved-import	low	sphinx/search/ja.py:23:12		import `MeCab` resolves to nothing on the search path
 unresolved-import	low	sphinx/search/ja.py:30:12		import `janome` resolves to nothing on the search path
 unresolved-import	low	sphinx/search/zh.py:18:12		import `jieba` resolves to nothing on the search path
-missing-dependency	low	sphinx/util/_uri.py:8:28	idna	`idna` is imported but `idna` is not a declared dependency; it arrives through `requests`
+missing-dependency	low	sphinx/util/_uri.py:8:28	idna	`idna` is imported but `idna` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	sphinx/util/inspect.py:718:12		import `annotationlib` resolves to nothing on the search path
-missing-dependency	low	sphinx/util/requests.py:10:1	urllib3	`urllib3` is imported but `urllib3` is not a declared dependency; it arrives through `requests`
+missing-dependency	low	sphinx/util/requests.py:10:1	urllib3	`urllib3` is imported but `urllib3` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	sphinx/versioning.py:23:12		import `Levenshtein` resolves to nothing on the search path
 unresolved-import	low	tests/test_ext_autodoc/test_ext_autodoc.py:35:12		import `pyximport` resolves to nothing on the search path
 unresolved-import	low	tests/test_ext_autosummary/test_ext_autosummary.py:249:12		import `autosummary_dummy_module` resolves to nothing on the search path

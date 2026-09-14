@@ -90,7 +90,7 @@ impl Line {
             rule: finding.rule,
             name,
             confidence: finding.confidence,
-            message: finding.message.replace(root, ""),
+            message: steady(&finding.message.replace(root, "")),
         }
     }
 
@@ -115,6 +115,23 @@ impl Line {
 
 fn relative(path: &str, root: &str) -> String {
     path.strip_prefix(root).unwrap_or(path).to_owned()
+}
+
+/// Drops the one part of a message that is not a property of the code.
+///
+/// When several declared dependencies can bring in an undeclared one, which
+/// is named depends on the environment the analysis ran in, so the snapshot
+/// records that a carrier exists rather than which one it was.
+fn steady(message: &str) -> String {
+    message.find(" it arrives through `").map_or_else(
+        || message.to_owned(),
+        |at| {
+            format!(
+                "{} it arrives through a declared dependency",
+                &message[..at]
+            )
+        },
+    )
 }
 
 /// Renders a pyscythe JSON report as snapshot text, with paths relative to `root`.
@@ -228,6 +245,15 @@ unused-class\thigh\ta.py:2:7\tFirst\tclass `First` is never used\n\
 unused-function\tmedium\tb.py:9:5\tlater\tfunction `later` is never used\n\
 unused-dependency\tlow\tpyproject.toml\tsix\tdependency `six` arrives through x\n"
         );
+    }
+
+    #[test]
+    fn the_carrier_of_a_transitive_dependency_is_not_recorded() {
+        assert_eq!(
+            steady("`six` is not a declared dependency; it arrives through `rich`"),
+            "`six` is not a declared dependency; it arrives through a declared dependency"
+        );
+        assert_eq!(steady("`six` is never used"), "`six` is never used");
     }
 
     #[test]

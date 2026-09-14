@@ -24,7 +24,7 @@ unused-dependency	low	pyproject.toml	tblib	dependency `tblib` (optional-dependen
 unresolved-import	low	scripts/get-translator-credits.py:5:1		import `babel` resolves to nothing on the search path
 missing-dependency	medium	scripts/latest-deps-summary.py:17:1	packaging	`packaging` is imported but `packaging` is not a declared dependency
 unresolved-import	low	setup.py:3:1		import `setuptools` resolves to nothing on the search path
-missing-dependency	low	wagtail/api/v3/errors.py:11:1	pydantic-core	`pydantic_core` is imported but `pydantic-core` is not a declared dependency; it arrives through `django-ninja`
+missing-dependency	low	wagtail/api/v3/errors.py:11:1	pydantic-core	`pydantic_core` is imported but `pydantic-core` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	wagtail/api/v3/schemas/params.py:15:1		import `typing_extensions` resolves to nothing on the search path
 unresolved-import	low	wagtail/contrib/frontend_cache/backends/azure.py:58:13		import `azure` resolves to nothing on the search path
 unresolved-import	low	wagtail/contrib/frontend_cache/backends/azure.py:147:13		import `msrest` resolves to nothing on the search path
@@ -32,9 +32,9 @@ unresolved-import	low	wagtail/contrib/frontend_cache/backends/cloudfront.py:58:1
 unresolved-import	low	wagtail/documents/tests/test_views.py:339:20		import `sendfile` resolves to nothing on the search path
 unresolved-import	low	wagtail/embeds/finders/embedly.py:31:9		import `embedly` resolves to nothing on the search path
 unresolved-import	low	wagtail/jinja2tags.py:4:1		import `markupsafe` resolves to nothing on the search path
-missing-dependency	low	wagtail/log_actions.py:3:1	asgiref	`asgiref` is imported but `asgiref` is not a declared dependency; it arrives through `django`
-missing-dependency	low	wagtail/project_template/project_name/settings/base.py:40:5	django-modelcluster	`modelcluster` is imported but `django-modelcluster` is not a declared dependency; it arrives through `wagtail`
-missing-dependency	low	wagtail/project_template/project_name/settings/base.py:41:5	django-taggit	`taggit` is imported but `django-taggit` is not a declared dependency; it arrives through `wagtail`
-missing-dependency	low	wagtail/project_template/project_name/settings/base.py:42:5	django-filter	`django_filters` is imported but `django-filter` is not a declared dependency; it arrives through `wagtail`
+missing-dependency	low	wagtail/log_actions.py:3:1	asgiref	`asgiref` is imported but `asgiref` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	wagtail/project_template/project_name/settings/base.py:40:5	django-modelcluster	`modelcluster` is imported but `django-modelcluster` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	wagtail/project_template/project_name/settings/base.py:41:5	django-taggit	`taggit` is imported but `django-taggit` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	wagtail/project_template/project_name/settings/base.py:42:5	django-filter	`django_filters` is imported but `django-filter` is not a declared dependency; it arrives through a declared dependency
 unused-dependency	medium	wagtail/project_template/requirements.txt	wagtail	dependency `wagtail` is never imported
 unresolved-import	low	wagtail/test/streamfield_migrations/factories.py:1:8		import `factory` resolves to nothing on the search path

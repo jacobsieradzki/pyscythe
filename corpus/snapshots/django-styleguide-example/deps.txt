@@ -3,10 +3,10 @@ symbols_checked=39
 symbols_kept=0
 findings=7
 --
-missing-dependency	low	config/settings/jwt.py:10:50	pyjwt	`jwt` is imported but `pyjwt` is not a declared dependency; it arrives through `drf-jwt`
-missing-dependency	low	config/settings/loggers/setup.py:3:8	structlog	`structlog` is imported but `structlog` is not a declared dependency; it arrives through `django-structlog`
+missing-dependency	low	config/settings/jwt.py:10:50	pyjwt	`jwt` is imported but `pyjwt` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	config/settings/loggers/setup.py:3:8	structlog	`structlog` is imported but `structlog` is not a declared dependency; it arrives through a declared dependency
 unused-dependency	medium	requirements.txt	djangorestframework	dependency `djangorestframework` is never imported
 unused-dependency	medium	requirements.txt	google-api-python-client	dependency `google-api-python-client` is never imported
 unused-dependency	medium	requirements.txt	google-auth	dependency `google-auth` is never imported
 unused-dependency	medium	requirements.txt	google-auth-httplib2	dependency `google-auth-httplib2` is never imported
-missing-dependency	low	styleguide_example/blog_examples/google_login_server_flow/raw/service.py:11:1	oauthlib	`oauthlib` is imported but `oauthlib` is not a declared dependency; it arrives through `google-auth-oauthlib`
+missing-dependency	low	styleguide_example/blog_examples/google_login_server_flow/raw/service.py:11:1	oauthlib	`oauthlib` is imported but `oauthlib` is not a declared dependency; it arrives through a declared dependency

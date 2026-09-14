@@ -39,4 +39,4 @@ unused-dependency	low	pyproject.toml	responses	dependency `responses` (dependenc
 unused-dependency	low	pyproject.toml	vcrpy	dependency `vcrpy` (dependency-groups.test_integration) is never imported
 unused-dependency	low	pyproject.toml	wrapt	dependency `wrapt` (dependency-groups.test_integration) is never imported
 unresolved-import	low	tests/mock_servers/robot/server.py:7:8		import `uvicorn` resolves to nothing on the search path
-missing-dependency	low	tests/unit_tests/load/test_load.py:162:12	httpx	`httpx` is imported but `httpx` is not a declared dependency; it arrives through `langchain-core`
+missing-dependency	low	tests/unit_tests/load/test_load.py:162:12	httpx	`httpx` is imported but `httpx` is not a declared dependency; it arrives through a declared dependency

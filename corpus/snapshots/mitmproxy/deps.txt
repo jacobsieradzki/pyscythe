@@ -10,11 +10,11 @@ unresolved-import	low	examples/contrib/remote-debug.py:20:12		import `pydevd_pyc
 unresolved-import	low	examples/contrib/test_jsondump.py:4:8		import `requests_mock` resolves to nothing on the search path
 unresolved-import	low	examples/contrib/upstream_pac.py:17:8		import `pypac` resolves to nothing on the search path
 unresolved-import	low	examples/contrib/webscanner_helper/proxyauth_selenium.py:9:1		import `selenium` resolves to nothing on the search path
-missing-dependency	low	mitmproxy/addons/core.py:131:23	attrs	`attr` is imported but `attrs` is not a declared dependency; it arrives through `aioquic`
-missing-dependency	low	mitmproxy/addons/maplocal.py:9:1	werkzeug	`werkzeug` is imported but `werkzeug` is not a declared dependency; it arrives through `flask`
-missing-dependency	low	mitmproxy/contentviews/_view_http3.py:5:8	pylsqpack	`pylsqpack` is imported but `pylsqpack` is not a declared dependency; it arrives through `aioquic`
+missing-dependency	low	mitmproxy/addons/core.py:131:23	attrs	`attr` is imported but `attrs` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	mitmproxy/addons/maplocal.py:9:1	werkzeug	`werkzeug` is imported but `werkzeug` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	mitmproxy/contentviews/_view_http3.py:5:8	pylsqpack	`pylsqpack` is imported but `pylsqpack` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	mitmproxy/net/encoding.py:16:5		import `compression` resolves to nothing on the search path
-missing-dependency	low	mitmproxy/tools/main.py:60:27	hpack	`hpack` is imported but `hpack` is not a declared dependency; it arrives through `h2`
+missing-dependency	low	mitmproxy/tools/main.py:60:27	hpack	`hpack` is imported but `hpack` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	mitmproxy/utils/debug.py:41:20		import `psutil` resolves to nothing on the search path
 unused-dependency	low	pyproject.toml	awscli	dependency `awscli` (dependency-groups.deploy) is never imported
 unused-dependency	medium	pyproject.toml	backports-zstd	dependency `backports-zstd` is never imported

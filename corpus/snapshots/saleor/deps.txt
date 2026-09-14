@@ -18,6 +18,6 @@ unused-dependency	medium	pyproject.toml	opentelemetry-semantic-conventions	depen
 unused-dependency	medium	pyproject.toml	python-magic-bin	dependency `python-magic-bin` is never imported
 unused-dependency	low	pyproject.toml	pywatchman	dependency `pywatchman` (dependency-groups.dev) is never imported
 unused-dependency	low	pyproject.toml	vcrpy	dependency `vcrpy` (dependency-groups.dev) is never imported
-missing-dependency	low	saleor/graphql/schema_printer.py:34:50	deprecated	`deprecated` is imported but `deprecated` is not a declared dependency; it arrives through `google-cloud-pubsub`
-missing-dependency	low	saleor/schedulers/models.py:77:25	python-crontab	`crontab` is imported but `python-crontab` is not a declared dependency; it arrives through `django-celery-beat`
+missing-dependency	low	saleor/graphql/schema_printer.py:34:50	deprecated	`deprecated` is imported but `deprecated` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	saleor/schedulers/models.py:77:25	python-crontab	`crontab` is imported but `python-crontab` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	saleor/tests/e2e/checkout/shipping/test_use_external_shipping_methods_in_checkout.py:2:8		import `vcr` resolves to nothing on the search path

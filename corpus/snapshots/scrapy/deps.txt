@@ -4,7 +4,7 @@ symbols_kept=0
 findings=91
 --
 missing-dependency	medium	conftest.py:8:8	pytest	`pytest` is imported but `pytest` is not a declared dependency
-missing-dependency	low	docs/conf.py:167:5	platformdirs	`platformdirs` is imported but `platformdirs` is not a declared dependency; it arrives through `scrapy`
+missing-dependency	low	docs/conf.py:167:5	platformdirs	`platformdirs` is imported but `platformdirs` is not a declared dependency; it arrives through a declared dependency
 missing-dependency	medium	docs/conf.py:168:5	pytest	`pytest` is imported but `pytest` is not a declared dependency
 unresolved-import	low	docs/conftest.py:4:1		import `sybil` resolves to nothing on the search path
 unused-dependency	medium	docs/requirements.txt	alabaster	dependency `alabaster` is never imported
@@ -74,21 +74,21 @@ unused-dependency	medium	pyproject.toml	backports-zstd	dependency `backports-zst
 unused-dependency	medium	pyproject.toml	pypydispatcher	dependency `pypydispatcher` is never imported
 unused-dependency	medium	pyproject.toml	zope-interface	dependency `zope-interface` is never imported
 unresolved-import	low	scrapy/commands/__init__.py:169:24		import `ipdb` resolves to nothing on the search path
-missing-dependency	low	scrapy/contracts/default.py:179:9	requests	`requests` is imported but `requests` is not a declared dependency; it arrives through `tldextract`
+missing-dependency	low	scrapy/contracts/default.py:179:9	requests	`requests` is imported but `requests` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	scrapy/core/_http2/protocol.py:9:1		import `h2` resolves to nothing on the search path
-missing-dependency	low	scrapy/core/downloader/_idna_patch.py:34:35	idna	`idna` is imported but `idna` is not a declared dependency; it arrives through `aiohttp`
+missing-dependency	low	scrapy/core/downloader/_idna_patch.py:34:35	idna	`idna` is imported but `idna` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	scrapy/core/downloader/contextfactory.py:38:5		import `typing_extensions` resolves to nothing on the search path
-missing-dependency	low	scrapy/core/downloader/handlers/_aiohttp.py:11:8	yarl	`yarl` is imported but `yarl` is not a declared dependency; it arrives through `aiohttp`
+missing-dependency	low	scrapy/core/downloader/handlers/_aiohttp.py:11:8	yarl	`yarl` is imported but `yarl` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	scrapy/core/downloader/handlers/_base_streaming.py:35:5		import `_typeshed` resolves to nothing on the search path
 unresolved-import	low	scrapy/core/downloader/handlers/_httpx.py:33:5		import `httpcore2` resolves to nothing on the search path
 unresolved-import	low	scrapy/core/downloader/handlers/_httpx.py:45:16		import `httpx` resolves to nothing on the search path
 unresolved-import	low	scrapy/core/downloader/handlers/_httpx.py:65:16		import `socksio` resolves to nothing on the search path
 unresolved-import	low	scrapy/core/downloader/handlers/s3.py:34:20		import `botocore` resolves to nothing on the search path
-missing-dependency	low	scrapy/http/response/text.py:170:39	jmespath	`jmespath` is imported but `jmespath` is not a declared dependency; it arrives through `itemloaders`
-missing-dependency	low	scrapy/resolver.py:5:8	attrs	`attr` is imported but `attrs` is not a declared dependency; it arrives through `aiohttp`
+missing-dependency	low	scrapy/http/response/text.py:170:39	jmespath	`jmespath` is imported but `jmespath` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	scrapy/resolver.py:5:8	attrs	`attr` is imported but `attrs` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	scrapy/utils/_compression.py:11:5		import `compression` resolves to nothing on the search path
 missing-dependency	medium	scrapy/utils/display.py:37:9	pygments	`pygments` is imported but `pygments` is not a declared dependency
-missing-dependency	low	scrapy/utils/log.py:73:9	filelock	`filelock` is imported but `filelock` is not a declared dependency; it arrives through `tldextract`
+missing-dependency	low	scrapy/utils/log.py:73:9	filelock	`filelock` is imported but `filelock` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	scrapy/utils/python.py:187:5		import `annotationlib` resolves to nothing on the search path
 unresolved-import	low	tests/benchmarks/test_crawl.py:20:5		import `pytest_codspeed` resolves to nothing on the search path
 unresolved-import	low	tests/mockserver/ftp.py:12:1		import `pyftpdlib` resolves to nothing on the search path

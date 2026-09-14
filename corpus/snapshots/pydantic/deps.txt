@@ -1,7 +1,7 @@
 files_scanned=449
 symbols_checked=127
 symbols_kept=0
-findings=33
+findings=32
 --
 unresolved-import	low	.github/actions/people/people.py:20:8		import `yaml` resolves to nothing on the search path
 unresolved-import	low	.github/actions/people/people.py:21:1		import `github` resolves to nothing on the search path
@@ -9,7 +9,6 @@ unresolved-import	low	docs/plugins/main.py:19:1		import `jinja2` resolves to not
 unused-dependency	low	pydantic-core/pyproject.toml	griffe	dependency `griffe` (dependency-groups.linting) is never imported
 unused-dependency	low	pydantic-core/pyproject.toml	python-dateutil	dependency `python-dateutil` (dependency-groups.testing-extra) is never imported
 unused-dependency	low	pydantic-core/pyproject.toml	tzdata	dependency `tzdata` (dependency-groups.testing-extra) is never imported
-missing-dependency	medium	pydantic-core/python/pydantic_core/core_schema.py:32:5	pydantic-core	`pydantic_core` is imported but `pydantic-core` is not a declared dependency
 unresolved-import	low	pydantic-core/wasm-preview/run_tests.py:10:8		import `micropip` resolves to nothing on the search path
 unresolved-import	low	pydantic-core/wasm-preview/run_tests.py:11:8		import `pyodide` resolves to nothing on the search path
 unresolved-import	low	pydantic/_internal/_core_utils.py:10:5		import `rich` resolves to nothing on the search path

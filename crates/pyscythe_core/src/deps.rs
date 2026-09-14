@@ -200,6 +200,11 @@ pub fn analyze(
                 .map(|dependency| unused_finding(dependency, &scope.manifest_path)),
         );
         for (distribution, (modules, mut finding)) in survey.undeclared {
+            // An example or script importing the project's own package is not
+            // a missing dependency, however the editable install resolves.
+            if scope.name.as_ref() == Some(&distribution) {
+                continue;
+            }
             let names: Vec<String> = modules.into_iter().collect();
             let imported = format!("`{}` is imported but", names.join("`, `"));
             finding.message = match declared_carrier(index, &declared, &distribution) {
@@ -434,6 +439,32 @@ mod tests {
             .iter()
             .map(|f| (f.rule, f.message.clone()))
             .collect()
+    }
+
+    #[test]
+    fn a_project_importing_its_own_package_is_not_missing_a_dependency() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/examples/demo.py", "examples.demo");
+        index.add_external_import(
+            file,
+            "openai",
+            ImportOrigin::SitePackages {
+                distributions: vec![DistributionName::normalize("openai")],
+            },
+        );
+        let mut scopes = scopes(&["httpx"]);
+        scopes[0].name = Some(DistributionName::normalize("openai"));
+
+        let report = analyze(&index, &scopes, &Config::default(), Utf8Path::new("/proj"));
+
+        assert!(
+            !report
+                .findings
+                .iter()
+                .any(|finding| finding.rule == Rule::MissingDependency),
+            "an example importing the project itself is not a missing dependency: {:?}",
+            rules(&report)
+        );
     }
 
     #[test]

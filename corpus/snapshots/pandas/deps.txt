@@ -21,7 +21,7 @@ unresolved-import	low	pandas/io/clipboard/__init__.py:570:20		import `Foundation
 unresolved-import	low	pandas/io/common.py:439:13		import `botocore` resolves to nothing on the search path
 unresolved-import	low	pandas/io/formats/style_render.py:51:1		import `markupsafe` resolves to nothing on the search path
 unresolved-import	low	pandas/io/sql.py:2187:9		import `adbc_driver_manager` resolves to nothing on the search path
-missing-dependency	low	pandas/tests/frame/methods/test_to_records.py:37:56	six	`six` is imported but `six` is not a declared dependency; it arrives through `python-dateutil`
+missing-dependency	low	pandas/tests/frame/methods/test_to_records.py:37:56	six	`six` is imported but `six` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	pandas/tests/plotting/frame/test_frame.py:2343:9		import `mpl_toolkits` resolves to nothing on the search path
 unresolved-import	low	pandas/tests/plotting/frame/test_frame_color.py:683:16		import `cycler` resolves to nothing on the search path
 unused-dependency	low	pyproject.toml	bottleneck	dependency `bottleneck` (optional-dependencies.all) is never imported
@@ -43,5 +43,5 @@ unresolved-import	low	scripts/validate_min_versions_in_sync.py:45:8		import `ver
 unresolved-import	low	scripts/validate_min_versions_in_sync.py:49:8		import `_optional` resolves to nothing on the search path
 unresolved-import	low	web/pandas_web.py:42:8		import `feedparser` resolves to nothing on the search path
 unresolved-import	low	web/pandas_web.py:44:8		import `markdown` resolves to nothing on the search path
-missing-dependency	low	web/pandas_web.py:46:1	packaging	`packaging` is imported but `packaging` is not a declared dependency; it arrives through `pytest`
+missing-dependency	low	web/pandas_web.py:46:1	packaging	`packaging` is imported but `packaging` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	web/pandas_web.py:47:8		import `requests` resolves to nothing on the search path
