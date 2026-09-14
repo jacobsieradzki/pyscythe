@@ -570,3 +570,47 @@ fn a_projects_ty_include_scope_does_not_hide_files_from_the_analysis() {
         .collect();
     assert_eq!(symbols, ["forgotten"]);
 }
+
+#[test]
+fn graphql_schema_hooks_are_called_by_the_executor_not_by_name() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("graphene"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let mut symbols: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["symbol"].as_str())
+        .collect();
+    symbols.sort_unstable();
+    assert_eq!(
+        symbols,
+        ["helper", "resolve_country"],
+        "only the hooks of schema types are kept: {report}"
+    );
+}
+
+#[test]
+fn classes_named_for_tests_are_collected_whatever_the_suffix() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("test_suffix"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let mut symbols: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["symbol"].as_str())
+        .collect();
+    symbols.sort_unstable();
+    assert_eq!(
+        symbols,
+        ["Helper", "build"],
+        "`*Test` and `*Tests` are collected; a class with neither is not: {report}"
+    );
+}

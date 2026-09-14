@@ -14,6 +14,7 @@ mod django;
 mod entry_points;
 mod fastapi;
 mod flask;
+mod graphene;
 mod homeassistant;
 mod pydantic;
 mod pytest;
@@ -33,6 +34,7 @@ pub fn all() -> Vec<Box<dyn KeepRule>> {
         Box::new(celery::Celery),
         Box::new(airflow::Airflow),
         Box::new(django::Django),
+        Box::new(graphene::Graphene),
         Box::new(homeassistant::HomeAssistant),
         Box::new(alembic::Alembic),
         Box::new(sqlalchemy::SqlAlchemy),
@@ -222,6 +224,13 @@ pub(crate) mod testing {
         /// Every base resolved, to these qualified names.
         pub(crate) fn with_ancestors(mut self, names: &[&str]) -> Self {
             self.ancestry = Ancestry::Complete(names.iter().map(|n| DottedName::new(*n)).collect());
+            self
+        }
+
+        /// Bases ty could not resolve, so only their written names are known.
+        pub(crate) fn with_unresolved_ancestors(mut self, names: &[&str]) -> Self {
+            self.ancestry =
+                Ancestry::Incomplete(names.iter().map(|n| DottedName::new(*n)).collect());
             self
         }
 

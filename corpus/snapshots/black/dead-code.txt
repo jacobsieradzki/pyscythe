@@ -1,7 +1,7 @@
 files_scanned=333
 symbols_checked=4623
-symbols_kept=3218
-findings=43
+symbols_kept=3222
+findings=39
 --
 unused-file	medium	action/main.py	-	file `action.main` is never imported or run
 unused-method	medium	src/black/lines.py:209:9	_is_triple_quoted_string	method `Line._is_triple_quoted_string` is never used
@@ -38,11 +38,7 @@ unused-variable	medium	tests/test_black.py:68:1	DEFAULT_EXCLUDE	variable `DEFAUL
 unused-variable	low	tests/test_black.py:70:1	T	variable `T` is never used
 unused-variable	low	tests/test_black.py:71:1	R	variable `R` is never used
 unused-function	medium	tests/test_black.py:3437:5	tracefunc	function `tracefunc` is never used
-unused-class	low	tests/test_blackd.py:27:7	BlackDTestCase	class `BlackDTestCase` is never used
 unused-method	low	tests/test_blackd.py:40:15	get_application	method `BlackDTestCase.get_application` is never used
-unused-class	low	tests/test_blackd.py:288:7	BlackDConfiguredCorsTestCase	class `BlackDConfiguredCorsTestCase` is never used
 unused-method	low	tests/test_blackd.py:293:15	get_application	method `BlackDConfiguredCorsTestCase.get_application` is never used
-unused-class	low	tests/test_blackd.py:328:7	BlackDSmallBodyLimitTestCase	class `BlackDSmallBodyLimitTestCase` is never used
 unused-method	low	tests/test_blackd.py:333:15	get_application	method `BlackDSmallBodyLimitTestCase.get_application` is never used
-unused-class	low	tests/test_blackd.py:342:7	BlackDClientTestCase	class `BlackDClientTestCase` is never used
 unused-method	low	tests/test_blackd.py:348:15	get_application	method `BlackDClientTestCase.get_application` is never used

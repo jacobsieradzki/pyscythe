@@ -34,6 +34,8 @@ pub enum PluginName {
     Airflow,
     /// Django conventions: migrations, commands, models, admin, settings.
     Django,
+    /// GraphQL schema hooks: resolvers, mutations, entity references.
+    Graphene,
     /// Alembic migration scripts.
     Alembic,
     /// `SQLAlchemy` event listeners.
@@ -58,6 +60,7 @@ impl PluginName {
             Self::Celery => "celery",
             Self::Airflow => "airflow",
             Self::Django => "django",
+            Self::Graphene => "graphene",
             Self::Alembic => "alembic",
             Self::SqlAlchemy => "sqlalchemy",
             Self::HomeAssistant => "homeassistant",

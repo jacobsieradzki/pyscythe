@@ -11,6 +11,13 @@ use crate::symbol::SymbolKind;
 pub(crate) struct Pytest;
 
 /// pytest and unittest call these by name.
+/// `MappedColumnTest`, `HelperTests`, `QueryTestCase`: a class named for what
+/// it tests, which a project's own collector picks up even though pytest's
+/// default `python_classes` looks for a `Test` prefix.
+fn names_a_test_class(name: &str) -> bool {
+    name.ends_with("Test") || name.ends_with("Tests") || name.ends_with("TestCase")
+}
+
 const TEST_LIFECYCLE_METHODS: &[&str] = &[
     "setup_method",
     "teardown_method",
@@ -60,6 +67,11 @@ impl KeepRule for Pytest {
             }
             if symbol.kind == SymbolKind::Class && context.tests.collects_class(name) {
                 return Some("collected as a test class");
+            }
+            // A project's own plugin collects by its own convention, most often
+            // a `Test` suffix on a class descending from a local base.
+            if symbol.kind == SymbolKind::Class && names_a_test_class(name) {
+                return Some("named as a test class");
             }
             if symbol.kind == SymbolKind::Method && TEST_LIFECYCLE_METHODS.contains(&name) {
                 return Some("test lifecycle hook");
