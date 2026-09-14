@@ -1,0 +1,111 @@
+files_scanned=491
+symbols_checked=7473
+symbols_kept=3302
+findings=106
+--
+unused-file	medium	extras/qps-bench-server.py	-	file `qps-bench-server.py` is never imported or run
+unused-file	medium	extras/qpsclient.py	-	file `extras.qpsclient` is never imported or run
+unused-method	low	scrapy/commands/__init__.py:69:9	set_crawler	method `ScrapyCommand.set_crawler` is never used
+unused-file	low	scrapy/commands/bench.py	-	file `scrapy.commands.bench` is never imported or run
+unused-file	low	scrapy/commands/crawl.py	-	file `scrapy.commands.crawl` is never imported or run
+unused-class	low	scrapy/commands/edit.py:28:7	Command	class `Command` is never used
+unused-file	low	scrapy/commands/genspider.py	-	file `scrapy.commands.genspider` is never imported or run
+unused-file	low	scrapy/commands/list.py	-	file `scrapy.commands.list` is never imported or run
+unused-file	low	scrapy/commands/runspider.py	-	file `scrapy.commands.runspider` is never imported or run
+unused-file	low	scrapy/commands/shell.py	-	file `scrapy.commands.shell` is never imported or run
+unused-class	low	scrapy/commands/startproject.py:35:7	Command	class `Command` is never used
+unused-file	low	scrapy/commands/view.py	-	file `scrapy.commands.view` is never imported or run
+unused-method	low	scrapy/core/_http2/protocol.py:275:9	handshakeCompleted	method `H2ClientProtocol.handshakeCompleted` is never used
+unused-method	low	scrapy/core/_http2/protocol.py:485:9	acceptableProtocols	method `H2ClientFactory.acceptableProtocols` is never used
+unused-method	low	scrapy/core/downloader/contextfactory.py:118:9	getCertificateOptions	method `_ScrapyClientContextFactory.getCertificateOptions` is never used
+unused-variable	low	scrapy/core/downloader/contextfactory.py:180:1	ScrapyClientContextFactory	variable `ScrapyClientContextFactory` is never used
+unused-variable	low	scrapy/core/downloader/contextfactory.py:267:1	AcceptableProtocolsContextFactory	variable `AcceptableProtocolsContextFactory` is never used
+unused-function	medium	scrapy/core/downloader/contextfactory.py:324:5	load_context_factory_from_settings	function `load_context_factory_from_settings` is never used
+unused-file	low	scrapy/core/downloader/handlers/http.py	-	file `scrapy.core.downloader.handlers.http` is never imported or run
+unused-variable	low	scrapy/core/downloader/tls.py:112:1	ScrapyClientTLSOptions	variable `ScrapyClientTLSOptions` is never used
+unused-method	low	scrapy/core/scraper.py:298:9	call_spider	method `Scraper.call_spider` is never used
+unused-method	low	scrapy/core/scraper.py:383:9	handle_spider_output	method `Scraper.handle_spider_output` is never used
+unused-method	low	scrapy/core/scraper.py:464:9	start_itemproc	method `Scraper.start_itemproc` is never used
+unused-method	low	scrapy/core/spidermw.py:190:9	scrape_response	method `SpiderMiddlewareManager.scrape_response` is never used
+unused-variable	low	scrapy/extensions/logcount.py:16:1	logger	variable `logger` is never used
+unused-method	low	scrapy/http/cookies.py:131:9	acquire	method `_DummyLock.acquire` is never used
+unused-method	low	scrapy/http/cookies.py:134:9	release	method `_DummyLock.release` is never used
+unused-file	low	scrapy/interfaces.py	-	file `scrapy.interfaces` is never imported or run
+unused-variable	low	scrapy/middleware.py:32:1	_P	variable `_P` is never used
+unused-class	medium	scrapy/pipelines/__init__.py:31:7	ItemProcessorProtocol	class `ItemProcessorProtocol` is never used
+unused-variable	low	scrapy/pqueues.py:21:1	logger	variable `logger` is never used
+unused-variable	low	scrapy/settings/default_settings.py:287:1	DNS_RESOLVER	variable `DNS_RESOLVER` is never used
+unused-method	low	scrapy/shell.py:130:9	inthread	method `Shell.inthread` is never used
+unused-method	low	scrapy/signalmanager.py:54:9	send_catch_log_deferred	method `SignalManager.send_catch_log_deferred` is never used
+unused-variable	low	scrapy/utils/_remote_control.py:20:1	logger	variable `logger` is never used
+unused-variable	low	scrapy/utils/benchserver.py:42:5	factory	variable `factory` is never used
+unused-function	medium	scrapy/utils/decorators.py:58:5	defers	function `defers` is never used
+unused-function	medium	scrapy/utils/defer.py:47:5	defer_fail	function `defer_fail` is never used
+unused-function	medium	scrapy/utils/defer.py:68:5	defer_succeed	function `defer_succeed` is never used
+unused-function	medium	scrapy/utils/defer.py:295:5	process_chain	function `process_chain` is never used
+unused-function	medium	scrapy/utils/defer.py:314:5	process_parallel	function `process_parallel` is never used
+unused-function	medium	scrapy/utils/python.py:116:5	re_rsearch	function `re_rsearch` is never used
+unused-class	medium	scrapy/utils/python.py:324:7	MutableChain	class `MutableChain` is never used
+unused-function	medium	scrapy/utils/test.py:110:5	get_web_client_agent_req	function `get_web_client_agent_req` is never used
+unused-variable	low	tests/mocks/dummydbm.py:14:1	error	variable `error` is never used
+unused-function	low	tests/mocks/dummydbm.py:20:5	open	function `open` is never used
+unused-method	low	tests/mockserver/dns.py:45:9	lookupAllRecords	method `MockDNSResolver.lookupAllRecords` is never used
+unused-method	low	tests/mockserver/http_resources.py:198:9	render_GET	method `Delay.render_GET` is never used
+unused-method	low	tests/mockserver/http_resources.py:213:9	render_GET	method `Status.render_GET` is never used
+unused-method	low	tests/mockserver/http_resources.py:256:9	render_GET	method `BadHeader.render_GET` is never used
+unused-method	low	tests/mockserver/http_resources.py:296:9	render_GET	method `Partial.render_GET` is never used
+unused-method	low	tests/mockserver/http_resources.py:511:9	render_GET	method `H2ResetStream.render_GET` is never used
+unused-method	low	tests/mockserver/http_resources.py:520:9	render_GET	method `H2GoAway.render_GET` is never used
+unused-method	low	tests/mockserver/http_resources.py:531:9	render_GET	method `H2DataAndReset.render_GET` is never used
+unused-method	low	tests/mockserver/http_resources.py:557:9	render_GET	method `H2Raw.render_GET` is never used
+unused-method	low	tests/mockserver/http_resources.py:567:9	render_GET	method `H2NoSupport.render_GET` is never used
+unused-method	low	tests/mockserver/http_resources.py:576:9	render_GET	method `H2Push.render_GET` is never used
+unused-class	medium	tests/test_cmdline_crawl_with_pipeline/test_spider/spiders/exception.py:4:7	ExceptionSpider	class `ExceptionSpider` is never used
+unused-class	medium	tests/test_cmdline_crawl_with_pipeline/test_spider/spiders/normal.py:4:7	NormalSpider	class `NormalSpider` is never used
+unused-method	low	tests/test_core_downloader.py:163:15	server_url	method `TestContextFactoryBase.server_url` is never used
+unused-class	medium	tests/test_crawler_runners.py:29:7	SpiderLoaderWithWrongInterface	class `SpiderLoaderWithWrongInterface` is never used
+unused-method	low	tests/test_crawler_runners.py:30:9	unneeded_method	method `SpiderLoaderWithWrongInterface.unneeded_method` is never used
+unused-method	low	tests/test_downloader_handler_twisted_ftp.py:53:15	server_url	method `TestFTPBase.server_url` is never used
+unused-method	low	tests/test_http2_client_protocol.py:93:9	render_GET	method `GetDataHtmlSmall.render_GET` is never used
+unused-method	low	tests/test_http2_client_protocol.py:99:9	render_GET	method `GetDataHtmlLarge.render_GET` is never used
+unused-method	low	tests/test_http2_client_protocol.py:123:9	render_POST	method `PostDataJsonSmall.render_POST` is never used
+unused-method	low	tests/test_http2_client_protocol.py:128:9	render_POST	method `PostDataJsonLarge.render_POST` is never used
+unused-method	low	tests/test_http2_client_protocol.py:133:9	render_GET	method `Dataloss.render_GET` is never used
+unused-method	low	tests/test_http2_client_protocol.py:145:9	render_GET	method `NoContentLengthHeader.render_GET` is never used
+unused-method	low	tests/test_http2_client_protocol.py:157:9	render_GET	method `TimeoutResponse.render_GET` is never used
+unused-method	low	tests/test_http2_client_protocol.py:162:9	render_GET	method `QueryParams.render_GET` is never used
+unused-method	low	tests/test_http2_client_protocol.py:177:9	render_GET	method `RequestHeaders.render_GET` is never used
+unused-method	low	tests/test_http2_client_protocol.py:219:15	server_port	method `TestHttps2ClientProtocol.server_port` is never used
+unused-method	medium	tests/test_request_dict.py:193:9	__mixin_callback	method `SpiderMixin.__mixin_callback` is never used
+unused-function	low	tests/test_request_dict.py:204:5	parse_item	function `parse_item` is never used
+unused-function	low	tests/test_request_dict.py:208:5	handle_error	function `handle_error` is never used
+unused-method	medium	tests/test_request_dict.py:237:9	__parse_item_private	method `MethodsSpider.__parse_item_private` is never used
+unused-function	low	tests/test_settings/__init__.py:719:5	test_add_to_list	function `test_add_to_list` is never used
+unused-function	low	tests/test_settings/__init__.py:744:5	test_remove_from_list	function `test_remove_from_list` is never used
+unused-function	medium	tests/test_settings/__init__.py:761:5	test_default_settings_all	function `test_default_settings_all` is never used
+unused-function	medium	tests/test_settings/__init__.py:770:5	test_deprecated_dns_resolver_setting	function `test_deprecated_dns_resolver_setting` is never used
+unused-function	medium	tests/test_settings/__init__.py:779:5	test_deprecated_concurrent_requests_per_ip_setting	function `test_deprecated_concurrent_requests_per_ip_setting` is never used
+unused-function	low	tests/test_settings/__init__.py:1016:5	test_replace_in_component_priority_dict	function `test_replace_in_component_priority_dict` is never used
+unused-function	low	tests/test_settings/__init__.py:1164:5	test_set_in_component_priority_dict	function `test_set_in_component_priority_dict` is never used
+unused-function	low	tests/test_settings/__init__.py:1311:5	test_setdefault_in_component_priority_dict	function `test_setdefault_in_component_priority_dict` is never used
+unused-variable	low	tests/test_settings/default_settings.py:1:1	TEST_DEFAULT	variable `TEST_DEFAULT` is never used
+unused-variable	low	tests/test_settings/default_settings.py:3:1	TEST_DICT	variable `TEST_DICT` is never used
+unused-function	medium	tests/test_spiderloader/__init__.py:214:5	test_custom_spider_loader	function `test_custom_spider_loader` is never used
+unused-function	medium	tests/test_spiderloader/__init__.py:224:5	test_dummy_spider_loader	function `test_dummy_spider_loader` is never used
+unused-class	medium	tests/test_spiderloader/spiders_from_addons/spider0.py:4:7	SpiderFromAddon	class `SpiderFromAddon` is never used
+unused-class	medium	tests/test_spiderloader/test_spiders/nested/spider4.py:4:7	Spider4	class `Spider4` is never used
+unused-class	medium	tests/test_spiderloader/test_spiders/spider0.py:4:7	Spider0	class `Spider0` is never used
+unused-method	low	tests/test_utils_defer.py:166:9	connectionLost	method `_ReadTracker.connectionLost` is never used
+unused-method	low	tests/test_utils_defer.py:169:9	logPrefix	method `_ReadTracker.logPrefix` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:23:5	test_load_object_class	function `test_load_object_class` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:30:5	test_load_object_function	function `test_load_object_function` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:37:5	test_load_object_exceptions	function `test_load_object_exceptions` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:46:5	test_walk_modules	function `test_walk_modules` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:84:5	test_walk_modules_egg	function `test_walk_modules_egg` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:100:5	test_arg_to_iter	function `test_arg_to_iter` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:119:5	test_build_from_crawler	function `test_build_from_crawler` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:151:5	test_set_environ	function `test_set_environ` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:164:5	test_rel_has_nofollow	function `test_rel_has_nofollow` is never used
+unused-method	low	tests/utils/bases/feedexport.py:28:9	setup_class	method `TestFeedExportBase.setup_class` is never used
+unused-method	low	tests/utils/bases/feedexport.py:33:9	teardown_class	method `TestFeedExportBase.teardown_class` is never used
+unused-method	low	tests/utils/bases/feedexport.py:39:9	teardown_method	method `TestFeedExportBase.teardown_method` is never used

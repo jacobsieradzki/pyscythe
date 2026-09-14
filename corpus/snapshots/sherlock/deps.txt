@@ -1,0 +1,9 @@
+files_scanned=17
+symbols_checked=14
+symbols_kept=0
+findings=4
+--
+unused-dependency	medium	pyproject.toml	certifi	dependency `certifi` is never imported
+unused-dependency	medium	pyproject.toml	openpyxl	dependency `openpyxl` is never imported
+unused-dependency	medium	pyproject.toml	pysocks	dependency `pysocks` is never imported
+unused-dependency	medium	pyproject.toml	stem	dependency `stem` is never imported

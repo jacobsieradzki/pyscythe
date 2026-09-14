@@ -1,4 +1,4 @@
-files_scanned=892
+files_scanned=1206
 symbols_checked=0
 symbols_kept=0
 findings=2

@@ -1,0 +1,18 @@
+files_scanned=37
+symbols_checked=20
+symbols_kept=0
+findings=13
+--
+missing-dependency	medium	docs/_themes/flask_theme_support.py:2:1	pygments	`pygments` is imported but `pygments` is not a declared dependency
+missing-dependency	medium	docs/conf.py:384:5	urllib3	`urllib3` is imported but `urllib3` is not a declared dependency
+unused-dependency	low	pyproject.toml	httpbin	dependency `httpbin` (dependency-groups.test) is never imported
+unused-dependency	low	pyproject.toml	pyopenssl	dependency `pyopenssl` (dependency-groups.typecheck) is never imported
+unused-dependency	low	pyproject.toml	pysocks	dependency `pysocks` (optional-dependencies.socks) is never imported
+unresolved-import	low	setup.py:7:1		import `setuptools` resolves to nothing on the search path
+unresolved-import	low	src/requests/compat.py:69:12		import `simplejson` resolves to nothing on the search path
+unresolved-import	low	src/requests/cookies.py:24:5		import `_typeshed` resolves to nothing on the search path
+unresolved-import	low	src/requests/help.py:32:12		import `OpenSSL` resolves to nothing on the search path
+unresolved-import	low	tests/compat.py:4:12		import `StringIO` resolves to nothing on the search path
+unresolved-import	low	tests/compat.py:9:5		import `cStringIO` resolves to nothing on the search path
+unresolved-import	low	tests/conftest.py:4:5		import `BaseHTTPServer` resolves to nothing on the search path
+unresolved-import	low	tests/conftest.py:5:5		import `SimpleHTTPServer` resolves to nothing on the search path

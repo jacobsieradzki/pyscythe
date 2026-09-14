@@ -20,8 +20,95 @@ use ty_python_semantic::{
 };
 
 use rayon::prelude::*;
+use salsa::{Cancelled, Database as _};
+use std::panic::AssertUnwindSafe;
+use std::sync::Mutex;
+use std::time::{Duration, Instant};
+use ty_project::ProjectDatabase;
 
 const MAX_MIN_FILES_PER_JOB: usize = 32;
+/// How often the watchdog looks for a file over its budget.
+const WATCHDOG_POLL: Duration = Duration::from_millis(50);
+
+/// How long ty may spend on one file's types before the file falls back to matching by name.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct FileBudget(pub Duration);
+
+/// How the references in a file are found.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum Resolution {
+    /// Through ty: a use points at the definition it resolves to.
+    Semantic,
+    /// By name only, for a file whose types ty cannot infer in reasonable time.
+    ByName,
+}
+
+/// Which files still need walking, and how each one is to be walked.
+///
+/// A file ty cannot type within the budget is walked again with its names
+/// matched textually; one that is still over budget then is given up on, so
+/// the schedule always empties.
+#[derive(Debug)]
+struct Schedule<T> {
+    pending: Vec<T>,
+    by_name: FxHashSet<T>,
+    abandoned: FxHashSet<T>,
+}
+
+impl<T: Copy + Eq + std::hash::Hash> Schedule<T> {
+    fn new(files: &[T]) -> Self {
+        Self {
+            pending: files.to_vec(),
+            by_name: FxHashSet::default(),
+            abandoned: FxHashSet::default(),
+        }
+    }
+
+    const fn is_empty(&self) -> bool {
+        self.pending.is_empty()
+    }
+
+    /// The files to walk next; the schedule is left empty for them to be put back into.
+    fn take_pending(&mut self) -> Vec<T> {
+        std::mem::take(&mut self.pending)
+    }
+
+    fn resolution_of(&self, file: T) -> Resolution {
+        if self.by_name.contains(&file) {
+            Resolution::ByName
+        } else {
+            Resolution::Semantic
+        }
+    }
+
+    /// A walk cut short by another file's cancellation: walk it again, unchanged.
+    fn retry(&mut self, file: T) {
+        if !self.abandoned.contains(&file) {
+            self.pending.push(file);
+        }
+    }
+
+    /// A walk that ran past the budget: demote it, or give up if it is already by name.
+    fn over_budget(&mut self, file: T) {
+        if self.by_name.insert(file) {
+            self.pending.push(file);
+        } else {
+            self.by_name.remove(&file);
+            self.abandoned.insert(file);
+            self.pending.retain(|pending| pending != &file);
+        }
+    }
+}
+
+/// One walk over some of the files.
+#[derive(Debug, Default)]
+struct Pass {
+    completed: Vec<(File, FileUses, Duration)>,
+    /// Files whose walk was cut short by a cancellation; they run again.
+    cancelled: Vec<File>,
+    /// Files that caused the cancellation; they run again by name.
+    over_budget: Vec<File>,
+}
 
 /// Where a definition was used.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -68,26 +155,78 @@ pub(crate) struct ReferenceIndex {
     attribute_prefixes: FxHashSet<String>,
     parameter_names: FxHashSet<String>,
     script_paths: FxHashSet<String>,
+    /// Files whose references were matched by name because ty ran over budget on them.
+    by_name: Vec<File>,
+    /// Files over budget even by name, so nothing in them counts as a reference.
+    abandoned: Vec<File>,
+    /// The file ty spent longest on, for tuning the budget.
+    slowest: Option<(File, Duration)>,
 }
 
 impl ReferenceIndex {
     /// Walks every file in `files`, in parallel, recording uses of definitions
     /// that live in `files` and imports between them.
-    pub(crate) fn build(db: &dyn ty_project::Db, files: &[File]) -> Self {
+    ///
+    /// A file that keeps ty busy beyond `budget` is cut off, through salsa's
+    /// cancellation, and walked again with its names matched textually, so
+    /// one pathological file cannot stall the whole run. `db` must be the only
+    /// live handle on the database: cancellation waits for every other one.
+    pub(crate) fn build(db: &mut ProjectDatabase, files: &[File], budget: FileBudget) -> Self {
         let project_files: FxHashSet<File> = files.iter().copied().collect();
-        let minimum_job_len = minimum_parallel_job_len(files.len(), MAX_MIN_FILES_PER_JOB);
-
-        let per_file: Vec<(File, FileUses)> = files
-            .par_iter()
-            .copied()
-            .with_min_len(minimum_job_len)
-            .map_with_db(db, |db, file| {
-                (file, collect_uses(db, file, &project_files))
-            })
-            .collect();
-
+        let mut schedule = Schedule::new(files);
         let mut index = Self::default();
-        for (file, file_uses) in per_file {
+        while !schedule.is_empty() {
+            let walking = schedule.take_pending();
+            let pass = budgeted_pass(db, &walking, &project_files, &schedule, budget);
+            index.absorb(pass.completed);
+            for file in pass.over_budget {
+                schedule.over_budget(file);
+            }
+            for file in pass.cancelled {
+                schedule.retry(file);
+            }
+        }
+        index.by_name = schedule.by_name.into_iter().collect();
+        index.abandoned = schedule.abandoned.into_iter().collect();
+        index
+    }
+
+    /// [`Self::build`] without a budget, for callers that cannot hand over the database.
+    pub(crate) fn build_unbudgeted(db: &dyn ty_project::Db, files: &[File]) -> Self {
+        let project_files: FxHashSet<File> = files.iter().copied().collect();
+        let pass = run_pass(
+            db,
+            files,
+            &project_files,
+            &Schedule::new(&[]),
+            &Mutex::default(),
+        );
+        let mut index = Self::default();
+        index.absorb(pass.completed);
+        index
+    }
+
+    /// Files whose references were matched by name only.
+    pub(crate) fn files_by_name(&self) -> &[File] {
+        &self.by_name
+    }
+
+    /// Files left out of the index: over budget even when matched by name.
+    pub(crate) fn files_abandoned(&self) -> &[File] {
+        &self.abandoned
+    }
+
+    /// The file ty spent longest on, and how long.
+    pub(crate) const fn slowest_file(&self) -> Option<(File, Duration)> {
+        self.slowest
+    }
+
+    fn absorb(&mut self, completed: Vec<(File, FileUses, Duration)>) {
+        let index = self;
+        for (file, file_uses, elapsed) in completed {
+            if index.slowest.is_none_or(|(_, slowest)| elapsed > slowest) {
+                index.slowest = Some((file, elapsed));
+            }
             for (key, use_site) in file_uses.uses {
                 index.uses.entry(key).or_default().push(use_site);
             }
@@ -102,7 +241,6 @@ impl ReferenceIndex {
             index.parameter_names.extend(file_uses.parameter_names);
             index.script_paths.extend(file_uses.script_paths);
         }
-        index
     }
 
     /// Whether `x.<name>` or `getattr(x, "<name>")` appears anywhere, or a
@@ -160,7 +298,97 @@ struct FileUses {
 /// Builtins whose second argument names an attribute.
 const REFLECTION_BUILTINS: &[&str] = &["getattr", "hasattr", "setattr", "delattr"];
 
-fn collect_uses(db: &dyn ty_project::Db, file: File, project_files: &FxHashSet<File>) -> FileUses {
+/// Walks `files` in parallel, with the watchdog on this thread: when a file
+/// runs past its budget, every other database handle is told to stop and the
+/// pass ends early with that file marked over budget.
+fn budgeted_pass(
+    db: &mut ProjectDatabase,
+    files: &[File],
+    project_files: &FxHashSet<File>,
+    schedule: &Schedule<File>,
+    budget: FileBudget,
+) -> Pass {
+    let in_flight: Mutex<FxHashMap<File, Instant>> = Mutex::default();
+    let worker = ty_project::Db::dyn_clone(db);
+    let mut over_budget: Vec<File> = Vec::new();
+    let mut pass = std::thread::scope(|scope| {
+        let walk = scope.spawn(|| {
+            let pass = run_pass(&*worker, files, project_files, schedule, &in_flight);
+            drop(worker);
+            pass
+        });
+        while !walk.is_finished() {
+            std::thread::sleep(WATCHDOG_POLL);
+            let late: Vec<File> = in_flight
+                .lock()
+                .map(|flight| {
+                    flight
+                        .iter()
+                        .filter(|(_, started)| started.elapsed() > budget.0)
+                        .map(|(file, _)| *file)
+                        .collect()
+                })
+                .unwrap_or_default();
+            if !late.is_empty() {
+                over_budget = late;
+                // Salsa cancels every other handle before any write; the write
+                // itself is nothing, since the LRU is off.
+                db.trigger_lru_eviction();
+                break;
+            }
+        }
+        walk.join()
+            .unwrap_or_else(|payload| std::panic::resume_unwind(payload))
+    });
+    pass.cancelled.retain(|file| !over_budget.contains(file));
+    pass.over_budget = over_budget;
+    pass
+}
+
+fn run_pass(
+    db: &dyn ty_project::Db,
+    files: &[File],
+    project_files: &FxHashSet<File>,
+    schedule: &Schedule<File>,
+    in_flight: &Mutex<FxHashMap<File, Instant>>,
+) -> Pass {
+    let minimum_job_len = minimum_parallel_job_len(files.len(), MAX_MIN_FILES_PER_JOB);
+    let outcomes: Vec<(File, Option<(FileUses, Duration)>)> = files
+        .par_iter()
+        .copied()
+        .with_min_len(minimum_job_len)
+        .map_with_db(db, |db, file| {
+            let resolution = schedule.resolution_of(file);
+            let started = Instant::now();
+            if let Ok(mut flight) = in_flight.lock() {
+                flight.insert(file, started);
+            }
+            let outcome = Cancelled::catch(AssertUnwindSafe(|| {
+                collect_uses(db, file, project_files, resolution)
+            }));
+            if let Ok(mut flight) = in_flight.lock() {
+                flight.remove(&file);
+            }
+            (file, outcome.ok().map(|uses| (uses, started.elapsed())))
+        })
+        .collect();
+
+    let mut pass = Pass::default();
+    for (file, outcome) in outcomes {
+        match outcome {
+            Some((uses, elapsed)) => pass.completed.push((file, uses, elapsed)),
+            None => pass.cancelled.push(file),
+        }
+    }
+    pass
+}
+
+fn collect_uses(
+    db: &dyn ty_project::Db,
+    file: File,
+    project_files: &FxHashSet<File>,
+    resolution: Resolution,
+) -> FileUses {
     let program_file = db.program_file(file);
     let module = parsed_module(db, program_file.python_file(db)).load(db);
     let model = SemanticModel::new(db, program_file);
@@ -170,6 +398,7 @@ fn collect_uses(db: &dyn ty_project::Db, file: File, project_files: &FxHashSet<F
         model: &model,
         file,
         project_files,
+        resolution,
         function_depth: 0,
         type_checking_depth: 0,
         out: FileUses::default(),
@@ -183,6 +412,7 @@ struct UseCollector<'a, 'db> {
     model: &'a SemanticModel<'db>,
     file: File,
     project_files: &'a FxHashSet<File>,
+    resolution: Resolution,
     /// How many function bodies enclose the current node.
     function_depth: u32,
     /// How many `if TYPE_CHECKING:` blocks enclose the current node.
@@ -555,21 +785,28 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
             AnyNodeRef::StmtIf(if_statement) if is_type_checking_test(&if_statement.test) => {
                 self.type_checking_depth += 1;
             }
-            AnyNodeRef::ExprName(name) if name.ctx.is_load() => {
-                let resolved = definitions_for_name(
-                    self.model,
-                    name.id.as_str(),
-                    node,
-                    ImportAliasResolution::ResolveAliases,
-                );
-                self.record(name.range(), name.range(), resolved);
-            }
+            AnyNodeRef::ExprName(name) if name.ctx.is_load() => match self.resolution {
+                Resolution::Semantic => {
+                    let resolved = definitions_for_name(
+                        self.model,
+                        name.id.as_str(),
+                        node,
+                        ImportAliasResolution::ResolveAliases,
+                    );
+                    self.record(name.range(), name.range(), resolved);
+                }
+                Resolution::ByName => {
+                    self.out.attribute_names.insert(name.id.as_str().to_owned());
+                }
+            },
             AnyNodeRef::ExprAttribute(attribute) if attribute.ctx.is_load() => {
                 self.out
                     .attribute_names
                     .insert(attribute.attr.as_str().to_owned());
-                let resolved = definitions_for_attribute(self.model, attribute);
-                self.record(attribute.attr.range(), attribute.range(), resolved);
+                if self.resolution == Resolution::Semantic {
+                    let resolved = definitions_for_attribute(self.model, attribute);
+                    self.record(attribute.attr.range(), attribute.range(), resolved);
+                }
             }
             AnyNodeRef::ExprCall(call) => {
                 if let Expr::Name(callee) = &*call.func
@@ -591,6 +828,9 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
                 self.out
                     .parameter_names
                     .insert(parameter.name.as_str().to_owned());
+                if self.resolution == Resolution::ByName {
+                    return TraversalSignal::Traverse;
+                }
                 // A test parameter names a pytest fixture; ty resolves which one.
                 let index = ty_python_core::semantic_index(self.db, self.model.program_file());
                 let definition = index.expect_single_definition(parameter);
@@ -612,6 +852,10 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
                 for alias in &import.names {
                     let name = alias.name.as_str();
                     if name == "*" {
+                        continue;
+                    }
+                    if self.resolution == Resolution::ByName {
+                        self.out.attribute_names.insert(name.to_owned());
                         continue;
                     }
                     let resolved = definitions_for_imported_symbol(
@@ -651,6 +895,44 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
 
 #[cfg(test)]
 mod tests {
+    use super::{Resolution, Schedule};
+
+    #[test]
+    fn a_file_over_budget_is_walked_by_name_and_then_given_up_on() {
+        let mut schedule = Schedule::new(&[1_u32, 2]);
+        assert_eq!(schedule.take_pending(), vec![1, 2]);
+        assert_eq!(schedule.resolution_of(1), Resolution::Semantic);
+
+        schedule.over_budget(1);
+        assert_eq!(schedule.resolution_of(1), Resolution::ByName);
+        assert_eq!(schedule.take_pending(), vec![1], "walked again, by name");
+
+        schedule.over_budget(1);
+        assert!(schedule.abandoned.contains(&1), "given up on, not retried");
+        assert!(schedule.is_empty());
+        assert!(
+            !schedule.by_name.contains(&1),
+            "abandoned, not matched by name"
+        );
+    }
+
+    #[test]
+    fn a_cancelled_walk_runs_again_unless_the_file_was_given_up_on() {
+        let mut schedule = Schedule::new(&[1_u32]);
+        let _ = schedule.take_pending();
+        schedule.retry(1);
+        assert_eq!(schedule.take_pending(), vec![1]);
+
+        schedule.over_budget(1);
+        let _ = schedule.take_pending();
+        schedule.over_budget(1);
+        schedule.retry(1);
+        assert!(
+            schedule.is_empty(),
+            "an abandoned file is never scheduled again"
+        );
+    }
+
     #[test]
     fn attribute_prefixes_are_identifier_heads_ending_in_an_underscore() {
         use super::attribute_prefix;

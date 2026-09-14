@@ -1,0 +1,32 @@
+files_scanned=56
+symbols_checked=1149
+symbols_kept=0
+findings=26
+health: score=86 grade=B functions=1149 max_cyclomatic=44 max_cognitive=80
+--
+complex-function	high	src/attr/_funcs.py:26:5	asdict	function `asdict` has cyclomatic complexity 15 and cognitive complexity 30 over 124 lines
+complex-function	high	src/attr/_funcs.py:152:5	_asdict_anything	function `_asdict_anything` has cyclomatic complexity 11 and cognitive complexity 16 over 76 lines
+complex-function	high	src/attr/_funcs.py:230:5	astuple	function `astuple` has cyclomatic complexity 19 and cognitive complexity 51 over 120 lines
+complex-function	high	src/attr/_make.py:104:5	attrib	function `attrib` has cyclomatic complexity 13 and cognitive complexity 13 over 111 lines
+complex-function	high	src/attr/_make.py:381:5	_transform_attrs	function `_transform_attrs` has cyclomatic complexity 32 and cognitive complexity 31 over 126 lines
+complex-function	high	src/attr/_make.py:676:9	_ClassBuilder.__init__	function `_ClassBuilder.__init__` has cyclomatic complexity 22 and cognitive complexity 27 over 102 lines
+complex-function	high	src/attr/_make.py:859:9	_ClassBuilder._create_slots_class	function `_ClassBuilder._create_slots_class` has cyclomatic complexity 35 and cognitive complexity 40 over 144 lines
+complex-function	high	src/attr/_make.py:1478:9	wrap	function `wrap` has cyclomatic complexity 36 and cognitive complexity 45 over 132 lines
+complex-function	high	src/attr/_make.py:2030:5	_make_init_script	function `_make_init_script` has cyclomatic complexity 16 and cognitive complexity 19 over 67 lines
+complex-function	high	src/attr/_make.py:2187:5	_attrs_to_init_script	function `_attrs_to_init_script` has cyclomatic complexity 44 and cognitive complexity 80 over 262 lines
+complex-function	high	src/attr/_make.py:3261:5	make_class	function `make_class` has cyclomatic complexity 11 and cognitive complexity 7 over 101 lines
+complex-function	high	tests/strategies.py:123:5	simple_classes	function `simple_classes` has cyclomatic complexity 14 and cognitive complexity 12 over 88 lines
+complex-function	high	tests/test_annotations.py:100:9	TestAnnotations.test_auto_attribs	function `TestAnnotations.test_auto_attribs` has cyclomatic complexity 17 and cognitive complexity 2 over 56 lines
+complex-function	high	tests/test_funcs.py:111:13	assert_proper_dict_class	function `assert_proper_dict_class` has cyclomatic complexity 11 and cognitive complexity 22 over 24 lines
+complex-function	high	tests/test_funcs.py:352:13	assert_proper_col_class	function `assert_proper_col_class` has cyclomatic complexity 12 and cognitive complexity 27 over 28 lines
+complex-function	high	tests/test_functional.py:560:9	TestFunctional.test_auto_exc	function `TestFunctional.test_auto_exc` has cyclomatic complexity 13 and cognitive complexity 3 over 53 lines
+complex-function	high	tests/test_make.py:295:9	TestTransformAttrs.test_kw_only	function `TestTransformAttrs.test_kw_only` has cyclomatic complexity 15 and cognitive complexity 7 over 47 lines
+complex-function	high	tests/test_make.py:1283:9	TestKeywordOnlyAttributes.test_kw_only_inheritance	function `TestKeywordOnlyAttributes.test_kw_only_inheritance` has cyclomatic complexity 19 and cognitive complexity 0 over 50 lines
+complex-function	high	tests/test_make.py:1334:9	TestKeywordOnlyAttributes.test_kw_only_inheritance_force_kw_only	function `TestKeywordOnlyAttributes.test_kw_only_inheritance_force_kw_only` has cyclomatic complexity 19 and cognitive complexity 0 over 49 lines
+complex-function	high	tests/test_make.py:2369:9	TestInitAlias.test_default_and_specify	function `TestInitAlias.test_default_and_specify` has cyclomatic complexity 21 and cognitive complexity 0 over 63 lines
+complex-function	high	tests/test_pattern_matching.py:55:9	TestPatternMatching.test_match_args_kw_only	function `TestPatternMatching.test_match_args_kw_only` has cyclomatic complexity 11 and cognitive complexity 4 over 46 lines
+complex-function	high	tests/test_slots.py:78:5	test_slots_being_used	function `test_slots_being_used` has cyclomatic complexity 13 and cognitive complexity 1 over 27 lines
+complex-function	high	tests/test_slots.py:143:5	test_inheritance_from_nonslots	function `test_inheritance_from_nonslots` has cyclomatic complexity 13 and cognitive complexity 0 over 41 lines
+complex-function	high	tests/test_slots.py:186:5	test_nonslots_these	function `test_nonslots_these` has cyclomatic complexity 13 and cognitive complexity 0 over 54 lines
+complex-function	high	tests/test_slots.py:242:5	test_inheritance_from_slots	function `test_inheritance_from_slots` has cyclomatic complexity 15 and cognitive complexity 1 over 41 lines
+complex-function	high	tests/test_slots.py:349:5	test_bare_inheritance_from_slots	function `test_bare_inheritance_from_slots` has cyclomatic complexity 14 and cognitive complexity 1 over 78 lines

@@ -1,0 +1,16 @@
+files_scanned=4331
+symbols_checked=0
+symbols_kept=0
+findings=11
+--
+circular-import	high	saleor/giftcard/gateway.py:15:1	-	import cycle among 5 modules, shortest: saleor.giftcard.gateway -> saleor.graphql.payment.mutations.transaction -> saleor.graphql.payment.mutations.transaction.transaction_request_action -> saleor.giftcard.gateway
+circular-import	high	saleor/graphql/account/mutations/authentication/__init__.py:11:1	-	import cycle: saleor.graphql.account.mutations.authentication -> saleor.graphql.account.mutations.authentication.set_password -> saleor.graphql.account.mutations.authentication
+circular-import	high	saleor/graphql/app/dataloaders/__init__.py:5:1	-	import cycle among 4 modules, shortest: saleor.graphql.app.dataloaders -> saleor.graphql.app.dataloaders.apps -> saleor.graphql.webhook.dataloaders.models -> saleor.graphql.app.dataloaders
+circular-import	high	saleor/graphql/attribute/mutations/__init__.py:1:1	-	import cycle among 3 modules, shortest: saleor.graphql.attribute.mutations -> saleor.graphql.attribute.mutations.attribute_bulk_create -> saleor.graphql.attribute.mutations
+circular-import	high	saleor/graphql/core/types/__init__.py:82:1	-	import cycle among 12 modules, shortest: saleor.graphql.core.types -> saleor.graphql.core.types.event -> saleor.graphql.core.types
+circular-import	high	saleor/graphql/product/filters/product.py:52:1	-	import cycle among 7 modules, shortest: saleor.graphql.product.filters.product -> saleor.graphql.product.filters.product_helpers -> saleor.graphql.product.types -> saleor.graphql.product.types.categories -> saleor.graphql.product.filters.product
+circular-import	high	saleor/graphql/product/mutations/product/__init__.py:1:1	-	import cycle among 3 modules, shortest: saleor.graphql.product.mutations.product -> saleor.graphql.product.mutations.product.product_create -> saleor.graphql.product.mutations.product
+circular-import	high	saleor/graphql/product/mutations/product_variant/__init__.py:1:1	-	import cycle among 3 modules, shortest: saleor.graphql.product.mutations.product_variant -> saleor.graphql.product.mutations.product_variant.product_variant_create -> saleor.graphql.product.mutations.product_variant
+circular-import	high	saleor/graphql/shop/types.py:16:1	-	import cycle: saleor.graphql.shop.types -> saleor.site.apps -> saleor.graphql.shop.types
+circular-import	high	saleor/graphql/webhook/mutations/__init__.py:6:1	-	import cycle: saleor.graphql.webhook.mutations -> saleor.graphql.webhook.mutations.webhook_update -> saleor.graphql.webhook.mutations
+circular-import	high	saleor/tests/e2e/shop/utils/__init__.py:1:1	-	import cycle: saleor.tests.e2e.shop.utils -> saleor.tests.e2e.shop.utils.preparing_shop -> saleor.tests.e2e.shop.utils

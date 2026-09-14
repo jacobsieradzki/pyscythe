@@ -1,0 +1,6 @@
+files_scanned=60
+symbols_checked=0
+symbols_kept=0
+findings=1
+--
+circular-import	high	httpx/__init__.py:4:1	-	import cycle among 6 modules, shortest: httpx -> httpx._client -> httpx._transports.default -> httpx

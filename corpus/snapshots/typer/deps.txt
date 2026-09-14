@@ -1,0 +1,27 @@
+files_scanned=637
+symbols_checked=49
+symbols_kept=0
+findings=22
+--
+unresolved-import	low	docs_src/subcommands/tutorial001_py310/main.py:3:8		import `items` resolves to nothing on the search path
+unresolved-import	low	docs_src/subcommands/tutorial001_py310/main.py:4:8		import `users` resolves to nothing on the search path
+unresolved-import	low	docs_src/subcommands/tutorial003_py310/lands.py:3:8		import `reigns` resolves to nothing on the search path
+unresolved-import	low	docs_src/subcommands/tutorial003_py310/lands.py:4:8		import `towns` resolves to nothing on the search path
+unresolved-import	low	docs_src/subcommands/tutorial003_py310/main.py:4:8		import `lands` resolves to nothing on the search path
+unused-dependency	low	pyproject.toml	cairosvg	dependency `cairosvg` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	griffe-typingdoc	dependency `griffe-typingdoc` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	griffe-warnings-deprecated	dependency `griffe-warnings-deprecated` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	httpx	dependency `httpx` (dependency-groups.github-actions) is never imported
+unused-dependency	low	pyproject.toml	markdown-include-variants	dependency `markdown-include-variants` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	mdx-include	dependency `mdx-include` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	mkdocstrings	dependency `mkdocstrings` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	pillow	dependency `pillow` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	prek	dependency `prek` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	pygithub	dependency `pygithub` (dependency-groups.github-actions) is never imported
+unused-dependency	low	pyproject.toml	pyyaml	dependency `pyyaml` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	smokeshow	dependency `smokeshow` (dependency-groups.github-actions) is never imported
+unused-dependency	low	pyproject.toml	zensical	dependency `zensical` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	zizmor	dependency `zizmor` (dependency-groups.dev) is never imported
+unresolved-import	low	scripts/deploy_docs_status.py:5:1		import `github` resolves to nothing on the search path
+unresolved-import	low	typer/_click/_winconsole.py:81:9		import `typing_extensions` resolves to nothing on the search path
+unresolved-import	low	typer/testing.py:17:5		import `_typeshed` resolves to nothing on the search path

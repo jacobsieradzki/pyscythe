@@ -155,6 +155,13 @@ fn stamp_for(project: &Project, lock: &str) -> String {
 
 fn uv(cwd: &Utf8Path) -> Command {
     let mut command = Command::new("uv");
-    command.current_dir(cwd).arg("--no-config");
+    command
+        .current_dir(cwd)
+        .arg("--no-config")
+        // A shallow checkout has no tags for setuptools-scm and hatch-vcs to read.
+        .env("SETUPTOOLS_SCM_PRETEND_VERSION", "0.0.0")
+        // Only the Python files matter; skip optional C extensions.
+        .env("DISABLE_SQLALCHEMY_CEXT", "1")
+        .env("MYPY_USE_MYPYC", "0");
     command
 }

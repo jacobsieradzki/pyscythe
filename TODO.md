@@ -45,7 +45,7 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 - [x] `--format sarif|github|markdown` alongside `human` and `json`.
 - [x] `--format pr-comment`: Markdown with a `<!-- pyscythe:<analysis> -->` marker.
 - [x] Composite GitHub Action (`action.yml`) that installs from git and runs any analysis with annotations or SARIF; CI workflow for this repo.
-- [x] Corpus: thirteen public projects pinned by commit in `corpus/corpus.toml`, environments pinned in `corpus/locks`, every analysis snapshotted in `corpus/snapshots`; `mise run corpus` and the `corpus` workflow fail on any change in output. Added 2026-09-13.
+- [x] Corpus: 35 public projects pinned by commit in `corpus/corpus.toml`, environments pinned in `corpus/locks`, every analysis snapshotted in `corpus/snapshots`; `mise run corpus` and the `corpus` workflow fail on any change in output. Added 2026-09-13.
 
 ## Deferred by decision
 

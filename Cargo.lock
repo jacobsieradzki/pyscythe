@@ -1306,6 +1306,7 @@ dependencies = [
  "ruff_ranged_value",
  "ruff_text_size",
  "rustc-hash",
+ "salsa",
  "thiserror",
  "ty_ide",
  "ty_module_resolver",

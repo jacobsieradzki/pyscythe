@@ -1,0 +1,255 @@
+files_scanned=637
+symbols_checked=0
+symbols_kept=0
+findings=249
+duplication: clones=249 duplicated_lines=9368 total_lines=36136 percent_tenths=259
+--
+duplicate-code	high	docs_src/commands/arguments/tutorial001_py310.py:1:1	-	18 lines (77 tokens) duplicated in 2 other places: docs_src.subcommands.tutorial001_py310.users:1, docs_src.subcommands.tutorial003_py310.users:1
+duplicate-code	high	docs_src/commands/callback/tutorial004_py310.py:3:1	-	22 lines (58 tokens) duplicated in 2 other places: docs_src.subcommands.name_help.tutorial005_py310:21, docs_src.subcommands.name_help.tutorial006_py310:21
+duplicate-code	high	docs_src/commands/context/tutorial002_py310.py:1:1	-	17 lines (78 tokens) duplicated at docs_src.commands.context.tutorial003_py310:1
+duplicate-code	high	docs_src/commands/help/tutorial001_an_py310.py:3:1	-	17 lines (58 tokens) duplicated at docs_src.commands.help.tutorial001_py310:1
+duplicate-code	high	docs_src/commands/help/tutorial001_an_py310.py:32:1	-	12 lines (50 tokens) duplicated at docs_src.commands.options.tutorial001_an_py310:20
+duplicate-code	high	docs_src/commands/help/tutorial001_an_py310.py:46:1	-	24 lines (61 tokens) duplicated at docs_src.commands.help.tutorial001_py310:40
+duplicate-code	high	docs_src/commands/help/tutorial001_py310.py:28:1	-	11 lines (50 tokens) duplicated at docs_src.commands.options.tutorial001_py310:16
+duplicate-code	high	docs_src/commands/help/tutorial006_py310.py:3:1	-	20 lines (65 tokens) duplicated at tests.test_completion.example_rich_tags:3
+duplicate-code	high	docs_src/commands/help/tutorial007_an_py310.py:28:1	-	19 lines (61 tokens) duplicated at docs_src.commands.help.tutorial007_py310:20
+duplicate-code	high	docs_src/commands/index/tutorial002_py310.py:3:1	-	16 lines (54 tokens) duplicated at docs_src.commands.index.tutorial003_py310:3
+duplicate-code	high	docs_src/commands/name/tutorial001_py310.py:6:1	-	13 lines (70 tokens) duplicated at docs_src.subcommands.tutorial002_py310.main:25
+duplicate-code	high	docs_src/commands/options/tutorial001_an_py310.py:3:1	-	14 lines (54 tokens) duplicated at docs_src.commands.options.tutorial001_py310:1
+duplicate-code	high	docs_src/commands/options/tutorial001_an_py310.py:30:1	-	16 lines (59 tokens) duplicated at docs_src.commands.options.tutorial001_py310:26
+duplicate-code	high	docs_src/exceptions/tutorial003_py310.py:1:1	-	13 lines (51 tokens) duplicated in 2 other places: docs_src.exceptions.tutorial004_py310:1, tests.assets.type_error_no_rich_short_disable:4
+duplicate-code	high	docs_src/first_steps/tutorial004_py310.py:4:1	-	10 lines (66 tokens) duplicated at docs_src.first_steps.tutorial005_py310:4
+duplicate-code	high	docs_src/multiple_values/multiple_options/tutorial001_an_py310.py:9:1	-	11 lines (60 tokens) duplicated at docs_src.multiple_values.multiple_options.tutorial001_py310:7
+duplicate-code	high	docs_src/multiple_values/options_with_multiple_values/tutorial001_an_py310.py:9:1	-	13 lines (71 tokens) duplicated at docs_src.multiple_values.options_with_multiple_values.tutorial001_py310:7
+duplicate-code	high	docs_src/options/callback/tutorial001_an_py310.py:3:1	-	13 lines (52 tokens) duplicated at docs_src.options.callback.tutorial001_py310:1
+duplicate-code	high	docs_src/options/callback/tutorial002_an_py310.py:9:1	-	14 lines (81 tokens) duplicated at docs_src.options.callback.tutorial003_an_py310:11
+duplicate-code	high	docs_src/options/callback/tutorial002_py310.py:7:1	-	14 lines (80 tokens) duplicated at docs_src.options.callback.tutorial003_py310:9
+duplicate-code	high	docs_src/options/callback/tutorial004_an_py310.py:3:1	-	16 lines (86 tokens) duplicated at docs_src.options.callback.tutorial004_py310:1
+duplicate-code	high	docs_src/options/help/tutorial001_an_py310.py:1:1	-	12 lines (55 tokens) duplicated at docs_src.options.help.tutorial002_an_py310:1
+duplicate-code	high	docs_src/options/help/tutorial001_an_py310.py:12:1	-	16 lines (62 tokens) duplicated at docs_src.options.help.tutorial002_an_py310:23
+duplicate-code	high	docs_src/options/help/tutorial001_py310.py:1:1	-	10 lines (51 tokens) duplicated at docs_src.options.help.tutorial002_py310:1
+duplicate-code	high	docs_src/options/help/tutorial001_py310.py:10:1	-	16 lines (60 tokens) duplicated at docs_src.options.help.tutorial002_py310:15
+duplicate-code	high	docs_src/options/name/tutorial005_an_py310.py:11:1	-	11 lines (50 tokens) duplicated at docs_src.options.name.tutorial005_py310:9
+duplicate-code	high	docs_src/options/prompt/tutorial001_an_py310.py:1:1	-	10 lines (50 tokens) duplicated at docs_src.testing.app02_an_py310.main:1
+duplicate-code	high	docs_src/options/version/tutorial001_an_py310.py:3:1	-	16 lines (60 tokens) duplicated at docs_src.options.version.tutorial001_py310:1
+duplicate-code	high	docs_src/options/version/tutorial002_an_py310.py:1:1	-	26 lines (121 tokens) duplicated at docs_src.options.version.tutorial003_an_py310:1
+duplicate-code	high	docs_src/options/version/tutorial002_py310.py:1:1	-	23 lines (119 tokens) duplicated at docs_src.options.version.tutorial003_py310:1
+duplicate-code	high	docs_src/options_autocompletion/tutorial003_an_py310.py:3:1	-	19 lines (77 tokens) duplicated at docs_src.options_autocompletion.tutorial003_py310:1
+duplicate-code	high	docs_src/options_autocompletion/tutorial004_an_py310.py:3:1	-	24 lines (100 tokens) duplicated at docs_src.options_autocompletion.tutorial004_py310:1
+duplicate-code	high	docs_src/options_autocompletion/tutorial005_an_py310.py:3:1	-	21 lines (84 tokens) duplicated at docs_src.options_autocompletion.tutorial005_py310:1
+duplicate-code	high	docs_src/options_autocompletion/tutorial007_an_py310.py:3:1	-	23 lines (111 tokens) duplicated at docs_src.options_autocompletion.tutorial007_py310:1
+duplicate-code	high	docs_src/options_autocompletion/tutorial007_an_py310.py:25:1	-	11 lines (58 tokens) duplicated in 2 other places: docs_src.options_autocompletion.tutorial008_an_py310:28, docs_src.options_autocompletion.tutorial009_an_py310:29
+duplicate-code	high	docs_src/options_autocompletion/tutorial007_py310.py:22:1	-	11 lines (54 tokens) duplicated in 2 other places: docs_src.options_autocompletion.tutorial008_py310:25, docs_src.options_autocompletion.tutorial009_py310:26
+duplicate-code	high	docs_src/options_autocompletion/tutorial008_an_py310.py:3:1	-	26 lines (114 tokens) duplicated at docs_src.options_autocompletion.tutorial008_py310:1
+duplicate-code	high	docs_src/options_autocompletion/tutorial009_an_py310.py:3:1	-	27 lines (139 tokens) duplicated at docs_src.options_autocompletion.tutorial009_py310:1
+duplicate-code	high	docs_src/parameter_types/bool/tutorial002_an_py310.py:9:1	-	12 lines (51 tokens) duplicated at docs_src.parameter_types.bool.tutorial002_py310:7
+duplicate-code	high	docs_src/parameter_types/custom_types/tutorial001_an_py310.py:3:1	-	21 lines (86 tokens) duplicated at docs_src.parameter_types.custom_types.tutorial001_py310:1
+duplicate-code	high	docs_src/parameter_types/enum/tutorial001_py310.py:1:1	-	16 lines (50 tokens) duplicated at docs_src.parameter_types.enum.tutorial002_py310:1
+duplicate-code	high	docs_src/parameter_types/file/tutorial004_an_py310.py:9:1	-	15 lines (53 tokens) duplicated at docs_src.parameter_types.file.tutorial004_py310:7
+duplicate-code	high	docs_src/parameter_types/number/tutorial001_an_py310.py:1:1	-	11 lines (52 tokens) duplicated at docs_src.parameter_types.number.tutorial002_an_py310:1
+duplicate-code	high	docs_src/parameter_types/path/tutorial001_an_py310.py:10:1	-	16 lines (96 tokens) duplicated at docs_src.parameter_types.path.tutorial001_py310:9
+duplicate-code	high	docs_src/progressbar/tutorial003_py310.py:11:1	-	11 lines (50 tokens) duplicated at docs_src.progressbar.tutorial005_py310:11
+duplicate-code	high	docs_src/subcommands/callback_override/tutorial003_py310.py:11:1	-	16 lines (62 tokens) duplicated at docs_src.subcommands.callback_override.tutorial004_py310:17
+duplicate-code	high	docs_src/subcommands/name_help/tutorial002_py310.py:5:1	-	19 lines (69 tokens) duplicated at docs_src.subcommands.name_help.tutorial004_py310:12
+duplicate-code	high	docs_src/subcommands/name_help/tutorial006_py310.py:1:1	-	21 lines (55 tokens) duplicated at docs_src.subcommands.name_help.tutorial008_py310:1
+duplicate-code	high	docs_src/subcommands/name_help/tutorial007_py310.py:21:1	-	18 lines (61 tokens) duplicated at docs_src.subcommands.name_help.tutorial008_py310:26
+duplicate-code	high	docs_src/subcommands/tutorial001_py310/items.py:1:1	-	23 lines (105 tokens) duplicated at docs_src.subcommands.tutorial003_py310.items:1
+duplicate-code	high	scripts/docs.py:309:1	-	7 lines (57 tokens) duplicated at scripts.docs:330
+duplicate-code	high	scripts/prepare_release.py:154:1	-	16 lines (51 tokens) duplicated at scripts.prepare_release:171
+duplicate-code	high	tests/assets/completion_no_types.py:1:1	-	24 lines (145 tokens) duplicated at tests.assets.completion_no_types_order:1
+duplicate-code	high	tests/atomic_write_example.py:43:1	-	8 lines (50 tokens) duplicated at tests.atomic_write_example:50
+duplicate-code	high	tests/test_ambiguous_params.py:103:1	-	19 lines (90 tokens) duplicated at tests.test_ambiguous_params:152
+duplicate-code	high	tests/test_ambiguous_params.py:121:1	-	13 lines (52 tokens) duplicated at tests.test_ambiguous_params:170
+duplicate-code	high	tests/test_annotated.py:16:1	-	14 lines (91 tokens) duplicated at tests.test_annotated:32
+duplicate-code	high	tests/test_annotated.py:63:1	-	20 lines (125 tokens) duplicated at tests.test_future_annotations:11
+duplicate-code	high	tests/test_cli/test_completion_run.py:1:1	-	15 lines (58 tokens) duplicated at tests.test_cli.test_sub_completion:1
+duplicate-code	high	tests/test_cli/test_doc.py:16:1	-	16 lines (62 tokens) duplicated at tests.test_cli.test_doc:98
+duplicate-code	high	tests/test_cli/test_extending_app.py:35:1	-	19 lines (53 tokens) duplicated in 2 other places: tests.test_cli.test_multi_app:76, tests.test_cli.test_multi_app_cli:55
+duplicate-code	high	tests/test_cli/test_extending_app.py:54:1	-	19 lines (53 tokens) duplicated at tests.test_cli.test_extending_empty_app:33
+duplicate-code	high	tests/test_cli/test_help.py:10:1	-	37 lines (104 tokens) duplicated at tests.test_cli.test_sub:106
+duplicate-code	high	tests/test_cli/test_multi_app.py:14:1	-	20 lines (60 tokens) duplicated at tests.test_cli.test_multi_app_cli:14
+duplicate-code	high	tests/test_cli/test_multi_app.py:55:1	-	21 lines (62 tokens) duplicated at tests.test_cli.test_multi_app_cli:34
+duplicate-code	high	tests/test_cli/test_multi_func.py:54:1	-	22 lines (59 tokens) duplicated at tests.test_cli.test_multi_func:76
+duplicate-code	high	tests/test_completion/choice_case_insensitive_example.py:1:1	-	14 lines (52 tokens) duplicated at tests.test_completion.choice_example:1
+duplicate-code	high	tests/test_completion/test_completion.py:32:1	-	8 lines (51 tokens) duplicated at tests.test_completion.test_completion_install:32
+duplicate-code	high	tests/test_completion/test_completion.py:53:1	-	11 lines (53 tokens) duplicated in 4 other places: tests.test_completion.test_completion:67, tests.test_completion.test_completion:96, tests.test_completion.test_completion:109, tests.test_completion.test_completion:137
+duplicate-code	high	tests/test_completion/test_completion.py:82:1	-	12 lines (54 tokens) duplicated in 2 other places: tests.test_completion.test_completion:123, tests.test_completion.test_completion:152
+duplicate-code	high	tests/test_completion/test_completion.py:172:1	-	10 lines (74 tokens) duplicated at tests.test_tutorial.test_options.test_version.test_tutorial001:55
+duplicate-code	high	tests/test_completion/test_completion_choice.py:1:1	-	24 lines (113 tokens) duplicated at tests.test_completion.test_completion_choice_no_case:1
+duplicate-code	high	tests/test_completion/test_completion_complete.py:21:1	-	14 lines (89 tokens) duplicated at tests.test_completion.test_completion_complete:38
+duplicate-code	high	tests/test_completion/test_completion_complete.py:54:1	-	13 lines (87 tokens) duplicated at tests.test_completion.test_completion_complete:72
+duplicate-code	high	tests/test_completion/test_completion_complete.py:87:1	-	14 lines (88 tokens) duplicated at tests.test_completion.test_completion_complete:106
+duplicate-code	high	tests/test_completion/test_completion_complete.py:122:1	-	12 lines (76 tokens) duplicated at tests.test_completion.test_completion_complete:138
+duplicate-code	high	tests/test_completion/test_completion_complete.py:149:1	-	18 lines (97 tokens) duplicated at tests.test_completion.test_completion_complete:166
+duplicate-code	high	tests/test_completion/test_completion_complete_no_help.py:20:1	-	11 lines (55 tokens) duplicated in 2 other places: tests.test_completion.test_completion_complete_no_help:35, tests.test_completion.test_completion_complete_no_help:49
+duplicate-code	high	tests/test_completion/test_completion_complete_rich.py:31:1	-	11 lines (55 tokens) duplicated at tests.test_completion.test_completion_complete_rich:46
+duplicate-code	high	tests/test_completion/test_completion_complete_rich.py:63:1	-	11 lines (56 tokens) duplicated at tests.test_completion.test_completion_complete_rich:97
+duplicate-code	high	tests/test_completion/test_completion_option_colon.py:15:1	-	12 lines (59 tokens) duplicated at tests.test_completion.test_completion_option_colon:32
+duplicate-code	high	tests/test_completion/test_completion_option_colon.py:48:1	-	12 lines (63 tokens) duplicated at tests.test_completion.test_completion_option_colon:65
+duplicate-code	high	tests/test_completion/test_completion_option_colon.py:84:1	-	10 lines (53 tokens) duplicated at tests.test_completion.test_completion_path:15
+duplicate-code	high	tests/test_completion/test_completion_option_colon.py:101:1	-	12 lines (63 tokens) duplicated at tests.test_completion.test_completion_option_colon:119
+duplicate-code	high	tests/test_completion/test_completion_option_colon.py:132:1	-	18 lines (90 tokens) duplicated in 2 other places: tests.test_completion.test_completion_option_colon:221, tests.test_completion.test_completion_option_colon:279
+duplicate-code	high	tests/test_completion/test_completion_option_colon.py:149:1	-	20 lines (99 tokens) duplicated at tests.test_completion.test_completion_option_colon:239
+duplicate-code	high	tests/test_completion/test_completion_option_colon.py:176:1	-	13 lines (69 tokens) duplicated at tests.test_completion.test_completion_option_colon:193
+duplicate-code	high	tests/test_completion/test_completion_option_colon.py:266:1	-	13 lines (67 tokens) duplicated at tests.test_completion.test_completion_option_colon:304
+duplicate-code	high	tests/test_core.py:288:1	-	11 lines (58 tokens) duplicated at tests.test_core:304
+duplicate-code	high	tests/test_core.py:387:1	-	9 lines (92 tokens) duplicated at tests.test_rich_utils:245
+duplicate-code	high	tests/test_exit_errors.py:16:1	-	16 lines (68 tokens) duplicated at tests.test_exit_errors:43
+duplicate-code	high	tests/test_hidden.py:12:1	-	13 lines (86 tokens) duplicated at tests.test_hidden:37
+duplicate-code	high	tests/test_others.py:35:1	-	16 lines (85 tokens) duplicated at tests.test_others:59
+duplicate-code	high	tests/test_others.py:92:1	-	17 lines (102 tokens) duplicated at tests.test_others:421
+duplicate-code	high	tests/test_others.py:117:1	-	10 lines (76 tokens) duplicated at tests.test_others:263
+duplicate-code	high	tests/test_rich_markup_mode.py:97:1	-	38 lines (216 tokens) duplicated at tests.test_rich_markup_mode:253
+duplicate-code	high	tests/test_rich_markup_mode.py:136:1	-	32 lines (195 tokens) duplicated at tests.test_rich_markup_mode:296
+duplicate-code	high	tests/test_rich_utils.py:159:1	-	10 lines (71 tokens) duplicated at tests.test_rich_utils:178
+duplicate-code	high	tests/test_suggest_commands.py:9:1	-	14 lines (74 tokens) duplicated at tests.test_suggest_commands:85
+duplicate-code	high	tests/test_suggest_commands.py:41:1	-	16 lines (75 tokens) duplicated at tests.test_suggest_commands:59
+duplicate-code	high	tests/test_suggest_commands.py:74:1	-	12 lines (61 tokens) duplicated at tests.test_tutorial.test_commands.test_index.test_tutorial005:11
+duplicate-code	high	tests/test_tracebacks.py:8:1	-	20 lines (98 tokens) duplicated at tests.test_tracebacks:27
+duplicate-code	high	tests/test_tracebacks.py:64:1	-	12 lines (61 tokens) duplicated at tests.test_tracebacks:84
+duplicate-code	high	tests/test_tutorial/test_app_dir/test_tutorial001.py:22:1	-	11 lines (56 tokens) duplicated in 2 other places: tests.test_tutorial.test_exceptions.test_tutorial003:30, tests.test_tutorial.test_terminating.test_tutorial001:31
+duplicate-code	high	tests/test_tutorial/test_arguments/test_default/test_tutorial001.py:16:1	-	15 lines (91 tokens) duplicated at tests.test_tutorial.test_arguments.test_default.test_tutorial002:16
+duplicate-code	high	tests/test_tutorial/test_arguments/test_default/test_tutorial001.py:36:1	-	17 lines (98 tokens) duplicated in 5 other places: tests.test_tutorial.test_arguments.test_help.test_tutorial003:33, tests.test_tutorial.test_arguments.test_help.test_tutorial005:31, tests.test_tutorial.test_arguments.test_help.test_tutorial007:30, tests.test_tutorial.test_arguments.test_optional.test_tutorial001:43, tests.test_tutorial.test_arguments.test_optional.test_tutorial002:34
+duplicate-code	high	tests/test_tutorial/test_arguments/test_default/test_tutorial002.py:42:1	-	13 lines (74 tokens) duplicated at tests.test_tutorial.test_arguments.test_help.test_tutorial006:50
+duplicate-code	high	tests/test_tutorial/test_arguments/test_envvar/test_tutorial001.py:18:1	-	15 lines (92 tokens) duplicated at tests.test_tutorial.test_arguments.test_envvar.test_tutorial003:16
+duplicate-code	high	tests/test_tutorial/test_arguments/test_envvar/test_tutorial001.py:33:1	-	9 lines (65 tokens) duplicated at tests.test_tutorial.test_arguments.test_help.test_tutorial008:32
+duplicate-code	high	tests/test_tutorial/test_arguments/test_envvar/test_tutorial001.py:42:1	-	30 lines (197 tokens) duplicated at tests.test_tutorial.test_arguments.test_envvar.test_tutorial003:30
+duplicate-code	high	tests/test_tutorial/test_arguments/test_envvar/test_tutorial002.py:1:1	-	20 lines (59 tokens) duplicated in 3 other places: tests.test_tutorial.test_parameter_types.test_datetime.test_tutorial002:1, tests.test_tutorial.test_parameter_types.test_enum.test_tutorial002:1, tests.test_tutorial.test_parameter_types.test_path.test_tutorial002:2
+duplicate-code	high	tests/test_tutorial/test_arguments/test_envvar/test_tutorial002.py:20:1	-	9 lines (53 tokens) duplicated in 3 other places: tests.test_tutorial.test_commands.test_help.test_tutorial001:20, tests.test_tutorial.test_commands.test_options.test_tutorial001:20, tests.test_tutorial.test_options.test_name.test_tutorial001:20
+duplicate-code	high	tests/test_tutorial/test_arguments/test_help/test_tutorial001.py:17:1	-	14 lines (84 tokens) duplicated at tests.test_tutorial.test_arguments.test_help.test_tutorial002:16
+duplicate-code	high	tests/test_tutorial/test_arguments/test_help/test_tutorial001.py:32:1	-	9 lines (65 tokens) duplicated at tests.test_tutorial.test_options.test_required.test_tutorial001_tutorial002:44
+duplicate-code	high	tests/test_tutorial/test_arguments/test_help/test_tutorial001.py:40:1	-	21 lines (126 tokens) duplicated at tests.test_tutorial.test_arguments.test_help.test_tutorial002:29
+duplicate-code	high	tests/test_tutorial/test_arguments/test_help/test_tutorial003.py:16:1	-	18 lines (113 tokens) duplicated at tests.test_tutorial.test_arguments.test_help.test_tutorial004:16
+duplicate-code	high	tests/test_tutorial/test_arguments/test_help/test_tutorial004.py:33:1	-	17 lines (99 tokens) duplicated at tests.test_tutorial.test_arguments.test_help.test_tutorial008:42
+duplicate-code	high	tests/test_tutorial/test_arguments/test_help/test_tutorial005.py:16:1	-	13 lines (77 tokens) duplicated in 2 other places: tests.test_tutorial.test_arguments.test_help.test_tutorial007:16, tests.test_tutorial.test_arguments.test_help.test_tutorial008:17
+duplicate-code	high	tests/test_tutorial/test_arguments/test_help/test_tutorial006.py:2:1	-	20 lines (59 tokens) duplicated at tests.test_tutorial.test_options_autocompletion.test_tutorial006:1
+duplicate-code	high	tests/test_tutorial/test_arguments/test_optional/test_tutorial001.py:17:1	-	11 lines (63 tokens) duplicated at tests.test_tutorial.test_arguments.test_optional.test_tutorial002:16
+duplicate-code	high	tests/test_tutorial/test_arguments/test_optional/test_tutorial003.py:32:1	-	17 lines (90 tokens) duplicated in 2 other places: tests.test_tutorial.test_first_steps.test_tutorial002:18, tests.test_tutorial.test_typer_app.test_tutorial001:16
+duplicate-code	high	tests/test_tutorial/test_commands/test_arguments/test_tutorial001.py:22:1	-	23 lines (129 tokens) duplicated in 2 other places: tests.test_tutorial.test_commands.test_help.test_tutorial002:35, tests.test_tutorial.test_commands.test_name.test_tutorial001:18
+duplicate-code	high	tests/test_tutorial/test_commands/test_callback/test_tutorial001.py:65:1	-	11 lines (55 tokens) duplicated in 14 other places: tests.test_tutorial.test_commands.test_context.test_tutorial004:19, tests.test_tutorial.test_commands.test_index.test_tutorial004:36, tests.test_tutorial.test_exceptions.test_tutorial004:29, tests.test_tutorial.test_first_steps.test_tutorial004:48, tests.test_tutorial.test_multiple_values.test_arguments_with_multiple_values.test_tutorial001:18, tests.test_tutorial.test_parameter_types.test_datetime.test_tutorial001:49, tests.test_tutorial.test_parameter_types.test_enum.test_tutorial001:49, tests.test_tutorial.test_parameter_types.test_index.test_tutorial001:47, tests.test_tutorial.test_parameter_types.test_uuid.test_tutorial001:39, tests.test_tutorial.test_printing.test_tutorial002:32, tests.test_tutorial.test_printing.test_tutorial004:17, tests.test_tutorial.test_prompt.test_tutorial001:16, tests.test_tutorial.test_prompt.test_tutorial004:16, tests.test_tutorial.test_terminating.test_tutorial003:40
+duplicate-code	high	tests/test_tutorial/test_commands/test_callback/test_tutorial002.py:16:1	-	12 lines (58 tokens) duplicated at tests.test_tutorial.test_commands.test_callback.test_tutorial004:23
+duplicate-code	high	tests/test_tutorial/test_commands/test_callback/test_tutorial003.py:17:1	-	16 lines (76 tokens) duplicated at tests.test_tutorial.test_subcommands.test_callback_override.test_tutorial003:17
+duplicate-code	high	tests/test_tutorial/test_commands/test_context/test_tutorial001.py:23:1	-	12 lines (58 tokens) duplicated at tests.test_tutorial.test_subcommands.test_tutorial002:67
+duplicate-code	high	tests/test_tutorial/test_commands/test_context/test_tutorial002.py:23:1	-	18 lines (93 tokens) duplicated at tests.test_tutorial.test_commands.test_context.test_tutorial003:23
+duplicate-code	high	tests/test_tutorial/test_commands/test_help/test_tutorial001.py:1:1	-	20 lines (59 tokens) duplicated in 4 other places: tests.test_tutorial.test_commands.test_options.test_tutorial001:1, tests.test_tutorial.test_options.test_name.test_tutorial001:1, tests.test_tutorial.test_options_autocompletion.test_tutorial001:1, tests.test_tutorial.test_parameter_types.test_custom_types.test_tutorial001:1
+duplicate-code	high	tests/test_tutorial/test_commands/test_help/test_tutorial001.py:72:1	-	39 lines (277 tokens) duplicated at tests.test_tutorial.test_commands.test_options.test_tutorial001:32
+duplicate-code	high	tests/test_tutorial/test_commands/test_help/test_tutorial001.py:110:1	-	13 lines (71 tokens) duplicated at tests.test_tutorial.test_commands.test_options.test_tutorial001:77
+duplicate-code	high	tests/test_tutorial/test_commands/test_help/test_tutorial002.py:1:1	-	17 lines (51 tokens) duplicated in 2 other places: tests.test_tutorial.test_commands.test_help.test_tutorial003:1, tests.test_tutorial.test_commands.test_help.test_tutorial006:2
+duplicate-code	high	tests/test_tutorial/test_commands/test_help/test_tutorial003.py:34:1	-	12 lines (60 tokens) duplicated at tests.test_tutorial.test_commands.test_help.test_tutorial008:22
+duplicate-code	high	tests/test_tutorial/test_commands/test_help/test_tutorial004.py:17:1	-	14 lines (84 tokens) duplicated in 2 other places: tests.test_tutorial.test_commands.test_help.test_tutorial005:17, tests.test_tutorial.test_commands.test_help.test_tutorial007:17
+duplicate-code	high	tests/test_tutorial/test_commands/test_help/test_tutorial004.py:41:1	-	34 lines (227 tokens) duplicated at tests.test_tutorial.test_commands.test_help.test_tutorial005:42
+duplicate-code	high	tests/test_tutorial/test_commands/test_help/test_tutorial006.py:46:1	-	9 lines (59 tokens) duplicated at tests.test_tutorial.test_commands.test_help.test_tutorial007:63
+duplicate-code	high	tests/test_tutorial/test_commands/test_index/test_tutorial002.py:1:1	-	18 lines (58 tokens) duplicated at tests.test_tutorial.test_subcommands.test_tutorial002:1
+duplicate-code	high	tests/test_tutorial/test_commands/test_index/test_tutorial002.py:19:1	-	23 lines (125 tokens) duplicated at tests.test_tutorial.test_commands.test_index.test_tutorial003:25
+duplicate-code	high	tests/test_tutorial/test_commands/test_one_or_multiple/test_tutorial001.py:15:1	-	19 lines (100 tokens) duplicated at tests.test_tutorial.test_commands.test_one_or_multiple.test_tutorial002:17
+duplicate-code	high	tests/test_tutorial/test_exceptions/test_tutorial001.py:1:1	-	31 lines (112 tokens) duplicated at tests.test_tutorial.test_exceptions.test_tutorial002:1
+duplicate-code	high	tests/test_tutorial/test_exceptions/test_tutorial001.py:31:1	-	30 lines (173 tokens) duplicated at tests.test_tutorial.test_exceptions.test_tutorial002:31
+duplicate-code	high	tests/test_tutorial/test_exceptions/test_tutorial003.py:1:1	-	25 lines (81 tokens) duplicated at tests.test_tutorial.test_exceptions.test_tutorial004:1
+duplicate-code	high	tests/test_tutorial/test_first_steps/test_tutorial003.py:18:1	-	11 lines (56 tokens) duplicated at tests.test_tutorial.test_first_steps.test_tutorial004:24
+duplicate-code	high	tests/test_tutorial/test_first_steps/test_tutorial004.py:1:1	-	21 lines (79 tokens) duplicated at tests.test_tutorial.test_first_steps.test_tutorial005:1
+duplicate-code	high	tests/test_tutorial/test_first_steps/test_tutorial005.py:24:1	-	35 lines (209 tokens) duplicated at tests.test_tutorial.test_first_steps.test_tutorial006:19
+duplicate-code	high	tests/test_tutorial/test_launch/test_tutorial001.py:18:1	-	11 lines (52 tokens) duplicated in 2 other places: tests.test_tutorial.test_launch.test_tutorial002:19, tests.test_tutorial.test_subcommands.test_callback_override.test_tutorial004:24
+duplicate-code	high	tests/test_tutorial/test_multiple_values/test_multiple_options/test_tutorial001.py:16:1	-	12 lines (69 tokens) duplicated at tests.test_tutorial.test_multiple_values.test_multiple_options.test_tutorial002:16
+duplicate-code	high	tests/test_tutorial/test_options/test_callback/test_tutorial001.py:16:1	-	13 lines (79 tokens) duplicated in 3 other places: tests.test_tutorial.test_options.test_callback.test_tutorial002:16, tests.test_tutorial.test_options.test_callback.test_tutorial003:18, tests.test_tutorial.test_options.test_callback.test_tutorial004:18
+duplicate-code	high	tests/test_tutorial/test_options/test_callback/test_tutorial001.py:33:1	-	13 lines (68 tokens) duplicated at tests.test_tutorial.test_options.test_callback.test_tutorial002:35
+duplicate-code	high	tests/test_tutorial/test_options/test_callback/test_tutorial003.py:30:1	-	35 lines (214 tokens) duplicated at tests.test_tutorial.test_options.test_callback.test_tutorial004:30
+duplicate-code	high	tests/test_tutorial/test_options/test_help/test_tutorial001.py:16:1	-	11 lines (65 tokens) duplicated at tests.test_tutorial.test_options.test_help.test_tutorial002:16
+duplicate-code	high	tests/test_tutorial/test_options/test_help/test_tutorial001.py:37:1	-	11 lines (71 tokens) duplicated at tests.test_tutorial.test_options.test_required.test_tutorial001_tutorial002:31
+duplicate-code	high	tests/test_tutorial/test_options/test_help/test_tutorial003.py:16:1	-	16 lines (84 tokens) duplicated at tests.test_tutorial.test_options.test_help.test_tutorial004:16
+duplicate-code	high	tests/test_tutorial/test_options/test_name/test_tutorial002.py:16:1	-	16 lines (98 tokens) duplicated at tests.test_tutorial.test_options.test_name.test_tutorial005:16
+duplicate-code	high	tests/test_tutorial/test_options/test_name/test_tutorial002.py:37:1	-	17 lines (100 tokens) duplicated at tests.test_tutorial.test_options.test_version.test_tutorial001:37
+duplicate-code	high	tests/test_tutorial/test_options/test_name/test_tutorial003.py:16:1	-	14 lines (84 tokens) duplicated at tests.test_tutorial.test_options.test_name.test_tutorial004:16
+duplicate-code	high	tests/test_tutorial/test_options/test_name/test_tutorial003.py:30:1	-	12 lines (72 tokens) duplicated at tests.test_tutorial.test_options.test_name.test_tutorial004:30
+duplicate-code	high	tests/test_tutorial/test_options/test_password/test_tutorial001.py:18:1	-	11 lines (67 tokens) duplicated at tests.test_tutorial.test_options.test_password.test_tutorial002:18
+duplicate-code	high	tests/test_tutorial/test_options/test_password/test_tutorial001.py:47:1	-	11 lines (56 tokens) duplicated in 4 other places: tests.test_tutorial.test_options.test_password.test_tutorial002:51, tests.test_tutorial.test_parameter_types.test_file.test_tutorial002:35, tests.test_tutorial.test_parameter_types.test_file.test_tutorial004:36, tests.test_tutorial.test_parameter_types.test_file.test_tutorial005:38
+duplicate-code	high	tests/test_tutorial/test_options/test_prompt/test_tutorial001.py:16:1	-	19 lines (125 tokens) duplicated at tests.test_tutorial.test_options.test_prompt.test_tutorial002:16
+duplicate-code	high	tests/test_tutorial/test_options/test_prompt/test_tutorial001.py:34:1	-	20 lines (119 tokens) duplicated at tests.test_tutorial.test_options.test_prompt.test_tutorial002:34
+duplicate-code	high	tests/test_tutorial/test_options/test_prompt/test_tutorial003.py:50:1	-	13 lines (72 tokens) duplicated at tests.test_tutorial.test_options.test_required.test_tutorial001_tutorial002:52
+duplicate-code	high	tests/test_tutorial/test_options/test_version/test_tutorial001.py:1:1	-	22 lines (61 tokens) duplicated at tests.test_tutorial.test_parameter_types.test_number.test_tutorial001:1
+duplicate-code	high	tests/test_tutorial/test_options/test_version/test_tutorial002.py:18:1	-	11 lines (67 tokens) duplicated at tests.test_tutorial.test_options.test_version.test_tutorial003:18
+duplicate-code	high	tests/test_tutorial/test_options/test_version/test_tutorial002.py:34:1	-	36 lines (219 tokens) duplicated at tests.test_tutorial.test_options.test_version.test_tutorial003:34
+duplicate-code	high	tests/test_tutorial/test_options_autocompletion/test_tutorial001.py:25:1	-	14 lines (95 tokens) duplicated at tests.test_tutorial.test_options_autocompletion.test_tutorial004_tutorial005:46
+duplicate-code	high	tests/test_tutorial/test_options_autocompletion/test_tutorial002.py:18:1	-	19 lines (125 tokens) duplicated at tests.test_tutorial.test_options_autocompletion.test_tutorial003:18
+duplicate-code	high	tests/test_tutorial/test_options_autocompletion/test_tutorial002.py:40:1	-	18 lines (107 tokens) duplicated at tests.test_tutorial.test_options_autocompletion.test_tutorial003:58
+duplicate-code	high	tests/test_tutorial/test_options_autocompletion/test_tutorial004_tutorial005.py:20:1	-	24 lines (153 tokens) duplicated at tests.test_tutorial.test_options_autocompletion.test_tutorial008:18
+duplicate-code	high	tests/test_tutorial/test_options_autocompletion/test_tutorial006.py:31:1	-	15 lines (106 tokens) duplicated at tests.test_tutorial.test_options_autocompletion.test_tutorial007:44
+duplicate-code	high	tests/test_tutorial/test_options_autocompletion/test_tutorial007.py:18:1	-	24 lines (154 tokens) duplicated at tests.test_tutorial.test_options_autocompletion.test_tutorial009:18
+duplicate-code	high	tests/test_tutorial/test_options_autocompletion/test_tutorial008.py:42:1	-	18 lines (113 tokens) duplicated at tests.test_tutorial.test_options_autocompletion.test_tutorial009:42
+duplicate-code	high	tests/test_tutorial/test_parameter_types/test_bool/test_tutorial001.py:1:1	-	21 lines (60 tokens) duplicated at tests.test_tutorial.test_parameter_types.test_path.test_tutorial001:1
+duplicate-code	high	tests/test_tutorial/test_parameter_types/test_bool/test_tutorial001.py:21:1	-	8 lines (59 tokens) duplicated at tests.test_tutorial.test_parameter_types.test_number.test_tutorial001:22
+duplicate-code	high	tests/test_tutorial/test_parameter_types/test_bool/test_tutorial002.py:17:1	-	13 lines (77 tokens) duplicated in 2 other places: tests.test_tutorial.test_parameter_types.test_bool.test_tutorial003:16, tests.test_tutorial.test_parameter_types.test_bool.test_tutorial004:16
+duplicate-code	high	tests/test_tutorial/test_parameter_types/test_bool/test_tutorial002.py:31:1	-	8 lines (58 tokens) duplicated at tests.test_tutorial.test_parameter_types.test_number.test_tutorial001:46
+duplicate-code	high	tests/test_tutorial/test_parameter_types/test_datetime/test_tutorial001.py:1:1	-	16 lines (52 tokens) duplicated at tests.test_tutorial.test_parameter_types.test_uuid.test_tutorial001:1
+duplicate-code	high	tests/test_tutorial/test_parameter_types/test_enum/test_tutorial003.py:16:1	-	13 lines (77 tokens) duplicated at tests.test_tutorial.test_parameter_types.test_enum.test_tutorial004:16
+duplicate-code	high	tests/test_tutorial/test_parameter_types/test_file/test_tutorial001.py:17:1	-	12 lines (69 tokens) duplicated at tests.test_tutorial.test_parameter_types.test_file.test_tutorial003:17
+duplicate-code	high	tests/test_tutorial/test_parameter_types/test_file/test_tutorial002.py:17:1	-	14 lines (92 tokens) duplicated at tests.test_tutorial.test_parameter_types.test_file.test_tutorial004:17
+duplicate-code	high	tests/test_tutorial/test_parameter_types/test_number/test_tutorial002.py:16:1	-	11 lines (63 tokens) duplicated at tests.test_tutorial.test_parameter_types.test_number.test_tutorial003:16
+duplicate-code	high	tests/test_tutorial/test_parameter_types/test_path/test_tutorial001.py:31:1	-	9 lines (65 tokens) duplicated at tests.test_tutorial.test_parameter_types.test_path.test_tutorial002:23
+duplicate-code	high	tests/test_tutorial/test_parameter_types/test_path/test_tutorial001.py:40:1	-	15 lines (107 tokens) duplicated at tests.test_tutorial.test_parameter_types.test_path.test_tutorial002:34
+duplicate-code	high	tests/test_tutorial/test_printing/test_tutorial001.py:1:1	-	21 lines (61 tokens) duplicated at tests.test_tutorial.test_printing.test_tutorial002:1
+duplicate-code	high	tests/test_tutorial/test_printing/test_tutorial001.py:35:1	-	11 lines (54 tokens) duplicated at tests.test_tutorial.test_printing.test_tutorial003:23
+duplicate-code	high	tests/test_tutorial/test_printing/test_tutorial005.py:32:1	-	12 lines (53 tokens) duplicated in 5 other places: tests.test_tutorial.test_printing.test_tutorial006:21, tests.test_tutorial.test_progressbar.test_tutorial001:39, tests.test_tutorial.test_progressbar.test_tutorial002:24, tests.test_tutorial.test_progressbar.test_tutorial004:52, tests.test_tutorial.test_progressbar.test_tutorial006:24
+duplicate-code	high	tests/test_tutorial/test_progressbar/test_tutorial002.py:1:1	-	22 lines (61 tokens) duplicated at tests.test_tutorial.test_progressbar.test_tutorial006:1
+duplicate-code	high	tests/test_tutorial/test_progressbar/test_tutorial003.py:1:1	-	34 lines (123 tokens) duplicated at tests.test_tutorial.test_progressbar.test_tutorial005:1
+duplicate-code	high	tests/test_tutorial/test_prompt/test_tutorial002.py:1:1	-	23 lines (93 tokens) duplicated at tests.test_tutorial.test_prompt.test_tutorial003:1
+duplicate-code	high	tests/test_tutorial/test_prompt/test_tutorial002.py:24:1	-	11 lines (56 tokens) duplicated at tests.test_tutorial.test_prompt.test_tutorial003:23
+duplicate-code	high	tests/test_tutorial/test_subcommands/test_callback_override/test_tutorial001.py:1:1	-	27 lines (111 tokens) duplicated at tests.test_tutorial.test_subcommands.test_callback_override.test_tutorial002:1
+duplicate-code	high	tests/test_tutorial/test_subcommands/test_callback_override/test_tutorial003.py:1:1	-	17 lines (57 tokens) duplicated at tests.test_tutorial.test_subcommands.test_callback_override.test_tutorial004:1
+duplicate-code	high	tests/test_tutorial/test_subcommands/test_name_help/test_tutorial001.py:1:1	-	40 lines (190 tokens) duplicated in 3 other places: tests.test_tutorial.test_subcommands.test_name_help.test_tutorial002:1, tests.test_tutorial.test_subcommands.test_name_help.test_tutorial003:1, tests.test_tutorial.test_subcommands.test_name_help.test_tutorial004:1
+duplicate-code	high	tests/test_tutorial/test_subcommands/test_name_help/test_tutorial005.py:1:1	-	17 lines (51 tokens) duplicated in 3 other places: tests.test_tutorial.test_subcommands.test_name_help.test_tutorial006:1, tests.test_tutorial.test_subcommands.test_name_help.test_tutorial007:1, tests.test_tutorial.test_subcommands.test_name_help.test_tutorial008:1
+duplicate-code	high	tests/test_tutorial/test_subcommands/test_name_help/test_tutorial005.py:28:1	-	13 lines (71 tokens) duplicated in 3 other places: tests.test_tutorial.test_subcommands.test_name_help.test_tutorial006:28, tests.test_tutorial.test_subcommands.test_name_help.test_tutorial007:28, tests.test_tutorial.test_subcommands.test_name_help.test_tutorial008:28
+duplicate-code	high	tests/test_tutorial/test_subcommands/test_tutorial001.py:33:1	-	17 lines (111 tokens) duplicated at tests.test_tutorial.test_subcommands.test_tutorial003:35
+duplicate-code	high	tests/test_tutorial/test_subcommands/test_tutorial001.py:59:1	-	19 lines (127 tokens) duplicated at tests.test_tutorial.test_subcommands.test_tutorial003:73
+duplicate-code	high	tests/test_tutorial/test_subcommands/test_tutorial001.py:92:1	-	9 lines (56 tokens) duplicated at tests.test_tutorial.test_subcommands.test_tutorial003:171
+duplicate-code	high	tests/test_tutorial/test_terminating/test_tutorial002.py:1:1	-	21 lines (85 tokens) duplicated at tests.test_tutorial.test_terminating.test_tutorial003:5
+duplicate-code	high	tests/test_tutorial/test_testing/test_app01.py:1:1	-	19 lines (65 tokens) duplicated at tests.test_tutorial.test_testing.test_app03:1
+duplicate-code	high	tests/test_type_conversion.py:21:1	-	20 lines (116 tokens) duplicated at tests.test_type_conversion:40
+duplicate-code	high	tests/test_type_conversion.py:157:1	-	14 lines (67 tokens) duplicated at tests.test_type_conversion:195
+duplicate-code	high	tests/test_types.py:34:1	-	7 lines (51 tokens) duplicated at tests.test_types:40
+duplicate-code	high	tests/test_win_console.py:97:1	-	9 lines (51 tokens) duplicated at tests.test_win_console:123
+duplicate-code	high	typer/_click/_compat.py:134:1	-	19 lines (75 tokens) duplicated at typer._click._compat:152
+duplicate-code	high	typer/_click/_compat.py:287:1	-	11 lines (71 tokens) duplicated at typer._click._compat:301
+duplicate-code	high	typer/_click/_termui_impl.py:56:1	-	9 lines (54 tokens) duplicated at typer.testing:265
+duplicate-code	high	typer/_click/_termui_impl.py:111:1	-	12 lines (56 tokens) duplicated at typer._click.utils:177
+duplicate-code	high	typer/_click/_winconsole.py:230:1	-	11 lines (51 tokens) duplicated at typer._click._winconsole:250
+duplicate-code	high	typer/_click/core.py:182:1	-	12 lines (59 tokens) duplicated at typer._click.core:245
+duplicate-code	high	typer/_click/core.py:519:1	-	9 lines (59 tokens) duplicated at typer.core:910
+duplicate-code	high	typer/_click/core.py:549:1	-	9 lines (55 tokens) duplicated at typer._click.core:616
+duplicate-code	high	typer/_click/core.py:631:1	-	13 lines (56 tokens) duplicated at typer._click.core:656
+duplicate-code	high	typer/_click/parser.py:99:1	-	13 lines (84 tokens) duplicated at typer.core:32
+duplicate-code	high	typer/_click/termui.py:217:1	-	19 lines (132 tokens) duplicated at typer._click.termui:235
+duplicate-code	high	typer/_click/termui.py:281:1	-	18 lines (68 tokens) duplicated at typer.params:947
+duplicate-code	high	typer/_click/types.py:129:1	-	7 lines (50 tokens) duplicated at typer._click.types:230
+duplicate-code	high	typer/_click/types.py:249:1	-	11 lines (52 tokens) duplicated at typer._click.types:504
+duplicate-code	high	typer/_completion_classes.py:28:1	-	13 lines (80 tokens) duplicated at typer._completion_classes:202
+duplicate-code	high	typer/_completion_classes.py:98:1	-	24 lines (164 tokens) duplicated at typer._completion_classes:149
+duplicate-code	high	typer/_completion_shared.py:112:1	-	13 lines (74 tokens) duplicated at typer._completion_shared:141
+duplicate-code	high	typer/cli.py:217:1	-	11 lines (80 tokens) duplicated at typer.core:864
+duplicate-code	high	typer/cli.py:227:1	-	8 lines (52 tokens) duplicated at typer.cli:235
+duplicate-code	high	typer/core.py:253:1	-	19 lines (125 tokens) duplicated at typer.core:445
+duplicate-code	high	typer/core.py:306:1	-	22 lines (123 tokens) duplicated at typer.core:728
+duplicate-code	high	typer/core.py:348:1	-	18 lines (75 tokens) duplicated in 2 other places: typer.core:803, typer.rich_utils:301
+duplicate-code	high	typer/core.py:365:1	-	17 lines (125 tokens) duplicated at typer.core:826
+duplicate-code	high	typer/core.py:788:1	-	11 lines (71 tokens) duplicated at typer.rich_utils:265
+duplicate-code	high	typer/core.py:924:1	-	14 lines (55 tokens) duplicated at typer.main:532
+duplicate-code	high	typer/core.py:955:1	-	23 lines (127 tokens) duplicated at typer.core:1188
+duplicate-code	high	typer/main.py:559:1	-	69 lines (138 tokens) duplicated at typer.main:936
+duplicate-code	high	typer/main.py:634:1	-	52 lines (113 tokens) duplicated at typer.main:1020
+duplicate-code	high	typer/main.py:730:1	-	19 lines (74 tokens) duplicated at typer.main:1112
+duplicate-code	high	typer/main.py:1343:1	-	12 lines (57 tokens) duplicated at typer.main:1421
+duplicate-code	high	typer/main.py:1744:1	-	17 lines (73 tokens) duplicated at typer.main:1777
+duplicate-code	high	typer/main.py:1800:1	-	9 lines (56 tokens) duplicated at typer.main:1850
+duplicate-code	high	typer/models.py:219:1	-	14 lines (78 tokens) duplicated at typer.models:342
+duplicate-code	high	typer/models.py:260:1	-	21 lines (112 tokens) duplicated at typer.models:364
+duplicate-code	high	typer/models.py:280:1	-	57 lines (344 tokens) duplicated at typer.models:516
+duplicate-code	high	typer/models.py:410:1	-	43 lines (255 tokens) duplicated at typer.params:99
+duplicate-code	high	typer/models.py:453:1	-	46 lines (152 tokens) duplicated at typer.models:572
+duplicate-code	high	typer/models.py:663:1	-	10 lines (59 tokens) duplicated at typer.testing:90
+duplicate-code	high	typer/params.py:265:1	-	19 lines (62 tokens) duplicated at typer.params:1219
+duplicate-code	high	typer/params.py:987:1	-	20 lines (52 tokens) duplicated at typer.params:1818
+duplicate-code	high	typer/params.py:1006:1	-	21 lines (124 tokens) duplicated at typer.params:1062
+duplicate-code	high	typer/params.py:1026:1	-	33 lines (192 tokens) duplicated at typer.params:1082
+duplicate-code	high	typer/rich_utils.py:388:1	-	8 lines (50 tokens) duplicated at typer.rich_utils:395
+duplicate-code	high	typer/rich_utils.py:448:1	-	14 lines (65 tokens) duplicated at typer.rich_utils:486
+duplicate-code	high	typer/rich_utils.py:607:1	-	20 lines (84 tokens) duplicated in 2 other places: typer.rich_utils:626, typer.rich_utils:668
+duplicate-code	high	typer/utils.py:22:1	-	11 lines (73 tokens) duplicated at typer.utils:78

@@ -1,0 +1,18 @@
+files_scanned=442
+symbols_checked=12
+symbols_kept=0
+findings=13
+--
+unresolved-import	low	docs/source/conf.py:20:1		import `sphinx` resolves to nothing on the search path
+unresolved-import	low	misc/sync-typeshed.py:24:8		import `requests` resolves to nothing on the search path
+unresolved-import	low	mypy/config_parser.py:12:12		import `tomllib` resolves to nothing on the search path
+missing-dependency	medium	mypy/known_modules.py:48:9	packaging	`packaging` is imported but `packaging` is not a declared dependency
+missing-dependency	medium	mypy/known_modules.py:90:9	pytest	`pytest` is imported but `pytest` is not a declared dependency
+missing-dependency	medium	mypy/known_modules.py:91:9	pluggy	`pluggy` is imported but `pluggy` is not a declared dependency
+missing-dependency	medium	mypy/known_modules.py:92:9	iniconfig	`iniconfig` is imported but `iniconfig` is not a declared dependency
+missing-dependency	medium	mypy/known_modules.py:103:9	pygments	`pygments` is imported but `pygments` is not a declared dependency
+unresolved-import	low	mypy/main.py:45:5		import `_typeshed` resolves to nothing on the search path
+unresolved-import	low	mypy/test/testpep561.py:11:8		import `filelock` resolves to nothing on the search path
+unresolved-import	low	mypyc/test-data/driver/driver.py:11:8		import `native` resolves to nothing on the search path
+unresolved-import	low	test-data/pybind11_fixtures/setup.py:2:1		import `pybind11` resolves to nothing on the search path
+unresolved-import	low	test-data/pybind11_fixtures/setup.py:3:1		import `setuptools` resolves to nothing on the search path

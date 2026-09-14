@@ -7,7 +7,9 @@
 
 use std::fs;
 use std::io::Write;
+use std::num::NonZeroUsize;
 use std::process::{Command, ExitCode};
+use std::str::FromStr;
 use std::time::Instant;
 
 use anyhow::{Context as _, Result, bail};
@@ -50,6 +52,10 @@ struct Cli {
     #[arg(long, global = true, value_enum, value_name = "ANALYSIS")]
     only: Vec<Analysis>,
 
+    /// One slice of the projects, such as `2/4`, so CI can run them in parallel.
+    #[arg(long, global = true, value_name = "INDEX/COUNT")]
+    shard: Option<Shard>,
+
     #[command(subcommand)]
     mode: Mode,
 }
@@ -62,6 +68,35 @@ enum Mode {
     Update,
     /// Re-resolve the projects' environments into the lock files.
     Lock,
+}
+
+/// A slice of the projects: every `count`th project starting from `index`, in name order.
+#[derive(Debug, Clone, Copy)]
+struct Shard {
+    index: NonZeroUsize,
+    count: NonZeroUsize,
+}
+
+impl Shard {
+    const fn includes(self, position: usize) -> bool {
+        position % self.count.get() == self.index.get() - 1
+    }
+}
+
+impl FromStr for Shard {
+    type Err = anyhow::Error;
+
+    fn from_str(text: &str) -> Result<Self> {
+        let Some((index, count)) = text.split_once('/') else {
+            bail!("shard `{text}` must look like `1/4`");
+        };
+        let index: NonZeroUsize = index.parse().context("shard index")?;
+        let count: NonZeroUsize = count.parse().context("shard count")?;
+        if index > count {
+            bail!("shard index {index} is beyond the {count} shards");
+        }
+        Ok(Self { index, count })
+    }
 }
 
 /// Where the corpus keeps its files, all derived from the manifest's location.
@@ -152,7 +187,10 @@ fn run(cli: &Cli, out: &mut dyn Write) -> Result<bool> {
     let selected = manifest
         .projects
         .iter()
-        .filter(|(name, _)| cli.project.is_empty() || cli.project.contains(name));
+        .filter(|(name, _)| cli.project.is_empty() || cli.project.contains(name))
+        .enumerate()
+        .filter(|(position, _)| cli.shard.is_none_or(|shard| shard.includes(*position)))
+        .map(|(_, project)| project);
 
     let mut all_succeeded = true;
     for (name, project) in selected {
@@ -292,4 +330,28 @@ fn report(
         }
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn shards_split_the_projects_without_overlap_or_gaps() {
+        let shards: Vec<Shard> = (1..=3).map(|i| format!("{i}/3").parse().unwrap()).collect();
+        for position in 0..10 {
+            let owners = shards
+                .iter()
+                .filter(|shard| shard.includes(position))
+                .count();
+            assert_eq!(owners, 1, "project {position} belongs to exactly one shard");
+        }
+    }
+
+    #[test]
+    fn malformed_shards_are_rejected() {
+        assert!("3/2".parse::<Shard>().is_err());
+        assert!("0/2".parse::<Shard>().is_err());
+        assert!("two".parse::<Shard>().is_err());
+    }
 }

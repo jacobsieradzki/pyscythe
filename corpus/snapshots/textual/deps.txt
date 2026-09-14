@@ -1,0 +1,34 @@
+files_scanned=987
+symbols_checked=42
+symbols_kept=0
+findings=29
+--
+unresolved-import	low	docs/examples/guide/reactivity/world_clock01.py:3:1		import `pytz` resolves to nothing on the search path
+unresolved-import	low	docs/examples/widgets/text_area_custom_language.py:3:1		import `tree_sitter_languages` resolves to nothing on the search path
+unresolved-import	low	examples/mother.py:17:1		import `textual` resolves to nothing on the search path
+unresolved-import	low	examples/mother.py:23:12		import `llm` resolves to nothing on the search path
+unused-dependency	low	pyproject.toml	griffe	dependency `griffe` (dependency-groups.dev) is never imported
+unused-dependency	medium	pyproject.toml	mdit-py-plugins	dependency `mdit-py-plugins` is never imported
+unused-dependency	low	pyproject.toml	mkdocs-exclude	dependency `mkdocs-exclude` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	mkdocs-git-revision-date-localized-plugin	dependency `mkdocs-git-revision-date-localized-plugin` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	mkdocs-rss-plugin	dependency `mkdocs-rss-plugin` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	mkdocstrings	dependency `mkdocstrings` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	mkdocstrings-python	dependency `mkdocstrings-python` (dependency-groups.dev) is never imported
+unused-dependency	medium	pyproject.toml	tree-sitter-bash	dependency `tree-sitter-bash` is never imported
+unused-dependency	medium	pyproject.toml	tree-sitter-css	dependency `tree-sitter-css` is never imported
+unused-dependency	medium	pyproject.toml	tree-sitter-go	dependency `tree-sitter-go` is never imported
+unused-dependency	medium	pyproject.toml	tree-sitter-html	dependency `tree-sitter-html` is never imported
+unused-dependency	medium	pyproject.toml	tree-sitter-java	dependency `tree-sitter-java` is never imported
+unused-dependency	medium	pyproject.toml	tree-sitter-javascript	dependency `tree-sitter-javascript` is never imported
+unused-dependency	medium	pyproject.toml	tree-sitter-json	dependency `tree-sitter-json` is never imported
+unused-dependency	medium	pyproject.toml	tree-sitter-markdown	dependency `tree-sitter-markdown` is never imported
+unused-dependency	medium	pyproject.toml	tree-sitter-python	dependency `tree-sitter-python` is never imported
+unused-dependency	medium	pyproject.toml	tree-sitter-regex	dependency `tree-sitter-regex` is never imported
+unused-dependency	medium	pyproject.toml	tree-sitter-rust	dependency `tree-sitter-rust` is never imported
+unused-dependency	medium	pyproject.toml	tree-sitter-sql	dependency `tree-sitter-sql` is never imported
+unused-dependency	medium	pyproject.toml	tree-sitter-toml	dependency `tree-sitter-toml` is never imported
+unused-dependency	medium	pyproject.toml	tree-sitter-xml	dependency `tree-sitter-xml` is never imported
+unused-dependency	medium	pyproject.toml	tree-sitter-yaml	dependency `tree-sitter-yaml` is never imported
+unresolved-import	low	src/textual/_node_list.py:11:5		import `_typeshed` resolves to nothing on the search path
+unresolved-import	low	src/textual/geometry.py:1485:9		import `textual_speedups` resolves to nothing on the search path
+unresolved-import	low	tests/test_gc.py:67:16		import `objgraph` resolves to nothing on the search path

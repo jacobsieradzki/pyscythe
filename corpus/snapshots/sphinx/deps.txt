@@ -1,0 +1,30 @@
+files_scanned=435
+symbols_checked=49
+symbols_kept=0
+findings=25
+--
+unused-dependency	low	pyproject.toml	cython	dependency `cython` (dependency-groups.test) is never imported
+unused-dependency	low	pyproject.toml	pyrefly	dependency `pyrefly` (dependency-groups.types) is never imported
+unused-dependency	low	pyproject.toml	sphinx-lint	dependency `sphinx-lint` (dependency-groups.lint) is never imported
+unused-dependency	medium	pyproject.toml	sphinxcontrib-applehelp	dependency `sphinxcontrib-applehelp` is never imported
+unused-dependency	medium	pyproject.toml	sphinxcontrib-devhelp	dependency `sphinxcontrib-devhelp` is never imported
+unused-dependency	medium	pyproject.toml	sphinxcontrib-htmlhelp	dependency `sphinxcontrib-htmlhelp` is never imported
+unused-dependency	medium	pyproject.toml	sphinxcontrib-jsmath	dependency `sphinxcontrib-jsmath` is never imported
+unused-dependency	medium	pyproject.toml	sphinxcontrib-qthelp	dependency `sphinxcontrib-qthelp` is never imported
+unused-dependency	medium	pyproject.toml	sphinxcontrib-serializinghtml	dependency `sphinxcontrib-serializinghtml` is never imported
+unused-dependency	low	pyproject.toml	sphinxcontrib-websupport	dependency `sphinxcontrib-websupport` (dependency-groups.docs) is never imported
+unresolved-import	low	sphinx/builders/_epub_base.py:34:5		import `PIL` resolves to nothing on the search path
+unresolved-import	low	sphinx/search/ja.py:23:12		import `MeCab` resolves to nothing on the search path
+unresolved-import	low	sphinx/search/ja.py:30:12		import `janome` resolves to nothing on the search path
+unresolved-import	low	sphinx/search/zh.py:18:12		import `jieba` resolves to nothing on the search path
+missing-dependency	low	sphinx/util/_uri.py:8:28	idna	`idna` is imported but `idna` is not a declared dependency; it arrives through `requests`
+unresolved-import	low	sphinx/util/inspect.py:718:12		import `annotationlib` resolves to nothing on the search path
+missing-dependency	low	sphinx/util/requests.py:10:1	urllib3	`urllib3` is imported but `urllib3` is not a declared dependency; it arrives through `requests`
+unresolved-import	low	sphinx/versioning.py:23:12		import `Levenshtein` resolves to nothing on the search path
+unresolved-import	low	tests/test_ext_autodoc/test_ext_autodoc.py:35:12		import `pyximport` resolves to nothing on the search path
+unresolved-import	low	tests/test_ext_autosummary/test_ext_autosummary.py:249:12		import `autosummary_dummy_module` resolves to nothing on the search path
+unresolved-import	low	tests/test_ext_autosummary/test_ext_autosummary.py:474:12		import `autosummary_dummy_inherited_module` resolves to nothing on the search path
+unresolved-import	low	tests/test_extensions/test_ext_inheritance_diagram.py:336:9		import `example` resolves to nothing on the search path
+unresolved-import	low	tests/test_util/test_util_inspect.py:916:16		import `_testcapi` resolves to nothing on the search path
+unresolved-import	low	tests/test_util/test_util_typing.py:509:16		import `unknown` resolves to nothing on the search path
+unresolved-import	low	utils/convert_attestations.py:21:1		import `sigstore` resolves to nothing on the search path

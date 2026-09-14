@@ -7,6 +7,10 @@ on:
 jobs:
   corpus:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4, 5, 6]
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
@@ -17,11 +21,11 @@ jobs:
           enable-cache: true
           cache-dependency-glob: corpus/locks/*.txt
       - run: cargo build --release -p pyscythe -p pyscythe_corpus
-      - run: ./target/release/pyscythe-corpus check
+      - run: ./target/release/pyscythe-corpus check --shard ${{ matrix.shard }}/6
       - name: Keep the diffs
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: corpus-diffs
+          name: corpus-diffs-${{ matrix.shard }}
           path: corpus/cache/*.diff
           if-no-files-found: ignore

@@ -1,0 +1,10 @@
+files_scanned=17
+symbols_checked=0
+symbols_kept=0
+findings=4
+duplication: clones=4 duplicated_lines=94 total_lines=2192 percent_tenths=42
+--
+duplicate-code	high	sherlock_project/notify.py:216:1	-	9 lines (66 tokens) duplicated at sherlock_project.notify:234
+duplicate-code	high	tests/test_probes.py:28:1	-	9 lines (51 tokens) duplicated at tests.test_probes:39
+duplicate-code	high	tests/test_probes.py:60:1	-	21 lines (142 tokens) duplicated at tests.test_probes:82
+duplicate-code	high	tests/test_validate_targets.py:38:1	-	10 lines (84 tokens) duplicated at tests.test_validate_targets:61

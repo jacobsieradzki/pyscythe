@@ -1,0 +1,61 @@
+files_scanned=637
+symbols_checked=2298
+symbols_kept=0
+findings=55
+health: score=79 grade=C functions=2298 max_cyclomatic=30 max_cognitive=69
+--
+complex-function	high	scripts/deploy_docs_status.py:26:5	main	function `main` has cyclomatic complexity 21 and cognitive complexity 18 over 98 lines
+complex-function	high	scripts/docs.py:124:5	generate_docs_src_versions_for_file	function `generate_docs_src_versions_for_file` has cyclomatic complexity 11 and cognitive complexity 24 over 58 lines
+complex-function	high	scripts/docs.py:251:5	remove_unused_docs_src	function `remove_unused_docs_src` has cyclomatic complexity 30 and cognitive complexity 69 over 108 lines
+complex-function	high	tests/test_core.py:57:5	test_parameter_constructor	function `test_parameter_constructor` has cyclomatic complexity 12 and cognitive complexity 0 over 41 lines
+complex-function	high	tests/test_progress_bar.py:260:5	test_progress_bar_eta	function `test_progress_bar_eta` has cyclomatic complexity 16 and cognitive complexity 3 over 70 lines
+complex-function	high	tests/test_rich_markup_mode.py:101:5	test_markup_mode_newline_pr815	function `test_markup_mode_newline_pr815` has cyclomatic complexity 11 and cognitive complexity 1 over 28 lines
+complex-function	high	tests/test_rich_markup_mode.py:139:5	test_markup_mode_newline_issue447	function `test_markup_mode_newline_issue447` has cyclomatic complexity 11 and cognitive complexity 1 over 26 lines
+complex-function	high	tests/test_rich_markup_mode.py:212:5	test_markup_mode_newline_mixed	function `test_markup_mode_newline_mixed` has cyclomatic complexity 13 and cognitive complexity 1 over 30 lines
+complex-function	high	tests/test_rich_markup_mode.py:256:5	test_markup_mode_bullets_single_newline	function `test_markup_mode_bullets_single_newline` has cyclomatic complexity 11 and cognitive complexity 1 over 26 lines
+complex-function	high	tests/test_rich_markup_mode.py:299:5	test_markup_mode_bullets_double_newline	function `test_markup_mode_bullets_double_newline` has cyclomatic complexity 11 and cognitive complexity 1 over 28 lines
+complex-function	high	tests/test_rich_markup_mode.py:339:5	test_markup_mode_epilog	function `test_markup_mode_epilog` has cyclomatic complexity 14 and cognitive complexity 2 over 41 lines
+complex-function	high	tests/test_rich_utils.py:138:5	test_make_rich_text_with_ansi_escape_sequences	function `test_make_rich_text_with_ansi_escape_sequences` has cyclomatic complexity 11 and cognitive complexity 0 over 22 lines
+complex-function	high	tests/test_rich_utils.py:181:5	test_help_table_alignment_with_styled_text	function `test_help_table_alignment_with_styled_text` has cyclomatic complexity 13 and cognitive complexity 8 over 44 lines
+complex-function	high	tests/test_rich_utils.py:239:5	test_rich_help_metavar	function `test_rich_help_metavar` has cyclomatic complexity 14 and cognitive complexity 0 over 42 lines
+complex-function	high	tests/test_termui.py:383:5	test_style	function `test_style` has cyclomatic complexity 14 and cognitive complexity 0 over 22 lines
+complex-function	high	tests/test_tutorial/test_commands/test_help/test_tutorial001.py:25:5	test_help	function `test_help` has cyclomatic complexity 11 and cognitive complexity 0 over 12 lines
+complex-function	high	tests/test_tutorial/test_commands/test_help/test_tutorial006.py:14:5	test_main_help	function `test_main_help` has cyclomatic complexity 13 and cognitive complexity 0 over 14 lines
+complex-function	high	tests/test_tutorial/test_commands/test_help/test_tutorial007.py:36:5	test_create_help	function `test_create_help` has cyclomatic complexity 16 and cognitive complexity 0 over 17 lines
+complex-function	high	tests/test_type_conversion.py:326:5	test_convert_type	function `test_convert_type` has cyclomatic complexity 18 and cognitive complexity 0 over 44 lines
+complex-function	high	tests/test_types.py:62:5	test_enum_choice	function `test_enum_choice` has cyclomatic complexity 11 and cognitive complexity 0 over 22 lines
+complex-function	high	tests/test_types_file.py:77:5	test_lazy_file	function `test_lazy_file` has cyclomatic complexity 18 and cognitive complexity 0 over 37 lines
+complex-function	high	typer/_click/_compat.py:324:5	open_stream	function `open_stream` has cyclomatic complexity 21 and cognitive complexity 25 over 78 lines
+complex-function	high	typer/_click/_termui_impl.py:229:9	ProgressBar.render_progress	function `ProgressBar.render_progress` has cyclomatic complexity 11 and cognitive complexity 12 over 45 lines
+complex-function	high	typer/_click/_termui_impl.py:345:5	open_url	function `open_url` has cyclomatic complexity 19 and cognitive complexity 31 over 70 lines
+complex-function	high	typer/_click/core.py:133:9	Context.__init__	function `Context.__init__` has cyclomatic complexity 28 and cognitive complexity 28 over 130 lines
+complex-function	high	typer/_click/exceptions.py:120:9	MissingParameter.format_message	function `MissingParameter.format_message` has cyclomatic complexity 13 and cognitive complexity 18 over 39 lines
+complex-function	high	typer/_click/parser.py:368:9	_OptionParser._match_short_opt	function `_OptionParser._match_short_opt` has cyclomatic complexity 9 and cognitive complexity 16 over 39 lines
+complex-function	high	typer/_click/termui.py:75:5	prompt	function `prompt` has cyclomatic complexity 16 and cognitive complexity 28 over 75 lines
+complex-function	high	typer/_click/termui.py:152:5	confirm	function `confirm` has cyclomatic complexity 11 and cognitive complexity 14 over 43 lines
+complex-function	high	typer/_click/termui.py:313:5	style	function `style` has cyclomatic complexity 15 and cognitive complexity 16 over 56 lines
+complex-function	high	typer/_click/types.py:621:5	convert_type	function `convert_type` has cyclomatic complexity 14 and cognitive complexity 21 over 48 lines
+complex-function	high	typer/_click/utils.py:54:5	make_default_short_help	function `make_default_short_help` has cyclomatic complexity 11 and cognitive complexity 15 over 48 lines
+complex-function	high	typer/_click/utils.py:192:5	echo	function `echo` has cyclomatic complexity 16 and cognitive complexity 26 over 78 lines
+complex-function	high	typer/cli.py:72:5	get_typer_from_module	function `get_typer_from_module` has cyclomatic complexity 14 and cognitive complexity 21 over 46 lines
+complex-function	high	typer/cli.py:186:5	get_docs_for_click	function `get_docs_for_click` has cyclomatic complexity 30 and cognitive complexity 48 over 82 lines
+complex-function	high	typer/core.py:85:5	_get_default_string	function `_get_default_string` has cyclomatic complexity 18 and cognitive complexity 21 over 53 lines
+complex-function	high	typer/core.py:158:5	_main	function `_main` has cyclomatic complexity 21 and cognitive complexity 31 over 85 lines
+complex-function	high	typer/core.py:327:9	TyperArgument.get_help_record	function `TyperArgument.get_help_record` has cyclomatic complexity 19 and cognitive complexity 24 over 55 lines
+complex-function	high	typer/core.py:383:9	TyperArgument.make_metavar	function `TyperArgument.make_metavar` has cyclomatic complexity 12 and cognitive complexity 13 over 21 lines
+complex-function	high	typer/core.py:440:9	TyperOption.__init__	function `TyperOption.__init__` has cyclomatic complexity 11 and cognitive complexity 13 over 100 lines
+complex-function	high	typer/core.py:547:9	TyperOption._parse_decls	function `TyperOption._parse_decls` has cyclomatic complexity 12 and cognitive complexity 30 over 40 lines
+complex-function	high	typer/core.py:752:9	TyperOption.get_help_record	function `TyperOption.get_help_record` has cyclomatic complexity 27 and cognitive complexity 35 over 94 lines
+complex-function	high	typer/main.py:1173:5	get_command	function `get_command` has cyclomatic complexity 11 and cognitive complexity 11 over 36 lines
+complex-function	high	typer/main.py:1211:5	solve_typer_info_help	function `solve_typer_info_help` has cyclomatic complexity 22 and cognitive complexity 30 over 35 lines
+complex-function	high	typer/main.py:1283:5	get_group_from_info	function `get_group_from_info` has cyclomatic complexity 11 and cognitive complexity 16 over 75 lines
+complex-function	high	typer/main.py:1530:5	get_click_type	function `get_click_type` has cyclomatic complexity 30 and cognitive complexity 34 over 96 lines
+complex-function	high	typer/main.py:1632:5	get_click_param	function `get_click_param` has cyclomatic complexity 25 and cognitive complexity 40 over 163 lines
+complex-function	high	typer/main.py:1797:5	get_param_callback	function `get_param_callback` has cyclomatic complexity 11 and cognitive complexity 17 over 50 lines
+complex-function	high	typer/main.py:1849:5	get_param_completion	function `get_param_completion` has cyclomatic complexity 15 and cognitive complexity 15 over 51 lines
+complex-function	high	typer/models.py:696:9	TyperPath.convert	function `TyperPath.convert` has cyclomatic complexity 15 and cognitive complexity 21 over 40 lines
+complex-function	high	typer/rich_utils.py:239:5	_get_parameter_help	function `_get_parameter_help` has cyclomatic complexity 21 and cognitive complexity 26 over 87 lines
+complex-function	high	typer/rich_utils.py:355:5	_print_options_panel	function `_print_options_panel` has cyclomatic complexity 27 and cognitive complexity 47 over 122 lines
+complex-function	high	typer/rich_utils.py:555:5	rich_format_help	function `rich_format_help` has cyclomatic complexity 23 and cognitive complexity 30 over 140 lines
+complex-function	high	typer/testing.py:275:9	CliRunner.invoke	function `CliRunner.invoke` has cyclomatic complexity 11 and cognitive complexity 13 over 68 lines
+complex-function	high	typer/utils.py:107:5	get_params_from_function	function `get_params_from_function` has cyclomatic complexity 14 and cognitive complexity 26 over 80 lines

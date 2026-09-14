@@ -1,0 +1,14 @@
+files_scanned=60
+symbols_checked=12
+symbols_kept=0
+findings=9
+--
+unresolved-import	low	httpx/_transports/asgi.py:12:12		import `trio` resolves to nothing on the search path
+unresolved-import	low	httpx/_transports/asgi.py:34:16		import `sniffio` resolves to nothing on the search path
+unresolved-import	low	httpx/_transports/wsgi.py:13:5		import `_typeshed` resolves to nothing on the search path
+missing-dependency	medium	tests/client/test_async_client.py:6:8	pytest	`pytest` is imported but `pytest` is not a declared dependency
+unresolved-import	low	tests/client/test_client.py:6:8		import `chardet` resolves to nothing on the search path
+unresolved-import	low	tests/conftest.py:9:8		import `trustme` resolves to nothing on the search path
+unresolved-import	low	tests/conftest.py:10:1		import `cryptography` resolves to nothing on the search path
+unresolved-import	low	tests/conftest.py:17:1		import `uvicorn` resolves to nothing on the search path
+unresolved-import	low	tests/test_exceptions.py:11:5		import `conftest` resolves to nothing on the search path

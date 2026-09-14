@@ -1,0 +1,60 @@
+files_scanned=83
+symbols_checked=0
+symbols_kept=0
+findings=54
+duplication: clones=54 duplicated_lines=1947 total_lines=18409 percent_tenths=105
+--
+duplicate-code	high	examples/tutorial/flaskr/auth.py:46:1	-	12 lines (55 tokens) duplicated at examples.tutorial.flaskr.auth:84
+duplicate-code	high	examples/tutorial/flaskr/blog.py:63:1	-	14 lines (71 tokens) duplicated at examples.tutorial.flaskr.blog:90
+duplicate-code	high	src/flask/app.py:59:1	-	23 lines (125 tokens) duplicated at flask.sansio.app:37
+duplicate-code	high	src/flask/app.py:311:1	-	13 lines (90 tokens) duplicated at flask.sansio.app:279
+duplicate-code	high	src/flask/app.py:366:1	-	51 lines (147 tokens) duplicated at flask.blueprints:55
+duplicate-code	high	src/flask/app.py:417:1	-	32 lines (79 tokens) duplicated at flask.blueprints:106
+duplicate-code	high	src/flask/app.py:1108:1	-	54 lines (52 tokens) duplicated at flask.helpers:201
+duplicate-code	high	src/flask/blueprints.py:19:1	-	13 lines (99 tokens) duplicated at flask.sansio.blueprints:174
+duplicate-code	high	src/flask/json/__init__.py:77:1	-	32 lines (50 tokens) duplicated at flask.json:108
+duplicate-code	high	src/flask/json/tag.py:135:1	-	9 lines (61 tokens) duplicated at flask.json.tag:148
+duplicate-code	high	src/flask/sansio/app.py:602:1	-	12 lines (54 tokens) duplicated at flask.sansio.blueprints:410
+duplicate-code	high	src/flask/sansio/app.py:663:1	-	51 lines (183 tokens) duplicated at flask.sansio.app:772
+duplicate-code	high	src/flask/sansio/app.py:713:1	-	57 lines (162 tokens) duplicated at flask.sansio.blueprints:497
+duplicate-code	high	src/flask/sansio/blueprints.py:17:1	-	9 lines (87 tokens) duplicated at flask.sansio.scaffold:27
+duplicate-code	high	src/flask/sansio/blueprints.py:441:1	-	57 lines (203 tokens) duplicated at flask.sansio.blueprints:553
+duplicate-code	high	src/flask/sansio/blueprints.py:621:1	-	23 lines (102 tokens) duplicated at flask.sansio.blueprints:670
+duplicate-code	high	src/flask/sansio/blueprints.py:652:1	-	13 lines (50 tokens) duplicated at flask.sansio.scaffold:602
+duplicate-code	high	src/flask/sansio/scaffold.py:465:1	-	31 lines (54 tokens) duplicated at flask.sansio.scaffold:513
+duplicate-code	high	src/flask/templating.py:139:1	-	13 lines (52 tokens) duplicated at flask.templating:184
+duplicate-code	high	src/flask/wrappers.py:86:1	-	28 lines (82 tokens) duplicated at flask.wrappers:113
+duplicate-code	high	tests/test_appctx.py:56:1	-	17 lines (70 tokens) duplicated at tests.test_reqctx:26
+duplicate-code	high	tests/test_appctx.py:72:1	-	14 lines (53 tokens) duplicated at tests.test_reqctx:42
+duplicate-code	high	tests/test_appctx.py:90:1	-	16 lines (71 tokens) duplicated at tests.test_appctx:113
+duplicate-code	high	tests/test_async.py:45:1	-	14 lines (78 tokens) duplicated at tests.test_async:60
+duplicate-code	high	tests/test_async.py:103:1	-	18 lines (69 tokens) duplicated at tests.test_async:120
+duplicate-code	high	tests/test_basic.py:141:1	-	12 lines (124 tokens) duplicated at tests.test_basic:179
+duplicate-code	high	tests/test_basic.py:732:1	-	13 lines (56 tokens) duplicated at tests.test_basic:848
+duplicate-code	high	tests/test_basic.py:780:1	-	17 lines (90 tokens) duplicated at tests.test_basic:798
+duplicate-code	high	tests/test_basic.py:1436:1	-	11 lines (60 tokens) duplicated at tests.test_basic:1447
+duplicate-code	high	tests/test_blueprints.py:151:1	-	11 lines (65 tokens) duplicated at tests.test_blueprints:836
+duplicate-code	high	tests/test_blueprints.py:394:1	-	8 lines (51 tokens) duplicated at tests.test_templating:161
+duplicate-code	high	tests/test_blueprints.py:407:1	-	7 lines (56 tokens) duplicated at tests.test_blueprints:420
+duplicate-code	high	tests/test_blueprints.py:429:1	-	16 lines (86 tokens) duplicated at tests.test_blueprints:479
+duplicate-code	high	tests/test_blueprints.py:465:1	-	12 lines (62 tokens) duplicated at tests.test_blueprints:499
+duplicate-code	high	tests/test_blueprints.py:567:1	-	7 lines (54 tokens) duplicated at tests.test_blueprints:580
+duplicate-code	high	tests/test_blueprints.py:589:1	-	16 lines (85 tokens) duplicated at tests.test_blueprints:639
+duplicate-code	high	tests/test_blueprints.py:625:1	-	13 lines (74 tokens) duplicated at tests.test_blueprints:659
+duplicate-code	high	tests/test_blueprints.py:765:1	-	20 lines (98 tokens) duplicated at tests.test_blueprints:796
+duplicate-code	high	tests/test_blueprints.py:1018:1	-	11 lines (63 tokens) duplicated at tests.test_blueprints:1037
+duplicate-code	high	tests/test_cli.py:61:1	-	13 lines (51 tokens) duplicated at tests.test_cli:79
+duplicate-code	high	tests/test_cli.py:413:1	-	11 lines (52 tokens) duplicated at tests.test_cli:431
+duplicate-code	high	tests/test_cli.py:503:1	-	7 lines (64 tokens) duplicated at tests.test_cli:512
+duplicate-code	high	tests/test_helpers.py:188:1	-	12 lines (56 tokens) duplicated at tests.test_templating:524
+duplicate-code	high	tests/test_helpers.py:230:1	-	8 lines (50 tokens) duplicated at tests.test_helpers:274
+duplicate-code	high	tests/test_templating.py:25:1	-	10 lines (55 tokens) duplicated at tests.test_templating:34
+duplicate-code	high	tests/test_templating.py:188:1	-	17 lines (98 tokens) duplicated at tests.test_templating:215
+duplicate-code	high	tests/test_templating.py:204:1	-	11 lines (51 tokens) duplicated at tests.test_templating:231
+duplicate-code	high	tests/test_templating.py:242:1	-	7 lines (57 tokens) duplicated at tests.test_templating:286
+duplicate-code	high	tests/test_templating.py:306:1	-	17 lines (96 tokens) duplicated at tests.test_templating:333
+duplicate-code	high	tests/test_templating.py:322:1	-	12 lines (62 tokens) duplicated at tests.test_templating:349
+duplicate-code	high	tests/test_testing.py:39:1	-	11 lines (58 tokens) duplicated at tests.test_testing:54
+duplicate-code	high	tests/test_testing.py:309:1	-	15 lines (71 tokens) duplicated at tests.test_testing:326
+duplicate-code	high	tests/test_views.py:18:1	-	7 lines (53 tokens) duplicated at tests.test_views:185
+duplicate-code	high	tests/test_views.py:215:1	-	11 lines (58 tokens) duplicated at tests.test_views:234

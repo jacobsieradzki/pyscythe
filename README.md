@@ -118,11 +118,12 @@ For Rust, the tools that map onto oxlint, oxfmt, and fallow are clippy, rustfmt,
 
 ### The corpus
 
-`corpus/corpus.toml` pins thirteen public projects (Django, Home Assistant, pandas, pydantic, and others chosen for the shapes they add) at a commit each, with the environment for each pinned in `corpus/locks`. `mise run corpus` clones them into `corpus/cache`, builds their environments with uv, runs every analysis, and compares the reports with `corpus/snapshots`: one sorted line per finding, paths relative to the project. The `corpus` workflow does the same on every push and pull request, so a change in output over real code is always a visible diff in the pull request.
+`corpus/corpus.toml` pins 35 public projects (Django, Home Assistant, pandas, pydantic, ansible, saleor, and others chosen for the shapes they add) at a commit each, with the environment for each pinned in `corpus/locks`. `mise run corpus` clones them into `corpus/cache`, builds their environments with uv, runs every analysis, and compares the reports with `corpus/snapshots`: one sorted line per finding, paths relative to the project. The `corpus` workflow does the same on every push and pull request, so a change in output over real code is always a visible diff in the pull request.
 
 ```bash
 mise run corpus                              # check every project
 mise run corpus -- --project django          # one project
+mise run corpus -- --shard 2/6               # one slice, as the CI matrix runs them
 mise run corpus:update                       # accept a deliberate change
 cargo run -p pyscythe_corpus -- lock --project django   # re-resolve an environment
 ```

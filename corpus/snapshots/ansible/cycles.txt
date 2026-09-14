@@ -1,0 +1,11 @@
+files_scanned=1850
+symbols_checked=0
+symbols_kept=0
+findings=6
+--
+circular-import	high	lib/ansible/_internal/_ssh/_agent_launch.py:10:1	-	import cycle: lib.ansible._internal._ssh._agent_launch -> lib.ansible.cli -> lib.ansible._internal._ssh._agent_launch
+circular-import	high	lib/ansible/galaxy/collection/__init__.py:106:5	-	import cycle among 6 modules, shortest: lib.ansible.galaxy.collection -> lib.ansible.galaxy.dependency_resolution -> lib.ansible.galaxy.collection
+circular-import	high	lib/ansible/module_utils/facts/__init__.py:33:1	-	import cycle among 61 modules, shortest: lib.ansible.module_utils.facts -> lib.ansible.module_utils.facts.compat -> lib.ansible.module_utils.facts
+circular-import	high	lib/ansible/playbook/__init__.py:25:1	-	import cycle among 16 modules, shortest: lib.ansible.playbook -> lib.ansible.playbook.play -> lib.ansible.playbook
+circular-import	high	lib/ansible/utils/collection_loader/__init__.py:73:1	-	import cycle among 3 modules, shortest: lib.ansible.utils.collection_loader -> lib.ansible.utils.collection_loader._collection_config -> lib.ansible.utils.collection_loader
+circular-import	high	test/lib/ansible_test/_internal/__init__.py:37:1	-	import cycle among 57 modules, shortest: test.lib.ansible_test._internal -> test.lib.ansible_test._internal.timeout -> test.lib.ansible_test._internal.test -> test.lib.ansible_test._internal

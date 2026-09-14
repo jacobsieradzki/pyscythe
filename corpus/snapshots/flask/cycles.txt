@@ -1,0 +1,7 @@
+files_scanned=83
+symbols_checked=0
+symbols_kept=0
+findings=2
+--
+circular-import	high	examples/javascript/js_example/__init__.py:5:1	-	import cycle: examples.javascript.js_example -> examples.javascript.js_example.views -> examples.javascript.js_example
+circular-import	high	src/flask/__init__.py:2:1	-	import cycle among 9 modules, shortest: flask -> flask.app -> flask

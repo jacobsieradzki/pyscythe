@@ -1,0 +1,41 @@
+files_scanned=37
+symbols_checked=805
+symbols_kept=403
+findings=36
+--
+unused-variable	medium	src/requests/_types.py:119:5	CookiesType	variable `CookiesType` is never used
+unused-variable	medium	src/requests/_types.py:141:5	ProxiesType	variable `ProxiesType` is never used
+unused-variable	medium	src/requests/adapters.py:82:1	DEFAULT_POOL_TIMEOUT	variable `DEFAULT_POOL_TIMEOUT` is never used
+unused-method	low	src/requests/adapters.py:512:9	get_connection	method `HTTPAdapter.get_connection` is never used
+unused-variable	medium	src/requests/auth.py:30:1	CONTENT_TYPE_FORM_URLENCODED	variable `CONTENT_TYPE_FORM_URLENCODED` is never used
+unused-variable	medium	src/requests/auth.py:31:1	CONTENT_TYPE_MULTI_PART	variable `CONTENT_TYPE_MULTI_PART` is never used
+unused-class	medium	src/requests/auth.py:116:7	HTTPProxyAuth	class `HTTPProxyAuth` is never used
+unused-variable	medium	src/requests/compat.py:61:1	is_py2	variable `is_py2` is never used
+unused-variable	medium	src/requests/compat.py:64:1	is_py3	variable `is_py3` is never used
+unused-variable	medium	src/requests/compat.py:114:1	numeric_types	variable `numeric_types` is never used
+unused-method	low	src/requests/cookies.py:51:9	get_type	method `MockRequest.get_type` is never used
+unused-method	low	src/requests/cookies.py:60:9	get_full_url	method `MockRequest.get_full_url` is never used
+unused-method	low	src/requests/cookies.py:83:9	has_header	method `MockRequest.has_header` is never used
+unused-method	low	src/requests/cookies.py:86:9	get_header	method `MockRequest.get_header` is never used
+unused-method	low	src/requests/cookies.py:89:9	add_header	method `MockRequest.add_header` is never used
+unused-method	low	src/requests/cookies.py:95:9	add_unredirected_header	method `MockRequest.add_unredirected_header` is never used
+unused-method	low	src/requests/cookies.py:102:9	unverifiable	method `MockRequest.unverifiable` is never used
+unused-method	low	src/requests/cookies.py:106:9	origin_req_host	method `MockRequest.origin_req_host` is never used
+unused-method	low	src/requests/cookies.py:128:9	info	method `MockResponse.info` is never used
+unused-method	low	src/requests/cookies.py:302:9	list_domains	method `RequestsCookieJar.list_domains` is never used
+unused-method	low	src/requests/cookies.py:310:9	list_paths	method `RequestsCookieJar.list_paths` is never used
+unused-method	low	src/requests/cookies.py:318:9	multiple_domains	method `RequestsCookieJar.multiple_domains` is never used
+unused-method	low	src/requests/cookies.py:331:9	get_dict	method `RequestsCookieJar.get_dict` is never used
+unused-method	medium	src/requests/cookies.py:401:9	_find	method `RequestsCookieJar._find` is never used
+unused-method	low	src/requests/models.py:272:9	deregister_hook	method `RequestHooksMixin.deregister_hook` is never used
+unused-method	low	src/requests/models.py:884:9	is_permanent_redirect	method `Response.is_permanent_redirect` is never used
+unused-function	medium	src/requests/utils.py:149:5	dict_to_sequence	function `dict_to_sequence` is never used
+unused-function	medium	src/requests/utils.py:329:5	atomic_open	function `atomic_open` is never used
+unused-function	medium	src/requests/utils.py:341:5	from_key_val_list	function `from_key_val_list` is never used
+unused-function	medium	src/requests/utils.py:408:5	parse_list_header	function `parse_list_header` is never used
+unused-function	medium	src/requests/utils.py:500:5	dict_from_cookiejar	function `dict_from_cookiejar` is never used
+unused-function	medium	src/requests/utils.py:633:5	get_unicode_from_response	function `get_unicode_from_response` is never used
+unused-function	medium	tests/compat.py:14:5	u	function `u` is never used
+unused-method	low	tests/test_utils.py:895:13	Close	method `RegHandle.Close` is never used
+unused-method	low	tests/test_utils.py:931:13	Close	method `RegHandle.Close` is never used
+unused-method	low	tests/test_utils.py:992:13	Close	method `RegHandle.Close` is never used

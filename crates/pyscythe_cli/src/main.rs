@@ -13,7 +13,7 @@ use pyscythe_core::keep::Policy;
 use pyscythe_core::report::Report;
 use pyscythe_core::tokens::CloneMode;
 use pyscythe_pyproject::ProjectSettings;
-use pyscythe_ty::{IndexOptions, TyIndex};
+use pyscythe_ty::{FILE_BUDGET, IndexOptions, TyIndex};
 
 mod git;
 mod render;
@@ -299,29 +299,44 @@ fn main() -> ExitCode {
     }
 }
 
+/// What an analysis needs from the index.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum Needs {
+    /// Resolved references and imports, so the index is built up front within its budget.
+    References,
+    /// Only parsed source: duplication and complexity read no references at all.
+    SourcesOnly,
+}
+
 fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
     match cli.command {
-        Command::DeadCode(args) => run_analysis(&args, out, |i, a, s| Ok(dead_code(i, a, s))),
+        Command::DeadCode(args) => run_analysis(&args, Needs::References, out, |i, a, s| {
+            Ok(dead_code(i, a, s))
+        }),
         Command::Cycles(args) => {
             let options = pyscythe_core::cycles::CycleOptions {
                 include_deferred: args.include_deferred,
                 all_cycles: args.all_cycles,
             };
-            run_analysis(&args.common, out, move |i, _, _| Ok(cycles(i, options)))
+            run_analysis(&args.common, Needs::References, out, move |i, _, _| {
+                Ok(cycles(i, options))
+            })
         }
-        Command::Health(args) => run_analysis(&args, out, |i, _, s| Ok(health(i, s))),
+        Command::Health(args) => {
+            run_analysis(&args, Needs::SourcesOnly, out, |i, _, s| Ok(health(i, s)))
+        }
         Command::Boundaries(args) if args.suggest => {
             let mut timings = Timings::start();
-            let (index, _) = open_project(&args.common, &mut timings)?;
-            index.prepare();
+            let (mut index, _) = open_project(&args.common, &mut timings)?;
+            prepare(&mut index)?;
             let suggestion = pyscythe_core::boundaries::suggest(&index);
             std::mem::forget(index);
             write!(out, "{}", suggestion.to_toml())?;
             Ok(Outcome::Clean)
         }
-        Command::Boundaries(args) => run_analysis(&args.common, out, boundaries),
+        Command::Boundaries(args) => run_analysis(&args.common, Needs::References, out, boundaries),
         Command::Fix(args) => run_fix(&args, out),
-        Command::Deps(args) => run_analysis(&args, out, |i, _, s| {
+        Command::Deps(args) => run_analysis(&args, Needs::References, out, |i, _, s| {
             Ok(pyscythe_core::deps::analyze(
                 i,
                 &s.scopes,
@@ -335,7 +350,7 @@ fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
                 min_tokens: args.min_tokens,
                 min_lines: args.min_lines,
             };
-            run_analysis(&args.common, out, move |index, _, _| {
+            run_analysis(&args.common, Needs::SourcesOnly, out, move |index, _, _| {
                 Ok(pyscythe_core::dupes::analyze(index, &options))
             })
         }
@@ -344,13 +359,16 @@ fn run(cli: Cli, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
 
 fn run_analysis(
     args: &AnalysisArgs,
+    needs: Needs,
     out: &mut impl std::io::Write,
     analysis: impl FnOnce(&TyIndex, &AnalysisArgs, &ProjectSettings) -> anyhow::Result<Report>,
 ) -> anyhow::Result<Outcome> {
     let mut timings = Timings::start();
-    let (index, settings) = open_project(args, &mut timings)?;
-    index.prepare();
-    timings.mark("reference index");
+    let (mut index, settings) = open_project(args, &mut timings)?;
+    if needs == Needs::References {
+        prepare(&mut index)?;
+        timings.mark("reference index");
+    }
     let mut report = analysis(&index, args, &settings)?;
     timings.mark("analysis");
 
@@ -367,7 +385,15 @@ fn run_analysis(
     emit(&report, args, &root, out)?;
     timings.mark("output");
     if args.timings {
-        timings.report(&mut std::io::stderr().lock())?;
+        let mut stderr = std::io::stderr().lock();
+        timings.report(&mut stderr)?;
+        if let Some((path, elapsed)) = index.slowest_file() {
+            writeln!(
+                stderr,
+                "slowest file: {path} ({:.1}s)",
+                elapsed.as_secs_f64()
+            )?;
+        }
     }
     // Dropping the salsa database tears down every cached query one by one,
     // which costs more than the analysis did. The process is exiting anyway.
@@ -432,8 +458,8 @@ fn apply_baseline(args: &AnalysisArgs, report: &mut Report, root: &Utf8Path) -> 
 fn run_fix(args: &FixArgs, out: &mut impl std::io::Write) -> anyhow::Result<Outcome> {
     let analysis_args = args.as_analysis_args();
     let mut timings = Timings::start();
-    let (index, settings) = open_project(&analysis_args, &mut timings)?;
-    index.prepare();
+    let (mut index, settings) = open_project(&analysis_args, &mut timings)?;
+    prepare(&mut index)?;
     let mut report = dead_code(&index, &analysis_args, &settings);
     let root = index.root().to_path_buf();
     apply_baseline(&analysis_args, &mut report, &root)?;
@@ -512,6 +538,26 @@ fn run_fix(args: &FixArgs, out: &mut impl std::io::Write) -> anyhow::Result<Outc
 }
 
 /// Opens the project, reads its `pyproject.toml`, and applies the file selection it asks for.
+/// Builds the reference index and says which files, if any, ty could not type in time.
+fn prepare(index: &mut TyIndex) -> anyhow::Result<()> {
+    index.prepare();
+    let stderr = std::io::stderr();
+    let seconds = FILE_BUDGET.0.as_secs();
+    for path in index.files_matched_by_name() {
+        writeln!(
+            stderr.lock(),
+            "warning: {path}: ty could not type this file within {seconds}s; names in it are matched textually"
+        )?;
+    }
+    for path in index.files_abandoned() {
+        writeln!(
+            stderr.lock(),
+            "warning: {path}: could not be read within {seconds}s even by name; it is left out"
+        )?;
+    }
+    Ok(())
+}
+
 fn open_project(
     args: &AnalysisArgs,
     timings: &mut Timings,

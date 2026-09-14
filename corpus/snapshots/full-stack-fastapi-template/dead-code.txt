@@ -1,5 +1,0 @@
-files_scanned=43
-symbols_checked=215
-symbols_kept=117
-findings=0
---

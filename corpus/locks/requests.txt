@@ -1,0 +1,10 @@
+certifi==2026.7.22
+charset-normalizer==3.5.1
+colorama==0.4.6 ; sys_platform == 'win32'
+idna==3.19
+iniconfig==2.3.0
+packaging==26.3
+pluggy==1.6.0
+pygments==2.21.0
+pytest==9.1.1
+urllib3==2.7.0

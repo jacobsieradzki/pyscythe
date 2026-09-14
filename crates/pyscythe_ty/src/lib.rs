@@ -5,6 +5,7 @@
 //! This crate only translates between ty's types and pyscythe's domain.
 
 use std::sync::OnceLock;
+use std::time::Duration;
 
 use camino::{Utf8Path, Utf8PathBuf};
 use pyscythe_core::config::{NotebookPolicy, PathPatterns};
@@ -29,11 +30,13 @@ use ruff_text_size::{Ranged, TextRange, TextSize};
 use rustc_hash::FxHashMap;
 use ty_ide::{HierarchicalSymbols, SymbolInfo, document_symbols};
 use ty_project::metadata::ProjectMetadataError;
-use ty_project::metadata::options::{EnvironmentOptions, Options};
+use ty_project::metadata::options::{EnvironmentOptions, Options, SrcOptions};
+use ty_project::metadata::value::RelativeGlobPattern;
 use ty_project::{Db as _, ProjectDatabase, ProjectMetadata};
 use ty_python_core::platform::PythonPlatform;
 use ty_python_semantic::Db as _;
 
+pub use crate::reference_index::FileBudget;
 use crate::reference_index::{DefinitionKey, ReferenceIndex};
 use pyscythe_core::manifest::DistributionName;
 
@@ -56,6 +59,12 @@ pub enum OpenError {
     #[error("could not configure project: {0}")]
     Configuration(#[source] anyhow::Error),
 }
+
+/// How long ty may spend on one file before its names are matched textually.
+///
+/// Generous next to the seconds a large file needs, small next to the hours a
+/// file that trips a ty pathology would take.
+pub const FILE_BUDGET: FileBudget = FileBudget(Duration::from_secs(20));
 
 /// Which files to report on.
 #[derive(Debug, Clone)]
@@ -144,6 +153,16 @@ impl TyIndex {
             environment: Some(EnvironmentOptions {
                 python_platform: Some(RangedValue::cli(PythonPlatform::All)),
                 ..EnvironmentOptions::default()
+            }),
+            ..Options::default()
+        });
+        // `[tool.ty.src] include` scopes which files a project type-checks, often a few
+        // packages during gradual adoption. Dead code is found by looking at everything,
+        // so every file under the root is in; the project's `exclude` still applies.
+        metadata.apply_override_options(Options {
+            src: Some(SrcOptions {
+                include: Some(RangedValue::cli(vec![RelativeGlobPattern::cli("**")])),
+                ..SrcOptions::default()
             }),
             ..Options::default()
         });
@@ -252,15 +271,68 @@ impl TyIndex {
         self.files.get(id.index()).copied()
     }
 
-    /// Builds the reference index now rather than on first use, so callers
-    /// can attribute its cost separately.
-    pub fn prepare(&self) {
-        let _ = self.reference_index();
+    /// Builds the reference index now, with a time budget per file, rather
+    /// than on first use; callers can attribute its cost separately.
+    pub fn prepare(&mut self) {
+        self.prepare_within(FILE_BUDGET);
+    }
+
+    /// [`Self::prepare`] with a budget of your own; tests use a tiny one.
+    pub fn prepare_within(&mut self, budget: FileBudget) {
+        if self.references.get().is_some() {
+            return;
+        }
+        let mut index = ReferenceIndex::build(&mut self.db, &self.all_files, budget);
+        index.extend_attribute_names(templates::attribute_names(self.root()));
+        self.references.get_or_init(|| index);
+    }
+
+    /// Files ty could not type within [`FILE_BUDGET`]; their references were
+    /// matched by name instead, so symbols they mention are low confidence
+    /// rather than resolved. Project-relative, sorted.
+    #[must_use]
+    pub fn files_matched_by_name(&self) -> Vec<Utf8PathBuf> {
+        let mut paths: Vec<Utf8PathBuf> = self
+            .reference_index()
+            .files_by_name()
+            .iter()
+            .map(|file| self.relative_path_of(*file))
+            .collect();
+        paths.sort();
+        paths
+    }
+
+    /// Files left out of the reference index entirely: ty ran over budget on
+    /// them even with their names matched textually. Project-relative, sorted.
+    #[must_use]
+    pub fn files_abandoned(&self) -> Vec<Utf8PathBuf> {
+        let mut paths: Vec<Utf8PathBuf> = self
+            .reference_index()
+            .files_abandoned()
+            .iter()
+            .map(|file| self.relative_path_of(*file))
+            .collect();
+        paths.sort();
+        paths
+    }
+
+    /// The file ty spent longest on while building the reference index.
+    #[must_use]
+    pub fn slowest_file(&self) -> Option<(Utf8PathBuf, Duration)> {
+        self.reference_index()
+            .slowest_file()
+            .map(|(file, elapsed)| (self.relative_path_of(file), elapsed))
+    }
+
+    fn relative_path_of(&self, file: File) -> Utf8PathBuf {
+        let path = Utf8PathBuf::from(file.path(&self.db).to_string());
+        path.strip_prefix(self.root())
+            .map_or_else(|_| path.clone(), Utf8Path::to_path_buf)
     }
 
     fn reference_index(&self) -> &ReferenceIndex {
         self.references.get_or_init(|| {
-            let mut index = ReferenceIndex::build(&self.db, &self.all_files);
+            let mut index = ReferenceIndex::build_unbudgeted(&self.db, &self.all_files);
             index.extend_attribute_names(templates::attribute_names(self.root()));
             index
         })

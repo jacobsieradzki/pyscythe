@@ -1,0 +1,96 @@
+files_scanned=491
+symbols_checked=107
+symbols_kept=0
+findings=91
+--
+missing-dependency	medium	conftest.py:8:8	pytest	`pytest` is imported but `pytest` is not a declared dependency
+missing-dependency	low	docs/conf.py:167:5	platformdirs	`platformdirs` is imported but `platformdirs` is not a declared dependency; it arrives through `scrapy`
+missing-dependency	medium	docs/conf.py:168:5	pytest	`pytest` is imported but `pytest` is not a declared dependency
+unresolved-import	low	docs/conftest.py:4:1		import `sybil` resolves to nothing on the search path
+unused-dependency	medium	docs/requirements.txt	alabaster	dependency `alabaster` is never imported
+unused-dependency	medium	docs/requirements.txt	annotated-types	dependency `annotated-types` is never imported
+unused-dependency	medium	docs/requirements.txt	automat	dependency `automat` is never imported
+unused-dependency	medium	docs/requirements.txt	babel	dependency `babel` is never imported
+unused-dependency	medium	docs/requirements.txt	certifi	dependency `certifi` is never imported
+unused-dependency	medium	docs/requirements.txt	cffi	dependency `cffi` is never imported
+unused-dependency	medium	docs/requirements.txt	charset-normalizer	dependency `charset-normalizer` is never imported
+unused-dependency	medium	docs/requirements.txt	constantly	dependency `constantly` is never imported
+unused-dependency	medium	docs/requirements.txt	defusedxml	dependency `defusedxml` is never imported
+unused-dependency	medium	docs/requirements.txt	filelock	dependency `filelock` is never imported
+unused-dependency	medium	docs/requirements.txt	h2	dependency `h2` is never imported
+unused-dependency	medium	docs/requirements.txt	hpack	dependency `hpack` is never imported
+unused-dependency	medium	docs/requirements.txt	hyperframe	dependency `hyperframe` is never imported
+unused-dependency	medium	docs/requirements.txt	hyperlink	dependency `hyperlink` is never imported
+unused-dependency	medium	docs/requirements.txt	idna	dependency `idna` is never imported
+unused-dependency	medium	docs/requirements.txt	imagesize	dependency `imagesize` is never imported
+unused-dependency	medium	docs/requirements.txt	incremental	dependency `incremental` is never imported
+unused-dependency	medium	docs/requirements.txt	itemadapter	dependency `itemadapter` is never imported
+unused-dependency	medium	docs/requirements.txt	jinja2	dependency `jinja2` is never imported
+unused-dependency	medium	docs/requirements.txt	jmespath	dependency `jmespath` is never imported
+unused-dependency	medium	docs/requirements.txt	lxml	dependency `lxml` is never imported
+unused-dependency	medium	docs/requirements.txt	markupsafe	dependency `markupsafe` is never imported
+unused-dependency	medium	docs/requirements.txt	packaging	dependency `packaging` is never imported
+unused-dependency	medium	docs/requirements.txt	protego	dependency `protego` is never imported
+unused-dependency	medium	docs/requirements.txt	pyasn1	dependency `pyasn1` is never imported
+unused-dependency	medium	docs/requirements.txt	pyasn1-modules	dependency `pyasn1-modules` is never imported
+unused-dependency	medium	docs/requirements.txt	pycparser	dependency `pycparser` is never imported
+unused-dependency	medium	docs/requirements.txt	pydantic	dependency `pydantic` is never imported
+unused-dependency	medium	docs/requirements.txt	pydantic-core	dependency `pydantic-core` is never imported
+unused-dependency	medium	docs/requirements.txt	pydispatcher	dependency `pydispatcher` is never imported
+unused-dependency	medium	docs/requirements.txt	pygments	dependency `pygments` is never imported
+unused-dependency	medium	docs/requirements.txt	pyopenssl	dependency `pyopenssl` is never imported
+unused-dependency	medium	docs/requirements.txt	queuelib	dependency `queuelib` is never imported
+unused-dependency	medium	docs/requirements.txt	requests	dependency `requests` is never imported
+unused-dependency	medium	docs/requirements.txt	requests-file	dependency `requests-file` is never imported
+unused-dependency	medium	docs/requirements.txt	roman-numerals	dependency `roman-numerals` is never imported
+unused-dependency	medium	docs/requirements.txt	scrapy	dependency `scrapy` is never imported
+unused-dependency	medium	docs/requirements.txt	scrapy-spider-metadata	dependency `scrapy-spider-metadata` is never imported
+unused-dependency	medium	docs/requirements.txt	service-identity	dependency `service-identity` is never imported
+unused-dependency	medium	docs/requirements.txt	snowballstemmer	dependency `snowballstemmer` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinx-copybutton	dependency `sphinx-copybutton` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinx-last-updated-by-git	dependency `sphinx-last-updated-by-git` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinx-llms-txt	dependency `sphinx-llms-txt` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinx-markdown-builder	dependency `sphinx-markdown-builder` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinx-notfound-page	dependency `sphinx-notfound-page` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinx-reredirects	dependency `sphinx-reredirects` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinx-rtd-dark-mode	dependency `sphinx-rtd-dark-mode` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinx-rtd-theme	dependency `sphinx-rtd-theme` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinx-scrapy	dependency `sphinx-scrapy` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinx-sitemap	dependency `sphinx-sitemap` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinxcontrib-applehelp	dependency `sphinxcontrib-applehelp` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinxcontrib-devhelp	dependency `sphinxcontrib-devhelp` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinxcontrib-htmlhelp	dependency `sphinxcontrib-htmlhelp` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinxcontrib-jquery	dependency `sphinxcontrib-jquery` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinxcontrib-jsmath	dependency `sphinxcontrib-jsmath` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinxcontrib-qthelp	dependency `sphinxcontrib-qthelp` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinxcontrib-serializinghtml	dependency `sphinxcontrib-serializinghtml` is never imported
+unused-dependency	medium	docs/requirements.txt	tabulate	dependency `tabulate` is never imported
+unused-dependency	medium	docs/requirements.txt	tldextract	dependency `tldextract` is never imported
+unused-dependency	medium	docs/requirements.txt	typing-extensions	dependency `typing-extensions` is never imported
+unused-dependency	medium	docs/requirements.txt	typing-inspection	dependency `typing-inspection` is never imported
+unused-dependency	medium	docs/requirements.txt	urllib3	dependency `urllib3` is never imported
+unused-dependency	medium	docs/requirements.txt	zope-interface	dependency `zope-interface` is never imported
+unused-dependency	medium	pyproject.toml	backports-zstd	dependency `backports-zstd` is never imported
+unused-dependency	medium	pyproject.toml	pypydispatcher	dependency `pypydispatcher` is never imported
+unused-dependency	medium	pyproject.toml	zope-interface	dependency `zope-interface` is never imported
+unresolved-import	low	scrapy/commands/__init__.py:169:24		import `ipdb` resolves to nothing on the search path
+missing-dependency	low	scrapy/contracts/default.py:179:9	requests	`requests` is imported but `requests` is not a declared dependency; it arrives through `tldextract`
+unresolved-import	low	scrapy/core/_http2/protocol.py:9:1		import `h2` resolves to nothing on the search path
+missing-dependency	low	scrapy/core/downloader/_idna_patch.py:34:35	idna	`idna` is imported but `idna` is not a declared dependency; it arrives through `aiohttp`
+unresolved-import	low	scrapy/core/downloader/contextfactory.py:38:5		import `typing_extensions` resolves to nothing on the search path
+missing-dependency	low	scrapy/core/downloader/handlers/_aiohttp.py:11:8	yarl	`yarl` is imported but `yarl` is not a declared dependency; it arrives through `aiohttp`
+unresolved-import	low	scrapy/core/downloader/handlers/_base_streaming.py:35:5		import `_typeshed` resolves to nothing on the search path
+unresolved-import	low	scrapy/core/downloader/handlers/_httpx.py:33:5		import `httpcore2` resolves to nothing on the search path
+unresolved-import	low	scrapy/core/downloader/handlers/_httpx.py:45:16		import `httpx` resolves to nothing on the search path
+unresolved-import	low	scrapy/core/downloader/handlers/_httpx.py:65:16		import `socksio` resolves to nothing on the search path
+unresolved-import	low	scrapy/core/downloader/handlers/s3.py:34:20		import `botocore` resolves to nothing on the search path
+missing-dependency	low	scrapy/http/response/text.py:170:39	jmespath	`jmespath` is imported but `jmespath` is not a declared dependency; it arrives through `itemloaders`
+missing-dependency	low	scrapy/resolver.py:5:8	attrs	`attr` is imported but `attrs` is not a declared dependency; it arrives through `aiohttp`
+unresolved-import	low	scrapy/utils/_compression.py:11:5		import `compression` resolves to nothing on the search path
+missing-dependency	medium	scrapy/utils/display.py:37:9	pygments	`pygments` is imported but `pygments` is not a declared dependency
+missing-dependency	low	scrapy/utils/log.py:73:9	filelock	`filelock` is imported but `filelock` is not a declared dependency; it arrives through `tldextract`
+unresolved-import	low	scrapy/utils/python.py:187:5		import `annotationlib` resolves to nothing on the search path
+unresolved-import	low	tests/benchmarks/test_crawl.py:20:5		import `pytest_codspeed` resolves to nothing on the search path
+unresolved-import	low	tests/mockserver/ftp.py:12:1		import `pyftpdlib` resolves to nothing on the search path
+unresolved-import	low	tests/test_command_shell.py:13:1		import `pexpect` resolves to nothing on the search path
+unresolved-import	low	tests/test_core_downloader.py:8:1		import `pytest_twisted` resolves to nothing on the search path

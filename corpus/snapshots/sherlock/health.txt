@@ -1,0 +1,11 @@
+files_scanned=17
+symbols_checked=66
+symbols_kept=0
+findings=5
+health: score=49 grade=F functions=66 max_cyclomatic=50 max_cognitive=141
+--
+complex-function	high	devel/summarize_site_validation.py:9:5	summarize_junit_xml	function `summarize_junit_xml` has cyclomatic complexity 14 and cognitive complexity 20 over 51 lines
+complex-function	high	sherlock_project/notify.py:176:9	QueryNotifyPrint.update	function `QueryNotifyPrint.update` has cyclomatic complexity 13 and cognitive complexity 18 over 74 lines
+complex-function	high	sherlock_project/sherlock.py:172:5	sherlock	function `sherlock` has cyclomatic complexity 50 and cognitive complexity 141 over 333 lines
+complex-function	high	sherlock_project/sherlock.py:540:5	main	function `main` has cyclomatic complexity 49 and cognitive complexity 93 over 391 lines
+complex-function	high	sherlock_project/sites.py:78:9	SitesInformation.__init__	function `SitesInformation.__init__` has cyclomatic complexity 20 and cognitive complexity 37 over 126 lines

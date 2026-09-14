@@ -1,0 +1,11 @@
+files_scanned=717
+symbols_checked=0
+symbols_kept=0
+findings=6
+--
+circular-import	high	src/dispatch/__init__.py:20:5	-	import cycle among 81 modules, shortest: dispatch -> dispatch.ai.prompt.models -> dispatch
+circular-import	high	src/dispatch/case/flows.py:18:1	-	import cycle: dispatch.case.flows -> dispatch.incident.flows -> dispatch.case.flows
+circular-import	high	src/dispatch/case/service.py:11:1	-	import cycle among 16 modules, shortest: dispatch.case.service -> dispatch.case.type.service -> dispatch.case.service
+circular-import	high	src/dispatch/data/query/service.py:5:1	-	import cycle: dispatch.data.query.service -> dispatch.data.source.service -> dispatch.data.query.service
+circular-import	high	src/dispatch/definition/service.py:3:1	-	import cycle: dispatch.definition.service -> dispatch.term.service -> dispatch.definition.service
+circular-import	high	src/dispatch/plugin/service.py:8:1	-	import cycle: dispatch.plugin.service -> dispatch.service.service -> dispatch.plugin.service

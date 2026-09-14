@@ -1,0 +1,7 @@
+files_scanned=17
+symbols_checked=81
+symbols_kept=20
+findings=2
+--
+unused-method	low	sherlock_project/sites.py:224:9	site_name_list	method `SitesInformation.site_name_list` is never used
+unused-function	medium	tests/few_test_basic.py:6:5	test_username_via_message	function `test_username_via_message` is never used

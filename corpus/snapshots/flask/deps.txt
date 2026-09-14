@@ -1,0 +1,30 @@
+files_scanned=83
+symbols_checked=36
+symbols_kept=0
+findings=25
+--
+missing-dependency	low	docs/conf.py:1:8	packaging	`packaging` is imported but `packaging` is not a declared dependency; it arrives through `pytest`
+unresolved-import	low	docs/conf.py:91:5		import `docutils` resolves to nothing on the search path
+unresolved-import	low	examples/celery/make_celery.py:1:1		import `task_app` resolves to nothing on the search path
+unused-dependency	medium	examples/celery/pyproject.toml	celery	dependency `celery` is never imported
+unused-dependency	medium	examples/celery/pyproject.toml	flask	dependency `flask` is never imported
+unused-dependency	medium	examples/javascript/pyproject.toml	flask	dependency `flask` is never imported
+missing-dependency	low	examples/tutorial/flaskr/auth.py:11:1	werkzeug	`werkzeug` is imported but `werkzeug` is not a declared dependency; it arrives through `flask`
+missing-dependency	low	examples/tutorial/flaskr/db.py:4:8	click	`click` is imported but `click` is not a declared dependency; it arrives through `flask`
+unused-dependency	medium	examples/tutorial/pyproject.toml	flask	dependency `flask` is never imported
+unused-dependency	low	pyproject.toml	gha-update	dependency `gha-update` (dependency-groups.gha-update) is never imported
+unused-dependency	low	pyproject.toml	pre-commit-uv	dependency `pre-commit-uv` (dependency-groups.pre-commit) is never imported
+unused-dependency	low	pyproject.toml	sphinx-autobuild	dependency `sphinx-autobuild` (dependency-groups.docs-auto) is never imported
+unused-dependency	low	pyproject.toml	sphinx-tabs	dependency `sphinx-tabs` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	sphinxcontrib-log-cabinet	dependency `sphinxcontrib-log-cabinet` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	tox-uv	dependency `tox-uv` (dependency-groups.dev) is never imported
+unresolved-import	low	src/flask/app.py:58:5		import `_typeshed` resolves to nothing on the search path
+unresolved-import	low	src/flask/config.py:12:12		import `typing_extensions` resolves to nothing on the search path
+unresolved-import	low	tests/test_blueprints.py:176:5		import `blueprintapp` resolves to nothing on the search path
+unresolved-import	low	tests/test_cli.py:42:5		import `cliapp` resolves to nothing on the search path
+unresolved-import	low	tests/test_instance_config.py:25:5		import `config_module_app` resolves to nothing on the search path
+unresolved-import	low	tests/test_instance_config.py:41:5		import `config_package_app` resolves to nothing on the search path
+unresolved-import	low	tests/test_instance_config.py:60:5		import `namespace` resolves to nothing on the search path
+unresolved-import	low	tests/test_instance_config.py:73:5		import `site_app` resolves to nothing on the search path
+unresolved-import	low	tests/test_instance_config.py:92:5		import `installed_package` resolves to nothing on the search path
+unresolved-import	low	tests/test_instance_config.py:107:12		import `site_package` resolves to nothing on the search path

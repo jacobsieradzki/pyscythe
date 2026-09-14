@@ -1,0 +1,8 @@
+files_scanned=637
+symbols_checked=0
+symbols_kept=0
+findings=3
+--
+circular-import	high	typer/__init__.py:23:1	-	import cycle among 10 modules, shortest: typer -> typer.main -> typer
+circular-import	high	typer/_click/__init__.py:5:1	-	import cycle: typer._click -> typer._click.core -> typer._click
+circular-import	high	typer/_click/_compat.py:463:5	-	import cycle: typer._click._compat -> typer._click._winconsole -> typer._click._compat

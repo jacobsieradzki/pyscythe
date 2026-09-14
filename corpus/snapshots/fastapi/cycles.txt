@@ -1,0 +1,6 @@
+files_scanned=1028
+symbols_checked=0
+symbols_kept=0
+findings=1
+--
+circular-import	high	fastapi/__init__.py:7:1	-	import cycle among 23 modules, shortest: fastapi -> fastapi.applications -> fastapi

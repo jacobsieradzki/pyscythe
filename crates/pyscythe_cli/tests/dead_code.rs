@@ -550,3 +550,23 @@ fn code_behind_platform_checks_is_reachable_on_every_platform() {
         String::from_utf8_lossy(&output.stdout)
     );
 }
+
+#[test]
+fn a_projects_ty_include_scope_does_not_hide_files_from_the_analysis() {
+    // `[tool.ty.src] include` narrows what a project type-checks; everything is still code.
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("ty_scoped"))
+        .output()
+        .expect("runs");
+
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    assert_eq!(report["summary"]["files_scanned"], 4);
+    let symbols: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["symbol"].as_str())
+        .collect();
+    assert_eq!(symbols, ["forgotten"]);
+}

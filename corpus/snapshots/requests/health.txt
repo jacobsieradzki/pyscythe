@@ -1,0 +1,20 @@
+files_scanned=37
+symbols_checked=711
+symbols_kept=0
+findings=14
+health: score=90 grade=A functions=711 max_cyclomatic=21 max_cognitive=40
+--
+complex-function	high	src/requests/adapters.py:307:9	HTTPAdapter.cert_verify	function `HTTPAdapter.cert_verify` has cyclomatic complexity 14 and cognitive complexity 23 over 57 lines
+complex-function	high	src/requests/adapters.py:634:9	HTTPAdapter.send	function `HTTPAdapter.send` has cyclomatic complexity 20 and cognitive complexity 28 over 115 lines
+complex-function	high	src/requests/auth.py:157:9	HTTPDigestAuth.build_digest_header	function `HTTPDigestAuth.build_digest_header` has cyclomatic complexity 19 and cognitive complexity 21 over 110 lines
+complex-function	high	src/requests/cookies.py:423:9	RequestsCookieJar._find_no_duplicates	function `RequestsCookieJar._find_no_duplicates` has cyclomatic complexity 9 and cognitive complexity 18 over 30 lines
+complex-function	high	src/requests/models.py:151:9	RequestEncodingMixin._encode_params	function `RequestEncodingMixin._encode_params` has cyclomatic complexity 11 and cognitive complexity 27 over 30 lines
+complex-function	high	src/requests/models.py:183:9	RequestEncodingMixin._encode_files	function `RequestEncodingMixin._encode_files` has cyclomatic complexity 21 and cognitive complexity 40 over 69 lines
+complex-function	high	src/requests/models.py:483:9	PreparedRequest.prepare_url	function `PreparedRequest.prepare_url` has cyclomatic complexity 18 and cognitive complexity 22 over 81 lines
+complex-function	high	src/requests/models.py:576:9	PreparedRequest.prepare_body	function `PreparedRequest.prepare_body` has cyclomatic complexity 19 and cognitive complexity 37 over 77 lines
+complex-function	high	src/requests/sessions.py:186:9	SessionRedirectMixin.resolve_redirects	function `SessionRedirectMixin.resolve_redirects` has cyclomatic complexity 15 and cognitive complexity 26 over 122 lines
+complex-function	high	src/requests/sessions.py:752:9	Session.send	function `Session.send` has cyclomatic complexity 12 and cognitive complexity 12 over 78 lines
+complex-function	high	src/requests/utils.py:160:5	super_len	function `super_len` has cyclomatic complexity 16 and cognitive complexity 23 over 69 lines
+complex-function	high	src/requests/utils.py:231:5	get_netrc_auth	function `get_netrc_auth` has cyclomatic complexity 16 and cognitive complexity 18 over 50 lines
+complex-function	high	src/requests/utils.py:810:5	should_bypass_proxies	function `should_bypass_proxies` has cyclomatic complexity 20 and cognitive complexity 37 over 61 lines
+complex-function	high	src/requests/utils.py:1008:5	guess_json_utf	function `guess_json_utf` has cyclomatic complexity 11 and cognitive complexity 14 over 30 lines

@@ -1,0 +1,23 @@
+files_scanned=56
+symbols_checked=1310
+symbols_kept=836
+findings=18
+--
+unused-variable	low	src/attr/__init__.py:36:1	dataclass	variable `dataclass` is never used
+unused-file	medium	src/attr/_cmp.py	-	file `attr._cmp` is never imported or run
+unused-variable	medium	src/attr/_compat.py:95:1	repr_context	variable `repr_context` is never used
+unused-class	high	src/attr/_make.py:88:7	_CacheHashWrapper	class `_CacheHashWrapper` is never used
+unused-file	medium	src/attr/_version_info.py	-	file `attr._version_info` is never imported or run
+unused-file	medium	src/attr/exceptions.py	-	file `attr.exceptions` is never imported or run
+unused-file	medium	src/attr/filters.py	-	file `attr.filters` is never imported or run
+unused-file	medium	src/attr/setters.py	-	file `attr.setters` is never imported or run
+unused-method	medium	tests/strategies.py:197:17	_cached_property	method `BaseWithCachedProperty._cached_property` is never used
+unused-variable	medium	tests/test_cmp.py:58:1	indent	variable `indent` is never used
+unused-method	low	tests/test_compat.py:67:13	attribute	method `Foo.attribute` is never used
+unused-method	low	tests/test_functional.py:364:17	compute	method `C.compute` is never used
+unused-method	low	tests/test_make.py:1206:17	_init_to_init	method `KwArgBeforeInitFalse._init_to_init` is never used
+unused-method	low	tests/test_make.py:1237:17	_init_to_init	method `KwArgBeforeInitFalseChild._init_to_init` is never used
+unused-method	low	tests/test_make.py:1778:17	_convert_x	method `C._convert_x` is never used
+unused-file	medium	typing_tests/baseline.py	-	file `typing_tests.baseline` is never imported or run
+unused-file	medium	typing_tests/mypy.py	-	file `typing_tests.mypy` is never imported or run
+unused-file	medium	typing_tests/pyrefly.py	-	file `typing_tests.pyrefly` is never imported or run

@@ -1,0 +1,8 @@
+[project]
+name = "ty-scoped"
+version = "0.0.0"
+requires-python = ">=3.12"
+
+[tool.ty.src]
+# Only the API is type-checked during gradual adoption.
+include = ["pkg/api"]

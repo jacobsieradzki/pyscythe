@@ -1,6 +1,0 @@
-files_scanned=43
-symbols_checked=143
-symbols_kept=0
-findings=0
-health: score=100 grade=A functions=143 max_cyclomatic=8 max_cognitive=5
---

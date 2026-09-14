@@ -1,0 +1,23 @@
+files_scanned=83
+symbols_checked=1056
+symbols_kept=485
+findings=18
+--
+unused-method	low	src/flask/app.py:448:9	open_instance_resource	method `Flask.open_instance_resource` is never used
+unused-function	high	src/flask/cli.py:691:5	_path_is_ancestor	function `_path_is_ancestor` is never used
+unused-class	medium	src/flask/debughelpers.py:17:7	UnexpectedUnicodeError	class `UnexpectedUnicodeError` is never used
+unused-method	low	src/flask/sansio/app.py:858:9	shell_context_processor	method `App.shell_context_processor` is never used
+unused-variable	medium	src/flask/typing.py:54:1	BeforeFirstRequestCallable	variable `BeforeFirstRequestCallable` is never used
+unused-variable	low	src/flask/views.py:9:1	F	variable `F` is never used
+unused-function	low	tests/test_apps/cliapp/factory.py:4:5	create_app	function `create_app` is never used
+unused-function	medium	tests/test_apps/cliapp/factory.py:8:5	create_app2	function `create_app2` is never used
+unused-function	low	tests/test_apps/cliapp/factory.py:12:5	no_app	function `no_app` is never used
+unused-variable	low	tests/test_apps/cliapp/importerrorapp.py:5:1	testapp	variable `testapp` is never used
+unused-variable	low	tests/test_apps/cliapp/inner1/__init__.py:3:1	application	variable `application` is never used
+unused-variable	low	tests/test_apps/cliapp/inner1/inner2/flask.py:3:1	app	variable `app` is never used
+unused-variable	low	tests/test_apps/cliapp/multiapp.py:3:1	app1	variable `app1` is never used
+unused-variable	low	tests/test_apps/cliapp/multiapp.py:4:1	app2	variable `app2` is never used
+unused-variable	medium	tests/test_apps/subdomaintestmodule/__init__.py:3:1	mod	variable `mod` is never used
+unused-class	medium	tests/test_helpers.py:25:7	PyBytesIO	class `PyBytesIO` is never used
+unused-function	high	tests/test_json.py:260:5	_has_encoding	function `_has_encoding` is never used
+unused-method	low	tests/test_views.py:208:13	propfind	method `ChildView.propfind` is never used

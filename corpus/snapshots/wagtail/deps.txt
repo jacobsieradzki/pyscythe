@@ -1,0 +1,40 @@
+files_scanned=1388
+symbols_checked=52
+symbols_kept=0
+findings=35
+--
+unused-dependency	low	pyproject.toml	azure-identity	dependency `azure-identity` (optional-dependencies.testing) is never imported
+unused-dependency	low	pyproject.toml	azure-mgmt-cdn	dependency `azure-mgmt-cdn` (optional-dependencies.testing) is never imported
+unused-dependency	low	pyproject.toml	azure-mgmt-frontdoor	dependency `azure-mgmt-frontdoor` (optional-dependencies.testing) is never imported
+unused-dependency	low	pyproject.toml	azure-mgmt-subscription	dependency `azure-mgmt-subscription` (optional-dependencies.testing) is never imported
+unused-dependency	low	pyproject.toml	curlylint	dependency `curlylint` (optional-dependencies.testing) is never imported
+unused-dependency	low	pyproject.toml	django-pattern-library	dependency `django-pattern-library` (optional-dependencies.testing) is never imported
+unused-dependency	low	pyproject.toml	djhtml	dependency `djhtml` (optional-dependencies.testing) is never imported
+unused-dependency	low	pyproject.toml	doc8	dependency `doc8` (optional-dependencies.testing) is never imported
+unused-dependency	low	pyproject.toml	factory-boy	dependency `factory-boy` (optional-dependencies.testing) is never imported
+unused-dependency	low	pyproject.toml	myst-parser	dependency `myst-parser` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	pyenchant	dependency `pyenchant` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	semgrep	dependency `semgrep` (optional-dependencies.testing) is never imported
+unused-dependency	low	pyproject.toml	sphinx-autobuild	dependency `sphinx-autobuild` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	sphinx-llm	dependency `sphinx-llm` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	sphinxcontrib-httpdomain	dependency `sphinxcontrib-httpdomain` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	sphinxcontrib-openapi	dependency `sphinxcontrib-openapi` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	sphinxcontrib-spelling	dependency `sphinxcontrib-spelling` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	tblib	dependency `tblib` (optional-dependencies.testing) is never imported
+unresolved-import	low	scripts/get-translator-credits.py:5:1		import `babel` resolves to nothing on the search path
+missing-dependency	medium	scripts/latest-deps-summary.py:17:1	packaging	`packaging` is imported but `packaging` is not a declared dependency
+unresolved-import	low	setup.py:3:1		import `setuptools` resolves to nothing on the search path
+missing-dependency	low	wagtail/api/v3/errors.py:11:1	pydantic-core	`pydantic_core` is imported but `pydantic-core` is not a declared dependency; it arrives through `django-ninja`
+unresolved-import	low	wagtail/api/v3/schemas/params.py:15:1		import `typing_extensions` resolves to nothing on the search path
+unresolved-import	low	wagtail/contrib/frontend_cache/backends/azure.py:58:13		import `azure` resolves to nothing on the search path
+unresolved-import	low	wagtail/contrib/frontend_cache/backends/azure.py:147:13		import `msrest` resolves to nothing on the search path
+unresolved-import	low	wagtail/contrib/frontend_cache/backends/cloudfront.py:58:16		import `botocore` resolves to nothing on the search path
+unresolved-import	low	wagtail/documents/tests/test_views.py:339:20		import `sendfile` resolves to nothing on the search path
+unresolved-import	low	wagtail/embeds/finders/embedly.py:31:9		import `embedly` resolves to nothing on the search path
+unresolved-import	low	wagtail/jinja2tags.py:4:1		import `markupsafe` resolves to nothing on the search path
+missing-dependency	low	wagtail/log_actions.py:3:1	asgiref	`asgiref` is imported but `asgiref` is not a declared dependency; it arrives through `django`
+missing-dependency	low	wagtail/project_template/project_name/settings/base.py:40:5	django-modelcluster	`modelcluster` is imported but `django-modelcluster` is not a declared dependency; it arrives through `wagtail`
+missing-dependency	low	wagtail/project_template/project_name/settings/base.py:41:5	django-taggit	`taggit` is imported but `django-taggit` is not a declared dependency; it arrives through `wagtail`
+missing-dependency	low	wagtail/project_template/project_name/settings/base.py:42:5	django-filter	`django_filters` is imported but `django-filter` is not a declared dependency; it arrives through `wagtail`
+unused-dependency	medium	wagtail/project_template/requirements.txt	wagtail	dependency `wagtail` is never imported
+unresolved-import	low	wagtail/test/streamfield_migrations/factories.py:1:8		import `factory` resolves to nothing on the search path

@@ -1,0 +1,164 @@
+files_scanned=435
+symbols_checked=7446
+symbols_kept=1701
+findings=159
+--
+unused-variable	high	sphinx/_cli/util/errors.py:19:1	_CSI	variable `_CSI` is never used
+unused-function	medium	sphinx/_cli/util/errors.py:36:5	terminal_safe	function `terminal_safe` is never used
+unused-variable	low	sphinx/addnodes.py:227:1	desc_classname	variable `desc_classname` is never used
+unused-function	low	sphinx/addnodes.py:575:5	setup	function `setup` is never used
+unused-method	low	sphinx/application.py:343:9	fresh_env_used	method `Sphinx.fresh_env_used` is never used
+unused-method	low	sphinx/application.py:508:9	require_sphinx	method `Sphinx.require_sphinx` is never used
+unused-method	low	sphinx/application.py:1696:9	add_search_language	method `Sphinx.add_search_language` is never used
+unused-file	low	sphinx/builders/changes.py	-	file `sphinx.builders.changes` is never imported or run
+unused-file	low	sphinx/builders/dirhtml.py	-	file `sphinx.builders.dirhtml` is never imported or run
+unused-function	low	sphinx/builders/dummy.py:39:5	setup	function `setup` is never used
+unused-function	low	sphinx/builders/epub3.py:288:5	setup	function `setup` is never used
+unused-function	low	sphinx/builders/gettext.py:332:5	setup	function `setup` is never used
+unused-method	low	sphinx/builders/html/__init__.py:1037:9	get_outfilename	method `StandaloneHTMLBuilder.get_outfilename` is never used
+unused-method	low	sphinx/builders/html/__init__.py:1062:9	add_sidebars	method `StandaloneHTMLBuilder.add_sidebars` is never used
+unused-function	low	sphinx/builders/html/__init__.py:1454:5	setup	function `setup` is never used
+unused-function	low	sphinx/builders/latex/__init__.py:590:5	setup	function `setup` is never used
+unused-function	low	sphinx/builders/latex/transforms.py:645:5	setup	function `setup` is never used
+unused-function	medium	sphinx/builders/linkcheck.py:769:5	rewrite_github_anchor	function `rewrite_github_anchor` is never used
+unused-function	low	sphinx/builders/linkcheck.py:807:5	setup	function `setup` is never used
+unused-function	low	sphinx/builders/manpage.py:124:5	setup	function `setup` is never used
+unused-file	low	sphinx/builders/singlehtml.py	-	file `sphinx.builders.singlehtml` is never imported or run
+unused-function	low	sphinx/builders/texinfo.py:239:5	setup	function `setup` is never used
+unused-function	low	sphinx/builders/text.py:77:5	setup	function `setup` is never used
+unused-file	low	sphinx/builders/xml.py	-	file `sphinx.builders.xml` is never imported or run
+unused-function	low	sphinx/cmd/build.py:31:5	handle_exception	function `handle_exception` is never used
+unused-function	medium	sphinx/cmd/build.py:291:5	make_main	function `make_main` is never used
+unused-function	low	sphinx/cmd/quickstart.py:131:5	choice	function `choice` is never used
+unused-method	low	sphinx/config.py:331:9	overrides	method `Config.overrides` is never used
+unused-method	low	sphinx/config.py:403:9	pre_init_values	method `Config.pre_init_values` is never used
+unused-method	low	sphinx/config.py:410:9	init_values	method `Config.init_values` is never used
+unused-function	low	sphinx/config.py:899:5	setup	function `setup` is never used
+unused-function	low	sphinx/directives/__init__.py:369:5	setup	function `setup` is never used
+unused-function	low	sphinx/directives/admonitions.py:90:5	setup	function `setup` is never used
+unused-function	low	sphinx/directives/code.py:509:5	setup	function `setup` is never used
+unused-file	low	sphinx/directives/other.py	-	file `sphinx.directives.other` is never imported or run
+unused-file	low	sphinx/directives/patches.py	-	file `sphinx.directives.patches` is never imported or run
+unused-function	low	sphinx/domains/c/__init__.py:973:5	setup	function `setup` is never used
+unused-method	low	sphinx/domains/c/_symbol.py:50:9	parentSymbol	method `SymbolLookupResult.parentSymbol` is never used
+unused-function	low	sphinx/domains/changeset.py:176:5	setup	function `setup` is never used
+unused-function	low	sphinx/domains/citation.py:179:5	setup	function `setup` is never used
+unused-function	low	sphinx/domains/cpp/__init__.py:1310:5	setup	function `setup` is never used
+unused-method	low	sphinx/domains/cpp/_ast.py:1740:9	get_name_no_template	method `ASTOperatorType.get_name_no_template` is never used
+unused-method	low	sphinx/domains/cpp/_symbol.py:75:9	parentSymbol	method `SymbolLookupResult.parentSymbol` is never used
+unused-function	low	sphinx/domains/index.py:120:5	setup	function `setup` is never used
+unused-function	low	sphinx/domains/javascript.py:576:5	setup	function `setup` is never used
+unused-function	low	sphinx/domains/math.py:161:5	setup	function `setup` is never used
+unused-function	low	sphinx/domains/python/__init__.py:1101:5	setup	function `setup` is never used
+unused-function	low	sphinx/domains/rst.py:341:5	setup	function `setup` is never used
+unused-function	low	sphinx/domains/std/__init__.py:1464:5	setup	function `setup` is never used
+unused-method	low	sphinx/environment/__init__.py:578:9	temp_data	method `BuildEnvironment.temp_data` is never used
+unused-method	low	sphinx/environment/__init__.py:719:9	resolve_toctree	method `BuildEnvironment.resolve_toctree` is never used
+unused-class	medium	sphinx/environment/adapters/toctree.py:578:7	TocTree	class `TocTree` is never used
+unused-method	low	sphinx/environment/adapters/toctree.py:609:9	get_toctree_ancestors	method `TocTree.get_toctree_ancestors` is never used
+unused-method	low	sphinx/environment/adapters/toctree.py:612:9	get_toc_for	method `TocTree.get_toc_for` is never used
+unused-method	low	sphinx/environment/adapters/toctree.py:615:9	get_toctree_for	method `TocTree.get_toctree_for` is never used
+unused-file	low	sphinx/environment/collectors/asset.py	-	file `sphinx.environment.collectors.asset` is never imported or run
+unused-file	low	sphinx/environment/collectors/dependencies.py	-	file `sphinx.environment.collectors.dependencies` is never imported or run
+unused-file	low	sphinx/environment/collectors/metadata.py	-	file `sphinx.environment.collectors.metadata` is never imported or run
+unused-file	low	sphinx/environment/collectors/title.py	-	file `sphinx.environment.collectors.title` is never imported or run
+unused-file	low	sphinx/environment/collectors/toctree.py	-	file `sphinx.environment.collectors.toctree` is never imported or run
+unused-function	low	sphinx/ext/apidoc/__init__.py:28:5	setup	function `setup` is never used
+unused-function	low	sphinx/ext/autodoc/__init__.py:140:5	setup	function `setup` is never used
+unused-function	low	sphinx/ext/autodoc/_directive_options.py:250:5	merge_members_option	function `merge_members_option` is never used
+unused-method	low	sphinx/ext/autodoc/_legacy_class_based/_documenters.py:2669:9	is_function_or_method	method `AttributeDocumenter.is_function_or_method` is never used
+unused-variable	high	sphinx/ext/autodoc/importer.py:44:1	_NATIVE_SUFFIXES	variable `_NATIVE_SUFFIXES` is never used
+unused-function	low	sphinx/ext/autodoc/importer.py:140:5	get_object_members	function `get_object_members` is never used
+unused-file	low	sphinx/ext/autodoc/mock.py	-	file `sphinx.ext.autodoc.mock` is never imported or run
+unused-function	low	sphinx/ext/autosectionlabel.py:73:5	setup	function `setup` is never used
+unused-function	low	sphinx/ext/autosummary/__init__.py:881:5	setup	function `setup` is never used
+unused-method	low	sphinx/ext/autosummary/generate.py:201:9	get_object_type	method `ModuleScanner.get_object_type` is never used
+unused-function	low	sphinx/ext/coverage.py:523:5	setup	function `setup` is never used
+unused-method	medium	sphinx/ext/doctest.py:271:9	_DocTestRunner__patched_linecache_getlines	method `SphinxDocTestRunner._DocTestRunner__patched_linecache_getlines` is never used
+unused-function	low	sphinx/ext/doctest.py:626:5	setup	function `setup` is never used
+unused-function	low	sphinx/ext/duration.py:151:5	setup	function `setup` is never used
+unused-function	low	sphinx/ext/extlinks.py:128:5	setup	function `setup` is never used
+unused-function	low	sphinx/ext/githubpages.py:53:5	setup	function `setup` is never used
+unused-function	low	sphinx/ext/graphviz.py:512:5	setup	function `setup` is never used
+unused-function	low	sphinx/ext/ifconfig.py:78:5	setup	function `setup` is never used
+unused-function	low	sphinx/ext/imgconverter.py:95:5	setup	function `setup` is never used
+unused-function	low	sphinx/ext/imgmath.py:390:5	setup	function `setup` is never used
+unused-method	low	sphinx/ext/inheritance_diagram.py:310:9	generate_dot	method `InheritanceGraph.generate_dot` is never used
+unused-function	low	sphinx/ext/inheritance_diagram.py:551:5	setup	function `setup` is never used
+unused-function	medium	sphinx/ext/linkcode.py:30:5	add_linkcode_domain	function `add_linkcode_domain` is never used
+unused-function	low	sphinx/ext/linkcode.py:92:5	setup	function `setup` is never used
+unused-function	low	sphinx/ext/mathjax.py:142:5	setup	function `setup` is never used
+unused-method	medium	sphinx/ext/napoleon/docstring.py:920:9	_parse_usage_section	method `GoogleDocstring._parse_usage_section` is never used
+unused-function	low	sphinx/ext/todo.py:226:5	setup	function `setup` is never used
+unused-function	low	sphinx/ext/viewcode.py:393:5	setup	function `setup` is never used
+unused-function	low	sphinx/extension.py:87:5	setup	function `setup` is never used
+unused-variable	medium	sphinx/highlighting.py:53:1	escape_hl_chars	variable `escape_hl_chars` is never used
+unused-file	low	sphinx/io.py	-	file `sphinx.io` is never imported or run
+unused-method	low	sphinx/parsers.py:53:9	set_application	method `Parser.set_application` is never used
+unused-function	low	sphinx/parsers.py:108:5	setup	function `setup` is never used
+unused-class	medium	sphinx/pygments_styles.py:40:7	PyramidStyle	class `PyramidStyle` is never used
+unused-method	low	sphinx/registry.py:157:9	autodoc_attrgettrs	method `SphinxComponentRegistry.autodoc_attrgettrs` is never used
+unused-method	low	sphinx/registry.py:596:9	get_envversion	method `SphinxComponentRegistry.get_envversion` is never used
+unused-function	low	sphinx/registry.py:620:5	setup	function `setup` is never used
+unused-function	low	sphinx/roles.py:630:5	setup	function `setup` is never used
+unused-function	medium	sphinx/search/__init__.py:124:5	parse_stop_word	function `parse_stop_word` is never used
+unused-class	medium	sphinx/search/__init__.py:209:7	WordCollector	class `WordCollector` is never used
+unused-class	medium	sphinx/search/ja.py:53:7	MecabSplitter	class `MecabSplitter` is never used
+unused-class	medium	sphinx/search/ja.py:126:7	JanomeSplitter	class `JanomeSplitter` is never used
+unused-function	low	sphinx/testing/fixtures.py:224:5	if_graphviz_found	function `if_graphviz_found` is never used
+unused-function	low	sphinx/testing/fixtures.py:247:5	rollback_sysmodules	function `rollback_sysmodules` is never used
+unused-function	low	sphinx/transforms/__init__.py:518:5	setup	function `setup` is never used
+unused-method	low	sphinx/transforms/compact_bullet_list.py:49:9	invisible_visit	method `RefOnlyListChecker.invisible_visit` is never used
+unused-function	low	sphinx/transforms/compact_bullet_list.py:87:5	setup	function `setup` is never used
+unused-file	low	sphinx/transforms/i18n.py	-	file `sphinx.transforms.i18n` is never imported or run
+unused-function	low	sphinx/transforms/post_transforms/__init__.py:393:5	setup	function `setup` is never used
+unused-function	low	sphinx/transforms/post_transforms/code.py:135:5	setup	function `setup` is never used
+unused-function	low	sphinx/transforms/post_transforms/images.py:294:5	setup	function `setup` is never used
+unused-file	low	sphinx/transforms/references.py	-	file `sphinx.transforms.references` is never imported or run
+unused-function	high	sphinx/util/__init__.py:39:5	_md5	function `_md5` is never used
+unused-function	high	sphinx/util/__init__.py:49:5	_sha1	function `_sha1` is never used
+unused-variable	low	sphinx/util/_inventory_file_reader.py:9:1	logger	variable `logger` is never used
+unused-method	low	sphinx/util/_inventory_file_reader.py:68:9	read_compressed_lines	method `InventoryFileReader.read_compressed_lines` is never used
+unused-method	low	sphinx/util/cfamily.py:415:9	read_rest	method `BaseParser.read_rest` is never used
+unused-variable	medium	sphinx/util/console.py:39:1	color_terminal	variable `color_terminal` is never used
+unused-variable	medium	sphinx/util/console.py:40:1	nocolor	variable `nocolor` is never used
+unused-variable	medium	sphinx/util/console.py:41:1	coloron	variable `coloron` is never used
+unused-variable	medium	sphinx/util/console.py:42:1	strip_colors	variable `strip_colors` is never used
+unused-function	medium	sphinx/util/console.py:45:5	terminal_safe	function `terminal_safe` is never used
+unused-function	medium	sphinx/util/console.py:58:5	term_width_line	function `term_width_line` is never used
+unused-class	medium	sphinx/util/docutils.py:299:7	ElementLookupError	class `ElementLookupError` is never used
+unused-variable	low	sphinx/util/inspect.py:64:1	logger	variable `logger` is never used
+unused-variable	low	sphinx/util/inspect.py:71:1	ismethoddescriptor	variable `ismethoddescriptor` is never used
+unused-variable	low	sphinx/util/inspect.py:73:1	ismodule	variable `ismodule` is never used
+unused-variable	medium	sphinx/util/inventory.py:15:1	BUFSIZE	variable `BUFSIZE` is never used
+unused-variable	medium	sphinx/util/logging.py:332:1	skip_warningiserror	variable `skip_warningiserror` is never used
+unused-function	medium	sphinx/util/nodes.py:684:5	set_role_source_info	function `set_role_source_info` is never used
+unused-variable	medium	sphinx/util/osutil.py:192:1	safe_relpath	variable `safe_relpath` is never used
+unused-variable	low	sphinx/util/osutil.py:196:1	abspath	variable `abspath` is never used
+unused-function	low	sphinx/util/requests.py:57:5	head	function `head` is never used
+unused-function	low	sphinx/versioning.py:177:5	setup	function `setup` is never used
+unused-variable	low	sphinx/writers/html.py:16:1	logger	variable `logger` is never used
+unused-variable	medium	sphinx/writers/html.py:17:1	HTMLTranslator	variable `HTMLTranslator` is never used
+unused-function	medium	sphinx/writers/html5.py:34:5	multiply_length	function `multiply_length` is never used
+unused-method	low	sphinx/writers/latex.py:196:9	get_colspec	method `Table.get_colspec` is never used
+unused-variable	low	sphinx/writers/manpage.py:25:1	logger	variable `logger` is never used
+unused-method	low	sphinx/writers/texinfo.py:1305:9	unimplemented_visit	method `TexinfoTranslator.unimplemented_visit` is never used
+unused-class	medium	sphinx/writers/text.py:397:7	TextWriter	class `TextWriter` is never used
+unused-class	medium	sphinx/writers/xml.py:17:7	XMLWriter	class `XMLWriter` is never used
+unused-class	medium	sphinx/writers/xml.py:41:7	PseudoXMLWriter	class `PseudoXMLWriter` is never used
+unused-class	low	tests/js/roots/titles/relevance.py:1:7	Example	class `Example` is never used
+unused-variable	medium	tests/test_builders/test_build_linkcheck.py:37:1	ts_re	variable `ts_re` is never used
+unused-class	high	tests/test_ext_autodoc/test_ext_autodoc.py:131:7	_MyDocumenter	class `_MyDocumenter` is never used
+unused-variable	medium	tests/test_ext_autosummary/test_ext_autosummary.py:41:1	html_warnfile	variable `html_warnfile` is never used
+unused-function	low	tests/test_ext_imgconverter/test_ext_imgconverter.py:15:5	_if_converter_found	function `_if_converter_found` is never used
+unused-variable	medium	tests/test_ext_napoleon/pep526_data_google.py:5:1	module_level_var	variable `module_level_var` is never used
+unused-variable	medium	tests/test_ext_napoleon/pep526_data_numpy.py:5:1	module_level_var	variable `module_level_var` is never used
+unused-function	medium	tests/test_extensions/test_ext_doctest.py:77:5	cleanup_call	function `cleanup_call` is never used
+unused-function	low	tests/test_extensions/test_ext_doctest.py:128:5	record	function `record` is never used
+unused-function	low	tests/test_intl/test_catalogs.py:19:5	_setup_test	function `_setup_test` is never used
+unused-function	medium	tests/test_quickstart.py:23:5	setup_module	function `setup_module` is never used
+unused-function	medium	tests/test_quickstart.py:51:5	teardown_module	function `teardown_module` is never used
+unused-function	medium	tests/test_util/test_util_inspect.py:80:11	asyncgenerator	function `asyncgenerator` is never used
+unused-file	medium	utils/bump_docker.py	-	file `utils.bump_docker` is never imported or run
+unused-file	medium	utils/convert_attestations.py	-	file `convert_attestations.py` is never imported or run
+unused-file	medium	utils/generate_js_fixtures.py	-	file `utils.generate_js_fixtures` is never imported or run

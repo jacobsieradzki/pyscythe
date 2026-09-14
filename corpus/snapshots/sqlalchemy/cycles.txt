@@ -1,0 +1,14 @@
+files_scanned=673
+symbols_checked=0
+symbols_kept=0
+findings=9
+--
+circular-import	high	lib/sqlalchemy/__init__.py:12:1	-	import cycle among 73 modules, shortest: lib.sqlalchemy -> lib.sqlalchemy.util -> lib.sqlalchemy.util.concurrency -> lib.sqlalchemy
+circular-import	high	lib/sqlalchemy/dialects/mssql/__init__.py:14:1	-	import cycle among 6 modules, shortest: lib.sqlalchemy.dialects.mssql -> lib.sqlalchemy.dialects.mssql.base -> lib.sqlalchemy.dialects.mssql
+circular-import	high	lib/sqlalchemy/dialects/mysql/__init__.py:19:1	-	import cycle among 11 modules, shortest: lib.sqlalchemy.dialects.mysql -> lib.sqlalchemy.dialects.mysql.base -> lib.sqlalchemy.dialects.mysql
+circular-import	high	lib/sqlalchemy/dialects/oracle/__init__.py:11:1	-	import cycle among 4 modules, shortest: lib.sqlalchemy.dialects.oracle -> lib.sqlalchemy.dialects.oracle.cx_oracle -> lib.sqlalchemy.dialects.oracle
+circular-import	high	lib/sqlalchemy/dialects/postgresql/__init__.py:12:1	-	import cycle among 10 modules, shortest: lib.sqlalchemy.dialects.postgresql -> lib.sqlalchemy.dialects.postgresql.asyncpg -> lib.sqlalchemy.dialects.postgresql
+circular-import	high	lib/sqlalchemy/ext/asyncio/__init__.py:8:1	-	import cycle among 6 modules, shortest: lib.sqlalchemy.ext.asyncio -> lib.sqlalchemy.ext.asyncio.engine -> lib.sqlalchemy.ext.asyncio
+circular-import	high	lib/sqlalchemy/orm/__init__.py:23:1	-	import cycle among 35 modules, shortest: lib.sqlalchemy.orm -> lib.sqlalchemy.orm._orm_constructors -> lib.sqlalchemy.orm
+circular-import	high	lib/sqlalchemy/testing/__init__.py:13:1	-	import cycle among 10 modules, shortest: lib.sqlalchemy.testing -> lib.sqlalchemy.testing.assertions -> lib.sqlalchemy.testing
+circular-import	high	lib/sqlalchemy/testing/suite/__init__.py:8:1	-	import cycle among 4 modules, shortest: lib.sqlalchemy.testing.suite -> lib.sqlalchemy.testing.suite.test_ddl -> lib.sqlalchemy.testing.suite

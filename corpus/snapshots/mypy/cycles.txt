@@ -1,0 +1,10 @@
+files_scanned=442
+symbols_checked=0
+symbols_kept=0
+findings=5
+--
+circular-import	high	mypy/applytype.py:5:8	-	import cycle among 3 modules, shortest: mypy.applytype -> mypy.subtypes -> mypy.applytype
+circular-import	high	mypy/checker.py:79:8	-	import cycle: mypy.checker -> mypy.checkexpr -> mypy.checker
+circular-import	high	mypy/expandtype.py:8:1	-	import cycle among 6 modules, shortest: mypy.expandtype -> mypy.types -> mypy.expandtype
+circular-import	high	mypyc/lower/int_ops.py:10:1	-	import cycle among 5 modules, shortest: mypyc.lower.int_ops -> mypyc.lower.registry -> mypyc.lower.int_ops
+circular-import	high	mypyc/primitives/bytearray_ops.py:19:1	-	import cycle among 16 modules, shortest: mypyc.primitives.bytearray_ops -> mypyc.primitives.registry -> mypyc.primitives.bytearray_ops

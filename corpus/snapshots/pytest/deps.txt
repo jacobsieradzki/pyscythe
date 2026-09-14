@@ -1,0 +1,38 @@
+files_scanned=274
+symbols_checked=46
+symbols_kept=0
+findings=33
+--
+missing-dependency	medium	doc/en/conf.py:146:5	packaging	`packaging` is imported but `packaging` is not a declared dependency
+unresolved-import	low	doc/en/example/assertion/failure_demo.py:113:16		import `attr` resolves to nothing on the search path
+unresolved-import	low	doc/en/example/nonpython/conftest.py:15:16		import `yaml` resolves to nothing on the search path
+unused-dependency	medium	doc/en/requirements.txt	furo	dependency `furo` is never imported
+unused-dependency	medium	doc/en/requirements.txt	pygments-pytest	dependency `pygments-pytest` is never imported
+unused-dependency	medium	doc/en/requirements.txt	sphinx-inline-tabs	dependency `sphinx-inline-tabs` is never imported
+unused-dependency	medium	doc/en/requirements.txt	sphinx-issues	dependency `sphinx-issues` is never imported
+unused-dependency	medium	doc/en/requirements.txt	sphinx-removed-in	dependency `sphinx-removed-in` is never imported
+unused-dependency	medium	doc/en/requirements.txt	sphinxcontrib-svg2pdfconverter	dependency `sphinxcontrib-svg2pdfconverter` is never imported
+unused-dependency	medium	doc/en/requirements.txt	sphinxcontrib-towncrier	dependency `sphinxcontrib-towncrier` is never imported
+unused-dependency	medium	doc/en/requirements.txt	sphinxcontrib-trio	dependency `sphinxcontrib-trio` is never imported
+unused-dependency	low	pyproject.toml	mock	dependency `mock` (optional-dependencies.dev) is never imported
+unused-dependency	low	pyproject.toml	pyyaml	dependency `pyyaml` (optional-dependencies.dev) is never imported
+unresolved-import	low	scripts/generate-gh-release-notes.py:19:8		import `pypandoc` resolves to nothing on the search path
+unresolved-import	low	scripts/update-plugin-list.py:15:8		import `platformdirs` resolves to nothing on the search path
+unresolved-import	low	scripts/update-plugin-list.py:16:1		import `requests_cache` resolves to nothing on the search path
+unresolved-import	low	scripts/update-plugin-list.py:20:8		import `tabulate` resolves to nothing on the search path
+unresolved-import	low	scripts/update-plugin-list.py:21:1		import `tqdm` resolves to nothing on the search path
+unresolved-import	low	scripts/update-plugin-list.py:22:8		import `wcwidth` resolves to nothing on the search path
+unresolved-import	low	src/_pytest/_py/error.py:14:5		import `typing_extensions` resolves to nothing on the search path
+unresolved-import	low	src/_pytest/compat.py:24:5		import `annotationlib` resolves to nothing on the search path
+unresolved-import	low	src/_pytest/config/findpaths.py:66:16		import `tomllib` resolves to nothing on the search path
+unresolved-import	low	src/_pytest/monkeypatch.py:372:20		import `pkg_resources` resolves to nothing on the search path
+unresolved-import	low	src/_pytest/unittest.py:50:12		import `twisted` resolves to nothing on the search path
+unresolved-import	low	src/_pytest/unittest.py:534:9		import `zope` resolves to nothing on the search path
+unresolved-import	low	testing/_py/test_local.py:1076:9		import `xxxpackage` resolves to nothing on the search path
+unresolved-import	low	testing/plugins_integration/pytest_trio_integration.py:4:8		import `trio` resolves to nothing on the search path
+unused-dependency	medium	testing/plugins_integration/requirements.txt	django	dependency `django` is never imported
+unresolved-import	low	testing/python/collect.py:1266:20		import `filter_traceback_entry_as_str` resolves to nothing on the search path
+unresolved-import	low	testing/python/fixtures.py:779:20		import `xdist` resolves to nothing on the search path
+unresolved-import	low	testing/test_monkeypatch.py:667:12		import `ns_pkg` resolves to nothing on the search path
+unresolved-import	low	testing/test_monkeypatch.py:690:5		import `main_app` resolves to nothing on the search path
+unresolved-import	low	testing/test_pytester.py:286:16		import `imported` resolves to nothing on the search path

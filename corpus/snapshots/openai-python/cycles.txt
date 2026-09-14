@@ -1,0 +1,10 @@
+files_scanned=2156
+symbols_checked=0
+symbols_kept=0
+findings=5
+--
+circular-import	high	src/openai/__init__.py:12:1	-	import cycle among 6 modules, shortest: openai -> openai._client -> openai
+circular-import	high	src/openai/_files.py:20:1	-	import cycle: openai._files -> openai._utils -> openai._utils._transform -> openai._files
+circular-import	high	src/openai/resources/__init__.py:3:1	-	import cycle: openai.resources -> openai.resources.beta -> openai.resources.beta.beta -> openai.resources
+circular-import	high	src/openai/types/responses/__init__.py:5:1	-	import cycle among 31 modules, shortest: openai.types.responses -> openai.types.responses.tool -> openai.types.responses
+circular-import	high	tests/respx2/__init__.py:3:1	-	import cycle among 7 modules, shortest: tests.respx2 -> tests.respx2.models -> tests.respx2

@@ -1,0 +1,847 @@
+files_scanned=1028
+symbols_checked=0
+symbols_kept=0
+findings=841
+duplication: clones=841 duplicated_lines=57954 total_lines=111094 percent_tenths=521
+--
+duplicate-code	high	docs_src/additional_responses/tutorial001_py310.py:1:1	-	18 lines (59 tokens) duplicated at docs_src.additional_responses.tutorial003_py310:1
+duplicate-code	high	docs_src/additional_responses/tutorial002_py310.py:21:1	-	9 lines (57 tokens) duplicated at docs_src.additional_responses.tutorial004_py310:24
+duplicate-code	high	docs_src/app_testing/app_b_an_py310/main.py:3:1	-	21 lines (97 tokens) duplicated at docs_src.app_testing.app_b_py310.main:1
+duplicate-code	high	docs_src/app_testing/app_b_an_py310/main.py:23:1	-	10 lines (71 tokens) duplicated at docs_src.app_testing.app_b_py310.main:21
+duplicate-code	high	docs_src/app_testing/app_b_an_py310/main.py:32:1	-	8 lines (65 tokens) duplicated at docs_src.app_testing.app_b_py310.main:30
+duplicate-code	high	docs_src/app_testing/app_b_an_py310/test_main.py:1:1	-	66 lines (349 tokens) duplicated at docs_src.app_testing.app_b_py310.test_main:1
+duplicate-code	high	docs_src/background_tasks/tutorial002_an_py310.py:3:1	-	20 lines (110 tokens) duplicated at docs_src.background_tasks.tutorial002_py310:1
+duplicate-code	high	docs_src/body/tutorial001_py310.py:1:1	-	17 lines (60 tokens) duplicated at docs_src.body.tutorial002_py310:1
+duplicate-code	high	docs_src/body/tutorial003_py310.py:1:1	-	16 lines (60 tokens) duplicated at docs_src.body.tutorial004_py310:1
+duplicate-code	high	docs_src/body_fields/tutorial001_an_py310.py:3:1	-	17 lines (84 tokens) duplicated at docs_src.body_fields.tutorial001_py310:1
+duplicate-code	high	docs_src/body_nested_models/tutorial004_py310.py:1:1	-	25 lines (116 tokens) duplicated at docs_src.body_nested_models.tutorial005_py310:1
+duplicate-code	high	docs_src/body_nested_models/tutorial006_py310.py:1:1	-	21 lines (80 tokens) duplicated at docs_src.body_nested_models.tutorial007_py310:1
+duplicate-code	high	docs_src/body_updates/tutorial001_py310.py:11:1	-	13 lines (90 tokens) duplicated at docs_src.response_model.tutorial004_py310:10
+duplicate-code	high	docs_src/cookie_param_models/tutorial001_an_py310.py:3:1	-	14 lines (52 tokens) duplicated at docs_src.cookie_param_models.tutorial001_py310:1
+duplicate-code	high	docs_src/cookie_param_models/tutorial002_an_py310.py:3:1	-	16 lines (60 tokens) duplicated at docs_src.cookie_param_models.tutorial002_py310:1
+duplicate-code	high	docs_src/custom_request_and_route/tutorial001_an_py310.py:2:1	-	34 lines (181 tokens) duplicated at docs_src.custom_request_and_route.tutorial001_py310:1
+duplicate-code	high	docs_src/custom_request_and_route/tutorial002_an_py310.py:2:1	-	28 lines (143 tokens) duplicated at docs_src.custom_request_and_route.tutorial002_py310:1
+duplicate-code	high	docs_src/dataclasses_/tutorial002_py310.py:8:1	-	11 lines (50 tokens) duplicated at tests.test_pydanticv2_dataclasses_uuid_stringified_annotations:15
+duplicate-code	high	docs_src/dependencies/tutorial001_an_py310.py:1:1	-	14 lines (79 tokens) duplicated at docs_src.dependency_testing.tutorial001_an_py310:3
+duplicate-code	high	docs_src/dependencies/tutorial001_py310.py:1:1	-	12 lines (75 tokens) duplicated at docs_src.dependency_testing.tutorial001_py310:2
+duplicate-code	high	docs_src/dependencies/tutorial002_an_py310.py:1:1	-	26 lines (168 tokens) duplicated at docs_src.dependencies.tutorial003_an_py310:1
+duplicate-code	high	docs_src/dependencies/tutorial002_py310.py:1:1	-	17 lines (100 tokens) duplicated at docs_src.dependencies.tutorial004_py310:1
+duplicate-code	high	docs_src/dependencies/tutorial002_py310.py:17:1	-	8 lines (64 tokens) duplicated at docs_src.dependencies.tutorial003_py310:17
+duplicate-code	high	docs_src/dependencies/tutorial003_py310.py:1:1	-	17 lines (95 tokens) duplicated at docs_src.dependencies.tutorial004_an_py310:3
+duplicate-code	high	docs_src/dependencies/tutorial004_an_py310.py:19:1	-	8 lines (62 tokens) duplicated at docs_src.dependencies.tutorial004_py310:17
+duplicate-code	high	docs_src/dependencies/tutorial006_an_py310.py:13:1	-	10 lines (74 tokens) duplicated at docs_src.dependencies.tutorial006_py310:11
+duplicate-code	high	docs_src/dependencies/tutorial008b_an_py310.py:3:1	-	24 lines (106 tokens) duplicated at docs_src.dependencies.tutorial008b_py310:1
+duplicate-code	high	docs_src/dependencies/tutorial008b_an_py310.py:26:1	-	8 lines (53 tokens) duplicated at docs_src.dependencies.tutorial008b_py310:24
+duplicate-code	high	docs_src/dependencies/tutorial008c_an_py310.py:16:1	-	15 lines (76 tokens) duplicated at docs_src.dependencies.tutorial008d_an_py310:17
+duplicate-code	high	docs_src/dependencies/tutorial008c_py310.py:14:1	-	15 lines (73 tokens) duplicated at docs_src.dependencies.tutorial008d_py310:15
+duplicate-code	high	docs_src/dependencies/tutorial011_an_py310.py:3:1	-	20 lines (85 tokens) duplicated at docs_src.dependencies.tutorial011_py310:1
+duplicate-code	high	docs_src/dependencies/tutorial012_an_py310.py:11:1	-	18 lines (111 tokens) duplicated at docs_src.dependencies.tutorial012_py310:9
+duplicate-code	high	docs_src/dependencies/tutorial013_an_py310.py:1:1	-	30 lines (126 tokens) duplicated at docs_src.dependencies.tutorial014_an_py310:1
+duplicate-code	high	docs_src/dependencies/tutorial013_an_py310.py:30:1	-	10 lines (69 tokens) duplicated at docs_src.dependencies.tutorial014_an_py310:31
+duplicate-code	high	docs_src/dependency_testing/tutorial001_an_py310.py:19:1	-	40 lines (225 tokens) duplicated at docs_src.dependency_testing.tutorial001_py310:17
+duplicate-code	high	docs_src/encoder/tutorial001_py310.py:7:1	-	15 lines (61 tokens) duplicated at docs_src.response_directly.tutorial001_py310:6
+duplicate-code	high	docs_src/extra_data_types/tutorial001_an_py310.py:16:1	-	14 lines (50 tokens) duplicated at docs_src.extra_data_types.tutorial001_py310:15
+duplicate-code	high	docs_src/extra_models/tutorial001_py310.py:1:1	-	20 lines (62 tokens) duplicated at docs_src.response_model.tutorial003_py310:3
+duplicate-code	high	docs_src/extra_models/tutorial001_py310.py:24:1	-	19 lines (96 tokens) duplicated at docs_src.extra_models.tutorial002_py310:22
+duplicate-code	high	docs_src/generate_clients/tutorial002_py310.py:4:1	-	34 lines (177 tokens) duplicated at docs_src.generate_clients.tutorial003_py310:10
+duplicate-code	high	docs_src/handling_errors/tutorial001_py310.py:1:1	-	11 lines (52 tokens) duplicated at tests.test_starlette_exception:4
+duplicate-code	high	docs_src/handling_errors/tutorial004_py310.py:19:1	-	9 lines (50 tokens) duplicated at docs_src.handling_errors.tutorial006_py310:21
+duplicate-code	high	docs_src/header_param_models/tutorial001_an_py310.py:1:1	-	18 lines (72 tokens) duplicated at docs_src.header_param_models.tutorial003_an_py310:1
+duplicate-code	high	docs_src/header_param_models/tutorial001_py310.py:1:1	-	16 lines (69 tokens) duplicated at docs_src.header_param_models.tutorial003_py310:1
+duplicate-code	high	docs_src/header_param_models/tutorial002_an_py310.py:3:1	-	18 lines (74 tokens) duplicated at docs_src.header_param_models.tutorial002_py310:1
+duplicate-code	high	docs_src/metadata/tutorial001_1_py310.py:1:1	-	30 lines (53 tokens) duplicated at docs_src.metadata.tutorial001_py310:1
+duplicate-code	high	docs_src/openapi_callbacks/tutorial001_py310.py:1:1	-	33 lines (98 tokens) duplicated at tests.test_sub_callbacks:3
+duplicate-code	high	docs_src/path_operation_advanced_configuration/tutorial004_py310.py:1:1	-	29 lines (82 tokens) duplicated at docs_src.path_operation_configuration.tutorial004_py310:1
+duplicate-code	high	docs_src/path_operation_advanced_configuration/tutorial006_py310.py:20:1	-	16 lines (63 tokens) duplicated at tests.test_tutorial.test_path_operation_advanced_configurations.test_tutorial006:34
+duplicate-code	high	docs_src/path_operation_configuration/tutorial001_py310.py:1:1	-	15 lines (61 tokens) duplicated at docs_src.path_operation_configuration.tutorial002_py310:1
+duplicate-code	high	docs_src/path_operation_configuration/tutorial002_py310.py:20:1	-	9 lines (68 tokens) duplicated at docs_src.path_operation_configuration.tutorial006_py310:6
+duplicate-code	high	docs_src/path_operation_configuration/tutorial003_py310.py:1:1	-	18 lines (65 tokens) duplicated at docs_src.path_operation_configuration.tutorial005_py310:1
+duplicate-code	high	docs_src/query_param_models/tutorial001_an_py310.py:1:1	-	17 lines (84 tokens) duplicated at docs_src.query_param_models.tutorial001_py310:1
+duplicate-code	high	docs_src/query_param_models/tutorial002_an_py310.py:1:1	-	19 lines (92 tokens) duplicated at docs_src.query_param_models.tutorial002_py310:1
+duplicate-code	high	docs_src/request_files/tutorial001_02_an_py310.py:9:1	-	14 lines (86 tokens) duplicated at docs_src.request_files.tutorial001_02_py310:7
+duplicate-code	high	docs_src/request_files/tutorial002_an_py310.py:10:1	-	25 lines (88 tokens) duplicated at docs_src.request_files.tutorial002_py310:8
+duplicate-code	high	docs_src/request_files/tutorial003_an_py310.py:20:1	-	21 lines (50 tokens) duplicated at docs_src.request_files.tutorial003_py310:16
+duplicate-code	high	docs_src/response_model/tutorial001_01_py310.py:1:1	-	15 lines (57 tokens) duplicated at docs_src.response_model.tutorial001_py310:3
+duplicate-code	high	docs_src/schema_extra_example/tutorial003_an_py310.py:3:1	-	17 lines (60 tokens) duplicated at docs_src.schema_extra_example.tutorial003_py310:1
+duplicate-code	high	docs_src/schema_extra_example/tutorial004_an_py310.py:3:1	-	18 lines (62 tokens) duplicated in 3 other places: docs_src.schema_extra_example.tutorial004_py310:1, docs_src.schema_extra_example.tutorial005_an_py310:3, docs_src.schema_extra_example.tutorial005_py310:1
+duplicate-code	high	docs_src/schema_extra_example/tutorial004_an_py310.py:22:1	-	18 lines (50 tokens) duplicated at docs_src.schema_extra_example.tutorial004_py310:18
+duplicate-code	high	docs_src/schema_extra_example/tutorial005_an_py310.py:22:1	-	29 lines (91 tokens) duplicated at docs_src.schema_extra_example.tutorial005_py310:18
+duplicate-code	high	docs_src/security/tutorial002_an_py310.py:3:1	-	23 lines (89 tokens) duplicated at docs_src.security.tutorial002_py310:1
+duplicate-code	high	docs_src/security/tutorial007_an_py310.py:14:1	-	22 lines (110 tokens) duplicated at docs_src.security.tutorial007_py310:11
+duplicate-code	high	docs_src/separate_openapi_schemas/tutorial001_py310.py:10:1	-	18 lines (68 tokens) duplicated at docs_src.separate_openapi_schemas.tutorial002_py310:10
+duplicate-code	high	docs_src/server_sent_events/tutorial001_py310.py:3:1	-	20 lines (72 tokens) duplicated at docs_src.stream_json_lines.tutorial001_py310:1
+duplicate-code	high	docs_src/server_sent_events/tutorial002_py310.py:1:1	-	23 lines (81 tokens) duplicated at docs_src.server_sent_events.tutorial004_py310:2
+duplicate-code	high	docs_src/websockets_/tutorial002_an_py310.py:82:1	-	12 lines (80 tokens) duplicated at docs_src.websockets_.tutorial002_py310:79
+duplicate-code	high	fastapi/_compat/shared.py:61:1	-	11 lines (59 tokens) duplicated at fastapi._compat.shared:110
+duplicate-code	high	fastapi/_compat/shared.py:135:1	-	12 lines (74 tokens) duplicated at fastapi._compat.shared:146
+duplicate-code	high	fastapi/_compat/shared.py:157:1	-	16 lines (86 tokens) duplicated at fastapi._compat.shared:172
+duplicate-code	high	fastapi/_compat/shared.py:189:1	-	13 lines (61 tokens) duplicated at fastapi._compat.shared:201
+duplicate-code	high	fastapi/_compat/v2.py:194:1	-	18 lines (80 tokens) duplicated at fastapi._compat.v2:218
+duplicate-code	high	fastapi/applications.py:501:1	-	41 lines (83 tokens) duplicated at fastapi.routing:2414
+duplicate-code	high	fastapi/applications.py:873:1	-	18 lines (110 tokens) duplicated at fastapi.routing:999
+duplicate-code	high	fastapi/applications.py:984:1	-	15 lines (60 tokens) duplicated at fastapi.param_functions:984
+duplicate-code	high	fastapi/applications.py:1086:1	-	11 lines (61 tokens) duplicated at fastapi.routing:1232
+duplicate-code	high	fastapi/applications.py:1121:1	-	5 lines (51 tokens) duplicated at fastapi.applications:1149
+duplicate-code	high	fastapi/applications.py:1168:1	-	21 lines (165 tokens) duplicated at fastapi.applications:1303
+duplicate-code	high	fastapi/applications.py:1220:1	-	72 lines (97 tokens) duplicated at fastapi.routing:2628
+duplicate-code	high	fastapi/applications.py:1331:1	-	25 lines (96 tokens) duplicated at fastapi.routing:3004
+duplicate-code	high	fastapi/applications.py:1396:1	-	40 lines (55 tokens) duplicated at fastapi.routing:3077
+duplicate-code	high	fastapi/applications.py:1648:1	-	1503 lines (2156 tokens) duplicated at fastapi.applications:3150
+duplicate-code	high	fastapi/datastructures.py:161:1	-	8 lines (54 tokens) duplicated at fastapi.dependencies.models:61
+duplicate-code	high	fastapi/dependencies/models.py:31:1	-	7 lines (67 tokens) duplicated at fastapi.openapi.utils:88
+duplicate-code	high	fastapi/dependencies/models.py:40:1	-	9 lines (69 tokens) duplicated at fastapi.openapi.models:310
+duplicate-code	high	fastapi/dependencies/models.py:140:1	-	31 lines (209 tokens) duplicated at fastapi.dependencies.models:170
+duplicate-code	high	fastapi/dependencies/utils.py:353:1	-	10 lines (59 tokens) duplicated at fastapi.dependencies.utils:362
+duplicate-code	high	fastapi/dependencies/utils.py:859:1	-	11 lines (60 tokens) duplicated at fastapi.dependencies.utils:991
+duplicate-code	high	fastapi/exceptions.py:209:1	-	17 lines (75 tokens) duplicated at fastapi.exceptions:231
+duplicate-code	high	fastapi/openapi/models.py:64:1	-	12 lines (50 tokens) duplicated at fastapi.openapi.models:410
+duplicate-code	high	fastapi/openapi/models.py:237:1	-	8 lines (67 tokens) duplicated at fastapi.openapi.models:251
+duplicate-code	high	fastapi/openapi/models.py:360:1	-	18 lines (56 tokens) duplicated at tests.test_response_model_as_return_annotation:10
+duplicate-code	high	fastapi/openapi/models.py:400:1	-	5 lines (60 tokens) duplicated at fastapi.openapi.models:404
+duplicate-code	high	fastapi/openapi/utils.py:628:1	-	21 lines (118 tokens) duplicated at fastapi.openapi.utils:648
+duplicate-code	high	fastapi/param_functions.py:24:1	-	54 lines (103 tokens) duplicated at fastapi.param_functions:709
+duplicate-code	high	fastapi/param_functions.py:140:1	-	164 lines (324 tokens) duplicated at fastapi.param_functions:821
+duplicate-code	high	fastapi/param_functions.py:324:1	-	37 lines (134 tokens) duplicated at fastapi.param_functions:668
+duplicate-code	high	fastapi/param_functions.py:1038:1	-	281 lines (610 tokens) duplicated at fastapi.param_functions:1366
+duplicate-code	high	fastapi/param_functions.py:1319:1	-	27 lines (54 tokens) duplicated at fastapi.param_functions:1649
+duplicate-code	high	fastapi/param_functions.py:1682:1	-	289 lines (628 tokens) duplicated at fastapi.param_functions:1997
+duplicate-code	high	fastapi/params.py:31:1	-	44 lines (280 tokens) duplicated at fastapi.params:142
+duplicate-code	high	fastapi/params.py:74:1	-	65 lines (322 tokens) duplicated at fastapi.params:519
+duplicate-code	high	fastapi/params.py:186:1	-	119 lines (572 tokens) duplicated at fastapi.params:352
+duplicate-code	high	fastapi/params.py:316:1	-	11 lines (76 tokens) duplicated at fastapi.params:480
+duplicate-code	high	fastapi/params.py:588:1	-	76 lines (389 tokens) duplicated at fastapi.params:670
+duplicate-code	high	fastapi/routing.py:414:1	-	10 lines (50 tokens) duplicated at fastapi.routing:770
+duplicate-code	high	fastapi/routing.py:921:1	-	23 lines (150 tokens) duplicated at fastapi.routing:1127
+duplicate-code	high	fastapi/routing.py:948:1	-	11 lines (61 tokens) duplicated at fastapi.routing:1149
+duplicate-code	high	fastapi/routing.py:962:1	-	28 lines (239 tokens) duplicated at fastapi.routing:1162
+duplicate-code	high	fastapi/routing.py:1209:1	-	14 lines (51 tokens) duplicated at fastapi.routing:6348
+duplicate-code	high	fastapi/routing.py:1601:1	-	9 lines (66 tokens) duplicated at fastapi.routing:1626
+duplicate-code	high	fastapi/routing.py:1610:1	-	8 lines (55 tokens) duplicated at fastapi.routing:1639
+duplicate-code	high	fastapi/routing.py:1759:1	-	6 lines (50 tokens) duplicated at fastapi.routing:2856
+duplicate-code	high	fastapi/routing.py:1793:1	-	10 lines (71 tokens) duplicated at fastapi.routing:2769
+duplicate-code	high	fastapi/routing.py:1923:1	-	9 lines (53 tokens) duplicated at fastapi.routing:2008
+duplicate-code	high	fastapi/routing.py:2169:1	-	9 lines (50 tokens) duplicated at fastapi.routing:2781
+duplicate-code	high	fastapi/routing.py:2283:1	-	72 lines (136 tokens) duplicated at fastapi.routing:3135
+duplicate-code	high	fastapi/routing.py:2892:1	-	12 lines (103 tokens) duplicated at fastapi.routing:2975
+duplicate-code	high	fastapi/routing.py:2903:1	-	10 lines (64 tokens) duplicated at fastapi.routing:2986
+duplicate-code	high	fastapi/routing.py:3683:1	-	383 lines (544 tokens) duplicated in 6 other places: fastapi.routing:4065, fastapi.routing:4447, fastapi.routing:4824, fastapi.routing:5201, fastapi.routing:5583, fastapi.routing:5965
+duplicate-code	high	fastapi/security/api_key.py:131:1	-	52 lines (107 tokens) duplicated at fastapi.security.api_key:219
+duplicate-code	high	fastapi/security/http.py:97:1	-	59 lines (84 tokens) duplicated at fastapi.security.http:311
+duplicate-code	high	fastapi/security/http.py:299:1	-	13 lines (105 tokens) duplicated at fastapi.security.http:400
+duplicate-code	high	fastapi/security/oauth2.py:92:1	-	52 lines (59 tokens) duplicated at fastapi.security.oauth2:258
+duplicate-code	high	fastapi/security/oauth2.py:417:1	-	17 lines (85 tokens) duplicated at fastapi.security.open_id_connect_url:81
+duplicate-code	high	fastapi/security/oauth2.py:523:1	-	25 lines (124 tokens) duplicated at fastapi.security.oauth2:629
+duplicate-code	high	scripts/doc_parsing_utils.py:203:1	-	16 lines (59 tokens) duplicated at scripts.doc_parsing_utils:636
+duplicate-code	high	scripts/doc_parsing_utils.py:307:1	-	17 lines (56 tokens) duplicated at scripts.doc_parsing_utils:430
+duplicate-code	high	scripts/doc_parsing_utils.py:514:1	-	17 lines (61 tokens) duplicated at scripts.doc_parsing_utils:533
+duplicate-code	high	scripts/doc_parsing_utils.py:549:1	-	10 lines (65 tokens) duplicated at scripts.doc_parsing_utils:558
+duplicate-code	high	scripts/doc_parsing_utils.py:690:1	-	11 lines (50 tokens) duplicated at scripts.doc_parsing_utils:720
+duplicate-code	high	scripts/doc_parsing_utils.py:700:1	-	11 lines (52 tokens) duplicated at scripts.doc_parsing_utils:710
+duplicate-code	high	scripts/docs.py:784:1	-	7 lines (57 tokens) duplicated at scripts.docs:805
+duplicate-code	high	scripts/label_approved.py:25:1	-	8 lines (81 tokens) duplicated at scripts.notify_translations:307
+duplicate-code	high	scripts/notify_translations.py:90:1	-	17 lines (50 tokens) duplicated at scripts.notify_translations:163
+duplicate-code	high	scripts/notify_translations.py:114:1	-	26 lines (89 tokens) duplicated at scripts.sponsors:61
+duplicate-code	high	scripts/notify_translations.py:217:1	-	10 lines (56 tokens) duplicated at scripts.sponsors:99
+duplicate-code	high	scripts/notify_translations.py:284:1	-	12 lines (63 tokens) duplicated at scripts.notify_translations:295
+duplicate-code	high	scripts/playwright/cookie_param_models/image01.py:1:1	-	17 lines (88 tokens) duplicated at scripts.playwright.query_param_models.image01:1
+duplicate-code	high	scripts/playwright/cookie_param_models/image01.py:27:1	-	14 lines (76 tokens) duplicated in 4 other places: scripts.playwright.header_param_models.image01:26, scripts.playwright.json_base64_bytes.image01:25, scripts.playwright.query_param_models.image01:29, scripts.playwright.request_form_models.image01:26
+duplicate-code	high	scripts/playwright/header_param_models/image01.py:1:1	-	15 lines (71 tokens) duplicated in 2 other places: scripts.playwright.json_base64_bytes.image01:1, scripts.playwright.request_form_models.image01:1
+duplicate-code	high	scripts/playwright/separate_openapi_schemas/image01.py:18:1	-	16 lines (59 tokens) duplicated in 3 other places: scripts.playwright.separate_openapi_schemas.image02:19, scripts.playwright.separate_openapi_schemas.image03:19, scripts.playwright.separate_openapi_schemas.image04:19
+duplicate-code	high	scripts/playwright/separate_openapi_schemas/image02.py:1:1	-	14 lines (76 tokens) duplicated at scripts.playwright.separate_openapi_schemas.image03:1
+duplicate-code	high	scripts/playwright/separate_openapi_schemas/image04.py:1:1	-	13 lines (69 tokens) duplicated at scripts.playwright.separate_openapi_schemas.image05:1
+duplicate-code	high	scripts/playwright/sql_databases/image01.py:1:1	-	17 lines (80 tokens) duplicated at scripts.playwright.sql_databases.image02:1
+duplicate-code	high	scripts/playwright/sql_databases/image01.py:25:1	-	14 lines (77 tokens) duplicated at scripts.playwright.sql_databases.image02:25
+duplicate-code	high	scripts/prepare_release.py:161:1	-	16 lines (51 tokens) duplicated at scripts.prepare_release:178
+duplicate-code	high	scripts/sponsors.py:156:1	-	8 lines (55 tokens) duplicated at scripts.topic_repos:22
+duplicate-code	high	scripts/sponsors.py:198:1	-	9 lines (61 tokens) duplicated at scripts.topic_repos:64
+duplicate-code	high	scripts/sponsors.py:211:1	-	13 lines (110 tokens) duplicated at scripts.topic_repos:70
+duplicate-code	high	scripts/tests/test_translation_fixer/test_code_blocks/test_code_blocks_lines_number_mismatch.py:15:1	-	12 lines (80 tokens) duplicated in 2 other places: scripts.tests.test_translation_fixer.test_code_blocks.test_code_blocks_wrong_lang_code:15, scripts.tests.test_translation_fixer.test_code_blocks.test_code_blocks_wrong_lang_code:39
+duplicate-code	high	scripts/tests/test_translation_fixer/test_code_blocks/test_code_blocks_lines_number_mismatch.py:39:1	-	12 lines (69 tokens) duplicated at scripts.tests.test_translation_fixer.test_code_blocks.test_code_blocks_number_mismatch:40
+duplicate-code	high	scripts/tests/test_translation_fixer/test_code_blocks/test_code_blocks_mermaid.py:15:1	-	13 lines (79 tokens) duplicated at scripts.tests.test_translation_fixer.test_code_blocks.test_code_blocks_mermaid:42
+duplicate-code	high	scripts/tests/test_translation_fixer/test_code_blocks/test_code_blocks_number_mismatch.py:10:1	-	23 lines (132 tokens) duplicated in 2 other places: scripts.tests.test_translation_fixer.test_html_links.test_html_links_number_mismatch:8, scripts.tests.test_translation_fixer.test_markdown_links.test_mkd_links_number_mismatch:10
+duplicate-code	high	scripts/tests/test_translation_fixer/test_code_includes/test_number_mismatch.py:10:1	-	23 lines (128 tokens) duplicated at scripts.tests.test_translation_fixer.test_header_permalinks.test_header_number_mismatch:10
+duplicate-code	high	scripts/tests/test_translation_fixer/test_code_includes/test_number_mismatch.py:35:1	-	23 lines (129 tokens) duplicated at scripts.tests.test_translation_fixer.test_header_permalinks.test_header_number_mismatch:35
+duplicate-code	high	scripts/tests/test_translation_fixer/test_header_permalinks/test_header_level_mismatch.py:15:1	-	13 lines (76 tokens) duplicated at scripts.tests.test_translation_fixer.test_header_permalinks.test_header_level_mismatch:40
+duplicate-code	high	scripts/tests/test_translation_fixer/test_html_links/test_html_links_number_mismatch.py:32:1	-	24 lines (123 tokens) duplicated at scripts.tests.test_translation_fixer.test_markdown_links.test_mkd_links_number_mismatch:34
+duplicate-code	high	scripts/translate.py:270:1	-	13 lines (68 tokens) duplicated at scripts.translate:296
+duplicate-code	high	scripts/translate.py:309:1	-	11 lines (60 tokens) duplicated at scripts.translate:352
+duplicate-code	high	scripts/translate.py:381:1	-	11 lines (73 tokens) duplicated at scripts.translate:394
+duplicate-code	high	scripts/translate.py:419:1	-	9 lines (67 tokens) duplicated at scripts.translate:462
+duplicate-code	high	tests/benchmarks/test_openapi.py:1:1	-	34 lines (131 tokens) duplicated at tests.memory_benchmarks.test_openapi:1
+duplicate-code	high	tests/benchmarks/utils.py:28:1	-	17 lines (122 tokens) duplicated at tests.memory_benchmarks.test_route_dependency_graph:36
+duplicate-code	high	tests/memory_benchmarks/test_dependency_graph.py:18:1	-	20 lines (104 tokens) duplicated at tests.memory_benchmarks.test_route_dependency_graph:17
+duplicate-code	high	tests/test_additional_properties.py:24:1	-	11 lines (59 tokens) duplicated in 9 other places: tests.test_additional_properties_bool:36, tests.test_infer_param_optionality:103, tests.test_response_set_response_code_empty:29, tests.test_security_oauth2_authorization_code_bearer_scopes_openapi_simple:35, tests.test_security_oauth2_optional_description:148, tests.test_tutorial.test_handling_errors.test_tutorial002:19, tests.test_tutorial.test_handling_errors.test_tutorial003:20, tests.test_tutorial.test_path_params.test_tutorial004:20, tests.test_tutorial.test_sub_applications.test_tutorial001:18
+duplicate-code	high	tests/test_additional_properties.py:35:1	-	19 lines (59 tokens) duplicated in 5 other places: tests.test_tutorial.test_body_nested_models.test_tutorial007:192, tests.test_tutorial.test_body_nested_models.test_tutorial008:75, tests.test_tutorial.test_body_nested_models.test_tutorial009:52, tests.test_tutorial.test_request_files.test_tutorial001:123, tests.test_tutorial.test_request_files.test_tutorial002:143
+duplicate-code	high	tests/test_additional_properties.py:76:1	-	40 lines (157 tokens) duplicated at tests.test_tutorial.test_request_files.test_tutorial002:216
+duplicate-code	high	tests/test_additional_properties_bool.py:60:1	-	25 lines (67 tokens) duplicated at tests.test_regex_deprecated_body:82
+duplicate-code	high	tests/test_additional_properties_bool.py:89:1	-	38 lines (153 tokens) duplicated in 4 other places: tests.test_forms_single_param:73, tests.test_regex_deprecated_body:118, tests.test_tutorial.test_json_base64_bytes.test_tutorial001:189, tests.test_union_body_discriminator_annotated:167
+duplicate-code	high	tests/test_additional_response_extra.py:31:1	-	16 lines (80 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial001:43
+duplicate-code	high	tests/test_additional_responses_custom_model_in_callback.py:25:1	-	15 lines (70 tokens) duplicated in 2 other places: tests.test_additional_responses_union_duplicate_anyof:37, tests.test_request_body_parameters_media_type:31
+duplicate-code	high	tests/test_additional_responses_custom_model_in_callback.py:54:1	-	20 lines (60 tokens) duplicated at tests.test_tutorial.test_events.test_tutorial003:38
+duplicate-code	high	tests/test_additional_responses_custom_model_in_callback.py:111:1	-	38 lines (155 tokens) duplicated at tests.test_tutorial.test_request_files.test_tutorial001_02:159
+duplicate-code	high	tests/test_additional_responses_custom_validationerror.py:1:1	-	23 lines (62 tokens) duplicated at tests.test_response_code_no_body:1
+duplicate-code	high	tests/test_additional_responses_custom_validationerror.py:27:1	-	21 lines (91 tokens) duplicated at tests.test_additional_responses_default_validationerror:8
+duplicate-code	high	tests/test_additional_responses_custom_validationerror.py:73:1	-	29 lines (109 tokens) duplicated at tests.test_response_code_no_body:88
+duplicate-code	high	tests/test_additional_responses_default_validationerror.py:48:1	-	45 lines (168 tokens) duplicated in 2 other places: tests.test_tutorial.test_handling_errors.test_tutorial003:55, tests.test_tutorial.test_path_params.test_tutorial004:55
+duplicate-code	high	tests/test_additional_responses_response_class.py:1:1	-	53 lines (214 tokens) duplicated at tests.test_response_class_no_mediatype:1
+duplicate-code	high	tests/test_additional_responses_response_class.py:64:1	-	55 lines (193 tokens) duplicated at tests.test_response_class_no_mediatype:61
+duplicate-code	high	tests/test_additional_responses_router.py:86:1	-	10 lines (58 tokens) duplicated at tests.test_response_code_no_body:49
+duplicate-code	high	tests/test_additional_responses_union_duplicate_anyof.py:55:1	-	16 lines (61 tokens) duplicated at tests.test_additional_responses_union_duplicate_anyof:82
+duplicate-code	high	tests/test_allow_inf_nan_in_enforcing.py:23:1	-	13 lines (71 tokens) duplicated at tests.test_allow_inf_nan_in_enforcing:55
+duplicate-code	high	tests/test_allow_inf_nan_in_enforcing.py:35:1	-	17 lines (88 tokens) duplicated at tests.test_allow_inf_nan_in_enforcing:67
+duplicate-code	high	tests/test_annotated.py:68:1	-	11 lines (54 tokens) duplicated at tests.test_application:15
+duplicate-code	high	tests/test_annotated.py:118:1	-	11 lines (55 tokens) duplicated at tests.test_tutorial.test_behind_a_proxy.test_tutorial001:12
+duplicate-code	high	tests/test_annotated.py:141:1	-	22 lines (63 tokens) duplicated at tests.test_application:1141
+duplicate-code	high	tests/test_annotated.py:166:1	-	31 lines (92 tokens) duplicated at tests.test_annotated:200
+duplicate-code	high	tests/test_annotated.py:239:1	-	61 lines (221 tokens) duplicated at tests.test_tutorial.test_bigger_applications.test_main:547
+duplicate-code	high	tests/test_application.py:1248:1	-	39 lines (158 tokens) duplicated at tests.test_tutorial.test_dependencies.test_tutorial002_tutorial003_tutorial004:143
+duplicate-code	high	tests/test_arbitrary_types.py:10:1	-	24 lines (94 tokens) duplicated at tests.test_arbitrary_types:48
+duplicate-code	high	tests/test_compat.py:111:1	-	10 lines (84 tokens) duplicated at tests.test_compat:122
+duplicate-code	high	tests/test_computed_fields.py:46:1	-	17 lines (65 tokens) duplicated at tests.test_schema_ref_pydantic_v2:32
+duplicate-code	high	tests/test_custom_route_class.py:67:1	-	11 lines (59 tokens) duplicated in 2 other places: tests.test_tutorial.test_openapi_webhooks.test_tutorial001:20, tests.test_webhooks_security:39
+duplicate-code	high	tests/test_custom_swagger_ui_redirect.py:6:1	-	18 lines (85 tokens) duplicated at tests.test_no_swagger_ui_redirect:4
+duplicate-code	high	tests/test_default_response_class.py:23:1	-	96 lines (435 tokens) duplicated at tests.test_default_response_class_router:10
+duplicate-code	high	tests/test_default_response_class.py:124:1	-	16 lines (87 tokens) duplicated at tests.test_default_response_class_router:108
+duplicate-code	high	tests/test_default_response_class.py:140:1	-	15 lines (86 tokens) duplicated at tests.test_default_response_class_router:125
+duplicate-code	high	tests/test_default_response_class.py:155:1	-	69 lines (412 tokens) duplicated at tests.test_default_response_class_router:139
+duplicate-code	high	tests/test_dependency_after_yield_streaming.py:2:1	-	49 lines (223 tokens) duplicated at tests.test_dependency_after_yield_websockets:1
+duplicate-code	high	tests/test_dependency_class.py:10:1	-	42 lines (237 tokens) duplicated at tests.test_dependency_partial:28
+duplicate-code	high	tests/test_dependency_contextmanager.py:266:1	-	11 lines (64 tokens) duplicated at tests.test_dependency_contextmanager:376
+duplicate-code	high	tests/test_dependency_duplicates.py:81:1	-	12 lines (60 tokens) duplicated at tests.test_response_by_alias:133
+duplicate-code	high	tests/test_dependency_duplicates.py:96:1	-	27 lines (81 tokens) duplicated in 2 other places: tests.test_dependency_duplicates:158, tests.test_schema_extra_examples:273
+duplicate-code	high	tests/test_dependency_duplicates.py:132:1	-	23 lines (65 tokens) duplicated in 4 other places: tests.test_request_body_parameters_media_type:55, tests.test_tuples:99, tests.test_tutorial.test_request_files.test_tutorial003:90, tests.test_tutorial.test_request_files.test_tutorial003:122
+duplicate-code	high	tests/test_dependency_duplicates.py:194:1	-	19 lines (54 tokens) duplicated at tests.test_tutorial.test_dataclasses.test_tutorial003:161
+duplicate-code	high	tests/test_dependency_duplicates.py:214:1	-	25 lines (121 tokens) duplicated in 2 other places: tests.test_request_body_parameters_media_type:161, tests.test_tutorial.test_generate_clients.test_tutorial001:129
+duplicate-code	high	tests/test_dependency_overrides.py:52:1	-	16 lines (59 tokens) duplicated in 3 other places: tests.test_dependency_overrides:85, tests.test_dependency_overrides:112, tests.test_dependency_overrides:145
+duplicate-code	high	tests/test_dependency_overrides.py:218:1	-	19 lines (75 tokens) duplicated in 7 other places: tests.test_dependency_overrides:236, tests.test_dependency_overrides:262, tests.test_dependency_overrides:280, tests.test_dependency_overrides:306, tests.test_dependency_overrides:324, tests.test_dependency_overrides:350, tests.test_dependency_overrides:368
+duplicate-code	high	tests/test_dependency_wrapped.py:183:1	-	21 lines (83 tokens) duplicated at tests.test_dependency_wrapped:329
+duplicate-code	high	tests/test_dependency_yield_scope.py:24:1	-	19 lines (122 tokens) duplicated at tests.test_dependency_yield_scope_websockets:22
+duplicate-code	high	tests/test_dependency_yield_scope.py:51:1	-	20 lines (90 tokens) duplicated at tests.test_dependency_yield_scope_websockets:53
+duplicate-code	high	tests/test_dependency_yield_scope.py:79:1	-	9 lines (50 tokens) duplicated at tests.test_dependency_yield_scope:87
+duplicate-code	high	tests/test_dependency_yield_scope.py:107:1	-	11 lines (62 tokens) duplicated at tests.test_dependency_yield_scope:117
+duplicate-code	high	tests/test_dependency_yield_scope_websockets.py:99:1	-	9 lines (58 tokens) duplicated at tests.test_dependency_yield_scope_websockets:107
+duplicate-code	high	tests/test_dependency_yield_scope_websockets.py:133:1	-	10 lines (62 tokens) duplicated at tests.test_dependency_yield_scope_websockets:142
+duplicate-code	high	tests/test_deprecated_openapi_prefix.py:13:1	-	34 lines (158 tokens) duplicated at tests.test_tutorial.test_behind_a_proxy.test_tutorial002:6
+duplicate-code	high	tests/test_deprecated_responses.py:21:1	-	26 lines (167 tokens) duplicated at tests.test_deprecated_responses:53
+duplicate-code	high	tests/test_duplicate_models_openapi.py:33:1	-	14 lines (67 tokens) duplicated at tests.test_top_level_security_scheme_in_openapi:31
+duplicate-code	high	tests/test_enforce_once_required_parameter.py:42:1	-	41 lines (185 tokens) duplicated at tests.test_repeated_parameter_alias:27
+duplicate-code	high	tests/test_enforce_once_required_parameter.py:91:1	-	20 lines (64 tokens) duplicated at tests.test_repeated_parameter_alias:82
+duplicate-code	high	tests/test_extra_routes.py:27:1	-	8 lines (59 tokens) duplicated at tests.test_extra_routes:42
+duplicate-code	high	tests/test_extra_routes.py:49:1	-	14 lines (63 tokens) duplicated at tests.test_put_no_body:10
+duplicate-code	high	tests/test_extra_routes.py:68:1	-	7 lines (61 tokens) duplicated at tests.test_extra_routes:86
+duplicate-code	high	tests/test_extra_routes.py:98:1	-	26 lines (109 tokens) duplicated in 2 other places: tests.test_tutorial.test_events.test_tutorial001:23, tests.test_tutorial.test_handling_errors.test_tutorial001:23
+duplicate-code	high	tests/test_extra_routes.py:152:1	-	18 lines (59 tokens) duplicated at tests.test_extra_routes:244
+duplicate-code	high	tests/test_extra_routes.py:331:1	-	41 lines (173 tokens) duplicated at tests.test_tutorial.test_body_multiple_params.test_tutorial001:146
+duplicate-code	high	tests/test_filter_pydantic_sub_model_pv2.py:70:1	-	12 lines (63 tokens) duplicated at tests.test_tutorial.test_path_operation_configurations.test_tutorial002:54
+duplicate-code	high	tests/test_filter_pydantic_sub_model_pv2.py:161:1	-	12 lines (72 tokens) duplicated at tests.test_tutorial.test_events.test_tutorial001:63
+duplicate-code	high	tests/test_forms_single_model.py:29:1	-	13 lines (51 tokens) duplicated at tests.test_forms_single_param:10
+duplicate-code	high	tests/test_forms_single_param.py:41:1	-	26 lines (72 tokens) duplicated at tests.test_union_forms:85
+duplicate-code	high	tests/test_frontend.py:72:1	-	8 lines (63 tokens) duplicated at tests.test_frontend:1019
+duplicate-code	high	tests/test_frontend.py:165:1	-	10 lines (60 tokens) duplicated at tests.test_frontend:1394
+duplicate-code	high	tests/test_frontend.py:283:1	-	9 lines (83 tokens) duplicated at tests.test_frontend:315
+duplicate-code	high	tests/test_frontend.py:510:1	-	10 lines (59 tokens) duplicated at tests.test_frontend:528
+duplicate-code	high	tests/test_frontend.py:657:1	-	12 lines (85 tokens) duplicated at tests.test_frontend:739
+duplicate-code	high	tests/test_frontend.py:668:1	-	13 lines (72 tokens) duplicated at tests.test_frontend:683
+duplicate-code	high	tests/test_frontend.py:695:1	-	16 lines (73 tokens) duplicated in 2 other places: tests.test_frontend:711, tests.test_frontend:1085
+duplicate-code	high	tests/test_frontend.py:797:1	-	11 lines (63 tokens) duplicated at tests.test_frontend:809
+duplicate-code	high	tests/test_frontend.py:873:1	-	10 lines (62 tokens) duplicated at tests.test_frontend:908
+duplicate-code	high	tests/test_frontend.py:1003:1	-	12 lines (61 tokens) duplicated at tests.test_frontend:1031
+duplicate-code	high	tests/test_frontend.py:1215:1	-	11 lines (62 tokens) duplicated at tests.test_frontend:1226
+duplicate-code	high	tests/test_generate_unique_id_function.py:34:1	-	13 lines (107 tokens) duplicated at tests.test_generate_unique_id_function:454
+duplicate-code	high	tests/test_generate_unique_id_function.py:144:1	-	25 lines (57 tokens) duplicated in 3 other places: tests.test_generate_unique_id_function:840, tests.test_generate_unique_id_function:1279, tests.test_generate_unique_id_function:1565
+duplicate-code	high	tests/test_generate_unique_id_function.py:179:1	-	73 lines (389 tokens) duplicated at tests.test_generate_unique_id_function:884
+duplicate-code	high	tests/test_generate_unique_id_function.py:256:1	-	199 lines (706 tokens) duplicated at tests.test_generate_unique_id_function:466
+duplicate-code	high	tests/test_generate_unique_id_function.py:686:1	-	120 lines (344 tokens) duplicated at tests.test_generate_unique_id_function:964
+duplicate-code	high	tests/test_generate_unique_id_function.py:1097:1	-	68 lines (316 tokens) duplicated at tests.test_generate_unique_id_function:1314
+duplicate-code	high	tests/test_generate_unique_id_function.py:1165:1	-	9 lines (54 tokens) duplicated at tests.test_generate_unique_id_function:1382
+duplicate-code	high	tests/test_generate_unique_id_function.py:1182:1	-	61 lines (190 tokens) duplicated at tests.test_generate_unique_id_function:1408
+duplicate-code	high	tests/test_generate_unique_id_function.py:1617:1	-	22 lines (88 tokens) duplicated at tests.test_tutorial.test_generate_clients.test_tutorial001:102
+duplicate-code	high	tests/test_generate_unique_id_function.py:1645:1	-	28 lines (122 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial003_01:133
+duplicate-code	high	tests/test_get_model_definitions_formfeed_escape.py:86:1	-	36 lines (165 tokens) duplicated at tests.test_repeated_dependency_schema:41
+duplicate-code	high	tests/test_get_request_body.py:26:1	-	11 lines (59 tokens) duplicated at tests.test_starlette_exception:77
+duplicate-code	high	tests/test_get_request_body.py:51:1	-	32 lines (93 tokens) duplicated at tests.test_tutorial.test_path_params.test_tutorial005:65
+duplicate-code	high	tests/test_get_request_body.py:90:1	-	26 lines (118 tokens) duplicated at tests.test_tutorial.test_handling_errors.test_tutorial005:92
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:58:1	-	25 lines (84 tokens) duplicated at tests.test_include_router_defaults_overrides:82
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:207:1	-	24 lines (100 tokens) duplicated at tests.test_include_router_defaults_overrides:230
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:255:1	-	31 lines (134 tokens) duplicated at tests.test_include_router_defaults_overrides:285
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:316:1	-	13 lines (57 tokens) duplicated at tests.test_include_router_defaults_overrides:329
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:374:1	-	11 lines (52 tokens) duplicated at tests.test_include_router_defaults_overrides:405
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:388:1	-	10 lines (73 tokens) duplicated at tests.test_include_router_defaults_overrides:425
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:482:1	-	77 lines (217 tokens) duplicated at tests.test_include_router_defaults_overrides:4142
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:571:1	-	63 lines (188 tokens) duplicated in 2 other places: tests.test_include_router_defaults_overrides:6148, tests.test_include_router_defaults_overrides:7204
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:650:1	-	181 lines (556 tokens) duplicated at tests.test_include_router_defaults_overrides:1753
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:840:1	-	142 lines (435 tokens) duplicated at tests.test_include_router_defaults_overrides:2575
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:997:1	-	18 lines (89 tokens) duplicated at tests.test_include_router_defaults_overrides:1512
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:1015:1	-	15 lines (65 tokens) duplicated at tests.test_include_router_defaults_overrides:1964
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:1032:1	-	188 lines (532 tokens) duplicated at tests.test_include_router_defaults_overrides:1307
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:1220:1	-	41 lines (114 tokens) duplicated in 9 other places: tests.test_include_router_defaults_overrides:2131, tests.test_include_router_defaults_overrides:3176, tests.test_include_router_defaults_overrides:3917, tests.test_include_router_defaults_overrides:4219, tests.test_include_router_defaults_overrides:4831, tests.test_include_router_defaults_overrides:5573, tests.test_include_router_defaults_overrides:6367, tests.test_include_router_defaults_overrides:6931, tests.test_include_router_defaults_overrides:7155
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:1274:1	-	17 lines (81 tokens) duplicated at tests.test_include_router_defaults_overrides:2183
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:1291:1	-	14 lines (57 tokens) duplicated at tests.test_include_router_defaults_overrides:3244
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:1530:1	-	14 lines (51 tokens) duplicated at tests.test_include_router_defaults_overrides:2200
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:1544:1	-	41 lines (120 tokens) duplicated in 3 other places: tests.test_include_router_defaults_overrides:2410, tests.test_include_router_defaults_overrides:3455, tests.test_include_router_defaults_overrides:7114
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:1603:1	-	134 lines (373 tokens) duplicated at tests.test_include_router_defaults_overrides:5132
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:1947:1	-	17 lines (81 tokens) duplicated at tests.test_include_router_defaults_overrides:2380
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:1980:1	-	151 lines (427 tokens) duplicated at tests.test_include_router_defaults_overrides:2214
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:2469:1	-	97 lines (268 tokens) duplicated at tests.test_include_router_defaults_overrides:5819
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:2726:1	-	139 lines (428 tokens) duplicated at tests.test_include_router_defaults_overrides:3620
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:2877:1	-	102 lines (310 tokens) duplicated at tests.test_include_router_defaults_overrides:4269
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:2992:1	-	17 lines (81 tokens) duplicated at tests.test_include_router_defaults_overrides:3425
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:3009:1	-	14 lines (57 tokens) duplicated at tests.test_include_router_defaults_overrides:3788
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:3025:1	-	151 lines (427 tokens) duplicated at tests.test_include_router_defaults_overrides:3259
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:3228:1	-	16 lines (73 tokens) duplicated at tests.test_include_router_defaults_overrides:3962
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:3514:1	-	97 lines (268 tokens) duplicated at tests.test_include_router_defaults_overrides:6613
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:3772:1	-	16 lines (73 tokens) duplicated at tests.test_include_router_defaults_overrides:4113
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:3803:1	-	114 lines (322 tokens) duplicated at tests.test_include_router_defaults_overrides:3991
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:4380:1	-	142 lines (435 tokens) duplicated at tests.test_include_router_defaults_overrides:5275
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:4531:1	-	103 lines (314 tokens) duplicated at tests.test_include_router_defaults_overrides:5925
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:4647:1	-	17 lines (81 tokens) duplicated at tests.test_include_router_defaults_overrides:5080
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:4664:1	-	14 lines (57 tokens) duplicated at tests.test_include_router_defaults_overrides:5444
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:4680:1	-	151 lines (427 tokens) duplicated at tests.test_include_router_defaults_overrides:4914
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:4883:1	-	16 lines (73 tokens) duplicated at tests.test_include_router_defaults_overrides:5618
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:4900:1	-	14 lines (51 tokens) duplicated at tests.test_include_router_defaults_overrides:5097
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:5428:1	-	16 lines (73 tokens) duplicated at tests.test_include_router_defaults_overrides:5769
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:5459:1	-	114 lines (322 tokens) duplicated at tests.test_include_router_defaults_overrides:5647
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:6037:1	-	100 lines (307 tokens) duplicated at tests.test_include_router_defaults_overrides:6719
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:6222:1	-	16 lines (73 tokens) duplicated at tests.test_include_router_defaults_overrides:6563
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:6253:1	-	114 lines (322 tokens) duplicated at tests.test_include_router_defaults_overrides:6441
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:6412:1	-	15 lines (65 tokens) duplicated at tests.test_include_router_defaults_overrides:6976
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:6825:1	-	15 lines (65 tokens) duplicated at tests.test_include_router_defaults_overrides:7088
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:6854:1	-	77 lines (217 tokens) duplicated at tests.test_include_router_defaults_overrides:7003
+duplicate-code	high	tests/test_include_router_defaults_overrides.py:7267:1	-	39 lines (158 tokens) duplicated in 2 other places: tests.test_param_include_in_schema:209, tests.test_response_set_response_code_empty:67
+duplicate-code	high	tests/test_infer_param_optionality.py:139:1	-	17 lines (50 tokens) duplicated in 5 other places: tests.test_openapi_examples:362, tests.test_param_include_in_schema:126, tests.test_param_include_in_schema:148, tests.test_param_include_in_schema:170, tests.test_param_include_in_schema:192
+duplicate-code	high	tests/test_infer_param_optionality.py:164:1	-	25 lines (84 tokens) duplicated at tests.test_infer_param_optionality:236
+duplicate-code	high	tests/test_infer_param_optionality.py:207:1	-	21 lines (60 tokens) duplicated in 2 other places: tests.test_tutorial.test_bigger_applications.test_main:355, tests.test_tutorial.test_dependencies.test_tutorial012:139
+duplicate-code	high	tests/test_infer_param_optionality.py:279:1	-	60 lines (218 tokens) duplicated at tests.test_tutorial.test_dependencies.test_tutorial012:175
+duplicate-code	high	tests/test_invalid_path_param.py:6:1	-	9 lines (52 tokens) duplicated in 2 other places: tests.test_invalid_path_param:18, tests.test_invalid_path_param:30
+duplicate-code	high	tests/test_invalid_path_param.py:42:1	-	19 lines (92 tokens) duplicated at tests.test_invalid_path_param:60
+duplicate-code	high	tests/test_invalid_sequence_param.py:32:1	-	16 lines (76 tokens) duplicated at tests.test_invalid_sequence_param:47
+duplicate-code	high	tests/test_json_type.py:36:1	-	8 lines (57 tokens) duplicated at tests.test_json_type:44
+duplicate-code	high	tests/test_jsonable_encoder.py:72:1	-	7 lines (52 tokens) duplicated at tests.test_jsonable_encoder:84
+duplicate-code	high	tests/test_jsonable_encoder.py:100:1	-	14 lines (126 tokens) duplicated at tests.test_jsonable_encoder:113
+duplicate-code	high	tests/test_jsonable_encoder.py:265:1	-	11 lines (54 tokens) duplicated at tests.test_jsonable_encoder:275
+duplicate-code	high	tests/test_modules_same_name_body/test_main.py:25:1	-	12 lines (70 tokens) duplicated in 2 other places: tests.test_tuples:80, tests.test_union_forms:58
+duplicate-code	high	tests/test_modules_same_name_body/test_main.py:37:1	-	20 lines (63 tokens) duplicated at tests.test_modules_same_name_body.test_main:69
+duplicate-code	high	tests/test_modules_same_name_body/test_main.py:119:1	-	39 lines (160 tokens) duplicated in 2 other places: tests.test_tutorial.test_request_forms.test_tutorial001:149, tests.test_tutorial.test_request_forms_and_files.test_tutorial001:208
+duplicate-code	high	tests/test_multi_body_errors.py:86:1	-	13 lines (65 tokens) duplicated at tests.test_tutorial.test_path_operation_advanced_configurations.test_tutorial006:19
+duplicate-code	high	tests/test_multi_body_errors.py:153:1	-	40 lines (158 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial001_tutorial001_01:162
+duplicate-code	high	tests/test_multi_query_errors.py:44:1	-	31 lines (120 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial001:47
+duplicate-code	high	tests/test_multi_query_errors.py:77:1	-	47 lines (174 tokens) duplicated in 2 other places: tests.test_tutorial.test_query_params_str_validations.test_tutorial007:96, tests.test_tutorial.test_query_params_str_validations.test_tutorial008:98
+duplicate-code	high	tests/test_multipart_installation.py:11:1	-	23 lines (184 tokens) duplicated at tests.test_multipart_installation:37
+duplicate-code	high	tests/test_multipart_installation.py:76:1	-	23 lines (186 tokens) duplicated at tests.test_multipart_installation:102
+duplicate-code	high	tests/test_multipart_installation.py:124:1	-	9 lines (56 tokens) duplicated at tests.test_multipart_installation:137
+duplicate-code	high	tests/test_nested_annotated_in_sequence.py:71:1	-	10 lines (53 tokens) duplicated at tests.test_tutorial.test_response_directly.test_tutorial001:129
+duplicate-code	high	tests/test_nested_annotated_in_sequence.py:80:1	-	14 lines (64 tokens) duplicated at tests.test_tutorial.test_response_directly.test_tutorial001:141
+duplicate-code	high	tests/test_no_schema_split.py:83:1	-	33 lines (81 tokens) duplicated at tests.test_tutorial.test_schema_extra_example.test_tutorial003:78
+duplicate-code	high	tests/test_no_schema_split.py:153:1	-	25 lines (115 tokens) duplicated in 6 other places: tests.test_openapi_examples:399, tests.test_tutorial.test_schema_extra_example.test_tutorial001:121, tests.test_tutorial.test_sql_databases.test_tutorial001:337, tests.test_tutorial.test_sql_databases.test_tutorial002:418, tests.test_union_body_discriminator:181, tests.test_union_forms:140
+duplicate-code	high	tests/test_openapi_examples.py:138:1	-	12 lines (70 tokens) duplicated in 2 other places: tests.test_response_model_sub_types:44, tests.test_tutorial.test_metadata.test_tutorial004:12
+duplicate-code	high	tests/test_openapi_examples.py:182:1	-	23 lines (68 tokens) duplicated at tests.test_schema_extra_examples:418
+duplicate-code	high	tests/test_openapi_examples.py:227:1	-	23 lines (68 tokens) duplicated at tests.test_schema_extra_examples:521
+duplicate-code	high	tests/test_openapi_examples.py:272:1	-	23 lines (68 tokens) duplicated at tests.test_schema_extra_examples:624
+duplicate-code	high	tests/test_openapi_examples.py:317:1	-	23 lines (68 tokens) duplicated at tests.test_schema_extra_examples:727
+duplicate-code	high	tests/test_openapi_query_parameter_extension.py:27:1	-	23 lines (116 tokens) duplicated at tests.test_openapi_route_extensions:9
+duplicate-code	high	tests/test_openapi_query_parameter_extension.py:73:1	-	60 lines (217 tokens) duplicated at tests.test_param_in_path_and_dependency:41
+duplicate-code	high	tests/test_openapi_separate_input_output_schemas.py:160:1	-	20 lines (89 tokens) duplicated at tests.test_openapi_separate_input_output_schemas:442
+duplicate-code	high	tests/test_openapi_separate_input_output_schemas.py:219:1	-	27 lines (68 tokens) duplicated at tests.test_openapi_separate_input_output_schemas:495
+duplicate-code	high	tests/test_openapi_separate_input_output_schemas.py:246:1	-	80 lines (219 tokens) duplicated at tests.test_openapi_separate_input_output_schemas:520
+duplicate-code	high	tests/test_openapi_separate_input_output_schemas.py:326:1	-	10 lines (51 tokens) duplicated in 2 other places: tests.test_openapi_separate_input_output_schemas:344, tests.test_openapi_separate_input_output_schemas:600
+duplicate-code	high	tests/test_openapi_separate_input_output_schemas.py:362:1	-	16 lines (78 tokens) duplicated in 2 other places: tests.test_openapi_separate_input_output_schemas:380, tests.test_openapi_separate_input_output_schemas:618
+duplicate-code	high	tests/test_openapi_separate_input_output_schemas.py:395:1	-	47 lines (210 tokens) duplicated at tests.test_openapi_separate_input_output_schemas:633
+duplicate-code	high	tests/test_openapi_separate_input_output_schemas.py:464:1	-	24 lines (67 tokens) duplicated at tests.test_tutorial.test_generate_clients.test_tutorial001:57
+duplicate-code	high	tests/test_openapi_servers.py:27:1	-	10 lines (56 tokens) duplicated at tests.test_tutorial.test_middleware.test_tutorial001:12
+duplicate-code	high	tests/test_path.py:253:1	-	17 lines (67 tokens) duplicated at tests.test_path:275
+duplicate-code	high	tests/test_path.py:544:1	-	16 lines (59 tokens) duplicated in 4 other places: tests.test_path:581, tests.test_path:624, tests.test_path:667, tests.test_path:720
+duplicate-code	high	tests/test_put_no_body.py:29:1	-	26 lines (109 tokens) duplicated in 2 other places: tests.test_tutorial.test_body_multiple_params.test_tutorial001:67, tests.test_tutorial.test_extra_data_types.test_tutorial001:46
+duplicate-code	high	tests/test_put_no_body.py:55:1	-	50 lines (192 tokens) duplicated in 2 other places: tests.test_tutorial.test_handling_errors.test_tutorial001:49, tests.test_tutorial.test_handling_errors.test_tutorial002:49
+duplicate-code	high	tests/test_pydantic_v1_error.py:28:1	-	13 lines (54 tokens) duplicated at tests.test_pydantic_v1_error:82
+duplicate-code	high	tests/test_query.py:9:1	-	16 lines (59 tokens) duplicated in 5 other places: tests.test_query:30, tests.test_query:63, tests.test_query:114, tests.test_query:195, tests.test_query:216
+duplicate-code	high	tests/test_query.py:141:1	-	16 lines (59 tokens) duplicated in 2 other places: tests.test_query:168, tests.test_query:237
+duplicate-code	high	tests/test_regex_deprecated_body.py:1:1	-	54 lines (250 tokens) duplicated at tests.test_regex_deprecated_params:1
+duplicate-code	high	tests/test_regex_deprecated_body.py:54:1	-	20 lines (93 tokens) duplicated at tests.test_regex_deprecated_params:54
+duplicate-code	high	tests/test_regex_deprecated_params.py:93:1	-	55 lines (205 tokens) duplicated in 2 other places: tests.test_tutorial.test_header_param_models.test_tutorial003:196, tests.test_tutorial.test_query_params_str_validations.test_tutorial015:90
+duplicate-code	high	tests/test_request_body_parameters_media_type.py:87:1	-	26 lines (73 tokens) duplicated at tests.test_tuples:170
+duplicate-code	high	tests/test_request_param_model_by_alias.py:30:1	-	8 lines (50 tokens) duplicated at tests.test_request_param_model_by_alias:37
+duplicate-code	high	tests/test_request_params/test_body/test_list.py:27:1	-	27 lines (125 tokens) duplicated at tests.test_request_params.test_form.test_list:27
+duplicate-code	high	tests/test_request_params/test_body/test_list.py:56:1	-	11 lines (70 tokens) duplicated at tests.test_request_params.test_body.test_list:133
+duplicate-code	high	tests/test_request_params/test_body/test_list.py:66:1	-	26 lines (129 tokens) duplicated at tests.test_request_params.test_form.test_list:65
+duplicate-code	high	tests/test_request_params/test_body/test_list.py:92:1	-	10 lines (54 tokens) duplicated at tests.test_request_params.test_form.test_list:89
+duplicate-code	high	tests/test_request_params/test_body/test_list.py:101:1	-	30 lines (126 tokens) duplicated at tests.test_request_params.test_form.test_list:100
+duplicate-code	high	tests/test_request_params/test_body/test_list.py:153:1	-	38 lines (211 tokens) duplicated at tests.test_request_params.test_form.test_list:154
+duplicate-code	high	tests/test_request_params/test_body/test_list.py:190:1	-	15 lines (59 tokens) duplicated at tests.test_request_params.test_form.test_list:191
+duplicate-code	high	tests/test_request_params/test_body/test_list.py:204:1	-	28 lines (126 tokens) duplicated at tests.test_request_params.test_form.test_list:205
+duplicate-code	high	tests/test_request_params/test_body/test_list.py:247:1	-	37 lines (153 tokens) duplicated at tests.test_request_params.test_form.test_list:250
+duplicate-code	high	tests/test_request_params/test_body/test_list.py:284:1	-	20 lines (100 tokens) duplicated at tests.test_request_params.test_form.test_list:284
+duplicate-code	high	tests/test_request_params/test_body/test_list.py:303:1	-	16 lines (66 tokens) duplicated at tests.test_request_params.test_form.test_list:303
+duplicate-code	high	tests/test_request_params/test_body/test_list.py:318:1	-	31 lines (127 tokens) duplicated at tests.test_request_params.test_form.test_list:317
+duplicate-code	high	tests/test_request_params/test_body/test_list.py:364:1	-	29 lines (127 tokens) duplicated at tests.test_request_params.test_form.test_list:365
+duplicate-code	high	tests/test_request_params/test_body/test_list.py:392:1	-	17 lines (69 tokens) duplicated at tests.test_request_params.test_form.test_list:396
+duplicate-code	high	tests/test_request_params/test_body/test_list.py:408:1	-	27 lines (136 tokens) duplicated at tests.test_request_params.test_form.test_list:412
+duplicate-code	high	tests/test_request_params/test_body/test_optional_list.py:18:1	-	11 lines (56 tokens) duplicated at tests.test_request_params.test_form.test_optional_list:18
+duplicate-code	high	tests/test_request_params/test_body/test_optional_list.py:28:1	-	28 lines (125 tokens) duplicated at tests.test_request_params.test_form.test_optional_list:28
+duplicate-code	high	tests/test_request_params/test_body/test_optional_list.py:64:1	-	17 lines (60 tokens) duplicated in 7 other places: tests.test_request_params.test_body.test_optional_list:155, tests.test_request_params.test_body.test_optional_list:263, tests.test_request_params.test_body.test_optional_list:382, tests.test_request_params.test_body.test_optional_str:59, tests.test_request_params.test_body.test_optional_str:147, tests.test_request_params.test_body.test_optional_str:247, tests.test_request_params.test_body.test_optional_str:362
+duplicate-code	high	tests/test_request_params/test_body/test_optional_list.py:84:1	-	23 lines (138 tokens) duplicated at tests.test_request_params.test_form.test_optional_list:61
+duplicate-code	high	tests/test_request_params/test_body/test_optional_list.py:106:1	-	11 lines (64 tokens) duplicated at tests.test_request_params.test_form.test_optional_list:83
+duplicate-code	high	tests/test_request_params/test_body/test_optional_list.py:116:1	-	31 lines (126 tokens) duplicated at tests.test_request_params.test_form.test_optional_list:95
+duplicate-code	high	tests/test_request_params/test_body/test_optional_list.py:176:1	-	36 lines (201 tokens) duplicated at tests.test_request_params.test_form.test_optional_list:132
+duplicate-code	high	tests/test_request_params/test_body/test_optional_list.py:211:1	-	16 lines (64 tokens) duplicated at tests.test_request_params.test_form.test_optional_list:166
+duplicate-code	high	tests/test_request_params/test_body/test_optional_list.py:226:1	-	29 lines (126 tokens) duplicated at tests.test_request_params.test_form.test_optional_list:180
+duplicate-code	high	tests/test_request_params/test_body/test_optional_list.py:284:1	-	23 lines (105 tokens) duplicated at tests.test_request_params.test_form.test_optional_list:215
+duplicate-code	high	tests/test_request_params/test_body/test_optional_list.py:307:1	-	21 lines (102 tokens) duplicated at tests.test_request_params.test_form.test_optional_list:235
+duplicate-code	high	tests/test_request_params/test_body/test_optional_list.py:328:1	-	15 lines (66 tokens) duplicated at tests.test_request_params.test_form.test_optional_list:255
+duplicate-code	high	tests/test_request_params/test_body/test_optional_list.py:342:1	-	32 lines (127 tokens) duplicated at tests.test_request_params.test_form.test_optional_list:269
+duplicate-code	high	tests/test_request_params/test_body/test_optional_list.py:406:1	-	50 lines (255 tokens) duplicated at tests.test_request_params.test_form.test_optional_list:310
+duplicate-code	high	tests/test_request_params/test_body/test_optional_str.py:17:1	-	10 lines (52 tokens) duplicated at tests.test_request_params.test_form.test_optional_str:17
+duplicate-code	high	tests/test_request_params/test_body/test_optional_str.py:26:1	-	25 lines (116 tokens) duplicated at tests.test_request_params.test_form.test_optional_str:26
+duplicate-code	high	tests/test_request_params/test_body/test_optional_str.py:80:1	-	22 lines (115 tokens) duplicated at tests.test_request_params.test_form.test_optional_str:57
+duplicate-code	high	tests/test_request_params/test_body/test_optional_str.py:101:1	-	11 lines (61 tokens) duplicated at tests.test_request_params.test_form.test_optional_str:78
+duplicate-code	high	tests/test_request_params/test_body/test_optional_str.py:111:1	-	28 lines (117 tokens) duplicated at tests.test_request_params.test_form.test_optional_str:88
+duplicate-code	high	tests/test_request_params/test_body/test_optional_str.py:168:1	-	33 lines (186 tokens) duplicated at tests.test_request_params.test_form.test_optional_str:122
+duplicate-code	high	tests/test_request_params/test_body/test_optional_str.py:200:1	-	14 lines (60 tokens) duplicated at tests.test_request_params.test_form.test_optional_str:154
+duplicate-code	high	tests/test_request_params/test_body/test_optional_str.py:213:1	-	26 lines (117 tokens) duplicated at tests.test_request_params.test_form.test_optional_str:167
+duplicate-code	high	tests/test_request_params/test_body/test_optional_str.py:268:1	-	43 lines (189 tokens) duplicated at tests.test_request_params.test_form.test_optional_str:199
+duplicate-code	high	tests/test_request_params/test_body/test_optional_str.py:310:1	-	16 lines (69 tokens) duplicated at tests.test_request_params.test_form.test_optional_str:241
+duplicate-code	high	tests/test_request_params/test_body/test_optional_str.py:399:1	-	15 lines (72 tokens) duplicated at tests.test_request_params.test_body.test_optional_str:413
+duplicate-code	high	tests/test_request_params/test_body/test_required_str.py:27:1	-	23 lines (116 tokens) duplicated at tests.test_request_params.test_form.test_required_str:27
+duplicate-code	high	tests/test_request_params/test_body/test_required_str.py:52:1	-	11 lines (79 tokens) duplicated at tests.test_request_params.test_body.test_required_str:336
+duplicate-code	high	tests/test_request_params/test_body/test_required_str.py:62:1	-	26 lines (118 tokens) duplicated at tests.test_request_params.test_form.test_required_str:61
+duplicate-code	high	tests/test_request_params/test_body/test_required_str.py:88:1	-	10 lines (51 tokens) duplicated at tests.test_request_params.test_form.test_required_str:85
+duplicate-code	high	tests/test_request_params/test_body/test_required_str.py:97:1	-	26 lines (117 tokens) duplicated at tests.test_request_params.test_form.test_required_str:94
+duplicate-code	high	tests/test_request_params/test_body/test_required_str.py:125:1	-	11 lines (75 tokens) duplicated at tests.test_request_params.test_body.test_required_str:222
+duplicate-code	high	tests/test_request_params/test_body/test_required_str.py:135:1	-	46 lines (225 tokens) duplicated at tests.test_request_params.test_form.test_required_str:131
+duplicate-code	high	tests/test_request_params/test_body/test_required_str.py:180:1	-	14 lines (54 tokens) duplicated at tests.test_request_params.test_form.test_required_str:176
+duplicate-code	high	tests/test_request_params/test_body/test_required_str.py:193:1	-	24 lines (117 tokens) duplicated at tests.test_request_params.test_form.test_required_str:189
+duplicate-code	high	tests/test_request_params/test_body/test_required_str.py:232:1	-	58 lines (232 tokens) duplicated at tests.test_request_params.test_form.test_required_str:230
+duplicate-code	high	tests/test_request_params/test_body/test_required_str.py:289:1	-	16 lines (63 tokens) duplicated at tests.test_request_params.test_form.test_required_str:286
+duplicate-code	high	tests/test_request_params/test_body/test_required_str.py:304:1	-	27 lines (118 tokens) duplicated at tests.test_request_params.test_form.test_required_str:300
+duplicate-code	high	tests/test_request_params/test_body/test_required_str.py:348:1	-	73 lines (312 tokens) duplicated at tests.test_request_params.test_form.test_required_str:344
+duplicate-code	high	tests/test_request_params/test_cookie/test_optional_str.py:1:1	-	43 lines (188 tokens) duplicated at tests.test_request_params.test_header.test_optional_str:1
+duplicate-code	high	tests/test_request_params/test_cookie/test_optional_str.py:51:1	-	12 lines (61 tokens) duplicated at tests.test_request_params.test_cookie.test_optional_str:114
+duplicate-code	high	tests/test_request_params/test_cookie/test_optional_str.py:67:1	-	40 lines (210 tokens) duplicated in 2 other places: tests.test_request_params.test_header.test_optional_str:66, tests.test_request_params.test_query.test_optional_str:66
+duplicate-code	high	tests/test_request_params/test_cookie/test_optional_str.py:145:1	-	42 lines (209 tokens) duplicated in 2 other places: tests.test_request_params.test_header.test_optional_str:142, tests.test_request_params.test_query.test_optional_str:142
+duplicate-code	high	tests/test_request_params/test_cookie/test_optional_str.py:197:1	-	16 lines (73 tokens) duplicated at tests.test_request_params.test_cookie.test_optional_str:212
+duplicate-code	high	tests/test_request_params/test_cookie/test_optional_str.py:228:1	-	47 lines (218 tokens) duplicated in 2 other places: tests.test_request_params.test_header.test_optional_str:223, tests.test_request_params.test_query.test_optional_str:223
+duplicate-code	high	tests/test_request_params/test_cookie/test_optional_str.py:274:1	-	30 lines (107 tokens) duplicated at tests.test_request_params.test_query.test_optional_str:269
+duplicate-code	high	tests/test_request_params/test_cookie/test_optional_str.py:303:1	-	16 lines (75 tokens) duplicated at tests.test_request_params.test_cookie.test_optional_str:318
+duplicate-code	high	tests/test_request_params/test_cookie/test_required_str.py:1:1	-	41 lines (168 tokens) duplicated at tests.test_request_params.test_header.test_required_str:1
+duplicate-code	high	tests/test_request_params/test_cookie/test_required_str.py:48:1	-	12 lines (62 tokens) duplicated at tests.test_request_params.test_form.test_required_str:50
+duplicate-code	high	tests/test_request_params/test_cookie/test_required_str.py:74:1	-	35 lines (188 tokens) duplicated in 2 other places: tests.test_request_params.test_header.test_required_str:73, tests.test_request_params.test_query.test_required_str:73
+duplicate-code	high	tests/test_request_params/test_cookie/test_required_str.py:115:1	-	12 lines (62 tokens) duplicated at tests.test_request_params.test_form.test_required_str:120
+duplicate-code	high	tests/test_request_params/test_cookie/test_required_str.py:138:1	-	13 lines (70 tokens) duplicated at tests.test_request_params.test_cookie.test_required_str:354
+duplicate-code	high	tests/test_request_params/test_cookie/test_required_str.py:150:1	-	21 lines (62 tokens) duplicated at tests.test_request_params.test_query.test_required_str:148
+duplicate-code	high	tests/test_request_params/test_cookie/test_required_str.py:171:1	-	39 lines (192 tokens) duplicated in 2 other places: tests.test_request_params.test_header.test_required_str:165, tests.test_request_params.test_query.test_required_str:168
+duplicate-code	high	tests/test_request_params/test_cookie/test_required_str.py:219:1	-	25 lines (92 tokens) duplicated at tests.test_request_params.test_cookie.test_required_str:328
+duplicate-code	high	tests/test_request_params/test_cookie/test_required_str.py:258:1	-	18 lines (62 tokens) duplicated at tests.test_request_params.test_query.test_required_str:254
+duplicate-code	high	tests/test_request_params/test_cookie/test_required_str.py:276:1	-	43 lines (201 tokens) duplicated in 2 other places: tests.test_request_params.test_header.test_required_str:268, tests.test_request_params.test_query.test_required_str:271
+duplicate-code	high	tests/test_request_params/test_cookie/test_required_str.py:369:1	-	22 lines (63 tokens) duplicated at tests.test_request_params.test_query.test_required_str:363
+duplicate-code	high	tests/test_request_params/test_cookie/test_required_str.py:398:1	-	21 lines (63 tokens) duplicated at tests.test_request_params.test_query.test_required_str:391
+duplicate-code	high	tests/test_request_params/test_file/test_list.py:29:1	-	10 lines (55 tokens) duplicated at tests.test_request_params.test_file.test_required:29
+duplicate-code	high	tests/test_request_params/test_file/test_list.py:57:1	-	22 lines (85 tokens) duplicated at tests.test_request_params.test_file.test_required:54
+duplicate-code	high	tests/test_request_params/test_file/test_list.py:80:1	-	15 lines (77 tokens) duplicated at tests.test_request_params.test_file.test_optional_list:77
+duplicate-code	high	tests/test_request_params/test_file/test_list.py:110:1	-	10 lines (55 tokens) duplicated at tests.test_request_params.test_file.test_required:107
+duplicate-code	high	tests/test_request_params/test_file/test_list.py:143:1	-	24 lines (93 tokens) duplicated at tests.test_request_params.test_file.test_list:166
+duplicate-code	high	tests/test_request_params/test_file/test_list.py:219:1	-	27 lines (107 tokens) duplicated at tests.test_request_params.test_file.test_list:339
+duplicate-code	high	tests/test_request_params/test_file/test_list.py:247:1	-	25 lines (86 tokens) duplicated at tests.test_request_params.test_file.test_required:240
+duplicate-code	high	tests/test_request_params/test_file/test_list.py:278:1	-	18 lines (64 tokens) duplicated at tests.test_request_params.test_file.test_list:425
+duplicate-code	high	tests/test_request_params/test_file/test_list.py:297:1	-	17 lines (81 tokens) duplicated at tests.test_request_params.test_file.test_optional_list:261
+duplicate-code	high	tests/test_request_params/test_file/test_list.py:372:1	-	27 lines (94 tokens) duplicated at tests.test_request_params.test_file.test_list:398
+duplicate-code	high	tests/test_request_params/test_file/test_list.py:444:1	-	11 lines (76 tokens) duplicated at tests.test_request_params.test_file.test_optional_list:374
+duplicate-code	high	tests/test_request_params/test_file/test_optional.py:29:1	-	12 lines (61 tokens) duplicated at tests.test_request_params.test_file.test_optional_list:31
+duplicate-code	high	tests/test_request_params/test_file/test_optional.py:55:1	-	13 lines (66 tokens) duplicated at tests.test_request_params.test_file.test_optional_list:63
+duplicate-code	high	tests/test_request_params/test_file/test_optional.py:69:1	-	15 lines (67 tokens) duplicated at tests.test_request_params.test_file.test_required:77
+duplicate-code	high	tests/test_request_params/test_file/test_optional.py:101:1	-	12 lines (61 tokens) duplicated at tests.test_request_params.test_file.test_optional_list:109
+duplicate-code	high	tests/test_request_params/test_file/test_optional.py:132:1	-	15 lines (70 tokens) duplicated at tests.test_request_params.test_file.test_optional:146
+duplicate-code	high	tests/test_request_params/test_file/test_optional.py:192:1	-	25 lines (104 tokens) duplicated at tests.test_request_params.test_file.test_optional:288
+duplicate-code	high	tests/test_request_params/test_file/test_optional.py:218:1	-	13 lines (62 tokens) duplicated in 4 other places: tests.test_request_params.test_file.test_optional:314, tests.test_request_params.test_file.test_optional_list:141, tests.test_request_params.test_file.test_optional_list:233, tests.test_request_params.test_file.test_optional_list:332
+duplicate-code	high	tests/test_request_params/test_file/test_optional.py:246:1	-	15 lines (71 tokens) duplicated at tests.test_request_params.test_file.test_required:290
+duplicate-code	high	tests/test_request_params/test_file/test_optional.py:328:1	-	13 lines (70 tokens) duplicated at tests.test_request_params.test_file.test_optional_list:346
+duplicate-code	high	tests/test_request_params/test_file/test_optional.py:356:1	-	9 lines (66 tokens) duplicated at tests.test_request_params.test_file.test_required:430
+duplicate-code	high	tests/test_request_params/test_file/test_optional_list.py:155:1	-	13 lines (82 tokens) duplicated at tests.test_request_params.test_file.test_optional_list:247
+duplicate-code	high	tests/test_request_params/test_file/test_optional_list.py:169:1	-	8 lines (68 tokens) duplicated at tests.test_request_params.test_file.test_optional_list:360
+duplicate-code	high	tests/test_request_params/test_file/test_optional_list.py:201:1	-	31 lines (114 tokens) duplicated at tests.test_request_params.test_file.test_optional_list:300
+duplicate-code	high	tests/test_request_params/test_file/test_required.py:137:1	-	24 lines (93 tokens) duplicated at tests.test_request_params.test_file.test_required:160
+duplicate-code	high	tests/test_request_params/test_file/test_required.py:215:1	-	24 lines (98 tokens) duplicated at tests.test_request_params.test_file.test_required:328
+duplicate-code	high	tests/test_request_params/test_file/test_required.py:271:1	-	18 lines (64 tokens) duplicated at tests.test_request_params.test_file.test_required:411
+duplicate-code	high	tests/test_request_params/test_file/test_required.py:358:1	-	27 lines (92 tokens) duplicated at tests.test_request_params.test_file.test_required:384
+duplicate-code	high	tests/test_request_params/test_form/test_list.py:55:1	-	11 lines (58 tokens) duplicated in 5 other places: tests.test_request_params.test_form.test_list:131, tests.test_request_params.test_form.test_list:237, tests.test_request_params.test_form.test_list:352, tests.test_request_params.test_form.test_required_str:217, tests.test_request_params.test_form.test_required_str:331
+duplicate-code	high	tests/test_request_params/test_form/test_optional_str.py:281:1	-	58 lines (286 tokens) duplicated at tests.test_request_params.test_header.test_optional_str:272
+duplicate-code	high	tests/test_request_params/test_header/test_list.py:1:1	-	45 lines (182 tokens) duplicated at tests.test_request_params.test_query.test_list:1
+duplicate-code	high	tests/test_request_params/test_header/test_list.py:53:1	-	21 lines (84 tokens) duplicated at tests.test_request_params.test_header.test_required_str:49
+duplicate-code	high	tests/test_request_params/test_header/test_list.py:77:1	-	41 lines (208 tokens) duplicated at tests.test_request_params.test_query.test_list:77
+duplicate-code	high	tests/test_request_params/test_header/test_list.py:125:1	-	21 lines (84 tokens) duplicated at tests.test_request_params.test_header.test_required_str:115
+duplicate-code	high	tests/test_request_params/test_header/test_list.py:175:1	-	43 lines (212 tokens) duplicated at tests.test_request_params.test_query.test_list:175
+duplicate-code	high	tests/test_request_params/test_header/test_list.py:227:1	-	25 lines (86 tokens) duplicated in 3 other places: tests.test_request_params.test_header.test_list:337, tests.test_request_params.test_header.test_required_str:213, tests.test_request_params.test_header.test_required_str:320
+duplicate-code	high	tests/test_request_params/test_header/test_list.py:253:1	-	13 lines (76 tokens) duplicated at tests.test_request_params.test_header.test_list:363
+duplicate-code	high	tests/test_request_params/test_header/test_list.py:281:1	-	47 lines (220 tokens) duplicated at tests.test_request_params.test_query.test_list:279
+duplicate-code	high	tests/test_request_params/test_header/test_list.py:381:1	-	17 lines (63 tokens) duplicated at tests.test_request_params.test_header.test_list:407
+duplicate-code	high	tests/test_request_params/test_header/test_optional_list.py:1:1	-	50 lines (205 tokens) duplicated at tests.test_request_params.test_query.test_optional_list:1
+duplicate-code	high	tests/test_request_params/test_header/test_optional_list.py:50:1	-	24 lines (114 tokens) duplicated at tests.test_request_params.test_query.test_optional_list:50
+duplicate-code	high	tests/test_request_params/test_header/test_optional_list.py:73:1	-	45 lines (230 tokens) duplicated at tests.test_request_params.test_query.test_optional_list:73
+duplicate-code	high	tests/test_request_params/test_header/test_optional_list.py:117:1	-	24 lines (110 tokens) duplicated at tests.test_request_params.test_query.test_optional_list:117
+duplicate-code	high	tests/test_request_params/test_header/test_optional_list.py:140:1	-	15 lines (64 tokens) duplicated at tests.test_request_params.test_query.test_optional_list:140
+duplicate-code	high	tests/test_request_params/test_header/test_optional_list.py:154:1	-	45 lines (228 tokens) duplicated at tests.test_request_params.test_query.test_optional_list:154
+duplicate-code	high	tests/test_request_params/test_header/test_optional_list.py:198:1	-	27 lines (111 tokens) duplicated at tests.test_request_params.test_query.test_optional_list:198
+duplicate-code	high	tests/test_request_params/test_header/test_optional_list.py:224:1	-	12 lines (63 tokens) duplicated at tests.test_request_params.test_query.test_optional_list:224
+duplicate-code	high	tests/test_request_params/test_header/test_optional_list.py:237:1	-	50 lines (241 tokens) duplicated at tests.test_request_params.test_query.test_optional_list:235
+duplicate-code	high	tests/test_request_params/test_header/test_optional_list.py:286:1	-	30 lines (112 tokens) duplicated at tests.test_request_params.test_query.test_optional_list:284
+duplicate-code	high	tests/test_request_params/test_header/test_optional_list.py:315:1	-	15 lines (74 tokens) duplicated at tests.test_request_params.test_header.test_optional_list:329
+duplicate-code	high	tests/test_request_params/test_header/test_optional_str.py:43:1	-	24 lines (110 tokens) duplicated at tests.test_request_params.test_query.test_optional_str:43
+duplicate-code	high	tests/test_request_params/test_header/test_optional_str.py:105:1	-	24 lines (110 tokens) duplicated at tests.test_request_params.test_query.test_optional_str:105
+duplicate-code	high	tests/test_request_params/test_header/test_optional_str.py:128:1	-	15 lines (64 tokens) duplicated at tests.test_request_params.test_query.test_optional_str:128
+duplicate-code	high	tests/test_request_params/test_header/test_optional_str.py:183:1	-	27 lines (111 tokens) duplicated at tests.test_request_params.test_query.test_optional_str:183
+duplicate-code	high	tests/test_request_params/test_header/test_optional_str.py:209:1	-	15 lines (64 tokens) duplicated at tests.test_request_params.test_query.test_optional_str:209
+duplicate-code	high	tests/test_request_params/test_header/test_required_str.py:137:1	-	12 lines (67 tokens) duplicated at tests.test_request_params.test_header.test_required_str:346
+duplicate-code	high	tests/test_request_params/test_header/test_required_str.py:365:1	-	17 lines (58 tokens) duplicated at tests.test_request_params.test_header.test_required_str:392
+duplicate-code	high	tests/test_request_params/test_query/test_list.py:53:1	-	21 lines (90 tokens) duplicated at tests.test_request_params.test_query.test_required_str:49
+duplicate-code	high	tests/test_request_params/test_query/test_list.py:125:1	-	21 lines (90 tokens) duplicated at tests.test_request_params.test_query.test_required_str:115
+duplicate-code	high	tests/test_request_params/test_query/test_list.py:227:1	-	25 lines (92 tokens) duplicated in 3 other places: tests.test_request_params.test_query.test_list:335, tests.test_request_params.test_query.test_required_str:216, tests.test_request_params.test_query.test_required_str:323
+duplicate-code	high	tests/test_request_params/test_query/test_list.py:253:1	-	13 lines (65 tokens) duplicated at tests.test_request_params.test_query.test_list:361
+duplicate-code	high	tests/test_request_params/test_query/test_list.py:383:1	-	18 lines (55 tokens) duplicated at tests.test_request_params.test_query.test_list:410
+duplicate-code	high	tests/test_request_params/test_query/test_optional_list.py:313:1	-	15 lines (69 tokens) duplicated at tests.test_request_params.test_query.test_optional_list:327
+duplicate-code	high	tests/test_request_params/test_query/test_optional_str.py:298:1	-	15 lines (69 tokens) duplicated at tests.test_request_params.test_query.test_optional_str:312
+duplicate-code	high	tests/test_request_params/test_query/test_required_str.py:137:1	-	12 lines (64 tokens) duplicated at tests.test_request_params.test_query.test_required_str:349
+duplicate-code	high	tests/test_response_dependency.py:24:1	-	16 lines (77 tokens) duplicated at tests.test_response_dependency:114
+duplicate-code	high	tests/test_response_dependency.py:44:1	-	8 lines (51 tokens) duplicated at tests.test_response_dependency:61
+duplicate-code	high	tests/test_response_model_as_return_annotation.py:273:1	-	8 lines (54 tokens) duplicated in 2 other places: tests.test_response_model_as_return_annotation:311, tests.test_response_model_as_return_annotation:395
+duplicate-code	high	tests/test_response_model_as_return_annotation.py:437:1	-	10 lines (57 tokens) duplicated in 2 other places: tests.test_response_model_as_return_annotation:446, tests.test_response_model_as_return_annotation:455
+duplicate-code	high	tests/test_response_model_as_return_annotation.py:508:1	-	11 lines (59 tokens) duplicated in 3 other places: tests.test_tutorial.test_path_operation_advanced_configurations.test_tutorial003:12, tests.test_tutorial.test_path_operation_configurations.test_tutorial002b:18, tests.test_tutorial.test_path_params.test_tutorial003b:18
+duplicate-code	high	tests/test_response_model_as_return_annotation.py:1097:1	-	10 lines (54 tokens) duplicated at tests.test_tutorial.test_dataclasses.test_tutorial002:60
+duplicate-code	high	tests/test_response_model_data_filter.py:13:1	-	68 lines (347 tokens) duplicated at tests.test_response_model_data_filter_no_inheritance:15
+duplicate-code	high	tests/test_response_model_invalid.py:23:1	-	10 lines (53 tokens) duplicated at tests.test_response_model_invalid:32
+duplicate-code	high	tests/test_router_events.py:62:1	-	28 lines (185 tokens) duplicated at tests.test_router_events:354
+duplicate-code	high	tests/test_router_events.py:90:1	-	26 lines (172 tokens) duplicated at tests.test_router_events:296
+duplicate-code	high	tests/test_router_events.py:160:1	-	8 lines (56 tokens) duplicated at tests.test_router_events:286
+duplicate-code	high	tests/test_router_events.py:202:1	-	10 lines (50 tokens) duplicated at tests.test_router_events:219
+duplicate-code	high	tests/test_router_events.py:322:1	-	9 lines (50 tokens) duplicated at tests.test_router_events:342
+duplicate-code	high	tests/test_router_include_context.py:360:1	-	9 lines (61 tokens) duplicated at tests.test_router_include_context:497
+duplicate-code	high	tests/test_router_include_context.py:397:1	-	16 lines (78 tokens) duplicated at tests.test_router_include_context:427
+duplicate-code	high	tests/test_router_include_context.py:415:1	-	11 lines (57 tokens) duplicated at tests.test_router_include_context:466
+duplicate-code	high	tests/test_router_include_context.py:616:1	-	10 lines (58 tokens) duplicated at tests.test_router_include_context:685
+duplicate-code	high	tests/test_router_include_context.py:723:1	-	12 lines (74 tokens) duplicated at tests.test_router_include_context:837
+duplicate-code	high	tests/test_router_include_context.py:755:1	-	12 lines (83 tokens) duplicated at tests.test_router_include_context:794
+duplicate-code	high	tests/test_router_include_context.py:875:1	-	14 lines (60 tokens) duplicated at tests.test_router_include_context:1051
+duplicate-code	high	tests/test_router_include_context.py:960:1	-	12 lines (66 tokens) duplicated at tests.test_router_include_context:997
+duplicate-code	high	tests/test_router_redirect_slashes.py:6:1	-	16 lines (81 tokens) duplicated at tests.test_router_redirect_slashes:25
+duplicate-code	high	tests/test_schema_compat_pydantic_v2.py:70:1	-	21 lines (92 tokens) duplicated at tests.test_schema_compat_pydantic_v2:97
+duplicate-code	high	tests/test_schema_extra_examples.py:308:1	-	23 lines (66 tokens) duplicated at tests.test_schema_extra_examples:381
+duplicate-code	high	tests/test_schema_extra_examples.py:342:1	-	25 lines (69 tokens) duplicated at tests.test_tuples:136
+duplicate-code	high	tests/test_schema_extra_examples.py:446:1	-	23 lines (67 tokens) duplicated at tests.test_schema_extra_examples:481
+duplicate-code	high	tests/test_schema_extra_examples.py:549:1	-	23 lines (67 tokens) duplicated at tests.test_schema_extra_examples:584
+duplicate-code	high	tests/test_schema_extra_examples.py:652:1	-	23 lines (67 tokens) duplicated at tests.test_schema_extra_examples:687
+duplicate-code	high	tests/test_schema_extra_examples.py:755:1	-	23 lines (67 tokens) duplicated at tests.test_schema_extra_examples:790
+duplicate-code	high	tests/test_schema_extra_examples.py:834:1	-	20 lines (109 tokens) duplicated at tests.test_tutorial.test_body_fields.test_tutorial001:153
+duplicate-code	high	tests/test_security_api_key_cookie.py:9:1	-	58 lines (322 tokens) duplicated at tests.test_security_api_key_cookie_description:9
+duplicate-code	high	tests/test_security_api_key_cookie_optional.py:9:1	-	15 lines (61 tokens) duplicated in 2 other places: tests.test_security_oauth2_optional:18, tests.test_security_oauth2_optional_description:19
+duplicate-code	high	tests/test_security_api_key_cookie_optional.py:47:1	-	18 lines (93 tokens) duplicated at tests.test_security_http_base_optional:36
+duplicate-code	high	tests/test_security_api_key_header.py:9:1	-	58 lines (308 tokens) duplicated at tests.test_security_api_key_header_description:9
+duplicate-code	high	tests/test_security_api_key_header_optional.py:1:1	-	34 lines (142 tokens) duplicated at tests.test_security_api_key_query_optional:1
+duplicate-code	high	tests/test_security_api_key_header_optional.py:34:1	-	30 lines (168 tokens) duplicated at tests.test_security_api_key_query_optional:34
+duplicate-code	high	tests/test_security_api_key_query.py:9:1	-	58 lines (300 tokens) duplicated at tests.test_security_api_key_query_description:9
+duplicate-code	high	tests/test_security_http_base.py:13:1	-	14 lines (90 tokens) duplicated at tests.test_security_http_base_optional:17
+duplicate-code	high	tests/test_security_http_base.py:26:1	-	36 lines (210 tokens) duplicated at tests.test_security_http_base_description:20
+duplicate-code	high	tests/test_security_http_basic_optional.py:54:1	-	27 lines (128 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial007:67
+duplicate-code	high	tests/test_security_http_basic_realm.py:10:1	-	66 lines (418 tokens) duplicated at tests.test_security_http_basic_realm_description:10
+duplicate-code	high	tests/test_security_http_bearer.py:8:1	-	55 lines (338 tokens) duplicated at tests.test_security_http_bearer_description:8
+duplicate-code	high	tests/test_security_http_bearer_optional.py:1:1	-	24 lines (103 tokens) duplicated at tests.test_security_http_digest_optional:1
+duplicate-code	high	tests/test_security_http_bearer_optional.py:26:1	-	11 lines (68 tokens) duplicated at tests.test_security_http_digest_optional:26
+duplicate-code	high	tests/test_security_http_bearer_optional.py:36:1	-	24 lines (128 tokens) duplicated at tests.test_security_http_digest_optional:37
+duplicate-code	high	tests/test_security_http_digest.py:8:1	-	57 lines (338 tokens) duplicated at tests.test_security_http_digest_description:8
+duplicate-code	high	tests/test_security_oauth2.py:39:1	-	21 lines (130 tokens) duplicated at tests.test_security_oauth2_optional:41
+duplicate-code	high	tests/test_security_oauth2.py:61:1	-	137 lines (582 tokens) duplicated at tests.test_security_oauth2_optional:62
+duplicate-code	high	tests/test_security_oauth2.py:198:1	-	84 lines (349 tokens) duplicated at tests.test_security_oauth2_optional:199
+duplicate-code	high	tests/test_security_oauth2_authorization_code_bearer.py:10:1	-	31 lines (195 tokens) duplicated at tests.test_security_oauth2_authorization_code_bearer_description:13
+duplicate-code	high	tests/test_security_oauth2_authorization_code_bearer.py:46:1	-	32 lines (133 tokens) duplicated at tests.test_security_oauth2_authorization_code_bearer_description:43
+duplicate-code	high	tests/test_security_oauth2_authorization_code_bearer_scopes_openapi.py:13:1	-	13 lines (59 tokens) duplicated at tests.test_security_oauth2_authorization_code_bearer_scopes_openapi_simple:12
+duplicate-code	high	tests/test_security_oauth2_authorization_code_bearer_scopes_openapi.py:101:1	-	16 lines (70 tokens) duplicated at tests.test_tutorial.test_conditional_openapi.test_tutorial001:41
+duplicate-code	high	tests/test_security_oauth2_optional_description.py:35:1	-	33 lines (207 tokens) duplicated at tests.test_security_openid_connect_optional:20
+duplicate-code	high	tests/test_security_oauth2_optional_description.py:159:1	-	20 lines (63 tokens) duplicated in 2 other places: tests.test_tutorial.test_request_forms.test_tutorial001:108, tests.test_tutorial.test_security.test_tutorial003:93
+duplicate-code	high	tests/test_security_oauth2_optional_description.py:184:1	-	18 lines (57 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial003:118
+duplicate-code	high	tests/test_security_oauth2_optional_description.py:230:1	-	37 lines (155 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial003:171
+duplicate-code	high	tests/test_security_oauth2_password_bearer_optional.py:8:1	-	58 lines (338 tokens) duplicated at tests.test_security_oauth2_password_bearer_optional_description:12
+duplicate-code	high	tests/test_security_openid_connect.py:9:1	-	66 lines (354 tokens) duplicated at tests.test_security_openid_connect_description:11
+duplicate-code	high	tests/test_security_openid_connect_optional.py:52:1	-	18 lines (87 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial006:55
+duplicate-code	high	tests/test_security_scopes.py:29:1	-	17 lines (72 tokens) duplicated at tests.test_security_scopes_sub_dependency:67
+duplicate-code	high	tests/test_serialize_response_dataclass.py:49:1	-	10 lines (86 tokens) duplicated at tests.test_serialize_response_dataclass:65
+duplicate-code	high	tests/test_serialize_response_dataclass.py:89:1	-	12 lines (65 tokens) duplicated at tests.test_serialize_response_dataclass:161
+duplicate-code	high	tests/test_serialize_response_dataclass.py:111:1	-	26 lines (128 tokens) duplicated at tests.test_serialize_response_dataclass:136
+duplicate-code	high	tests/test_serialize_response_model.py:24:1	-	10 lines (58 tokens) duplicated at tests.test_serialize_response_model:62
+duplicate-code	high	tests/test_serialize_response_model.py:33:1	-	10 lines (59 tokens) duplicated at tests.test_serialize_response_model:75
+duplicate-code	high	tests/test_sse.py:137:1	-	12 lines (72 tokens) duplicated in 3 other places: tests.test_sse:148, tests.test_sse:159, tests.test_sse:181
+duplicate-code	high	tests/test_sse.py:275:1	-	7 lines (53 tokens) duplicated at tests.test_sse:285
+duplicate-code	high	tests/test_sse.py:300:1	-	21 lines (84 tokens) duplicated at tests.test_sse:402
+duplicate-code	high	tests/test_sse.py:348:1	-	10 lines (58 tokens) duplicated at tests.test_sse:360
+duplicate-code	high	tests/test_sse.py:437:1	-	24 lines (126 tokens) duplicated at tests.test_sse:472
+duplicate-code	high	tests/test_starlette_exception.py:39:1	-	13 lines (84 tokens) duplicated at tests.test_tutorial.test_handling_errors.test_tutorial001:6
+duplicate-code	high	tests/test_starlette_exception.py:117:1	-	25 lines (74 tokens) duplicated at tests.test_tutorial.test_extra_models.test_tutorial003:67
+duplicate-code	high	tests/test_starlette_exception.py:169:1	-	42 lines (163 tokens) duplicated at tests.test_tutorial.test_dependencies.test_tutorial001_tutorial001_02:152
+duplicate-code	high	tests/test_stream_bare_type.py:41:1	-	9 lines (69 tokens) duplicated at tests.test_stream_bare_type:57
+duplicate-code	high	tests/test_stream_status_code.py:102:1	-	11 lines (55 tokens) duplicated at tests.test_stream_status_code:113
+duplicate-code	high	tests/test_stream_status_code.py:168:1	-	18 lines (55 tokens) duplicated at tests.test_stream_status_code:343
+duplicate-code	high	tests/test_stream_status_code.py:250:1	-	48 lines (153 tokens) duplicated at tests.test_stream_status_code:360
+duplicate-code	high	tests/test_stream_status_code.py:310:1	-	20 lines (50 tokens) duplicated at tests.test_stream_status_code:420
+duplicate-code	high	tests/test_strict_content_type_nested.py:12:1	-	19 lines (87 tokens) duplicated at tests.test_strict_content_type_router_level:16
+duplicate-code	high	tests/test_stringified_annotation_dependency.py:46:1	-	11 lines (62 tokens) duplicated in 2 other places: tests.test_tutorial.test_server_sent_events.test_tutorial004:68, tests.test_tutorial.test_server_sent_events.test_tutorial005:42
+duplicate-code	high	tests/test_sub_callbacks.py:77:1	-	9 lines (57 tokens) duplicated at tests.test_tutorial.test_openapi_callbacks.test_tutorial001:29
+duplicate-code	high	tests/test_sub_callbacks.py:111:1	-	33 lines (94 tokens) duplicated at tests.test_tutorial.test_openapi_callbacks.test_tutorial001:68
+duplicate-code	high	tests/test_sub_callbacks.py:182:1	-	40 lines (100 tokens) duplicated at tests.test_tutorial.test_openapi_callbacks.test_tutorial001:99
+duplicate-code	high	tests/test_sub_callbacks.py:237:1	-	35 lines (159 tokens) duplicated at tests.test_tutorial.test_openapi_callbacks.test_tutorial001:145
+duplicate-code	high	tests/test_sub_callbacks.py:280:1	-	28 lines (119 tokens) duplicated at tests.test_tutorial.test_events.test_tutorial003:73
+duplicate-code	high	tests/test_tuples.py:252:1	-	26 lines (117 tokens) duplicated at tests.test_tutorial.test_openapi_callbacks.test_tutorial001:185
+duplicate-code	high	tests/test_tutorial/test_additional_responses/test_tutorial001.py:1:1	-	33 lines (166 tokens) duplicated at tests.test_tutorial.test_additional_responses.test_tutorial003:1
+duplicate-code	high	tests/test_tutorial/test_additional_responses/test_tutorial001.py:47:1	-	82 lines (316 tokens) duplicated at tests.test_tutorial.test_additional_responses.test_tutorial003:51
+duplicate-code	high	tests/test_tutorial/test_additional_responses/test_tutorial002.py:15:1	-	38 lines (243 tokens) duplicated at tests.test_tutorial.test_additional_responses.test_tutorial004:15
+duplicate-code	high	tests/test_tutorial/test_additional_responses/test_tutorial002.py:54:1	-	88 lines (342 tokens) duplicated at tests.test_tutorial.test_additional_responses.test_tutorial004:57
+duplicate-code	high	tests/test_tutorial/test_authentication_error_status_code/test_tutorial001.py:35:1	-	11 lines (62 tokens) duplicated in 4 other places: tests.test_tutorial.test_bigger_applications.test_main:266, tests.test_tutorial.test_body_nested_models.test_tutorial007:181, tests.test_tutorial.test_extra_models.test_tutorial005:24, tests.test_tutorial.test_security.test_tutorial003:82
+duplicate-code	high	tests/test_tutorial/test_background_tasks/test_tutorial002.py:2:1	-	18 lines (62 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial002:1
+duplicate-code	high	tests/test_tutorial/test_behind_a_proxy/test_tutorial003.py:1:1	-	23 lines (106 tokens) duplicated at tests.test_tutorial.test_behind_a_proxy.test_tutorial004:1
+duplicate-code	high	tests/test_tutorial/test_behind_a_proxy/test_tutorial003.py:25:1	-	25 lines (72 tokens) duplicated at tests.test_tutorial.test_behind_a_proxy.test_tutorial004:24
+duplicate-code	high	tests/test_tutorial/test_bigger_applications/test_main.py:28:1	-	16 lines (62 tokens) duplicated in 3 other places: tests.test_tutorial.test_bigger_applications.test_main:49, tests.test_tutorial.test_bigger_applications.test_main:70, tests.test_tutorial.test_bigger_applications.test_main:198
+duplicate-code	high	tests/test_tutorial/test_bigger_applications/test_main.py:102:1	-	16 lines (70 tokens) duplicated at tests.test_tutorial.test_bigger_applications.test_main:134
+duplicate-code	high	tests/test_tutorial/test_bigger_applications/test_main.py:162:1	-	16 lines (62 tokens) duplicated at tests.test_tutorial.test_bigger_applications.test_main:177
+duplicate-code	high	tests/test_tutorial/test_bigger_applications/test_main.py:234:1	-	7 lines (51 tokens) duplicated at tests.test_tutorial.test_dependencies.test_tutorial012:65
+duplicate-code	high	tests/test_tutorial/test_bigger_applications/test_main.py:281:1	-	27 lines (87 tokens) duplicated at tests.test_tutorial.test_bigger_applications.test_main:312
+duplicate-code	high	tests/test_tutorial/test_bigger_applications/test_main.py:380:1	-	20 lines (85 tokens) duplicated at tests.test_tutorial.test_bigger_applications.test_main:505
+duplicate-code	high	tests/test_tutorial/test_bigger_applications/test_main.py:418:1	-	27 lines (120 tokens) duplicated at tests.test_tutorial.test_bigger_applications.test_main:460
+duplicate-code	high	tests/test_tutorial/test_body/test_tutorial001.py:14:1	-	11 lines (51 tokens) duplicated at tests.test_tutorial.test_body.test_tutorial002:13
+duplicate-code	high	tests/test_tutorial/test_body/test_tutorial001.py:25:1	-	12 lines (65 tokens) duplicated at tests.test_tutorial.test_body.test_tutorial001:36
+duplicate-code	high	tests/test_tutorial/test_body/test_tutorial001.py:48:1	-	15 lines (62 tokens) duplicated at tests.test_tutorial.test_body.test_tutorial002:42
+duplicate-code	high	tests/test_tutorial/test_body/test_tutorial001.py:104:1	-	22 lines (93 tokens) duplicated in 2 other places: tests.test_tutorial.test_body.test_tutorial003:54, tests.test_tutorial.test_body.test_tutorial004:56
+duplicate-code	high	tests/test_tutorial/test_body/test_tutorial001.py:203:1	-	16 lines (65 tokens) duplicated at tests.test_tutorial.test_body.test_tutorial001:218
+duplicate-code	high	tests/test_tutorial/test_body/test_tutorial001.py:255:1	-	93 lines (397 tokens) duplicated at tests.test_tutorial.test_body.test_tutorial002:75
+duplicate-code	high	tests/test_tutorial/test_body/test_tutorial003.py:13:1	-	14 lines (89 tokens) duplicated at tests.test_tutorial.test_body.test_tutorial004:13
+duplicate-code	high	tests/test_tutorial/test_body/test_tutorial003.py:92:1	-	87 lines (350 tokens) duplicated at tests.test_tutorial.test_body.test_tutorial004:103
+duplicate-code	high	tests/test_tutorial/test_body_fields/test_tutorial001.py:1:1	-	18 lines (62 tokens) duplicated in 2 other places: tests.test_tutorial.test_custom_request_and_route.test_tutorial001:3, tests.test_tutorial.test_extra_data_types.test_tutorial001:1
+duplicate-code	high	tests/test_tutorial/test_body_fields/test_tutorial001.py:70:1	-	38 lines (157 tokens) duplicated in 2 other places: tests.test_tutorial.test_body_multiple_params.test_tutorial003:98, tests.test_tutorial.test_body_multiple_params.test_tutorial004:155
+duplicate-code	high	tests/test_tutorial/test_body_fields/test_tutorial001.py:118:1	-	14 lines (51 tokens) duplicated at tests.test_tutorial.test_body_multiple_params.test_tutorial001:128
+duplicate-code	high	tests/test_tutorial/test_body_multiple_params/test_tutorial001.py:14:1	-	12 lines (67 tokens) duplicated at tests.test_tutorial.test_body_multiple_params.test_tutorial004:14
+duplicate-code	high	tests/test_tutorial/test_body_multiple_params/test_tutorial002.py:13:1	-	20 lines (93 tokens) duplicated at tests.test_tutorial.test_body_multiple_params.test_tutorial005:14
+duplicate-code	high	tests/test_tutorial/test_body_multiple_params/test_tutorial002.py:66:1	-	18 lines (70 tokens) duplicated at tests.test_tutorial.test_body_multiple_params.test_tutorial005:63
+duplicate-code	high	tests/test_tutorial/test_body_multiple_params/test_tutorial002.py:84:1	-	15 lines (50 tokens) duplicated at tests.test_tutorial.test_body_multiple_params.test_tutorial002:120
+duplicate-code	high	tests/test_tutorial/test_body_multiple_params/test_tutorial002.py:98:1	-	19 lines (76 tokens) duplicated at tests.test_tutorial.test_body_multiple_params.test_tutorial005:92
+duplicate-code	high	tests/test_tutorial/test_body_multiple_params/test_tutorial002.py:197:1	-	69 lines (222 tokens) duplicated at tests.test_tutorial.test_body_multiple_params.test_tutorial005:127
+duplicate-code	high	tests/test_tutorial/test_body_multiple_params/test_tutorial002.py:273:1	-	40 lines (154 tokens) duplicated at tests.test_tutorial.test_body_multiple_params.test_tutorial005:197
+duplicate-code	high	tests/test_tutorial/test_body_multiple_params/test_tutorial002.py:325:1	-	42 lines (129 tokens) duplicated at tests.test_tutorial.test_generate_clients.test_tutorial004:81
+duplicate-code	high	tests/test_tutorial/test_body_multiple_params/test_tutorial003.py:21:1	-	28 lines (127 tokens) duplicated at tests.test_tutorial.test_body_multiple_params.test_tutorial004:46
+duplicate-code	high	tests/test_tutorial/test_body_multiple_params/test_tutorial003.py:48:1	-	28 lines (113 tokens) duplicated at tests.test_tutorial.test_body_multiple_params.test_tutorial004:109
+duplicate-code	high	tests/test_tutorial/test_body_multiple_params/test_tutorial003.py:136:1	-	53 lines (248 tokens) duplicated at tests.test_tutorial.test_body_multiple_params.test_tutorial004:202
+duplicate-code	high	tests/test_tutorial/test_body_multiple_params/test_tutorial003.py:188:1	-	39 lines (156 tokens) duplicated in 2 other places: tests.test_tutorial.test_body_multiple_params.test_tutorial004:258, tests.test_union_inherited_body:105
+duplicate-code	high	tests/test_tutorial/test_body_nested_models/test_tutorial001_tutorial002_tutorial003.py:51:1	-	12 lines (51 tokens) duplicated at tests.test_tutorial.test_body_nested_models.test_tutorial006:35
+duplicate-code	high	tests/test_tutorial/test_body_nested_models/test_tutorial001_tutorial002_tutorial003.py:80:1	-	33 lines (126 tokens) duplicated at tests.test_tutorial.test_body_nested_models.test_tutorial006:68
+duplicate-code	high	tests/test_tutorial/test_body_nested_models/test_tutorial001_tutorial002_tutorial003.py:142:1	-	53 lines (178 tokens) duplicated at tests.test_tutorial.test_body_nested_models.test_tutorial004:140
+duplicate-code	high	tests/test_tutorial/test_body_nested_models/test_tutorial001_tutorial002_tutorial003.py:195:1	-	14 lines (56 tokens) duplicated at tests.test_tutorial.test_body_nested_models.test_tutorial007:292
+duplicate-code	high	tests/test_tutorial/test_body_nested_models/test_tutorial001_tutorial002_tutorial003.py:213:1	-	45 lines (172 tokens) duplicated at tests.test_tutorial.test_body_nested_models.test_tutorial006:232
+duplicate-code	high	tests/test_tutorial/test_body_nested_models/test_tutorial004.py:14:1	-	127 lines (593 tokens) duplicated at tests.test_tutorial.test_body_nested_models.test_tutorial005:14
+duplicate-code	high	tests/test_tutorial/test_body_nested_models/test_tutorial004.py:197:1	-	36 lines (148 tokens) duplicated at tests.test_tutorial.test_body_nested_models.test_tutorial007:234
+duplicate-code	high	tests/test_tutorial/test_body_nested_models/test_tutorial004.py:233:1	-	50 lines (193 tokens) duplicated at tests.test_tutorial.test_body_nested_models.test_tutorial005:259
+duplicate-code	high	tests/test_tutorial/test_body_nested_models/test_tutorial005.py:156:1	-	103 lines (377 tokens) duplicated at tests.test_tutorial.test_body_nested_models.test_tutorial006:116
+duplicate-code	high	tests/test_tutorial/test_body_nested_models/test_tutorial006.py:14:1	-	12 lines (63 tokens) duplicated at tests.test_tutorial.test_body_nested_models.test_tutorial007:13
+duplicate-code	high	tests/test_tutorial/test_body_nested_models/test_tutorial007.py:117:1	-	16 lines (54 tokens) duplicated at tests.test_tutorial.test_body_nested_models.test_tutorial007:145
+duplicate-code	high	tests/test_tutorial/test_body_nested_models/test_tutorial007.py:313:1	-	39 lines (157 tokens) duplicated at tests.test_tutorial.test_body_nested_models.test_tutorial008:127
+duplicate-code	high	tests/test_tutorial/test_body_nested_models/test_tutorial008.py:11:1	-	12 lines (58 tokens) duplicated at tests.test_tutorial.test_body_nested_models.test_tutorial009:11
+duplicate-code	high	tests/test_tutorial/test_body_nested_models/test_tutorial008.py:61:1	-	14 lines (65 tokens) duplicated at tests.test_tutorial.test_body_nested_models.test_tutorial009:38
+duplicate-code	high	tests/test_tutorial/test_body_nested_models/test_tutorial009.py:82:1	-	43 lines (163 tokens) duplicated at tests.test_tutorial.test_response_status_code.test_tutorial001_tutorial002:62
+duplicate-code	high	tests/test_tutorial/test_body_updates/test_tutorial001.py:13:1	-	24 lines (129 tokens) duplicated at tests.test_tutorial.test_body_updates.test_tutorial002:13
+duplicate-code	high	tests/test_tutorial/test_body_updates/test_tutorial001.py:43:1	-	46 lines (170 tokens) duplicated at tests.test_tutorial.test_body_updates.test_tutorial002:64
+duplicate-code	high	tests/test_tutorial/test_body_updates/test_tutorial001.py:89:1	-	23 lines (63 tokens) duplicated at tests.test_tutorial.test_body_updates.test_tutorial002:110
+duplicate-code	high	tests/test_tutorial/test_body_updates/test_tutorial001.py:111:1	-	83 lines (353 tokens) duplicated at tests.test_tutorial.test_body_updates.test_tutorial002:132
+duplicate-code	high	tests/test_tutorial/test_configure_swagger_ui/test_tutorial001.py:13:1	-	30 lines (130 tokens) duplicated at tests.test_tutorial.test_configure_swagger_ui.test_tutorial002:16
+duplicate-code	high	tests/test_tutorial/test_cookie_param_models/test_tutorial001.py:14:1	-	40 lines (238 tokens) duplicated at tests.test_tutorial.test_cookie_param_models.test_tutorial002:14
+duplicate-code	high	tests/test_tutorial/test_cookie_param_models/test_tutorial001.py:64:1	-	9 lines (56 tokens) duplicated at tests.test_tutorial.test_cookie_param_models.test_tutorial002:62
+duplicate-code	high	tests/test_tutorial/test_cookie_param_models/test_tutorial001.py:74:1	-	29 lines (137 tokens) duplicated at tests.test_tutorial.test_cookie_param_models.test_tutorial002:81
+duplicate-code	high	tests/test_tutorial/test_cookie_param_models/test_tutorial001.py:102:1	-	71 lines (264 tokens) duplicated at tests.test_tutorial.test_cookie_param_models.test_tutorial002:112
+duplicate-code	high	tests/test_tutorial/test_cookie_params/test_tutorial001.py:48:1	-	28 lines (100 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial010:82
+duplicate-code	high	tests/test_tutorial/test_cookie_params/test_tutorial001.py:84:1	-	42 lines (162 tokens) duplicated at tests.test_tutorial.test_query_params.test_tutorial005:71
+duplicate-code	high	tests/test_tutorial/test_custom_docs_ui/test_tutorial001.py:1:1	-	26 lines (107 tokens) duplicated at tests.test_tutorial.test_custom_docs_ui.test_tutorial002:1
+duplicate-code	high	tests/test_tutorial/test_custom_docs_ui/test_tutorial001.py:27:1	-	15 lines (81 tokens) duplicated at tests.test_tutorial.test_custom_docs_ui.test_tutorial002:27
+duplicate-code	high	tests/test_tutorial/test_custom_docs_ui/test_tutorial001.py:41:1	-	9 lines (52 tokens) duplicated at tests.test_tutorial.test_custom_docs_ui.test_tutorial002:41
+duplicate-code	high	tests/test_tutorial/test_custom_request_and_route/test_tutorial002.py:14:1	-	12 lines (68 tokens) duplicated at tests.test_tutorial.test_custom_request_and_route.test_tutorial003:12
+duplicate-code	high	tests/test_tutorial/test_custom_response/test_tutorial001.py:23:1	-	8 lines (53 tokens) duplicated at tests.test_tutorial.test_custom_response.test_tutorial001b:18
+duplicate-code	high	tests/test_tutorial/test_custom_response/test_tutorial001.py:31:1	-	23 lines (94 tokens) duplicated in 2 other places: tests.test_tutorial.test_custom_response.test_tutorial001b:26, tests.test_tutorial.test_events.test_tutorial002:29
+duplicate-code	high	tests/test_tutorial/test_custom_response/test_tutorial002_tutorial003_tutorial004.py:13:1	-	10 lines (55 tokens) duplicated at tests.test_tutorial.test_path_operation_configurations.test_tutorial003_tutorial004:29
+duplicate-code	high	tests/test_tutorial/test_custom_response/test_tutorial002_tutorial003_tutorial004.py:50:1	-	13 lines (64 tokens) duplicated at tests.test_tutorial.test_custom_response.test_tutorial010:27
+duplicate-code	high	tests/test_tutorial/test_custom_response/test_tutorial008.py:1:1	-	19 lines (72 tokens) duplicated in 2 other places: tests.test_tutorial.test_custom_response.test_tutorial009:1, tests.test_tutorial.test_custom_response.test_tutorial009b:1
+duplicate-code	high	tests/test_tutorial/test_dataclasses/test_tutorial001.py:13:1	-	13 lines (75 tokens) duplicated in 2 other places: tests.test_tutorial.test_dataclasses.test_tutorial002:13, tests.test_tutorial.test_dataclasses.test_tutorial003:13
+duplicate-code	high	tests/test_tutorial/test_dataclasses/test_tutorial001.py:52:1	-	55 lines (179 tokens) duplicated at tests.test_tutorial.test_handling_errors.test_tutorial005:34
+duplicate-code	high	tests/test_tutorial/test_dataclasses/test_tutorial001.py:117:1	-	27 lines (119 tokens) duplicated at tests.test_tutorial.test_dataclasses.test_tutorial003:185
+duplicate-code	high	tests/test_tutorial/test_dataclasses/test_tutorial002.py:33:1	-	11 lines (57 tokens) duplicated in 2 other places: tests.test_tutorial.test_dataclasses.test_tutorial003:67, tests.test_tutorial.test_debugging.test_tutorial001:40
+duplicate-code	high	tests/test_tutorial/test_dependencies/test_tutorial001_tutorial001_02.py:15:1	-	14 lines (67 tokens) duplicated at tests.test_tutorial.test_dependencies.test_tutorial002_tutorial003_tutorial004:18
+duplicate-code	high	tests/test_tutorial/test_dependencies/test_tutorial001_tutorial001_02.py:32:1	-	70 lines (284 tokens) duplicated at tests.test_tutorial.test_dependencies.test_tutorial002_tutorial003_tutorial004:73
+duplicate-code	high	tests/test_tutorial/test_dependencies/test_tutorial001_tutorial001_02.py:121:1	-	14 lines (52 tokens) duplicated at tests.test_tutorial.test_dependencies.test_tutorial005:84
+duplicate-code	high	tests/test_tutorial/test_dependencies/test_tutorial005.py:1:1	-	18 lines (62 tokens) duplicated at tests.test_tutorial.test_schema_extra_example.test_tutorial005:1
+duplicate-code	high	tests/test_tutorial/test_dependencies/test_tutorial005.py:58:1	-	26 lines (103 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial009:48
+duplicate-code	high	tests/test_tutorial/test_dependencies/test_tutorial005.py:102:1	-	44 lines (165 tokens) duplicated at tests.test_tutorial.test_dependencies.test_tutorial006:108
+duplicate-code	high	tests/test_tutorial/test_dependencies/test_tutorial006.py:12:1	-	33 lines (154 tokens) duplicated at tests.test_tutorial.test_dependencies.test_tutorial012:12
+duplicate-code	high	tests/test_tutorial/test_dependencies/test_tutorial006.py:44:1	-	15 lines (107 tokens) duplicated at tests.test_tutorial.test_dependencies.test_tutorial012:71
+duplicate-code	high	tests/test_tutorial/test_dependencies/test_tutorial006.py:70:1	-	31 lines (123 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial006:65
+duplicate-code	high	tests/test_tutorial/test_dependencies/test_tutorial008b.py:11:1	-	12 lines (63 tokens) duplicated at tests.test_tutorial.test_dependencies.test_tutorial008e:11
+duplicate-code	high	tests/test_tutorial/test_dependencies/test_tutorial008c.py:13:1	-	26 lines (165 tokens) duplicated at tests.test_tutorial.test_dependencies.test_tutorial008d:12
+duplicate-code	high	tests/test_tutorial/test_dependencies/test_tutorial008c.py:40:1	-	9 lines (53 tokens) duplicated at tests.test_tutorial.test_dependencies.test_tutorial008d:41
+duplicate-code	high	tests/test_tutorial/test_dependencies/test_tutorial011.py:45:1	-	11 lines (62 tokens) duplicated at tests.test_tutorial.test_stream_data.test_tutorial002:38
+duplicate-code	high	tests/test_tutorial/test_dependencies/test_tutorial011.py:84:1	-	45 lines (169 tokens) duplicated at tests.test_tutorial.test_query_params.test_tutorial006:118
+duplicate-code	high	tests/test_tutorial/test_dependencies/test_tutorial012.py:113:1	-	14 lines (70 tokens) duplicated at tests.test_tutorial.test_generate_clients.test_tutorial001:32
+duplicate-code	high	tests/test_tutorial/test_encoder/test_tutorial001.py:1:1	-	18 lines (52 tokens) duplicated at tests.test_tutorial.test_openapi_callbacks.test_tutorial001:1
+duplicate-code	high	tests/test_tutorial/test_encoder/test_tutorial001.py:19:1	-	11 lines (55 tokens) duplicated at tests.test_tutorial.test_websockets.test_tutorial003:23
+duplicate-code	high	tests/test_tutorial/test_encoder/test_tutorial001.py:70:1	-	11 lines (58 tokens) duplicated at tests.test_tutorial.test_query_params.test_tutorial001:41
+duplicate-code	high	tests/test_tutorial/test_encoder/test_tutorial001.py:92:1	-	18 lines (50 tokens) duplicated at tests.test_tutorial.test_response_directly.test_tutorial001:59
+duplicate-code	high	tests/test_tutorial/test_encoder/test_tutorial001.py:110:1	-	40 lines (112 tokens) duplicated at tests.test_tutorial.test_response_directly.test_tutorial001:75
+duplicate-code	high	tests/test_tutorial/test_encoder/test_tutorial001.py:169:1	-	45 lines (133 tokens) duplicated at tests.test_tutorial.test_path_operation_configurations.test_tutorial002:184
+duplicate-code	high	tests/test_tutorial/test_extending_openapi/test_tutorial001.py:1:1	-	22 lines (99 tokens) duplicated at tests.test_tutorial.test_metadata.test_tutorial003:1
+duplicate-code	high	tests/test_tutorial/test_extra_data_types/test_tutorial001.py:127:1	-	38 lines (153 tokens) duplicated at tests.test_tutorial.test_extra_models.test_tutorial003:122
+duplicate-code	high	tests/test_tutorial/test_extra_models/test_tutorial001_tutorial002.py:15:1	-	12 lines (67 tokens) duplicated at tests.test_tutorial.test_extra_models.test_tutorial003:13
+duplicate-code	high	tests/test_tutorial/test_extra_models/test_tutorial001_tutorial002.py:39:1	-	12 lines (63 tokens) duplicated in 3 other places: tests.test_tutorial.test_json_base64_bytes.test_tutorial001:50, tests.test_tutorial.test_security.test_tutorial002:37, tests.test_tutorial.test_settings.test_app01:55
+duplicate-code	high	tests/test_tutorial/test_extra_models/test_tutorial001_tutorial002.py:60:1	-	33 lines (85 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial002:55
+duplicate-code	high	tests/test_tutorial/test_extra_models/test_tutorial001_tutorial002.py:115:1	-	48 lines (202 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial002:91
+duplicate-code	high	tests/test_tutorial/test_extra_models/test_tutorial003.py:39:1	-	13 lines (68 tokens) duplicated at tests.test_tutorial.test_path_params_numeric_validations.test_tutorial002_tutorial003:64
+duplicate-code	high	tests/test_tutorial/test_extra_models/test_tutorial004.py:11:1	-	12 lines (63 tokens) duplicated at tests.test_tutorial.test_extra_models.test_tutorial005:11
+duplicate-code	high	tests/test_tutorial/test_extra_models/test_tutorial004.py:31:1	-	15 lines (71 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial001_tutorial001_01:77
+duplicate-code	high	tests/test_tutorial/test_first_steps/test_tutorial001_tutorial002_tutorial003.py:29:1	-	13 lines (75 tokens) duplicated at tests.test_tutorial.test_header_params.test_tutorial003:38
+duplicate-code	high	tests/test_tutorial/test_generate_clients/test_tutorial002.py:1:1	-	44 lines (248 tokens) duplicated at tests.test_tutorial.test_generate_clients.test_tutorial003:1
+duplicate-code	high	tests/test_tutorial/test_generate_clients/test_tutorial002.py:65:1	-	38 lines (103 tokens) duplicated at tests.test_tutorial.test_generate_clients.test_tutorial003:65
+duplicate-code	high	tests/test_tutorial/test_generate_clients/test_tutorial002.py:102:1	-	98 lines (377 tokens) duplicated at tests.test_tutorial.test_generate_clients.test_tutorial003:102
+duplicate-code	high	tests/test_tutorial/test_generate_clients/test_tutorial004.py:22:1	-	17 lines (52 tokens) duplicated at tests.test_tutorial.test_path_operation_configurations.test_tutorial002:125
+duplicate-code	high	tests/test_tutorial/test_generate_clients/test_tutorial004.py:159:1	-	29 lines (76 tokens) duplicated at tests.test_tutorial.test_generate_clients.test_tutorial004:200
+duplicate-code	high	tests/test_tutorial/test_graphql/test_tutorial001.py:27:1	-	11 lines (50 tokens) duplicated at tests.test_tutorial.test_using_request_directly.test_tutorial001:15
+duplicate-code	high	tests/test_tutorial/test_handling_errors/test_tutorial004.py:19:1	-	86 lines (356 tokens) duplicated at tests.test_tutorial.test_handling_errors.test_tutorial006:27
+duplicate-code	high	tests/test_tutorial/test_header_param_models/test_tutorial001.py:15:1	-	15 lines (73 tokens) duplicated at tests.test_tutorial.test_header_param_models.test_tutorial003:15
+duplicate-code	high	tests/test_tutorial/test_header_param_models/test_tutorial001.py:36:1	-	35 lines (171 tokens) duplicated at tests.test_tutorial.test_header_param_models.test_tutorial002:36
+duplicate-code	high	tests/test_tutorial/test_header_param_models/test_tutorial001.py:70:1	-	17 lines (52 tokens) duplicated at tests.test_tutorial.test_header_param_models.test_tutorial003:109
+duplicate-code	high	tests/test_tutorial/test_header_param_models/test_tutorial001.py:96:1	-	116 lines (469 tokens) duplicated at tests.test_tutorial.test_header_param_models.test_tutorial002:90
+duplicate-code	high	tests/test_tutorial/test_header_param_models/test_tutorial002.py:22:1	-	15 lines (62 tokens) duplicated at tests.test_tutorial.test_header_param_models.test_tutorial003:43
+duplicate-code	high	tests/test_tutorial/test_header_param_models/test_tutorial003.py:135:1	-	19 lines (83 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial015:61
+duplicate-code	high	tests/test_tutorial/test_header_params/test_tutorial001.py:14:1	-	14 lines (69 tokens) duplicated in 2 other places: tests.test_tutorial.test_header_params.test_tutorial002:14, tests.test_tutorial.test_header_params.test_tutorial003:14
+duplicate-code	high	tests/test_tutorial/test_header_params/test_tutorial001.py:29:1	-	43 lines (204 tokens) duplicated at tests.test_tutorial.test_header_params.test_tutorial002:40
+duplicate-code	high	tests/test_tutorial/test_header_params/test_tutorial001.py:73:1	-	45 lines (168 tokens) duplicated at tests.test_tutorial.test_header_params.test_tutorial002:84
+duplicate-code	high	tests/test_tutorial/test_header_params/test_tutorial003.py:71:1	-	55 lines (205 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial014:52
+duplicate-code	high	tests/test_tutorial/test_json_base64_bytes/test_tutorial001.py:85:1	-	21 lines (62 tokens) duplicated at tests.test_webhooks_security:61
+duplicate-code	high	tests/test_tutorial/test_json_base64_bytes/test_tutorial001.py:149:1	-	13 lines (54 tokens) duplicated in 2 other places: tests.test_tutorial.test_json_base64_bytes.test_tutorial001:163, tests.test_tutorial.test_json_base64_bytes.test_tutorial001:177
+duplicate-code	high	tests/test_tutorial/test_metadata/test_tutorial001.py:1:1	-	32 lines (137 tokens) duplicated at tests.test_tutorial.test_metadata.test_tutorial001_1:1
+duplicate-code	high	tests/test_tutorial/test_metadata/test_tutorial001.py:33:1	-	21 lines (60 tokens) duplicated at tests.test_tutorial.test_metadata.test_tutorial001_1:33
+duplicate-code	high	tests/test_tutorial/test_metadata/test_tutorial002.py:27:1	-	20 lines (59 tokens) duplicated at tests.test_tutorial.test_metadata.test_tutorial003:22
+duplicate-code	high	tests/test_tutorial/test_openapi_callbacks/test_tutorial001.py:39:1	-	11 lines (62 tokens) duplicated at tests.test_tutorial.test_server_sent_events.test_tutorial002:43
+duplicate-code	high	tests/test_tutorial/test_openapi_webhooks/test_tutorial001.py:75:1	-	52 lines (224 tokens) duplicated at tests.test_webhooks_security:82
+duplicate-code	high	tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial001.py:1:1	-	32 lines (147 tokens) duplicated at tests.test_tutorial.test_path_operation_advanced_configurations.test_tutorial002:1
+duplicate-code	high	tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial004.py:1:1	-	18 lines (51 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial004:1
+duplicate-code	high	tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial004.py:22:1	-	29 lines (153 tokens) duplicated at tests.test_tutorial.test_path_operation_configurations.test_tutorial005:21
+duplicate-code	high	tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial004.py:50:1	-	94 lines (373 tokens) duplicated at tests.test_tutorial.test_path_operation_configurations.test_tutorial005:49
+duplicate-code	high	tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial005.py:11:1	-	19 lines (91 tokens) duplicated at tests.test_tutorial.test_path_operation_configurations.test_tutorial006:21
+duplicate-code	high	tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial007.py:73:1	-	17 lines (82 tokens) duplicated at tests.test_tutorial.test_path_operation_configurations.test_tutorial001:42
+duplicate-code	high	tests/test_tutorial/test_path_operation_configurations/test_tutorial001.py:66:1	-	126 lines (363 tokens) duplicated at tests.test_tutorial.test_path_operation_configurations.test_tutorial003_tutorial004:87
+duplicate-code	high	tests/test_tutorial/test_path_operation_configurations/test_tutorial002.py:19:1	-	27 lines (120 tokens) duplicated at tests.test_tutorial.test_path_operation_configurations.test_tutorial003_tutorial004:38
+duplicate-code	high	tests/test_tutorial/test_path_operation_configurations/test_tutorial002.py:89:1	-	20 lines (55 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial004:59
+duplicate-code	high	tests/test_tutorial/test_path_operation_configurations/test_tutorial002.py:110:1	-	15 lines (53 tokens) duplicated at tests.test_tutorial.test_path_operation_configurations.test_tutorial002b:41
+duplicate-code	high	tests/test_tutorial/test_path_operation_configurations/test_tutorial003_tutorial004.py:64:1	-	12 lines (58 tokens) duplicated at tests.test_union_body_discriminator:41
+duplicate-code	high	tests/test_tutorial/test_path_params/test_tutorial001.py:18:1	-	13 lines (83 tokens) duplicated at tests.test_tutorial.test_path_params.test_tutorial003:18
+duplicate-code	high	tests/test_tutorial/test_path_params/test_tutorial001.py:40:1	-	83 lines (240 tokens) duplicated at tests.test_tutorial.test_path_params.test_tutorial002:48
+duplicate-code	high	tests/test_tutorial/test_path_params/test_tutorial002.py:24:1	-	14 lines (62 tokens) duplicated at tests.test_tutorial.test_path_params.test_tutorial005:37
+duplicate-code	high	tests/test_tutorial/test_path_params/test_tutorial003.py:56:1	-	26 lines (70 tokens) duplicated at tests.test_tutorial.test_using_request_directly.test_tutorial001:35
+duplicate-code	high	tests/test_tutorial/test_path_params/test_tutorial003.py:81:1	-	59 lines (173 tokens) duplicated at tests.test_tutorial.test_using_request_directly.test_tutorial001:60
+duplicate-code	high	tests/test_tutorial/test_path_params_numeric_validations/test_tutorial001.py:14:1	-	14 lines (56 tokens) duplicated in 2 other places: tests.test_tutorial.test_path_params_numeric_validations.test_tutorial005:12, tests.test_tutorial.test_path_params_numeric_validations.test_tutorial006:12
+duplicate-code	high	tests/test_tutorial/test_path_params_numeric_validations/test_tutorial001.py:28:1	-	11 lines (76 tokens) duplicated at tests.test_tutorial.test_path_params_numeric_validations.test_tutorial002_tutorial003:28
+duplicate-code	high	tests/test_tutorial/test_path_params_numeric_validations/test_tutorial001.py:46:1	-	24 lines (98 tokens) duplicated at tests.test_tutorial.test_path_params_numeric_validations.test_tutorial006:99
+duplicate-code	high	tests/test_tutorial/test_path_params_numeric_validations/test_tutorial001.py:88:1	-	81 lines (231 tokens) duplicated at tests.test_tutorial.test_path_params_numeric_validations.test_tutorial006:147
+duplicate-code	high	tests/test_tutorial/test_path_params_numeric_validations/test_tutorial002_tutorial003.py:14:1	-	15 lines (66 tokens) duplicated at tests.test_tutorial.test_path_params_numeric_validations.test_tutorial004:12
+duplicate-code	high	tests/test_tutorial/test_path_params_numeric_validations/test_tutorial002_tutorial003.py:84:1	-	93 lines (269 tokens) duplicated in 2 other places: tests.test_tutorial.test_path_params_numeric_validations.test_tutorial004:99, tests.test_tutorial.test_path_params_numeric_validations.test_tutorial005:116
+duplicate-code	high	tests/test_tutorial/test_path_params_numeric_validations/test_tutorial004.py:26:1	-	33 lines (178 tokens) duplicated at tests.test_tutorial.test_path_params_numeric_validations.test_tutorial005:26
+duplicate-code	high	tests/test_tutorial/test_path_params_numeric_validations/test_tutorial004.py:60:1	-	39 lines (166 tokens) duplicated at tests.test_tutorial.test_path_params_numeric_validations.test_tutorial005:76
+duplicate-code	high	tests/test_tutorial/test_python_types/test_tutorial008b.py:14:1	-	11 lines (66 tokens) duplicated at tests.test_tutorial.test_python_types.test_tutorial009_tutorial009b:14
+duplicate-code	high	tests/test_tutorial/test_query_param_models/test_tutorial001.py:14:1	-	91 lines (394 tokens) duplicated at tests.test_tutorial.test_query_param_models.test_tutorial002:14
+duplicate-code	high	tests/test_tutorial/test_query_param_models/test_tutorial001.py:114:1	-	115 lines (434 tokens) duplicated at tests.test_tutorial.test_query_param_models.test_tutorial002:120
+duplicate-code	high	tests/test_tutorial/test_query_params/test_tutorial001.py:11:1	-	14 lines (62 tokens) duplicated at tests.test_tutorial.test_query_params.test_tutorial004:13
+duplicate-code	high	tests/test_tutorial/test_query_params/test_tutorial001.py:74:1	-	61 lines (224 tokens) duplicated at tests.test_tutorial.test_query_params.test_tutorial002:74
+duplicate-code	high	tests/test_tutorial/test_query_params/test_tutorial002.py:13:1	-	16 lines (72 tokens) duplicated at tests.test_tutorial.test_query_params.test_tutorial003:13
+duplicate-code	high	tests/test_tutorial/test_query_params/test_tutorial002.py:32:1	-	18 lines (103 tokens) duplicated in 2 other places: tests.test_tutorial.test_query_params.test_tutorial003:43, tests.test_tutorial.test_query_params.test_tutorial004:45
+duplicate-code	high	tests/test_tutorial/test_query_params/test_tutorial003.py:66:1	-	90 lines (319 tokens) duplicated at tests.test_tutorial.test_query_params.test_tutorial004:74
+duplicate-code	high	tests/test_tutorial/test_query_params/test_tutorial005.py:30:1	-	41 lines (172 tokens) duplicated at tests.test_tutorial.test_query_params.test_tutorial006:61
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial001.py:13:1	-	35 lines (244 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial002:14
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial001.py:79:1	-	50 lines (187 tokens) duplicated in 3 other places: tests.test_tutorial.test_query_params_str_validations.test_tutorial004:95, tests.test_tutorial.test_query_params_str_validations.test_tutorial006c:105, tests.test_tutorial.test_query_params_str_validations.test_tutorial011:73
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial002.py:48:1	-	50 lines (211 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial003:58
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial002.py:98:1	-	51 lines (191 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial003:109
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial003.py:14:1	-	20 lines (126 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial004:14
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial004.py:33:1	-	10 lines (65 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial006:40
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial004.py:54:1	-	38 lines (145 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial011:37
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial005.py:12:1	-	15 lines (71 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial006:12
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial005.py:29:1	-	60 lines (279 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial006c:43
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial005.py:91:1	-	49 lines (182 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial006:96
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial007.py:14:1	-	73 lines (376 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial008:14
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial009.py:14:1	-	35 lines (244 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial010:15
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial009.py:84:1	-	46 lines (172 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial010:114
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial011.py:14:1	-	24 lines (142 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial013:12
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial012.py:35:1	-	38 lines (151 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial013:35
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial012.py:73:1	-	47 lines (175 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial013:73
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial014.py:14:1	-	14 lines (63 tokens) duplicated at tests.test_tutorial.test_query_params_str_validations.test_tutorial015:14
+duplicate-code	high	tests/test_tutorial/test_query_params_str_validations/test_tutorial014.py:35:1	-	12 lines (65 tokens) duplicated at tests.test_tutorial.test_response_status_code.test_tutorial001_tutorial002:25
+duplicate-code	high	tests/test_tutorial/test_request_files/test_tutorial001.py:12:1	-	13 lines (70 tokens) duplicated at tests.test_tutorial.test_request_files.test_tutorial001_02:15
+duplicate-code	high	tests/test_tutorial/test_request_files/test_tutorial001.py:29:1	-	16 lines (74 tokens) duplicated at tests.test_tutorial.test_request_files.test_tutorial002:35
+duplicate-code	high	tests/test_tutorial/test_request_files/test_tutorial001.py:52:1	-	11 lines (81 tokens) duplicated at tests.test_tutorial.test_request_files.test_tutorial001_02:37
+duplicate-code	high	tests/test_tutorial/test_request_files/test_tutorial001.py:65:1	-	6 lines (53 tokens) duplicated at tests.test_tutorial.test_request_files.test_tutorial001_03:24
+duplicate-code	high	tests/test_tutorial/test_request_files/test_tutorial001.py:80:1	-	43 lines (155 tokens) duplicated at tests.test_tutorial.test_request_forms_and_files.test_tutorial001:147
+duplicate-code	high	tests/test_tutorial/test_request_files/test_tutorial001.py:178:1	-	40 lines (156 tokens) duplicated at tests.test_union_body:96
+duplicate-code	high	tests/test_tutorial/test_request_files/test_tutorial001_02.py:47:1	-	30 lines (168 tokens) duplicated at tests.test_tutorial.test_request_files.test_tutorial001_03:32
+duplicate-code	high	tests/test_tutorial/test_request_files/test_tutorial001_02.py:77:1	-	31 lines (89 tokens) duplicated at tests.test_tutorial.test_request_files.test_tutorial001_03:63
+duplicate-code	high	tests/test_tutorial/test_request_files/test_tutorial001_02.py:108:1	-	24 lines (72 tokens) duplicated at tests.test_tutorial.test_request_files.test_tutorial001_03:95
+duplicate-code	high	tests/test_tutorial/test_request_files/test_tutorial001_03.py:139:1	-	40 lines (156 tokens) duplicated at tests.test_tutorial.test_request_files.test_tutorial003:188
+duplicate-code	high	tests/test_tutorial/test_request_files/test_tutorial002.py:55:1	-	58 lines (374 tokens) duplicated at tests.test_tutorial.test_request_files.test_tutorial003:25
+duplicate-code	high	tests/test_tutorial/test_request_form_models/test_tutorial001.py:16:1	-	10 lines (70 tokens) duplicated in 2 other places: tests.test_tutorial.test_request_form_models.test_tutorial002:16, tests.test_tutorial.test_request_forms.test_tutorial001:16
+duplicate-code	high	tests/test_tutorial/test_request_form_models/test_tutorial001.py:25:1	-	121 lines (539 tokens) duplicated at tests.test_tutorial.test_request_form_models.test_tutorial002:42
+duplicate-code	high	tests/test_tutorial/test_request_form_models/test_tutorial001.py:146:1	-	40 lines (168 tokens) duplicated at tests.test_tutorial.test_request_form_models.test_tutorial002:164
+duplicate-code	high	tests/test_tutorial/test_request_forms/test_tutorial001.py:60:1	-	21 lines (78 tokens) duplicated at tests.test_tutorial.test_request_forms.test_tutorial001:81
+duplicate-code	high	tests/test_tutorial/test_request_forms_and_files/test_tutorial001.py:29:1	-	27 lines (101 tokens) duplicated at tests.test_tutorial.test_request_forms_and_files.test_tutorial001:77
+duplicate-code	high	tests/test_tutorial/test_response_directly/test_tutorial001.py:13:1	-	12 lines (59 tokens) duplicated at tests.test_tutorial.test_response_directly.test_tutorial002:11
+duplicate-code	high	tests/test_tutorial/test_response_directly/test_tutorial001.py:37:1	-	14 lines (62 tokens) duplicated at tests.test_tutorial.test_response_directly.test_tutorial002:36
+duplicate-code	high	tests/test_tutorial/test_response_model/test_tutorial001_tutorial001_01.py:14:1	-	12 lines (67 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial003_05:13
+duplicate-code	high	tests/test_tutorial/test_response_model/test_tutorial001_tutorial001_01.py:139:1	-	17 lines (87 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial004:90
+duplicate-code	high	tests/test_tutorial/test_response_model/test_tutorial002.py:33:1	-	13 lines (82 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial004:44
+duplicate-code	high	tests/test_tutorial/test_response_model/test_tutorial003.py:13:1	-	38 lines (191 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial003_01:13
+duplicate-code	high	tests/test_tutorial/test_response_model/test_tutorial003.py:89:1	-	16 lines (74 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial003_01:89
+duplicate-code	high	tests/test_tutorial/test_response_model/test_tutorial003.py:119:1	-	40 lines (158 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial004:110
+duplicate-code	high	tests/test_tutorial/test_response_model/test_tutorial003_02.py:15:1	-	7 lines (50 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial003_05:29
+duplicate-code	high	tests/test_tutorial/test_response_model/test_tutorial003_02.py:22:1	-	80 lines (311 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial003_05:36
+duplicate-code	high	tests/test_tutorial/test_response_model/test_tutorial005.py:13:1	-	155 lines (666 tokens) duplicated at tests.test_tutorial.test_response_model.test_tutorial006:13
+duplicate-code	high	tests/test_tutorial/test_schema_extra_example/test_tutorial001.py:13:1	-	88 lines (345 tokens) duplicated at tests.test_tutorial.test_schema_extra_example.test_tutorial002:13
+duplicate-code	high	tests/test_tutorial/test_schema_extra_example/test_tutorial002.py:118:1	-	30 lines (135 tokens) duplicated at tests.test_tutorial.test_schema_extra_example.test_tutorial003:119
+duplicate-code	high	tests/test_tutorial/test_schema_extra_example/test_tutorial003.py:14:1	-	37 lines (177 tokens) duplicated at tests.test_tutorial.test_schema_extra_example.test_tutorial004:14
+duplicate-code	high	tests/test_tutorial/test_schema_extra_example/test_tutorial004.py:76:1	-	78 lines (321 tokens) duplicated at tests.test_tutorial.test_schema_extra_example.test_tutorial005:85
+duplicate-code	high	tests/test_tutorial/test_schema_extra_example/test_tutorial005.py:34:1	-	11 lines (63 tokens) duplicated at tests.test_union_body_discriminator_annotated:57
+duplicate-code	high	tests/test_tutorial/test_security/test_tutorial001.py:12:1	-	12 lines (63 tokens) duplicated in 2 other places: tests.test_tutorial.test_security.test_tutorial003:14, tests.test_tutorial.test_security.test_tutorial006:13
+duplicate-code	high	tests/test_tutorial/test_security/test_tutorial001.py:23:1	-	8 lines (50 tokens) duplicated in 3 other places: tests.test_tutorial.test_security.test_tutorial001:36, tests.test_tutorial.test_security.test_tutorial004:60, tests.test_tutorial.test_security.test_tutorial005:81
+duplicate-code	high	tests/test_tutorial/test_security/test_tutorial002.py:20:1	-	12 lines (79 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial003:41
+duplicate-code	high	tests/test_tutorial/test_security/test_tutorial003.py:64:1	-	9 lines (61 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial003:72
+duplicate-code	high	tests/test_tutorial/test_security/test_tutorial004.py:27:1	-	21 lines (152 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial005:48
+duplicate-code	high	tests/test_tutorial/test_security/test_tutorial004.py:47:1	-	8 lines (64 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial005:68
+duplicate-code	high	tests/test_tutorial/test_security/test_tutorial004.py:68:1	-	19 lines (133 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial005:89
+duplicate-code	high	tests/test_tutorial/test_security/test_tutorial004.py:86:1	-	21 lines (117 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial005:107
+duplicate-code	high	tests/test_tutorial/test_security/test_tutorial004.py:106:1	-	20 lines (101 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial005:127
+duplicate-code	high	tests/test_tutorial/test_security/test_tutorial004.py:125:1	-	15 lines (71 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial005:146
+duplicate-code	high	tests/test_tutorial/test_security/test_tutorial004.py:139:1	-	15 lines (71 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial005:172
+duplicate-code	high	tests/test_tutorial/test_security/test_tutorial004.py:172:1	-	7 lines (50 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial005:198
+duplicate-code	high	tests/test_tutorial/test_security/test_tutorial004.py:183:1	-	63 lines (217 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial005:227
+duplicate-code	high	tests/test_tutorial/test_security/test_tutorial004.py:257:1	-	108 lines (504 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial005:314
+duplicate-code	high	tests/test_tutorial/test_security/test_tutorial006.py:26:1	-	30 lines (218 tokens) duplicated at tests.test_tutorial.test_security.test_tutorial007:24
+duplicate-code	high	tests/test_tutorial/test_separate_openapi_schemas/test_tutorial001.py:13:1	-	137 lines (604 tokens) duplicated at tests.test_tutorial.test_separate_openapi_schemas.test_tutorial002:13
+duplicate-code	high	tests/test_tutorial/test_server_sent_events/test_tutorial001.py:21:1	-	13 lines (64 tokens) duplicated at tests.test_tutorial.test_stream_json_lines.test_tutorial001:29
+duplicate-code	high	tests/test_tutorial/test_server_sent_events/test_tutorial001.py:51:1	-	31 lines (95 tokens) duplicated at tests.test_tutorial.test_server_sent_events.test_tutorial001:85
+duplicate-code	high	tests/test_tutorial/test_server_sent_events/test_tutorial001.py:167:1	-	26 lines (82 tokens) duplicated at tests.test_tutorial.test_stream_json_lines.test_tutorial001:119
+duplicate-code	high	tests/test_tutorial/test_server_sent_events/test_tutorial002.py:11:1	-	12 lines (77 tokens) duplicated at tests.test_tutorial.test_server_sent_events.test_tutorial004:11
+duplicate-code	high	tests/test_tutorial/test_server_sent_events/test_tutorial002.py:57:1	-	28 lines (81 tokens) duplicated at tests.test_tutorial.test_server_sent_events.test_tutorial003:47
+duplicate-code	high	tests/test_tutorial/test_server_sent_events/test_tutorial003.py:11:1	-	11 lines (63 tokens) duplicated at tests.test_tutorial.test_server_sent_events.test_tutorial005:11
+duplicate-code	high	tests/test_tutorial/test_server_sent_events/test_tutorial004.py:93:1	-	50 lines (147 tokens) duplicated at tests.test_tutorial.test_server_sent_events.test_tutorial005:64
+duplicate-code	high	tests/test_tutorial/test_server_sent_events/test_tutorial004.py:143:1	-	23 lines (112 tokens) duplicated at tests.test_tutorial.test_server_sent_events.test_tutorial005:120
+duplicate-code	high	tests/test_tutorial/test_settings/test_app02.py:12:1	-	15 lines (73 tokens) duplicated at tests.test_tutorial.test_settings.test_app03:13
+duplicate-code	high	tests/test_tutorial/test_sql_databases/test_tutorial001.py:27:1	-	41 lines (213 tokens) duplicated at tests.test_tutorial.test_sql_databases.test_tutorial002:27
+duplicate-code	high	tests/test_tutorial/test_sql_databases/test_tutorial001.py:76:1	-	8 lines (58 tokens) duplicated at tests.test_tutorial.test_sql_databases.test_tutorial002:79
+duplicate-code	high	tests/test_tutorial/test_sql_databases/test_tutorial001.py:83:1	-	23 lines (116 tokens) duplicated at tests.test_tutorial.test_sql_databases.test_tutorial002:86
+duplicate-code	high	tests/test_tutorial/test_sql_databases/test_tutorial001.py:144:1	-	22 lines (122 tokens) duplicated at tests.test_tutorial.test_sql_databases.test_tutorial002:148
+duplicate-code	high	tests/test_tutorial/test_sql_databases/test_tutorial001.py:174:1	-	51 lines (147 tokens) duplicated at tests.test_tutorial.test_sql_databases.test_tutorial002:182
+duplicate-code	high	tests/test_tutorial/test_sql_databases/test_tutorial001.py:225:1	-	37 lines (109 tokens) duplicated at tests.test_tutorial.test_sql_databases.test_tutorial002:233
+duplicate-code	high	tests/test_tutorial/test_sql_databases/test_tutorial001.py:261:1	-	61 lines (179 tokens) duplicated at tests.test_tutorial.test_sql_databases.test_tutorial002:315
+duplicate-code	high	tests/test_tutorial/test_sql_databases/test_tutorial001.py:328:1	-	10 lines (65 tokens) duplicated at tests.test_tutorial.test_sql_databases.test_tutorial002:378
+duplicate-code	high	tests/test_tutorial/test_sql_databases/test_tutorial002.py:123:1	-	8 lines (52 tokens) duplicated at tests.test_tutorial.test_sql_databases.test_tutorial002:130
+duplicate-code	high	tests/test_tutorial/test_stream_data/test_tutorial001.py:53:1	-	11 lines (64 tokens) duplicated at tests.test_tutorial.test_stream_json_lines.test_tutorial001:43
+duplicate-code	high	tests/test_tutorial/test_strict_content_type/test_tutorial001.py:22:1	-	10 lines (52 tokens) duplicated at tests.test_tutorial.test_strict_content_type.test_tutorial001:31
+duplicate-code	high	tests/test_tutorial/test_testing/test_main_a.py:1:1	-	33 lines (118 tokens) duplicated at tests.test_tutorial.test_testing.test_tutorial001:1
+duplicate-code	high	tests/test_tutorial/test_testing_dependencies/test_tutorial001.py:53:1	-	11 lines (65 tokens) duplicated at tests.test_tutorial.test_testing_dependencies.test_tutorial001:63
+duplicate-code	high	tests/test_tutorial/test_websockets/test_tutorial002.py:71:1	-	8 lines (53 tokens) duplicated at tests.test_tutorial.test_websockets.test_tutorial002:79
+duplicate-code	high	tests/test_union_body.py:1:1	-	26 lines (93 tokens) duplicated at tests.test_union_inherited_body:1
+duplicate-code	high	tests/test_union_body.py:28:1	-	36 lines (173 tokens) duplicated at tests.test_union_inherited_body:28
+duplicate-code	high	tests/test_union_body_discriminator_annotated.py:76:1	-	28 lines (85 tokens) duplicated at tests.test_union_body_discriminator_annotated:112
+duplicate-code	high	tests/test_validate_response.py:34:1	-	25 lines (147 tokens) duplicated at tests.test_validate_response_dataclass:22
+duplicate-code	high	tests/test_validation_error_context.py:70:1	-	8 lines (51 tokens) duplicated at tests.test_validation_error_context:77
+duplicate-code	high	tests/test_ws_dependencies.py:27:1	-	8 lines (52 tokens) duplicated at tests.test_ws_dependencies:34

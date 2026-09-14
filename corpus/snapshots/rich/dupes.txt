@@ -1,0 +1,181 @@
+files_scanned=213
+symbols_checked=0
+symbols_kept=0
+findings=175
+duplication: clones=175 duplicated_lines=14294 total_lines=52028 percent_tenths=274
+--
+duplicate-code	high	benchmarks/benchmarks.py:35:1	-	7 lines (54 tokens) duplicated at benchmarks.benchmarks:53
+duplicate-code	high	benchmarks/benchmarks.py:174:1	-	15 lines (81 tokens) duplicated at benchmarks.benchmarks:195
+duplicate-code	high	examples/export.py:12:1	-	12 lines (88 tokens) duplicated at rich.tree:211
+duplicate-code	high	examples/fullscreen.py:138:1	-	7 lines (54 tokens) duplicated at examples.live_progress:23
+duplicate-code	high	examples/fullscreen.py:168:1	-	10 lines (73 tokens) duplicated at examples.live_progress:37
+duplicate-code	high	examples/layout.py:21:1	-	8 lines (54 tokens) duplicated at rich.layout:425
+duplicate-code	high	examples/save_table_svg.py:3:1	-	17 lines (101 tokens) duplicated at examples.table:3
+duplicate-code	high	rich/__init__.py:78:1	-	27 lines (89 tokens) duplicated at rich.console:1760
+duplicate-code	high	rich/__init__.py:123:1	-	9 lines (50 tokens) duplicated at rich._inspect:40
+duplicate-code	high	rich/__main__.py:27:1	-	7 lines (69 tokens) duplicated at rich.palette:93
+duplicate-code	high	rich/_loop.py:6:1	-	8 lines (51 tokens) duplicated at rich._loop:18
+duplicate-code	high	rich/_palettes.py:51:1	-	9 lines (65 tokens) duplicated at rich.terminal_theme:35
+duplicate-code	high	rich/_palettes.py:60:1	-	8 lines (64 tokens) duplicated at rich.terminal_theme:46
+duplicate-code	high	rich/_unicode_data/unicode10-0-0.py:7:1	-	55 lines (419 tokens) duplicated at rich/_unicode_data/unicode9-0-0.py:7
+duplicate-code	high	rich/_unicode_data/unicode10-0-0.py:67:1	-	8 lines (58 tokens) duplicated in 4 other places: rich/_unicode_data/unicode11-0-0.py:69, rich/_unicode_data/unicode12-0-0.py:69, rich/_unicode_data/unicode12-1-0.py:69, rich/_unicode_data/unicode9-0-0.py:66
+duplicate-code	high	rich/_unicode_data/unicode10-0-0.py:74:1	-	137 lines (1087 tokens) duplicated at rich/_unicode_data/unicode11-0-0.py:76
+duplicate-code	high	rich/_unicode_data/unicode10-0-0.py:210:1	-	97 lines (765 tokens) duplicated at rich/_unicode_data/unicode9-0-0.py:208
+duplicate-code	high	rich/_unicode_data/unicode10-0-0.py:306:1	-	16 lines (120 tokens) duplicated at rich/_unicode_data/unicode11-0-0.py:314
+duplicate-code	high	rich/_unicode_data/unicode10-0-0.py:326:1	-	58 lines (455 tokens) duplicated at rich/_unicode_data/unicode11-0-0.py:338
+duplicate-code	high	rich/_unicode_data/unicode10-0-0.py:389:1	-	223 lines (464 tokens) duplicated in 6 other places: rich/_unicode_data/unicode11-0-0.py:403, rich/_unicode_data/unicode13-0-0.py:426, rich/_unicode_data/unicode14-0-0.py:439, rich/_unicode_data/unicode5-2-0.py:239, rich/_unicode_data/unicode7-0-0.py:285, rich/_unicode_data/unicode9-0-0.py:376
+duplicate-code	high	rich/_unicode_data/unicode11-0-0.py:7:1	-	63 lines (483 tokens) duplicated in 3 other places: rich/_unicode_data/unicode12-0-0.py:7, rich/_unicode_data/unicode12-1-0.py:7, rich/_unicode_data/unicode13-0-0.py:7
+duplicate-code	high	rich/_unicode_data/unicode11-0-0.py:216:1	-	11 lines (78 tokens) duplicated at rich/_unicode_data/unicode6-3-0.py:180
+duplicate-code	high	rich/_unicode_data/unicode11-0-0.py:226:1	-	8 lines (58 tokens) duplicated at rich/_unicode_data/unicode8-0-0.py:189
+duplicate-code	high	rich/_unicode_data/unicode11-0-0.py:235:1	-	45 lines (349 tokens) duplicated at rich/_unicode_data/unicode8-0-0.py:197
+duplicate-code	high	rich/_unicode_data/unicode12-0-0.py:76:1	-	14 lines (101 tokens) duplicated in 2 other places: rich/_unicode_data/unicode12-1-0.py:76, rich/_unicode_data/unicode9-0-0.py:73
+duplicate-code	high	rich/_unicode_data/unicode12-0-0.py:106:1	-	51 lines (399 tokens) duplicated in 2 other places: rich/_unicode_data/unicode12-1-0.py:106, rich/_unicode_data/unicode9-0-0.py:103
+duplicate-code	high	rich/_unicode_data/unicode12-0-0.py:158:1	-	54 lines (423 tokens) duplicated in 2 other places: rich/_unicode_data/unicode12-1-0.py:158, rich/_unicode_data/unicode9-0-0.py:155
+duplicate-code	high	rich/_unicode_data/unicode12-0-0.py:220:1	-	418 lines (2026 tokens) duplicated at rich/_unicode_data/unicode12-1-0.py:219
+duplicate-code	high	rich/_unicode_data/unicode13-0-0.py:76:1	-	55 lines (431 tokens) duplicated at rich/_unicode_data/unicode14-0-0.py:78
+duplicate-code	high	rich/_unicode_data/unicode13-0-0.py:136:1	-	10 lines (71 tokens) duplicated at rich/_unicode_data/unicode14-0-0.py:138
+duplicate-code	high	rich/_unicode_data/unicode13-0-0.py:159:1	-	122 lines (967 tokens) duplicated at rich/_unicode_data/unicode14-0-0.py:160
+duplicate-code	high	rich/_unicode_data/unicode13-0-0.py:283:1	-	71 lines (557 tokens) duplicated at rich/_unicode_data/unicode14-0-0.py:288
+duplicate-code	high	rich/_unicode_data/unicode13-0-0.py:356:1	-	20 lines (149 tokens) duplicated at rich/_unicode_data/unicode9-0-0.py:315
+duplicate-code	high	rich/_unicode_data/unicode13-0-0.py:375:1	-	38 lines (293 tokens) duplicated at rich/_unicode_data/unicode14-0-0.py:386
+duplicate-code	high	rich/_unicode_data/unicode14-0-0.py:40:1	-	10 lines (69 tokens) duplicated in 2 other places: rich/_unicode_data/unicode4-1-0.py:36, rich/_unicode_data/unicode5-0-0.py:36
+duplicate-code	high	rich/_unicode_data/unicode14-0-0.py:57:1	-	8 lines (53 tokens) duplicated in 2 other places: rich/_unicode_data/unicode4-1-0.py:50, rich/_unicode_data/unicode5-0-0.py:50
+duplicate-code	high	rich/_unicode_data/unicode15-0-0.py:7:1	-	200 lines (1581 tokens) duplicated at rich/_unicode_data/unicode15-1-0.py:7
+duplicate-code	high	rich/_unicode_data/unicode15-0-0.py:207:1	-	12 lines (86 tokens) duplicated at rich/_unicode_data/unicode15-1-0.py:206
+duplicate-code	high	rich/_unicode_data/unicode15-0-0.py:218:1	-	454 lines (2314 tokens) duplicated at rich/_unicode_data/unicode15-1-0.py:217
+duplicate-code	high	rich/_unicode_data/unicode16-0-0.py:7:1	-	142 lines (1117 tokens) duplicated at rich/_unicode_data/unicode17-0-0.py:7
+duplicate-code	high	rich/_unicode_data/unicode16-0-0.py:148:1	-	135 lines (1069 tokens) duplicated at rich/_unicode_data/unicode17-0-0.py:149
+duplicate-code	high	rich/_unicode_data/unicode16-0-0.py:282:1	-	63 lines (495 tokens) duplicated at rich/_unicode_data/unicode17-0-0.py:283
+duplicate-code	high	rich/_unicode_data/unicode16-0-0.py:344:1	-	30 lines (232 tokens) duplicated at rich/_unicode_data/unicode17-0-0.py:346
+duplicate-code	high	rich/_unicode_data/unicode16-0-0.py:375:1	-	39 lines (301 tokens) duplicated at rich/_unicode_data/unicode17-0-0.py:378
+duplicate-code	high	rich/_unicode_data/unicode16-0-0.py:413:1	-	35 lines (274 tokens) duplicated at rich/_unicode_data/unicode17-0-0.py:420
+duplicate-code	high	rich/_unicode_data/unicode16-0-0.py:447:1	-	11 lines (79 tokens) duplicated at rich/_unicode_data/unicode17-0-0.py:454
+duplicate-code	high	rich/_unicode_data/unicode16-0-0.py:461:1	-	223 lines (466 tokens) duplicated at rich/_unicode_data/unicode17-0-0.py:469
+duplicate-code	high	rich/_unicode_data/unicode4-1-0.py:17:1	-	17 lines (127 tokens) duplicated at rich/_unicode_data/unicode5-0-0.py:16
+duplicate-code	high	rich/_unicode_data/unicode4-1-0.py:78:1	-	50 lines (389 tokens) duplicated at rich/_unicode_data/unicode5-0-0.py:79
+duplicate-code	high	rich/_unicode_data/unicode4-1-0.py:131:1	-	295 lines (1040 tokens) duplicated at rich/_unicode_data/unicode5-0-0.py:136
+duplicate-code	high	rich/_unicode_data/unicode5-1-0.py:7:1	-	23 lines (163 tokens) duplicated at rich/_unicode_data/unicode5-2-0.py:7
+duplicate-code	high	rich/_unicode_data/unicode5-1-0.py:32:1	-	86 lines (677 tokens) duplicated at rich/_unicode_data/unicode5-2-0.py:36
+duplicate-code	high	rich/_unicode_data/unicode5-1-0.py:118:1	-	17 lines (127 tokens) duplicated at rich/_unicode_data/unicode5-2-0.py:122
+duplicate-code	high	rich/_unicode_data/unicode5-1-0.py:188:1	-	20 lines (149 tokens) duplicated at rich/_unicode_data/unicode6-3-0.py:219
+duplicate-code	high	rich/_unicode_data/unicode5-1-0.py:211:1	-	223 lines (464 tokens) duplicated at rich/_unicode_data/unicode8-0-0.py:293
+duplicate-code	high	rich/_unicode_data/unicode5-2-0.py:145:1	-	8 lines (53 tokens) duplicated at rich/_unicode_data/unicode6-0-0.py:148
+duplicate-code	high	rich/_unicode_data/unicode5-2-0.py:158:1	-	17 lines (127 tokens) duplicated in 2 other places: rich/_unicode_data/unicode6-0-0.py:162, rich/_unicode_data/unicode6-3-0.py:164
+duplicate-code	high	rich/_unicode_data/unicode5-2-0.py:174:1	-	56 lines (437 tokens) duplicated at rich/_unicode_data/unicode6-0-0.py:178
+duplicate-code	high	rich/_unicode_data/unicode6-0-0.py:7:1	-	11 lines (69 tokens) duplicated at rich/_unicode_data/unicode6-3-0.py:7
+duplicate-code	high	rich/_unicode_data/unicode6-0-0.py:34:1	-	100 lines (791 tokens) duplicated at rich/_unicode_data/unicode6-3-0.py:36
+duplicate-code	high	rich/_unicode_data/unicode6-0-0.py:133:1	-	15 lines (111 tokens) duplicated at rich/_unicode_data/unicode6-3-0.py:135
+duplicate-code	high	rich/_unicode_data/unicode6-0-0.py:237:1	-	233 lines (544 tokens) duplicated at rich/_unicode_data/unicode6-3-0.py:249
+duplicate-code	high	rich/_unicode_data/unicode6-1-0.py:7:1	-	474 lines (2462 tokens) duplicated at rich/_unicode_data/unicode6-2-0.py:7
+duplicate-code	high	rich/_unicode_data/unicode6-3-0.py:190:1	-	15 lines (112 tokens) duplicated at rich/_unicode_data/unicode7-0-0.py:191
+duplicate-code	high	rich/_unicode_data/unicode7-0-0.py:7:1	-	30 lines (219 tokens) duplicated at rich/_unicode_data/unicode8-0-0.py:7
+duplicate-code	high	rich/_unicode_data/unicode7-0-0.py:36:1	-	103 lines (815 tokens) duplicated at rich/_unicode_data/unicode8-0-0.py:36
+duplicate-code	high	rich/_unicode_data/unicode7-0-0.py:140:1	-	52 lines (408 tokens) duplicated at rich/_unicode_data/unicode8-0-0.py:138
+duplicate-code	high	rich/_unicode_data/unicode7-0-0.py:243:1	-	11 lines (80 tokens) duplicated at rich/_unicode_data/unicode8-0-0.py:241
+duplicate-code	high	rich/_unicode_data/unicode7-0-0.py:255:1	-	13 lines (95 tokens) duplicated at rich/_unicode_data/unicode8-0-0.py:254
+duplicate-code	high	rich/_unicode_data/unicode7-0-0.py:268:1	-	14 lines (101 tokens) duplicated at rich/_unicode_data/unicode8-0-0.py:269
+duplicate-code	high	rich/_win32_console.py:114:1	-	32 lines (95 tokens) duplicated at rich._win32_console:155
+duplicate-code	high	rich/_win32_console.py:269:1	-	25 lines (68 tokens) duplicated at rich._win32_console:293
+duplicate-code	high	rich/_win32_console.py:459:1	-	14 lines (51 tokens) duplicated at rich._win32_console:473
+duplicate-code	high	rich/_windows_renderer.py:34:1	-	7 lines (60 tokens) duplicated at rich._windows_renderer:41
+duplicate-code	high	rich/align.py:91:1	-	22 lines (92 tokens) duplicated at rich.align:113
+duplicate-code	high	rich/bar.py:86:1	-	9 lines (51 tokens) duplicated at rich.progress_bar:200
+duplicate-code	high	rich/box.py:36:1	-	11 lines (64 tokens) duplicated at rich.box:48
+duplicate-code	high	rich/box.py:93:1	-	23 lines (97 tokens) duplicated at rich.box:162
+duplicate-code	high	rich/color.py:492:1	-	7 lines (59 tokens) duplicated at rich.color:498
+duplicate-code	high	rich/color.py:540:1	-	10 lines (66 tokens) duplicated at rich.color:552
+duplicate-code	high	rich/console.py:173:1	-	9 lines (67 tokens) duplicated at rich.console:181
+duplicate-code	high	rich/console.py:322:1	-	11 lines (50 tokens) duplicated at rich.console:379
+duplicate-code	high	rich/console.py:1413:1	-	7 lines (51 tokens) duplicated at rich.style:144
+duplicate-code	high	rich/console.py:1656:1	-	11 lines (90 tokens) duplicated at rich.style:134
+duplicate-code	high	rich/json.py:23:1	-	14 lines (77 tokens) duplicated at rich.json:53
+duplicate-code	high	rich/json.py:37:1	-	15 lines (78 tokens) duplicated at rich.json:84
+duplicate-code	high	rich/jupyter.py:28:1	-	9 lines (69 tokens) duplicated at rich.jupyter:51
+duplicate-code	high	rich/layout.py:107:1	-	11 lines (78 tokens) duplicated at rich.layout:127
+duplicate-code	high	rich/logging.py:111:1	-	13 lines (65 tokens) duplicated at rich.panel:61
+duplicate-code	high	rich/markdown.py:195:1	-	13 lines (83 tokens) duplicated at rich.markdown:375
+duplicate-code	high	rich/markdown.py:287:1	-	11 lines (72 tokens) duplicated at rich.markdown:299
+duplicate-code	high	rich/panel.py:38:1	-	13 lines (61 tokens) duplicated at rich.panel:73
+duplicate-code	high	rich/panel.py:109:1	-	17 lines (101 tokens) duplicated at rich.panel:125
+duplicate-code	high	rich/panel.py:234:1	-	15 lines (105 tokens) duplicated at rich.panel:259
+duplicate-code	high	rich/pretty.py:115:1	-	9 lines (62 tokens) duplicated at rich.pretty:172
+duplicate-code	high	rich/pretty.py:294:1	-	9 lines (51 tokens) duplicated at rich.table:226
+duplicate-code	high	rich/pretty.py:721:1	-	8 lines (57 tokens) duplicated at rich.pretty:772
+duplicate-code	high	rich/progress.py:90:1	-	11 lines (51 tokens) duplicated at rich.status:96
+duplicate-code	high	rich/progress.py:199:1	-	12 lines (56 tokens) duplicated at rich.progress:1181
+duplicate-code	high	rich/progress.py:243:1	-	8 lines (60 tokens) duplicated at rich.progress:253
+duplicate-code	high	rich/progress.py:309:1	-	13 lines (84 tokens) duplicated at rich.progress:429
+duplicate-code	high	rich/progress.py:321:1	-	47 lines (112 tokens) duplicated at rich.progress:441
+duplicate-code	high	rich/progress.py:374:1	-	23 lines (137 tokens) duplicated at rich.progress:399
+duplicate-code	high	rich/progress.py:636:1	-	20 lines (93 tokens) duplicated at rich.progress:762
+duplicate-code	high	rich/progress.py:1283:1	-	13 lines (71 tokens) duplicated at rich.progress:1299
+duplicate-code	high	rich/progress_bar.py:45:1	-	11 lines (61 tokens) duplicated at rich.traceback:329
+duplicate-code	high	rich/prompt.py:52:1	-	12 lines (59 tokens) duplicated at rich.prompt:111
+duplicate-code	high	rich/prompt.py:76:1	-	15 lines (69 tokens) duplicated at rich.prompt:93
+duplicate-code	high	rich/repr.py:26:1	-	12 lines (83 tokens) duplicated at rich.repr:105
+duplicate-code	high	rich/segment.py:247:1	-	21 lines (91 tokens) duplicated at rich.segment:278
+duplicate-code	high	rich/segment.py:487:1	-	30 lines (116 tokens) duplicated at rich.segment:516
+duplicate-code	high	rich/segment.py:709:1	-	10 lines (59 tokens) duplicated at rich.segment:733
+duplicate-code	high	rich/style.py:626:1	-	16 lines (85 tokens) duplicated at rich.style:649
+duplicate-code	high	rich/syntax.py:288:1	-	9 lines (57 tokens) duplicated at rich.syntax:329
+duplicate-code	high	rich/syntax.py:367:1	-	17 lines (64 tokens) duplicated at rich.traceback:417
+duplicate-code	high	rich/syntax.py:966:1	-	11 lines (55 tokens) duplicated at rich.syntax:978
+duplicate-code	high	rich/text.py:457:1	-	25 lines (109 tokens) duplicated at rich.text:483
+duplicate-code	high	rich/text.py:888:1	-	11 lines (56 tokens) duplicated at rich.text:1187
+duplicate-code	high	rich/text.py:910:1	-	17 lines (85 tokens) duplicated at rich.text:926
+duplicate-code	high	rich/text.py:995:1	-	11 lines (91 tokens) duplicated at rich.text:1019
+duplicate-code	high	rich/text.py:1148:1	-	13 lines (61 tokens) duplicated at rich.text:1164
+duplicate-code	high	rich/traceback.py:297:1	-	18 lines (118 tokens) duplicated at rich.traceback:357
+duplicate-code	high	tests/test_align.py:56:1	-	9 lines (59 tokens) duplicated at tests.test_align:65
+duplicate-code	high	tests/test_align.py:74:1	-	9 lines (55 tokens) duplicated at tests.test_align:83
+duplicate-code	high	tests/test_bar.py:71:1	-	6 lines (60 tokens) duplicated at tests.test_bar:76
+duplicate-code	high	tests/test_bar.py:81:1	-	5 lines (52 tokens) duplicated at tests.test_bar:86
+duplicate-code	high	tests/test_box.py:58:1	-	20 lines (105 tokens) duplicated at tests.test_box:77
+duplicate-code	high	tests/test_card.py:1:1	-	30 lines (110 tokens) duplicated at tests.test_markdown_no_hyperlinks:64
+duplicate-code	high	tests/test_console.py:221:1	-	9 lines (60 tokens) duplicated at tests.test_console:236
+duplicate-code	high	tests/test_console.py:245:1	-	10 lines (57 tokens) duplicated at tests.test_console:254
+duplicate-code	high	tests/test_console.py:445:1	-	12 lines (61 tokens) duplicated at tests.test_console:481
+duplicate-code	high	tests/test_console.py:457:1	-	12 lines (61 tokens) duplicated at tests.test_console:469
+duplicate-code	high	tests/test_console.py:658:1	-	11 lines (64 tokens) duplicated at tests.test_console:672
+duplicate-code	high	tests/test_highlighter.py:156:1	-	15 lines (69 tokens) duplicated at tests.test_highlighter:452
+duplicate-code	high	tests/test_highlighter.py:353:1	-	10 lines (61 tokens) duplicated at tests.test_highlighter:429
+duplicate-code	high	tests/test_highlighter.py:404:1	-	11 lines (62 tokens) duplicated at tests.test_highlighter:415
+duplicate-code	high	tests/test_inspect.py:1:1	-	49 lines (218 tokens) duplicated at tests.test_pretty:6
+duplicate-code	high	tests/test_inspect.py:249:1	-	43 lines (74 tokens) duplicated at tests.test_inspect:292
+duplicate-code	high	tests/test_live.py:39:1	-	8 lines (69 tokens) duplicated at tests.test_live:147
+duplicate-code	high	tests/test_live.py:57:1	-	9 lines (55 tokens) duplicated in 3 other places: tests.test_live:74, tests.test_live:89, tests.test_live:104
+duplicate-code	high	tests/test_logging.py:35:1	-	10 lines (53 tokens) duplicated at tests.test_logging:64
+duplicate-code	high	tests/test_panel.py:107:1	-	17 lines (86 tokens) duplicated in 2 other places: tests.test_panel:131, tests.test_panel:155
+duplicate-code	high	tests/test_pretty.py:348:1	-	24 lines (121 tokens) duplicated at tests.test_pretty:371
+duplicate-code	high	tests/test_pretty.py:645:1	-	11 lines (57 tokens) duplicated at tests.test_pretty:660
+duplicate-code	high	tests/test_progress.py:220:1	-	19 lines (79 tokens) duplicated at tests.test_progress:245
+duplicate-code	high	tests/test_progress.py:275:1	-	15 lines (62 tokens) duplicated at tests.test_progress:303
+duplicate-code	high	tests/test_progress.py:547:1	-	25 lines (133 tokens) duplicated at tests.test_progress:571
+duplicate-code	high	tests/test_progress.py:595:1	-	13 lines (56 tokens) duplicated at tests.test_progress:650
+duplicate-code	high	tests/test_progress.py:610:1	-	10 lines (55 tokens) duplicated at tests.test_progress:623
+duplicate-code	high	tests/test_prompt.py:14:1	-	12 lines (54 tokens) duplicated at tests.test_prompt:32
+duplicate-code	high	tests/test_prompt.py:81:1	-	14 lines (74 tokens) duplicated at tests.test_prompt:96
+duplicate-code	high	tests/test_repr.py:11:1	-	8 lines (58 tokens) duplicated at tests.test_repr:25
+duplicate-code	high	tests/test_repr.py:33:1	-	9 lines (61 tokens) duplicated at tests.test_repr:41
+duplicate-code	high	tests/test_repr.py:137:1	-	6 lines (52 tokens) duplicated at tests.test_repr:146
+duplicate-code	high	tests/test_rule.py:47:1	-	13 lines (50 tokens) duplicated at tests.test_rule:102
+duplicate-code	high	tests/test_rule_in_table.py:30:1	-	9 lines (74 tokens) duplicated at tests.test_rule_in_table:52
+duplicate-code	high	tests/test_rule_in_table.py:38:1	-	7 lines (51 tokens) duplicated at tests.test_rule_in_table:60
+duplicate-code	high	tests/test_segment.py:331:1	-	8 lines (61 tokens) duplicated at tests.test_segment:340
+duplicate-code	high	tests/test_segment.py:373:1	-	11 lines (84 tokens) duplicated at tests.test_segment:383
+duplicate-code	high	tests/test_style.py:16:1	-	18 lines (68 tokens) duplicated at tests.test_style:39
+duplicate-code	high	tests/test_syntax.py:101:1	-	14 lines (58 tokens) duplicated at tests.test_syntax:118
+duplicate-code	high	tests/test_syntax.py:174:1	-	21 lines (88 tokens) duplicated at tests.test_syntax:219
+duplicate-code	high	tests/test_syntax.py:336:1	-	12 lines (68 tokens) duplicated at tests.test_syntax:348
+duplicate-code	high	tests/test_text.py:172:1	-	11 lines (60 tokens) duplicated at tests.test_text:204
+duplicate-code	high	tests/test_text.py:184:1	-	10 lines (54 tokens) duplicated at tests.test_text:218
+duplicate-code	high	tests/test_text.py:241:1	-	9 lines (66 tokens) duplicated at tests.test_text:255
+duplicate-code	high	tests/test_text.py:595:1	-	14 lines (54 tokens) duplicated at tests.test_text:608
+duplicate-code	high	tests/test_traceback.py:155:1	-	12 lines (56 tokens) duplicated at tests.test_traceback:182
+duplicate-code	high	tests/test_traceback.py:334:1	-	9 lines (54 tokens) duplicated at tests.test_traceback:347
+duplicate-code	high	tests/test_tree.py:63:1	-	15 lines (104 tokens) duplicated at tests.test_tree:103
+duplicate-code	high	tests/test_tree.py:83:1	-	9 lines (66 tokens) duplicated at tests.test_tree:123
+duplicate-code	high	tests/test_win32_console.py:190:1	-	13 lines (65 tokens) duplicated at tests.test_win32_console:229
+duplicate-code	high	tests/test_win32_console.py:266:1	-	12 lines (57 tokens) duplicated at tests.test_win32_console:277
+duplicate-code	high	tests/test_win32_console.py:293:1	-	13 lines (63 tokens) duplicated at tests.test_win32_console:305
+duplicate-code	high	tests/test_win32_console.py:372:1	-	13 lines (74 tokens) duplicated at tests.test_win32_console:385

@@ -1,0 +1,6 @@
+files_scanned=491
+symbols_checked=0
+symbols_kept=0
+findings=1
+--
+circular-import	high	scrapy/__init__.py:10:1	-	import cycle among 31 modules, shortest: scrapy -> scrapy.http -> scrapy

@@ -24,14 +24,6 @@ commit = "a70ef43d7df03706c1211d4fcfd70b4b0120ba1e"
 python = "3.12"
 requirements = ["-r requirements/local.txt"]
 
-# A uv workspace whose Python lives under `backend/`, with Alembic and FastAPI.
-[projects.full-stack-fastapi-template]
-repository = "https://github.com/fastapi/full-stack-fastapi-template"
-commit = "cb740b656d7a0a6c5e12c7bf8e50343ec94ee9c7"
-python = "3.14"
-requirements = ["pytest"]
-editable = ["backend"]
-
 # A setup.py project: a command-line tool with plugins and an `extras` tree.
 [projects.httpie]
 repository = "https://github.com/httpie/cli"
@@ -116,3 +108,200 @@ repository = "https://github.com/home-assistant/core"
 commit = "14f9b7e699d6de2b33901a3decb6a0ca9c8c21df"
 python = "3.14"
 requirements = ["-r requirements.txt", "pytest"]
+
+# --- Applications ---
+
+# A FastAPI and SQLAlchemy application with Alembic migrations and plugins
+# registered through entry points.
+[projects.dispatch]
+repository = "https://github.com/Netflix/dispatch"
+commit = "dd2837e82a0bf5565b1b4b4b91ea30b7262d4061"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A Django and GraphQL commerce platform on Poetry: mutations and types found
+# by class, `dataloaders`, and a large `tests` tree per app.
+[projects.saleor]
+repository = "https://github.com/saleor/saleor"
+commit = "6e2dc35d0cbc7de85ce3503d5e872e2f672ba70e"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A Django CMS: hooks registered by decorator, template tags, migrations in
+# every app, and a `wagtail/test` application.
+[projects.wagtail]
+repository = "https://github.com/wagtail/wagtail"
+commit = "de19d7c21c978dc798459663a4c36fe672dceca6"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A `lib/` layout where modules, plugins, and filters are loaded by name at
+# runtime; the largest dynamic-import surface after Home Assistant.
+[projects.ansible]
+repository = "https://github.com/ansible/ansible"
+commit = "5467293624690dbb5ecf8dc8f442fa3e3204fbc5"
+python = "3.13"
+requirements = ["pytest"]
+editable = ["."]
+
+# Hundreds of extractor classes discovered by naming convention.
+[projects.yt-dlp]
+repository = "https://github.com/yt-dlp/yt-dlp"
+commit = "bbc809a1161d3bfca51fa36f59dda35556ee85a0"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# Spiders and middleware named in settings, on Twisted.
+[projects.scrapy]
+repository = "https://github.com/scrapy/scrapy"
+commit = "a527168ad0888a54b665a6d00a45c720a956e1c0"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A small command-line tool on Poetry.
+[projects.sherlock]
+repository = "https://github.com/sherlock-project/sherlock"
+commit = "376018708c0f6948d3f978a9ae2915024e794654"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# --- Libraries and frameworks ---
+
+# The framework behind the FastAPI plugin, with a `docs_src` tree of hundreds
+# of runnable examples.
+[projects.fastapi]
+repository = "https://github.com/fastapi/fastapi"
+commit = "50113da16fec53b66b80d75e80a89296de4fa5a5"
+python = "3.12"
+requirements = ["fastapi[all]", "sqlmodel", "pytest"]
+editable = ["."]
+
+# The framework behind the Typer plugin.
+[projects.typer]
+repository = "https://github.com/fastapi/typer"
+commit = "a80f6e5ecd74f32b983cca336a2f3cba98d9853a"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# The framework behind the Flask plugin, in a `src/` layout.
+[projects.flask]
+repository = "https://github.com/pallets/flask"
+commit = "d73fa1cdcbd8b1465c151db8924ba58b1dd14e35"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# An ASGI framework whose middleware and routing are wired by class.
+[projects.starlette]
+repository = "https://github.com/encode/starlette"
+commit = "03f12b7fcf0a3e21a8da648ca0900c79472e9efe"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A large ASGI framework with plugins, channels, and a `docs/examples` tree.
+[projects.litestar]
+repository = "https://github.com/litestar-org/litestar"
+commit = "4cf3dafab7c15b8aa84b7b93a0dac7faec118f71"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# The ORM behind the SQLAlchemy plugin, in a `lib/` layout with optional C
+# extensions that the corpus leaves out.
+[projects.sqlalchemy]
+repository = "https://github.com/sqlalchemy/sqlalchemy"
+commit = "234c49bb255c8ddcadd73a132028cb72d5eb9a89"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# The test framework behind the pytest plugin: hooks by name, `src/` layout,
+# a version from setuptools-scm.
+[projects.pytest]
+repository = "https://github.com/pytest-dev/pytest"
+commit = "a315b97ce61f158bef9957152c8415fe743aa553"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A classic small library with a `src/` layout and a version from hatch-vcs.
+[projects.attrs]
+repository = "https://github.com/python-attrs/attrs"
+commit = "8f767776326faaed11e6c2974798787f6e19b343"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A classic small library with its package at the root.
+[projects.requests]
+repository = "https://github.com/psf/requests"
+commit = "dae7ef63b4df6eded86637f251fc4e3a06c3b479"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A typed HTTP client with private modules re-exported from `__init__`.
+[projects.httpx]
+repository = "https://github.com/encode/httpx"
+commit = "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A terminal rendering library on Poetry with protocol-based dispatch.
+[projects.rich]
+repository = "https://github.com/Textualize/rich"
+commit = "9d8f9a372cc5916fd4781fec207ced7ddac2f08f"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A terminal UI framework: widgets, messages by naming convention, and a
+# `src/` layout on Poetry.
+[projects.textual]
+repository = "https://github.com/Textualize/textual"
+commit = "06dbeef4bb70fb718236aa418ed658ef4667a126"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# Extensions, builders, and directives registered by string.
+[projects.sphinx]
+repository = "https://github.com/sphinx-doc/sphinx"
+commit = "e44a40eb2f810558ccd9da1425421270ccb81351"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A `src/` layout with a large `_vendor` tree that must not count as dead.
+[projects.pip]
+repository = "https://github.com/pypa/pip"
+commit = "2b28a816d043826f2ba10ff1d22ec3d94d2ed7c5"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A type checker: a big flat package, plugins, and `mypyc` left uncompiled.
+[projects.mypy]
+repository = "https://github.com/python/mypy"
+commit = "6d8044b72868005616de9bc506f21852c96a3bbb"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+
+# A generated SDK: a `src/` layout where most of the API surface is
+# re-exported and nothing inside the package calls it.
+[projects.openai-python]
+repository = "https://github.com/openai/openai-python"
+commit = "e12b81d3bbf644ec7045e152d69bc4b68d69cd48"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]

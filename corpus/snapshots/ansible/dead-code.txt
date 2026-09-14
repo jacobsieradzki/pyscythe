@@ -1,0 +1,1277 @@
+files_scanned=1850
+symbols_checked=13871
+symbols_kept=1750
+findings=1272
+--
+unused-file	medium	hacking/ansible-profile.py	-	file `ansible-profile.py` is never imported or run
+unused-method	low	lib/ansible/_internal/_task.py:97:9	loop_result	method `CurrentTask.loop_result` is never used
+unused-method	low	lib/ansible/_internal/_task.py:110:9	polymorphic_result	method `CurrentTask.polymorphic_result` is never used
+unused-method	low	lib/ansible/_internal/_task.py:175:9	current_item	method `TaskContext.current_item` is never used
+unused-method	low	lib/ansible/_internal/_task.py:179:9	current_item_label	method `TaskContext.current_item_label` is never used
+unused-variable	low	lib/ansible/_internal/_task.py:489:1	_type	variable `_type` is never used
+unused-variable	high	lib/ansible/_internal/_templating/_engine.py:56:1	_shared_empty_unmask_type_names	variable `_shared_empty_unmask_type_names` is never used
+unused-method	medium	lib/ansible/_internal/_templating/_jinja_bits.py:772:9	_access_const	method `AnsibleEnvironment._access_const` is never used
+unused-variable	low	lib/ansible/_internal/_templating/_transform.py:16:1	display	variable `display` is never used
+unused-file	medium	lib/ansible/_internal/_testing.py	-	file `lib.ansible._internal._testing` is never imported or run
+unused-variable	low	lib/ansible/_internal/_yaml/_dumper.py:20:1	display	variable `display` is never used
+unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/action/debug.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.action.debug` is never imported or run
+unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/apply_trust.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.apply_trust` is never imported or run
+unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/dump_object.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.dump_object` is never imported or run
+unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/finalize.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.finalize` is never imported or run
+unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/origin.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.origin` is never imported or run
+unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/python_literal_eval.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.python_literal_eval` is never imported or run
+unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/tag_names.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.tag_names` is never imported or run
+unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/true_type.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.true_type` is never imported or run
+unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/unmask.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.unmask` is never imported or run
+unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/lookup/config.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.lookup.config` is never imported or run
+unused-class	low	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/test/tagged.py:12:7	TestModule	class `TestModule` is never used
+unused-class	low	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/test/tagged_with.py:15:7	TestModule	class `TestModule` is never used
+unused-method	low	lib/ansible/cli/console.py:501:9	complete_cd	method `ConsoleCLI.complete_cd` is never used
+unused-file	medium	lib/ansible/compat/importlib_resources.py	-	file `lib.ansible.compat.importlib_resources` is never imported or run
+unused-method	medium	lib/ansible/config/manager.py:475:9	_find_yaml_config_files	method `ConfigManager._find_yaml_config_files` is never used
+unused-variable	high	lib/ansible/constants.py:47:1	_ACTION_WITH_CLEAN_FACTS	variable `_ACTION_WITH_CLEAN_FACTS` is never used
+unused-variable	medium	lib/ansible/constants.py:63:1	BOOL_TRUE	variable `BOOL_TRUE` is never used
+unused-variable	medium	lib/ansible/constants.py:70:1	DEFAULT_BECOME_PASS	variable `DEFAULT_BECOME_PASS` is never used
+unused-variable	medium	lib/ansible/constants.py:72:1	DEFAULT_REMOTE_PASS	variable `DEFAULT_REMOTE_PASS` is never used
+unused-variable	medium	lib/ansible/constants.py:126:1	VAULT_VERSION_MIN	variable `VAULT_VERSION_MIN` is never used
+unused-variable	medium	lib/ansible/constants.py:127:1	VAULT_VERSION_MAX	variable `VAULT_VERSION_MAX` is never used
+unused-class	medium	lib/ansible/errors/__init__.py:227:7	AnsibleInternalError	class `AnsibleInternalError` is never used
+unused-class	medium	lib/ansible/errors/__init__.py:235:7	AnsibleModuleError	class `AnsibleModuleError` is never used
+unused-variable	medium	lib/ansible/errors/__init__.py:315:1	AnsibleLookupError	variable `AnsibleLookupError` is never used
+unused-class	medium	lib/ansible/errors/__init__.py:392:7	AnsibleActionNoCheckMode	class `AnsibleActionNoCheckMode` is never used
+unused-class	medium	lib/ansible/errors/__init__.py:478:7	AnsibleConditionalError	class `AnsibleConditionalError` is never used
+unused-method	medium	lib/ansible/executor/module_common.py:583:9	_get_module_utils_remainder	method `ModuleUtilLocatorBase._get_module_utils_remainder` is never used
+unused-method	low	lib/ansible/executor/module_common.py:1137:9	process_module_result	method `_BuiltModule.process_module_result` is never used
+unused-method	medium	lib/ansible/executor/task_result.py:68:9	_task_fields	method `CallbackTaskResult._task_fields` is never used
+unused-method	low	lib/ansible/executor/task_result.py:98:9	is_changed	method `CallbackTaskResult.is_changed` is never used
+unused-method	low	lib/ansible/executor/task_result.py:107:9	is_unreachable	method `CallbackTaskResult.is_unreachable` is never used
+unused-variable	medium	lib/ansible/executor/task_result.py:130:1	TaskResult	variable `TaskResult` is never used
+unused-method	low	lib/ansible/galaxy/__init__.py:67:9	add_role	method `Galaxy.add_role` is never used
+unused-method	low	lib/ansible/galaxy/__init__.py:70:9	remove_role	method `Galaxy.remove_role` is never used
+unused-variable	medium	lib/ansible/galaxy/collection/__init__.py:81:5	CollectionManifestType	variable `CollectionManifestType` is never used
+unused-class	medium	lib/ansible/galaxy/collection/__init__.py:84:11	FilesManifestType	class `FilesManifestType` is never used
+unused-method	low	lib/ansible/galaxy/dependency_resolution/reporters.py:99:9	backtracking	method `CollectionDependencyReporter.backtracking` is never used
+unused-method	low	lib/ansible/inventory/manager.py:671:9	clear_pattern_cache	method `InventoryManager.clear_pattern_cache` is never used
+unused-function	low	lib/ansible/module_utils/_internal/_ansiballz/_extensions/_coverage.py:20:5	run	function `run` is never used
+unused-function	low	lib/ansible/module_utils/_internal/_ansiballz/_extensions/_debugpy.py:85:5	run	function `run` is never used
+unused-function	low	lib/ansible/module_utils/_internal/_ansiballz/_extensions/_pydevd.py:48:5	run	function `run` is never used
+unused-function	high	lib/ansible/module_utils/_internal/_ansiballz/_respawn_wrapper.py:4:5	_respawn_main	function `_respawn_main` is never used
+unused-variable	low	lib/ansible/module_utils/_internal/_concurrent/_daemon_threading.py:24:1	Thread	variable `Thread` is never used
+unused-file	medium	lib/ansible/module_utils/_internal/_testing.py	-	file `lib.ansible.module_utils._internal._testing` is never imported or run
+unused-function	medium	lib/ansible/module_utils/api.py:37:5	rate_limit_argument_spec	function `rate_limit_argument_spec` is never used
+unused-function	medium	lib/ansible/module_utils/api.py:48:5	retry_argument_spec	function `retry_argument_spec` is never used
+unused-function	medium	lib/ansible/module_utils/api.py:59:5	basic_auth_argument_spec	function `basic_auth_argument_spec` is never used
+unused-function	low	lib/ansible/module_utils/api.py:71:5	rate_limit	function `rate_limit` is never used
+unused-function	medium	lib/ansible/module_utils/api.py:98:5	retry	function `retry` is never used
+unused-method	low	lib/ansible/module_utils/basic.py:1380:9	jsonify	method `AnsibleModule.jsonify` is never used
+unused-method	low	lib/ansible/module_utils/basic.py:2089:9	append_to_file	method `AnsibleModule.append_to_file` is never used
+unused-file	medium	lib/ansible/module_utils/common/_collections_compat.py	-	file `lib.ansible.module_utils.common._collections_compat` is never imported or run
+unused-file	medium	lib/ansible/module_utils/common/dict_transformations.py	-	file `lib.ansible.module_utils.common.dict_transformations` is never imported or run
+unused-file	medium	lib/ansible/module_utils/common/network.py	-	file `lib.ansible.module_utils.common.network` is never imported or run
+unused-variable	medium	lib/ansible/module_utils/common/yaml.py:61:5	yaml_load_all	variable `yaml_load_all` is never used
+unused-variable	medium	lib/ansible/module_utils/common/yaml.py:64:5	yaml_dump_all	variable `yaml_dump_all` is never used
+unused-variable	medium	lib/ansible/module_utils/common/yaml.py:68:5	Parser	variable `Parser` is never used
+unused-variable	medium	lib/ansible/module_utils/common/yaml.py:71:5	yaml_load_all	variable `yaml_load_all` is never used
+unused-variable	medium	lib/ansible/module_utils/common/yaml.py:73:5	yaml_dump_all	variable `yaml_dump_all` is never used
+unused-method	low	lib/ansible/module_utils/compat/selinux.py:29:13	from_param	method `_to_char_p.from_param` is never used
+unused-function	low	lib/ansible/module_utils/connection.py:76:5	exec_command	function `exec_command` is never used
+unused-function	low	lib/ansible/module_utils/service.py:248:5	check_ps	function `check_ps` is never used
+unused-method	low	lib/ansible/module_utils/six/__init__.py:255:9	create_module	method `_SixMetaPathImporter.create_module` is never used
+unused-function	medium	lib/ansible/module_utils/splitter.py:67:5	split_args	function `split_args` is never used
+unused-function	low	lib/ansible/module_utils/splitter.py:214:5	unquote	function `unquote` is never used
+unused-function	medium	lib/ansible/module_utils/testing.py:19:5	patch_module_args	function `patch_module_args` is never used
+unused-variable	medium	lib/ansible/module_utils/urls.py:89:5	HAS_GSSAPI	variable `HAS_GSSAPI` is never used
+unused-variable	medium	lib/ansible/module_utils/urls.py:91:5	HAS_GSSAPI	variable `HAS_GSSAPI` is never used
+unused-method	low	lib/ansible/module_utils/urls.py:113:13	http_error_401	method `HTTPGSSAPIAuthHandler.http_error_401` is never used
+unused-class	medium	lib/ansible/module_utils/urls.py:192:7	ProxyError	class `ProxyError` is never used
+unused-class	medium	lib/ansible/module_utils/urls.py:205:7	NoSSLError	class `NoSSLError` is never used
+unused-file	medium	lib/ansible/modules/add_host.py	-	file `lib.ansible.modules.add_host` is never imported or run
+unused-variable	low	lib/ansible/modules/apt.py:12:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/apt.py:230:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/apt.py:340:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/apt_key.py:11:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/apt_key.py:90:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/apt_key.py:144:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/apt_key.py:187:1	locale	variable `locale` is never used
+unused-variable	low	lib/ansible/modules/apt_repository.py:12:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/apt_repository.py:109:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/apt_repository.py:153:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/assemble.py:11:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/assemble.py:107:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/assemble.py:126:1	RETURN	variable `RETURN` is never used
+unused-file	medium	lib/ansible/modules/assert.py	-	file `assert.py` is never imported or run
+unused-variable	low	lib/ansible/modules/async_status.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/async_status.py:59:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/async_status.py:83:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/blockinfile.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/blockinfile.py:137:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/command.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/command.py:122:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/command.py:178:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/copy.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/copy.py:159:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/copy.py:224:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/cron.py:13:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/cron.py:161:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/cron.py:216:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/deb822_repository.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/deb822_repository.py:177:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/deb822_repository.py:221:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/debconf.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/debconf.py:91:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/debconf.py:126:1	RETURN	variable `RETURN` is never used
+unused-file	medium	lib/ansible/modules/debug.py	-	file `lib.ansible.modules.debug` is never imported or run
+unused-variable	low	lib/ansible/modules/dnf5.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/dnf5.py:258:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/dnf5.py:331:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/dpkg_selections.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/dpkg_selections.py:43:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/expect.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/expect.py:88:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-file	medium	lib/ansible/modules/fail.py	-	file `lib.ansible.modules.fail` is never imported or run
+unused-file	medium	lib/ansible/modules/fetch.py	-	file `lib.ansible.modules.fetch` is never imported or run
+unused-variable	low	lib/ansible/modules/file.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/file.py:128:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/file.py:223:1	RETURN	variable `RETURN` is never used
+unused-class	medium	lib/ansible/modules/file.py:276:7	ParameterError	class `ParameterError` is never used
+unused-variable	low	lib/ansible/modules/find.py:12:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/find.py:180:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/find.py:251:1	RETURN	variable `RETURN` is never used
+unused-file	medium	lib/ansible/modules/gather_facts.py	-	file `lib.ansible.modules.gather_facts` is never imported or run
+unused-variable	low	lib/ansible/modules/get_url.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/get_url.py:224:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/get_url.py:277:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/getent.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/getent.py:64:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/getent.py:103:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/git.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/git.py:245:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/git.py:304:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/group.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/group.py:97:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/group.py:110:1	RETURN	variable `RETURN` is never used
+unused-class	low	lib/ansible/modules/group.py:280:7	Linux	class `Linux` is never used
+unused-class	low	lib/ansible/modules/group.py:305:7	SunOS	class `SunOS` is never used
+unused-class	low	lib/ansible/modules/group.py:338:7	AIX	class `AIX` is never used
+unused-class	medium	lib/ansible/modules/group.py:441:7	DragonFlyBsdGroup	class `DragonFlyBsdGroup` is never used
+unused-class	medium	lib/ansible/modules/group.py:452:7	DarwinGroup	class `DarwinGroup` is never used
+unused-class	medium	lib/ansible/modules/group.py:523:7	OpenBsdGroup	class `OpenBsdGroup` is never used
+unused-class	medium	lib/ansible/modules/group.py:577:7	NetBsdGroup	class `NetBsdGroup` is never used
+unused-class	medium	lib/ansible/modules/group.py:693:7	AlpineGroup	class `AlpineGroup` is never used
+unused-file	medium	lib/ansible/modules/group_by.py	-	file `lib.ansible.modules.group_by` is never imported or run
+unused-variable	low	lib/ansible/modules/hostname.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/hostname.py:56:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:171:7	CommandStrategy	class `CommandStrategy` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:635:7	SLESHostname	class `SLESHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:649:7	RHELHostname	class `RHELHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:655:7	CentOSHostname	class `CentOSHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:661:7	AnolisOSHostname	class `AnolisOSHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:667:7	CloudlinuxserverHostname	class `CloudlinuxserverHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:673:7	CloudlinuxHostname	class `CloudlinuxHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:679:7	AlinuxHostname	class `AlinuxHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:685:7	ScientificHostname	class `ScientificHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:691:7	OracleLinuxHostname	class `OracleLinuxHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:697:7	VirtuozzoLinuxHostname	class `VirtuozzoLinuxHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:703:7	AmazonLinuxHostname	class `AmazonLinuxHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:709:7	DebianHostname	class `DebianHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:715:7	KylinHostname	class `KylinHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:721:7	CumulusHostname	class `CumulusHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:727:7	KaliHostname	class `KaliHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:733:7	ParrotHostname	class `ParrotHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:739:7	UbuntuHostname	class `UbuntuHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:745:7	LinuxmintHostname	class `LinuxmintHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:751:7	LinaroHostname	class `LinaroHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:757:7	DevuanHostname	class `DevuanHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:763:7	RaspbianHostname	class `RaspbianHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:769:7	UosHostname	class `UosHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:775:7	DeepinHostname	class `DeepinHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:781:7	GentooHostname	class `GentooHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:787:7	ALTLinuxHostname	class `ALTLinuxHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:793:7	AlpineLinuxHostname	class `AlpineLinuxHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:799:7	OpenBSDHostname	class `OpenBSDHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:805:7	SolarisHostname	class `SolarisHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:811:7	FreeBSDHostname	class `FreeBSDHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:817:7	NetBSDHostname	class `NetBSDHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:823:7	NeonHostname	class `NeonHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:829:7	DarwinHostname	class `DarwinHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:835:7	VoidLinuxHostname	class `VoidLinuxHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:841:7	PopHostname	class `PopHostname` is never used
+unused-class	medium	lib/ansible/modules/hostname.py:847:7	EurolinuxHostname	class `EurolinuxHostname` is never used
+unused-file	medium	lib/ansible/modules/import_playbook.py	-	file `lib.ansible.modules.import_playbook` is never imported or run
+unused-file	medium	lib/ansible/modules/import_role.py	-	file `lib.ansible.modules.import_role` is never imported or run
+unused-file	medium	lib/ansible/modules/import_tasks.py	-	file `lib.ansible.modules.import_tasks` is never imported or run
+unused-file	medium	lib/ansible/modules/include_role.py	-	file `lib.ansible.modules.include_role` is never imported or run
+unused-file	medium	lib/ansible/modules/include_tasks.py	-	file `lib.ansible.modules.include_tasks` is never imported or run
+unused-file	medium	lib/ansible/modules/include_vars.py	-	file `lib.ansible.modules.include_vars` is never imported or run
+unused-variable	low	lib/ansible/modules/iptables.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/iptables.py:401:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	medium	lib/ansible/modules/iptables.py:561:1	BINS	variable `BINS` is never used
+unused-function	medium	lib/ansible/modules/iptables.py:614:5	append_wait	function `append_wait` is never used
+unused-variable	low	lib/ansible/modules/known_hosts.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/known_hosts.py:70:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/lineinfile.py:11:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/lineinfile.py:164:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/lineinfile.py:249:1	RETURN	variable `RETURN` is never used
+unused-file	medium	lib/ansible/modules/meta.py	-	file `lib.ansible.modules.meta` is never imported or run
+unused-variable	low	lib/ansible/modules/mount_facts.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/mount_facts.py:87:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/mount_facts.py:122:1	RETURN	variable `RETURN` is never used
+unused-file	medium	lib/ansible/modules/package.py	-	file `lib.ansible.modules.package` is never imported or run
+unused-variable	low	lib/ansible/modules/package_facts.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/package_facts.py:72:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/package_facts.py:88:1	RETURN	variable `RETURN` is never used
+unused-class	medium	lib/ansible/modules/package_facts.py:269:7	RPM	class `RPM` is never used
+unused-class	medium	lib/ansible/modules/package_facts.py:302:7	APT	class `APT` is never used
+unused-class	medium	lib/ansible/modules/package_facts.py:329:7	PACMAN	class `PACMAN` is never used
+unused-class	medium	lib/ansible/modules/package_facts.py:368:7	PKG	class `PKG` is never used
+unused-class	medium	lib/ansible/modules/package_facts.py:412:7	PORTAGE	class `PORTAGE` is never used
+unused-class	medium	lib/ansible/modules/package_facts.py:427:7	APK	class `APK` is never used
+unused-class	medium	lib/ansible/modules/package_facts.py:443:7	PKG_INFO	class `PKG_INFO` is never used
+unused-file	medium	lib/ansible/modules/pause.py	-	file `lib.ansible.modules.pause` is never imported or run
+unused-variable	low	lib/ansible/modules/pip.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/pip.py:152:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/pip.py:269:1	RETURN	variable `RETURN` is never used
+unused-file	medium	lib/ansible/modules/raw.py	-	file `lib.ansible.modules.raw` is never imported or run
+unused-file	medium	lib/ansible/modules/reboot.py	-	file `lib.ansible.modules.reboot` is never imported or run
+unused-variable	low	lib/ansible/modules/replace.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/replace.py:111:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/replace.py:180:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/rpm_key.py:11:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/rpm_key.py:58:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/rpm_key.py:87:1	RETURN	variable `RETURN` is never used
+unused-file	medium	lib/ansible/modules/script.py	-	file `lib.ansible.modules.script` is never imported or run
+unused-variable	low	lib/ansible/modules/service.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/service.py:119:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/service.py:158:1	RETURN	variable `RETURN` is never used
+unused-class	medium	lib/ansible/modules/service.py:989:7	HurdService	class `HurdService` is never used
+unused-class	medium	lib/ansible/modules/service.py:1110:7	DragonFlyBsdService	class `DragonFlyBsdService` is never used
+unused-class	medium	lib/ansible/modules/service.py:1136:7	OpenBsdService	class `OpenBsdService` is never used
+unused-class	medium	lib/ansible/modules/service.py:1209:7	NetBsdService	class `NetBsdService` is never used
+unused-class	low	lib/ansible/modules/service.py:1265:7	SunOSService	class `SunOSService` is never used
+unused-class	low	lib/ansible/modules/service.py:1399:7	AIX	class `AIX` is never used
+unused-variable	low	lib/ansible/modules/service_facts.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/service_facts.py:41:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/service_facts.py:63:1	RETURN	variable `RETURN` is never used
+unused-file	medium	lib/ansible/modules/set_fact.py	-	file `lib.ansible.modules.set_fact` is never imported or run
+unused-file	medium	lib/ansible/modules/set_stats.py	-	file `lib.ansible.modules.set_stats` is never imported or run
+unused-variable	low	lib/ansible/modules/setup.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/setup.py:115:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-file	medium	lib/ansible/modules/shell.py	-	file `lib.ansible.modules.shell` is never imported or run
+unused-variable	low	lib/ansible/modules/slurp.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/slurp.py:53:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/slurp.py:85:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/stat.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/stat.py:71:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/stat.py:136:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/subversion.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/subversion.py:111:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/subversion.py:131:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/systemd.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/systemd.py:103:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/systemd.py:154:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/systemd_service.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/systemd_service.py:103:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/systemd_service.py:154:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/sysvinit.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/sysvinit.py:82:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/sysvinit.py:105:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/tempfile.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/tempfile.py:60:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/tempfile.py:85:1	RETURN	variable `RETURN` is never used
+unused-file	medium	lib/ansible/modules/template.py	-	file `lib.ansible.modules.template` is never imported or run
+unused-variable	low	lib/ansible/modules/unarchive.py:13:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/unarchive.py:155:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/unarchive.py:182:1	RETURN	variable `RETURN` is never used
+unused-function	medium	lib/ansible/modules/unarchive.py:311:5	shell_escape	function `shell_escape` is never used
+unused-variable	low	lib/ansible/modules/uri.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/uri.py:245:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/uri.py:384:1	RETURN	variable `RETURN` is never used
+unused-variable	low	lib/ansible/modules/user.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/user.py:337:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/user.py:403:1	RETURN	variable `RETURN` is never used
+unused-class	medium	lib/ansible/modules/user.py:1736:7	DragonFlyBsdUser	class `DragonFlyBsdUser` is never used
+unused-class	medium	lib/ansible/modules/user.py:1747:7	OpenBSDUser	class `OpenBSDUser` is never used
+unused-class	medium	lib/ansible/modules/user.py:1936:7	NetBSDUser	class `NetBSDUser` is never used
+unused-class	low	lib/ansible/modules/user.py:2116:7	SunOS	class `SunOS` is never used
+unused-class	medium	lib/ansible/modules/user.py:2418:7	DarwinUser	class `DarwinUser` is never used
+unused-class	low	lib/ansible/modules/user.py:2777:7	AIX	class `AIX` is never used
+unused-class	low	lib/ansible/modules/user.py:2993:7	HPUX	class `HPUX` is never used
+unused-class	low	lib/ansible/modules/user.py:3398:7	Alpine	class `Alpine` is never used
+unused-class	low	lib/ansible/modules/user.py:3407:7	Buildroot	class `Buildroot` is never used
+unused-file	medium	lib/ansible/modules/validate_argument_spec.py	-	file `lib.ansible.modules.validate_argument_spec` is never imported or run
+unused-variable	low	lib/ansible/modules/wait_for.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/wait_for.py:127:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/wait_for.py:212:1	RETURN	variable `RETURN` is never used
+unused-class	medium	lib/ansible/modules/wait_for.py:345:7	LinuxTCPConnectionInfo	class `LinuxTCPConnectionInfo` is never used
+unused-file	medium	lib/ansible/modules/wait_for_connection.py	-	file `lib.ansible.modules.wait_for_connection` is never imported or run
+unused-variable	low	lib/ansible/modules/yum_repository.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/modules/yum_repository.py:280:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	lib/ansible/modules/yum_repository.py:322:1	RETURN	variable `RETURN` is never used
+unused-file	medium	lib/ansible/parsing/ajson.py	-	file `lib.ansible.parsing.ajson` is never imported or run
+unused-file	medium	lib/ansible/parsing/utils/jsonify.py	-	file `lib.ansible.parsing.utils.jsonify` is never imported or run
+unused-file	medium	lib/ansible/parsing/yaml/objects.py	-	file `lib.ansible.parsing.yaml.objects` is never imported or run
+unused-method	medium	lib/ansible/playbook/base.py:95:9	_fattributes	method `FieldAttributeBase._fattributes` is never used
+unused-variable	low	lib/ansible/playbook/collectionsearch.py:10:1	display	variable `display` is never used
+unused-variable	low	lib/ansible/playbook/conditional.py:23:1	display	variable `display` is never used
+unused-variable	low	lib/ansible/playbook/play.py:42:1	display	variable `display` is never used
+unused-variable	medium	lib/ansible/playbook/play_context.py:48:1	RESET_VARS	variable `RESET_VARS` is never used
+unused-variable	low	lib/ansible/playbook/role/definition.py:38:1	display	variable `display` is never used
+unused-variable	low	lib/ansible/playbook/role/requirement.py:35:1	display	variable `display` is never used
+unused-variable	low	lib/ansible/playbook/role_include.py:30:1	display	variable `display` is never used
+unused-method	medium	lib/ansible/playbook/task.py:159:9	_merge_kv	method `Task._merge_kv` is never used
+unused-variable	low	lib/ansible/plugins/__init__.py:34:1	display	variable `display` is never used
+unused-method	medium	lib/ansible/plugins/__init__.py:168:9	_check_required	method `AnsiblePlugin._check_required` is never used
+unused-function	low	lib/ansible/plugins/action/__init__.py:53:5	_validate_utf8_json	function `_validate_utf8_json` is never used
+unused-file	medium	lib/ansible/plugins/action/add_host.py	-	file `lib.ansible.plugins.action.add_host` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/assemble.py	-	file `lib.ansible.plugins.action.assemble` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/assert.py	-	file `assert.py` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/async_status.py	-	file `lib.ansible.plugins.action.async_status` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/command.py	-	file `lib.ansible.plugins.action.command` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/copy.py	-	file `lib.ansible.plugins.action.copy` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/debug.py	-	file `lib.ansible.plugins.action.debug` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/fail.py	-	file `lib.ansible.plugins.action.fail` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/fetch.py	-	file `lib.ansible.plugins.action.fetch` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/gather_facts.py	-	file `lib.ansible.plugins.action.gather_facts` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/group_by.py	-	file `lib.ansible.plugins.action.group_by` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/include_vars.py	-	file `lib.ansible.plugins.action.include_vars` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/normal.py	-	file `lib.ansible.plugins.action.normal` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/package.py	-	file `lib.ansible.plugins.action.package` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/pause.py	-	file `lib.ansible.plugins.action.pause` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/raw.py	-	file `lib.ansible.plugins.action.raw` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/reboot.py	-	file `lib.ansible.plugins.action.reboot` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/script.py	-	file `lib.ansible.plugins.action.script` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/service.py	-	file `lib.ansible.plugins.action.service` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/set_fact.py	-	file `lib.ansible.plugins.action.set_fact` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/set_stats.py	-	file `lib.ansible.plugins.action.set_stats` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/shell.py	-	file `lib.ansible.plugins.action.shell` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/template.py	-	file `lib.ansible.plugins.action.template` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/unarchive.py	-	file `lib.ansible.plugins.action.unarchive` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/uri.py	-	file `lib.ansible.plugins.action.uri` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/validate_argument_spec.py	-	file `lib.ansible.plugins.action.validate_argument_spec` is never imported or run
+unused-file	medium	lib/ansible/plugins/action/wait_for_connection.py	-	file `lib.ansible.plugins.action.wait_for_connection` is never imported or run
+unused-variable	low	lib/ansible/plugins/become/runas.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-file	medium	lib/ansible/plugins/become/su.py	-	file `lib.ansible.plugins.become.su` is never imported or run
+unused-file	medium	lib/ansible/plugins/become/sudo.py	-	file `lib.ansible.plugins.become.sudo` is never imported or run
+unused-file	medium	lib/ansible/plugins/cache/jsonfile.py	-	file `lib.ansible.plugins.cache.jsonfile` is never imported or run
+unused-file	medium	lib/ansible/plugins/cache/memory.py	-	file `lib.ansible.plugins.cache.memory` is never imported or run
+unused-variable	low	lib/ansible/plugins/callback/default.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/plugins/callback/junit.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/plugins/callback/minimal.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/plugins/callback/oneline.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/plugins/callback/tree.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-function	medium	lib/ansible/plugins/cliconf/__init__.py:35:5	enable_mode	function `enable_mode` is never used
+unused-class	low	lib/ansible/plugins/cliconf/__init__.py:45:7	CliconfBase	class `CliconfBase` is never used
+unused-method	medium	lib/ansible/plugins/cliconf/__init__.py:85:9	_alarm_handler	method `CliconfBase._alarm_handler` is never used
+unused-method	low	lib/ansible/plugins/cliconf/__init__.py:150:9	reset_history	method `CliconfBase.reset_history` is never used
+unused-method	low	lib/ansible/plugins/cliconf/__init__.py:322:9	rollback	method `CliconfBase.rollback` is never used
+unused-method	low	lib/ansible/plugins/cliconf/__init__.py:331:9	copy_file	method `CliconfBase.copy_file` is never used
+unused-method	low	lib/ansible/plugins/cliconf/__init__.py:412:9	run_commands	method `CliconfBase.run_commands` is never used
+unused-method	low	lib/ansible/plugins/cliconf/__init__.py:432:9	check_edit_config_capability	method `CliconfBase.check_edit_config_capability` is never used
+unused-method	low	lib/ansible/plugins/cliconf/__init__.py:449:9	set_cli_prompt_context	method `CliconfBase.set_cli_prompt_context` is never used
+unused-method	medium	lib/ansible/plugins/cliconf/__init__.py:456:9	_update_cli_prompt_context	method `CliconfBase._update_cli_prompt_context` is never used
+unused-class	medium	lib/ansible/plugins/connection/__init__.py:329:7	NetworkConnectionBase	class `NetworkConnectionBase` is never used
+unused-method	medium	lib/ansible/plugins/connection/__init__.py:454:9	_log_messages	method `NetworkConnectionBase._log_messages` is never used
+unused-file	medium	lib/ansible/plugins/connection/psrp.py	-	file `lib.ansible.plugins.connection.psrp` is never imported or run
+unused-file	medium	lib/ansible/plugins/connection/ssh.py	-	file `lib.ansible.plugins.connection.ssh` is never imported or run
+unused-file	medium	lib/ansible/plugins/connection/winrm.py	-	file `lib.ansible.plugins.connection.winrm` is never imported or run
+unused-file	medium	lib/ansible/plugins/filter/core.py	-	file `lib.ansible.plugins.filter.core` is never imported or run
+unused-file	medium	lib/ansible/plugins/filter/encryption.py	-	file `lib.ansible.plugins.filter.encryption` is never imported or run
+unused-file	medium	lib/ansible/plugins/filter/mathstuff.py	-	file `lib.ansible.plugins.filter.mathstuff` is never imported or run
+unused-file	medium	lib/ansible/plugins/filter/urls.py	-	file `lib.ansible.plugins.filter.urls` is never imported or run
+unused-file	medium	lib/ansible/plugins/filter/urlsplit.py	-	file `lib.ansible.plugins.filter.urlsplit` is never imported or run
+unused-class	low	lib/ansible/plugins/httpapi/__init__.py:11:7	HttpApiBase	class `HttpApiBase` is never used
+unused-method	low	lib/ansible/plugins/httpapi/__init__.py:19:9	set_become	method `HttpApiBase.set_become` is never used
+unused-method	low	lib/ansible/plugins/httpapi/__init__.py:32:9	logout	method `HttpApiBase.logout` is never used
+unused-method	low	lib/ansible/plugins/httpapi/__init__.py:40:9	update_auth	method `HttpApiBase.update_auth` is never used
+unused-method	low	lib/ansible/plugins/httpapi/__init__.py:53:9	handle_httperror	method `HttpApiBase.handle_httperror` is never used
+unused-method	low	lib/ansible/plugins/httpapi/__init__.py:84:9	send_request	method `HttpApiBase.send_request` is never used
+unused-class	medium	lib/ansible/plugins/inventory/__init__.py:316:7	Cacheable	class `Cacheable` is never used
+unused-method	low	lib/ansible/plugins/inventory/__init__.py:338:9	clear_cache	method `Cacheable.clear_cache` is never used
+unused-method	low	lib/ansible/plugins/inventory/__init__.py:344:9	set_cache_plugin	method `Cacheable.set_cache_plugin` is never used
+unused-file	medium	lib/ansible/plugins/inventory/advanced_host_list.py	-	file `lib.ansible.plugins.inventory.advanced_host_list` is never imported or run
+unused-file	medium	lib/ansible/plugins/inventory/auto.py	-	file `lib.ansible.plugins.inventory.auto` is never imported or run
+unused-file	medium	lib/ansible/plugins/inventory/constructed.py	-	file `lib.ansible.plugins.inventory.constructed` is never imported or run
+unused-file	medium	lib/ansible/plugins/inventory/generator.py	-	file `lib.ansible.plugins.inventory.generator` is never imported or run
+unused-file	medium	lib/ansible/plugins/inventory/host_list.py	-	file `lib.ansible.plugins.inventory.host_list` is never imported or run
+unused-file	medium	lib/ansible/plugins/inventory/ini.py	-	file `lib.ansible.plugins.inventory.ini` is never imported or run
+unused-file	medium	lib/ansible/plugins/inventory/script.py	-	file `lib.ansible.plugins.inventory.script` is never imported or run
+unused-file	medium	lib/ansible/plugins/inventory/toml.py	-	file `lib.ansible.plugins.inventory.toml` is never imported or run
+unused-file	medium	lib/ansible/plugins/inventory/yaml.py	-	file `lib.ansible.plugins.inventory.yaml` is never imported or run
+unused-function	medium	lib/ansible/plugins/list.py:143:5	list_collection_plugins	function `list_collection_plugins` is never used
+unused-function	medium	lib/ansible/plugins/list.py:265:5	list_plugin_names	function `list_plugin_names` is never used
+unused-function	medium	lib/ansible/plugins/list.py:269:5	list_plugin_files	function `list_plugin_files` is never used
+unused-function	medium	lib/ansible/plugins/list.py:274:5	list_plugin_classes	function `list_plugin_classes` is never used
+unused-function	medium	lib/ansible/plugins/loader.py:132:5	add_dirs_to_loader	function `add_dirs_to_loader` is never used
+unused-file	medium	lib/ansible/plugins/lookup/config.py	-	file `lib.ansible.plugins.lookup.config` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/csvfile.py	-	file `lib.ansible.plugins.lookup.csvfile` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/dict.py	-	file `lib.ansible.plugins.lookup.dict` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/env.py	-	file `lib.ansible.plugins.lookup.env` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/file.py	-	file `lib.ansible.plugins.lookup.file` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/fileglob.py	-	file `lib.ansible.plugins.lookup.fileglob` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/first_found.py	-	file `lib.ansible.plugins.lookup.first_found` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/indexed_items.py	-	file `lib.ansible.plugins.lookup.indexed_items` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/ini.py	-	file `lib.ansible.plugins.lookup.ini` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/inventory_hostnames.py	-	file `lib.ansible.plugins.lookup.inventory_hostnames` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/items.py	-	file `lib.ansible.plugins.lookup.items` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/lines.py	-	file `lib.ansible.plugins.lookup.lines` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/list.py	-	file `lib.ansible.plugins.lookup.list` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/nested.py	-	file `lib.ansible.plugins.lookup.nested` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/password.py	-	file `lib.ansible.plugins.lookup.password` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/pipe.py	-	file `lib.ansible.plugins.lookup.pipe` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/random_choice.py	-	file `lib.ansible.plugins.lookup.random_choice` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/sequence.py	-	file `lib.ansible.plugins.lookup.sequence` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/subelements.py	-	file `lib.ansible.plugins.lookup.subelements` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/template.py	-	file `lib.ansible.plugins.lookup.template` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/together.py	-	file `lib.ansible.plugins.lookup.together` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/unvault.py	-	file `lib.ansible.plugins.lookup.unvault` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/url.py	-	file `lib.ansible.plugins.lookup.url` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/varnames.py	-	file `lib.ansible.plugins.lookup.varnames` is never imported or run
+unused-file	medium	lib/ansible/plugins/lookup/vars.py	-	file `lib.ansible.plugins.lookup.vars` is never imported or run
+unused-function	medium	lib/ansible/plugins/netconf/__init__.py:47:5	ensure_ncclient	function `ensure_ncclient` is never used
+unused-class	low	lib/ansible/plugins/netconf/__init__.py:56:7	NetconfBase	class `NetconfBase` is never used
+unused-method	low	lib/ansible/plugins/netconf/__init__.py:311:9	guess_network_os	method `NetconfBase.guess_network_os` is never used
+unused-variable	low	lib/ansible/plugins/shell/cmd.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	lib/ansible/plugins/shell/powershell.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-file	medium	lib/ansible/plugins/shell/sh.py	-	file `lib.ansible.plugins.shell.sh` is never imported or run
+unused-function	high	lib/ansible/plugins/strategy/__init__.py:73:5	_get_item_vars	function `_get_item_vars` is never used
+unused-file	medium	lib/ansible/plugins/strategy/debug.py	-	file `lib.ansible.plugins.strategy.debug` is never imported or run
+unused-variable	low	lib/ansible/plugins/strategy/free.py:19:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-file	medium	lib/ansible/plugins/strategy/host_pinned.py	-	file `lib.ansible.plugins.strategy.host_pinned` is never imported or run
+unused-variable	low	lib/ansible/plugins/strategy/linear.py:19:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	lib/ansible/plugins/terminal/__init__.py:28:7	TerminalBase	class `TerminalBase` is never used
+unused-method	medium	lib/ansible/plugins/terminal/__init__.py:66:9	_exec_cli_command	method `TerminalBase._exec_cli_command` is never used
+unused-method	medium	lib/ansible/plugins/terminal/__init__.py:74:9	_get_prompt	method `TerminalBase._get_prompt` is never used
+unused-method	low	lib/ansible/plugins/terminal/__init__.py:82:9	on_open_shell	method `TerminalBase.on_open_shell` is never used
+unused-method	low	lib/ansible/plugins/terminal/__init__.py:91:9	on_close_shell	method `TerminalBase.on_close_shell` is never used
+unused-method	low	lib/ansible/plugins/terminal/__init__.py:122:9	on_authorize	method `TerminalBase.on_authorize` is never used
+unused-method	low	lib/ansible/plugins/terminal/__init__.py:129:9	on_deauthorize	method `TerminalBase.on_deauthorize` is never used
+unused-class	low	lib/ansible/plugins/test/core.py:299:7	TestModule	class `TestModule` is never used
+unused-class	low	lib/ansible/plugins/test/files.py:23:7	TestModule	class `TestModule` is never used
+unused-class	low	lib/ansible/plugins/test/mathstuff.py:46:7	TestModule	class `TestModule` is never used
+unused-class	low	lib/ansible/plugins/test/uri.py:32:7	TestModule	class `TestModule` is never used
+unused-file	medium	lib/ansible/plugins/vars/host_group_vars.py	-	file `lib.ansible.plugins.vars.host_group_vars` is never imported or run
+unused-variable	medium	lib/ansible/template/__init__.py:30:1	AnsibleUndefined	variable `AnsibleUndefined` is never used
+unused-function	low	lib/ansible/template/__init__.py:350:5	generate_ansible_template_vars	function `generate_ansible_template_vars` is never used
+unused-function	medium	lib/ansible/template/__init__.py:377:5	is_trusted_as_template	function `is_trusted_as_template` is never used
+unused-file	medium	lib/ansible/utils/cmd_functions.py	-	file `lib.ansible.utils.cmd_functions` is never imported or run
+unused-method	medium	lib/ansible/utils/collection_loader/_collection_finder.py:121:9	_get_name	method `_AnsibleTraversableResources._get_name` is never used
+unused-method	medium	lib/ansible/utils/collection_loader/_collection_finder.py:221:9	_find_existing_finder	method `_AnsibleCollectionFinder._find_existing_finder` is never used
+unused-method	low	lib/ansible/utils/collection_loader/_collection_finder.py:544:9	create_module	method `_AnsibleCollectionPkgLoaderBase.create_module` is never used
+unused-method	low	lib/ansible/utils/collection_loader/_collection_finder.py:870:9	create_module	method `_AnsibleInternalRedirectLoader.create_module` is never used
+unused-method	low	lib/ansible/utils/collection_loader/_collection_finder.py:960:9	fqcr	method `AnsibleCollectionRef.fqcr` is never used
+unused-function	high	lib/ansible/utils/collection_loader/_collection_finder.py:1203:5	_get_import_redirect	function `_get_import_redirect` is never used
+unused-method	medium	lib/ansible/utils/display.py:427:9	_meets_verbosity	method `Display._meets_verbosity` is never used
+unused-method	low	lib/ansible/utils/display.py:784:9	system_warning	method `Display.system_warning` is never used
+unused-function	medium	lib/ansible/utils/galaxy.py:36:5	scm_archive_collection	function `scm_archive_collection` is never used
+unused-method	low	lib/ansible/utils/jsonrpc.py:101:9	parse_error	method `JsonRpcServer.parse_error` is never used
+unused-method	low	lib/ansible/utils/jsonrpc.py:110:9	invalid_params	method `JsonRpcServer.invalid_params` is never used
+unused-variable	low	lib/ansible/utils/listify.py:23:1	display	variable `display` is never used
+unused-function	medium	lib/ansible/utils/plugin_docs.py:122:5	remove_current_collection_from_versions_and_dates	function `remove_current_collection_from_versions_and_dates` is never used
+unused-file	medium	lib/ansible/utils/ssh_functions.py	-	file `lib.ansible.utils.ssh_functions` is never imported or run
+unused-file	medium	lib/ansible/utils/unsafe_proxy.py	-	file `lib.ansible.utils.unsafe_proxy` is never imported or run
+unused-function	low	lib/ansible/utils/vars.py:238:5	isidentifier	function `isidentifier` is never used
+unused-method	low	lib/ansible/vars/manager.py:154:9	set_inventory	method `VariableManager.set_inventory` is never used
+unused-function	medium	lib/ansible/vars/reserved.py:85:5	is_reserved_name	function `is_reserved_name` is never used
+unused-variable	low	test/integration/targets/ansiballz_python/ansible_collections/ansible_test/ansiballz_python/plugins/modules/broken_embed_non_ansible.py:8:1	e1	variable `e1` is never used
+unused-variable	medium	test/integration/targets/ansiballz_python/ansible_collections/ansible_test/ansiballz_python/plugins/modules/broken_embed_non_ansible.py:9:1	broken_embed	variable `broken_embed` is never used
+unused-variable	low	test/integration/targets/ansiballz_python/ansible_collections/ansible_test/ansiballz_python/plugins/modules/broken_embed_non_literal.py:10:1	e1	variable `e1` is never used
+unused-variable	low	test/integration/targets/ansiballz_python/ansible_collections/ansible_test/ansiballz_python/plugins/modules/broken_embed_nonexistent_anchor.py:8:1	e1	variable `e1` is never used
+unused-variable	low	test/integration/targets/ansiballz_python/ansible_collections/ansible_test/ansiballz_python/plugins/modules/broken_embed_nonexistent_resource.py:8:1	e1	variable `e1` is never used
+unused-variable	low	test/integration/targets/ansiballz_python/ansible_collections/ansible_test/ansiballz_python/plugins/modules/broken_embed_type.py:8:1	e1	variable `e1` is never used
+unused-variable	low	test/integration/targets/ansiballz_python/ansible_collections/ansible_test/ansiballz_python/plugins/modules/embed.py:32:1	a1	variable `a1` is never used
+unused-variable	low	test/integration/targets/ansiballz_python/ansible_collections/ansible_test/ansiballz_python/plugins/modules/embed.py:33:1	a2	variable `a2` is never used
+unused-variable	low	test/integration/targets/ansiballz_python/ansible_collections/ansible_test/ansiballz_python/plugins/modules/embed.py:34:1	a3	variable `a3` is never used
+unused-variable	medium	test/integration/targets/ansiballz_python/ansible_collections/ansible_test/ansiballz_python/plugins/modules/embed.py:35:1	a4	variable `a4` is never used
+unused-variable	low	test/integration/targets/ansiballz_python/ansible_collections/ansible_test/ansiballz_python/plugins/modules/embed.py:36:1	a5	variable `a5` is never used
+unused-variable	medium	test/integration/targets/ansiballz_python/ansible_collections/ansible_test/ansiballz_python/plugins/modules/embed.py:37:1	a6	variable `a6` is never used
+unused-variable	low	test/integration/targets/ansiballz_python/ansible_collections/ansible_test/ansiballz_python/plugins/modules/embed.py:38:1	a7	variable `a7` is never used
+unused-function	medium	test/integration/targets/ansiballz_python/ansible_collections/ansible_test/ansiballz_python/plugins/modules/embed.py:58:5	non_top_level	function `non_top_level` is never used
+unused-variable	low	test/integration/targets/ansible-doc/broken-docs/collections/ansible_collections/testns/testcol/plugins/cache/notjsonfile.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/ansible-doc/broken-docs/collections/ansible_collections/testns/testcol/plugins/cache/notjsonfile.py:64:7	CacheModule	class `CacheModule` is never used
+unused-variable	low	test/integration/targets/ansible-doc/broken-docs/collections/ansible_collections/testns/testcol/plugins/inventory/statichost.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/ansible-doc/broken-docs/collections/ansible_collections/testns/testcol/plugins/inventory/statichost.py:25:7	InventoryModule	class `InventoryModule` is never used
+unused-variable	low	test/integration/targets/ansible-doc/broken-docs/collections/ansible_collections/testns/testcol/plugins/lookup/noop.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/broken-docs/collections/ansible_collections/testns/testcol/plugins/lookup/noop.py:22:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/broken-docs/collections/ansible_collections/testns/testcol/plugins/lookup/noop.py:27:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/ansible-doc/broken-docs/collections/ansible_collections/testns/testcol/plugins/lookup/noop.py:39:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/ansible-doc/broken-docs/collections/ansible_collections/testns/testcol/plugins/modules/fakemodule.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/broken-docs/collections/ansible_collections/testns/testcol/plugins/modules/randommodule.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/broken-docs/collections/ansible_collections/testns/testcol/plugins/modules/randommodule.py:52:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/broken-docs/collections/ansible_collections/testns/testcol/plugins/modules/randommodule.py:55:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/broken-docs/collections/ansible_collections/testns/testcol/plugins/vars/noop_vars_plugin.py:3:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/ansible-doc/broken-docs/collections/ansible_collections/testns/testcol/plugins/vars/noop_vars_plugin.py:25:7	VarsModule	class `VarsModule` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/cache/notjsonfile.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/cache/notjsonfile.py:63:7	CacheModule	class `CacheModule` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/filter/filter_subdir/in_subdir.py:9:1	display	variable `display` is never used
+unused-class	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/filter/filter_subdir/in_subdir.py:16:7	FilterModule	class `FilterModule` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/filter/grouped.py:7:1	display	variable `display` is never used
+unused-class	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/filter/grouped.py:18:7	FilterModule	class `FilterModule` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/inventory/statichost.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/inventory/statichost.py:24:7	InventoryModule	class `InventoryModule` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/lookup/noop.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/lookup/noop.py:21:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/lookup/noop.py:26:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/lookup/noop.py:38:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/modules/database/database_type/subdir_module.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/modules/database/database_type/subdir_module.py:17:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/modules/database/database_type/subdir_module.py:20:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/modules/fakemodule.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/modules/randommodule.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/modules/randommodule.py:78:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/modules/randommodule.py:81:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/vars/noop_vars_plugin.py:3:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol/plugins/vars/noop_vars_plugin.py:24:7	VarsModule	class `VarsModule` is never used
+unused-variable	low	test/integration/targets/ansible-doc/collections/ansible_collections/testns/testcol3/plugins/modules/test1.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/filter_plugins/other.py:7:1	display	variable `display` is never used
+unused-class	low	test/integration/targets/ansible-doc/filter_plugins/other.py:14:7	FilterModule	class `FilterModule` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/bogus_facts.py:1:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/double_doc.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/ansible-doc/library/double_doc.py:12:7	Foo	class `Foo` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs.py:5:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs.py:19:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs.py:22:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_missing_description.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_missing_description.py:18:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_missing_description.py:21:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_no_metadata.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_no_metadata.py:15:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_no_metadata.py:18:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_no_status.py:5:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_no_status.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_no_status.py:18:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_no_status.py:21:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_non_iterable_status.py:5:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_non_iterable_status.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_non_iterable_status.py:19:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_non_iterable_status.py:22:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_removed_precedence.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_removed_precedence.py:20:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_removed_precedence.py:23:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_removed_status.py:5:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_removed_status.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_removed_status.py:19:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_removed_status.py:22:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_return_fragments.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_return_fragments.py:16:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_return_fragments.py:19:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_returns.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_returns.py:15:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_returns.py:18:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_returns_broken.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_returns_broken.py:15:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_returns_broken.py:18:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_suboptions.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_suboptions.py:36:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_suboptions.py:39:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_yaml_anchors.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_yaml_anchors.py:42:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_docs_yaml_anchors.py:45:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_no_docs.py:5:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_no_docs_no_status.py:5:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/integration/targets/ansible-doc/library/test_no_docs_non_iterable_status.py:5:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/integration/targets/ansible-doc/lookup_plugins/_deprecated_with_docs.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	medium	test/integration/targets/ansible-doc/lookup_plugins/_deprecated_with_docs.py:21:1	EXAMPLE	variable `EXAMPLE` is never used
+unused-variable	low	test/integration/targets/ansible-doc/lookup_plugins/_deprecated_with_docs.py:24:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-doc/lookup_plugins/broken_docs.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	medium	test/integration/targets/ansible-doc/lookup_plugins/broken_docs.py:12:1	EXAMPLE	variable `EXAMPLE` is never used
+unused-variable	low	test/integration/targets/ansible-doc/lookup_plugins/broken_docs.py:15:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-galaxy-collection/files/test_module.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-galaxy-collection/files/test_module.py:37:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-galaxy-collection/files/test_module.py:49:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/ansible-inventory/filter_plugins/toml.py:11:7	FilterModule	class `FilterModule` is never used
+unused-class	medium	test/integration/targets/ansible-test-container/runme.py:955:7	DnfBootstrapper	class `DnfBootstrapper` is never used
+unused-class	medium	test/integration/targets/ansible-test-container/runme.py:1012:7	AptBootstrapper	class `AptBootstrapper` is never used
+unused-class	medium	test/integration/targets/ansible-test-container/runme.py:1050:7	ApkBootstrapper	class `ApkBootstrapper` is never used
+unused-variable	medium	test/integration/targets/ansible-test-coverage/ansible_collections/ns/col/plugins/module_utils/test_util.py:4:1	A_CONSTANT	variable `A_CONSTANT` is never used
+unused-variable	low	test/integration/targets/ansible-test-docker/ansible_collections/ns/col/plugins/modules/hello.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-docker/ansible_collections/ns/col/plugins/modules/hello.py:18:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-docker/ansible_collections/ns/col/plugins/modules/hello.py:22:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-docker/ansible_collections/ns/col/plugins/modules/win_util_args.py:8:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/integration/targets/ansible-test-docker/ansible_collections/ns/col/plugins/modules/win_util_args.py:12:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-docker/ansible_collections/ns/col/plugins/modules/win_util_args.py:31:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-docker/ansible_collections/ns/col/plugins/modules/win_util_args.py:37:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-integration/ansible_collections/ns/col/plugins/modules/hello.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-integration/ansible_collections/ns/col/plugins/modules/hello.py:18:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-integration/ansible_collections/ns/col/plugins/modules/hello.py:22:1	RETURN	variable `RETURN` is never used
+unused-function	medium	test/integration/targets/ansible-test-no-tty/ansible_collections/ns/col/vendored_pty.py:41:5	master_open	function `master_open` is never used
+unused-class	low	test/integration/targets/ansible-test-sanity-action-plugin-docs/ansible_collections/ns/col/plugins/action/with_py.py:9:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/ansible-test-sanity-action-plugin-docs/ansible_collections/ns/col/plugins/action/with_yaml.py:9:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/ansible-test-sanity-action-plugin-docs/ansible_collections/ns/col/plugins/action/with_yml.py:9:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-action-plugin-docs/ansible_collections/ns/col/plugins/modules/with_py.py:4:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-action-plugin-docs/ansible_collections/ns/col/plugins/modules/with_py.py:14:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	medium	test/integration/targets/ansible-test-sanity-action-plugin-docs/ansible_collections/ns/col/plugins/modules/with_py.py:19:1	RETURNS	variable `RETURNS` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/lookup/a/b/lookup2.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/lookup/a/b/lookup2.py:14:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/lookup/a/b/lookup2.py:18:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/lookup/a/b/lookup2.py:24:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/lookup/lookup1.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/lookup/lookup1.py:14:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/lookup/lookup1.py:18:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/lookup/lookup1.py:24:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/modules/_module3.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/modules/_module3.py:14:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/modules/_module3.py:18:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/modules/a/b/module2.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/modules/a/b/module2.py:15:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/modules/a/b/module2.py:19:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/modules/module1.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/modules/module1.py:15:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-ansible-doc/ansible_collections/ns/col/plugins/modules/module1.py:19:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-import/ansible_collections/ns/col/plugins/lookup/vendor1.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-import/ansible_collections/ns/col/plugins/lookup/vendor1.py:13:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-import/ansible_collections/ns/col/plugins/lookup/vendor1.py:14:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/ansible-test-sanity-import/ansible_collections/ns/col/plugins/lookup/vendor1.py:28:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-import/ansible_collections/ns/col/plugins/lookup/vendor2.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-import/ansible_collections/ns/col/plugins/lookup/vendor2.py:13:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-import/ansible_collections/ns/col/plugins/lookup/vendor2.py:14:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/ansible-test-sanity-import/ansible_collections/ns/col/plugins/lookup/vendor2.py:28:7	LookupModule	class `LookupModule` is never used
+unused-function	low	test/integration/targets/ansible-test-sanity-no-get-exception/ansible_collections/ns/col/do-not-check-me.py:6:5	do_stuff	function `do_stuff` is never used
+unused-function	low	test/integration/targets/ansible-test-sanity-no-get-exception/ansible_collections/ns/col/plugins/modules/check-me.py:6:5	do_stuff	function `do_stuff` is never used
+unused-class	low	test/integration/targets/ansible-test-sanity-pylint/ansible_collections/ns/col/plugins/action/do_deprecated_stuff.py:15:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-pylint/ansible_collections/ns/col/plugins/lookup/deprecated.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-pylint/ansible_collections/ns/col/plugins/lookup/deprecated.py:14:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-pylint/ansible_collections/ns/col/plugins/lookup/deprecated.py:15:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/ansible-test-sanity-pylint/ansible_collections/ns/col/plugins/lookup/deprecated.py:45:7	LookupModule	class `LookupModule` is never used
+unused-method	low	test/integration/targets/ansible-test-sanity-pylint/ansible_collections/ns/col/plugins/lookup/deprecated.py:55:9	my_method	method `MyModule.my_method` is never used
+unused-function	low	test/integration/targets/ansible-test-sanity-pylint/ansible_collections/ns/col/plugins/lookup/deprecated.py:65:5	do_stuff	function `do_stuff` is never used
+unused-function	low	test/integration/targets/ansible-test-sanity-pylint/ansible_collections/ns/col/plugins/module_utils/deprecated_utils.py:17:5	do_stuff	function `do_stuff` is never used
+unused-function	low	test/integration/targets/ansible-test-sanity-pylint/ansible_collections/ns/col/plugins/module_utils/unwanted.py:8:5	main	function `main` is never used
+unused-function	low	test/integration/targets/ansible-test-sanity-pylint/deprecated_thing.py:11:5	do_stuff	function `do_stuff` is never used
+unused-function	low	test/integration/targets/ansible-test-sanity-replace-urlopen/ansible_collections/ns/col/do-not-check-me.py:6:5	do_stuff	function `do_stuff` is never used
+unused-function	low	test/integration/targets/ansible-test-sanity-replace-urlopen/ansible_collections/ns/col/plugins/modules/check-me.py:6:5	do_stuff	function `do_stuff` is never used
+unused-function	low	test/integration/targets/ansible-test-sanity-use-compat-six/ansible_collections/ns/col/do-not-check-me.py:6:5	do_stuff	function `do_stuff` is never used
+unused-function	low	test/integration/targets/ansible-test-sanity-use-compat-six/ansible_collections/ns/col/plugins/modules/check-me.py:6:5	do_stuff	function `do_stuff` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/lookup/import_order_lookup.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/lookup/import_order_lookup.py:14:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/_not_deprecated.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/_not_deprecated.py:14:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/_not_deprecated.py:15:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_1.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_1.py:24:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_1.py:25:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_2.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_2.py:25:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_2.py:26:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_3.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_3.py:24:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_3.py:25:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_4.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_4.py:24:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_4.py:25:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_5.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_5.py:24:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_5.py:25:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_6.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_6.py:25:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_6.py:26:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_7.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_7.py:24:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/check_mode_attribute_7.py:25:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/doc_fragments_not_exist.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/doc_fragments_not_exist.py:16:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/doc_fragments_not_exist.py:18:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/import_order.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/import_order.py:17:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/import_order.py:18:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/invalid_argument_spec_extra_key.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/invalid_argument_spec_extra_key.py:18:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/invalid_argument_spec_extra_key.py:19:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/invalid_argument_spec_incorrect_context.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/invalid_argument_spec_incorrect_context.py:18:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/invalid_argument_spec_incorrect_context.py:19:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/invalid_choice_value.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/invalid_choice_value.py:22:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/invalid_choice_value.py:23:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/invalid_yaml_syntax.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/invalid_yaml_syntax.py:10:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/invalid_yaml_syntax.py:14:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/no_callable.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/no_callable.py:14:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/no_callable.py:15:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/option_name_casing.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/option_name_casing.py:33:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/option_name_casing.py:34:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/return_fragments.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/return_fragments.py:14:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/return_fragments.py:16:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/return_fragments_not_exist.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/return_fragments_not_exist.py:14:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/return_fragments_not_exist.py:16:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/semantic_markup.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/semantic_markup.py:96:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/semantic_markup.py:98:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/valid_argument_spec_context.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/valid_argument_spec_context.py:18:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/valid_argument_spec_context.py:19:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/wrong_aliases.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/wrong_aliases.py:23:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/wrong_aliases.py:24:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-yamllint/ansible_collections/ns/col/plugins/inventory/inventory1.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-yamllint/ansible_collections/ns/col/plugins/inventory/inventory1.py:20:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-yamllint/ansible_collections/ns/col/plugins/inventory/inventory1.py:33:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/ansible-test-sanity-yamllint/ansible_collections/ns/col/plugins/inventory/inventory1.py:41:7	InventoryModule	class `InventoryModule` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-yamllint/ansible_collections/ns/col/plugins/modules/module1.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-yamllint/ansible_collections/ns/col/plugins/modules/module1.py:18:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity-yamllint/ansible_collections/ns/col/plugins/modules/module1.py:22:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/plugins/lookup/bad.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/plugins/lookup/bad.py:13:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/plugins/lookup/bad.py:18:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/plugins/lookup/bad.py:26:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/plugins/lookup/world.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/plugins/lookup/world.py:13:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/plugins/lookup/world.py:18:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/plugins/lookup/world.py:24:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/plugins/modules/bad.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/plugins/modules/bad.py:14:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/plugins/modules/bad.py:18:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/plugins/plugin_utils/check_pylint.py:15:1	result	variable `result` is never used
+unused-variable	low	test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/plugins/plugin_utils/check_pylint.py:17:1	foo	variable `foo` is never used
+unused-variable	low	test/integration/targets/ansible-test-units/ansible_collections/ns/col/plugins/modules/hello.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/ansible-test-units/ansible_collections/ns/col/plugins/modules/hello.py:18:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/ansible-test-units/ansible_collections/ns/col/plugins/modules/hello.py:22:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/ansible-vault/test-vault-client.py:6:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-class	low	test/integration/targets/ansible/callback_plugins/callback_meta.py:10:7	CallbackModule	class `CallbackModule` is never used
+unused-class	low	test/integration/targets/assert/lookup_plugins/yield_terms.py:6:7	LookupModule	class `LookupModule` is never used
+unused-class	low	test/integration/targets/async_fail/action_plugins/no_jid.py:6:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/async_fail/action_plugins/normal.py:24:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/become_unprivileged/action_plugins/tmpdir.py:6:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/cache-plugins/cache_plugins/dummy_cache.py:3:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/cache-plugins/cache_plugins/dummy_cache.py:19:7	CacheModule	class `CacheModule` is never used
+unused-variable	low	test/integration/targets/cache-plugins/cache_plugins/dummy_file_cache.py:3:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/cache-plugins/cache_plugins/dummy_file_cache.py:39:7	CacheModule	class `CacheModule` is never used
+unused-variable	low	test/integration/targets/cache-plugins/cache_plugins/dummy_file_cache_persistent.py:3:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/cache-plugins/cache_plugins/dummy_file_cache_persistent.py:39:7	CacheModule	class `CacheModule` is never used
+unused-variable	low	test/integration/targets/cache-plugins/inventory_plugins/test_inventoryconfig.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/cache-plugins/inventory_plugins/test_inventoryconfig.py:18:7	InventoryModule	class `InventoryModule` is never used
+unused-class	low	test/integration/targets/callback-dispatch/callback_plugins/legacy_warning_display.py:12:7	CallbackModule	class `CallbackModule` is never used
+unused-class	low	test/integration/targets/callback-dispatch/callback_plugins/missing_base_class.py:4:7	CallbackModule	class `CallbackModule` is never used
+unused-class	low	test/integration/targets/callback-dispatch/callback_plugins/oops_always_enabled.py:9:7	CallbackModule	class `CallbackModule` is never used
+unused-class	low	test/integration/targets/callback-dispatch/callback_plugins/v1_only_methods.py:8:7	CallbackModule	class `CallbackModule` is never used
+unused-variable	low	test/integration/targets/callback_results/callback_plugins/track_connections.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/callback_results/callback_plugins/track_connections.py:24:7	CallbackModule	class `CallbackModule` is never used
+unused-class	low	test/integration/targets/collection_loader/ansible_collections/ns/col/plugins/action/test_collection_loader.py:6:7	ActionModule	class `ActionModule` is never used
+unused-function	low	test/integration/targets/collection_loader/ansible_collections/ns/col/temp_pythonpath/my_module/__init__.py:8:5	run	function `run` is never used
+unused-variable	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/othercoll/plugins/module_utils/formerly_testcoll_pkg/__init__.py:1:1	thing	variable `thing` is never used
+unused-variable	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/othercoll/plugins/module_utils/formerly_testcoll_pkg/submod.py:1:1	thing	variable `thing` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testbroken/plugins/filter/broken_filter.py:4:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/action/action_subdir/subdir_ping_action.py:6:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/action/bypass_host_loop.py:9:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/action/plugin_lookup.py:7:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/action/subclassed_normal.py:6:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/action/uses_redirected_import.py:7:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/callback/usercallback.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/callback/usercallback.py:19:7	CallbackModule	class `CallbackModule` is never used
+unused-variable	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/connection/localconn.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/connection/localconn.py:21:7	Connection	class `Connection` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/filter/filter_subdir/my_subdir_filters.py:8:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/filter/myfilters.py:8:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/filter/myfilters2.py:8:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/lookup/lookup_subdir/my_subdir_lookup.py:6:7	LookupModule	class `LookupModule` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/lookup/mylookup.py:6:7	LookupModule	class `LookupModule` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/lookup/mylookup2.py:7:7	LookupModule	class `LookupModule` is never used
+unused-function	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/module_utils/subpkg_with_init.py:5:5	thingtocall	function `thingtocall` is never used
+unused-function	medium	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/module_utils/subpkg_with_init.py:9:5	anotherthingtocall	function `anotherthingtocall` is never used
+unused-variable	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/modules/testmodule.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/modules/testmodule_bad_docfrags.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/test/mytests.py:8:7	TestModule	class `TestModule` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/test/mytests2.py:8:7	TestModule	class `TestModule` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/test/test_subdir/my_subdir_tests.py:8:7	TestModule	class `TestModule` is never used
+unused-variable	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/vars/custom_vars.py:20:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/collections/collection_root_user/ansible_collections/testns/testcoll/plugins/vars/custom_vars.py:39:7	VarsModule	class `VarsModule` is never used
+unused-class	low	test/integration/targets/collections/collections/ansible_collections/me/mycoll1/plugins/action/action1.py:6:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/collections/collections/ansible_collections/me/mycoll1/plugins/modules/action1.py:5:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/integration/targets/collections/collections/ansible_collections/me/mycoll1/plugins/modules/action1.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/collections/collections/ansible_collections/me/mycoll1/plugins/modules/action1.py:19:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/collections/collections/ansible_collections/me/mycoll1/plugins/modules/action1.py:22:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/collections/collections/ansible_collections/me/mycoll2/plugins/modules/module1.py:5:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/integration/targets/collections/collections/ansible_collections/me/mycoll2/plugins/modules/module1.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/collections/collections/ansible_collections/me/mycoll2/plugins/modules/module1.py:19:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/collections/collections/ansible_collections/me/mycoll2/plugins/modules/module1.py:22:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/collections/collections/ansible_collections/testns/content_adj/plugins/cache/custom_jsonfile.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/collections/collections/ansible_collections/testns/content_adj/plugins/cache/custom_jsonfile.py:49:7	CacheModule	class `CacheModule` is never used
+unused-variable	low	test/integration/targets/collections/collections/ansible_collections/testns/content_adj/plugins/inventory/statichost.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/collections/collections/ansible_collections/testns/content_adj/plugins/inventory/statichost.py:24:7	InventoryModule	class `InventoryModule` is never used
+unused-function	medium	test/integration/targets/collections/collections/ansible_collections/testns/content_adj/plugins/module_utils/sub1/foomodule.py:4:5	importme	function `importme` is never used
+unused-variable	low	test/integration/targets/collections/collections/ansible_collections/testns/content_adj/plugins/vars/custom_adj_vars.py:20:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/collections/collections/ansible_collections/testns/content_adj/plugins/vars/custom_adj_vars.py:40:7	VarsModule	class `VarsModule` is never used
+unused-variable	low	test/integration/targets/collections/custom_vars_plugins/v1_vars_plugin.py:20:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/collections/custom_vars_plugins/v1_vars_plugin.py:32:7	VarsModule	class `VarsModule` is never used
+unused-variable	low	test/integration/targets/collections/custom_vars_plugins/v2_vars_plugin.py:20:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/collections/custom_vars_plugins/v2_vars_plugin.py:40:7	VarsModule	class `VarsModule` is never used
+unused-class	low	test/integration/targets/collections/filter_plugins/override_formerly_core_masked_filter.py:8:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/collections/test_task_resolved_plugin/action_plugins/legacy_action.py:8:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/collections/test_task_resolved_plugin/callback_plugins/display_resolved_action.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/collections/test_task_resolved_plugin/callback_plugins/display_resolved_action.py:25:7	CallbackModule	class `CallbackModule` is never used
+unused-class	low	test/integration/targets/collections/test_task_resolved_plugin/collections/ansible_collections/test_ns/test_coll/plugins/action/collection_action.py:8:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/collections/test_task_resolved_plugin/collections/ansible_collections/test_ns/test_coll/plugins/modules/collection_module.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/collections/test_task_resolved_plugin/library/legacy_module.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/collections/testcoll2/plugins/modules/testmodule2.py:4:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/integration/targets/collections/testcoll2/plugins/modules/testmodule2.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/collections/testcoll2/plugins/modules/testmodule2.py:18:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/collections/testcoll2/plugins/modules/testmodule2.py:21:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/collections_plugin_namespace/collection_root/ansible_collections/my_ns/my_col/plugins/filter/test_filter.py:8:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/collections_plugin_namespace/collection_root/ansible_collections/my_ns/my_col/plugins/lookup/lookup_name.py:6:7	LookupModule	class `LookupModule` is never used
+unused-class	low	test/integration/targets/collections_plugin_namespace/collection_root/ansible_collections/my_ns/my_col/plugins/lookup/lookup_no_future_boilerplate.py:8:7	LookupModule	class `LookupModule` is never used
+unused-class	low	test/integration/targets/common_network/test_plugins/is_mac.py:9:7	TestModule	class `TestModule` is never used
+unused-variable	low	test/integration/targets/config/lookup_plugins/bogus.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/config/lookup_plugins/bogus.py:27:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/config/lookup_plugins/bogus.py:32:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/config/lookup_plugins/bogus.py:42:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/config/lookup_plugins/broken.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/config/lookup_plugins/broken.py:39:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/config/lookup_plugins/broken.py:41:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/config/lookup_plugins/broken.py:52:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/config/lookup_plugins/casting.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/config/lookup_plugins/casting.py:31:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/config/lookup_plugins/casting.py:36:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/config/lookup_plugins/casting.py:46:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/config/lookup_plugins/casting_individual.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/config/lookup_plugins/casting_individual.py:31:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/config/lookup_plugins/casting_individual.py:36:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/config/lookup_plugins/casting_individual.py:46:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/config/lookup_plugins/types.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/config/lookup_plugins/types.py:69:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/config/lookup_plugins/types.py:74:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/config/lookup_plugins/types.py:84:7	LookupModule	class `LookupModule` is never used
+unused-class	low	test/integration/targets/connection_delegation/action_plugins/delegation_action.py:6:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/connection_delegation/connection_plugins/delegation_connection.py:3:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/connection_delegation/connection_plugins/delegation_connection.py:23:7	Connection	class `Connection` is never used
+unused-variable	low	test/integration/targets/connection_local/connection_plugins/network_noop.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/connection_local/connection_plugins/network_noop.py:68:7	Connection	class `Connection` is never used
+unused-variable	low	test/integration/targets/connection_persistent/connection_plugins/persistent.py:3:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/connection_persistent/connection_plugins/persistent.py:44:7	Connection	class `Connection` is never used
+unused-variable	low	test/integration/targets/connection_remote_is_local/connection_plugins/remote_is_local.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/connection_remote_is_local/connection_plugins/remote_is_local.py:23:7	Connection	class `Connection` is never used
+unused-class	low	test/integration/targets/connection_windows_no_pipelining/action_plugins/shell_test.py:9:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/connection_windows_no_pipelining/connection_plugins/winrm_no_pipelining.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/connection_windows_no_pipelining/connection_plugins/winrm_no_pipelining.py:56:7	Connection	class `Connection` is never used
+unused-class	low	test/integration/targets/connection_winrm/action_plugins/test_stdin_failure.py:7:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/data_tagging_controller/library/tagging_sample.py:6:1	METADATA	variable `METADATA` is never used
+unused-variable	low	test/integration/targets/delegate_to/connection_plugins/fakelocal.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/delegate_to/connection_plugins/fakelocal.py:34:7	Connection	class `Connection` is never used
+unused-variable	low	test/integration/targets/deprecations/cache_plugins/notjsonfile.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/deprecations/cache_plugins/notjsonfile.py:78:7	CacheModule	class `CacheModule` is never used
+unused-class	low	test/integration/targets/deprecations/collections/ansible_collections/foo/bar/plugins/action/noisy_action.py:9:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/deprecations/library/removeoption.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/deprecations/library/removeoption.py:47:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/deprecations/library/removeoption.py:54:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/deprecations/library/willremove.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/deprecations/library/willremove.py:48:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/deprecations/library/willremove.py:55:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/dict_transformations/library/convert_camelCase.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/dict_transformations/library/convert_snake_case.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/dnf/filter_plugins/dnf_module_list.py:36:7	FilterModule	class `FilterModule` is never used
+unused-variable	low	test/integration/targets/error_from_connection/connection_plugins/dummy.py:3:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/error_from_connection/connection_plugins/dummy.py:17:7	Connection	class `Connection` is never used
+unused-variable	low	test/integration/targets/fetch/injection/library/slurp.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/fork_safe_stdio/callback_plugins/spewstdio.py:23:7	CallbackModule	class `CallbackModule` is never used
+unused-function	medium	test/integration/targets/fork_safe_stdio/vendored_pty.py:41:5	master_open	function `master_open` is never used
+unused-variable	low	test/integration/targets/gathering_facts/cache_plugins/none.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/gathering_facts/cache_plugins/none.py:20:7	CacheModule	class `CacheModule` is never used
+unused-variable	low	test/integration/targets/gathering_facts/collections/ansible_collections/cisco/ios/plugins/modules/ios_facts.py:4:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/ignore_unreachable/fake_connectors/bad_exec.py:10:7	Connection	class `Connection` is never used
+unused-class	low	test/integration/targets/ignore_unreachable/fake_connectors/bad_put_file.py:10:7	Connection	class `Connection` is never used
+unused-variable	low	test/integration/targets/inventory/inventory_plugins/constructed_with_hostvars.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/inventory/inventory_plugins/constructed_with_hostvars.py:24:7	InventoryModule	class `InventoryModule` is never used
+unused-variable	low	test/integration/targets/inventory_cache/plugins/inventory/cache_host.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/inventory_cache/plugins/inventory/cache_host.py:22:7	InventoryModule	class `InventoryModule` is never used
+unused-variable	low	test/integration/targets/inventory_cache/plugins/inventory/exercise_cache.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/inventory_cache/plugins/inventory/exercise_cache.py:38:7	InventoryModule	class `InventoryModule` is never used
+unused-class	low	test/integration/targets/jinja_plugins/collections/ansible_collections/foo/bar/plugins/filter/bad_collection_filter.py:7:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/jinja_plugins/collections/ansible_collections/foo/bar/plugins/filter/bad_collection_filter2.py:7:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/jinja_plugins/collections/ansible_collections/foo/bar/plugins/filter/good_collection_filter.py:7:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/jinja_plugins/filter_plugins/bad_filter.py:7:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/jinja_plugins/filter_plugins/good_filter.py:7:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/lookup-option-name/lookup_plugins/non_terms_posargs.py:6:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/lookup_config/lookup_plugins/bogus.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/lookup_config/lookup_plugins/bogus.py:23:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/lookup_config/lookup_plugins/bogus.py:26:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/lookup_config/lookup_plugins/bogus.py:36:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/loop-connection/collections/ansible_collections/ns/name/plugins/connection/dummy.py:4:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/loop-connection/collections/ansible_collections/ns/name/plugins/connection/dummy.py:16:7	Connection	class `Connection` is never used
+unused-variable	low	test/integration/targets/module-serialization-profiles/library/echo_legacy.py:3:1	METADATA	variable `METADATA` is never used
+unused-variable	low	test/integration/targets/module-serialization-profiles/library/echo_modern.py:3:1	METADATA	variable `METADATA` is never used
+unused-class	low	test/integration/targets/module_defaults/action_plugins/debug.py:6:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/module_defaults/collections/ansible_collections/testns/othercoll/plugins/action/other_echoaction.py:6:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/module_defaults/collections/ansible_collections/testns/testcoll/plugins/action/eos.py:9:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/module_defaults/collections/ansible_collections/testns/testcoll/plugins/action/ios.py:9:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/module_defaults/collections/ansible_collections/testns/testcoll/plugins/action/vyos.py:9:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/module_defaults/collections/ansible_collections/testns/testcoll/plugins/modules/eosfacts.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/module_defaults/collections/ansible_collections/testns/testcoll/plugins/modules/eosfacts.py:17:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/module_defaults/collections/ansible_collections/testns/testcoll/plugins/modules/ios_facts.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/module_defaults/collections/ansible_collections/testns/testcoll/plugins/modules/ios_facts.py:17:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/module_defaults/collections/ansible_collections/testns/testcoll/plugins/modules/metadata.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/module_defaults/collections/ansible_collections/testns/testcoll/plugins/modules/metadata.py:24:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/module_defaults/collections/ansible_collections/testns/testcoll/plugins/modules/metadata.py:27:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/module_defaults/collections/ansible_collections/testns/testcoll/plugins/modules/module.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/module_defaults/collections/ansible_collections/testns/testcoll/plugins/modules/module.py:17:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/module_defaults/collections/ansible_collections/testns/testcoll/plugins/modules/vyosfacts.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/module_defaults/collections/ansible_collections/testns/testcoll/plugins/modules/vyosfacts.py:17:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/module_defaults/library/legacy_ping.py:11:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/module_defaults/library/legacy_ping.py:40:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/module_defaults/library/legacy_ping.py:52:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/module_utils/callback/pure_json.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/module_utils/callback/pure_json.py:17:7	CallbackModule	class `CallbackModule` is never used
+unused-function	medium	test/integration/targets/module_utils/collections/ansible_collections/testns/testcoll/plugins/module_utils/legit.py:4:5	importme	function `importme` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/a/b/c/d/e/f/g/h/__init__.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/ansible_release.py:4:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/bar0/foo3.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/bar1/__init__.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/bar2/__init__.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/baz1/one.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/baz2/one.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/foo0.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/foo1.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/foo2.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/qux1/quux.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/qux2/quux.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/qux2/quuz.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/service.py:1:1	sysv_is_enabled	variable `sysv_is_enabled` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/spam1/ham/eggs/__init__.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/spam2/ham/eggs/__init__.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/spam3/ham/bacon.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/spam4/ham/bacon.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/spam5/ham/bacon.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/spam5/ham/eggs.py:1:1	data	variable `data` is never used
+unused-variable	medium	test/integration/targets/module_utils/module_utils/spam6/ham/__init__.py:1:1	bacon	variable `bacon` is never used
+unused-variable	medium	test/integration/targets/module_utils/module_utils/spam6/ham/__init__.py:2:1	eggs	variable `eggs` is never used
+unused-variable	medium	test/integration/targets/module_utils/module_utils/spam7/ham/__init__.py:1:1	eggs	variable `eggs` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/spam7/ham/bacon.py:1:1	data	variable `data` is never used
+unused-variable	medium	test/integration/targets/module_utils/module_utils/spam8/ham/__init__.py:1:1	eggs	variable `eggs` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/spam8/ham/bacon.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/sub/bam.py:3:1	bam	variable `bam` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/sub/bam/bam.py:3:1	bam	variable `bam` is never used
+unused-variable	low	test/integration/targets/module_utils/module_utils/yak/zebra/foo4.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/other_mu_dir/a/b/c/d/e/f/g/h/__init__.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/other_mu_dir/facts.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/other_mu_dir/json_utils.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils/other_mu_dir/mork.py:1:1	data	variable `data` is never used
+unused-variable	low	test/integration/targets/module_utils_ansible_release/library/ansible_release.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/module_utils_ansible_release/library/ansible_release.py:16:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/module_utils_ansible_release/library/ansible_release.py:20:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/integration/targets/module_utils_urls/library/test_peercert.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/module_utils_urls/library/test_peercert.py:21:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/module_utils_urls/library/test_peercert.py:25:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/no_log/action_plugins/action_sets_no_log.py:6:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/old_style_vars_plugins/roles/a/vars_plugins/auto_role_vars.py:6:7	VarsModule	class `VarsModule` is never used
+unused-class	low	test/integration/targets/old_style_vars_plugins/vars_plugins/auto_enabled.py:6:7	VarsModule	class `VarsModule` is never used
+unused-class	low	test/integration/targets/old_style_vars_plugins/vars_plugins/implicitly_auto_enabled.py:6:7	VarsModule	class `VarsModule` is never used
+unused-class	low	test/integration/targets/old_style_vars_plugins/vars_plugins/require_enabled.py:6:7	VarsModule	class `VarsModule` is never used
+unused-function	low	test/integration/targets/pip/files/ansible_test_pip_chdir/__init__.py:4:5	main	function `main` is never used
+unused-variable	low	test/integration/targets/pkg_resources/lookup_plugins/check_pkg_resources.py:15:5	Requirement	variable `Requirement` is never used
+unused-class	low	test/integration/targets/pkg_resources/lookup_plugins/check_pkg_resources.py:20:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/plugin_config_for_inventory/cache_plugins/none.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/plugin_config_for_inventory/cache_plugins/none.py:30:7	CacheModule	class `CacheModule` is never used
+unused-variable	low	test/integration/targets/plugin_config_for_inventory/test_inventory.py:4:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/plugin_config_for_inventory/test_inventory.py:47:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-class	low	test/integration/targets/plugin_config_for_inventory/test_inventory.py:58:7	InventoryModule	class `InventoryModule` is never used
+unused-class	low	test/integration/targets/plugin_loader/deprecated_core_plugins/deprecated_core_connection.py:6:7	Connection	class `Connection` is never used
+unused-class	low	test/integration/targets/plugin_loader/file_collision/roles/r1/filter_plugins/custom.py:8:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/plugin_loader/file_collision/roles/r2/filter_plugins/custom.py:8:7	FilterModule	class `FilterModule` is never used
+unused-variable	low	test/integration/targets/plugin_loader/normal/action_plugins/self_referential.py:11:5	mod	variable `mod` is never used
+unused-class	low	test/integration/targets/plugin_loader/normal/action_plugins/self_referential.py:16:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/plugin_loader/override/filter_plugins/core.py:8:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/plugin_namespace/filter_plugins/test_filter.py:8:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/plugin_namespace/lookup_plugins/lookup_name.py:6:7	LookupModule	class `LookupModule` is never used
+unused-class	low	test/integration/targets/powershell_exec_wrapper/action_plugins/test_rc_1.py:10:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/prepare_http_tests/library/httptester_kinit.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/prepare_http_tests/library/httptester_kinit.py:25:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/prepare_http_tests/library/httptester_kinit.py:29:1	RETURN	variable `RETURN` is never used
+unused-class	low	test/integration/targets/protomatter/action_plugins/transform_factory.py:6:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/protomatter/lookup_plugins/emit_deprecation_warning.py:7:7	LookupModule	class `LookupModule` is never used
+unused-class	low	test/integration/targets/protomatter/lookup_plugins/synthetic_plugin_info.py:7:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/rel_plugin_loading/subdir/inventory_plugins/notyaml.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/rel_plugin_loading/subdir/inventory_plugins/notyaml.py:34:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-class	low	test/integration/targets/rel_plugin_loading/subdir/inventory_plugins/notyaml.py:71:7	InventoryModule	class `InventoryModule` is never used
+unused-class	low	test/integration/targets/result_pickle_error/action_plugins/result_pickle_error.py:17:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/secret_masking_ask_pass/action_plugins/get_prompted_pass.py:8:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/secret_masking_callback/callback_plugins/masking_probe.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/secret_masking_callback/callback_plugins/masking_probe.py:25:7	CallbackModule	class `CallbackModule` is never used
+unused-variable	low	test/integration/targets/secret_masking_config_secret/lookup_plugins/bad_secret_probe.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/secret_masking_config_secret/lookup_plugins/bad_secret_probe.py:22:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/secret_masking_config_secret/lookup_plugins/secret_probe.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/secret_masking_config_secret/lookup_plugins/secret_probe.py:42:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/secret_masking_display/library/display_probe.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/secret_masking_module_powershell/action_plugins/assert_propagated.py:9:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/secret_masking_module_powershell/action_plugins/run_module_check.py:9:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/secret_masking_module_python/action_plugins/assert_propagated.py:9:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/secret_masking_module_python/action_plugins/run_module_check.py:9:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/secret_masking_module_python/action_plugins/run_respawn_check.py:9:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/secret_masking_plugins/action_plugins/action_test.py:12:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/secret_masking_plugins/action_plugins/mask_check.py:12:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/secret_masking_plugins/connection_plugins/connection_test.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/secret_masking_plugins/connection_plugins/connection_test.py:23:7	Connection	class `Connection` is never used
+unused-class	low	test/integration/targets/secret_masking_plugins/filter_plugins/filter_test.py:26:7	FilterModule	class `FilterModule` is never used
+unused-variable	low	test/integration/targets/secret_masking_plugins/inventory_plugins/inventory_test.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/secret_masking_plugins/inventory_plugins/inventory_test.py:25:7	InventoryModule	class `InventoryModule` is never used
+unused-variable	low	test/integration/targets/secret_masking_plugins/lookup_plugins/lookup_test.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/secret_masking_plugins/lookup_plugins/lookup_test.py:21:7	LookupModule	class `LookupModule` is never used
+unused-variable	low	test/integration/targets/secret_masking_plugins/vars_plugins/vars_test.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/secret_masking_plugins/vars_plugins/vars_test.py:22:7	VarsModule	class `VarsModule` is never used
+unused-variable	medium	test/integration/targets/service/files/ansible_test_service.py:68:5	retCode	variable `retCode` is never used
+unused-variable	medium	test/integration/targets/service_facts/files/ansible_test_service.py:68:5	retCode	variable `retCode` is never used
+unused-class	low	test/integration/targets/shell-plugins/action_plugins/test_shell.py:11:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/shell-plugins/connection_plugins/test_connection_default.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/shell-plugins/connection_plugins/test_connection_default.py:19:7	Connection	class `Connection` is never used
+unused-variable	low	test/integration/targets/shell-plugins/connection_plugins/test_connection_override.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/integration/targets/shell-plugins/connection_plugins/test_connection_override.py:19:7	Connection	class `Connection` is never used
+unused-class	low	test/integration/targets/ssh_agent/action_plugins/ssh_agent.py:11:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/ssh_agent/action_plugins/ssh_keygen.py:15:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/strategy-external/ansible_collections/ns/col/plugins/strategy/external.py:6:7	StrategyModule	class `StrategyModule` is never used
+unused-class	low	test/integration/targets/strategy_host_pinned/callback_plugins/callback_host_count.py:9:7	CallbackModule	class `CallbackModule` is never used
+unused-class	low	test/integration/targets/support-callback_plugins/callback_plugins/callback_debug.py:11:7	CallbackModule	class `CallbackModule` is never used
+unused-class	low	test/integration/targets/task-args/action_plugins/echo.py:6:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/task-args/action_plugins/echo_raw.py:6:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/task-esoterica/action_plugins/echo.py:6:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/tasks/action_plugins/action_that_fails.py:6:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/template/role_filter/filter_plugins/myplugin.py:6:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/templating/filter_plugins/broken_filter.py:10:7	FilterModule	class `FilterModule` is never used
+unused-class	low	test/integration/targets/templating_lookup_args/lookup_plugins/accept_args_markers.py:7:7	LookupModule	class `LookupModule` is never used
+unused-class	low	test/integration/targets/templating_lookup_args/lookup_plugins/accept_no_markers.py:6:7	LookupModule	class `LookupModule` is never used
+unused-class	low	test/integration/targets/unexpected_executor_exception/action_plugins/unexpected.py:6:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/integration/targets/until/action_plugins/shell_no_failed.py:9:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/integration/targets/var_precedence/ansible-var-precedence-check.py:19:1	ENV	variable `ENV` is never used
+unused-variable	low	test/integration/targets/windows-minimal/library/win_ping.py:10:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/integration/targets/windows-minimal/library/win_ping.py:14:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/integration/targets/windows-minimal/library/win_ping.py:37:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/integration/targets/windows-minimal/library/win_ping.py:49:1	RETURN	variable `RETURN` is never used
+unused-function	low	test/lib/ansible_test/_internal/__init__.py:67:5	main	function `main` is never used
+unused-class	medium	test/lib/ansible_test/_internal/become.py:51:7	DoasSudo	class `DoasSudo` is never used
+unused-class	medium	test/lib/ansible_test/_internal/become.py:83:7	SuSudo	class `SuSudo` is never used
+unused-class	medium	test/lib/ansible_test/_internal/ci/azp.py:45:7	AzurePipelines	class `AzurePipelines` is never used
+unused-class	medium	test/lib/ansible_test/_internal/ci/gha.py:29:7	GitHubActions	class `GitHubActions` is never used
+unused-class	low	test/lib/ansible_test/_internal/ci/local.py:43:7	Local	class `Local` is never used
+unused-class	medium	test/lib/ansible_test/_internal/ci/local.py:250:7	PasswordAuthenticator	class `PasswordAuthenticator` is never used
+unused-class	medium	test/lib/ansible_test/_internal/ci/local.py:275:7	SshAuthenticator	class `SshAuthenticator` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/acme.py:22:7	ACMEProvider	class `ACMEProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/acme.py:69:7	ACMEEnvironment	class `ACMEEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/aws.py:39:7	AwsCloudProvider	class `AwsCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/aws.py:100:7	AwsCloudEnvironment	class `AwsCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/azure.py:33:7	AzureCloudProvider	class `AzureCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/azure.py:106:7	AzureCloudEnvironment	class `AzureCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/cloudscale.py:26:7	CloudscaleCloudProvider	class `CloudscaleCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/cloudscale.py:41:7	CloudscaleCloudEnvironment	class `CloudscaleCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/cs.py:36:7	CsCloudProvider	class `CsCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/cs.py:147:7	CsCloudEnvironment	class `CsCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/digitalocean.py:22:7	DigitalOceanCloudProvider	class `DigitalOceanCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/digitalocean.py:37:7	DigitalOceanCloudEnvironment	class `DigitalOceanCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/galaxy.py:55:7	GalaxyProvider	class `GalaxyProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/galaxy.py:170:7	GalaxyEnvironment	class `GalaxyEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/gcp.py:23:7	GcpCloudProvider	class `GcpCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/gcp.py:41:7	GcpCloudEnvironment	class `GcpCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/hcloud.py:31:7	HcloudCloudProvider	class `HcloudCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/hcloud.py:86:7	HcloudCloudEnvironment	class `HcloudCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/httptester.py:29:7	HttptesterProvider	class `HttptesterProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/httptester.py:82:7	HttptesterEnvironment	class `HttptesterEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/nios.py:22:7	NiosProvider	class `NiosProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/nios.py:83:7	NiosEnvironment	class `NiosEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/opennebula.py:18:7	OpenNebulaCloudProvider	class `OpenNebulaCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/opennebula.py:45:7	OpenNebulaCloudEnvironment	class `OpenNebulaCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/openshift.py:31:7	OpenShiftCloudProvider	class `OpenShiftCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/openshift.py:101:7	OpenShiftCloudEnvironment	class `OpenShiftCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/scaleway.py:22:7	ScalewayCloudProvider	class `ScalewayCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/scaleway.py:37:7	ScalewayCloudEnvironment	class `ScalewayCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/vcenter.py:23:7	VcenterProvider	class `VcenterProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/vcenter.py:39:7	VcenterEnvironment	class `VcenterEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/vultr.py:22:7	VultrCloudProvider	class `VultrCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/vultr.py:37:7	VultrCloudEnvironment	class `VultrCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/coverage.py:126:7	PosixCoverageHandler	class `PosixCoverageHandler` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/coverage.py:270:7	WindowsCoverageHandler	class `WindowsCoverageHandler` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:155:7	DockerTargetFilter	class `DockerTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:168:7	PosixSshTargetFilter	class `PosixSshTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:210:7	PosixRemoteTargetFilter	class `PosixRemoteTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:214:7	WindowsRemoteTargetFilter	class `WindowsRemoteTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:218:7	WindowsInventoryTargetFilter	class `WindowsInventoryTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:222:7	NetworkRemoteTargetFilter	class `NetworkRemoteTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:226:7	NetworkInventoryTargetFilter	class `NetworkInventoryTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:230:7	OriginTargetFilter	class `OriginTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/ansible_doc.py:52:7	AnsibleDocTest	class `AnsibleDocTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/bin_symlinks.py:40:7	BinSymlinksTest	class `BinSymlinksTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/ignores.py:27:7	IgnoresTest	class `IgnoresTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/import.py:77:7	ImportTest	class `ImportTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/integration_aliases.py:63:7	IntegrationAliasesTest	class `IntegrationAliasesTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/pep8.py:46:7	Pep8Test	class `Pep8Test` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/pslint.py:49:7	PslintTest	class `PslintTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/pylint.py:71:7	PylintTest	class `PylintTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/shellcheck.py:46:7	ShellcheckTest	class `ShellcheckTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/validate_modules.py:80:7	ValidateModulesTest	class `ValidateModulesTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/yamllint.py:49:7	YamllintTest	class `YamllintTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/debugging.py:136:7	PydevdSettings	class `PydevdSettings` is never used
+unused-class	medium	test/lib/ansible_test/_internal/debugging.py:242:7	DebugpySettings	class `DebugpySettings` is never used
+unused-method	low	test/lib/ansible_test/_internal/docker_util.py:886:9	volumes	method `DockerImageInspect.volumes` is never used
+unused-method	low	test/lib/ansible_test/_internal/git.py:84:9	is_valid_ref	method `Git.is_valid_ref` is never used
+unused-class	medium	test/lib/ansible_test/_internal/host_profiles.py:1457:7	OriginProfile	class `OriginProfile` is never used
+unused-class	medium	test/lib/ansible_test/_internal/host_profiles.py:1474:7	PosixRemoteProfile	class `PosixRemoteProfile` is never used
+unused-class	medium	test/lib/ansible_test/_internal/host_profiles.py:1584:7	PosixSshProfile	class `PosixSshProfile` is never used
+unused-class	medium	test/lib/ansible_test/_internal/provider/layout/ansible.py:18:7	AnsibleLayout	class `AnsibleLayout` is never used
+unused-class	medium	test/lib/ansible_test/_internal/provider/layout/collection.py:19:7	CollectionLayout	class `CollectionLayout` is never used
+unused-class	medium	test/lib/ansible_test/_internal/provider/source/git.py:25:7	GitSource	class `GitSource` is never used
+unused-variable	medium	test/lib/ansible_test/_internal/util.py:98:1	MODE_FILE_WRITE	variable `MODE_FILE_WRITE` is never used
+unused-variable	low	test/lib/ansible_test/_util/controller/ansible_collections/ansible_test/_internal/plugins/callback/timeout.py:15:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/lib/ansible_test/_util/controller/ansible_collections/ansible_test/_internal/plugins/callback/timeout.py:35:7	CallbackModule	class `CallbackModule` is never used
+unused-method	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/deprecated_calls.py:231:9	visit_call	method `AnsibleDeprecatedChecker.visit_call` is never used
+unused-function	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/deprecated_calls.py:542:5	register	function `register` is never used
+unused-method	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/deprecated_comment.py:54:9	process_tokens	method `AnsibleDeprecatedCommentChecker.process_tokens` is never used
+unused-function	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/deprecated_comment.py:135:5	register	function `register` is never used
+unused-function	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/hide_unraisable.py:22:5	register	function `register` is never used
+unused-method	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/string_format.py:41:9	visit_call	method `AnsibleStringFormatChecker.visit_call` is never used
+unused-function	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/string_format.py:67:5	register	function `register` is never used
+unused-method	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/unwanted.py:173:9	visit_import	method `AnsibleUnwantedChecker.visit_import` is never used
+unused-method	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/unwanted.py:178:9	visit_importfrom	method `AnsibleUnwantedChecker.visit_importfrom` is never used
+unused-method	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/unwanted.py:182:9	visit_attribute	method `AnsibleUnwantedChecker.visit_attribute` is never used
+unused-method	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/unwanted.py:198:9	visit_call	method `AnsibleUnwantedChecker.visit_call` is never used
+unused-function	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/unwanted.py:264:5	register	function `register` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:23:1	REJECTLIST_DIRS	variable `REJECTLIST_DIRS` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:24:1	SYS_EXIT_REGEX	variable `SYS_EXIT_REGEX` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:25:1	NO_LOG_REGEX	variable `NO_LOG_REGEX` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:29:1	FORBIDDEN_DICTIONARY_KEYS	variable `FORBIDDEN_DICTIONARY_KEYS` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:44:1	REJECTLIST_IMPORTS	variable `REJECTLIST_IMPORTS` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:63:1	PLUGINS_WITH_RETURN_VALUES	variable `PLUGINS_WITH_RETURN_VALUES` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:64:1	PLUGINS_WITH_EXAMPLES	variable `PLUGINS_WITH_EXAMPLES` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:65:1	PLUGINS_WITH_YAML_EXAMPLES	variable `PLUGINS_WITH_YAML_EXAMPLES` is never used
+unused-method	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/main.py:353:9	_get_collection_meta	method `ModuleValidator._get_collection_meta` is never used
+unused-function	low	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/module_args.py:99:5	get_ps_argument_spec	function `get_ps_argument_spec` is never used
+unused-function	low	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/module_args.py:149:5	get_py_argument_spec	function `get_py_argument_spec` is never used
+unused-function	low	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/schema.py:364:5	ansible_module_kwargs_schema	function `ansible_module_kwargs_schema` is never used
+unused-function	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/schema.py:721:5	return_schema	function `return_schema` is never used
+unused-function	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/schema.py:840:5	doc_schema	function `doc_schema` is never used
+unused-function	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:42:5	find_executable	function `find_executable` is never used
+unused-function	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:78:5	find_globals	function `find_globals` is never used
+unused-class	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:101:7	CaptureStd	class `CaptureStd` is never used
+unused-function	low	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:121:5	get_module_name_from_filename	function `get_module_name_from_filename` is never used
+unused-function	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:136:5	parse_yaml	function `parse_yaml` is never used
+unused-function	low	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:180:5	is_empty	function `is_empty` is never used
+unused-function	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:187:5	compare_unordered_lists	function `compare_unordered_lists` is never used
+unused-class	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:197:7	NoArgsAnsibleModule	class `NoArgsAnsibleModule` is never used
+unused-function	low	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:206:5	parse_isodate	function `parse_isodate` is never used
+unused-variable	low	test/lib/ansible_test/_util/target/pytest/plugins/ansible_pytest_collections.py:11:1	ANSIBLE_CONTROLLER_MIN_PYTHON_VERSION	variable `ANSIBLE_CONTROLLER_MIN_PYTHON_VERSION` is never used
+unused-method	low	test/lib/ansible_test/_util/target/sanity/import/importer.py:214:13	create_module	method `RestrictedModuleLoader.create_module` is never used
+unused-variable	low	test/support/integration/plugins/modules/pkgng.py:15:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/integration/plugins/modules/pkgng.py:20:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/integration/plugins/modules/pkgng.py:93:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-class	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/action/win_copy.py:215:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/action/win_reboot.py:14:1	display	variable `display` is never used
+unused-class	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/action/win_reboot.py:26:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_acl.py:9:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_acl.py:13:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_acl.py:87:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_copy.py:8:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_copy.py:12:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_copy.py:114:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_copy.py:171:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_file.py:7:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_file.py:11:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_file.py:50:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_ping.py:10:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_ping.py:14:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_ping.py:37:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_ping.py:49:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_powershell.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_powershell.py:163:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_powershell.py:308:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_shell.py:7:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_shell.py:11:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_shell.py:85:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_shell.py:121:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_stat.py:10:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_stat.py:14:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_stat.py:61:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_stat.py:102:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_uri.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_uri.py:93:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/modules/win_uri.py:119:1	RETURN	variable `RETURN` is never used
+unused-function	medium	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/plugin_utils/_quote.py:31:5	quote_c	function `quote_c` is never used
+unused-function	medium	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/plugin_utils/_quote.py:63:5	quote_cmd	function `quote_cmd` is never used
+unused-class	low	test/support/windows-integration/plugins/action/win_copy.py:215:7	ActionModule	class `ActionModule` is never used
+unused-class	medium	test/support/windows-integration/plugins/action/win_reboot.py:16:7	TimedOutException	class `TimedOutException` is never used
+unused-class	low	test/support/windows-integration/plugins/action/win_reboot.py:20:7	ActionModule	class `ActionModule` is never used
+unused-class	low	test/support/windows-integration/plugins/action/win_template.py:26:7	ActionModule	class `ActionModule` is never used
+unused-variable	low	test/support/windows-integration/plugins/become/runas.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-class	low	test/support/windows-integration/plugins/become/runas.py:63:7	BecomeModule	class `BecomeModule` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_acl.py:9:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_acl.py:13:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_acl.py:87:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_certificate_store.py:7:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_certificate_store.py:11:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_certificate_store.py:135:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_certificate_store.py:201:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_command.py:7:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_command.py:11:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_command.py:73:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_command.py:90:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_copy.py:8:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_copy.py:12:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_copy.py:114:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_copy.py:171:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_file.py:7:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_file.py:11:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_file.py:50:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_get_url.py:10:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_get_url.py:14:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_get_url.py:130:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_get_url.py:174:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_lineinfile.py:6:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_lineinfile.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_lineinfile.py:112:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_lineinfile.py:167:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_ping.py:10:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_ping.py:14:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_ping.py:37:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_ping.py:49:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_reboot.py:6:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_reboot.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_reboot.py:84:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_reboot.py:120:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_regedit.py:11:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_regedit.py:16:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_regedit.py:104:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_regedit.py:199:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_shell.py:7:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_shell.py:11:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_shell.py:85:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_shell.py:121:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_stat.py:10:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_stat.py:14:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_stat.py:61:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_stat.py:102:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_user.py:10:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_user.py:14:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_user.py:118:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_user.py:133:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_user_right.py:10:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_user_right.py:14:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_user_right.py:61:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_user_right.py:95:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_wait_for.py:10:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_wait_for.py:14:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_wait_for.py:101:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_wait_for.py:142:1	RETURN	variable `RETURN` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_whoami.py:10:1	ANSIBLE_METADATA	variable `ANSIBLE_METADATA` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_whoami.py:14:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_whoami.py:35:1	EXAMPLES	variable `EXAMPLES` is never used
+unused-variable	low	test/support/windows-integration/plugins/modules/win_whoami.py:40:1	RETURN	variable `RETURN` is never used
+unused-function	low	test/units/_internal/_errors/test_alarm_timeout.py:17:5	assert_sigalrm_state	function `assert_sigalrm_state` is never used
+unused-method	low	test/units/_internal/templating/test_datatag.py:45:9	container_test_parameters	method `TestDatatagTemplar.container_test_parameters` is never used
+unused-variable	medium	test/units/config/manager/test_find_ini_config_file.py:16:1	real_exists	variable `real_exists` is never used
+unused-variable	medium	test/units/executor/module_common/test_recursive_finder.py:91:1	ONLY_BASIC_FILE	variable `ONLY_BASIC_FILE` is never used
+unused-method	medium	test/units/mock/yaml_helper.py:16:9	_dump_stream	method `YamlTestUtils._dump_stream` is never used
+unused-method	medium	test/units/mock/yaml_helper.py:24:9	_dump_load_cycle	method `YamlTestUtils._dump_load_cycle` is never used
+unused-function	low	test/units/module_utils/_internal/_patches/test_patches.py:98:5	func_for_ineffective_patch	function `func_for_ineffective_patch` is never used
+unused-function	low	test/units/module_utils/_internal/_patches/test_patches.py:123:5	func_for_patching_is_idempotent	function `func_for_patching_is_idempotent` is never used
+unused-variable	medium	test/units/module_utils/basic/test_platform_distribution.py:23:1	realimport	variable `realimport` is never used
+unused-function	low	test/units/module_utils/basic/test_platform_distribution.py:27:5	platform_linux	function `platform_linux` is never used
+unused-function	low	test/units/module_utils/basic/test_set_mode_if_different.py:36:5	am_check_mode	function `am_check_mode` is never used
+unused-variable	medium	test/units/module_utils/common/test_sys_info.py:21:1	realimport	variable `realimport` is never used
+unused-function	low	test/units/module_utils/common/test_sys_info.py:25:5	platform_linux	function `platform_linux` is never used
+unused-class	medium	test/units/module_utils/datatag/test_datatag.py:112:7	AnsibleSerializableSet	class `AnsibleSerializableSet` is never used
+unused-class	medium	test/units/module_utils/datatag/test_datatag.py:125:7	AnsibleSerializableTuple	class `AnsibleSerializableTuple` is never used
+unused-class	medium	test/units/module_utils/datatag/test_datatag.py:138:7	AnsibleSerializableBytes	class `AnsibleSerializableBytes` is never used
+unused-variable	high	test/units/module_utils/datatag/test_datatag.py:208:1	_str_override_method_args	variable `_str_override_method_args` is never used
+unused-method	low	test/units/module_utils/datatag/test_datatag.py:345:9	pytest_generate_tests	method `AutoParamSupport.pytest_generate_tests` is never used
+unused-method	medium	test/units/module_utils/facts/test_ansible_collector.py:244:9	_assert_ansible_namespace	method `TestCollectedFacts._assert_ansible_namespace` is never used
+unused-function	low	test/units/module_utils/facts/test_timeout.py:121:5	function_other_timeout	function `function_other_timeout` is never used
+unused-method	low	test/units/module_utils/urls/test_gzip.py:28:9	makefile	method `Sock.makefile` is never used
+unused-function	low	test/units/modules/test_iptables.py:17:5	_mock_basic_commands	function `_mock_basic_commands` is never used
+unused-method	medium	test/units/parsing/yaml/test_loader.py:197:9	_encrypt_plaintext	method `TestAnsibleLoaderVault._encrypt_plaintext` is never used
+unused-function	low	test/units/plugins/connection/test_ssh.py:320:5	mock_run_env	function `mock_run_env` is never used

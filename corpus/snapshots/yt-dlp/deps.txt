@@ -1,0 +1,21 @@
+files_scanned=1128
+symbols_checked=53
+symbols_kept=0
+findings=16
+--
+unused-dependency	low	pyproject.toml	autopep8	dependency `autopep8` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	cffi	dependency `cffi` (optional-dependencies.pin-curl-cffi) is never imported
+unused-dependency	low	pyproject.toml	charset-normalizer	dependency `charset-normalizer` (optional-dependencies.pin) is never imported
+unused-dependency	low	pyproject.toml	cryptography	dependency `cryptography` (optional-dependencies.pin-secretstorage) is never imported
+unused-dependency	low	pyproject.toml	delocate	dependency `delocate` (dependency-groups.delocate) is never imported
+unused-dependency	low	pyproject.toml	deno	dependency `deno` (optional-dependencies.deno) is never imported
+unused-dependency	low	pyproject.toml	hatchling	dependency `hatchling` (dependency-groups.build) is never imported
+unused-dependency	low	pyproject.toml	idna	dependency `idna` (optional-dependencies.pin) is never imported
+unused-dependency	low	pyproject.toml	jeepney	dependency `jeepney` (optional-dependencies.pin-secretstorage) is never imported
+unused-dependency	low	pyproject.toml	pycparser	dependency `pycparser` (optional-dependencies.pin-curl-cffi) is never imported
+unused-dependency	low	pyproject.toml	pycryptodomex	dependency `pycryptodomex` (optional-dependencies.default) is never imported
+unused-dependency	low	pyproject.toml	pyflakes	dependency `pyflakes` (dependency-groups.pyflakes) is never imported
+unused-dependency	low	pyproject.toml	typing-extensions	dependency `typing-extensions` (optional-dependencies.curl-cffi) is never imported
+unresolved-import	low	yt_dlp/__pyinstaller/hook-yt_dlp.py:8:16		import `Cryptodome` resolves to nothing on the search path
+unresolved-import	low	yt_dlp/__pyinstaller/hook-yt_dlp.py:11:20		import `Crypto` resolves to nothing on the search path
+unresolved-import	low	yt_dlp/dependencies/__init__.py:70:12		import `xattr` resolves to nothing on the search path

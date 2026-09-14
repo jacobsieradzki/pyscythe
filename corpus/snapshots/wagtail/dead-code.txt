@@ -1,0 +1,236 @@
+files_scanned=1388
+symbols_checked=17597
+symbols_kept=1754
+findings=231
+--
+unused-variable	medium	wagtail/actions/publish_page_revision.py:9:1	logger	variable `logger` is never used
+unused-variable	medium	wagtail/actions/unpublish_page.py:6:1	logger	variable `logger` is never used
+unused-function	low	wagtail/admin/auth.py:51:5	permission_required	function `permission_required` is never used
+unused-function	low	wagtail/admin/auth.py:65:5	any_permission_required	function `any_permission_required` is never used
+unused-method	low	wagtail/admin/auth.py:90:9	require	method `PermissionPolicyChecker.require` is never used
+unused-file	low	wagtail/admin/blocks.py	-	file `wagtail.admin.blocks` is never imported or run
+unused-function	low	wagtail/admin/messages.py:18:5	debug	function `debug` is never used
+unused-function	low	wagtail/admin/models.py:24:5	get_object_usage	function `get_object_usage` is never used
+unused-method	low	wagtail/admin/panels/base.py:338:13	telepath_pack	method `BoundPanel.telepath_pack` is never used
+unused-class	medium	wagtail/admin/rich_text/editors/draftail/features.py:79:7	DecoratorFeature	class `DecoratorFeature` is never used
+unused-class	medium	wagtail/admin/rich_text/editors/draftail/features.py:85:7	ControlFeature	class `ControlFeature` is never used
+unused-class	medium	wagtail/admin/rich_text/editors/draftail/features.py:91:7	PluginFeature	class `PluginFeature` is never used
+unused-method	low	wagtail/admin/search.py:104:9	active_search	method `Search.active_search` is never used
+unused-variable	low	wagtail/admin/tests/formats/en/formats.py:1:1	DATETIME_INPUT_FORMATS	variable `DATETIME_INPUT_FORMATS` is never used
+unused-function	medium	wagtail/admin/tests/pages/test_preview.py:77:5	clear_edit_handler	function `clear_edit_handler` is never used
+unused-variable	low	wagtail/admin/urls/collections.py:5:1	app_name	variable `app_name` is never used
+unused-variable	low	wagtail/admin/urls/editing_sessions.py:5:1	app_name	variable `app_name` is never used
+unused-variable	low	wagtail/admin/urls/pages.py:6:1	app_name	variable `app_name` is never used
+unused-variable	low	wagtail/admin/urls/reports.py:11:1	app_name	variable `app_name` is never used
+unused-variable	low	wagtail/admin/urls/workflows.py:5:1	app_name	variable `app_name` is never used
+unused-variable	low	wagtail/admin/views/home.py:32:1	User	variable `User` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:71:5	register_base_page_viewset	function `register_base_page_viewset` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:109:5	register_explorer_menu_item	function `register_explorer_menu_item` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:132:5	register_settings_menu	function `register_settings_menu` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:143:5	register_permissions	function `register_permissions` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:164:5	register_pages_search_area	function `register_pages_search_area` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:169:5	register_collection_permissions_panel	function `register_collection_permissions_panel` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:181:5	register_collections_menu_item	function `register_collections_menu_item` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:212:5	register_workflows_menu_item	function `register_workflows_menu_item` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:223:5	register_workflow_tasks_menu_item	function `register_workflow_tasks_menu_item` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:234:5	page_listing_buttons	function `page_listing_buttons` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:394:5	register_viewsets_urls	function `register_viewsets_urls` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:400:5	register_core_features	function `register_core_features` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:892:5	register_locked_pages_menu_item	function `register_locked_pages_menu_item` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:903:5	register_workflow_report_menu_item	function `register_workflow_report_menu_item` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:914:5	register_workflow_tasks_report_menu_item	function `register_workflow_tasks_report_menu_item` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:925:5	register_site_history_report_menu_item	function `register_site_history_report_menu_item` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:936:5	register_aging_pages_report_menu_item	function `register_aging_pages_report_menu_item` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:947:5	register_page_types_report_menu_item	function `register_page_types_report_menu_item` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:958:5	register_reports_menu	function `register_reports_menu` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:969:5	register_whats_new_in_wagtail_version_menu_item	function `register_whats_new_in_wagtail_version_menu_item` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:982:5	register_editors_guide_menu_item	function `register_editors_guide_menu_item` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:994:5	register_keyboard_shortcuts_menu_item	function `register_keyboard_shortcuts_menu_item` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:1017:5	register_help_menu	function `register_help_menu` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:1028:5	register_icons	function `register_icons` is never used
+unused-function	low	wagtail/admin/wagtail_hooks.py:1154:5	add_pages_summary_item	function `add_pages_summary_item` is never used
+unused-method	low	wagtail/api/v3/routers/pages.py:92:9	filter_locale	method `PageFilterSchema.filter_locale` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:203:5	list_pages	function `list_pages` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:241:5	find_page	function `find_page` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:285:5	get_page	function `get_page` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:306:5	create_page	function `create_page` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:335:5	update_page	function `update_page` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:371:5	list_page_revisions	function `list_page_revisions` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:392:5	get_page_revision	function `get_page_revision` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:407:5	publish	function `publish` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:437:5	unpublish	function `unpublish` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:504:5	copy	function `copy` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:551:5	move	function `move` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:581:5	delete	function `delete` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:601:5	revert	function `revert` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:622:5	convert_alias	function `convert_alias` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:662:5	create_alias	function `create_alias` is never used
+unused-function	low	wagtail/api/v3/routers/pages.py:699:5	copy_for_translation	function `copy_for_translation` is never used
+unused-function	low	wagtail/api/v3/routers/schema.py:30:5	list_schemas	function `list_schemas` is never used
+unused-function	low	wagtail/api/v3/routers/schema.py:41:5	get_schema_for_type	function `get_schema_for_type` is never used
+unused-function	low	wagtail/api/v3/routers/sites.py:27:5	list_sites	function `list_sites` is never used
+unused-function	low	wagtail/api/v3/routers/sites.py:42:5	get_site	function `get_site` is never used
+unused-function	low	wagtail/api/v3/routers/sites.py:60:5	create_site	function `create_site` is never used
+unused-function	low	wagtail/api/v3/routers/sites.py:77:5	update_site	function `update_site` is never used
+unused-function	low	wagtail/api/v3/routers/sites.py:93:5	delete_site	function `delete_site` is never used
+unused-function	low	wagtail/api/v3/routers/whoami.py:35:5	whoami	function `whoami` is never used
+unused-method	low	wagtail/blocks/base.py:786:9	telepath_pack	method `BlockWidget.telepath_pack` is never used
+unused-variable	low	wagtail/blocks/base.py:856:1	DECONSTRUCT_ALIASES	variable `DECONSTRUCT_ALIASES` is never used
+unused-variable	low	wagtail/blocks/field_block.py:1099:1	DECONSTRUCT_ALIASES	variable `DECONSTRUCT_ALIASES` is never used
+unused-variable	low	wagtail/blocks/list_block.py:512:1	DECONSTRUCT_ALIASES	variable `DECONSTRUCT_ALIASES` is never used
+unused-method	medium	wagtail/blocks/stream_block.py:550:13	_as_tuple	method `StreamChild._as_tuple` is never used
+unused-method	low	wagtail/blocks/struct_block.py:200:9	telepath_pack	method `BlockGroup.telepath_pack` is never used
+unused-class	medium	wagtail/contrib/forms/forms.py:157:7	SelectDateForm	class `SelectDateForm` is never used
+unused-variable	low	wagtail/contrib/forms/urls.py:9:1	app_name	variable `app_name` is never used
+unused-file	low	wagtail/contrib/forms/wagtail_hooks.py	-	file `wagtail.contrib.forms.wagtail_hooks` is never imported or run
+unused-variable	medium	wagtail/contrib/frontend_cache/backends/base.py:5:1	logger	variable `logger` is never used
+unused-file	low	wagtail/contrib/frontend_cache/backends/dummy.py	-	file `wagtail.contrib.frontend_cache.backends.dummy` is never imported or run
+unused-file	low	wagtail/contrib/frontend_cache/models.py	-	file `wagtail.contrib.frontend_cache.models` is never imported or run
+unused-variable	medium	wagtail/contrib/frontend_cache/utils.py:7:1	logger	variable `logger` is never used
+unused-class	medium	wagtail/contrib/legacy/sitemiddleware/__init__.py:9:7	SiteMiddleware	class `SiteMiddleware` is never used
+unused-function	low	wagtail/contrib/redirects/api/v3/router.py:71:5	list_redirects	function `list_redirects` is never used
+unused-function	low	wagtail/contrib/redirects/api/v3/router.py:104:5	find_redirect	function `find_redirect` is never used
+unused-function	low	wagtail/contrib/redirects/api/v3/router.py:139:5	get_redirect_detail	function `get_redirect_detail` is never used
+unused-function	low	wagtail/contrib/redirects/api/v3/router.py:151:5	create_redirect	function `create_redirect` is never used
+unused-function	low	wagtail/contrib/redirects/api/v3/router.py:168:5	update_redirect	function `update_redirect` is never used
+unused-function	low	wagtail/contrib/redirects/api/v3/router.py:184:5	delete_redirect	function `delete_redirect` is never used
+unused-class	medium	wagtail/contrib/redirects/tmp_storages.py:95:7	MediaStorage	class `MediaStorage` is never used
+unused-variable	low	wagtail/contrib/redirects/urls.py:5:1	app_name	variable `app_name` is never used
+unused-file	low	wagtail/contrib/redirects/wagtail_hooks.py	-	file `wagtail.contrib.redirects.wagtail_hooks` is never imported or run
+unused-variable	medium	wagtail/contrib/routable_page/models.py:17:1	logger	variable `logger` is never used
+unused-variable	low	wagtail/contrib/search_promotions/admin_urls.py:6:1	app_name	variable `app_name` is never used
+unused-file	low	wagtail/contrib/search_promotions/wagtail_hooks.py	-	file `wagtail.contrib.search_promotions.wagtail_hooks` is never imported or run
+unused-variable	low	wagtail/contrib/settings/urls.py:5:1	app_name	variable `app_name` is never used
+unused-file	low	wagtail/contrib/settings/wagtail_hooks.py	-	file `wagtail.contrib.settings.wagtail_hooks` is never imported or run
+unused-function	low	wagtail/contrib/simple_translation/wagtail_hooks.py:19:5	register_admin_urls	function `register_admin_urls` is never used
+unused-function	low	wagtail/contrib/simple_translation/wagtail_hooks.py:75:5	page_header_buttons	function `page_header_buttons` is never used
+unused-function	low	wagtail/contrib/simple_translation/wagtail_hooks.py:100:5	register_snippet_listing_buttons	function `register_snippet_listing_buttons` is never used
+unused-function	low	wagtail/contrib/simple_translation/wagtail_hooks.py:122:5	construct_translated_pages_to_cascade_actions	function `construct_translated_pages_to_cascade_actions` is never used
+unused-file	low	wagtail/contrib/sitemaps/models.py	-	file `wagtail.contrib.sitemaps.models` is never imported or run
+unused-file	low	wagtail/contrib/styleguide/models.py	-	file `wagtail.contrib.styleguide.models` is never imported or run
+unused-file	low	wagtail/contrib/styleguide/wagtail_hooks.py	-	file `wagtail.contrib.styleguide.wagtail_hooks` is never imported or run
+unused-variable	medium	wagtail/coreutils.py:31:1	logger	variable `logger` is never used
+unused-variable	low	wagtail/embeds/finders/embedly.py:76:1	embed_finder_class	variable `embed_finder_class` is never used
+unused-variable	low	wagtail/embeds/finders/facebook.py:105:1	embed_finder_class	variable `embed_finder_class` is never used
+unused-variable	low	wagtail/embeds/finders/instagram.py:95:1	embed_finder_class	variable `embed_finder_class` is never used
+unused-variable	low	wagtail/embeds/finders/oembed.py:104:1	embed_finder_class	variable `embed_finder_class` is never used
+unused-variable	low	wagtail/embeds/urls.py:5:1	app_name	variable `app_name` is never used
+unused-file	low	wagtail/embeds/wagtail_hooks.py	-	file `wagtail.embeds.wagtail_hooks` is never imported or run
+unused-file	low	wagtail/images/admin.py	-	file `wagtail.images.admin` is never imported or run
+unused-variable	low	wagtail/images/admin_urls.py:5:1	app_name	variable `app_name` is never used
+unused-function	low	wagtail/images/api/v3/router.py:61:5	list_images	function `list_images` is never used
+unused-function	low	wagtail/images/api/v3/router.py:93:5	get_image	function `get_image` is never used
+unused-function	low	wagtail/images/api/v3/router.py:106:5	create_image	function `create_image` is never used
+unused-function	low	wagtail/images/api/v3/router.py:127:5	update_image	function `update_image` is never used
+unused-function	low	wagtail/images/api/v3/router.py:149:5	delete_image	function `delete_image` is never used
+unused-function	medium	wagtail/images/formats.py:64:5	unregister_image_format	function `unregister_image_format` is never used
+unused-method	medium	wagtail/images/models.py:226:9	_get_image_dimensions	method `WagtailImageFieldFile._get_image_dimensions` is never used
+unused-variable	low	wagtail/images/tests/test_api_v3/test_update.py:11:1	Image	variable `Image` is never used
+unused-function	low	wagtail/images/wagtail_hooks.py:31:5	register_admin_urls	function `register_admin_urls` is never used
+unused-function	low	wagtail/images/wagtail_hooks.py:38:5	construct_admin_api	function `construct_admin_api` is never used
+unused-function	low	wagtail/images/wagtail_hooks.py:50:5	register_images_menu_item	function `register_images_menu_item` is never used
+unused-function	low	wagtail/images/wagtail_hooks.py:61:5	register_image_feature	function `register_image_feature` is never used
+unused-function	low	wagtail/images/wagtail_hooks.py:108:5	register_image_operations	function `register_image_operations` is never used
+unused-function	low	wagtail/images/wagtail_hooks.py:148:5	add_images_summary_item	function `add_images_summary_item` is never used
+unused-function	low	wagtail/images/wagtail_hooks.py:160:5	register_images_search_area	function `register_images_search_area` is never used
+unused-function	low	wagtail/images/wagtail_hooks.py:171:5	register_image_permissions_panel	function `register_image_permissions_panel` is never used
+unused-function	low	wagtail/images/wagtail_hooks.py:176:5	describe_collection_docs	function `describe_collection_docs` is never used
+unused-function	low	wagtail/images/wagtail_hooks.py:200:5	register_image_chooser_viewset	function `register_image_chooser_viewset` is never used
+unused-function	low	wagtail/locales/api/v3/router.py:59:5	list_locales	function `list_locales` is never used
+unused-function	low	wagtail/locales/api/v3/router.py:75:5	get_locale_detail	function `get_locale_detail` is never used
+unused-function	low	wagtail/locales/api/v3/router.py:94:5	create_locale	function `create_locale` is never used
+unused-function	low	wagtail/locales/api/v3/router.py:111:5	update_locale	function `update_locale` is never used
+unused-function	low	wagtail/locales/api/v3/router.py:127:5	delete_locale	function `delete_locale` is never used
+unused-file	low	wagtail/locales/wagtail_hooks.py	-	file `wagtail.locales.wagtail_hooks` is never imported or run
+unused-function	medium	wagtail/management/commands/publish_scheduled.py:11:5	revision_date_expired	function `revision_date_expired` is never used
+unused-file	low	wagtail/models/collections.py	-	file `wagtail.models.collections` is never imported or run
+unused-method	medium	wagtail/models/i18n.py:100:9	_get_language_info	method `Locale._get_language_info` is never used
+unused-method	low	wagtail/models/pages.py:1768:9	has_unpublished_subtree	method `AbstractPage.has_unpublished_subtree` is never used
+unused-method	low	wagtail/models/revisions.py:127:9	base_content_object	method `Revision.base_content_object` is never used
+unused-method	low	wagtail/models/workflows.py:374:9	copy_approved_task_states_to_revision	method `WorkflowState.copy_approved_task_states_to_revision` is never used
+unused-method	low	wagtail/rich_text/feature_registry.py:108:9	function_as_entity_handler	method `FeatureRegistry.function_as_entity_handler` is never used
+unused-file	low	wagtail/search/backends/database/fallback.py	-	file `wagtail.search.backends.database.fallback` is never imported or run
+unused-file	low	wagtail/search/backends/database/mysql/mysql.py	-	file `wagtail.search.backends.database.mysql.mysql` is never imported or run
+unused-file	low	wagtail/search/backends/database/mysql/query.py	-	file `wagtail.search.backends.database.mysql.query` is never imported or run
+unused-file	low	wagtail/search/backends/database/postgres/postgres.py	-	file `wagtail.search.backends.database.postgres.postgres` is never imported or run
+unused-file	low	wagtail/search/backends/database/postgres/query.py	-	file `wagtail.search.backends.database.postgres.query` is never imported or run
+unused-file	low	wagtail/search/backends/database/postgres/weights.py	-	file `wagtail.search.backends.database.postgres.weights` is never imported or run
+unused-file	low	wagtail/search/backends/database/sqlite/query.py	-	file `wagtail.search.backends.database.sqlite.query` is never imported or run
+unused-file	low	wagtail/search/backends/database/sqlite/sqlite.py	-	file `wagtail.search.backends.database.sqlite.sqlite` is never imported or run
+unused-file	low	wagtail/search/backends/elasticsearch7.py	-	file `wagtail.search.backends.elasticsearch7` is never imported or run
+unused-file	low	wagtail/search/backends/elasticsearch8.py	-	file `wagtail.search.backends.elasticsearch8` is never imported or run
+unused-file	low	wagtail/search/backends/elasticsearch9.py	-	file `wagtail.search.backends.elasticsearch9` is never imported or run
+unused-file	low	wagtail/search/backends/opensearch2.py	-	file `wagtail.search.backends.opensearch2` is never imported or run
+unused-file	low	wagtail/search/backends/opensearch3.py	-	file `wagtail.search.backends.opensearch3` is never imported or run
+unused-file	low	wagtail/search/management/commands/enable_fuzzystrmatch.py	-	file `wagtail.search.management.commands.enable_fuzzystrmatch` is never imported or run
+unused-file	low	wagtail/search/management/commands/enable_trigram.py	-	file `wagtail.search.management.commands.enable_trigram` is never imported or run
+unused-file	low	wagtail/search/management/commands/enable_unaccent.py	-	file `wagtail.search.management.commands.enable_unaccent` is never imported or run
+unused-file	low	wagtail/search/management/commands/update_index.py	-	file `wagtail.search.management.commands.update_index` is never imported or run
+unused-file	low	wagtail/search/management/commands/wagtail_update_index.py	-	file `wagtail.search.management.commands.wagtail_update_index` is never imported or run
+unused-file	low	wagtail/search/signal_handlers.py	-	file `wagtail.search.signal_handlers` is never imported or run
+unused-file	low	wagtail/sites/wagtail_hooks.py	-	file `wagtail.sites.wagtail_hooks` is never imported or run
+unused-function	low	wagtail/snippets/api/v3/router.py:124:5	list_snippets	function `list_snippets` is never used
+unused-function	low	wagtail/snippets/api/v3/router.py:165:5	get_snippet	function `get_snippet` is never used
+unused-function	low	wagtail/snippets/api/v3/router.py:194:5	create_snippet	function `create_snippet` is never used
+unused-function	low	wagtail/snippets/api/v3/router.py:221:5	update_snippet	function `update_snippet` is never used
+unused-function	low	wagtail/snippets/api/v3/router.py:257:5	delete_snippet	function `delete_snippet` is never used
+unused-function	low	wagtail/snippets/api/v3/router.py:275:5	list_snippet_revisions	function `list_snippet_revisions` is never used
+unused-function	low	wagtail/snippets/api/v3/router.py:296:5	get_snippet_revision	function `get_snippet_revision` is never used
+unused-function	low	wagtail/snippets/api/v3/router.py:316:5	publish_snippet	function `publish_snippet` is never used
+unused-function	low	wagtail/snippets/api/v3/router.py:350:5	unpublish_snippet	function `unpublish_snippet` is never used
+unused-function	low	wagtail/snippets/api/v3/router.py:374:5	revert_snippet	function `revert_snippet` is never used
+unused-function	low	wagtail/snippets/api/v3/router.py:400:5	copy_for_translation	function `copy_for_translation` is never used
+unused-function	medium	wagtail/snippets/permissions.py:14:5	user_can_edit_snippet_type	function `user_can_edit_snippet_type` is never used
+unused-file	low	wagtail/snippets/wagtail_hooks.py	-	file `wagtail.snippets.wagtail_hooks` is never imported or run
+unused-method	medium	wagtail/test/dummy_external_storage.py:25:9	_open	method `DummyExternalStorage._open` is never used
+unused-method	low	wagtail/test/routablepage/models.py:20:9	archive_for_1984	method `RoutablePageTest.archive_for_1984` is never used
+unused-method	low	wagtail/test/routablepage/models.py:41:9	permanent_homepage_redirect	method `RoutablePageTest.permanent_homepage_redirect` is never used
+unused-method	low	wagtail/test/routablepage/models.py:45:9	temporary_homepage_redirect	method `RoutablePageTest.temporary_homepage_redirect` is never used
+unused-method	low	wagtail/test/routablepage/models.py:60:9	render_method_test	method `RoutablePageTest.render_method_test` is never used
+unused-method	low	wagtail/test/routablepage/models.py:64:9	render_method_test_custom_template	method `RoutablePageTest.render_method_test_custom_template` is never used
+unused-method	low	wagtail/test/testapp/models.py:387:9	name_display	method `EventPageSpeaker.name_display` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:61:5	editor_css	function `editor_css` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:87:5	register_kittens_menu_item	function `register_kittens_menu_item` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:109:5	register_custom_search_area	function `register_custom_search_area` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:121:5	polite_pages_only	function `polite_pages_only` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:131:5	hide_hidden_pages	function `hide_hidden_pages` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:138:5	register_quotation_feature	function `register_quotation_feature` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:153:5	register_intro_rule	function `register_intro_rule` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:179:5	register_panic_menu_item	function `register_panic_menu_item` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:184:5	register_none_menu_item	function `register_none_menu_item` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:194:5	register_relax_menu_item	function `register_relax_menu_item` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:207:5	register_snippet_listing_button_item	function `register_snippet_listing_button_item` is never used
+unused-class	low	wagtail/test/testapp/wagtail_hooks.py:217:7	FavouriteColourPanel	class `FavouriteColourPanel` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:238:5	add_clippy_panel	function `add_clippy_panel` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:253:5	add_broken_links_summary_item	function `add_broken_links_summary_item` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:258:5	register_viewsets	function `register_viewsets` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:270:5	register_submenu_greetings_menu_item	function `register_submenu_greetings_menu_item` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:277:5	register_toy_viewset	function `register_toy_viewset` is never used
+unused-class	low	wagtail/test/testapp/wagtail_hooks.py:455:7	DisableBulkAction	class `DisableBulkAction` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:464:5	register_animated_advert_chooser_viewset	function `register_animated_advert_chooser_viewset` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:469:5	register_event_page_listing_viewset	function `register_event_page_listing_viewset` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:474:5	register_event_page_viewset	function `register_event_page_viewset` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:479:5	register_custom_page_viewset	function `register_custom_page_viewset` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:484:5	register_opera_viewset	function `register_opera_viewset` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:489:5	register_avatar_intercept_url	function `register_avatar_intercept_url` is never used
+unused-function	low	wagtail/test/testapp/wagtail_hooks.py:496:5	register_advert_chooser_viewset	function `register_advert_chooser_viewset` is never used
+unused-method	medium	wagtail/test/utils/wagtail_factories/blocks.py:36:9	_generate	method `StreamBlockFactory._generate` is never used
+unused-method	low	wagtail/test/utils/wagtail_factories/options.py:31:9	prepare_arguments	method `StreamBlockFactoryOptions.prepare_arguments` is never used
+unused-method	low	wagtail/tests/actions/test_registry.py:40:9	is_available_for_instance	method `UnavailableAction.is_available_for_instance` is never used
+unused-class	medium	wagtail/tests/test_blocks.py:39:7	FooStreamBlock	class `FooStreamBlock` is never used
+unused-method	low	wagtail/tests/test_blocks.py:3236:17	joined	method `CustomStructValue.joined` is never used
+unused-function	medium	wagtail/tests/test_locale_model.py:11:5	make_test_page	function `make_test_page` is never used
+unused-function	low	wagtail/tests/test_page_model.py:79:5	get_ct	function `get_ct` is never used
+unused-function	medium	wagtail/tests/test_utils.py:312:5	TestGetContentTypeLabel	function `TestGetContentTypeLabel` is never used
+unused-variable	medium	wagtail/users/templatetags/wagtailusers_tags.py:60:1	VIEW_PERMISSION_LABEL	variable `VIEW_PERMISSION_LABEL` is never used
+unused-variable	low	wagtail/users/views/users.py:50:1	add_user_perm	variable `add_user_perm` is never used
+unused-variable	low	wagtail/users/views/users.py:54:1	delete_user_perm	variable `delete_user_perm` is never used
+unused-class	medium	wagtail/utils/deprecation.py:12:7	RemovedInWagtail100Warning	class `RemovedInWagtail100Warning` is never used
+unused-class	medium	wagtail/utils/deprecation.py:16:7	MovedDefinitionHandler	class `MovedDefinitionHandler` is never used
+unused-function	low	wagtail/wagtail_hooks.py:83:5	register_core_features	function `register_core_features` is never used
+unused-function	low	wagtail/wagtail_hooks.py:103:9	register_workflow_permissions	function `register_workflow_permissions` is never used
+unused-function	low	wagtail/wagtail_hooks.py:110:9	register_task_permissions	function `register_task_permissions` is never used
+unused-function	low	wagtail/wagtail_hooks.py:118:5	describe_collection_children	function `describe_collection_children` is never used
+unused-function	low	wagtail/wagtail_hooks.py:135:5	register_core_log_actions	function `register_core_log_actions` is never used
+unused-function	low	wagtail/wagtail_hooks.py:523:5	register_workflow_log_actions	function `register_workflow_log_actions` is never used
+unused-function	low	wagtail/wagtail_hooks.py:599:5	check_request_method	function `check_request_method` is never used

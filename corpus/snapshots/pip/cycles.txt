@@ -1,0 +1,15 @@
+files_scanned=661
+symbols_checked=0
+symbols_kept=0
+findings=10
+--
+circular-import	high	src/pip/_internal/build_env/__init__.py:8:1	-	import cycle among 5 modules, shortest: pip._internal.build_env -> pip._internal.build_env.installer -> pip._internal.build_env
+circular-import	high	src/pip/_internal/distributions/__init__.py:2:1	-	import cycle among 3 modules, shortest: pip._internal.distributions -> pip._internal.distributions.sdist -> pip._internal.distributions
+circular-import	high	src/pip/_internal/exceptions/__init__.py:37:1	-	import cycle among 7 modules, shortest: pip._internal.exceptions -> pip._internal.exceptions.build -> pip._internal.exceptions
+circular-import	high	src/pip/_internal/req/__init__.py:12:1	-	import cycle among 3 modules, shortest: pip._internal.req -> pip._internal.req.req_install -> pip._internal.req
+circular-import	high	src/pip/_internal/vcs/__init__.py:5:8	-	import cycle among 5 modules, shortest: pip._internal.vcs -> pip._internal.vcs.bazaar -> pip._internal.vcs
+circular-import	high	src/pip/_vendor/cachecontrol/__init__.py:12:1	-	import cycle among 4 modules, shortest: pip._vendor.cachecontrol -> pip._vendor.cachecontrol.adapter -> pip._vendor.cachecontrol
+circular-import	high	src/pip/_vendor/idna/__init__.py:1:1	-	import cycle: pip._vendor.idna -> pip._vendor.idna.core -> pip._vendor.idna
+circular-import	high	src/pip/_vendor/requests/__init__.py:153:1	-	import cycle among 7 modules, shortest: pip._vendor.requests -> pip._vendor.requests.utils -> pip._vendor.requests
+circular-import	high	src/pip/_vendor/rich/__main__.py:5:1	-	import cycle among 34 modules, shortest: pip._vendor.rich.__main__ -> pip._vendor.rich.box -> pip._vendor.rich.columns -> pip._vendor.rich.align -> pip._vendor.rich.constrain -> pip._vendor.rich.jupyter -> pip._vendor.rich.segment -> pip._vendor.rich.repr -> pip._vendor.rich.console -> pip._vendor.rich.pager -> pip._vendor.rich.__main__
+circular-import	high	src/pip/_vendor/urllib3/__init__.py:21:1	-	import cycle among 9 modules, shortest: pip._vendor.urllib3 -> pip._vendor.urllib3.response -> pip._vendor.urllib3

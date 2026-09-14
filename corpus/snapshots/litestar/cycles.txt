@@ -1,0 +1,17 @@
+files_scanned=1132
+symbols_checked=0
+symbols_kept=0
+findings=12
+--
+circular-import	high	litestar/__init__.py:1:1	-	import cycle among 150 modules, shortest: litestar -> litestar.app -> litestar
+circular-import	high	litestar/_kwargs/__init__.py:1:1	-	import cycle: litestar._kwargs -> litestar._kwargs.kwargs_model -> litestar._kwargs
+circular-import	high	litestar/cli/__init__.py:29:1	-	import cycle among 6 modules, shortest: litestar.cli -> litestar.cli.main -> litestar.cli._utils -> litestar.cli
+circular-import	high	litestar/middleware/compression/__init__.py:2:1	-	import cycle among 3 modules, shortest: litestar.middleware.compression -> litestar.middleware.compression.middleware -> litestar.middleware.compression
+circular-import	high	litestar/plugins/opentelemetry/__init__.py:1:1	-	import cycle among 3 modules, shortest: litestar.plugins.opentelemetry -> litestar.plugins.opentelemetry.config -> litestar.plugins.opentelemetry
+circular-import	high	litestar/plugins/prometheus/__init__.py:1:1	-	import cycle: litestar.plugins.prometheus -> litestar.plugins.prometheus.config -> litestar.plugins.prometheus
+circular-import	high	litestar/plugins/pydantic/__init__.py:6:1	-	import cycle among 4 modules, shortest: litestar.plugins.pydantic -> litestar.plugins.pydantic.dto -> litestar.plugins.pydantic
+circular-import	high	litestar/repository/__init__.py:3:1	-	import cycle among 4 modules, shortest: litestar.repository -> litestar.repository.abc -> litestar.repository.abc._async -> litestar.repository
+circular-import	high	litestar/security/jwt/__init__.py:1:1	-	import cycle among 3 modules, shortest: litestar.security.jwt -> litestar.security.jwt.auth -> litestar.security.jwt
+circular-import	high	litestar/security/session_auth/__init__.py:1:1	-	import cycle: litestar.security.session_auth -> litestar.security.session_auth.auth -> litestar.security.session_auth
+circular-import	high	litestar/template/__init__.py:2:1	-	import cycle: litestar.template -> litestar.template.config -> litestar.template
+circular-import	high	litestar/testing/__init__.py:8:1	-	import cycle among 5 modules, shortest: litestar.testing -> litestar.testing.client.async_client -> litestar.testing

@@ -1,0 +1,16 @@
+files_scanned=56
+symbols_checked=72
+symbols_kept=0
+findings=11
+--
+unused-dependency	low	pyproject.toml	cloudpickle	dependency `cloudpickle` (dependency-groups.benchmark) is never imported
+unused-dependency	low	pyproject.toml	cogapp	dependency `cogapp` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	furo	dependency `furo` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	myst-parser	dependency `myst-parser` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	prek	dependency `prek` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	pyrefly	dependency `pyrefly` (dependency-groups.dev) is never imported
+unused-dependency	low	pyproject.toml	sphinx-notfound-page	dependency `sphinx-notfound-page` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	sphinxcontrib-towncrier	dependency `sphinxcontrib-towncrier` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	towncrier	dependency `towncrier` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	tox-uv-bare	dependency `tox-uv-bare` (dependency-groups.dev) is never imported
+unresolved-import	low	src/attr/_compat.py:22:16		import `annotationlib` resolves to nothing on the search path

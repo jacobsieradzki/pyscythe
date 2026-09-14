@@ -1,0 +1,14 @@
+files_scanned=1028
+symbols_checked=5928
+symbols_kept=3435
+findings=9
+--
+unused-variable	medium	fastapi/exceptions.py:157:1	RequestErrorModel	variable `RequestErrorModel` is never used
+unused-variable	medium	fastapi/exceptions.py:158:1	WebSocketErrorModel	variable `WebSocketErrorModel` is never used
+unused-variable	low	fastapi/openapi/models.py:209:1	SchemaOrBool	variable `SchemaOrBool` is never used
+unused-function	medium	fastapi/openapi/utils.py:266:5	generate_operation_id	function `generate_operation_id` is never used
+unused-variable	low	tests/test_additional_responses_bad.py:13:1	openapi_schema	variable `openapi_schema` is never used
+unused-function	low	tests/test_include_route.py:10:5	read_items	function `read_items` is never used
+unused-variable	medium	tests/test_params_repr.py:5:1	test_data	variable `test_data` is never used
+unused-function	low	tests/test_params_repr.py:8:5	get_user	function `get_user` is never used
+unused-class	medium	tests/test_response_class_no_mediatype.py:10:7	JsonApiResponse	class `JsonApiResponse` is never used

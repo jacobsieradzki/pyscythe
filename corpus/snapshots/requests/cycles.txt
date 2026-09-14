@@ -1,0 +1,6 @@
+files_scanned=37
+symbols_checked=0
+symbols_kept=0
+findings=1
+--
+circular-import	high	src/requests/__init__.py:158:1	-	import cycle among 7 modules, shortest: requests -> requests.utils -> requests

@@ -1,0 +1,59 @@
+files_scanned=1028
+symbols_checked=4769
+symbols_kept=0
+findings=53
+health: score=60 grade=D functions=4769 max_cyclomatic=48 max_cognitive=111
+--
+complex-function	high	fastapi/_compat/v2.py:285:5	get_definitions	function `get_definitions` has cyclomatic complexity 15 and cognitive complexity 6 over 62 lines
+complex-function	high	fastapi/_compat/v2.py:446:5	get_flat_models_from_annotation	function `get_flat_models_from_annotation` has cyclomatic complexity 6 and cognitive complexity 17 over 14 lines
+complex-function	high	fastapi/dependencies/models.py:198:5	_is_coroutine_callable_cached	function `_is_coroutine_callable_cached` has cyclomatic complexity 11 and cognitive complexity 10 over 23 lines
+complex-function	high	fastapi/dependencies/utils.py:271:5	get_dependant	function `get_dependant` has cyclomatic complexity 17 and cognitive complexity 23 over 77 lines
+complex-function	high	fastapi/dependencies/utils.py:381:5	analyze_param	function `analyze_param` has cyclomatic complexity 48 and cognitive complexity 48 over 167 lines
+complex-function	high	fastapi/dependencies/utils.py:586:11	solve_dependencies	function `solve_dependencies` has cyclomatic complexity 28 and cognitive complexity 35 over 146 lines
+complex-function	high	fastapi/dependencies/utils.py:749:5	_get_multidict_value	function `_get_multidict_value` has cyclomatic complexity 12 and cognitive complexity 11 over 29 lines
+complex-function	high	fastapi/dependencies/utils.py:780:5	request_params_to_args	function `request_params_to_args` has cyclomatic complexity 20 and cognitive complexity 34 over 87 lines
+complex-function	high	fastapi/dependencies/utils.py:912:11	_extract_form_body	function `_extract_form_body` has cyclomatic complexity 15 and cognitive complexity 18 over 37 lines
+complex-function	high	fastapi/dependencies/utils.py:951:11	request_body_to_args	function `request_body_to_args` has cyclomatic complexity 13 and cognitive complexity 15 over 48 lines
+complex-function	high	fastapi/dependencies/utils.py:1001:5	_get_body_field	function `_get_body_field` has cyclomatic complexity 13 and cognitive complexity 8 over 48 lines
+complex-function	high	fastapi/encoders.py:129:5	jsonable_encoder	function `jsonable_encoder` has cyclomatic complexity 35 and cognitive complexity 52 over 238 lines
+complex-function	high	fastapi/openapi/utils.py:159:5	_get_openapi_operation_parameters	function `_get_openapi_operation_parameters` has cyclomatic complexity 13 and cognitive complexity 23 over 70 lines
+complex-function	high	fastapi/openapi/utils.py:311:5	get_openapi_path	function `get_openapi_path` has cyclomatic complexity 46 and cognitive complexity 111 over 230 lines
+complex-function	high	fastapi/openapi/utils.py:551:5	get_fields_from_routes	function `get_fields_from_routes` has cyclomatic complexity 10 and cognitive complexity 21 over 32 lines
+complex-function	high	fastapi/openapi/utils.py:585:5	get_openapi	function `get_openapi` has cyclomatic complexity 27 and cognitive complexity 49 over 95 lines
+complex-function	high	fastapi/params.py:29:9	Param.__init__	function `Param.__init__` has cyclomatic complexity 11 and cognitive complexity 8 over 103 lines
+complex-function	high	fastapi/params.py:470:9	Body.__init__	function `Body.__init__` has cyclomatic complexity 11 and cognitive complexity 8 over 106 lines
+complex-function	high	fastapi/routing.py:406:15	app	function `app` has cyclomatic complexity 33 and cognitive complexity 76 over 354 lines
+complex-function	high	fastapi/routing.py:961:5	_populate_api_route_state	function `_populate_api_route_state` has cyclomatic complexity 31 and cognitive complexity 38 over 163 lines
+complex-function	high	fastapi/routing.py:1946:15	_FrontendStaticFiles.get_response	function `_FrontendStaticFiles.get_response` has cyclomatic complexity 13 and cognitive complexity 14 over 27 lines
+complex-function	high	fastapi/routing.py:2282:9	APIRouter.__init__	function `APIRouter.__init__` has cyclomatic complexity 13 and cognitive complexity 11 over 287 lines
+complex-function	high	fastapi/routing.py:2719:15	APIRouter.app	function `APIRouter.app` has cyclomatic complexity 19 and cognitive complexity 26 over 63 lines
+complex-function	high	fastapi/routing.py:2811:9	APIRouter._match_low_priority	function `APIRouter._match_low_priority` has cyclomatic complexity 13 and cognitive complexity 22 over 49 lines
+complex-function	high	fastapi/routing.py:3133:9	APIRouter.include_router	function `APIRouter.include_router` has cyclomatic complexity 13 and cognitive complexity 15 over 188 lines
+complex-function	high	scripts/deploy_docs_status.py:25:5	main	function `main` has cyclomatic complexity 26 and cognitive complexity 29 over 121 lines
+complex-function	high	scripts/doc_parsing_utils.py:141:5	extract_header_permalinks	function `extract_header_permalinks` has cyclomatic complexity 14 and cognitive complexity 31 over 49 lines
+complex-function	high	scripts/doc_parsing_utils.py:357:5	extract_html_links	function `extract_html_links` has cyclomatic complexity 11 and cognitive complexity 6 over 47 lines
+complex-function	high	scripts/doc_parsing_utils.py:482:5	extract_multiline_code_blocks	function `extract_multiline_code_blocks` has cyclomatic complexity 13 and cognitive complexity 28 over 68 lines
+complex-function	high	scripts/doc_parsing_utils.py:570:5	replace_multiline_code_block	function `replace_multiline_code_block` has cyclomatic complexity 12 and cognitive complexity 18 over 71 lines
+complex-function	high	scripts/doc_parsing_utils.py:676:5	check_translation	function `check_translation` has cyclomatic complexity 11 and cognitive complexity 10 over 58 lines
+complex-function	high	scripts/docs.py:208:5	stage_zensical_docs	function `stage_zensical_docs` has cyclomatic complexity 15 and cognitive complexity 21 over 74 lines
+complex-function	high	scripts/docs.py:600:5	generate_docs_src_versions_for_file	function `generate_docs_src_versions_for_file` has cyclomatic complexity 11 and cognitive complexity 24 over 58 lines
+complex-function	high	scripts/docs.py:727:5	remove_unused_docs_src	function `remove_unused_docs_src` has cyclomatic complexity 29 and cognitive complexity 68 over 107 lines
+complex-function	high	scripts/docs.py:837:5	add_permalinks_page	function `add_permalinks_page` has cyclomatic complexity 21 and cognitive complexity 39 over 61 lines
+complex-function	high	scripts/notify_translations.py:306:5	main	function `main` has cyclomatic complexity 28 and cognitive complexity 42 over 124 lines
+complex-function	high	tests/test_frontend.py:124:5	test_frontend_route_group_helpers	function `test_frontend_route_group_helpers` has cyclomatic complexity 12 and cognitive complexity 0 over 38 lines
+complex-function	high	tests/test_include_router_defaults_overrides.py:374:5	test_paths_level3	function `test_paths_level3` has cyclomatic complexity 13 and cognitive complexity 7 over 24 lines
+complex-function	high	tests/test_include_router_defaults_overrides.py:405:5	test_paths_level5	function `test_paths_level5` has cyclomatic complexity 19 and cognitive complexity 11 over 32 lines
+complex-function	high	tests/test_router_events.py:27:5	test_router_events	function `test_router_events` has cyclomatic complexity 22 and cognitive complexity 0 over 60 lines
+complex-function	high	tests/test_router_events.py:114:5	test_router_nested_lifespan_state	function `test_router_nested_lifespan_state` has cyclomatic complexity 22 and cognitive complexity 0 over 58 lines
+complex-function	high	tests/test_router_events.py:321:5	test_startup_shutdown_handlers_as_parameters	function `test_startup_shutdown_handlers_as_parameters` has cyclomatic complexity 22 and cognitive complexity 0 over 58 lines
+complex-function	high	tests/test_schema_extra_examples.py:9:5	create_app	function `create_app` has cyclomatic complexity 11 and cognitive complexity 0 over 205 lines
+complex-function	high	tests/test_schema_extra_examples.py:216:5	test_call_api	function `test_call_api` has cyclomatic complexity 17 and cognitive complexity 0 over 35 lines
+complex-function	high	tests/test_sse.py:115:5	test_async_generator_with_model	function `test_async_generator_with_model` has cyclomatic complexity 14 and cognitive complexity 3 over 19 lines
+complex-function	high	tests/test_sse.py:190:5	test_sse_events_with_fields	function `test_sse_events_with_fields` has cyclomatic complexity 11 and cognitive complexity 0 over 17 lines
+complex-function	high	tests/test_tutorial/test_configure_swagger_ui/test_tutorial001.py:8:5	test_swagger_ui	function `test_swagger_ui` has cyclomatic complexity 11 and cognitive complexity 0 over 28 lines
+complex-function	high	tests/test_tutorial/test_configure_swagger_ui/test_tutorial002.py:8:5	test_swagger_ui	function `test_swagger_ui` has cyclomatic complexity 12 and cognitive complexity 0 over 31 lines
+complex-function	high	tests/test_tutorial/test_configure_swagger_ui/test_tutorial003.py:8:5	test_swagger_ui	function `test_swagger_ui` has cyclomatic complexity 12 and cognitive complexity 0 over 31 lines
+complex-function	high	tests/test_tutorial/test_cors/test_tutorial001.py:6:5	test_cors	function `test_cors` has cyclomatic complexity 11 and cognitive complexity 0 over 32 lines
+complex-function	high	tests/test_tutorial/test_server_sent_events/test_tutorial002.py:20:5	test_stream_items	function `test_stream_items` has cyclomatic complexity 20 and cognitive complexity 0 over 24 lines
+complex-function	high	tests/test_tutorial/test_sql_databases/test_tutorial001.py:53:5	test_crud_app	function `test_crud_app` has cyclomatic complexity 19 and cognitive complexity 0 over 94 lines
+complex-function	high	tests/test_tutorial/test_sql_databases/test_tutorial002.py:53:5	test_crud_app	function `test_crud_app` has cyclomatic complexity 26 and cognitive complexity 0 over 98 lines

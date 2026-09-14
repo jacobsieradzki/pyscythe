@@ -1,0 +1,8 @@
+files_scanned=84
+symbols_checked=1513
+symbols_kept=660
+findings=3
+--
+unused-method	low	starlette/routing.py:758:9	add_websocket_route	method `Router.add_websocket_route` is never used
+unused-method	low	starlette/testclient.py:223:9	handle_request	method `_TestClientTransport.handle_request` is never used
+unused-method	medium	tests/test_endpoints.py:66:19	_do_delete	method `Endpoint._do_delete` is never used

@@ -1,0 +1,12 @@
+files_scanned=213
+symbols_checked=14
+symbols_kept=0
+findings=7
+--
+unused-dependency	medium	docs/requirements.txt	alabaster	dependency `alabaster` is never imported
+unused-dependency	medium	docs/requirements.txt	sphinx-copybutton	dependency `sphinx-copybutton` is never imported
+unresolved-import	low	examples/suppress.py:2:12		import `click` resolves to nothing on the search path
+unresolved-import	low	rich/jupyter.py:89:9		import `IPython` resolves to nothing on the search path
+unresolved-import	low	setup.py:5:8		import `setuptools` resolves to nothing on the search path
+unresolved-import	low	tools/make_emoji.py:2:12		import `emoji` resolves to nothing on the search path
+unresolved-import	low	tools/make_width_tables.py:4:1		import `wcwidth` resolves to nothing on the search path

@@ -1,0 +1,54 @@
+files_scanned=1850
+symbols_checked=5
+symbols_kept=0
+findings=49
+--
+unresolved-import	low	hacking/ansible-profile.py:8:1		import `ansible` resolves to nothing on the search path
+unresolved-import	low	hacking/azp/download.py:36:12		import `argcomplete` resolves to nothing on the search path
+unresolved-import	low	hacking/azp/get_recent_coverage_runs.py:23:8		import `requests` resolves to nothing on the search path
+unresolved-import	low	hacking/backport/backport_of_line_adder.py:21:1		import `github` resolves to nothing on the search path
+unresolved-import	low	hacking/report.py:27:1		import `ansible_test` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/cli/inventory.py:402:9		import `tomli_w` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/galaxy/collection/__init__.py:45:5		import `distlib` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/module_utils/_embed/dnf.py:19:12		import `dnf` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/module_utils/_internal/_ansiballz/_extensions/_coverage.py:30:16		import `coverage` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/module_utils/_internal/_ansiballz/_extensions/_debugpy.py:87:12		import `debugpy` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/module_utils/_internal/_logging.py:13:5		import `systemd` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/module_utils/compat/typing.py:12:5		import `typing_extensions` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/module_utils/distro/__init__.py:37:12		import `distro` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/module_utils/six/__init__.py:710:12		import `StringIO` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/module_utils/urls.py:88:12		import `urllib_gssapi` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/module_utils/urls.py:95:12		import `gssapi` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/modules/apt.py:406:12		import `apt` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/modules/apt.py:408:12		import `apt_pkg` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/modules/apt_repository.py:196:12		import `aptsources` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/modules/deb822_repository.py:277:5		import `debian` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/modules/dnf5.py:508:20		import `libdnf5` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/modules/expect.py:126:12		import `pexpect` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/modules/pip.py:319:9		import `pkg_resources` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/modules/pip.py:519:16		import `imp` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/modules/wait_for.py:255:12		import `psutil` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/plugins/cliconf/__init__.py:29:5		import `scp` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/plugins/connection/psrp.py:350:5		import `pypsrp` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/plugins/connection/winrm.py:181:12		import `kerberos` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/plugins/connection/winrm.py:202:12		import `winrm` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/plugins/connection/winrm.py:221:12		import `xmltodict` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/plugins/netconf/__init__.py:30:5		import `ncclient` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/plugins/netconf/__init__.py:42:5		import `lxml` resolves to nothing on the search path
+unresolved-import	low	lib/ansible/utils/encrypt.py:21:12		import `passlib` resolves to nothing on the search path
+unresolved-import	low	packaging/cli-doc/build.py:68:12		import `docutils` resolves to nothing on the search path
+unresolved-import	low	test/integration/targets/ansible-test-sanity-import/ansible_collections/ns/col/plugins/lookup/vendor1.py:21:12		import `demo` resolves to nothing on the search path
+unresolved-import	low	test/integration/targets/ansible-test-sanity-use-compat-six/ansible_collections/ns/col/do-not-check-me.py:3:8		import `six` resolves to nothing on the search path
+unresolved-import	low	test/integration/targets/ansible-test-units-constraints/ansible_collections/ns/col/tests/unit/plugins/modules/test_constraints.py:3:8		import `botocore` resolves to nothing on the search path
+missing-dependency	medium	test/integration/targets/ansible-test-units-forked/ansible_collections/ns/col/tests/unit/plugins/modules/test_ansible_forked.py:6:8	pytest	`_pytest`, `py`, `pytest` is imported but `pytest` is not a declared dependency
+unresolved-import	low	test/integration/targets/collection_loader/ansible_collections/ns/col/plugins/action/test_collection_loader.py:8:16		import `my_module` resolves to nothing on the search path
+unresolved-import	low	test/integration/targets/missing_required_lib/library/missing_required_lib.py:10:12		import `ansible_missing_lib` resolves to nothing on the search path
+unresolved-import	low	test/integration/targets/module_utils/library/test_optional.py:29:5		import `ansible_collections` resolves to nothing on the search path
+unresolved-import	low	test/integration/targets/pip/files/setup.py:5:1		import `setuptools` resolves to nothing on the search path
+unresolved-import	low	test/integration/targets/prepare_http_tests/library/httptester_kinit.py:43:12		import `ConfigParser` resolves to nothing on the search path
+unresolved-import	low	test/integration/targets/setup_rpm_repo/ansible_collections/ansible_test/setup_rpm_repo/plugins/module_utils/_embed/create_repo.py:5:1		import `rpmfluff` resolves to nothing on the search path
+unresolved-import	low	test/lib/ansible_test/_internal/util.py:392:5		import `ansible_release` resolves to nothing on the search path
+unresolved-import	low	test/lib/ansible_test/_util/controller/sanity/code-smell/runtime-metadata.py:15:1		import `voluptuous` resolves to nothing on the search path
+unresolved-import	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/deprecated_calls.py:14:8		import `astroid` resolves to nothing on the search path
+unresolved-import	low	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/main.py:37:1		import `antsibull_docs_parser` resolves to nothing on the search path
+unresolved-import	low	test/units/_internal/_encryption/test_crypt.py:5:1		import `pytest_mock` resolves to nothing on the search path

@@ -1,0 +1,16 @@
+files_scanned=435
+symbols_checked=0
+symbols_kept=0
+findings=11
+--
+circular-import	high	sphinx/__init__.py:8:1	-	import cycle: sphinx -> sphinx.util._pathlib -> sphinx
+circular-import	high	sphinx/builders/latex/__init__.py:33:1	-	import cycle: sphinx.builders.latex -> sphinx.writers.latex -> sphinx.builders.latex
+circular-import	high	sphinx/domains/c/__init__.py:14:1	-	import cycle among 4 modules, shortest: sphinx.domains.c -> sphinx.domains.c._ast -> sphinx.domains.c
+circular-import	high	sphinx/domains/cpp/__init__.py:15:1	-	import cycle among 4 modules, shortest: sphinx.domains.cpp -> sphinx.domains.cpp._ast -> sphinx.domains.cpp
+circular-import	high	sphinx/domains/python/__init__.py:17:1	-	import cycle: sphinx.domains.python -> sphinx.domains.python._object -> sphinx.domains.python
+circular-import	high	sphinx/ext/apidoc/__init__.py:17:1	-	import cycle among 3 modules, shortest: sphinx.ext.apidoc -> sphinx.ext.apidoc._cli -> sphinx.ext.apidoc
+circular-import	high	sphinx/ext/autodoc/__init__.py:14:1	-	import cycle among 19 modules, shortest: sphinx.ext.autodoc -> sphinx.ext.autodoc._directive -> sphinx.ext.autodoc
+circular-import	high	sphinx/ext/intersphinx/__init__.py:42:1	-	import cycle among 4 modules, shortest: sphinx.ext.intersphinx -> sphinx.ext.intersphinx._cli -> sphinx.ext.intersphinx
+circular-import	high	sphinx/pycode/__init__.py:10:1	-	import cycle: sphinx.pycode -> sphinx.pycode.parser -> sphinx.pycode
+circular-import	high	sphinx/search/__init__.py:121:1	-	import cycle: sphinx.search -> sphinx.search.en -> sphinx.search
+circular-import	high	sphinx/util/docutils.py:27:1	-	import cycle: sphinx.util.docutils -> sphinx.util.rst -> sphinx.util.docutils

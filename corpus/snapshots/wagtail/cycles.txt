@@ -1,0 +1,17 @@
+files_scanned=1388
+symbols_checked=0
+symbols_kept=0
+findings=12
+--
+circular-import	high	wagtail/actions/__init__.py:5:1	-	import cycle among 28 modules, shortest: wagtail.actions -> wagtail.actions.convert_alias -> wagtail.actions
+circular-import	high	wagtail/admin/forms/__init__.py:2:1	-	import cycle among 3 modules, shortest: wagtail.admin.forms -> wagtail.admin.forms.models -> wagtail.admin.forms
+circular-import	high	wagtail/admin/rich_text/__init__.py:4:1	-	import cycle among 4 modules, shortest: wagtail.admin.rich_text -> wagtail.admin.rich_text.editors.draftail -> wagtail.admin.rich_text
+circular-import	high	wagtail/admin/views/bulk_action/__init__.py:2:1	-	import cycle among 3 modules, shortest: wagtail.admin.views.bulk_action -> wagtail.admin.views.bulk_action.dispatcher -> wagtail.admin.views.bulk_action
+circular-import	high	wagtail/admin/views/generic/__init__.py:7:1	-	import cycle: wagtail.admin.views.generic -> wagtail.admin.views.generic.history -> wagtail.admin.views.generic
+circular-import	high	wagtail/admin/views/pages/bulk_actions/__init__.py:1:1	-	import cycle among 5 modules, shortest: wagtail.admin.views.pages.bulk_actions -> wagtail.admin.views.pages.bulk_actions.delete -> wagtail.admin.views.pages.bulk_actions
+circular-import	high	wagtail/api/v3/schemas/__init__.py:10:1	-	import cycle among 4 modules, shortest: wagtail.api.v3.schemas -> wagtail.api.v3.schemas.pages -> wagtail.api.v3.schemas
+circular-import	high	wagtail/documents/views/bulk_actions/__init__.py:1:1	-	import cycle among 4 modules, shortest: wagtail.documents.views.bulk_actions -> wagtail.documents.views.bulk_actions.add_tags -> wagtail.documents.views.bulk_actions
+circular-import	high	wagtail/images/views/bulk_actions/__init__.py:1:1	-	import cycle among 4 modules, shortest: wagtail.images.views.bulk_actions -> wagtail.images.views.bulk_actions.add_tags -> wagtail.images.views.bulk_actions
+circular-import	high	wagtail/snippets/api/v3/__init__.py:1:1	-	import cycle: wagtail.snippets.api.v3 -> wagtail.snippets.api.v3.registry -> wagtail.snippets.api.v3
+circular-import	high	wagtail/snippets/bulk_actions/__init__.py:1:1	-	import cycle: wagtail.snippets.bulk_actions -> wagtail.snippets.bulk_actions.delete -> wagtail.snippets.bulk_actions
+circular-import	high	wagtail/users/views/bulk_actions/__init__.py:1:1	-	import cycle among 4 modules, shortest: wagtail.users.views.bulk_actions -> wagtail.users.views.bulk_actions.assign_role -> wagtail.users.views.bulk_actions

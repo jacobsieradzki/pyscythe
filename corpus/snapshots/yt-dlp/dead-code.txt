@@ -1,0 +1,69 @@
+files_scanned=1128
+symbols_checked=8994
+symbols_kept=169
+findings=64
+--
+unused-function	low	test/helper.py:320:5	assertEqual	function `assertEqual` is never used
+unused-variable	medium	test/test_downloader_http.py:20:1	TEST_DIR	variable `TEST_DIR` is never used
+unused-variable	medium	test/test_networking_utils.py:32:1	TEST_DIR	variable `TEST_DIR` is never used
+unused-method	low	yt_dlp/YoutubeDL.py:1200:9	parse_outtmpl	method `YoutubeDL.parse_outtmpl` is never used
+unused-method	medium	yt_dlp/YoutubeDL.py:2722:9	_calc_cookies	method `YoutubeDL._calc_cookies` is never used
+unused-method	low	yt_dlp/YoutubeDL.py:3777:9	filter_requested_info	method `YoutubeDL.filter_requested_info` is never used
+unused-method	low	yt_dlp/compat/__init__.py:18:9	doctype	method `_TreeBuilder.doctype` is never used
+unused-file	low	yt_dlp/compat/_deprecated.py	-	file `yt_dlp.compat._deprecated` is never imported or run
+unused-file	low	yt_dlp/compat/_legacy.py	-	file `yt_dlp.compat._legacy` is never imported or run
+unused-variable	medium	yt_dlp/dependencies/__init__.py:95:1	Cryptodome_AES	variable `Cryptodome_AES` is never used
+unused-method	low	yt_dlp/downloader/common.py:135:9	calc_percent	method `FileDownloader.calc_percent` is never used
+unused-method	low	yt_dlp/downloader/common.py:172:9	format_retries	method `FileDownloader.format_retries` is never used
+unused-method	low	yt_dlp/downloader/common.py:195:9	parse_bytes	method `FileDownloader.parse_bytes` is never used
+unused-method	low	yt_dlp/downloader/fragment.py:62:9	report_retry_fragment	method `FragmentFD.report_retry_fragment` is never used
+unused-variable	medium	yt_dlp/downloader/ism.py:11:1	u88	variable `u88` is never used
+unused-method	low	yt_dlp/extractor/common.py:1237:9	report_age_confirmation	method `InfoExtractor.report_age_confirmation` is never used
+unused-method	medium	yt_dlp/extractor/common.py:1518:9	_dc_search_uploader	method `InfoExtractor._dc_search_uploader` is never used
+unused-method	medium	yt_dlp/extractor/common.py:1543:9	_media_rating_search	method `InfoExtractor._media_rating_search` is never used
+unused-method	medium	yt_dlp/extractor/common.py:1575:9	_twitter_search_player	method `InfoExtractor._twitter_search_player` is never used
+unused-method	low	yt_dlp/extractor/common.py:1942:9	FormatSort	method `InfoExtractor.FormatSort` is never used
+unused-method	medium	yt_dlp/extractor/common.py:2152:9	_m3u8_meta_format	method `InfoExtractor._m3u8_meta_format` is never used
+unused-method	medium	yt_dlp/extractor/common.py:3730:9	_live_title	method `InfoExtractor._live_title` is never used
+unused-method	low	yt_dlp/extractor/common.py:3935:9	extract_automatic_captions	method `InfoExtractor.extract_automatic_captions` is never used
+unused-method	medium	yt_dlp/extractor/qqmusic.py:27:9	_get_g_tk	method `QQMusicBaseIE._get_g_tk` is never used
+unused-method	medium	yt_dlp/extractor/ustream.py:111:9	_parse_segmented_mp4	method `UstreamIE._parse_segmented_mp4` is never used
+unused-method	medium	yt_dlp/extractor/vk.py:754:9	_unmask_url	method `VKWallPostIE._unmask_url` is never used
+unused-method	medium	yt_dlp/extractor/xhamster.py:32:9	_algo1	method `_ByteGenerator._algo1` is never used
+unused-method	medium	yt_dlp/extractor/xhamster.py:38:9	_algo2	method `_ByteGenerator._algo2` is never used
+unused-method	medium	yt_dlp/extractor/xhamster.py:46:9	_algo3	method `_ByteGenerator._algo3` is never used
+unused-method	medium	yt_dlp/extractor/xhamster.py:57:9	_algo4	method `_ByteGenerator._algo4` is never used
+unused-method	medium	yt_dlp/extractor/xhamster.py:65:9	_algo5	method `_ByteGenerator._algo5` is never used
+unused-method	medium	yt_dlp/extractor/xhamster.py:73:9	_algo6	method `_ByteGenerator._algo6` is never used
+unused-method	medium	yt_dlp/extractor/xhamster.py:80:9	_algo7	method `_ByteGenerator._algo7` is never used
+unused-function	low	yt_dlp/extractor/youtube/jsc/_builtin/bun.py:164:5	preference	function `preference` is never used
+unused-function	low	yt_dlp/extractor/youtube/jsc/_builtin/deno.py:130:5	preference	function `preference` is never used
+unused-function	low	yt_dlp/extractor/youtube/jsc/_builtin/node.py:69:5	preference	function `preference` is never used
+unused-function	low	yt_dlp/extractor/youtube/jsc/_builtin/quickjs.py:66:5	preference	function `preference` is never used
+unused-function	low	yt_dlp/networking/_curlcffi.py:349:5	curl_cffi_preference	function `curl_cffi_preference` is never used
+unused-method	low	yt_dlp/networking/_requests.py:180:9	cert_verify	method `RequestsHTTPAdapter.cert_verify` is never used
+unused-method	low	yt_dlp/networking/_requests.py:184:9	get_connection_with_tls_context	method `RequestsHTTPAdapter.get_connection_with_tls_context` is never used
+unused-method	low	yt_dlp/networking/_requests.py:199:9	rebuild_method	method `RequestsSession.rebuild_method` is never used
+unused-function	low	yt_dlp/networking/_requests.py:367:5	requests_preference	function `requests_preference` is never used
+unused-method	medium	yt_dlp/networking/_requests.py:377:9	_new_conn	method `SocksHTTPConnection._new_conn` is never used
+unused-method	low	yt_dlp/networking/_urllib.py:93:9	http_open	method `HTTPHandler.http_open` is never used
+unused-method	low	yt_dlp/networking/_urllib.py:98:9	https_open	method `HTTPHandler.https_open` is never used
+unused-class	medium	yt_dlp/networking/_websockets.py:92:7	WebsocketsRH	class `WebsocketsRH` is never used
+unused-function	low	yt_dlp/networking/impersonate.py:152:5	impersonate_preference	function `impersonate_preference` is never used
+unused-function	high	yt_dlp/options.py:2009:5	_hide_login_info	function `_hide_login_info` is never used
+unused-class	medium	yt_dlp/postprocessor/common.py:214:7	AudioConversionError	class `AudioConversionError` is never used
+unused-method	low	yt_dlp/postprocessor/ffmpeg.py:99:9	get_versions	method `FFmpegPostProcessor.get_versions` is never used
+unused-method	low	yt_dlp/postprocessor/ffmpeg.py:1071:9	is_webp	method `FFmpegThumbnailsConvertorPP.is_webp` is never used
+unused-variable	low	yt_dlp/update.py:53:1	API_URL	variable `API_URL` is never used
+unused-function	medium	yt_dlp/update.py:634:5	run_update	function `run_update` is never used
+unused-file	low	yt_dlp/utils/_deprecated.py	-	file `yt_dlp.utils._deprecated` is never imported or run
+unused-file	low	yt_dlp/utils/_legacy.py	-	file `yt_dlp.utils._legacy` is never imported or run
+unused-function	medium	yt_dlp/utils/_utils.py:517:5	parse_list	function `parse_list` is never used
+unused-function	medium	yt_dlp/utils/_utils.py:1685:5	get_filesystem_encoding	function `get_filesystem_encoding` is never used
+unused-function	medium	yt_dlp/utils/_utils.py:2928:5	ytdl_is_updateable	function `ytdl_is_updateable` is never used
+unused-function	medium	yt_dlp/utils/_utils.py:3042:5	ext2mimetype	function `ext2mimetype` is never used
+unused-function	medium	yt_dlp/utils/_utils.py:4482:5	decode_packed_codes	function `decode_packed_codes` is never used
+unused-function	medium	yt_dlp/utils/_utils.py:5030:5	merge_headers	function `merge_headers` is never used
+unused-function	medium	yt_dlp/utils/_utils.py:5035:5	cached_method	function `cached_method` is never used
+unused-variable	low	yt_dlp/utils/jslib/devalue.py:16:5	T	variable `T` is never used
+unused-class	low	yt_dlp/utils/traversal.py:330:7	_RequiredError	class `_RequiredError` is never used

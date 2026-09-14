@@ -1,0 +1,13 @@
+cffi==2.1.1 ; platform_python_implementation != 'PyPy'
+colorama==0.4.6 ; sys_platform == 'win32'
+cryptography==50.0.1
+iniconfig==2.3.0
+jinja2==3.1.6
+markupsafe==3.0.3
+packaging==26.3
+pluggy==1.6.0
+pycparser==3.0 ; implementation_name != 'PyPy' and platform_python_implementation != 'PyPy'
+pygments==2.21.0
+pytest==9.1.1
+pyyaml==6.0.3
+resolvelib==1.2.1

@@ -38,6 +38,8 @@ clap = { version = "4.5", features = ["derive"] }
 globset = "0.4"
 rayon = "1.10"
 rustc-hash = "2.0"
+# The same salsa ruff pins; only its cancellation API is used directly.
+salsa = { version = "0.28.2", default-features = false }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 similar = "3.0"

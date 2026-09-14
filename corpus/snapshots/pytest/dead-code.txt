@@ -1,0 +1,131 @@
+files_scanned=274
+symbols_checked=6569
+symbols_kept=1702
+findings=126
+--
+unused-method	low	src/_pytest/_py/path.py:47:9	dotfile	method `Checkers.dotfile` is never used
+unused-method	low	src/_pytest/_py/path.py:58:9	basestarts	method `Checkers.basestarts` is never used
+unused-method	low	src/_pytest/assertion/rewrite.py:282:9	get_data	method `AssertionRewritingHook.get_data` is never used
+unused-method	low	src/_pytest/assertion/rewrite.py:287:9	get_resource_reader	method `AssertionRewritingHook.get_resource_reader` is never used
+unused-function	low	src/_pytest/assertion/rewrite.py:428:5	_format_assertmsg	function `_format_assertmsg` is never used
+unused-function	low	src/_pytest/assertion/rewrite.py:450:5	_should_repr_global_name	function `_should_repr_global_name` is never used
+unused-function	low	src/_pytest/assertion/rewrite.py:461:5	_format_boolop	function `_format_boolop` is never used
+unused-function	low	src/_pytest/assertion/rewrite.py:466:5	_call_reprcompare	function `_call_reprcompare` is never used
+unused-function	low	src/_pytest/assertion/rewrite.py:486:5	_call_assertion_pass	function `_call_assertion_pass` is never used
+unused-function	low	src/_pytest/assertion/rewrite.py:491:5	_check_if_assertion_pass_impl	function `_check_if_assertion_pass_impl` is never used
+unused-method	low	src/_pytest/capture.py:1000:9	disabled	method `CaptureFixture.disabled` is never used
+unused-function	medium	src/_pytest/capture.py:1041:5	capteesys	function `capteesys` is never used
+unused-function	medium	src/_pytest/capture.py:1076:5	capsysbinary	function `capsysbinary` is never used
+unused-function	medium	src/_pytest/capture.py:1132:5	capfdbinary	function `capfdbinary` is never used
+unused-function	low	src/_pytest/doctest.py:733:5	doctest_namespace	function `doctest_namespace` is never used
+unused-method	low	src/_pytest/fixtures.py:1200:9	has_location	method `FixtureDef.has_location` is never used
+unused-function	low	src/_pytest/junitxml.py:285:5	record_property	function `record_property` is never used
+unused-function	low	src/_pytest/junitxml.py:308:5	record_xml_attribute	function `record_xml_attribute` is never used
+unused-function	low	src/_pytest/junitxml.py:346:5	record_testsuite_property	function `record_testsuite_property` is never used
+unused-method	low	src/_pytest/logging.py:755:9	set_log_path	method `LoggingPlugin.set_log_path` is never used
+unused-class	low	src/_pytest/main.py:517:7	Interrupted	class `Interrupted` is never used
+unused-method	low	src/_pytest/mark/structures.py:396:9	markname	method `MarkDecorator.markname` is never used
+unused-variable	medium	src/_pytest/monkeypatch.py:28:1	RE_IMPORT_ERROR_NAME	variable `RE_IMPORT_ERROR_NAME` is never used
+unused-method	low	src/_pytest/nodes.py:394:9	listnames	method `Node.listnames` is never used
+unused-function	low	src/_pytest/pathlib.py:512:5	parts	function `parts` is never used
+unused-variable	low	src/_pytest/pytester.py:76:1	pytest_plugins	variable `pytest_plugins` is never used
+unused-function	low	src/_pytest/pytester.py:199:5	_pytest	function `_pytest` is never used
+unused-method	low	src/_pytest/pytester.py:210:9	gethookrecorder	method `PytestArg.gethookrecorder` is never used
+unused-method	low	src/_pytest/python.py:1214:9	getparam	method `CallSpec.getparam` is never used
+unused-function	low	src/_pytest/subtests.py:137:5	subtests	function `subtests` is never used
+unused-method	medium	src/_pytest/unittest.py:240:9	_testcase	method `TestCaseFunction._testcase` is never used
+unused-method	low	src/_pytest/unittest.py:260:9	startTest	method `TestCaseFunction.startTest` is never used
+unused-method	low	src/_pytest/unittest.py:307:9	addFailure	method `TestCaseFunction.addFailure` is never used
+unused-method	low	src/_pytest/unittest.py:345:9	addExpectedFailure	method `TestCaseFunction.addExpectedFailure` is never used
+unused-method	low	src/_pytest/unittest.py:356:9	addUnexpectedSuccess	method `TestCaseFunction.addUnexpectedSuccess` is never used
+unused-method	low	src/_pytest/unittest.py:370:9	addSuccess	method `TestCaseFunction.addSuccess` is never used
+unused-method	low	src/_pytest/unittest.py:373:9	stopTest	method `TestCaseFunction.stopTest` is never used
+unused-method	low	src/_pytest/unittest.py:376:9	addDuration	method `TestCaseFunction.addDuration` is never used
+unused-method	low	src/_pytest/warning_types.py:70:9	simple	method `PytestExperimentalApiWarning.simple` is never used
+unused-function	low	testing/code/test_excinfo.py:39:5	limited_recursion_depth	function `limited_recursion_depth` is never used
+unused-function	low	testing/plugins_integration/bdd_wallet.py:13:5	test_publish	function `test_publish` is never used
+unused-function	low	testing/plugins_integration/bdd_wallet.py:26:5	fill_wallet	function `fill_wallet` is never used
+unused-function	low	testing/plugins_integration/bdd_wallet.py:31:5	buy_apples	function `buy_apples` is never used
+unused-function	low	testing/plugins_integration/bdd_wallet.py:36:5	buy_bananas	function `buy_bananas` is never used
+unused-function	low	testing/plugins_integration/bdd_wallet.py:41:5	check	function `check` is never used
+unused-file	medium	testing/plugins_integration/pytest_anyio_integration.py	-	file `testing.plugins_integration.pytest_anyio_integration` is never imported or run
+unused-file	medium	testing/plugins_integration/pytest_asyncio_integration.py	-	file `testing.plugins_integration.pytest_asyncio_integration` is never imported or run
+unused-file	medium	testing/plugins_integration/pytest_mock_integration.py	-	file `testing.plugins_integration.pytest_mock_integration` is never imported or run
+unused-file	medium	testing/plugins_integration/pytest_trio_integration.py	-	file `testing.plugins_integration.pytest_trio_integration` is never imported or run
+unused-file	medium	testing/plugins_integration/pytest_twisted_integration.py	-	file `testing.plugins_integration.pytest_twisted_integration` is never imported or run
+unused-file	medium	testing/plugins_integration/simple_integration.py	-	file `testing.plugins_integration.simple_integration` is never imported or run
+unused-method	low	testing/python/approx.py:38:13	set_continue	method `MockedPdb.set_continue` is never used
+unused-class	medium	testing/python/approx.py:101:7	TestApprox	class `TestApprox` is never used
+unused-class	medium	testing/python/approx.py:1401:7	TestApproxDatetime	class `TestApproxDatetime` is never used
+unused-class	medium	testing/python/approx.py:1740:7	TestRecursiveSequenceMap	class `TestRecursiveSequenceMap` is never used
+unused-file	medium	testing/python/collect.py	-	file `testing.python.collect` is never imported or run
+unused-function	low	testing/python/fixtures.py:22:5	test_getfuncargnames_functions	function `test_getfuncargnames_functions` is never used
+unused-function	low	testing/python/fixtures.py:46:5	test_getfuncargnames_methods	function `test_getfuncargnames_methods` is never used
+unused-function	low	testing/python/fixtures.py:72:5	test_getfuncargnames_staticmethod	function `test_getfuncargnames_staticmethod` is never used
+unused-function	low	testing/python/fixtures.py:83:5	test_getfuncargnames_staticmethod_inherited	function `test_getfuncargnames_staticmethod_inherited` is never used
+unused-function	low	testing/python/fixtures.py:107:5	test_getfuncargnames_partial	function `test_getfuncargnames_partial` is never used
+unused-function	low	testing/python/fixtures.py:121:5	test_getfuncargnames_staticmethod_partial	function `test_getfuncargnames_staticmethod_partial` is never used
+unused-class	low	testing/python/fixtures.py:136:7	TestFillFixtures	class `TestFillFixtures` is never used
+unused-class	medium	testing/python/fixtures.py:715:7	TestRequestBasic	class `TestRequestBasic` is never used
+unused-class	medium	testing/python/fixtures.py:1294:7	TestRequestSessionScoped	class `TestRequestSessionScoped` is never used
+unused-class	medium	testing/python/fixtures.py:1309:7	TestRequestMarking	class `TestRequestMarking` is never used
+unused-class	medium	testing/python/fixtures.py:1380:7	TestFixtureUsages	class `TestFixtureUsages` is never used
+unused-class	medium	testing/python/fixtures.py:1842:7	TestFixtureManagerParseFactories	class `TestFixtureManagerParseFactories` is never used
+unused-class	medium	testing/python/fixtures.py:2114:7	TestAutouseDiscovery	class `TestAutouseDiscovery` is never used
+unused-class	medium	testing/python/fixtures.py:2292:7	TestAutouseManagement	class `TestAutouseManagement` is never used
+unused-class	medium	testing/python/fixtures.py:2580:7	TestFixtureMarker	class `TestFixtureMarker` is never used
+unused-class	medium	testing/python/fixtures.py:3666:7	TestRequestScopeAccess	class `TestRequestScopeAccess` is never used
+unused-class	medium	testing/python/fixtures.py:3718:7	TestErrors	class `TestErrors` is never used
+unused-class	medium	testing/python/fixtures.py:3807:7	TestShowFixtures	class `TestShowFixtures` is never used
+unused-class	medium	testing/python/fixtures.py:4099:7	TestContextManagerFixtureFuncs	class `TestContextManagerFixtureFuncs` is never used
+unused-class	medium	testing/python/fixtures.py:4228:7	TestParameterizedSubRequest	class `TestParameterizedSubRequest` is never used
+unused-function	low	testing/python/fixtures.py:4380:5	test_pytest_fixture_setup_and_post_finalizer_hook	function `test_pytest_fixture_setup_and_post_finalizer_hook` is never used
+unused-function	low	testing/python/fixtures.py:4423:5	test_fixture_post_finalizer_called_once	function `test_fixture_post_finalizer_called_once` is never used
+unused-function	low	testing/python/fixtures.py:4485:5	test_fixture_post_finalizer_hook_exception	function `test_fixture_post_finalizer_hook_exception` is never used
+unused-class	medium	testing/python/fixtures.py:4539:7	TestParamValueKey	class `TestParamValueKey` is never used
+unused-class	medium	testing/python/fixtures.py:4594:7	TestScopeOrdering	class `TestScopeOrdering` is never used
+unused-function	low	testing/python/fixtures.py:5129:5	test_call_fixture_function_error	function `test_call_fixture_function_error` is never used
+unused-function	low	testing/python/fixtures.py:5140:5	test_fixture_double_decorator	function `test_fixture_double_decorator` is never used
+unused-function	low	testing/python/fixtures.py:5161:5	test_fixture_class	function `test_fixture_class` is never used
+unused-function	low	testing/python/fixtures.py:5176:5	test_fixture_param_shadowing	function `test_fixture_param_shadowing` is never used
+unused-function	low	testing/python/fixtures.py:5219:5	test_fixture_named_request	function `test_fixture_named_request` is never used
+unused-function	low	testing/python/fixtures.py:5230:5	test_indirect_fixture_does_not_break_scope	function `test_indirect_fixture_does_not_break_scope` is never used
+unused-function	low	testing/python/fixtures.py:5281:5	test_fixture_parametrization_nparray	function `test_fixture_parametrization_nparray` is never used
+unused-function	low	testing/python/fixtures.py:5301:5	test_fixture_arg_ordering	function `test_fixture_arg_ordering` is never used
+unused-function	low	testing/python/fixtures.py:5336:5	test_yield_fixture_with_no_value	function `test_yield_fixture_with_no_value` is never used
+unused-function	low	testing/python/fixtures.py:5356:5	test_deduplicate_names	function `test_deduplicate_names` is never used
+unused-function	low	testing/python/fixtures.py:5363:5	test_staticmethod_classmethod_fixture_instance	function `test_staticmethod_classmethod_fixture_instance` is never used
+unused-function	low	testing/python/fixtures.py:5408:5	test_scoped_fixture_caching	function `test_scoped_fixture_caching` is never used
+unused-function	low	testing/python/fixtures.py:5442:5	test_scoped_fixture_caching_exception	function `test_scoped_fixture_caching_exception` is never used
+unused-function	low	testing/python/fixtures.py:5482:5	test_scoped_fixture_teardown_order	function `test_scoped_fixture_teardown_order` is never used
+unused-function	low	testing/python/fixtures.py:5537:5	test_subfixture_teardown_order	function `test_subfixture_teardown_order` is never used
+unused-function	low	testing/python/fixtures.py:5589:5	test_parametrized_fixture_scope_allowed	function `test_parametrized_fixture_scope_allowed` is never used
+unused-function	low	testing/python/fixtures.py:5617:5	test_collect_positional_only	function `test_collect_positional_only` is never used
+unused-function	low	testing/python/fixtures.py:5636:5	test_parametrization_dependency_pruning	function `test_parametrization_dependency_pruning` is never used
+unused-function	low	testing/python/fixtures.py:5672:5	test_fixture_closure_with_overrides	function `test_fixture_closure_with_overrides` is never used
+unused-function	low	testing/python/fixtures.py:5711:5	test_fixture_closure_with_overrides_and_intermediary	function `test_fixture_closure_with_overrides_and_intermediary` is never used
+unused-function	low	testing/python/fixtures.py:5757:5	test_fixture_closure_with_overrides_and_parametrization	function `test_fixture_closure_with_overrides_and_parametrization` is never used
+unused-function	low	testing/python/fixtures.py:5798:5	test_fixture_closure_with_broken_override_chain	function `test_fixture_closure_with_broken_override_chain` is never used
+unused-function	low	testing/python/fixtures.py:5841:5	test_fixture_closure_handles_circular_dependencies	function `test_fixture_closure_handles_circular_dependencies` is never used
+unused-function	low	testing/python/fixtures.py:5877:5	test_fixture_closure_handles_diamond_dependencies	function `test_fixture_closure_handles_diamond_dependencies` is never used
+unused-function	low	testing/python/fixtures.py:5904:5	test_fixture_closure_with_complex_override_and_shared_deps	function `test_fixture_closure_with_complex_override_and_shared_deps` is never used
+unused-function	low	testing/python/fixtures.py:5947:5	test_fixture_closure_with_parametrize_ignore	function `test_fixture_closure_with_parametrize_ignore` is never used
+unused-function	low	testing/python/fixtures.py:5973:5	test_overridden_fixture_depends_on_parametrized	function `test_overridden_fixture_depends_on_parametrized` is never used
+unused-function	low	testing/python/fixtures.py:6001:5	test_custom_decorated_fixture_warning	function `test_custom_decorated_fixture_warning` is never used
+unused-function	low	testing/python/fixtures.py:6041:5	test_custom_decorated_fixture_above_classmethod_warning	function `test_custom_decorated_fixture_above_classmethod_warning` is never used
+unused-function	low	testing/python/fixtures.py:6086:5	test_classmethod_above_fixture_warning	function `test_classmethod_above_fixture_warning` is never used
+unused-function	low	testing/python/fixtures.py:6120:5	test_staticmethod_above_fixture_warning	function `test_staticmethod_above_fixture_warning` is never used
+unused-function	low	testing/python/fixtures.py:6155:5	test_fixture_above_classmethod_still_works	function `test_fixture_above_classmethod_still_works` is never used
+unused-function	low	testing/python/fixtures.py:6175:5	test_fixture_above_staticmethod_still_works	function `test_fixture_above_staticmethod_still_works` is never used
+unused-function	low	testing/python/fixtures.py:6196:5	test_classmethod_above_fixture_warning_inherited	function `test_classmethod_above_fixture_warning_inherited` is never used
+unused-file	medium	testing/python/integration.py	-	file `testing.python.integration` is never imported or run
+unused-file	medium	testing/python/metafunc.py	-	file `testing.python.metafunc` is never imported or run
+unused-file	medium	testing/python/raises.py	-	file `testing.python.raises` is never imported or run
+unused-file	medium	testing/python/raises_group.py	-	file `testing.python.raises_group` is never imported or run
+unused-variable	low	testing/test_cacheprovider.py:20:1	pytest_plugins	variable `pytest_plugins` is never used
+unused-method	low	testing/test_skipping.py:548:9	xtest_dynamic_xfail_set_during_setup	method `TestXFail.xtest_dynamic_xfail_set_during_setup` is never used
+unused-variable	medium	testing/test_subtests.py:14:1	IS_PY311	variable `IS_PY311` is never used
+unused-function	low	testing/test_tmpdir.py:393:5	break_getuser	function `break_getuser` is never used
+unused-function	high	testing/test_unraisableexception.py:221:5	_set_gc_state	function `_set_gc_state` is never used
+unused-file	medium	testing/typing_checks.py	-	file `testing.typing_checks` is never imported or run
+unused-file	medium	testing/typing_raises_group.py	-	file `testing.typing_raises_group` is never imported or run

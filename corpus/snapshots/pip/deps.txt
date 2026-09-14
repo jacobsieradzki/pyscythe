@@ -1,0 +1,54 @@
+files_scanned=661
+symbols_checked=53
+symbols_kept=0
+findings=49
+--
+unused-dependency	low	build-project/pyproject.toml	flit-core	dependency `flit-core` (dependency-groups.build) is never imported
+unresolved-import	low	docs/pip_sphinxext.py:12:1		import `docutils` resolves to nothing on the search path
+unused-dependency	low	pyproject.toml	cmake	dependency `cmake` (dependency-groups.test-common-wheels) is never imported
+unused-dependency	low	pyproject.toml	flit-core	dependency `flit-core` (dependency-groups.test) is never imported
+unused-dependency	low	pyproject.toml	furo	dependency `furo` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	myst-parser	dependency `myst-parser` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	proxy-py	dependency `proxy-py` (dependency-groups.test) is never imported
+unused-dependency	low	pyproject.toml	sphinx-copybutton	dependency `sphinx-copybutton` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	sphinx-inline-tabs	dependency `sphinx-inline-tabs` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	sphinx-issues	dependency `sphinx-issues` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	sphinxcontrib-towncrier	dependency `sphinxcontrib-towncrier` (dependency-groups.docs) is never imported
+unused-dependency	low	pyproject.toml	towncrier	dependency `towncrier` (dependency-groups.docs) is never imported
+unresolved-import	low	src/pip/_internal/network/xmlrpc.py:15:5		import `_typeshed` resolves to nothing on the search path
+unresolved-import	low	src/pip/_internal/utils/compat.py:85:12		import `tomllib` resolves to nothing on the search path
+unresolved-import	low	src/pip/_internal/utils/retry.py:9:5		import `typing_extensions` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/cachecontrol/caches/file_cache.py:19:5		import `filelock` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/cachecontrol/caches/redis_cache.py:13:5		import `redis` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/distlib/compat.py:20:5		import `StringIO` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/distlib/compat.py:25:12		import `ConfigParser` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/distlib/compat.py:26:5		import `urlparse` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/distlib/compat.py:35:12		import `urllib2` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/distlib/compat.py:40:12		import `httplib` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/distlib/compat.py:41:12		import `xmlrpclib` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/distlib/compat.py:42:12		import `Queue` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/distlib/compat.py:43:5		import `HTMLParser` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/distlib/compat.py:44:12		import `htmlentitydefs` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/distlib/compat.py:632:9		import `thread` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/distlib/compat.py:634:9		import `dummy_thread` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/distlib/compat.py:637:9		import `_abcoll` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/distlib/scripts.py:140:24		import `java` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/distlib/util.py:30:12		import `dummy_threading` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/distlib/util.py:1980:9		import `_aix_support` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/platformdirs/android.py:179:13		import `android` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/platformdirs/android.py:189:13		import `jnius` resolves to nothing on the search path
+missing-dependency	low	src/pip/_vendor/pygments/formatters/_mapping.py:5:25	pygments	`pygments` is imported but `pygments` is not a declared dependency; it arrives through `rich`
+unresolved-import	low	src/pip/_vendor/requests/help.py:27:12		import `OpenSSL` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/rich/jupyter.py:89:9		import `IPython` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/rich/live.py:252:21		import `ipywidgets` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/rich/pretty.py:33:12		import `attr` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/urllib3/contrib/emscripten/fetch.py:45:8		import `js` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/urllib3/contrib/emscripten/fetch.py:46:1		import `pyodide` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/urllib3/contrib/socks.py:44:12		import `socks` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/urllib3/http2/connection.py:9:8		import `h2` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/urllib3/response.py:236:9		import `compression` resolves to nothing on the search path
+unresolved-import	low	src/pip/_vendor/urllib3/response.py:238:9		import `backports` resolves to nothing on the search path
+unresolved-import	low	tests/data/src/pep518-3.0/setup.py:4:8		import `simplewheel` resolves to nothing on the search path
+unresolved-import	low	tests/data/src/pep518_with_extra_and_markers-1.0/setup.py:5:8		import `simple` resolves to nothing on the search path
+unresolved-import	low	tests/functional/test_proxy.py:6:8		import `proxy` resolves to nothing on the search path
+missing-dependency	medium	tools/update-rtd-redirects.py:18:8	pyyaml	`yaml` is imported but `pyyaml` is not a declared dependency

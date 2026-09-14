@@ -1,0 +1,7 @@
+files_scanned=274
+symbols_checked=0
+symbols_kept=0
+findings=2
+--
+circular-import	high	src/_pytest/_code/__init__.py:5:1	-	import cycle: _pytest._code -> _pytest._code.code -> _pytest._code
+circular-import	high	src/_pytest/assertion/__init__.py:13:1	-	import cycle among 9 modules, shortest: _pytest.assertion -> _pytest.assertion.truncate -> _pytest.assertion

@@ -1,0 +1,6 @@
+files_scanned=213
+symbols_checked=0
+symbols_kept=0
+findings=1
+--
+circular-import	high	rich/__main__.py:5:1	-	import cycle among 35 modules, shortest: rich.__main__ -> rich.box -> rich.columns -> rich.align -> rich.constrain -> rich.jupyter -> rich.segment -> rich.repr -> rich.console -> rich.pager -> rich.__main__
