@@ -201,8 +201,8 @@ pub fn analyze(
         );
         for (distribution, (modules, mut finding)) in survey.undeclared {
             // An example or script importing the project's own package is not
-            // a missing dependency, however the editable install resolves.
-            if scope.name.as_ref() == Some(&distribution) {
+            // a dependency question, however the editable install resolves.
+            if is_own_package(scope, distribution.as_str()) {
                 continue;
             }
             let names: Vec<String> = modules.into_iter().collect();
@@ -228,7 +228,13 @@ pub fn analyze(
             };
             findings.push(finding);
         }
-        findings.extend(survey.unresolved.into_values());
+        findings.extend(
+            survey
+                .unresolved
+                .into_iter()
+                .filter(|(module, _)| !is_own_package(scope, module))
+                .map(|(_, finding)| finding),
+        );
     }
     findings.sort_by(|a, b| a.path.cmp(&b.path).then(a.position.cmp(&b.position)));
 
@@ -250,6 +256,12 @@ pub fn analyze(
         findings,
         kept: Vec::new(),
     }
+}
+
+/// Whether `module` names the project's own distribution, which an example or
+/// a script inside the project may import like any other package.
+fn is_own_package(scope: &ManifestScope, module: &str) -> bool {
+    scope.name.as_ref() == Some(&DistributionName::normalize(module))
 }
 
 /// The declared dependency whose own requirements, transitively, bring in
@@ -452,17 +464,19 @@ mod tests {
                 distributions: vec![DistributionName::normalize("openai")],
             },
         );
+        let unresolved = index.add_file("/proj/examples/other.py", "examples.other");
+        index.add_external_import(unresolved, "openai", ImportOrigin::Unresolved);
         let mut scopes = scopes(&["httpx"]);
         scopes[0].name = Some(DistributionName::normalize("openai"));
 
         let report = analyze(&index, &scopes, &Config::default(), Utf8Path::new("/proj"));
 
         assert!(
-            !report
-                .findings
-                .iter()
-                .any(|finding| finding.rule == Rule::MissingDependency),
-            "an example importing the project itself is not a missing dependency: {:?}",
+            !report.findings.iter().any(|finding| matches!(
+                finding.rule,
+                Rule::MissingDependency | Rule::UnresolvedImport
+            )),
+            "an example importing the project itself is neither missing nor unresolved: {:?}",
             rules(&report)
         );
     }

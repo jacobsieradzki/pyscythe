@@ -1,11 +1,10 @@
 files_scanned=987
 symbols_checked=42
 symbols_kept=0
-findings=29
+findings=28
 --
 unresolved-import	low	docs/examples/guide/reactivity/world_clock01.py:3:1		import `pytz` resolves to nothing on the search path
 unresolved-import	low	docs/examples/widgets/text_area_custom_language.py:3:1		import `tree_sitter_languages` resolves to nothing on the search path
-unresolved-import	low	examples/mother.py:17:1		import `textual` resolves to nothing on the search path
 unresolved-import	low	examples/mother.py:23:12		import `llm` resolves to nothing on the search path
 unused-dependency	low	pyproject.toml	griffe	dependency `griffe` (dependency-groups.dev) is never imported
 unused-dependency	medium	pyproject.toml	mdit-py-plugins	dependency `mdit-py-plugins` is never imported
