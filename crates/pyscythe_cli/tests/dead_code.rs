@@ -724,3 +724,28 @@ fn a_projects_own_test_base_collects_its_subclasses_and_test_data_is_input() {
         "a base under a testing package collects, and test-data is input: {report}"
     );
 }
+
+#[test]
+fn ansible_plugins_and_modules_are_found_by_the_plugin_loader() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("ansible_plugins"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let mut reported: Vec<String> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .map(|f| {
+            let name = f["symbol"].as_str().unwrap_or("-");
+            format!("{}:{name}", f["rule"].as_str().unwrap_or("?"))
+        })
+        .collect();
+    reported.sort();
+    assert_eq!(
+        reported,
+        ["unused-function:forgotten_helper"],
+        "plugin and module trees are loaded by name; utils is ordinary code: {report}"
+    );
+}

@@ -1,7 +1,7 @@
 files_scanned=1850
 symbols_checked=13871
-symbols_kept=2418
-findings=604
+symbols_kept=2906
+findings=266
 --
 unused-file	medium	hacking/ansible-profile.py	-	file `ansible-profile.py` is never imported or run
 unused-method	low	lib/ansible/_internal/_task.py:97:9	loop_result	method `CurrentTask.loop_result` is never used
@@ -14,18 +14,6 @@ unused-method	medium	lib/ansible/_internal/_templating/_jinja_bits.py:772:9	_acc
 unused-variable	low	lib/ansible/_internal/_templating/_transform.py:16:1	display	variable `display` is never used
 unused-file	medium	lib/ansible/_internal/_testing.py	-	file `lib.ansible._internal._testing` is never imported or run
 unused-variable	low	lib/ansible/_internal/_yaml/_dumper.py:20:1	display	variable `display` is never used
-unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/action/debug.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.action.debug` is never imported or run
-unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/apply_trust.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.apply_trust` is never imported or run
-unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/dump_object.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.dump_object` is never imported or run
-unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/finalize.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.finalize` is never imported or run
-unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/origin.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.origin` is never imported or run
-unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/python_literal_eval.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.python_literal_eval` is never imported or run
-unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/tag_names.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.tag_names` is never imported or run
-unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/true_type.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.true_type` is never imported or run
-unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/filter/unmask.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.filter.unmask` is never imported or run
-unused-file	medium	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/lookup/config.py	-	file `lib.ansible._internal.ansible_collections.ansible._protomatter.plugins.lookup.config` is never imported or run
-unused-class	low	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/test/tagged.py:12:7	TestModule	class `TestModule` is never used
-unused-class	low	lib/ansible/_internal/ansible_collections/ansible/_protomatter/plugins/test/tagged_with.py:15:7	TestModule	class `TestModule` is never used
 unused-method	low	lib/ansible/cli/console.py:501:9	complete_cd	method `ConsoleCLI.complete_cd` is never used
 unused-file	medium	lib/ansible/compat/importlib_resources.py	-	file `lib.ansible.compat.importlib_resources` is never imported or run
 unused-method	medium	lib/ansible/config/manager.py:475:9	_find_yaml_config_files	method `ConfigManager._find_yaml_config_files` is never used
@@ -85,228 +73,6 @@ unused-variable	medium	lib/ansible/module_utils/urls.py:91:5	HAS_GSSAPI	variable
 unused-method	low	lib/ansible/module_utils/urls.py:113:13	http_error_401	method `HTTPGSSAPIAuthHandler.http_error_401` is never used
 unused-class	medium	lib/ansible/module_utils/urls.py:192:7	ProxyError	class `ProxyError` is never used
 unused-class	medium	lib/ansible/module_utils/urls.py:205:7	NoSSLError	class `NoSSLError` is never used
-unused-file	medium	lib/ansible/modules/add_host.py	-	file `lib.ansible.modules.add_host` is never imported or run
-unused-variable	low	lib/ansible/modules/apt.py:12:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/apt.py:230:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/apt.py:340:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/apt_key.py:11:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/apt_key.py:90:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/apt_key.py:144:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/apt_key.py:187:1	locale	variable `locale` is never used
-unused-variable	low	lib/ansible/modules/apt_repository.py:12:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/apt_repository.py:109:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/apt_repository.py:153:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/assemble.py:11:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/assemble.py:107:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/assemble.py:126:1	RETURN	variable `RETURN` is never used
-unused-file	medium	lib/ansible/modules/assert.py	-	file `assert.py` is never imported or run
-unused-variable	low	lib/ansible/modules/async_status.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/async_status.py:59:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/async_status.py:83:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/blockinfile.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/blockinfile.py:137:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/command.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/command.py:122:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/command.py:178:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/copy.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/copy.py:159:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/copy.py:224:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/cron.py:13:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/cron.py:161:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/cron.py:216:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/deb822_repository.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/deb822_repository.py:177:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/deb822_repository.py:221:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/debconf.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/debconf.py:91:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/debconf.py:126:1	RETURN	variable `RETURN` is never used
-unused-file	medium	lib/ansible/modules/debug.py	-	file `lib.ansible.modules.debug` is never imported or run
-unused-variable	low	lib/ansible/modules/dnf5.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/dnf5.py:258:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/dnf5.py:331:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/dpkg_selections.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/dpkg_selections.py:43:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/expect.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/expect.py:88:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-file	medium	lib/ansible/modules/fail.py	-	file `lib.ansible.modules.fail` is never imported or run
-unused-file	medium	lib/ansible/modules/fetch.py	-	file `lib.ansible.modules.fetch` is never imported or run
-unused-variable	low	lib/ansible/modules/file.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/file.py:128:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/file.py:223:1	RETURN	variable `RETURN` is never used
-unused-class	medium	lib/ansible/modules/file.py:276:7	ParameterError	class `ParameterError` is never used
-unused-variable	low	lib/ansible/modules/find.py:12:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/find.py:180:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/find.py:251:1	RETURN	variable `RETURN` is never used
-unused-file	medium	lib/ansible/modules/gather_facts.py	-	file `lib.ansible.modules.gather_facts` is never imported or run
-unused-variable	low	lib/ansible/modules/get_url.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/get_url.py:224:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/get_url.py:277:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/getent.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/getent.py:64:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/getent.py:103:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/git.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/git.py:245:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/git.py:304:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/group.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/group.py:97:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/group.py:110:1	RETURN	variable `RETURN` is never used
-unused-class	low	lib/ansible/modules/group.py:280:7	Linux	class `Linux` is never used
-unused-class	low	lib/ansible/modules/group.py:305:7	SunOS	class `SunOS` is never used
-unused-class	low	lib/ansible/modules/group.py:338:7	AIX	class `AIX` is never used
-unused-class	medium	lib/ansible/modules/group.py:441:7	DragonFlyBsdGroup	class `DragonFlyBsdGroup` is never used
-unused-class	medium	lib/ansible/modules/group.py:452:7	DarwinGroup	class `DarwinGroup` is never used
-unused-class	medium	lib/ansible/modules/group.py:523:7	OpenBsdGroup	class `OpenBsdGroup` is never used
-unused-class	medium	lib/ansible/modules/group.py:577:7	NetBsdGroup	class `NetBsdGroup` is never used
-unused-class	medium	lib/ansible/modules/group.py:693:7	AlpineGroup	class `AlpineGroup` is never used
-unused-file	medium	lib/ansible/modules/group_by.py	-	file `lib.ansible.modules.group_by` is never imported or run
-unused-variable	low	lib/ansible/modules/hostname.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/hostname.py:56:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:171:7	CommandStrategy	class `CommandStrategy` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:635:7	SLESHostname	class `SLESHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:649:7	RHELHostname	class `RHELHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:655:7	CentOSHostname	class `CentOSHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:661:7	AnolisOSHostname	class `AnolisOSHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:667:7	CloudlinuxserverHostname	class `CloudlinuxserverHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:673:7	CloudlinuxHostname	class `CloudlinuxHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:679:7	AlinuxHostname	class `AlinuxHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:685:7	ScientificHostname	class `ScientificHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:691:7	OracleLinuxHostname	class `OracleLinuxHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:697:7	VirtuozzoLinuxHostname	class `VirtuozzoLinuxHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:703:7	AmazonLinuxHostname	class `AmazonLinuxHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:709:7	DebianHostname	class `DebianHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:715:7	KylinHostname	class `KylinHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:721:7	CumulusHostname	class `CumulusHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:727:7	KaliHostname	class `KaliHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:733:7	ParrotHostname	class `ParrotHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:739:7	UbuntuHostname	class `UbuntuHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:745:7	LinuxmintHostname	class `LinuxmintHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:751:7	LinaroHostname	class `LinaroHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:757:7	DevuanHostname	class `DevuanHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:763:7	RaspbianHostname	class `RaspbianHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:769:7	UosHostname	class `UosHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:775:7	DeepinHostname	class `DeepinHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:781:7	GentooHostname	class `GentooHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:787:7	ALTLinuxHostname	class `ALTLinuxHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:793:7	AlpineLinuxHostname	class `AlpineLinuxHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:799:7	OpenBSDHostname	class `OpenBSDHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:805:7	SolarisHostname	class `SolarisHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:811:7	FreeBSDHostname	class `FreeBSDHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:817:7	NetBSDHostname	class `NetBSDHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:823:7	NeonHostname	class `NeonHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:829:7	DarwinHostname	class `DarwinHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:835:7	VoidLinuxHostname	class `VoidLinuxHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:841:7	PopHostname	class `PopHostname` is never used
-unused-class	medium	lib/ansible/modules/hostname.py:847:7	EurolinuxHostname	class `EurolinuxHostname` is never used
-unused-file	medium	lib/ansible/modules/import_playbook.py	-	file `lib.ansible.modules.import_playbook` is never imported or run
-unused-file	medium	lib/ansible/modules/import_role.py	-	file `lib.ansible.modules.import_role` is never imported or run
-unused-file	medium	lib/ansible/modules/import_tasks.py	-	file `lib.ansible.modules.import_tasks` is never imported or run
-unused-file	medium	lib/ansible/modules/include_role.py	-	file `lib.ansible.modules.include_role` is never imported or run
-unused-file	medium	lib/ansible/modules/include_tasks.py	-	file `lib.ansible.modules.include_tasks` is never imported or run
-unused-file	medium	lib/ansible/modules/include_vars.py	-	file `lib.ansible.modules.include_vars` is never imported or run
-unused-variable	low	lib/ansible/modules/iptables.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/iptables.py:401:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	medium	lib/ansible/modules/iptables.py:561:1	BINS	variable `BINS` is never used
-unused-function	medium	lib/ansible/modules/iptables.py:614:5	append_wait	function `append_wait` is never used
-unused-variable	low	lib/ansible/modules/known_hosts.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/known_hosts.py:70:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/lineinfile.py:11:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/lineinfile.py:164:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/lineinfile.py:249:1	RETURN	variable `RETURN` is never used
-unused-file	medium	lib/ansible/modules/meta.py	-	file `lib.ansible.modules.meta` is never imported or run
-unused-variable	low	lib/ansible/modules/mount_facts.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/mount_facts.py:87:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/mount_facts.py:122:1	RETURN	variable `RETURN` is never used
-unused-file	medium	lib/ansible/modules/package.py	-	file `lib.ansible.modules.package` is never imported or run
-unused-variable	low	lib/ansible/modules/package_facts.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/package_facts.py:72:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/package_facts.py:88:1	RETURN	variable `RETURN` is never used
-unused-class	medium	lib/ansible/modules/package_facts.py:269:7	RPM	class `RPM` is never used
-unused-class	medium	lib/ansible/modules/package_facts.py:302:7	APT	class `APT` is never used
-unused-class	medium	lib/ansible/modules/package_facts.py:329:7	PACMAN	class `PACMAN` is never used
-unused-class	medium	lib/ansible/modules/package_facts.py:368:7	PKG	class `PKG` is never used
-unused-class	medium	lib/ansible/modules/package_facts.py:412:7	PORTAGE	class `PORTAGE` is never used
-unused-class	medium	lib/ansible/modules/package_facts.py:427:7	APK	class `APK` is never used
-unused-class	medium	lib/ansible/modules/package_facts.py:443:7	PKG_INFO	class `PKG_INFO` is never used
-unused-file	medium	lib/ansible/modules/pause.py	-	file `lib.ansible.modules.pause` is never imported or run
-unused-variable	low	lib/ansible/modules/pip.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/pip.py:152:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/pip.py:269:1	RETURN	variable `RETURN` is never used
-unused-file	medium	lib/ansible/modules/raw.py	-	file `lib.ansible.modules.raw` is never imported or run
-unused-file	medium	lib/ansible/modules/reboot.py	-	file `lib.ansible.modules.reboot` is never imported or run
-unused-variable	low	lib/ansible/modules/replace.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/replace.py:111:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/replace.py:180:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/rpm_key.py:11:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/rpm_key.py:58:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/rpm_key.py:87:1	RETURN	variable `RETURN` is never used
-unused-file	medium	lib/ansible/modules/script.py	-	file `lib.ansible.modules.script` is never imported or run
-unused-variable	low	lib/ansible/modules/service.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/service.py:119:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/service.py:158:1	RETURN	variable `RETURN` is never used
-unused-class	medium	lib/ansible/modules/service.py:989:7	HurdService	class `HurdService` is never used
-unused-class	medium	lib/ansible/modules/service.py:1110:7	DragonFlyBsdService	class `DragonFlyBsdService` is never used
-unused-class	medium	lib/ansible/modules/service.py:1136:7	OpenBsdService	class `OpenBsdService` is never used
-unused-class	medium	lib/ansible/modules/service.py:1209:7	NetBsdService	class `NetBsdService` is never used
-unused-class	low	lib/ansible/modules/service.py:1265:7	SunOSService	class `SunOSService` is never used
-unused-class	low	lib/ansible/modules/service.py:1399:7	AIX	class `AIX` is never used
-unused-variable	low	lib/ansible/modules/service_facts.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/service_facts.py:41:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/service_facts.py:63:1	RETURN	variable `RETURN` is never used
-unused-file	medium	lib/ansible/modules/set_fact.py	-	file `lib.ansible.modules.set_fact` is never imported or run
-unused-file	medium	lib/ansible/modules/set_stats.py	-	file `lib.ansible.modules.set_stats` is never imported or run
-unused-variable	low	lib/ansible/modules/setup.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/setup.py:115:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-file	medium	lib/ansible/modules/shell.py	-	file `lib.ansible.modules.shell` is never imported or run
-unused-variable	low	lib/ansible/modules/slurp.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/slurp.py:53:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/slurp.py:85:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/stat.py:8:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/stat.py:71:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/stat.py:136:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/subversion.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/subversion.py:111:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/subversion.py:131:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/systemd.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/systemd.py:103:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/systemd.py:154:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/systemd_service.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/systemd_service.py:103:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/systemd_service.py:154:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/sysvinit.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/sysvinit.py:82:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/sysvinit.py:105:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/tempfile.py:10:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/tempfile.py:60:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/tempfile.py:85:1	RETURN	variable `RETURN` is never used
-unused-file	medium	lib/ansible/modules/template.py	-	file `lib.ansible.modules.template` is never imported or run
-unused-variable	low	lib/ansible/modules/unarchive.py:13:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/unarchive.py:155:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/unarchive.py:182:1	RETURN	variable `RETURN` is never used
-unused-function	medium	lib/ansible/modules/unarchive.py:311:5	shell_escape	function `shell_escape` is never used
-unused-variable	low	lib/ansible/modules/uri.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/uri.py:245:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/uri.py:384:1	RETURN	variable `RETURN` is never used
-unused-variable	low	lib/ansible/modules/user.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/user.py:337:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/user.py:403:1	RETURN	variable `RETURN` is never used
-unused-class	medium	lib/ansible/modules/user.py:1736:7	DragonFlyBsdUser	class `DragonFlyBsdUser` is never used
-unused-class	medium	lib/ansible/modules/user.py:1747:7	OpenBSDUser	class `OpenBSDUser` is never used
-unused-class	medium	lib/ansible/modules/user.py:1936:7	NetBSDUser	class `NetBSDUser` is never used
-unused-class	low	lib/ansible/modules/user.py:2116:7	SunOS	class `SunOS` is never used
-unused-class	medium	lib/ansible/modules/user.py:2418:7	DarwinUser	class `DarwinUser` is never used
-unused-class	low	lib/ansible/modules/user.py:2777:7	AIX	class `AIX` is never used
-unused-class	low	lib/ansible/modules/user.py:2993:7	HPUX	class `HPUX` is never used
-unused-class	low	lib/ansible/modules/user.py:3398:7	Alpine	class `Alpine` is never used
-unused-class	low	lib/ansible/modules/user.py:3407:7	Buildroot	class `Buildroot` is never used
-unused-file	medium	lib/ansible/modules/validate_argument_spec.py	-	file `lib.ansible.modules.validate_argument_spec` is never imported or run
-unused-variable	low	lib/ansible/modules/wait_for.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/wait_for.py:127:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/wait_for.py:212:1	RETURN	variable `RETURN` is never used
-unused-class	medium	lib/ansible/modules/wait_for.py:345:7	LinuxTCPConnectionInfo	class `LinuxTCPConnectionInfo` is never used
-unused-file	medium	lib/ansible/modules/wait_for_connection.py	-	file `lib.ansible.modules.wait_for_connection` is never imported or run
-unused-variable	low	lib/ansible/modules/yum_repository.py:9:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/modules/yum_repository.py:280:1	EXAMPLES	variable `EXAMPLES` is never used
-unused-variable	low	lib/ansible/modules/yum_repository.py:322:1	RETURN	variable `RETURN` is never used
 unused-file	medium	lib/ansible/parsing/ajson.py	-	file `lib.ansible.parsing.ajson` is never imported or run
 unused-file	medium	lib/ansible/parsing/utils/jsonify.py	-	file `lib.ansible.parsing.utils.jsonify` is never imported or run
 unused-file	medium	lib/ansible/parsing/yaml/objects.py	-	file `lib.ansible.parsing.yaml.objects` is never imported or run
@@ -321,46 +87,6 @@ unused-variable	low	lib/ansible/playbook/role_include.py:30:1	display	variable `
 unused-method	medium	lib/ansible/playbook/task.py:159:9	_merge_kv	method `Task._merge_kv` is never used
 unused-variable	low	lib/ansible/plugins/__init__.py:34:1	display	variable `display` is never used
 unused-method	medium	lib/ansible/plugins/__init__.py:168:9	_check_required	method `AnsiblePlugin._check_required` is never used
-unused-function	low	lib/ansible/plugins/action/__init__.py:53:5	_validate_utf8_json	function `_validate_utf8_json` is never used
-unused-file	medium	lib/ansible/plugins/action/add_host.py	-	file `lib.ansible.plugins.action.add_host` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/assemble.py	-	file `lib.ansible.plugins.action.assemble` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/assert.py	-	file `assert.py` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/async_status.py	-	file `lib.ansible.plugins.action.async_status` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/command.py	-	file `lib.ansible.plugins.action.command` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/copy.py	-	file `lib.ansible.plugins.action.copy` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/debug.py	-	file `lib.ansible.plugins.action.debug` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/fail.py	-	file `lib.ansible.plugins.action.fail` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/fetch.py	-	file `lib.ansible.plugins.action.fetch` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/gather_facts.py	-	file `lib.ansible.plugins.action.gather_facts` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/group_by.py	-	file `lib.ansible.plugins.action.group_by` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/include_vars.py	-	file `lib.ansible.plugins.action.include_vars` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/normal.py	-	file `lib.ansible.plugins.action.normal` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/package.py	-	file `lib.ansible.plugins.action.package` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/pause.py	-	file `lib.ansible.plugins.action.pause` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/raw.py	-	file `lib.ansible.plugins.action.raw` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/reboot.py	-	file `lib.ansible.plugins.action.reboot` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/script.py	-	file `lib.ansible.plugins.action.script` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/service.py	-	file `lib.ansible.plugins.action.service` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/set_fact.py	-	file `lib.ansible.plugins.action.set_fact` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/set_stats.py	-	file `lib.ansible.plugins.action.set_stats` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/shell.py	-	file `lib.ansible.plugins.action.shell` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/template.py	-	file `lib.ansible.plugins.action.template` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/unarchive.py	-	file `lib.ansible.plugins.action.unarchive` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/uri.py	-	file `lib.ansible.plugins.action.uri` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/validate_argument_spec.py	-	file `lib.ansible.plugins.action.validate_argument_spec` is never imported or run
-unused-file	medium	lib/ansible/plugins/action/wait_for_connection.py	-	file `lib.ansible.plugins.action.wait_for_connection` is never imported or run
-unused-variable	low	lib/ansible/plugins/become/runas.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-file	medium	lib/ansible/plugins/become/su.py	-	file `lib.ansible.plugins.become.su` is never imported or run
-unused-file	medium	lib/ansible/plugins/become/sudo.py	-	file `lib.ansible.plugins.become.sudo` is never imported or run
-unused-file	medium	lib/ansible/plugins/cache/jsonfile.py	-	file `lib.ansible.plugins.cache.jsonfile` is never imported or run
-unused-file	medium	lib/ansible/plugins/cache/memory.py	-	file `lib.ansible.plugins.cache.memory` is never imported or run
-unused-variable	low	lib/ansible/plugins/callback/default.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/plugins/callback/junit.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/plugins/callback/minimal.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/plugins/callback/oneline.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/plugins/callback/tree.py:7:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-function	medium	lib/ansible/plugins/cliconf/__init__.py:35:5	enable_mode	function `enable_mode` is never used
-unused-class	low	lib/ansible/plugins/cliconf/__init__.py:45:7	CliconfBase	class `CliconfBase` is never used
 unused-method	medium	lib/ansible/plugins/cliconf/__init__.py:85:9	_alarm_handler	method `CliconfBase._alarm_handler` is never used
 unused-method	low	lib/ansible/plugins/cliconf/__init__.py:150:9	reset_history	method `CliconfBase.reset_history` is never used
 unused-method	low	lib/ansible/plugins/cliconf/__init__.py:322:9	rollback	method `CliconfBase.rollback` is never used
@@ -369,87 +95,26 @@ unused-method	low	lib/ansible/plugins/cliconf/__init__.py:412:9	run_commands	met
 unused-method	low	lib/ansible/plugins/cliconf/__init__.py:432:9	check_edit_config_capability	method `CliconfBase.check_edit_config_capability` is never used
 unused-method	low	lib/ansible/plugins/cliconf/__init__.py:449:9	set_cli_prompt_context	method `CliconfBase.set_cli_prompt_context` is never used
 unused-method	medium	lib/ansible/plugins/cliconf/__init__.py:456:9	_update_cli_prompt_context	method `CliconfBase._update_cli_prompt_context` is never used
-unused-class	medium	lib/ansible/plugins/connection/__init__.py:329:7	NetworkConnectionBase	class `NetworkConnectionBase` is never used
 unused-method	medium	lib/ansible/plugins/connection/__init__.py:454:9	_log_messages	method `NetworkConnectionBase._log_messages` is never used
-unused-file	medium	lib/ansible/plugins/connection/psrp.py	-	file `lib.ansible.plugins.connection.psrp` is never imported or run
-unused-file	medium	lib/ansible/plugins/connection/ssh.py	-	file `lib.ansible.plugins.connection.ssh` is never imported or run
-unused-file	medium	lib/ansible/plugins/connection/winrm.py	-	file `lib.ansible.plugins.connection.winrm` is never imported or run
-unused-file	medium	lib/ansible/plugins/filter/core.py	-	file `lib.ansible.plugins.filter.core` is never imported or run
-unused-file	medium	lib/ansible/plugins/filter/encryption.py	-	file `lib.ansible.plugins.filter.encryption` is never imported or run
-unused-file	medium	lib/ansible/plugins/filter/mathstuff.py	-	file `lib.ansible.plugins.filter.mathstuff` is never imported or run
-unused-file	medium	lib/ansible/plugins/filter/urls.py	-	file `lib.ansible.plugins.filter.urls` is never imported or run
-unused-file	medium	lib/ansible/plugins/filter/urlsplit.py	-	file `lib.ansible.plugins.filter.urlsplit` is never imported or run
-unused-class	low	lib/ansible/plugins/httpapi/__init__.py:11:7	HttpApiBase	class `HttpApiBase` is never used
 unused-method	low	lib/ansible/plugins/httpapi/__init__.py:19:9	set_become	method `HttpApiBase.set_become` is never used
 unused-method	low	lib/ansible/plugins/httpapi/__init__.py:32:9	logout	method `HttpApiBase.logout` is never used
 unused-method	low	lib/ansible/plugins/httpapi/__init__.py:40:9	update_auth	method `HttpApiBase.update_auth` is never used
 unused-method	low	lib/ansible/plugins/httpapi/__init__.py:53:9	handle_httperror	method `HttpApiBase.handle_httperror` is never used
 unused-method	low	lib/ansible/plugins/httpapi/__init__.py:84:9	send_request	method `HttpApiBase.send_request` is never used
-unused-class	medium	lib/ansible/plugins/inventory/__init__.py:316:7	Cacheable	class `Cacheable` is never used
 unused-method	low	lib/ansible/plugins/inventory/__init__.py:338:9	clear_cache	method `Cacheable.clear_cache` is never used
 unused-method	low	lib/ansible/plugins/inventory/__init__.py:344:9	set_cache_plugin	method `Cacheable.set_cache_plugin` is never used
-unused-file	medium	lib/ansible/plugins/inventory/advanced_host_list.py	-	file `lib.ansible.plugins.inventory.advanced_host_list` is never imported or run
-unused-file	medium	lib/ansible/plugins/inventory/auto.py	-	file `lib.ansible.plugins.inventory.auto` is never imported or run
-unused-file	medium	lib/ansible/plugins/inventory/constructed.py	-	file `lib.ansible.plugins.inventory.constructed` is never imported or run
-unused-file	medium	lib/ansible/plugins/inventory/generator.py	-	file `lib.ansible.plugins.inventory.generator` is never imported or run
-unused-file	medium	lib/ansible/plugins/inventory/host_list.py	-	file `lib.ansible.plugins.inventory.host_list` is never imported or run
-unused-file	medium	lib/ansible/plugins/inventory/ini.py	-	file `lib.ansible.plugins.inventory.ini` is never imported or run
-unused-file	medium	lib/ansible/plugins/inventory/script.py	-	file `lib.ansible.plugins.inventory.script` is never imported or run
-unused-file	medium	lib/ansible/plugins/inventory/toml.py	-	file `lib.ansible.plugins.inventory.toml` is never imported or run
-unused-file	medium	lib/ansible/plugins/inventory/yaml.py	-	file `lib.ansible.plugins.inventory.yaml` is never imported or run
 unused-function	medium	lib/ansible/plugins/list.py:143:5	list_collection_plugins	function `list_collection_plugins` is never used
 unused-function	medium	lib/ansible/plugins/list.py:265:5	list_plugin_names	function `list_plugin_names` is never used
 unused-function	medium	lib/ansible/plugins/list.py:269:5	list_plugin_files	function `list_plugin_files` is never used
 unused-function	medium	lib/ansible/plugins/list.py:274:5	list_plugin_classes	function `list_plugin_classes` is never used
 unused-function	medium	lib/ansible/plugins/loader.py:132:5	add_dirs_to_loader	function `add_dirs_to_loader` is never used
-unused-file	medium	lib/ansible/plugins/lookup/config.py	-	file `lib.ansible.plugins.lookup.config` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/csvfile.py	-	file `lib.ansible.plugins.lookup.csvfile` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/dict.py	-	file `lib.ansible.plugins.lookup.dict` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/env.py	-	file `lib.ansible.plugins.lookup.env` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/file.py	-	file `lib.ansible.plugins.lookup.file` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/fileglob.py	-	file `lib.ansible.plugins.lookup.fileglob` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/first_found.py	-	file `lib.ansible.plugins.lookup.first_found` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/indexed_items.py	-	file `lib.ansible.plugins.lookup.indexed_items` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/ini.py	-	file `lib.ansible.plugins.lookup.ini` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/inventory_hostnames.py	-	file `lib.ansible.plugins.lookup.inventory_hostnames` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/items.py	-	file `lib.ansible.plugins.lookup.items` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/lines.py	-	file `lib.ansible.plugins.lookup.lines` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/list.py	-	file `lib.ansible.plugins.lookup.list` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/nested.py	-	file `lib.ansible.plugins.lookup.nested` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/password.py	-	file `lib.ansible.plugins.lookup.password` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/pipe.py	-	file `lib.ansible.plugins.lookup.pipe` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/random_choice.py	-	file `lib.ansible.plugins.lookup.random_choice` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/sequence.py	-	file `lib.ansible.plugins.lookup.sequence` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/subelements.py	-	file `lib.ansible.plugins.lookup.subelements` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/template.py	-	file `lib.ansible.plugins.lookup.template` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/together.py	-	file `lib.ansible.plugins.lookup.together` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/unvault.py	-	file `lib.ansible.plugins.lookup.unvault` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/url.py	-	file `lib.ansible.plugins.lookup.url` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/varnames.py	-	file `lib.ansible.plugins.lookup.varnames` is never imported or run
-unused-file	medium	lib/ansible/plugins/lookup/vars.py	-	file `lib.ansible.plugins.lookup.vars` is never imported or run
-unused-function	medium	lib/ansible/plugins/netconf/__init__.py:47:5	ensure_ncclient	function `ensure_ncclient` is never used
-unused-class	low	lib/ansible/plugins/netconf/__init__.py:56:7	NetconfBase	class `NetconfBase` is never used
 unused-method	low	lib/ansible/plugins/netconf/__init__.py:311:9	guess_network_os	method `NetconfBase.guess_network_os` is never used
-unused-variable	low	lib/ansible/plugins/shell/cmd.py:5:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-variable	low	lib/ansible/plugins/shell/powershell.py:6:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-file	medium	lib/ansible/plugins/shell/sh.py	-	file `lib.ansible.plugins.shell.sh` is never imported or run
-unused-function	high	lib/ansible/plugins/strategy/__init__.py:73:5	_get_item_vars	function `_get_item_vars` is never used
-unused-file	medium	lib/ansible/plugins/strategy/debug.py	-	file `lib.ansible.plugins.strategy.debug` is never imported or run
-unused-variable	low	lib/ansible/plugins/strategy/free.py:19:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-file	medium	lib/ansible/plugins/strategy/host_pinned.py	-	file `lib.ansible.plugins.strategy.host_pinned` is never imported or run
-unused-variable	low	lib/ansible/plugins/strategy/linear.py:19:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-class	low	lib/ansible/plugins/terminal/__init__.py:28:7	TerminalBase	class `TerminalBase` is never used
 unused-method	medium	lib/ansible/plugins/terminal/__init__.py:66:9	_exec_cli_command	method `TerminalBase._exec_cli_command` is never used
 unused-method	medium	lib/ansible/plugins/terminal/__init__.py:74:9	_get_prompt	method `TerminalBase._get_prompt` is never used
 unused-method	low	lib/ansible/plugins/terminal/__init__.py:82:9	on_open_shell	method `TerminalBase.on_open_shell` is never used
 unused-method	low	lib/ansible/plugins/terminal/__init__.py:91:9	on_close_shell	method `TerminalBase.on_close_shell` is never used
 unused-method	low	lib/ansible/plugins/terminal/__init__.py:122:9	on_authorize	method `TerminalBase.on_authorize` is never used
 unused-method	low	lib/ansible/plugins/terminal/__init__.py:129:9	on_deauthorize	method `TerminalBase.on_deauthorize` is never used
-unused-class	low	lib/ansible/plugins/test/core.py:299:7	TestModule	class `TestModule` is never used
-unused-class	low	lib/ansible/plugins/test/files.py:23:7	TestModule	class `TestModule` is never used
-unused-class	low	lib/ansible/plugins/test/mathstuff.py:46:7	TestModule	class `TestModule` is never used
-unused-class	low	lib/ansible/plugins/test/uri.py:32:7	TestModule	class `TestModule` is never used
-unused-file	medium	lib/ansible/plugins/vars/host_group_vars.py	-	file `lib.ansible.plugins.vars.host_group_vars` is never imported or run
 unused-variable	medium	lib/ansible/template/__init__.py:30:1	AnsibleUndefined	variable `AnsibleUndefined` is never used
 unused-function	low	lib/ansible/template/__init__.py:350:5	generate_ansible_template_vars	function `generate_ansible_template_vars` is never used
 unused-function	medium	lib/ansible/template/__init__.py:377:5	is_trusted_as_template	function `is_trusted_as_template` is never used
@@ -544,8 +209,6 @@ unused-class	medium	test/lib/ansible_test/_internal/provider/layout/ansible.py:1
 unused-class	medium	test/lib/ansible_test/_internal/provider/layout/collection.py:19:7	CollectionLayout	class `CollectionLayout` is never used
 unused-class	medium	test/lib/ansible_test/_internal/provider/source/git.py:25:7	GitSource	class `GitSource` is never used
 unused-variable	medium	test/lib/ansible_test/_internal/util.py:98:1	MODE_FILE_WRITE	variable `MODE_FILE_WRITE` is never used
-unused-variable	low	test/lib/ansible_test/_util/controller/ansible_collections/ansible_test/_internal/plugins/callback/timeout.py:15:1	DOCUMENTATION	variable `DOCUMENTATION` is never used
-unused-class	low	test/lib/ansible_test/_util/controller/ansible_collections/ansible_test/_internal/plugins/callback/timeout.py:35:7	CallbackModule	class `CallbackModule` is never used
 unused-method	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/deprecated_calls.py:231:9	visit_call	method `AnsibleDeprecatedChecker.visit_call` is never used
 unused-function	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/deprecated_calls.py:542:5	register	function `register` is never used
 unused-method	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/deprecated_comment.py:54:9	process_tokens	method `AnsibleDeprecatedCommentChecker.process_tokens` is never used
@@ -606,4 +269,3 @@ unused-function	low	test/units/module_utils/facts/test_timeout.py:121:5	function
 unused-method	low	test/units/module_utils/urls/test_gzip.py:28:9	makefile	method `Sock.makefile` is never used
 unused-function	low	test/units/modules/test_iptables.py:17:5	_mock_basic_commands	function `_mock_basic_commands` is never used
 unused-method	medium	test/units/parsing/yaml/test_loader.py:197:9	_encrypt_plaintext	method `TestAnsibleLoaderVault._encrypt_plaintext` is never used
-unused-function	low	test/units/plugins/connection/test_ssh.py:320:5	mock_run_env	function `mock_run_env` is never used

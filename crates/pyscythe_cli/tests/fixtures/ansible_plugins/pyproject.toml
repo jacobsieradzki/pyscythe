@@ -1,0 +1,8 @@
+[project]
+name = "ansible-plugins"
+version = "0.0.0"
+requires-python = ">=3.12"
+
+[tool.ty.environment]
+# The package lives under lib/, as ansible-core does.
+root = ["./lib"]

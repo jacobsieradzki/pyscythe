@@ -8,6 +8,7 @@ use crate::keep::KeepRule;
 
 mod airflow;
 mod alembic;
+mod ansible;
 mod celery;
 mod click;
 mod django;
@@ -38,6 +39,7 @@ pub fn all() -> Vec<Box<dyn KeepRule>> {
         Box::new(graphene::Graphene),
         Box::new(textual::Textual),
         Box::new(homeassistant::HomeAssistant),
+        Box::new(ansible::Ansible),
         Box::new(alembic::Alembic),
         Box::new(sqlalchemy::SqlAlchemy),
         Box::new(pydantic::Pydantic),

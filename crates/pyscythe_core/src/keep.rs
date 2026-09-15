@@ -46,6 +46,8 @@ pub enum PluginName {
     Pydantic,
     /// Home Assistant integrations: platforms, setup hooks, config flows.
     HomeAssistant,
+    /// Ansible plugins and modules found by the plugin loader.
+    Ansible,
 }
 
 impl PluginName {
@@ -67,6 +69,7 @@ impl PluginName {
             Self::Alembic => "alembic",
             Self::SqlAlchemy => "sqlalchemy",
             Self::HomeAssistant => "homeassistant",
+            Self::Ansible => "ansible",
             Self::Pydantic => "pydantic",
         }
     }
