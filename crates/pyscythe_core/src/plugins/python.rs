@@ -145,6 +145,26 @@ mod tests {
     }
 
     #[test]
+    fn keeps_scenarios_an_integration_harness_copies_into_place() {
+        assert!(
+            Case::function("main")
+                .at("/p/test/integration/targets/demo/library/mod.py")
+                .is_kept_by(&Python)
+        );
+        assert!(
+            Case::function("assist")
+                .at("/p/test/support/helper/plugins/thing.py")
+                .is_kept_by(&Python)
+        );
+        assert!(
+            !Case::function("assist")
+                .at("/p/pkg/support/thing.py")
+                .is_kept_by(&Python),
+            "a support directory in the source tree is ordinary code"
+        );
+    }
+
+    #[test]
     fn keeps_http_method_handlers_on_request_handler_subclasses() {
         assert!(
             Case::method("do_GET")

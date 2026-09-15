@@ -635,3 +635,24 @@ fn files_a_type_checker_reads_are_not_dead_but_a_module_named_typing_is_ordinary
         "typing tests are checked rather than called; `pkg/typing.py` is source: {report}"
     );
 }
+
+#[test]
+fn integration_harness_targets_are_data_but_real_test_modules_are_not() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("harness_targets"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let reported: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["symbol"].as_str())
+        .collect();
+    assert_eq!(
+        reported,
+        ["forgotten_helper"],
+        "the harness copies targets and support trees into place: {report}"
+    );
+}

@@ -374,8 +374,10 @@ fn django_settings_files(index: &dyn CodebaseIndex) -> BTreeSet<FileId> {
     settings
 }
 
-/// Whether the file is data or a helper script under a tests tree: an addon
-/// the tests load by path, a fixture module, a one-off leak hunter.
+/// Whether the file is data or a helper script under a tests tree.
+///
+/// An addon the tests load by path, a fixture module, a one-off leak hunter,
+/// or a scenario an integration harness copies into place and runs.
 #[must_use]
 pub fn is_test_data_file(file: &SourceFile) -> bool {
     const DATA_DIRECTORIES: &[&str] = &[
@@ -391,6 +393,10 @@ pub fn is_test_data_file(file: &SourceFile) -> bool {
         "cases",
         "samples",
         "snapshots",
+        // Scenarios and vendored collections that an integration harness
+        // copies into place and executes; nothing imports them.
+        "targets",
+        "support",
     ];
     let Some(dir) = file.relative_path.parent() else {
         return false;
