@@ -1,7 +1,7 @@
 files_scanned=1206
 symbols_checked=18495
-symbols_kept=10190
-findings=69
+symbols_kept=10207
+findings=52
 --
 unused-file	medium	frontend/app/performance/apps/blank_app.py	-	file `blank_app.py` is never imported or run
 unused-file	medium	frontend/app/performance/apps/crud_app.py	-	file `crud_app.py` is never imported or run
@@ -55,20 +55,3 @@ unused-function	low	lib/tests/streamlit/runtime/state/session_state_proxy_test.p
 unused-method	low	lib/tests/streamlit/runtime/state/widgets_test.py:315:9	coalesce_widget_states_returns_None_if_both_inputs_None	method `WidgetManagerTests.coalesce_widget_states_returns_None_if_both_inputs_None` is never used
 unused-method	low	lib/tests/streamlit/runtime/state/widgets_test.py:318:9	coalesce_widget_states_returns_old_states_if_new_states_None	method `WidgetManagerTests.coalesce_widget_states_returns_old_states_if_new_states_None` is never used
 unused-method	low	lib/tests/streamlit/runtime/state/widgets_test.py:322:9	coalesce_widget_states_returns_new_states_if_old_states_None	method `WidgetManagerTests.coalesce_widget_states_returns_new_states_if_old_states_None` is never used
-unused-function	low	lib/tests/streamlit/typing/app_types.py:202:15	asgi	function `asgi` is never used
-unused-function	low	lib/tests/streamlit/typing/cache_types.py:60:15	check_cached_async_data_fn	function `check_cached_async_data_fn` is never used
-unused-function	low	lib/tests/streamlit/typing/cache_types.py:99:15	check_cached_async_resource_fn	function `check_cached_async_resource_fn` is never used
-unused-variable	high	lib/tests/streamlit/typing/expander_container_types.py:38:5	_expander_as_delta_generator	variable `_expander_as_delta_generator` is never used
-unused-variable	high	lib/tests/streamlit/typing/popover_container_types.py:38:5	_popover_as_delta_generator	variable `_popover_as_delta_generator` is never used
-unused-variable	low	lib/tests/streamlit/typing/spinner_types.py:33:5	ctx	variable `ctx` is never used
-unused-variable	low	lib/tests/streamlit/typing/spinner_types.py:41:5	ctx	variable `ctx` is never used
-unused-variable	low	lib/tests/streamlit/typing/spinner_types.py:42:5	ctx	variable `ctx` is never used
-unused-variable	low	lib/tests/streamlit/typing/spinner_types.py:45:5	ctx	variable `ctx` is never used
-unused-variable	low	lib/tests/streamlit/typing/spinner_types.py:46:5	ctx	variable `ctx` is never used
-unused-variable	low	lib/tests/streamlit/typing/spinner_types.py:49:5	ctx	variable `ctx` is never used
-unused-variable	low	lib/tests/streamlit/typing/spinner_types.py:52:5	ctx	variable `ctx` is never used
-unused-variable	low	lib/tests/streamlit/typing/spinner_types.py:55:5	ctx	variable `ctx` is never used
-unused-variable	low	lib/tests/streamlit/typing/spinner_types.py:56:5	ctx	variable `ctx` is never used
-unused-variable	low	lib/tests/streamlit/typing/spinner_types.py:59:5	ctx	variable `ctx` is never used
-unused-variable	high	lib/tests/streamlit/typing/status_container_types.py:38:5	_status_as_delta_generator	variable `_status_as_delta_generator` is never used
-unused-variable	high	lib/tests/streamlit/typing/tab_container_types.py:46:5	_tabs_as_delta_generators	variable `_tabs_as_delta_generators` is never used

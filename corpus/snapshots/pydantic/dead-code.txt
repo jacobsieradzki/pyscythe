@@ -1,7 +1,7 @@
 files_scanned=449
 symbols_checked=9873
-symbols_kept=5291
-findings=138
+symbols_kept=5315
+findings=114
 --
 unused-function	medium	.github/actions/people/people.py:451:5	get_issues_experts	function `get_issues_experts` is never used
 unused-variable	medium	.github/actions/people/people.py:679:19	pr_commentors	variable `pr_commentors` is never used
@@ -115,29 +115,5 @@ unused-variable	low	tests/test_types_typeddict.py:526:1	T	variable `T` is never 
 unused-variable	medium	tests/test_typing.py:25:1	ALL_TYPEDDICT_KINDS	variable `ALL_TYPEDDICT_KINDS` is never used
 unused-function	medium	tests/test_validate_call.py:70:5	validate_bare_none	function `validate_bare_none` is never used
 unused-variable	low	tests/test_validate_call.py:1284:1	M	variable `M` is never used
-unused-variable	low	tests/typechecking/base_model.py:19:1	m2	variable `m2` is never used
-unused-variable	medium	tests/typechecking/base_model.py:21:1	m3	variable `m3` is never used
-unused-variable	low	tests/typechecking/computed_field.py:23:1	y	variable `y` is never used
-unused-variable	low	tests/typechecking/computed_field.py:24:1	z	variable `z` is never used
-unused-variable	medium	tests/typechecking/computed_field.py:25:1	y_cached	variable `y_cached` is never used
-unused-variable	medium	tests/typechecking/computed_field.py:26:1	z_cached	variable `z_cached` is never used
-unused-variable	low	tests/typechecking/fields.py:10:1	m	variable `m` is never used
-unused-variable	medium	tests/typechecking/json_schema_examples.py:3:1	e_good	variable `e_good` is never used
-unused-variable	medium	tests/typechecking/json_schema_examples.py:4:1	e_deprecated	variable `e_deprecated` is never used
-unused-function	low	tests/typechecking/misc.py:13:5	func	function `func` is never used
-unused-variable	low	tests/typechecking/pipeline_api.py:10:1	a1	variable `a1` is never used
-unused-variable	low	tests/typechecking/pipeline_api.py:11:1	a2	variable `a2` is never used
-unused-variable	low	tests/typechecking/pipeline_api.py:12:1	a3	variable `a3` is never used
-unused-variable	medium	tests/typechecking/pipeline_api.py:14:1	a4	variable `a4` is never used
-unused-variable	medium	tests/typechecking/pipeline_api.py:15:1	a5	variable `a5` is never used
-unused-variable	medium	tests/typechecking/pipeline_api.py:16:1	a6	variable `a6` is never used
-unused-variable	medium	tests/typechecking/pipeline_api.py:25:1	a7	variable `a7` is never used
-unused-variable	medium	tests/typechecking/pipeline_api.py:26:1	a8	variable `a8` is never used
-unused-variable	medium	tests/typechecking/pipeline_api.py:27:1	a9	variable `a9` is never used
-unused-variable	medium	tests/typechecking/root_model.py:8:1	bad_root_model	variable `bad_root_model` is never used
-unused-function	medium	tests/typechecking/secret.py:7:5	secret_usage	function `secret_usage` is never used
-unused-variable	low	tests/typechecking/type_form.py:5:1	Model	variable `Model` is never used
-unused-class	low	tests/typechecking/with_config_decorator.py:14:7	Model2	class `Model2` is never used
-unused-class	low	tests/typechecking/with_config_decorator.py:19:7	Model3	class `Model3` is never used
 unused-method	low	tests/types/unions/test_union.py:303:13	do_something	method `ABC_1.do_something` is never used
 unused-method	low	tests/types/unions/test_union.py:308:13	do_something_else	method `ABC_2.do_something_else` is never used

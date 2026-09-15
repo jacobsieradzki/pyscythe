@@ -614,3 +614,24 @@ fn classes_named_for_tests_are_collected_whatever_the_suffix() {
         "`*Test` and `*Tests` are collected; a class with neither is not: {report}"
     );
 }
+
+#[test]
+fn files_a_type_checker_reads_are_not_dead_but_a_module_named_typing_is_ordinary() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("typing_tests"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let reported: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["module"].as_str())
+        .collect();
+    assert_eq!(
+        reported,
+        ["pkg.typing"],
+        "typing tests are checked rather than called; `pkg/typing.py` is source: {report}"
+    );
+}

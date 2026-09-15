@@ -1,7 +1,7 @@
 files_scanned=56
 symbols_checked=1310
-symbols_kept=836
-findings=18
+symbols_kept=875
+findings=15
 --
 unused-variable	low	src/attr/__init__.py:36:1	dataclass	variable `dataclass` is never used
 unused-file	medium	src/attr/_cmp.py	-	file `attr._cmp` is never imported or run
@@ -18,6 +18,3 @@ unused-method	low	tests/test_functional.py:364:17	compute	method `C.compute` is 
 unused-method	low	tests/test_make.py:1206:17	_init_to_init	method `KwArgBeforeInitFalse._init_to_init` is never used
 unused-method	low	tests/test_make.py:1237:17	_init_to_init	method `KwArgBeforeInitFalseChild._init_to_init` is never used
 unused-method	low	tests/test_make.py:1778:17	_convert_x	method `C._convert_x` is never used
-unused-file	medium	typing_tests/baseline.py	-	file `typing_tests.baseline` is never imported or run
-unused-file	medium	typing_tests/mypy.py	-	file `typing_tests.mypy` is never imported or run
-unused-file	medium	typing_tests/pyrefly.py	-	file `typing_tests.pyrefly` is never imported or run

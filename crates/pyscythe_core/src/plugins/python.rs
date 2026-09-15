@@ -52,6 +52,9 @@ impl KeepRule for Python {
         if crate::dead_code::is_test_data_file(context.file) {
             return Some("test data or helper script under the tests tree");
         }
+        if crate::dead_code::is_typing_test_file(context.file) {
+            return Some("read by a type checker rather than run");
+        }
         if symbol.kind == crate::symbol::SymbolKind::Method
             && symbol.name.as_str().starts_with("do_")
             && context.ancestry.has_ancestor_in("http.server")
@@ -71,6 +74,26 @@ impl KeepRule for Python {
 mod tests {
     use super::Python;
     use crate::plugins::testing::Case;
+
+    #[test]
+    fn keeps_files_a_type_checker_reads_but_not_a_source_module_named_typing() {
+        assert!(
+            Case::function("accepts_a_string")
+                .at("/p/tests/typing/check_core.py")
+                .is_kept_by(&Python)
+        );
+        assert!(
+            Case::function("returns_a_string")
+                .at("/p/typing_tests/baseline.py")
+                .is_kept_by(&Python)
+        );
+        assert!(
+            !Case::function("forgotten")
+                .at("/p/pkg/typing.py")
+                .is_kept_by(&Python),
+            "a source module named typing is ordinary code"
+        );
+    }
 
     #[test]
     fn keeps_everything_in_example_and_benchmark_directories() {

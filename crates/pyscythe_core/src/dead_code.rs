@@ -408,6 +408,34 @@ pub fn is_test_data_file(file: &SourceFile) -> bool {
     false
 }
 
+/// Whether the file is checked by a type checker rather than run: mypy and
+/// pyright read these and the assertions are the inferred types, so nothing
+/// calls what they define.
+///
+/// A `typing` directory only counts inside a tests tree, since a package may
+/// have a source module of that name.
+#[must_use]
+pub fn is_typing_test_file(file: &SourceFile) -> bool {
+    const CHECKED_DIRECTORIES: &[&str] = &["typing", "typechecking", "type_checking"];
+    let Some(dir) = file.relative_path.parent() else {
+        return false;
+    };
+    let mut in_tests = false;
+    for component in dir.components() {
+        let name = component.as_str();
+        if name == "typing_tests" || name == "typing-tests" {
+            return true;
+        }
+        if in_tests && CHECKED_DIRECTORIES.contains(&name) {
+            return true;
+        }
+        if name == "tests" || name == "test" {
+            in_tests = true;
+        }
+    }
+    false
+}
+
 fn unused_files<'a>(
     index: &'a dyn CodebaseIndex,
     manifest: &Manifest,
