@@ -1,7 +1,7 @@
 files_scanned=987
 symbols_checked=9736
-symbols_kept=2156
-findings=220
+symbols_kept=2244
+findings=132
 --
 unused-function	medium	src/textual/_ansi_sequences.py:440:5	set_pointer_shape	function `set_pointer_shape` is never used
 unused-variable	medium	src/textual/_border.py:17:1	INNER	variable `INNER` is never used
@@ -15,21 +15,7 @@ unused-method	low	src/textual/_text_area_theme.py:172:9	get_highlight	method `Te
 unused-method	low	src/textual/_two_way_dict.py:57:9	contains_value	method `TwoWayDict.contains_value` is never used
 unused-class	medium	src/textual/_types.py:19:7	EventTarget	class `EventTarget` is never used
 unused-method	low	src/textual/app.py:1469:9	unregister_theme	method `App.unregister_theme` is never used
-unused-method	medium	src/textual/app.py:3544:15	_on_compose	method `App._on_compose` is never used
 unused-method	medium	src/textual/app.py:3680:9	_unregister	method `App._unregister` is never used
-unused-method	medium	src/textual/app.py:3766:15	_on_exit_app	method `App._on_exit_app` is never used
-unused-method	medium	src/textual/app.py:4335:15	_on_update	method `App._on_update` is never used
-unused-method	medium	src/textual/app.py:4338:15	_on_layout	method `App._on_layout` is never used
-unused-method	medium	src/textual/app.py:4341:15	_on_key	method `App._on_key` is never used
-unused-method	medium	src/textual/app.py:4345:15	_on_resize	method `App._on_resize` is never used
-unused-method	medium	src/textual/app.py:4358:15	_on_app_focus	method `App._on_app_focus` is never used
-unused-method	medium	src/textual/app.py:4364:15	_on_app_blur	method `App._on_app_blur` is never used
-unused-method	medium	src/textual/app.py:4581:9	_on_terminal_supports_synchronized_output	method `App._on_terminal_supports_synchronized_output` is never used
-unused-method	medium	src/textual/app.py:4682:9	_on_notify	method `App._on_notify` is never used
-unused-method	low	src/textual/app.py:4997:9	_on_delivery_complete	method `App._on_delivery_complete` is never used
-unused-method	low	src/textual/app.py:5009:9	_on_delivery_failed	method `App._on_delivery_failed` is never used
-unused-method	low	src/textual/app.py:5017:9	_on_in_band_window_resize	method `App._on_in_band_window_resize` is never used
-unused-method	medium	src/textual/app.py:5022:9	_on_idle	method `App._on_idle` is never used
 unused-method	low	src/textual/await_complete.py:68:9	is_done	method `AwaitComplete.is_done` is never used
 unused-method	low	src/textual/command.py:1178:9	_input	method `CommandPalette._input` is never used
 unused-method	low	src/textual/command.py:1190:9	_select_command	method `CommandPalette._select_command` is never used
@@ -82,17 +68,8 @@ unused-file	low	src/textual/pad.py	-	file `textual.pad` is never imported or run
 unused-method	low	src/textual/pilot.py:251:15	double_click	method `Pilot.double_click` is never used
 unused-method	low	src/textual/pilot.py:300:15	triple_click	method `Pilot.triple_click` is never used
 unused-class	medium	src/textual/renderables/gradient.py:13:7	VerticalGradient	class `VerticalGradient` is never used
-unused-method	medium	src/textual/screen.py:1398:15	_on_update	method `Screen._on_update` is never used
-unused-method	medium	src/textual/screen.py:1408:15	_on_layout	method `Screen._on_layout` is never used
-unused-method	medium	src/textual/screen.py:1430:15	_on_update_scroll	method `Screen._on_update_scroll` is never used
-unused-method	medium	src/textual/screen.py:1465:9	_on_screen_resume	method `Screen._on_screen_resume` is never used
-unused-method	medium	src/textual/screen.py:1502:9	_on_screen_suspend	method `Screen._on_screen_suspend` is never used
-unused-method	medium	src/textual/screen.py:1510:15	_on_resize	method `Screen._on_resize` is never used
 unused-method	medium	src/textual/screen.py:1961:9	_collect_select_widgets	method `Screen._collect_select_widgets` is never used
 unused-method	low	src/textual/scroll_view.py:168:9	refresh_line	method `ScrollView.refresh_line` is never used
-unused-method	medium	src/textual/scrollbar.py:362:9	_on_mouse_capture	method `ScrollBar._on_mouse_capture` is never used
-unused-method	medium	src/textual/scrollbar.py:370:9	_on_mouse_release	method `ScrollBar._on_mouse_release` is never used
-unused-method	medium	src/textual/scrollbar.py:378:15	_on_mouse_move	method `ScrollBar._on_mouse_move` is never used
 unused-method	low	src/textual/style.py:521:9	has_transparent_foreground	method `Style.has_transparent_foreground` is never used
 unused-function	medium	src/textual/visual.py:30:5	is_visual	function `is_visual` is never used
 unused-method	medium	src/textual/visual.py:286:9	_measure	method `RichVisual._measure` is never used
@@ -106,101 +83,36 @@ unused-method	low	src/textual/widget.py:2208:9	scrollable_size	method `Widget.sc
 unused-method	low	src/textual/widget.py:2309:9	container_viewport	method `Widget.container_viewport` is never used
 unused-method	low	src/textual/widget.py:2394:9	container_scroll_offset	method `Widget.container_scroll_offset` is never used
 unused-method	medium	src/textual/widget.py:2402:9	_console	method `Widget._console` is never used
-unused-method	medium	src/textual/widget.py:4537:15	_on_idle	method `Widget._on_idle` is never used
-unused-method	medium	src/textual/widget.py:4689:15	_on_mouse_down	method `Widget._on_mouse_down` is never used
-unused-method	medium	src/textual/widget.py:4692:15	_on_mouse_up	method `Widget._on_mouse_up` is never used
-unused-method	medium	src/textual/widget.py:4705:15	_on_key	method `Widget._on_key` is never used
-unused-method	medium	src/textual/widget.py:4711:15	_on_compose	method `Widget._on_compose` is never used
-unused-method	medium	src/textual/widget.py:4750:9	_on_mount	method `Widget._on_mount` is never used
-unused-method	medium	src/textual/widget.py:4756:9	_on_leave	method `Widget._on_leave` is never used
-unused-method	medium	src/textual/widget.py:4761:9	_on_enter	method `Widget._on_enter` is never used
-unused-method	medium	src/textual/widget.py:4765:9	_on_focus	method `Widget._on_focus` is never used
-unused-method	medium	src/textual/widget.py:4771:9	_on_blur	method `Widget._on_blur` is never used
-unused-method	medium	src/textual/widget.py:4777:9	_on_mouse_scroll_down	method `Widget._on_mouse_scroll_down` is never used
-unused-method	medium	src/textual/widget.py:4787:9	_on_mouse_scroll_up	method `Widget._on_mouse_scroll_up` is never used
-unused-method	medium	src/textual/widget.py:4797:9	_on_mouse_scroll_right	method `Widget._on_mouse_scroll_right` is never used
-unused-method	medium	src/textual/widget.py:4802:9	_on_mouse_scroll_left	method `Widget._on_mouse_scroll_left` is never used
-unused-method	medium	src/textual/widget.py:4807:9	_on_scroll_to	method `Widget._on_scroll_to` is never used
-unused-method	medium	src/textual/widget.py:4812:9	_on_scroll_up	method `Widget._on_scroll_up` is never used
-unused-method	medium	src/textual/widget.py:4817:9	_on_scroll_down	method `Widget._on_scroll_down` is never used
-unused-method	medium	src/textual/widget.py:4822:9	_on_scroll_left	method `Widget._on_scroll_left` is never used
-unused-method	medium	src/textual/widget.py:4827:9	_on_scroll_right	method `Widget._on_scroll_right` is never used
-unused-method	medium	src/textual/widget.py:4832:9	_on_show	method `Widget._on_show` is never used
-unused-method	medium	src/textual/widget.py:4838:9	_on_hide	method `Widget._on_hide` is never used
-unused-method	medium	src/textual/widget.py:4846:9	_on_scroll_to_region	method `Widget._on_scroll_to_region` is never used
-unused-method	medium	src/textual/widget.py:4849:9	_on_unmount	method `Widget._on_unmount` is never used
-unused-method	medium	src/textual/widgets/_collapsible.py:210:9	_on_collapsible_title_toggle	method `Collapsible._on_collapsible_title_toggle` is never used
-unused-method	medium	src/textual/widgets/_data_table.py:1133:9	_on_resize	method `DataTable._on_resize` is never used
-unused-method	medium	src/textual/widgets/_data_table.py:2555:9	_on_mouse_move	method `DataTable._on_mouse_move` is never used
-unused-method	medium	src/textual/widgets/_directory_tree.py:563:15	_on_tree_node_expanded	method `DirectoryTree._on_tree_node_expanded` is never used
-unused-method	medium	src/textual/widgets/_directory_tree.py:575:15	_on_tree_node_selected	method `DirectoryTree._on_tree_node_selected` is never used
 unused-method	low	src/textual/widgets/_input.py:489:9	cursor_at_start	method `Input.cursor_at_start` is never used
-unused-method	medium	src/textual/widgets/_input.py:800:15	_on_mouse_release	method `Input._on_mouse_release` is never used
-unused-method	medium	src/textual/widgets/_input.py:806:15	_on_mouse_move	method `Input._on_mouse_move` is never used
-unused-method	medium	src/textual/widgets/_input.py:816:15	_on_suggestion_ready	method `Input._on_suggestion_ready` is never used
-unused-method	medium	src/textual/widgets/_list_view.py:388:9	_on_list_item__child_clicked	method `ListView._on_list_item__child_clicked` is never used
 unused-method	medium	src/textual/widgets/_markdown.py:682:9	_update_content	method `MarkdownTableContent._update_content` is never used
 unused-method	medium	src/textual/widgets/_markdown.py:1359:9	_build_from_source	method `Markdown._build_from_source` is never used
-unused-method	medium	src/textual/widgets/_markdown.py:1591:15	_on_tree_node_selected	method `MarkdownTableOfContents._on_tree_node_selected` is never used
-unused-method	medium	src/textual/widgets/_markdown.py:1694:15	_on_markdown_link_clicked	method `MarkdownViewer._on_markdown_link_clicked` is never used
-unused-method	medium	src/textual/widgets/_markdown.py:1709:9	_on_markdown_table_of_contents_updated	method `MarkdownViewer._on_markdown_table_of_contents_updated` is never used
-unused-method	medium	src/textual/widgets/_markdown.py:1717:9	_on_markdown_table_of_contents_selected	method `MarkdownViewer._on_markdown_table_of_contents_selected` is never used
 unused-file	low	src/textual/widgets/_markdown_viewer.py	-	file `textual.widgets._markdown_viewer` is never imported or run
 unused-method	low	src/textual/widgets/_option_list.py:315:9	highlighted_option	method `OptionList.highlighted_option` is never used
-unused-method	medium	src/textual/widgets/_option_list.py:712:9	_on_resize	method `OptionList._on_resize` is never used
-unused-method	medium	src/textual/widgets/_option_list.py:740:9	_on_mouse_move	method `OptionList._on_mouse_move` is never used
 unused-method	medium	src/textual/widgets/_option_list.py:874:9	_get_line	method `OptionList._get_line` is never used
-unused-method	medium	src/textual/widgets/_placeholder.py:182:9	_on_resize	method `Placeholder._on_resize` is never used
-unused-method	medium	src/textual/widgets/_radio_set.py:223:9	_on_radio_button_changed	method `RadioSet._on_radio_button_changed` is never used
-unused-method	medium	src/textual/widgets/_radio_set.py:252:9	_on_radio_set_changed	method `RadioSet._on_radio_set_changed` is never used
 unused-variable	medium	src/textual/widgets/_select.py:278:1	SelectOption	variable `SelectOption` is never used
 unused-method	low	src/textual/widgets/_select.py:653:9	_select_current_toggle	method `Select._select_current_toggle` is never used
 unused-method	low	src/textual/widgets/_select.py:659:9	_select_overlay_dismiss	method `Select._select_overlay_dismiss` is never used
 unused-method	low	src/textual/widgets/_select.py:668:9	_update_selection	method `Select._update_selection` is never used
-unused-method	medium	src/textual/widgets/_selection_list.py:569:9	_on_option_list_option_highlighted	method `SelectionList._on_option_list_option_highlighted` is never used
-unused-method	medium	src/textual/widgets/_selection_list.py:580:9	_on_option_list_option_selected	method `SelectionList._on_option_list_option_selected` is never used
 unused-file	low	src/textual/widgets/_tab.py	-	file `textual.widgets._tab` is never imported or run
 unused-file	low	src/textual/widgets/_tab_pane.py	-	file `textual.widgets._tab_pane` is never imported or run
-unused-method	medium	src/textual/widgets/_tabbed_content.py:233:9	_on_descendant_focus	method `TabPane._on_descendant_focus` is never used
-unused-method	medium	src/textual/widgets/_tabbed_content.py:504:9	_on_tabs_tab_activated	method `TabbedContent._on_tabs_tab_activated` is never used
-unused-method	medium	src/textual/widgets/_tabbed_content.py:528:9	_on_tab_pane_focused	method `TabbedContent._on_tab_pane_focused` is never used
-unused-method	medium	src/textual/widgets/_tabbed_content.py:534:9	_on_tabs_cleared	method `TabbedContent._on_tabs_cleared` is never used
-unused-method	medium	src/textual/widgets/_tabbed_content.py:624:9	_on_tabs_tab_disabled	method `TabbedContent._on_tabs_tab_disabled` is never used
-unused-method	medium	src/textual/widgets/_tabbed_content.py:638:9	_on_tab_pane_disabled	method `TabbedContent._on_tab_pane_disabled` is never used
-unused-method	medium	src/textual/widgets/_tabbed_content.py:647:9	_on_tabs_tab_enabled	method `TabbedContent._on_tabs_tab_enabled` is never used
-unused-method	medium	src/textual/widgets/_tabbed_content.py:661:9	_on_tab_pane_enabled	method `TabbedContent._on_tab_pane_enabled` is never used
-unused-method	medium	src/textual/widgets/_tabs.py:689:15	_on_tab_clicked	method `Tabs._on_tab_clicked` is never used
-unused-method	medium	src/textual/widgets/_tabs.py:705:9	_on_underline_clicked	method `Tabs._on_underline_clicked` is never used
-unused-method	medium	src/textual/widgets/_tabs.py:731:9	_on_resize	method `Tabs._on_resize` is never used
-unused-method	medium	src/textual/widgets/_tabs.py:764:9	_on_tab_disabled	method `Tabs._on_tab_disabled` is never used
-unused-method	medium	src/textual/widgets/_tabs.py:769:9	_on_tab_enabled	method `Tabs._on_tab_enabled` is never used
-unused-method	medium	src/textual/widgets/_tabs.py:774:9	_on_tab_relabelled	method `Tabs._on_tab_relabelled` is never used
 unused-method	medium	src/textual/widgets/_text_area.py:1189:9	_visible_line_indices	method `TextArea._visible_line_indices` is never used
-unused-method	medium	src/textual/widgets/_text_area.py:1217:9	_on_resize	method `TextArea._on_resize` is never used
 unused-method	low	src/textual/widgets/_text_area.py:1242:9	is_syntax_aware	method `TextArea.is_syntax_aware` is never used
 unused-method	low	src/textual/widgets/_text_area.py:1654:9	matching_bracket_location	method `TextArea.matching_bracket_location` is never used
-unused-method	medium	src/textual/widgets/_text_area.py:1959:15	_on_mouse_move	method `TextArea._on_mouse_move` is never used
 unused-method	low	src/textual/widgets/_text_area.py:2171:9	cursor_at_first_line	method `TextArea.cursor_at_first_line` is never used
 unused-method	low	src/textual/widgets/_tree.py:979:9	move_cursor_to_line	method `Tree.move_cursor_to_line` is never used
 unused-method	low	src/textual/widgets/_tree.py:1007:9	unselect	method `Tree.unselect` is never used
 unused-method	low	src/textual/widgets/_tree.py:1013:9	_expand_node_on_select	method `Tree._expand_node_on_select` is never used
-unused-method	medium	src/textual/widgets/_tree.py:1081:9	_on_mouse_move	method `Tree._on_mouse_move` is never used
 unused-method	medium	src/textual/widgets/_tree.py:1221:9	_refresh_node_line	method `Tree._refresh_node_line` is never used
-unused-method	medium	src/textual/widgets/_tree.py:1441:9	_on_resize	method `Tree._on_resize` is never used
 unused-file	low	src/textual/widgets/directory_tree.py	-	file `textual.widgets.directory_tree` is never imported or run
 unused-method	low	tests/command_palette/test_events.py:34:9	record_event	method `AppWithActiveCommandPalette.record_event` is never used
 unused-method	low	tests/input/test_input_messages.py:23:9	log_message	method `InputApp.log_message` is never used
-unused-method	medium	tests/listview/test_listview_navigation.py:20:9	_on_list_view_highlighted	method `ListViewDisabledItemsApp._on_list_view_highlighted` is never used
-unused-method	medium	tests/listview/test_listview_remove_items.py:43:9	_on_list_view_highlighted	method `ListViewApp._on_list_view_highlighted` is never used
 unused-method	low	tests/option_list/test_option_list_mouse_click.py:20:9	log_option_message	method `OptionListApp.log_option_message` is never used
-unused-method	medium	tests/option_list/test_option_list_movement.py:183:9	_on_option_list_option_highlighted	method `OptionListDisabledOptionsApp._on_option_list_option_highlighted` is never used
 unused-method	low	tests/select/test_changed_message.py:16:9	add_message	method `SelectApp.add_message` is never used
 unused-method	low	tests/snapshot_tests/snapshot_apps/auto-table.py:144:9	status	method `Sidebar.status` is never used
 unused-method	low	tests/snapshot_tests/test_snapshots.py:3663:13	add_more_stuff	method `FocusTest.add_more_stuff` is never used
 unused-method	low	tests/test_collapsible.py:131:13	catch_collapsible_events	method `CollapsibleApp.catch_collapsible_events` is never used
 unused-method	low	tests/test_markdown.py:156:13	log_table_of_content_update	method `TableOfContentApp.log_table_of_content_update` is never used
 unused-method	low	tests/test_markdown.py:191:13	log_markdown_link_clicked	method `MarkdownTableApp.log_markdown_link_clicked` is never used
-unused-method	medium	tests/test_message_pump.py:157:13	_on_button_pressed	method `MyButton._on_button_pressed` is never used
 unused-method	low	tests/test_on.py:210:13	catch_either	method `InheritTestApp.catch_either` is never used
 unused-method	low	tests/test_on.py:242:13	catch_either	method `InheritTestApp.catch_either` is never used
 unused-method	low	tests/test_on.py:246:13	catch_selector_list_one_miss	method `InheritTestApp.catch_selector_list_one_miss` is never used

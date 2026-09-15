@@ -36,6 +36,8 @@ pub enum PluginName {
     Django,
     /// GraphQL schema hooks: resolvers, mutations, entity references.
     Graphene,
+    /// Textual message handlers named from the message class.
+    Textual,
     /// Alembic migration scripts.
     Alembic,
     /// `SQLAlchemy` event listeners.
@@ -61,6 +63,7 @@ impl PluginName {
             Self::Airflow => "airflow",
             Self::Django => "django",
             Self::Graphene => "graphene",
+            Self::Textual => "textual",
             Self::Alembic => "alembic",
             Self::SqlAlchemy => "sqlalchemy",
             Self::HomeAssistant => "homeassistant",

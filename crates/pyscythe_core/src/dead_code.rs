@@ -442,6 +442,26 @@ pub fn is_typing_test_file(file: &SourceFile) -> bool {
     false
 }
 
+/// Whether the file is third-party code carried in the repository.
+///
+/// A vendored library is copied from upstream verbatim and updated by
+/// re-copying it, so the parts this project does not call are upstream's
+/// business, not dead code here.
+#[must_use]
+pub fn is_vendored_file(file: &SourceFile) -> bool {
+    const VENDOR_DIRECTORIES: &[&str] = &[
+        "_vendor",
+        "vendor",
+        "_vendored",
+        "vendored",
+        "third_party",
+        "thirdparty",
+    ];
+    file.relative_path
+        .components()
+        .any(|component| VENDOR_DIRECTORIES.contains(&component.as_str()))
+}
+
 fn unused_files<'a>(
     index: &'a dyn CodebaseIndex,
     manifest: &Manifest,

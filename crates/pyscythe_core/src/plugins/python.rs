@@ -55,6 +55,9 @@ impl KeepRule for Python {
         if crate::dead_code::is_typing_test_file(context.file) {
             return Some("read by a type checker rather than run");
         }
+        if crate::dead_code::is_vendored_file(context.file) {
+            return Some("vendored third-party code, updated by re-copying it");
+        }
         if symbol.kind == crate::symbol::SymbolKind::Method
             && symbol.name.as_str().starts_with("do_")
             && context.ancestry.has_ancestor_in("http.server")
@@ -140,6 +143,25 @@ mod tests {
         assert!(
             !Case::function("load")
                 .at("/p/pkg/data/loader.py")
+                .is_kept_by(&Python)
+        );
+    }
+
+    #[test]
+    fn keeps_vendored_third_party_trees() {
+        assert!(
+            Case::function("connect")
+                .at("/p/pkg/_vendor/tinylib/api.py")
+                .is_kept_by(&Python)
+        );
+        assert!(
+            Case::function("helper")
+                .at("/p/pkg/vendor/bundled.py")
+                .is_kept_by(&Python)
+        );
+        assert!(
+            !Case::function("start")
+                .at("/p/pkg/core/engine.py")
                 .is_kept_by(&Python)
         );
     }

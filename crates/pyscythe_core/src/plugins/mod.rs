@@ -20,6 +20,7 @@ mod pydantic;
 mod pytest;
 mod python;
 mod sqlalchemy;
+mod textual;
 
 /// Every built-in plugin, in the order their rules are consulted.
 #[must_use]
@@ -35,6 +36,7 @@ pub fn all() -> Vec<Box<dyn KeepRule>> {
         Box::new(airflow::Airflow),
         Box::new(django::Django),
         Box::new(graphene::Graphene),
+        Box::new(textual::Textual),
         Box::new(homeassistant::HomeAssistant),
         Box::new(alembic::Alembic),
         Box::new(sqlalchemy::SqlAlchemy),

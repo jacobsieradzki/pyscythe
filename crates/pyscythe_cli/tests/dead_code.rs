@@ -656,3 +656,46 @@ fn integration_harness_targets_are_data_but_real_test_modules_are_not() {
         "the harness copies targets and support trees into place: {report}"
     );
 }
+
+#[test]
+fn vendored_third_party_code_is_not_this_projects_dead_code() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("vendored"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let reported: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["symbol"].as_str())
+        .collect();
+    assert_eq!(
+        reported,
+        ["stop"],
+        "vendored trees are carried verbatim; only our own code is ours: {report}"
+    );
+}
+
+#[test]
+fn textual_dispatches_messages_to_handlers_it_names_at_runtime() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("textual_app"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let mut reported: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["symbol"].as_str())
+        .collect();
+    reported.sort_unstable();
+    assert_eq!(
+        reported,
+        ["_on_mount", "helper"],
+        "handlers on a message pump are kept; the same name elsewhere is not: {report}"
+    );
+}

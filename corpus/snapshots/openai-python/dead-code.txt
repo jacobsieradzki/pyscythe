@@ -1,7 +1,7 @@
 files_scanned=2156
 symbols_checked=14343
-symbols_kept=4437
-findings=213
+symbols_kept=4438
+findings=212
 --
 unused-method	low	src/openai/_event_handler.py:64:9	has_handlers	method `EventHandlerRegistry.has_handlers` is never used
 unused-method	low	src/openai/_legacy_response.py:431:9	write_to_file	method `HttpxBinaryResponseContent.write_to_file` is never used
@@ -17,7 +17,6 @@ unused-variable	medium	src/openai/_types.py:44:1	AsyncTransport	variable `AsyncT
 unused-variable	medium	src/openai/_types.py:189:1	Omittable	variable `Omittable` is never used
 unused-function	medium	src/openai/_utils/_compat.py:40:5	parse_date	function `parse_date` is never used
 unused-function	medium	src/openai/_utils/_compat.py:44:5	parse_datetime	function `parse_datetime` is never used
-unused-variable	medium	src/openai/_vendor/httpx_aiohttp/client.py:8:1	SOCKET_OPTION	variable `SOCKET_OPTION` is never used
 unused-method	low	src/openai/helpers/local_audio_player.py:104:15	play_stream	method `LocalAudioPlayer.play_stream` is never used
 unused-variable	high	src/openai/lib/_parsing/_completions.py:38:1	_default_response_format	variable `_default_response_format` is never used
 unused-function	medium	src/openai/lib/_parsing/_completions.py:55:5	select_strict_chat_completion_tools	function `select_strict_chat_completion_tools` is never used
