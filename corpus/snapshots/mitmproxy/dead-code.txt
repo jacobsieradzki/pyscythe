@@ -1,7 +1,7 @@
 files_scanned=583
 symbols_checked=5888
-symbols_kept=1086
-findings=45
+symbols_kept=1087
+findings=44
 --
 unused-variable	medium	mitmproxy/addons/core.py:18:1	CONF_DIR	variable `CONF_DIR` is never used
 unused-variable	medium	mitmproxy/addons/core.py:19:1	LISTEN_PORT	variable `LISTEN_PORT` is never used
@@ -47,4 +47,3 @@ unused-variable	medium	test/mitmproxy/proxy/layers/http/test_http_version_intero
 unused-method	low	test/mitmproxy/test_command.py:52:9	choose	method `TAddon.choose` is never used
 unused-method	low	test/mitmproxy/test_flow.py:29:9	websocket_start	method `State.websocket_start` is never used
 unused-method	medium	test/mitmproxy/test_http.py:794:9	_2host	method `TestHeaders._2host` is never used
-unused-class	low	test/mitmproxy/utils/test_typecheck.py:19:7	T	class `T` is never used

@@ -398,12 +398,17 @@ pub fn is_test_data_file(file: &SourceFile) -> bool {
         "targets",
         "support",
     ];
+    // Names that say what they hold need no tests tree above them.
+    const SELF_DESCRIBING: &[&str] = &["testdata", "test_data", "test-data", "tests_data"];
     let Some(dir) = file.relative_path.parent() else {
         return false;
     };
     let mut in_tests = false;
     for component in dir.components() {
         let name = component.as_str();
+        if SELF_DESCRIBING.contains(&name) {
+            return true;
+        }
         if in_tests && DATA_DIRECTORIES.contains(&name) {
             return true;
         }

@@ -699,3 +699,28 @@ fn textual_dispatches_messages_to_handlers_it_names_at_runtime() {
         "handlers on a message pump are kept; the same name elsewhere is not: {report}"
     );
 }
+
+#[test]
+fn a_projects_own_test_base_collects_its_subclasses_and_test_data_is_input() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("test_base"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let mut reported: Vec<String> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .map(|f| {
+            let name = f["symbol"].as_str().unwrap_or("-");
+            format!("{}:{name}", f["rule"].as_str().unwrap_or("?"))
+        })
+        .collect();
+    reported.sort();
+    assert_eq!(
+        reported,
+        ["unused-class:Detached", "unused-method:helper"],
+        "a base under a testing package collects, and test-data is input: {report}"
+    );
+}

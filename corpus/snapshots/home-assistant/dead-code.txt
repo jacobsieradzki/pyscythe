@@ -1,7 +1,7 @@
 files_scanned=18735
 symbols_checked=173455
-symbols_kept=57423
-findings=3005
+symbols_kept=57424
+findings=3004
 --
 unused-variable	low	homeassistant/auth/mfa_modules/insecure_example.py:16:1	CONFIG_SCHEMA	variable `CONFIG_SCHEMA` is never used
 unused-class	low	homeassistant/auth/mfa_modules/insecure_example.py:29:7	InsecureExampleModule	class `InsecureExampleModule` is never used
@@ -2172,7 +2172,6 @@ unused-variable	medium	tests/components/bthome/__init__.py:62:1	INVALID_PAYLOAD	
 unused-variable	low	tests/components/bthome/test_binary_sensor.py:31:1	_LOGGER	variable `_LOGGER` is never used
 unused-variable	low	tests/components/bthome/test_sensor.py:31:1	_LOGGER	variable `_LOGGER` is never used
 unused-variable	medium	tests/components/camera/test_webrtc.py:35:1	TEST_INTEGRATION_DOMAIN	variable `TEST_INTEGRATION_DOMAIN` is never used
-unused-class	medium	tests/components/camera/test_webrtc.py:38:7	Go2RTCProvider	class `Go2RTCProvider` is never used
 unused-function	medium	tests/components/camera/test_webrtc.py:223:11	provide_webrtc_answer	function `provide_webrtc_answer` is never used
 unused-variable	medium	tests/components/canary/__init__.py:33:1	YAML_CONFIG	variable `YAML_CONFIG` is never used
 unused-variable	medium	tests/components/cast/test_media_player.py:63:1	FAKE_HOST_SERVICE	variable `FAKE_HOST_SERVICE` is never used

@@ -1,7 +1,7 @@
 files_scanned=442
 symbols_checked=10998
-symbols_kept=241
-findings=223
+symbols_kept=323
+findings=141
 --
 unused-function	medium	misc/analyze_cache.py:74:5	pluck	function `pluck` is never used
 unused-file	medium	misc/build_wheel.py	-	file `misc.build_wheel` is never imported or run
@@ -39,29 +39,6 @@ unused-variable	medium	mypy/subtypes.py:87:1	TypeParameterChecker	variable `Type
 unused-function	low	mypy/test/data.py:821:5	is_incremental	function `is_incremental` is never used
 unused-function	medium	mypy/test/data.py:825:5	has_stable_flags	function `has_stable_flags` is never used
 unused-function	medium	mypy/test/helpers.py:39:5	run_mypy	function `run_mypy` is never used
-unused-class	medium	mypy/test/test_nativeparse.py:52:7	NativeParserSuite	class `NativeParserSuite` is never used
-unused-class	medium	mypy/test/test_nativeparse.py:65:7	NativeParserImportsSuite	class `NativeParserImportsSuite` is never used
-unused-class	medium	mypy/test/test_ref_info.py:17:7	RefInfoSuite	class `RefInfoSuite` is never used
-unused-class	medium	mypy/test/testcmdline.py:41:7	PythonCmdlineSuite	class `PythonCmdlineSuite` is never used
-unused-class	medium	mypy/test/testdaemon.py:27:7	DaemonSuite	class `DaemonSuite` is never used
-unused-class	medium	mypy/test/testdeps.py:27:7	GetDependenciesSuite	class `GetDependenciesSuite` is never used
-unused-class	medium	mypy/test/testdiff.py:21:7	ASTDiffSuite	class `ASTDiffSuite` is never used
-unused-class	low	mypy/test/testerrorstream.py:13:7	ErrorStreamSuite	class `ErrorStreamSuite` is never used
-unused-class	medium	mypy/test/testexportjson.py:21:7	TypeExportSuite	class `TypeExportSuite` is never used
-unused-class	medium	mypy/test/testfinegrainedcache.py:13:7	FineGrainedCacheSuite	class `FineGrainedCacheSuite` is never used
-unused-class	medium	mypy/test/testmerge.py:39:7	ASTMergeSuite	class `ASTMergeSuite` is never used
-unused-class	medium	mypy/test/testoutput.py:19:7	OutputJSONsuite	class `OutputJSONsuite` is never used
-unused-class	medium	mypy/test/testparse.py:19:7	ParserSuite	class `ParserSuite` is never used
-unused-class	medium	mypy/test/testparse.py:86:7	ParseErrorSuite	class `ParseErrorSuite` is never used
-unused-class	low	mypy/test/testpep561.py:22:7	PEP561Suite	class `PEP561Suite` is never used
-unused-class	medium	mypy/test/testpythoneval.py:33:7	PythonEvaluationSuite	class `PythonEvaluationSuite` is never used
-unused-class	medium	mypy/test/testsemanal.py:47:7	SemAnalSuite	class `SemAnalSuite` is never used
-unused-class	medium	mypy/test/testsemanal.py:91:7	SemAnalErrorSuite	class `SemAnalErrorSuite` is never used
-unused-class	medium	mypy/test/testsemanal.py:123:7	SemAnalSymtableSuite	class `SemAnalSymtableSuite` is never used
-unused-class	medium	mypy/test/testsemanal.py:156:7	SemAnalTypeInfoSuite	class `SemAnalTypeInfoSuite` is never used
-unused-class	low	mypy/test/teststubgen.py:828:7	StubgenPythonSuite	class `StubgenPythonSuite` is never used
-unused-class	medium	mypy/test/testtransform.py:14:7	TransformSuite	class `TransformSuite` is never used
-unused-class	medium	mypy/test/testtypegen.py:19:7	TypeExportSuite	class `TypeExportSuite` is never used
 unused-class	medium	mypy/traverser.py:1094:7	YieldFromCollector	class `YieldFromCollector` is never used
 unused-variable	low	mypy/typeanal.py:122:1	T	variable `T` is never used
 unused-variable	low	mypy/util.py:40:1	T	variable `T` is never used
@@ -157,72 +134,13 @@ unused-variable	medium	mypyc/primitives/weakref_ops.py:7:1	new_ref_op	variable `
 unused-variable	medium	mypyc/primitives/weakref_ops.py:16:1	new_ref__with_callback_op	variable `new_ref__with_callback_op` is never used
 unused-variable	medium	mypyc/primitives/weakref_ops.py:24:1	new_proxy_op	variable `new_proxy_op` is never used
 unused-variable	medium	mypyc/primitives/weakref_ops.py:33:1	new_proxy_with_callback_op	variable `new_proxy_with_callback_op` is never used
-unused-method	low	mypyc/test-data/fixtures/ir.py:134:9	islower	method `str.islower` is never used
-unused-method	low	mypyc/test-data/fixtures/ir.py:341:9	getter	method `property.getter` is never used
 unused-function	medium	mypyc/test/librt_cache.py:218:5	run_with_librt	function `run_with_librt` is never used
 unused-variable	low	mypyc/test/test_alwaysdefined.py:19:1	files	variable `files` is never used
-unused-class	medium	mypyc/test/test_alwaysdefined.py:22:7	TestAlwaysDefined	class `TestAlwaysDefined` is never used
 unused-variable	low	mypyc/test/test_analysis.py:24:1	files	variable `files` is never used
-unused-class	medium	mypyc/test/test_analysis.py:27:7	TestAnalysis	class `TestAnalysis` is never used
 unused-variable	low	mypyc/test/test_annotate.py:22:1	files	variable `files` is never used
-unused-class	medium	mypyc/test/test_annotate.py:25:7	TestReport	class `TestReport` is never used
 unused-variable	low	mypyc/test/test_capsule_deps.py:22:1	files	variable `files` is never used
-unused-class	medium	mypyc/test/test_capsule_deps.py:25:7	TestCapsuleDeps	class `TestCapsuleDeps` is never used
 unused-variable	low	mypyc/test/test_commandline.py:20:1	files	variable `files` is never used
-unused-class	low	mypyc/test/test_commandline.py:28:7	TestCommandLine	class `TestCommandLine` is never used
 unused-variable	low	mypyc/test/test_exceptions.py:28:1	files	variable `files` is never used
-unused-class	medium	mypyc/test/test_exceptions.py:31:7	TestExceptionTransform	class `TestExceptionTransform` is never used
-unused-class	medium	mypyc/test/test_irbuild.py:77:7	TestGenOps	class `TestGenOps` is never used
-unused-class	medium	mypyc/test/test_lowering.py:30:7	TestLowering	class `TestLowering` is never used
-unused-class	medium	mypyc/test/test_optimizations.py:63:7	TestCopyPropagation	class `TestCopyPropagation` is never used
-unused-class	medium	mypyc/test/test_optimizations.py:70:7	TestFlagElimination	class `TestFlagElimination` is never used
 unused-variable	low	mypyc/test/test_refcount.py:29:1	files	variable `files` is never used
-unused-class	medium	mypyc/test/test_refcount.py:32:7	TestRefCountTransform	class `TestRefCountTransform` is never used
-unused-class	low	mypyc/test/test_run.py:470:7	TestRunMultiFile	class `TestRunMultiFile` is never used
-unused-class	low	mypyc/test/test_run.py:482:7	TestRunSeparate	class `TestRunSeparate` is never used
-unused-class	medium	mypyc/test/test_run.py:503:7	TestRunStrictDunderTyping	class `TestRunStrictDunderTyping` is never used
-unused-variable	medium	test-data/packages/modulefinder-site-packages/pkg_typed/__init__.py:1:1	pkg_typed_var	variable `pkg_typed_var` is never used
-unused-variable	medium	test-data/packages/modulefinder-site-packages/pkg_typed/b/__init__.py:1:1	b_var	variable `b_var` is never used
-unused-variable	medium	test-data/packages/modulefinder-site-packages/pkg_typed_w_stubs/__init__.py:1:1	pkg_typed_w_stubs_var	variable `pkg_typed_w_stubs_var` is never used
-unused-file	medium	test-data/packages/modulefinder-site-packages/pkg_typed_w_stubs/spam.py	-	file `spam.py` is never imported or run
-unused-variable	medium	test-data/packages/modulefinder-site-packages/pkg_untyped/__init__.py:1:1	pkg_untyped_var	variable `pkg_untyped_var` is never used
-unused-variable	medium	test-data/packages/modulefinder-site-packages/pkg_untyped/b/__init__.py:1:1	b_var	variable `b_var` is never used
-unused-file	medium	test-data/packages/modulefinder-site-packages/standalone.py	-	file `standalone.py` is never imported or run
 unused-file	low	test-data/packages/typedpkg/typedpkg/dne.py	-	file `typedpkg.dne` is never imported or run
-unused-file	low	test-data/packages/typedpkg/typedpkg/pkg/aaa.py	-	file `typedpkg.pkg.aaa` is never imported or run
-unused-file	low	test-data/packages/typedpkg/typedpkg/sample.py	-	file `typedpkg.sample` is never imported or run
-unused-file	medium	test-data/packages/typedpkg_ns_a/typedpkg_ns/a/bbb.py	-	file `typedpkg_ns.a.bbb` is never imported or run
-unused-file	medium	test-data/packages/typedpkg_ns_b/typedpkg_ns/b/bbb.py	-	file `typedpkg_ns.b.bbb` is never imported or run
-unused-file	medium	test-data/unit/plugins/add_classmethod.py	-	file `add_classmethod.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/add_method.py	-	file `add_method.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/add_overloaded_method.py	-	file `add_overloaded_method.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/arg_kinds.py	-	file `arg_kinds.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/arg_names.py	-	file `arg_names.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/attrhook.py	-	file `attrhook.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/attrhook2.py	-	file `attrhook2.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/badreturn.py	-	file `badreturn.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/badreturn2.py	-	file `badreturn2.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/callable_instance.py	-	file `callable_instance.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/class_attr_hook.py	-	file `class_attr_hook.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/class_callable.py	-	file `class_callable.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/common_api_incremental.py	-	file `common_api_incremental.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/config_data.py	-	file `config_data.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/custom_errorcode.py	-	file `custom_errorcode.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/customentry.py	-	file `customentry.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/customize_mro.py	-	file `customize_mro.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/decimal_to_int.py	-	file `decimal_to_int.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/depshook.py	-	file `depshook.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/descriptor.py	-	file `descriptor.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/dyn_class.py	-	file `dyn_class.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/dyn_class_from_method.py	-	file `dyn_class_from_method.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/fnplugin.py	-	file `fnplugin.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/fully_qualified_test_hook.py	-	file `fully_qualified_test_hook.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/function_sig_hook.py	-	file `function_sig_hook.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/magic_method.py	-	file `magic_method.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/method_in_decorator.py	-	file `method_in_decorator.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/method_sig_hook.py	-	file `method_sig_hook.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/named_callable.py	-	file `named_callable.py` is never imported or run
 unused-file	medium	test-data/unit/plugins/noentry.py	-	file `noentry.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/plugin2.py	-	file `plugin2.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/type_anal_hook.py	-	file `type_anal_hook.py` is never imported or run
-unused-file	medium	test-data/unit/plugins/union_method.py	-	file `union_method.py` is never imported or run

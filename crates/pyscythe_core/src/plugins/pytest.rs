@@ -11,6 +11,19 @@ use crate::symbol::SymbolKind;
 pub(crate) struct Pytest;
 
 /// pytest and unittest call these by name.
+/// Whether a base class is defined under a `test`, `tests`, or `testing`
+/// package, which makes it part of the project's own test framework.
+fn descends_from_test_infrastructure(context: &KeepContext<'_>) -> bool {
+    context.ancestry.names().iter().any(|base| {
+        let mut segments: Vec<&str> = base.segments().collect();
+        // The last segment is the class itself, not a package.
+        segments.pop();
+        segments
+            .iter()
+            .any(|segment| matches!(*segment, "test" | "tests" | "testing"))
+    })
+}
+
 /// `MappedColumnTest`, `HelperTests`, `QueryTestCase`: a class named for what
 /// it tests, which a project's own collector picks up even though pytest's
 /// default `python_classes` looks for a `Test` prefix.
@@ -72,6 +85,12 @@ impl KeepRule for Pytest {
             // a `Test` suffix on a class descending from a local base.
             if symbol.kind == SymbolKind::Class && names_a_test_class(name) {
                 return Some("named as a test class");
+            }
+            // sqlalchemy's `fixtures.TestBase`, mypy's `helpers.Suite`: the
+            // base lives in the project's test infrastructure, and the
+            // project's own plugin collects whatever descends from it.
+            if symbol.kind == SymbolKind::Class && descends_from_test_infrastructure(&context) {
+                return Some("descends from the project's own test base");
             }
             if symbol.kind == SymbolKind::Method && TEST_LIFECYCLE_METHODS.contains(&name) {
                 return Some("test lifecycle hook");
@@ -139,6 +158,31 @@ impl KeepRule for Pytest {
 mod tests {
     use super::Pytest;
     use crate::plugins::testing::Case;
+
+    #[test]
+    fn keeps_classes_descending_from_the_projects_own_test_base() {
+        assert!(
+            Case::class("RegexpMySql")
+                .at("/p/tests/test_engine.py")
+                .with_ancestors(&["proj.testing.fixtures.TestBase"])
+                .is_kept_by(&Pytest)
+        );
+        assert!(
+            Case::class("DaemonSuite")
+                .at("/p/mypy/test/testdaemon.py")
+                .collecting(&["test*.py"], &["Test"], &["test"])
+                .with_ancestors(&["mypy.test.helpers.Suite"])
+                .is_kept_by(&Pytest),
+            "mypy collects `test*.py`, and its Suite base is its own"
+        );
+        assert!(
+            !Case::class("Detached")
+                .at("/p/tests/test_engine.py")
+                .with_ancestors(&["proj.core.Thing"])
+                .is_kept_by(&Pytest),
+            "a base outside the test infrastructure collects nothing"
+        );
+    }
 
     #[test]
     fn honours_configured_collection_patterns() {
