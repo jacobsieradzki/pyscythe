@@ -1,7 +1,7 @@
 files_scanned=1128
 symbols_checked=8994
-symbols_kept=169
-findings=64
+symbols_kept=170
+findings=63
 --
 unused-function	low	test/helper.py:320:5	assertEqual	function `assertEqual` is never used
 unused-variable	medium	test/test_downloader_http.py:20:1	TEST_DIR	variable `TEST_DIR` is never used
@@ -12,7 +12,6 @@ unused-method	low	yt_dlp/YoutubeDL.py:3777:9	filter_requested_info	method `Youtu
 unused-method	low	yt_dlp/compat/__init__.py:18:9	doctype	method `_TreeBuilder.doctype` is never used
 unused-file	low	yt_dlp/compat/_deprecated.py	-	file `yt_dlp.compat._deprecated` is never imported or run
 unused-file	low	yt_dlp/compat/_legacy.py	-	file `yt_dlp.compat._legacy` is never imported or run
-unused-variable	medium	yt_dlp/dependencies/__init__.py:95:1	Cryptodome_AES	variable `Cryptodome_AES` is never used
 unused-method	low	yt_dlp/downloader/common.py:135:9	calc_percent	method `FileDownloader.calc_percent` is never used
 unused-method	low	yt_dlp/downloader/common.py:172:9	format_retries	method `FileDownloader.format_retries` is never used
 unused-method	low	yt_dlp/downloader/common.py:195:9	parse_bytes	method `FileDownloader.parse_bytes` is never used

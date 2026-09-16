@@ -1,7 +1,7 @@
 files_scanned=673
 symbols_checked=32621
-symbols_kept=2470
-findings=503
+symbols_kept=2507
+findings=466
 --
 unused-method	low	lib/sqlalchemy/connectors/asyncio.py:109:9	setoutputsize	method `AsyncIODBAPICursor.setoutputsize` is never used
 unused-method	low	lib/sqlalchemy/connectors/asyncio.py:111:15	callproc	method `AsyncIODBAPICursor.callproc` is never used
@@ -84,9 +84,6 @@ unused-variable	low	lib/sqlalchemy/ext/asyncio/base.py:33:1	_T	variable `_T` is 
 unused-function	low	lib/sqlalchemy/ext/asyncio/engine.py:1468:5	_no_insp_for_async_conn_yet	function `_no_insp_for_async_conn_yet` is never used
 unused-function	low	lib/sqlalchemy/ext/asyncio/engine.py:1480:5	_no_insp_for_async_engine_xyet	function `_no_insp_for_async_engine_xyet` is never used
 unused-class	medium	lib/sqlalchemy/ext/asyncio/exc.py:20:7	AsyncContextAlreadyStarted	class `AsyncContextAlreadyStarted` is never used
-unused-function	low	lib/sqlalchemy/ext/automap.py:767:5	classname_for_table	function `classname_for_table` is never used
-unused-function	low	lib/sqlalchemy/ext/automap.py:814:5	name_for_scalar_relationship	function `name_for_scalar_relationship` is never used
-unused-function	low	lib/sqlalchemy/ext/automap.py:854:5	name_for_collection_relationship	function `name_for_collection_relationship` is never used
 unused-variable	low	lib/sqlalchemy/ext/baked.py:31:1	log	variable `log` is never used
 unused-method	medium	lib/sqlalchemy/ext/baked.py:173:9	_with_lazyload_options	method `BakedQuery._with_lazyload_options` is never used
 unused-variable	low	lib/sqlalchemy/ext/horizontal_shard.py:77:1	_Ts	variable `_Ts` is never used
@@ -160,39 +157,6 @@ unused-method	low	lib/sqlalchemy/sql/base.py:971:9	add_to_element	method `Option
 unused-method	medium	lib/sqlalchemy/sql/base.py:1435:9	_set_compile_options	method `Executable._set_compile_options` is never used
 unused-class	medium	lib/sqlalchemy/sql/cache_key.py:256:7	HasCacheKeyTraverse	class `HasCacheKeyTraverse` is never used
 unused-method	medium	lib/sqlalchemy/sql/cache_key.py:340:9	_diff_tuples	method `CacheKey._diff_tuples` is never used
-unused-variable	low	lib/sqlalchemy/sql/coercions.py:76:1	_StringOnlyR	variable `_StringOnlyR` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:647:7	LiteralValueImpl	class `LiteralValueImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:718:7	HasCacheKeyImpl	class `HasCacheKeyImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:737:7	ExecutableOptionImpl	class `ExecutableOptionImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:799:7	TStringElementImpl	class `TStringElementImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:803:7	BinaryElementImpl	class `BinaryElementImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:829:7	InElementImpl	class `InElementImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:915:7	OnClauseImpl	class `OnClauseImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:934:7	WhereHavingImpl	class `WhereHavingImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:943:7	SyntaxExtensionImpl	class `SyntaxExtensionImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:947:7	StatementOptionImpl	class `StatementOptionImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:956:7	ColumnArgumentImpl	class `ColumnArgumentImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:960:7	ColumnArgumentOrKeyImpl	class `ColumnArgumentOrKeyImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:964:7	StrAsPlainColumnImpl	class `StrAsPlainColumnImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:980:7	OrderByImpl	class `OrderByImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:993:7	GroupByImpl	class `GroupByImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1009:7	DMLColumnImpl	class `DMLColumnImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1019:7	ConstExprImpl	class `ConstExprImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1033:7	TruncatedLabelImpl	class `TruncatedLabelImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1062:7	DDLExpressionImpl	class `DDLExpressionImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1079:7	DDLReferredColumnImpl	class `DDLReferredColumnImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1083:7	LimitOffsetImpl	class `LimitOffsetImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1110:7	LabeledColumnExprImpl	class `LabeledColumnExprImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1132:7	ColumnsClauseImpl	class `ColumnsClauseImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1177:7	StatementImpl	class `StatementImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1209:7	SelectStatementImpl	class `SelectStatementImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1225:7	HasCTEImpl	class `HasCTEImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1229:7	IsCTEImpl	class `IsCTEImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1233:7	JoinTargetImpl	class `JoinTargetImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1296:7	AnonymizedFromClauseImpl	class `AnonymizedFromClauseImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1305:7	DMLTableImpl	class `DMLTableImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1315:7	DMLSelectImpl	class `DMLSelectImpl` is never used
-unused-class	medium	lib/sqlalchemy/sql/coercions.py:1337:7	CompoundElementImpl	class `CompoundElementImpl` is never used
 unused-variable	medium	lib/sqlalchemy/sql/compiler.py:256:1	LEGAL_CHARACTERS_PLUS_SPACE	variable `LEGAL_CHARACTERS_PLUS_SPACE` is never used
 unused-method	low	lib/sqlalchemy/sql/compiler.py:1590:9	insert_single_values_expr	method `SQLCompiler.insert_single_values_expr` is never used
 unused-method	medium	lib/sqlalchemy/sql/compiler.py:4187:9	_anonymize	method `SQLCompiler._anonymize` is never used
@@ -335,7 +299,6 @@ unused-function	medium	test/dialect/sqlite/test_compiler.py:46:5	exec_sql	functi
 unused-function	medium	test/dialect/sqlite/test_types.py:34:5	exec_sql	function `exec_sql` is never used
 unused-function	high	test/engine/test_deprecations.py:30:5	_string_deprecation_expect	function `_string_deprecation_expect` is never used
 unused-class	medium	test/engine/test_deprecations.py:37:7	SomeException	class `SomeException` is never used
-unused-variable	medium	test/engine/test_parseconnect.py:1444:21	msd	variable `msd` is never used
 unused-function	medium	test/engine/test_reflection.py:2119:5	createIndexes	function `createIndexes` is never used
 unused-class	medium	test/ext/asyncio/test_engine.py:1523:7	TextSyncDBAPI	class `TextSyncDBAPI` is never used
 unused-method	low	test/ext/declarative/test_inheritance.py:839:17	something_id	method `AbstractConcreteAbstraction.something_id` is never used

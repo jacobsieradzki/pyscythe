@@ -72,7 +72,7 @@ pub(crate) mod testing {
     use camino::Utf8PathBuf;
 
     use crate::config::TestCollection;
-    use crate::index::{Ancestry, NameUsage, SubclassRegistration};
+    use crate::index::{Ancestry, GlobalsAccess, NameUsage, SubclassRegistration};
     use crate::keep::{FileRole, KeepContext, KeepRule};
     use crate::manifest::Manifest;
     use crate::source::{ByteOffset, ByteSpan, FileId, MainGuard, ModulePath, SourceFile};
@@ -96,6 +96,7 @@ pub(crate) mod testing {
         pub(crate) registration: SubclassRegistration,
         pub(crate) tests: TestCollection,
         pub(crate) requested_as_parameter: NameUsage,
+        pub(crate) globals_access: GlobalsAccess,
     }
 
     impl Case {
@@ -115,6 +116,7 @@ pub(crate) mod testing {
                 registration: SubclassRegistration::NotRegistered,
                 tests: TestCollection::default(),
                 requested_as_parameter: NameUsage::Unused,
+                globals_access: GlobalsAccess::NotEnumerated,
             }
         }
 
@@ -131,6 +133,11 @@ pub(crate) mod testing {
                 functions.iter().copied(),
             )
             .expect("valid patterns");
+            self
+        }
+
+        pub(crate) fn reading_its_own_globals(mut self) -> Self {
+            self.globals_access = GlobalsAccess::Enumerated;
             self
         }
 
@@ -285,6 +292,7 @@ pub(crate) mod testing {
                 registration: self.registration,
                 tests: &self.tests,
                 requested_as_parameter: self.requested_as_parameter,
+                globals_access: self.globals_access,
             })
         }
 

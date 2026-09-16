@@ -1,7 +1,7 @@
 files_scanned=333
 symbols_checked=4623
-symbols_kept=3222
-findings=39
+symbols_kept=3238
+findings=23
 --
 unused-file	medium	action/main.py	-	file `action.main` is never imported or run
 unused-method	medium	src/black/lines.py:209:9	_is_triple_quoted_string	method `Line._is_triple_quoted_string` is never used
@@ -12,22 +12,6 @@ unused-file	medium	src/blib2to3/pgen2/conv.py	-	file `blib2to3.pgen2.conv` is ne
 unused-method	low	src/blib2to3/pgen2/driver.py:195:9	parse_file	method `Driver.parse_file` is never used
 unused-method	low	src/blib2to3/pgen2/grammar.py:153:9	report	method `Grammar.report` is never used
 unused-variable	medium	src/blib2to3/pgen2/parse.py:27:1	Results	variable `Results` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:34:1	BACKQUOTE	variable `BACKQUOTE` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:47:1	MINEQUAL	variable `MINEQUAL` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:48:1	STAREQUAL	variable `STAREQUAL` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:49:1	SLASHEQUAL	variable `SLASHEQUAL` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:50:1	PERCENTEQUAL	variable `PERCENTEQUAL` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:51:1	AMPEREQUAL	variable `AMPEREQUAL` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:52:1	VBAREQUAL	variable `VBAREQUAL` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:53:1	CIRCUMFLEXEQUAL	variable `CIRCUMFLEXEQUAL` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:54:1	LEFTSHIFTEQUAL	variable `LEFTSHIFTEQUAL` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:55:1	RIGHTSHIFTEQUAL	variable `RIGHTSHIFTEQUAL` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:56:1	DOUBLESTAREQUAL	variable `DOUBLESTAREQUAL` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:58:1	DOUBLESLASHEQUAL	variable `DOUBLESLASHEQUAL` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:60:1	ATEQUAL	variable `ATEQUAL` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:68:1	ERRORTOKEN	variable `ERRORTOKEN` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:77:1	N_TOKENS	variable `N_TOKENS` is never used
-unused-variable	medium	src/blib2to3/pgen2/token.py:78:1	NT_OFFSET	variable `NT_OFFSET` is never used
 unused-variable	medium	src/blib2to3/pygram.py:167:1	pattern_symbols	variable `pattern_symbols` is never used
 unused-method	low	src/blib2to3/pytree.py:111:9	post_order	method `Base.post_order` is never used
 unused-method	low	src/blib2to3/pytree.py:236:9	get_suffix	method `Base.get_suffix` is never used

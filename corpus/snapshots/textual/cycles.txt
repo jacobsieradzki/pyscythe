@@ -3,4 +3,4 @@ symbols_checked=0
 symbols_kept=0
 findings=1
 --
-circular-import	high	src/textual/__init__.py:16:1	-	import cycle among 93 modules, shortest: textual -> textual.constants -> textual
+circular-import	high	src/textual/__init__.py:16:1	-	import cycle among 94 modules, shortest: textual -> textual.constants -> textual

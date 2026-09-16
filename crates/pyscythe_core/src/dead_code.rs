@@ -222,6 +222,7 @@ impl SymbolCheck<'_> {
             registration,
             tests: &self.config.tests,
             requested_as_parameter: self.index.parameter_name_usage(&symbol.name),
+            globals_access: self.index.globals_access(symbol.file),
         };
         let reason = self
             .policy
@@ -1476,6 +1477,29 @@ mod tests {
         );
 
         assert!(report.is_clean(), "{:?}", report.findings);
+    }
+
+    #[test]
+    fn a_module_that_reads_its_own_globals_keeps_every_name_it_defines() {
+        let mut index = FakeIndex::new();
+        let token = index.add_file("/proj/pkg/token.py", "pkg.token");
+        index.add_symbol(token, "BACKQUOTE", SymbolKind::Variable);
+        index.mark_reads_own_globals(token);
+        let main = index.add_file("/proj/main.py", "main");
+        index.add_import(main, token, ImportKind::Runtime);
+
+        let report = analyze(
+            &index,
+            &Policy::builtin(),
+            &Manifest::empty(),
+            &Config::default(),
+        );
+
+        assert!(
+            !symbol_names(&report).contains(&"BACKQUOTE"),
+            "the loop over globals() consumes it: {:?}",
+            report.findings
+        );
     }
 
     #[test]

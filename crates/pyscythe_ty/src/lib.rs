@@ -11,8 +11,8 @@ use camino::{Utf8Path, Utf8PathBuf};
 use pyscythe_core::config::{NotebookPolicy, PathPatterns};
 use pyscythe_core::edit::Deletable;
 use pyscythe_core::index::{
-    Ancestry, CodebaseIndex, ExternalImport, Import, ImportOrigin, Inheritance, NameUsage,
-    Reference, SubclassRegistration, Suppression,
+    Ancestry, CodebaseIndex, ExternalImport, GlobalsAccess, Import, ImportOrigin, Inheritance,
+    NameUsage, Reference, SubclassRegistration, Suppression,
 };
 use pyscythe_core::metrics::FunctionMetrics;
 use pyscythe_core::source::{
@@ -588,6 +588,15 @@ impl CodebaseIndex for TyIndex {
                 }
             })
             .collect()
+    }
+
+    fn globals_access(&self, file: FileId) -> GlobalsAccess {
+        match self.ty_file(file) {
+            Some(ty_file) if self.reference_index().reads_own_globals(ty_file) => {
+                GlobalsAccess::Enumerated
+            }
+            _ => GlobalsAccess::NotEnumerated,
+        }
     }
 
     fn attribute_name_usage(&self, name: &SymbolName) -> NameUsage {

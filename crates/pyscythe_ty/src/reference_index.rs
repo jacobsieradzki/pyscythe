@@ -43,6 +43,98 @@ enum Resolution {
     ByName,
 }
 
+/// The files the analysis reports on, and where a stub's implementation lives.
+///
+/// A module that ships an inline `.pyi` stub resolves to the stub, which is
+/// not analysed; the import still means the implementation beside it.
+#[derive(Debug, Default)]
+pub(crate) struct ProjectFiles {
+    files: FxHashSet<File>,
+    /// The implementation a stub describes, and where each of its names is
+    /// defined, keyed by the stub file.
+    stubbed: FxHashMap<File, Implementation>,
+}
+
+/// Where the names a stub declares are really defined.
+#[derive(Debug)]
+struct Implementation {
+    file: File,
+    /// The name each definition in the stub carries.
+    names_in_stub: FxHashMap<TextRange, String>,
+    /// Where that name is defined in the implementation.
+    ranges_by_name: FxHashMap<String, TextRange>,
+}
+
+impl ProjectFiles {
+    fn new(db: &dyn ty_project::Db, files: &[File]) -> Self {
+        let by_path: FxHashMap<String, File> = files
+            .iter()
+            .map(|file| (file.path(db).to_string(), *file))
+            .collect();
+        let mut stubbed = FxHashMap::default();
+        // Sorted so the table is built the same way on every run.
+        let mut paths: Vec<(&String, &File)> = by_path.iter().collect();
+        paths.sort_by_key(|(path, _)| *path);
+        for (path, stub) in paths {
+            let Some(stem) = path.strip_suffix(".pyi") else {
+                continue;
+            };
+            let Some(implementation) = by_path.get(&format!("{stem}.py")) else {
+                continue;
+            };
+            stubbed.insert(
+                *stub,
+                Implementation {
+                    file: *implementation,
+                    names_in_stub: definitions_in(db, *stub)
+                        .into_iter()
+                        .map(|(name, range)| (range, name))
+                        .collect(),
+                    ranges_by_name: definitions_in(db, *implementation).into_iter().collect(),
+                },
+            );
+        }
+        Self {
+            files: files.iter().copied().collect(),
+            stubbed,
+        }
+    }
+
+    fn contains(&self, file: File) -> bool {
+        self.files.contains(&file)
+    }
+
+    /// The file an import of `file` really reaches: the implementation when
+    /// `file` is a stub that describes one, and `file` itself otherwise.
+    fn resolve(&self, file: File) -> File {
+        self.stubbed
+            .get(&file)
+            .map_or(file, |implementation| implementation.file)
+    }
+
+    /// The definition an import really reaches. A name declared in a stub is
+    /// defined in the implementation beside it, under the same name.
+    fn resolve_definition(&self, file: File, range: TextRange) -> (File, TextRange) {
+        let Some(implementation) = self.stubbed.get(&file) else {
+            return (file, range);
+        };
+        let moved = implementation
+            .names_in_stub
+            .get(&range)
+            .and_then(|name| implementation.ranges_by_name.get(name))
+            .copied();
+        (implementation.file, moved.unwrap_or(range))
+    }
+}
+
+/// Every definition in the file, by name and where the name is written.
+fn definitions_in(db: &dyn ty_project::Db, file: File) -> Vec<(String, TextRange)> {
+    document_symbols(db, db.program_file(file))
+        .iter()
+        .map(|(_, info)| (info.name.to_string(), info.name_range))
+        .collect()
+}
+
 /// Which files still need walking, and how each one is to be walked.
 ///
 /// A file ty cannot type within the budget is walked again with its names
@@ -157,6 +249,8 @@ pub(crate) struct ReferenceIndex {
     attribute_prefixes: FxHashSet<String>,
     parameter_names: FxHashSet<String>,
     script_paths: FxHashSet<String>,
+    /// Files that build something out of their own module namespace.
+    globals_readers: FxHashSet<File>,
     /// Files whose references were matched by name because ty ran over budget on them.
     by_name: Vec<File>,
     /// Files over budget even by name, so nothing in them counts as a reference.
@@ -174,7 +268,7 @@ impl ReferenceIndex {
     /// one pathological file cannot stall the whole run. `db` must be the only
     /// live handle on the database: cancellation waits for every other one.
     pub(crate) fn build(db: &mut ProjectDatabase, files: &[File], budget: FileBudget) -> Self {
-        let project_files: FxHashSet<File> = files.iter().copied().collect();
+        let project_files = ProjectFiles::new(db, files);
         let mut schedule = Schedule::new(files);
         let mut index = Self::default();
         while !schedule.is_empty() {
@@ -195,7 +289,7 @@ impl ReferenceIndex {
 
     /// [`Self::build`] without a budget, for callers that cannot hand over the database.
     pub(crate) fn build_unbudgeted(db: &dyn ty_project::Db, files: &[File]) -> Self {
-        let project_files: FxHashSet<File> = files.iter().copied().collect();
+        let project_files = ProjectFiles::new(db, files);
         let pass = run_pass(
             db,
             files,
@@ -242,6 +336,9 @@ impl ReferenceIndex {
                 .extend(file_uses.attribute_prefixes);
             index.parameter_names.extend(file_uses.parameter_names);
             index.script_paths.extend(file_uses.script_paths);
+            if file_uses.reads_own_globals {
+                index.globals_readers.insert(file);
+            }
         }
     }
 
@@ -253,6 +350,11 @@ impl ReferenceIndex {
                 .attribute_prefixes
                 .iter()
                 .any(|prefix| name.starts_with(prefix.as_str()))
+    }
+
+    /// Whether the file reads the namespace it defines.
+    pub(crate) fn reads_own_globals(&self, file: File) -> bool {
+        self.globals_readers.contains(&file)
     }
 
     /// Every string literal that names a `.py` file.
@@ -295,10 +397,15 @@ struct FileUses {
     attribute_prefixes: FxHashSet<String>,
     parameter_names: FxHashSet<String>,
     script_paths: FxHashSet<String>,
+    /// Whether the file enumerates its own namespace with `globals()`.
+    reads_own_globals: bool,
 }
 
 /// Builtins whose second argument names an attribute.
 const REFLECTION_BUILTINS: &[&str] = &["getattr", "hasattr", "setattr", "delattr"];
+
+/// Calls that hand back the module's own namespace.
+const NAMESPACE_BUILTINS: &[&str] = &["globals", "vars"];
 
 /// Walks `files` in parallel, with the watchdog on this thread: when a file
 /// runs past its budget, every other database handle is told to stop and the
@@ -306,7 +413,7 @@ const REFLECTION_BUILTINS: &[&str] = &["getattr", "hasattr", "setattr", "delattr
 fn budgeted_pass(
     db: &mut ProjectDatabase,
     files: &[File],
-    project_files: &FxHashSet<File>,
+    project_files: &ProjectFiles,
     schedule: &Schedule<File>,
     budget: FileBudget,
 ) -> Pass {
@@ -350,7 +457,7 @@ fn budgeted_pass(
 fn run_pass(
     db: &dyn ty_project::Db,
     files: &[File],
-    project_files: &FxHashSet<File>,
+    project_files: &ProjectFiles,
     schedule: &Schedule<File>,
     in_flight: &Mutex<FxHashMap<File, Instant>>,
 ) -> Pass {
@@ -388,7 +495,7 @@ fn run_pass(
 fn collect_uses(
     db: &dyn ty_project::Db,
     file: File,
-    project_files: &FxHashSet<File>,
+    project_files: &ProjectFiles,
     resolution: Resolution,
 ) -> FileUses {
     let program_file = db.program_file(file);
@@ -415,7 +522,7 @@ struct UseCollector<'a, 'db> {
     db: &'db dyn ty_project::Db,
     model: &'a SemanticModel<'db>,
     file: File,
-    project_files: &'a FxHashSet<File>,
+    project_files: &'a ProjectFiles,
     resolution: Resolution,
     /// How many function bodies enclose the current node.
     function_depth: u32,
@@ -501,14 +608,14 @@ impl UseCollector<'_, '_> {
     }
 
     fn record_definition_use(&mut self, use_range: TextRange, target: FileRange) {
-        if !self.project_files.contains(&target.file()) {
+        let (file, name_range) = self
+            .project_files
+            .resolve_definition(target.file(), target.range());
+        if !self.project_files.contains(file) {
             return;
         }
         self.out.uses.push((
-            DefinitionKey {
-                file: target.file(),
-                name_range: target.range(),
-            },
+            DefinitionKey { file, name_range },
             Use {
                 file: self.file,
                 range: use_range,
@@ -523,7 +630,8 @@ impl UseCollector<'_, '_> {
         kind: ImportKind,
         names: ImportedNames,
     ) {
-        if self.project_files.contains(&target) {
+        let target = self.project_files.resolve(target);
+        if self.project_files.contains(target) {
             self.out.imports.push(ImportEdge {
                 target,
                 range,
@@ -612,7 +720,7 @@ impl UseCollector<'_, '_> {
                     return;
                 }
                 let file = module.file(self.db).filter(|_| in_environment);
-                if file.is_some_and(|file| self.project_files.contains(&file)) {
+                if file.is_some_and(|file| self.project_files.contains(file)) {
                     return;
                 }
                 file
@@ -765,7 +873,7 @@ impl UseCollector<'_, '_> {
         let Some(attribute) = attribute else {
             return;
         };
-        if !self.project_files.contains(&module_file) {
+        if !self.project_files.contains(module_file) {
             return;
         }
         let program_file = self.db.program_file(module_file);
@@ -912,6 +1020,12 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
                 }
             }
             AnyNodeRef::ExprCall(call) => {
+                if let Expr::Name(callee) = &*call.func
+                    && NAMESPACE_BUILTINS.contains(&callee.id.as_str())
+                    && call.arguments.args.is_empty()
+                {
+                    self.out.reads_own_globals = true;
+                }
                 if let Expr::Name(callee) = &*call.func
                     && REFLECTION_BUILTINS.contains(&callee.id.as_str())
                     && let Some(Expr::StringLiteral(name)) = call.arguments.args.get(1)

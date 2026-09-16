@@ -1,7 +1,7 @@
 files_scanned=435
 symbols_checked=7446
-symbols_kept=1701
-findings=159
+symbols_kept=1707
+findings=153
 --
 unused-variable	high	sphinx/_cli/util/errors.py:19:1	_CSI	variable `_CSI` is never used
 unused-function	medium	sphinx/_cli/util/errors.py:36:5	terminal_safe	function `terminal_safe` is never used
@@ -120,12 +120,6 @@ unused-function	high	sphinx/util/__init__.py:49:5	_sha1	function `_sha1` is neve
 unused-variable	low	sphinx/util/_inventory_file_reader.py:9:1	logger	variable `logger` is never used
 unused-method	low	sphinx/util/_inventory_file_reader.py:68:9	read_compressed_lines	method `InventoryFileReader.read_compressed_lines` is never used
 unused-method	low	sphinx/util/cfamily.py:415:9	read_rest	method `BaseParser.read_rest` is never used
-unused-variable	medium	sphinx/util/console.py:39:1	color_terminal	variable `color_terminal` is never used
-unused-variable	medium	sphinx/util/console.py:40:1	nocolor	variable `nocolor` is never used
-unused-variable	medium	sphinx/util/console.py:41:1	coloron	variable `coloron` is never used
-unused-variable	medium	sphinx/util/console.py:42:1	strip_colors	variable `strip_colors` is never used
-unused-function	medium	sphinx/util/console.py:45:5	terminal_safe	function `terminal_safe` is never used
-unused-function	medium	sphinx/util/console.py:58:5	term_width_line	function `term_width_line` is never used
 unused-class	medium	sphinx/util/docutils.py:299:7	ElementLookupError	class `ElementLookupError` is never used
 unused-variable	low	sphinx/util/inspect.py:64:1	logger	variable `logger` is never used
 unused-variable	low	sphinx/util/inspect.py:71:1	ismethoddescriptor	variable `ismethoddescriptor` is never used

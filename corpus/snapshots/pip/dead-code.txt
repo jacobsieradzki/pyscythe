@@ -1,7 +1,7 @@
 files_scanned=661
 symbols_checked=8930
-symbols_kept=1934
-findings=63
+symbols_kept=1935
+findings=62
 --
 unused-function	low	src/pip/_internal/__init__.py:10:5	main	function `main` is never used
 unused-variable	low	src/pip/_internal/cli/cmdoptions.py:39:1	logger	variable `logger` is never used
@@ -9,7 +9,6 @@ unused-variable	low	src/pip/_internal/cli/parser.py:24:1	logger	variable `logger
 unused-file	low	src/pip/_internal/commands/cache.py	-	file `pip._internal.commands.cache` is never imported or run
 unused-file	low	src/pip/_internal/commands/check.py	-	file `pip._internal.commands.check` is never imported or run
 unused-file	low	src/pip/_internal/commands/completion.py	-	file `pip._internal.commands.completion` is never imported or run
-unused-class	low	src/pip/_internal/commands/debug.py:152:7	DebugCommand	class `DebugCommand` is never used
 unused-file	low	src/pip/_internal/commands/download.py	-	file `pip._internal.commands.download` is never imported or run
 unused-file	low	src/pip/_internal/commands/freeze.py	-	file `pip._internal.commands.freeze` is never imported or run
 unused-file	low	src/pip/_internal/commands/hash.py	-	file `pip._internal.commands.hash` is never imported or run

@@ -43,6 +43,15 @@ pub enum ImportCondition {
     InterpreterVersion,
 }
 
+/// Whether a module reads the namespace it defines.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum GlobalsAccess {
+    /// A call to `globals()` or `vars()` enumerates the module's own names.
+    Enumerated,
+    /// Nothing reads the namespace as a whole.
+    NotEnumerated,
+}
+
 /// Whether an attribute name appears anywhere, regardless of what it resolves to.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum NameUsage {
@@ -245,6 +254,11 @@ pub trait CodebaseIndex {
     /// Whether a function parameter named `name` exists anywhere: how tests
     /// request pytest fixtures.
     fn parameter_name_usage(&self, name: &SymbolName) -> NameUsage;
+
+    /// Whether the file reads its own module namespace, as `token.py` does
+    /// when it builds a table from `globals()`. Every name it defines is then
+    /// consumed, whatever else refers to it.
+    fn globals_access(&self, file: FileId) -> GlobalsAccess;
 
     /// Every string literal in the project that names a `.py` file, such as
     /// `"plugin_success.py"` or `"scripts/migrate.py"`: scripts run by path.

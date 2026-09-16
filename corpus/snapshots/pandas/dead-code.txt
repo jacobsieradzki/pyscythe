@@ -1,7 +1,7 @@
 files_scanned=1527
 symbols_checked=34991
-symbols_kept=24132
-findings=165
+symbols_kept=24134
+findings=163
 --
 unused-file	medium	ci/import_pandas_check.py	-	file `ci.import_pandas_check` is never imported or run
 unused-file	medium	generate_pxi.py	-	file `generate_pxi` is never imported or run
@@ -100,8 +100,6 @@ unused-method	low	pandas/plotting/_matplotlib/converter.py:420:9	axisinfo	method
 unused-method	low	pandas/plotting/_matplotlib/converter.py:535:9	autoscale	method `MilliSecondLocator.autoscale` is never used
 unused-method	low	pandas/plotting/_matplotlib/converter.py:1117:9	autoscale	method `TimeSeries_DateLocator.autoscale` is never used
 unused-function	low	pandas/tests/arrays/sparse/test_array.py:28:5	zarr	function `zarr` is never used
-unused-variable	low	pandas/tests/computation/test_eval.py:119:1	rhs	variable `rhs` is never used
-unused-variable	medium	pandas/tests/computation/test_eval.py:120:1	midhs	variable `midhs` is never used
 unused-function	low	pandas/tests/extension/test_numpy.py:155:5	skip_numpy_object	function `skip_numpy_object` is never used
 unused-function	low	pandas/tests/frame/methods/test_info.py:23:5	duplicate_columns_frame	function `duplicate_columns_frame` is never used
 unused-function	low	pandas/tests/groupby/transform/test_transform.py:750:5	frame_mi	function `frame_mi` is never used

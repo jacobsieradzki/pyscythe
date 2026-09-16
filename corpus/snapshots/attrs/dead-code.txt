@@ -1,16 +1,11 @@
 files_scanned=56
 symbols_checked=1310
-symbols_kept=875
-findings=15
+symbols_kept=853
+findings=10
 --
-unused-variable	low	src/attr/__init__.py:36:1	dataclass	variable `dataclass` is never used
-unused-file	medium	src/attr/_cmp.py	-	file `attr._cmp` is never imported or run
 unused-variable	medium	src/attr/_compat.py:95:1	repr_context	variable `repr_context` is never used
 unused-class	high	src/attr/_make.py:88:7	_CacheHashWrapper	class `_CacheHashWrapper` is never used
-unused-file	medium	src/attr/_version_info.py	-	file `attr._version_info` is never imported or run
-unused-file	medium	src/attr/exceptions.py	-	file `attr.exceptions` is never imported or run
-unused-file	medium	src/attr/filters.py	-	file `attr.filters` is never imported or run
-unused-file	medium	src/attr/setters.py	-	file `attr.setters` is never imported or run
+unused-class	medium	src/attr/exceptions.py:72:7	PythonTooOldError	class `PythonTooOldError` is never used
 unused-method	medium	tests/strategies.py:197:17	_cached_property	method `BaseWithCachedProperty._cached_property` is never used
 unused-variable	medium	tests/test_cmp.py:58:1	indent	variable `indent` is never used
 unused-method	low	tests/test_compat.py:67:13	attribute	method `Foo.attribute` is never used

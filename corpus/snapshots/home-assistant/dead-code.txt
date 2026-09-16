@@ -1,7 +1,7 @@
 files_scanned=18735
 symbols_checked=173455
-symbols_kept=57424
-findings=3004
+symbols_kept=57429
+findings=2996
 --
 unused-variable	low	homeassistant/auth/mfa_modules/insecure_example.py:16:1	CONFIG_SCHEMA	variable `CONFIG_SCHEMA` is never used
 unused-class	low	homeassistant/auth/mfa_modules/insecure_example.py:29:7	InsecureExampleModule	class `InsecureExampleModule` is never used
@@ -2023,11 +2023,8 @@ unused-method	low	homeassistant/util/aiohttp.py:43:9	send_headers	method `MockPa
 unused-method	low	homeassistant/util/aiohttp.py:46:15	write_headers	method `MockPayloadWriter.write_headers` is never used
 unused-method	medium	homeassistant/util/aiohttp.py:85:15	_prepare_hook	method `MockRequest._prepare_hook` is never used
 unused-variable	medium	homeassistant/util/dt.py:20:1	EPOCHORDINAL	variable `EPOCHORDINAL` is never used
-unused-file	low	homeassistant/util/event_type.py	-	file `homeassistant.util.event_type` is never imported or run
-unused-file	low	homeassistant/util/hass_dict.py	-	file `homeassistant.util.hass_dict` is never imported or run
 unused-variable	medium	homeassistant/util/network.py:11:1	LOOPBACK_NETWORKS	variable `LOOPBACK_NETWORKS` is never used
 unused-variable	medium	homeassistant/util/network.py:29:1	LINK_LOCAL_NETWORKS	variable `LINK_LOCAL_NETWORKS` is never used
-unused-file	low	homeassistant/util/signal_type.py	-	file `homeassistant.util.signal_type` is never imported or run
 unused-function	low	pylint/plugins/pylint_home_assistant/__init__.py:17:5	register	function `register` is never used
 unused-file	medium	pylint/plugins/pylint_home_assistant/checkers/actions/service_registration.py	-	file `pylint.plugins.pylint_home_assistant.checkers.actions.service_registration` is never imported or run
 unused-file	medium	pylint/plugins/pylint_home_assistant/checkers/actions/swallowed_exceptions.py	-	file `pylint.plugins.pylint_home_assistant.checkers.actions.swallowed_exceptions` is never imported or run
@@ -2089,11 +2086,6 @@ unused-function	medium	pylint/plugins/pylint_home_assistant/helpers/quality_scal
 unused-function	medium	pylint/plugins/pylint_home_assistant/helpers/quality_scale.py:62:5	quality_scale_rule_is_done_or_exempt	function `quality_scale_rule_is_done_or_exempt` is never used
 unused-function	medium	pylint/plugins/pylint_home_assistant/helpers/translations.py:18:5	clear_translations_cache	function `clear_translations_cache` is never used
 unused-function	low	tests/auth/providers/test_homeassistant.py:28:11	load_auth_component	function `load_auth_component` is never used
-unused-function	medium	tests/common.py:177:5	threadsafe_coroutine_factory	function `threadsafe_coroutine_factory` is never used
-unused-variable	low	tests/common.py:412:1	mock_service	variable `mock_service` is never used
-unused-function	low	tests/common.py:416:5	async_mock_intent	function `async_mock_intent` is never used
-unused-variable	medium	tests/common.py:481:1	fire_mqtt_message	variable `fire_mqtt_message` is never used
-unused-variable	medium	tests/common.py:562:1	fire_time_changed	variable `fire_time_changed` is never used
 unused-variable	medium	tests/components/advantage_air/__init__.py:12:1	TEST_SET_RESPONSE	variable `TEST_SET_RESPONSE` is never used
 unused-variable	medium	tests/components/advantage_air/__init__.py:19:1	TEST_SYSTEM_URL	variable `TEST_SYSTEM_URL` is never used
 unused-variable	medium	tests/components/advantage_air/__init__.py:22:1	TEST_SET_URL	variable `TEST_SET_URL` is never used

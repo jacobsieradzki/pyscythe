@@ -1,7 +1,7 @@
 files_scanned=2932
 symbols_checked=39739
-symbols_kept=3290
-findings=294
+symbols_kept=3306
+findings=278
 --
 unused-file	low	django/conf/locale/ar/formats.py	-	file `django.conf.locale.ar.formats` is never imported or run
 unused-file	low	django/conf/locale/ar_DZ/formats.py	-	file `django.conf.locale.ar_DZ.formats` is never imported or run
@@ -151,8 +151,6 @@ unused-function	low	django/utils/translation/trans_real.py:398:5	pgettext	functi
 unused-function	low	django/utils/translation/trans_real.py:409:5	gettext_noop	function `gettext_noop` is never used
 unused-function	low	django/utils/translation/trans_real.py:438:5	npgettext	function `npgettext` is never used
 unused-function	low	django/utils/translation/trans_real.py:575:5	get_language_from_request	function `get_language_from_request` is never used
-unused-variable	medium	django/utils/version.py:16:1	PY310	variable `PY310` is never used
-unused-variable	medium	django/utils/version.py:17:1	PY311	variable `PY311` is never used
 unused-variable	low	django/views/generic/base.py:19:1	logger	variable `logger` is never used
 unused-variable	medium	django/views/static.py:68:1	template_translatable	variable `template_translatable` is never used
 unused-method	low	tests/admin_checks/tests.py:845:17	awesome_song	method `SongAdmin.awesome_song` is never used
@@ -206,20 +204,6 @@ unused-variable	low	tests/csrf_tests/csrf_token_error_handler_urls.py:3:1	handle
 unused-method	low	tests/custom_migration_operations/more_operations.py:21:9	state_backwards	method `TestOperation.state_backwards` is never used
 unused-method	low	tests/custom_migration_operations/operations.py:21:9	state_backwards	method `TestOperation.state_backwards` is never used
 unused-function	low	tests/forms_tests/models.py:11:5	callable_default	function `callable_default` is never used
-unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:16:5	api_get_distance	function `api_get_distance` is never used
-unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:20:5	api_get_buffer	function `api_get_buffer` is never used
-unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:24:5	api_get_geom_typeid	function `api_get_geom_typeid` is never used
-unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:28:5	api_get_num_coords	function `api_get_num_coords` is never used
-unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:32:5	api_get_centroid	function `api_get_centroid` is never used
-unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:36:5	api_get_empty	function `api_get_empty` is never used
-unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:40:5	api_get_valid	function `api_get_valid` is never used
-unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:44:5	api_get_simple	function `api_get_simple` is never used
-unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:48:5	api_get_ring	function `api_get_ring` is never used
-unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:52:5	api_get_boundary	function `api_get_boundary` is never used
-unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:56:5	api_get_convex_hull	function `api_get_convex_hull` is never used
-unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:60:5	api_get_extent	function `api_get_extent` is never used
-unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:64:5	api_get_area	function `api_get_area` is never used
-unused-function	low	tests/gis_tests/geos_tests/test_geos_mutation.py:68:5	api_get_length	function `api_get_length` is never used
 unused-variable	low	tests/handlers/tests_custom_error_handlers.py:31:1	handler403	variable `handler403` is never used
 unused-variable	medium	tests/i18n/commands/__init__.py:5:1	dummy1	variable `dummy1` is never used
 unused-variable	low	tests/i18n/commands/__init__.py:8:1	dummy2	variable `dummy2` is never used

@@ -1,7 +1,7 @@
 files_scanned=1850
 symbols_checked=13871
-symbols_kept=2906
-findings=266
+symbols_kept=2919
+findings=256
 --
 unused-file	medium	hacking/ansible-profile.py	-	file `ansible-profile.py` is never imported or run
 unused-method	low	lib/ansible/_internal/_task.py:97:9	loop_result	method `CurrentTask.loop_result` is never used
@@ -17,12 +17,6 @@ unused-variable	low	lib/ansible/_internal/_yaml/_dumper.py:20:1	display	variable
 unused-method	low	lib/ansible/cli/console.py:501:9	complete_cd	method `ConsoleCLI.complete_cd` is never used
 unused-file	medium	lib/ansible/compat/importlib_resources.py	-	file `lib.ansible.compat.importlib_resources` is never imported or run
 unused-method	medium	lib/ansible/config/manager.py:475:9	_find_yaml_config_files	method `ConfigManager._find_yaml_config_files` is never used
-unused-variable	high	lib/ansible/constants.py:47:1	_ACTION_WITH_CLEAN_FACTS	variable `_ACTION_WITH_CLEAN_FACTS` is never used
-unused-variable	medium	lib/ansible/constants.py:63:1	BOOL_TRUE	variable `BOOL_TRUE` is never used
-unused-variable	medium	lib/ansible/constants.py:70:1	DEFAULT_BECOME_PASS	variable `DEFAULT_BECOME_PASS` is never used
-unused-variable	medium	lib/ansible/constants.py:72:1	DEFAULT_REMOTE_PASS	variable `DEFAULT_REMOTE_PASS` is never used
-unused-variable	medium	lib/ansible/constants.py:126:1	VAULT_VERSION_MIN	variable `VAULT_VERSION_MIN` is never used
-unused-variable	medium	lib/ansible/constants.py:127:1	VAULT_VERSION_MAX	variable `VAULT_VERSION_MAX` is never used
 unused-class	medium	lib/ansible/errors/__init__.py:227:7	AnsibleInternalError	class `AnsibleInternalError` is never used
 unused-class	medium	lib/ansible/errors/__init__.py:235:7	AnsibleModuleError	class `AnsibleModuleError` is never used
 unused-variable	medium	lib/ansible/errors/__init__.py:315:1	AnsibleLookupError	variable `AnsibleLookupError` is never used
@@ -75,7 +69,6 @@ unused-class	medium	lib/ansible/module_utils/urls.py:192:7	ProxyError	class `Pro
 unused-class	medium	lib/ansible/module_utils/urls.py:205:7	NoSSLError	class `NoSSLError` is never used
 unused-file	medium	lib/ansible/parsing/ajson.py	-	file `lib.ansible.parsing.ajson` is never imported or run
 unused-file	medium	lib/ansible/parsing/utils/jsonify.py	-	file `lib.ansible.parsing.utils.jsonify` is never imported or run
-unused-file	medium	lib/ansible/parsing/yaml/objects.py	-	file `lib.ansible.parsing.yaml.objects` is never imported or run
 unused-method	medium	lib/ansible/playbook/base.py:95:9	_fattributes	method `FieldAttributeBase._fattributes` is never used
 unused-variable	low	lib/ansible/playbook/collectionsearch.py:10:1	display	variable `display` is never used
 unused-variable	low	lib/ansible/playbook/conditional.py:23:1	display	variable `display` is never used
@@ -107,7 +100,6 @@ unused-function	medium	lib/ansible/plugins/list.py:143:5	list_collection_plugins
 unused-function	medium	lib/ansible/plugins/list.py:265:5	list_plugin_names	function `list_plugin_names` is never used
 unused-function	medium	lib/ansible/plugins/list.py:269:5	list_plugin_files	function `list_plugin_files` is never used
 unused-function	medium	lib/ansible/plugins/list.py:274:5	list_plugin_classes	function `list_plugin_classes` is never used
-unused-function	medium	lib/ansible/plugins/loader.py:132:5	add_dirs_to_loader	function `add_dirs_to_loader` is never used
 unused-method	low	lib/ansible/plugins/netconf/__init__.py:311:9	guess_network_os	method `NetconfBase.guess_network_os` is never used
 unused-method	medium	lib/ansible/plugins/terminal/__init__.py:66:9	_exec_cli_command	method `TerminalBase._exec_cli_command` is never used
 unused-method	medium	lib/ansible/plugins/terminal/__init__.py:74:9	_get_prompt	method `TerminalBase._get_prompt` is never used
@@ -198,8 +190,6 @@ unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/pylint.py:71
 unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/shellcheck.py:46:7	ShellcheckTest	class `ShellcheckTest` is never used
 unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/validate_modules.py:80:7	ValidateModulesTest	class `ValidateModulesTest` is never used
 unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/yamllint.py:49:7	YamllintTest	class `YamllintTest` is never used
-unused-class	medium	test/lib/ansible_test/_internal/debugging.py:136:7	PydevdSettings	class `PydevdSettings` is never used
-unused-class	medium	test/lib/ansible_test/_internal/debugging.py:242:7	DebugpySettings	class `DebugpySettings` is never used
 unused-method	low	test/lib/ansible_test/_internal/docker_util.py:886:9	volumes	method `DockerImageInspect.volumes` is never used
 unused-method	low	test/lib/ansible_test/_internal/git.py:84:9	is_valid_ref	method `Git.is_valid_ref` is never used
 unused-class	medium	test/lib/ansible_test/_internal/host_profiles.py:1457:7	OriginProfile	class `OriginProfile` is never used

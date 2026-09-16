@@ -7,7 +7,7 @@
 use serde::Serialize;
 
 use crate::config::{ModulePrefix, TestCollection};
-use crate::index::{Ancestry, NameUsage, SubclassRegistration};
+use crate::index::{Ancestry, GlobalsAccess, NameUsage, SubclassRegistration};
 use crate::manifest::Manifest;
 use crate::source::SourceFile;
 use crate::symbol::Symbol;
@@ -127,6 +127,8 @@ pub struct KeepContext<'a> {
     /// Whether some function parameter anywhere shares the symbol's name,
     /// the way tests request fixtures.
     pub requested_as_parameter: NameUsage,
+    /// Whether the file builds something out of its own namespace.
+    pub globals_access: GlobalsAccess,
 }
 
 impl KeepContext<'_> {

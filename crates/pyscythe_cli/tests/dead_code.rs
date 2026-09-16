@@ -749,3 +749,24 @@ fn ansible_plugins_and_modules_are_found_by_the_plugin_loader() {
         "plugin and module trees are loaded by name; utils is ordinary code: {report}"
     );
 }
+
+#[test]
+fn a_module_that_reads_its_own_globals_uses_every_name_it_defines() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("reflective_globals"))
+        .output()
+        .expect("runs");
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let reported: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["symbol"].as_str())
+        .collect();
+    assert_eq!(
+        reported,
+        ["FORGOTTEN"],
+        "the token table is built from globals(); the plain module is ordinary: {report}"
+    );
+}

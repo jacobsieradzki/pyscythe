@@ -7,9 +7,9 @@ use crate::metrics::FunctionMetrics;
 use crate::tokens::{CloneMode, CloneToken};
 
 use crate::index::{
-    Ancestry, CodebaseIndex, ExternalImport, Import, ImportCondition, ImportKind, ImportOrigin,
-    ImportedNames, Inheritance, NameUsage, Reference, SubclassRegistration, Suppression,
-    SuppressionScope,
+    Ancestry, CodebaseIndex, ExternalImport, GlobalsAccess, Import, ImportCondition, ImportKind,
+    ImportOrigin, ImportedNames, Inheritance, NameUsage, Reference, SubclassRegistration,
+    Suppression, SuppressionScope,
 };
 use crate::manifest::DistributionName;
 use crate::source::{
@@ -36,6 +36,7 @@ pub(crate) struct FakeIndex {
     sources: Vec<(FileId, String, Vec<Deletable>)>,
     external_imports: Vec<(FileId, ExternalImport)>,
     parameter_names: Vec<String>,
+    globals_readers: Vec<FileId>,
     requirements: Vec<(DistributionName, DistributionName)>,
     path_literals: Vec<String>,
 }
@@ -197,6 +198,11 @@ impl FakeIndex {
             DistributionName::normalize(distribution),
             DistributionName::normalize(requires),
         ));
+    }
+
+    /// Marks the file as one that builds something out of `globals()`.
+    pub(crate) fn mark_reads_own_globals(&mut self, file: FileId) {
+        self.globals_readers.push(file);
     }
 
     pub(crate) fn add_external_import(
@@ -485,6 +491,14 @@ impl CodebaseIndex for FakeIndex {
             NameUsage::Used
         } else {
             NameUsage::Unused
+        }
+    }
+
+    fn globals_access(&self, file: FileId) -> GlobalsAccess {
+        if self.globals_readers.contains(&file) {
+            GlobalsAccess::Enumerated
+        } else {
+            GlobalsAccess::NotEnumerated
         }
     }
 

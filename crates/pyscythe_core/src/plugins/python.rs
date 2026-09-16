@@ -58,6 +58,11 @@ impl KeepRule for Python {
         if crate::dead_code::is_vendored_file(context.file) {
             return Some("vendored third-party code, updated by re-copying it");
         }
+        if symbol.is_module_level()
+            && context.globals_access == crate::index::GlobalsAccess::Enumerated
+        {
+            return Some("the module builds something out of its own globals()");
+        }
         if symbol.kind == crate::symbol::SymbolKind::Method
             && symbol.name.as_str().starts_with("do_")
             && context.ancestry.has_ancestor_in("http.server")
@@ -143,6 +148,21 @@ mod tests {
         assert!(
             !Case::function("load")
                 .at("/p/pkg/data/loader.py")
+                .is_kept_by(&Python)
+        );
+    }
+
+    #[test]
+    fn keeps_every_name_in_a_module_that_reads_its_own_globals() {
+        assert!(
+            Case::variable("BACKQUOTE")
+                .at("/p/pkg/token.py")
+                .reading_its_own_globals()
+                .is_kept_by(&Python)
+        );
+        assert!(
+            !Case::variable("FORGOTTEN")
+                .at("/p/pkg/plain.py")
                 .is_kept_by(&Python)
         );
     }
