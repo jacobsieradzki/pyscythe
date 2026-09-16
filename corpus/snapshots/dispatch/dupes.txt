@@ -1,8 +1,8 @@
 files_scanned=717
 symbols_checked=0
 symbols_kept=0
-findings=615
-duplication: clones=615 duplicated_lines=24526 total_lines=84507 percent_tenths=290
+findings=590
+duplication: clones=590 duplicated_lines=23817 total_lines=84507 percent_tenths=281
 --
 duplicate-code	high	src/dispatch/__init__.py:20:1	-	63 lines (56 tokens) duplicated at tests.factories:1
 duplicate-code	high	src/dispatch/ai/prompt/models.py:39:1	-	9 lines (53 tokens) duplicated at dispatch.participant.models:66
@@ -90,10 +90,9 @@ duplicate-code	high	src/dispatch/case/scheduled.py:30:1	-	12 lines (57 tokens) d
 duplicate-code	high	src/dispatch/case/scheduled.py:86:1	-	8 lines (58 tokens) duplicated at dispatch.incident.scheduled:226
 duplicate-code	high	src/dispatch/case/service.py:33:1	-	21 lines (130 tokens) duplicated at dispatch.data.query.service:7
 duplicate-code	high	src/dispatch/case/service.py:121:1	-	19 lines (120 tokens) duplicated at dispatch.case.service:148
-duplicate-code	high	src/dispatch/case/service.py:232:1	-	11 lines (59 tokens) duplicated at dispatch.incident.service:217
 duplicate-code	high	src/dispatch/case/service.py:327:1	-	17 lines (95 tokens) duplicated at dispatch.case.service:351
 duplicate-code	high	src/dispatch/case/service.py:463:1	-	13 lines (58 tokens) duplicated at dispatch.workflow.service:102
-duplicate-code	high	src/dispatch/case/severity/config.py:4:1	-	39 lines (129 tokens) duplicated at dispatch.incident.severity.config:4
+duplicate-code	high	src/dispatch/case/severity/config.py:28:1	-	15 lines (50 tokens) duplicated at dispatch.incident.severity.config:28
 duplicate-code	high	src/dispatch/case/severity/models.py:1:1	-	21 lines (71 tokens) duplicated in 2 other places: dispatch.incident.severity.models:1, dispatch.incident.type.models:14
 duplicate-code	high	src/dispatch/case/severity/models.py:22:1	-	29 lines (103 tokens) duplicated at dispatch.incident.severity.models:21
 duplicate-code	high	src/dispatch/case/severity/service.py:43:1	-	26 lines (114 tokens) duplicated at dispatch.incident.severity.service:50
@@ -188,42 +187,26 @@ duplicate-code	high	src/dispatch/data/source/status/service.py:1:1	-	37 lines (1
 duplicate-code	high	src/dispatch/database/revisions/core/env.py:27:1	-	17 lines (67 tokens) duplicated at dispatch.database.revisions.tenant.env:36
 duplicate-code	high	src/dispatch/database/revisions/core/versions/2021-06-15_0ab4f8f54bfa.py:77:1	-	12 lines (52 tokens) duplicated at src/dispatch/database/revisions/core/versions/2021-07-22_8f364cf49a23.py:53
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2021-06-15_8a558baeef05.py:1060:1	-	6 lines (58 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2021-11-18_ce5c4ac967d8.py:223
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2021-06-15_8a558baeef05.py:1438:1	-	6 lines (51 tokens) duplicated in 2 other places: src/dispatch/database/revisions/tenant/versions/2021-06-15_8a558baeef05.py:1484, src/dispatch/database/revisions/tenant/versions/2021-06-15_8a558baeef05.py:1662
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2021-06-15_8a558baeef05.py:1532:1	-	6 lines (51 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2021-06-15_8a558baeef05.py:1744
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2021-08-03_b0b00d3e8330.py:18:1	-	13 lines (67 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2021-08-03_b0b00d3e8330.py:30
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2021-08-09_b73416df5744.py:39:1	-	6 lines (52 tokens) duplicated at dispatch.incident.type.models:59
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2021-08-09_b73416df5744.py:52:1	-	18 lines (90 tokens) duplicated at dispatch.incident_role.models:26
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2021-08-09_b73416df5744.py:100:1	-	6 lines (68 tokens) duplicated in 2 other places: src/dispatch/database/revisions/tenant/versions/2022-07-28_2ef7baab2916.py:103, src/dispatch/database/revisions/tenant/versions/2024-06-28_15a8d3228123.py:50
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2021-09-03_ebe0cb6528ba.py:31:1	-	5 lines (51 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2025-07-14_df10accae9a9.py:28
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2021-09-16_3820a792d88a.py:25:1	-	50 lines (265 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2024-10-25_24322617ce9a.py:23
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2021-10-27_d1dc160533c7.py:28:1	-	12 lines (50 tokens) duplicated at dispatch.plugin.models:21
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2021-10-27_d1dc160533c7.py:47:1	-	6 lines (50 tokens) duplicated at dispatch.plugin.models:90
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2021-11-18_ce5c4ac967d8.py:64:1	-	21 lines (115 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2022-05-23_748744207122.py:33
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2021-11-18_ce5c4ac967d8.py:116:1	-	16 lines (84 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2022-05-23_748744207122.py:63
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2021-11-18_ce5c4ac967d8.py:196:1	-	16 lines (87 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2022-05-23_748744207122.py:86
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:22:1	-	11 lines (129 tokens) duplicated in 4 other places: src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:40, src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:58, src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:76, src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:94
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:112:1	-	5 lines (56 tokens) duplicated in 9 other places: src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:175, src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:203, src/dispatch/database/revisions/tenant/versions/2023-02-09_8746b4e292d2.py:24, src/dispatch/database/revisions/tenant/versions/2023-02-09_8746b4e292d2.py:58, src/dispatch/database/revisions/tenant/versions/2023-02-13_b168b50764c7.py:27, src/dispatch/database/revisions/tenant/versions/2023-04-14_38a7fb709167.py:22, src/dispatch/database/revisions/tenant/versions/2023-12-09_99d317cbc848.py:20, src/dispatch/database/revisions/tenant/versions/2023-12-27_065c59f15267.py:22, src/dispatch/database/revisions/tenant/versions/2024-06-28_15a8d3228123.py:23
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:134:1	-	7 lines (89 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2022-10-27_01aa49ca0470.py:57
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:181:1	-	6 lines (72 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2023-08-11_4e57f5b1f3f3.py:30
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:209:1	-	7 lines (105 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2023-12-27_065c59f15267.py:26
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-07-28_2ef7baab2916.py:22:1	-	15 lines (197 tokens) duplicated in 2 other places: src/dispatch/database/revisions/tenant/versions/2022-07-28_2ef7baab2916.py:44, src/dispatch/database/revisions/tenant/versions/2022-10-17_4f1af51dae6e.py:23
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-09-09_4452426c6905.py:44:1	-	7 lines (72 tokens) duplicated in 2 other places: src/dispatch/database/revisions/tenant/versions/2022-09-09_4452426c6905.py:64, src/dispatch/database/revisions/tenant/versions/2022-09-09_4452426c6905.py:84
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-10-05_534c316ba65b.py:23:1	-	12 lines (175 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2022-10-05_534c316ba65b.py:52
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-10-05_534c316ba65b.py:34:1	-	11 lines (87 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2022-10-05_534c316ba65b.py:64
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-10-05_534c316ba65b.py:95:1	-	15 lines (108 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2022-10-27_01aa49ca0470.py:100
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-10-05_534c316ba65b.py:109:1	-	16 lines (54 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2022-10-27_01aa49ca0470.py:76
+duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:27:1	-	6 lines (54 tokens) duplicated in 8 other places: src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:45, src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:63, src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:81, src/dispatch/database/revisions/tenant/versions/2022-02-22_b5d3706a1d54.py:99, src/dispatch/database/revisions/tenant/versions/2022-07-28_2ef7baab2916.py:31, src/dispatch/database/revisions/tenant/versions/2022-07-28_2ef7baab2916.py:53, src/dispatch/database/revisions/tenant/versions/2022-07-28_2ef7baab2916.py:76, src/dispatch/database/revisions/tenant/versions/2022-10-17_4f1af51dae6e.py:32
+duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-10-05_534c316ba65b.py:35:1	-	10 lines (54 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2022-10-05_534c316ba65b.py:65
+duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-10-05_534c316ba65b.py:107:1	-	18 lines (72 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2022-10-27_01aa49ca0470.py:74
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-10-19_3b0f5b81376f.py:9:1	-	19 lines (56 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2022-10-26_4b65941d065a.py:7
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-10-19_3b0f5b81376f.py:41:1	-	11 lines (63 tokens) duplicated at dispatch.incident_cost_type.models:22
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2022-12-09_f809d9e76ba3.py:27:1	-	12 lines (97 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2023-02-13_b168b50764c7.py:138
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2023-02-09_8746b4e292d2.py:32:1	-	6 lines (81 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2024-06-28_15a8d3228123.py:31
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2023-02-09_8746b4e292d2.py:66:1	-	5 lines (51 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2024-09-06_51eacaf1f62c.py:29
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2023-02-13_b168b50764c7.py:36:1	-	11 lines (120 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2023-04-14_38a7fb709167.py:28
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2023-02-13_b168b50764c7.py:211:1	-	10 lines (131 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2023-02-13_b168b50764c7.py:231
+duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2023-02-09_8746b4e292d2.py:35:1	-	6 lines (51 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2023-12-27_065c59f15267.py:30
+duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2023-02-09_8746b4e292d2.py:68:1	-	10 lines (54 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2023-04-14_38a7fb709167.py:37
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2023-03-03_7ddae3ba7822.py:16:1	-	10 lines (51 tokens) duplicated in 2 other places: src/dispatch/database/revisions/tenant/versions/2023-03-09_7db13bf5c5d7.py:17, src/dispatch/database/revisions/tenant/versions/2023-03-27_d1b5ed66d83d.py:17
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2023-09-08_0560fab4537f.py:27:1	-	6 lines (68 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2024-03-11_91bd05855ad1.py:27
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2024-09-23_32652e0360dd.py:24:1	-	59 lines (300 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2025-07-11_aa87efd3d6c1.py:24
 duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2024-09-23_32652e0360dd.py:84:1	-	23 lines (54 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2025-07-11_aa87efd3d6c1.py:82
-duplicate-code	high	src/dispatch/database/revisions/tenant/versions/2025-07-16_408118048599.py:28:1	-	5 lines (68 tokens) duplicated at src/dispatch/database/revisions/tenant/versions/2025-08-28_ff08d822ef2c.py:27
 duplicate-code	high	src/dispatch/database/service.py:643:1	-	6 lines (57 tokens) duplicated at dispatch.database.service:660
 duplicate-code	high	src/dispatch/database/service.py:798:1	-	25 lines (123 tokens) duplicated at dispatch.database.service:822
 duplicate-code	high	src/dispatch/decorators.py:117:1	-	6 lines (51 tokens) duplicated at dispatch.decorators:141
@@ -234,7 +217,6 @@ duplicate-code	high	src/dispatch/definition/views.py:26:1	-	9 lines (56 tokens) 
 duplicate-code	high	src/dispatch/definition/views.py:34:1	-	11 lines (56 tokens) duplicated at dispatch.term.views:17
 duplicate-code	high	src/dispatch/document/flows.py:92:1	-	15 lines (82 tokens) duplicated at dispatch.group.flows:64
 duplicate-code	high	src/dispatch/document/flows.py:148:1	-	10 lines (98 tokens) duplicated at dispatch.forms.service:171
-duplicate-code	high	src/dispatch/document/flows.py:158:1	-	7 lines (66 tokens) duplicated at dispatch.forms.service:186
 duplicate-code	high	src/dispatch/document/flows.py:198:1	-	9 lines (60 tokens) duplicated at dispatch.document.flows:206
 duplicate-code	high	src/dispatch/document/flows.py:242:1	-	18 lines (109 tokens) duplicated at dispatch.document.flows:287
 duplicate-code	high	src/dispatch/document/flows.py:268:1	-	9 lines (54 tokens) duplicated at dispatch.document.flows:313
@@ -333,7 +315,7 @@ duplicate-code	high	src/dispatch/individual/views.py:25:1	-	17 lines (70 tokens)
 duplicate-code	high	src/dispatch/individual/views.py:47:1	-	10 lines (54 tokens) duplicated at dispatch.team.views:22
 duplicate-code	high	src/dispatch/main.py:231:1	-	7 lines (51 tokens) duplicated at dispatch.main:237
 duplicate-code	high	src/dispatch/messaging/strings.py:633:1	-	29 lines (76 tokens) duplicated at dispatch.messaging.strings:872
-duplicate-code	high	src/dispatch/messaging/strings.py:1079:1	-	8 lines (54 tokens) duplicated at dispatch.messaging.strings:1088
+duplicate-code	high	src/dispatch/messaging/strings.py:1079:1	-	8 lines (52 tokens) duplicated at dispatch.messaging.strings:1088
 duplicate-code	high	src/dispatch/monitor/scheduled.py:90:1	-	13 lines (72 tokens) duplicated at dispatch.task.scheduled:106
 duplicate-code	high	src/dispatch/monitor/service.py:2:1	-	18 lines (55 tokens) duplicated at dispatch.organization.service:4
 duplicate-code	high	src/dispatch/monitor/service.py:57:1	-	23 lines (113 tokens) duplicated at dispatch.search_filter.service:67
@@ -365,7 +347,7 @@ duplicate-code	high	src/dispatch/plugins/bases/artificial_intelligence.py:13:1	-
 duplicate-code	high	src/dispatch/plugins/bases/contact.py:13:1	-	14 lines (70 tokens) duplicated in 2 other places: dispatch.plugins.bases.definition:13, dispatch.plugins.bases.document:13
 duplicate-code	high	src/dispatch/plugins/bases/participant_group.py:15:1	-	13 lines (68 tokens) duplicated at dispatch.plugins.bases.storage:15
 duplicate-code	high	src/dispatch/plugins/bases/storage.py:39:1	-	15 lines (73 tokens) duplicated at dispatch.plugins.bases.task:15
-duplicate-code	high	src/dispatch/plugins/dispatch_core/plugin.py:273:1	-	21 lines (73 tokens) duplicated at dispatch.plugins.dispatch_core.plugin:327
+duplicate-code	high	src/dispatch/plugins/dispatch_core/plugin.py:275:1	-	19 lines (65 tokens) duplicated at dispatch.plugins.dispatch_core.plugin:329
 duplicate-code	high	src/dispatch/plugins/dispatch_google/calendar/plugin.py:11:1	-	24 lines (70 tokens) duplicated at dispatch.plugins.dispatch_google.groups.plugin:6
 duplicate-code	high	src/dispatch/plugins/dispatch_google/calendar/plugin.py:34:1	-	10 lines (56 tokens) duplicated at dispatch.plugins.dispatch_google.groups.plugin:29
 duplicate-code	high	src/dispatch/plugins/dispatch_google/docs/plugin.py:187:1	-	12 lines (73 tokens) duplicated at dispatch.plugins.dispatch_google.docs.plugin:297
@@ -374,7 +356,7 @@ duplicate-code	high	src/dispatch/plugins/dispatch_jira/plugin.py:156:1	-	15 line
 duplicate-code	high	src/dispatch/plugins/dispatch_jira/plugin.py:269:1	-	9 lines (59 tokens) duplicated at dispatch.plugins.dispatch_jira.plugin:279
 duplicate-code	high	src/dispatch/plugins/dispatch_jira/plugin.py:308:1	-	14 lines (59 tokens) duplicated at dispatch.plugins.dispatch_jira.plugin:440
 duplicate-code	high	src/dispatch/plugins/dispatch_jira/plugin.py:325:1	-	26 lines (119 tokens) duplicated at dispatch.plugins.dispatch_jira.plugin:509
-duplicate-code	high	src/dispatch/plugins/dispatch_jira/plugin.py:368:1	-	21 lines (87 tokens) duplicated at dispatch.plugins.dispatch_jira.plugin:558
+duplicate-code	high	src/dispatch/plugins/dispatch_jira/plugin.py:370:1	-	19 lines (79 tokens) duplicated at dispatch.plugins.dispatch_jira.plugin:560
 duplicate-code	high	src/dispatch/plugins/dispatch_jira/plugin.py:398:1	-	19 lines (75 tokens) duplicated at dispatch.plugins.dispatch_jira.plugin:586
 duplicate-code	high	src/dispatch/plugins/dispatch_openai/plugin.py:7:1	-	22 lines (52 tokens) duplicated at dispatch.plugins.dispatch_slack.plugin:28
 duplicate-code	high	src/dispatch/plugins/dispatch_openai/plugin.py:44:1	-	17 lines (60 tokens) duplicated at dispatch.plugins.dispatch_openai.plugin:70
@@ -383,8 +365,7 @@ duplicate-code	high	src/dispatch/plugins/dispatch_pagerduty/service.py:57:1	-	10
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:1:1	-	132 lines (70 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:29
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:172:1	-	11 lines (59 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:1083
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:262:1	-	8 lines (61 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:2046
-duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:281:1	-	12 lines (78 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:2052
-duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:301:1	-	12 lines (64 tokens) duplicated in 3 other places: dispatch.plugins.dispatch_slack.incident.interactive:1426, dispatch.plugins.dispatch_slack.incident.interactive:1969, dispatch.plugins.dispatch_slack.incident.interactive:2369
+duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:294:1	-	16 lines (65 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:2062
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:414:1	-	12 lines (59 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:604
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:669:1	-	27 lines (85 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:706
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:921:1	-	41 lines (86 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:2807
@@ -397,28 +378,25 @@ duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:1365
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:1435:1	-	19 lines (84 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:3031
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:1482:1	-	18 lines (87 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:2351
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:1499:1	-	11 lines (56 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:2367
-duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:1513:1	-	10 lines (60 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:2383
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:1570:1	-	19 lines (82 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:1768
-duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:1656:1	-	14 lines (93 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:2774
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:1674:1	-	17 lines (56 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:1980
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:1708:1	-	21 lines (74 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:1728
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2022:1	-	9 lines (73 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:2142
-duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2069:1	-	15 lines (64 tokens) duplicated at dispatch.plugins.dispatch_slack.workflow:188
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2084:1	-	15 lines (73 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:2257
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2128:1	-	11 lines (63 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:3018
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2161:1	-	13 lines (66 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:2213
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2173:1	-	19 lines (57 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:3025
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2227:1	-	11 lines (79 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:3156
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2315:1	-	21 lines (104 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:2606
+duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2382:1	-	12 lines (53 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:2491
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2405:1	-	14 lines (61 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:2570
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2592:1	-	18 lines (76 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:2515
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2612:1	-	9 lines (70 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:2729
-duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2649:1	-	12 lines (52 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:2786
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2669:1	-	19 lines (53 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:3089
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2694:1	-	19 lines (65 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:3049
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/interactive.py:2880:1	-	13 lines (59 tokens) duplicated at dispatch.plugins.dispatch_slack.case.interactive:2896
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/messages.py:382:1	-	23 lines (51 tokens) duplicated at dispatch.plugins.dispatch_slack.case.messages:466
-duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/messages.py:422:1	-	39 lines (135 tokens) duplicated at dispatch.plugins.dispatch_slack.case.messages:503
+duplicate-code	high	src/dispatch/plugins/dispatch_slack/case/messages.py:424:1	-	37 lines (130 tokens) duplicated at dispatch.plugins.dispatch_slack.case.messages:505
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/decorators.py:12:1	-	13 lines (67 tokens) duplicated at dispatch.scheduler:31
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/endpoints.py:131:1	-	9 lines (60 tokens) duplicated at dispatch.plugins.dispatch_slack.endpoints:140
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/feedback/interactive.py:73:1	-	20 lines (92 tokens) duplicated at dispatch.plugins.dispatch_slack.feedback.interactive:235
@@ -444,6 +422,7 @@ duplicate-code	high	src/dispatch/plugins/dispatch_slack/incident/interactive.py:
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/incident/interactive.py:1215:1	-	20 lines (109 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:1279
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/incident/interactive.py:1237:1	-	15 lines (61 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:1298
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/incident/interactive.py:1316:1	-	30 lines (147 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:3245
+duplicate-code	high	src/dispatch/plugins/dispatch_slack/incident/interactive.py:1426:1	-	13 lines (64 tokens) duplicated in 2 other places: dispatch.plugins.dispatch_slack.incident.interactive:1969, dispatch.plugins.dispatch_slack.incident.interactive:2369
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/incident/interactive.py:1438:1	-	15 lines (66 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:1547
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/incident/interactive.py:1533:1	-	12 lines (60 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:2499
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/incident/interactive.py:1633:1	-	12 lines (58 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:1728
@@ -453,6 +432,7 @@ duplicate-code	high	src/dispatch/plugins/dispatch_slack/incident/interactive.py:
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/incident/interactive.py:2121:1	-	26 lines (108 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:2309
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/incident/interactive.py:2551:1	-	7 lines (53 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:2717
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/incident/interactive.py:2631:1	-	22 lines (88 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:2673
+duplicate-code	high	src/dispatch/plugins/dispatch_slack/incident/interactive.py:2749:1	-	13 lines (55 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:2784
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/incident/interactive.py:2859:1	-	18 lines (97 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:2892
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/incident/interactive.py:2927:1	-	23 lines (80 tokens) duplicated at dispatch.plugins.dispatch_slack.incident.interactive:2958
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/plugin.py:308:1	-	17 lines (97 tokens) duplicated at dispatch.plugins.dispatch_slack.plugin:332
@@ -462,6 +442,7 @@ duplicate-code	high	src/dispatch/plugins/dispatch_slack/service.py:246:1	-	8 lin
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/service.py:319:1	-	9 lines (51 tokens) duplicated at dispatch.plugins.dispatch_slack.service:557
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/service.py:494:1	-	11 lines (50 tokens) duplicated at dispatch.plugins.dispatch_slack.service:518
 duplicate-code	high	src/dispatch/plugins/dispatch_slack/service.py:583:1	-	16 lines (76 tokens) duplicated at dispatch.plugins.dispatch_slack.service:657
+duplicate-code	high	src/dispatch/plugins/dispatch_slack/workflow.py:183:1	-	11 lines (52 tokens) duplicated at dispatch.plugins.dispatch_slack.workflow:298
 duplicate-code	high	src/dispatch/plugins/dispatch_test/contact.py:6:1	-	17 lines (82 tokens) duplicated in 2 other places: dispatch.plugins.dispatch_test.definition:6, dispatch.plugins.dispatch_test.document:60
 duplicate-code	high	src/dispatch/plugins/dispatch_test/conversation.py:23:1	-	10 lines (53 tokens) duplicated at dispatch.plugins.dispatch_test.storage:11
 duplicate-code	high	src/dispatch/plugins/dispatch_test/storage.py:26:1	-	15 lines (68 tokens) duplicated at dispatch.plugins.dispatch_test.task:8
@@ -506,7 +487,6 @@ duplicate-code	high	src/dispatch/term/views.py:38:1	-	9 lines (56 tokens) duplic
 duplicate-code	high	src/dispatch/ticket/flows.py:32:1	-	20 lines (93 tokens) duplicated at dispatch.ticket.flows:152
 duplicate-code	high	src/dispatch/ticket/flows.py:67:1	-	12 lines (67 tokens) duplicated at dispatch.ticket.flows:185
 duplicate-code	high	src/dispatch/ticket/flows.py:90:1	-	11 lines (52 tokens) duplicated at dispatch.ticket.flows:207
-duplicate-code	high	src/dispatch/ticket/flows.py:117:1	-	9 lines (57 tokens) duplicated at dispatch.ticket.flows:239
 duplicate-code	high	src/dispatch/workflow/scheduled.py:66:1	-	11 lines (52 tokens) duplicated at dispatch.workflow.scheduled:80
 duplicate-code	high	src/dispatch/workflow/service.py:228:1	-	8 lines (53 tokens) duplicated at dispatch.workflow.service:235
 duplicate-code	high	src/dispatch/workflow/views.py:88:1	-	12 lines (63 tokens) duplicated at dispatch.workflow.views:123
@@ -544,7 +524,7 @@ duplicate-code	high	tests/cost_model/test_cost_model_service.py:168:1	-	12 lines
 duplicate-code	high	tests/cost_model/test_cost_model_service.py:179:1	-	19 lines (105 tokens) duplicated at tests.cost_model.test_cost_model_service:221
 duplicate-code	high	tests/database/test_service.py:230:1	-	11 lines (66 tokens) duplicated at tests/database/test_service.py:396
 duplicate-code	high	tests/database/test_service.py:242:1	-	25 lines (104 tokens) duplicated at tests/database/test_service.py:408
-duplicate-code	high	tests/database/test_service.py:275:1	-	24 lines (95 tokens) duplicated at tests/database/test_service.py:441
+duplicate-code	high	tests/database/test_service.py:281:1	-	18 lines (65 tokens) duplicated at tests/database/test_service.py:447
 duplicate-code	high	tests/database/test_service.py:310:1	-	12 lines (63 tokens) duplicated at tests/database/test_service.py:473
 duplicate-code	high	tests/database/test_service.py:323:1	-	9 lines (60 tokens) duplicated in 2 other places: tests/database/test_service.py:331, tests/database/test_service.py:490
 duplicate-code	high	tests/database/test_service.py:339:1	-	9 lines (60 tokens) duplicated at tests/database/test_service.py:498
@@ -554,9 +534,7 @@ duplicate-code	high	tests/document/test_document_service.py:1:1	-	19 lines (78 t
 duplicate-code	high	tests/document/test_document_service.py:19:1	-	21 lines (70 tokens) duplicated at tests.group.test_group_service:20
 duplicate-code	high	tests/document/test_document_service.py:46:1	-	16 lines (69 tokens) duplicated at tests.signal.test_signal_filter_service:34
 duplicate-code	high	tests/entity/test_entity_service.py:32:1	-	27 lines (81 tokens) duplicated at tests.entity.test_entity_service:58
-duplicate-code	high	tests/entity/test_entity_service.py:111:1	-	28 lines (266 tokens) duplicated at tests.feedback.test_feedback_oncall:26
-duplicate-code	high	tests/entity/test_entity_service.py:139:1	-	33 lines (286 tokens) duplicated at tests.entity_type.test_entity_type_service:25
-duplicate-code	high	tests/entity/test_entity_service.py:183:1	-	8 lines (52 tokens) duplicated at tests.feedback.test_feedback_service:94
+duplicate-code	high	tests/entity/test_entity_service.py:160:1	-	12 lines (73 tokens) duplicated at tests.entity_type.test_entity_type_service:46
 duplicate-code	high	tests/entity/test_entity_service.py:246:1	-	13 lines (76 tokens) duplicated at tests.entity.test_entity_service:314
 duplicate-code	high	tests/event/test_event_service.py:2:1	-	15 lines (62 tokens) duplicated at tests.incident_type.test_incident_type_service:1
 duplicate-code	high	tests/event/test_event_service.py:70:1	-	13 lines (67 tokens) duplicated at tests.feedback.test_feedback_oncall:120
@@ -578,8 +556,6 @@ duplicate-code	high	tests/factories.py:735:1	-	36 lines (123 tokens) duplicated 
 duplicate-code	high	tests/factories.py:777:1	-	17 lines (61 tokens) duplicated in 2 other places: tests.factories:943, tests.factories:1448
 duplicate-code	high	tests/factories.py:1169:1	-	36 lines (165 tokens) duplicated at tests.factories:1212
 duplicate-code	high	tests/feedback/test_feedback_cases.py:74:1	-	13 lines (62 tokens) duplicated at tests.feedback.test_feedback_service:11
-duplicate-code	high	tests/feedback/test_feedback_cases.py:129:1	-	10 lines (72 tokens) duplicated at tests.feedback.test_feedback_cases:139
-duplicate-code	high	tests/feedback/test_feedback_cases.py:152:1	-	11 lines (55 tokens) duplicated at tests.feedback.test_feedback_cases:167
 duplicate-code	high	tests/feedback/test_feedback_cases.py:186:1	-	14 lines (76 tokens) duplicated at tests.feedback.test_feedback_service:114
 duplicate-code	high	tests/incident_cost/test_incident_cost_service.py:216:1	-	14 lines (59 tokens) duplicated at tests.incident_cost.test_incident_cost_service:266
 duplicate-code	high	tests/incident_cost_type/test_incident_cost_type_service.py:34:1	-	28 lines (111 tokens) duplicated at tests.tag_type.test_tag_type_service:19
@@ -607,7 +583,6 @@ duplicate-code	high	tests/signal/test_signal_flow.py:136:1	-	19 lines (98 tokens
 duplicate-code	high	tests/signal/test_signal_flow.py:202:1	-	17 lines (74 tokens) duplicated at tests.signal.test_signal_flow:457
 duplicate-code	high	tests/signal/test_signal_flow.py:475:1	-	21 lines (148 tokens) duplicated at tests.signal.test_signal_flow:524
 duplicate-code	high	tests/signal/test_signal_flow.py:495:1	-	22 lines (74 tokens) duplicated at tests.signal.test_signal_flow:545
-duplicate-code	high	tests/signal/test_signal_service.py:40:1	-	40 lines (310 tokens) duplicated at tests.signal.test_signal_service:125
 duplicate-code	high	tests/signal/test_signal_service.py:204:1	-	54 lines (376 tokens) duplicated at tests.signal.test_signal_service:287
 duplicate-code	high	tests/signal/test_signal_service.py:257:1	-	13 lines (52 tokens) duplicated at tests.signal.test_signal_service:340
 duplicate-code	high	tests/signal/test_signal_service.py:355:1	-	26 lines (107 tokens) duplicated at tests.signal.test_signal_service:776

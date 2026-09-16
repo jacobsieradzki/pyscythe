@@ -2,7 +2,7 @@ files_scanned=37
 symbols_checked=0
 symbols_kept=0
 findings=33
-duplication: clones=33 duplicated_lines=866 total_lines=12062 percent_tenths=71
+duplication: clones=33 duplicated_lines=860 total_lines=12062 percent_tenths=71
 --
 duplicate-code	high	src/requests/adapters.py:126:1	-	25 lines (61 tokens) duplicated at requests.adapters:632
 duplicate-code	high	src/requests/adapters.py:492:1	-	10 lines (52 tokens) duplicated at requests.adapters:537
@@ -11,7 +11,7 @@ duplicate-code	high	src/requests/auth.py:100:1	-	12 lines (70 tokens) duplicated
 duplicate-code	high	src/requests/auth.py:174:1	-	9 lines (62 tokens) duplicated in 2 other places: requests.auth:182, requests.auth:190
 duplicate-code	high	src/requests/cookies.py:302:1	-	9 lines (59 tokens) duplicated at requests.cookies:310
 duplicate-code	high	src/requests/exceptions.py:82:1	-	33 lines (65 tokens) duplicated at requests.exceptions:134
-duplicate-code	high	src/requests/models.py:327:1	-	11 lines (76 tokens) duplicated at requests.models:428
+duplicate-code	high	src/requests/models.py:330:1	-	8 lines (54 tokens) duplicated at requests.models:431
 duplicate-code	high	src/requests/sessions.py:712:1	-	15 lines (51 tokens) duplicated at requests.sessions:726
 duplicate-code	high	tests/test_lowlevel.py:49:1	-	17 lines (86 tokens) duplicated at tests.test_lowlevel:113
 duplicate-code	high	tests/test_lowlevel.py:73:1	-	10 lines (52 tokens) duplicated at tests.test_lowlevel:91

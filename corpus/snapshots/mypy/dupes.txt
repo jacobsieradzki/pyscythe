@@ -1,8 +1,8 @@
 files_scanned=442
 symbols_checked=0
 symbols_kept=0
-findings=794
-duplication: clones=794 duplicated_lines=20198 total_lines=183029 percent_tenths=110
+findings=789
+duplication: clones=789 duplicated_lines=20045 total_lines=183029 percent_tenths=109
 --
 duplicate-code	high	misc/analyze_cache.py:19:1	-	11 lines (52 tokens) duplicated at mypyc.irbuild.for_helpers:645
 duplicate-code	high	misc/analyze_cache.py:106:1	-	10 lines (72 tokens) duplicated at misc.analyze_cache:133
@@ -21,7 +21,7 @@ duplicate-code	high	mypy/binder.py:104:1	-	12 lines (60 tokens) duplicated at my
 duplicate-code	high	mypy/binder.py:279:1	-	11 lines (56 tokens) duplicated at mypy.types:3480
 duplicate-code	high	mypy/binder.py:653:1	-	18 lines (61 tokens) duplicated at mypy.typeops:1258
 duplicate-code	high	mypy/build.py:494:1	-	8 lines (52 tokens) duplicated at mypy.build_worker.worker:114
-duplicate-code	high	mypy/build.py:516:1	-	15 lines (55 tokens) duplicated at mypy.build:2785
+duplicate-code	high	mypy/build.py:518:1	-	13 lines (50 tokens) duplicated at mypy.build:2787
 duplicate-code	high	mypy/build.py:1127:1	-	7 lines (54 tokens) duplicated at mypy.build:3251
 duplicate-code	high	mypy/build.py:1332:1	-	7 lines (57 tokens) duplicated at mypy.build:1343
 duplicate-code	high	mypy/build.py:2882:1	-	11 lines (65 tokens) duplicated at mypy.types:2236
@@ -42,7 +42,6 @@ duplicate-code	high	mypy/build.py:5361:1	-	10 lines (69 tokens) duplicated at my
 duplicate-code	high	mypy/cache.py:108:1	-	26 lines (131 tokens) duplicated at mypy.stubgen:213
 duplicate-code	high	mypy/cache.py:138:1	-	9 lines (50 tokens) duplicated at mypy.exportjson:565
 duplicate-code	high	mypy/cache.py:191:1	-	9 lines (77 tokens) duplicated at mypy.cache:203
-duplicate-code	high	mypy/cache.py:220:1	-	8 lines (52 tokens) duplicated at mypy.cache:232
 duplicate-code	high	mypy/cache.py:358:1	-	11 lines (89 tokens) duplicated at mypy.cache:533
 duplicate-code	high	mypy/cache.py:381:1	-	11 lines (68 tokens) duplicated at mypy.cache:401
 duplicate-code	high	mypy/cache.py:439:1	-	18 lines (121 tokens) duplicated at mypy.cache:465
@@ -92,7 +91,7 @@ duplicate-code	high	mypy/checkexpr.py:6181:1	-	5 lines (52 tokens) duplicated at
 duplicate-code	high	mypy/checkexpr.py:6467:1	-	13 lines (92 tokens) duplicated at mypy.treetransform:453
 duplicate-code	high	mypy/checkexpr.py:6744:1	-	17 lines (51 tokens) duplicated at mypy.checkexpr:6764
 duplicate-code	high	mypy/checkexpr.py:6774:1	-	15 lines (82 tokens) duplicated at mypy.checkexpr:6788
-duplicate-code	high	mypy/checkmember.py:143:1	-	13 lines (74 tokens) duplicated at mypy.stubgen:2037
+duplicate-code	high	mypy/checkmember.py:147:1	-	9 lines (50 tokens) duplicated at mypy.stubgen:2041
 duplicate-code	high	mypy/checkmember.py:216:1	-	14 lines (53 tokens) duplicated at mypy.semanal:7939
 duplicate-code	high	mypy/checkmember.py:375:1	-	7 lines (56 tokens) duplicated at mypy.checkmember:973
 duplicate-code	high	mypy/checkmember.py:941:1	-	11 lines (53 tokens) duplicated at mypy.checkmember:1339
@@ -119,7 +118,7 @@ duplicate-code	high	mypy/copytype.py:130:1	-	9 lines (56 tokens) duplicated at m
 duplicate-code	high	mypy/dmypy/client.py:53:1	-	10 lines (71 tokens) duplicated at mypy.dmypy.client:64
 duplicate-code	high	mypy/dmypy/client.py:83:1	-	6 lines (64 tokens) duplicated at mypy.dmypy.client:124
 duplicate-code	high	mypy/dmypy/client.py:411:1	-	14 lines (66 tokens) duplicated at mypy.dmypy.client:499
-duplicate-code	high	mypy/dmypy/client.py:514:1	-	14 lines (69 tokens) duplicated at mypy.dmypy.client:533
+duplicate-code	high	mypy/dmypy/client.py:515:1	-	13 lines (68 tokens) duplicated at mypy.dmypy.client:534
 duplicate-code	high	mypy/dmypy_util.py:46:1	-	9 lines (55 tokens) duplicated at mypyc.irbuild.nonlocalcontrol:72
 duplicate-code	high	mypy/erasetype.py:63:1	-	14 lines (72 tokens) duplicated at mypy.typeanal:1122
 duplicate-code	high	mypy/erasetype.py:83:1	-	10 lines (68 tokens) duplicated at mypy.treetransform:704
@@ -345,7 +344,7 @@ duplicate-code	high	mypy/semanal.py:6401:1	-	10 lines (67 tokens) duplicated at 
 duplicate-code	high	mypy/semanal.py:6437:1	-	12 lines (83 tokens) duplicated at mypy.semanal:6448
 duplicate-code	high	mypy/semanal.py:6586:1	-	13 lines (59 tokens) duplicated at mypy.traverser:425
 duplicate-code	high	mypy/semanal.py:7504:1	-	12 lines (75 tokens) duplicated at mypyc.irbuild.builder:1492
-duplicate-code	high	mypy/semanal.py:7848:1	-	16 lines (91 tokens) duplicated at mypy.semanal:7898
+duplicate-code	high	mypy/semanal.py:7855:1	-	9 lines (51 tokens) duplicated at mypy.semanal:7905
 duplicate-code	high	mypy/semanal.py:8076:1	-	16 lines (90 tokens) duplicated at mypy.semanal:8092
 duplicate-code	high	mypy/semanal.py:8353:1	-	12 lines (68 tokens) duplicated at mypy.semanal:8368
 duplicate-code	high	mypy/semanal_main.py:404:1	-	11 lines (64 tokens) duplicated at mypy.semanal_main:424
@@ -418,7 +417,7 @@ duplicate-code	high	mypy/test/test_nativeparse.py:111:1	-	10 lines (67 tokens) d
 duplicate-code	high	mypy/test/test_nativeparse.py:202:1	-	14 lines (71 tokens) duplicated at mypy.test.test_nativeparse:224
 duplicate-code	high	mypy/test/testcheck.py:8:1	-	37 lines (62 tokens) duplicated at mypy.test.testcmdline:5
 duplicate-code	high	mypy/test/testcheck.py:260:1	-	13 lines (93 tokens) duplicated at mypyc.test.test_run:444
-duplicate-code	high	mypy/test/testconstraints.py:38:1	-	6 lines (64 tokens) duplicated at mypy.test.testconstraints:56
+duplicate-code	high	mypy/test/testconstraints.py:51:1	-	7 lines (50 tokens) duplicated at mypy.test.testconstraints:70
 duplicate-code	high	mypy/test/testconstraints.py:76:1	-	7 lines (58 tokens) duplicated at mypy.test.testconstraints:124
 duplicate-code	high	mypy/test/testconstraints.py:85:1	-	18 lines (194 tokens) duplicated at mypy.test.testconstraints:102
 duplicate-code	high	mypy/test/testdaemon.py:128:1	-	6 lines (64 tokens) duplicated at mypy.test.testfscache:93
@@ -430,7 +429,7 @@ duplicate-code	high	mypy/test/testfscache.py:29:1	-	6 lines (52 tokens) duplicat
 duplicate-code	high	mypy/test/testgraph.py:23:1	-	8 lines (73 tokens) duplicated at mypy.test.testgraph:47
 duplicate-code	high	mypy/test/testgraph.py:32:1	-	6 lines (65 tokens) duplicated at mypy.test.testgraph:72
 duplicate-code	high	mypy/test/testgraph.py:37:1	-	9 lines (86 tokens) duplicated at mypy.test.testgraph:61
-duplicate-code	high	mypy/test/testgraph.py:115:1	-	8 lines (90 tokens) duplicated at mypy.test.testgraph:128
+duplicate-code	high	mypy/test/testgraph.py:115:1	-	8 lines (89 tokens) duplicated at mypy.test.testgraph:128
 duplicate-code	high	mypy/test/testinfer.py:22:1	-	6 lines (57 tokens) duplicated at mypy.test.testinfer:27
 duplicate-code	high	mypy/test/testinfer.py:122:1	-	7 lines (60 tokens) duplicated at mypy.test.testinfer:137
 duplicate-code	high	mypy/test/testinfer.py:216:1	-	12 lines (53 tokens) duplicated at mypy.test.testinfer:289
@@ -439,8 +438,6 @@ duplicate-code	high	mypy/test/testipc.py:47:1	-	7 lines (67 tokens) duplicated a
 duplicate-code	high	mypy/test/testmerge.py:152:1	-	7 lines (52 tokens) duplicated at mypy.test.testmerge:181
 duplicate-code	high	mypy/test/testmodulefinder.py:26:1	-	12 lines (76 tokens) duplicated at mypy.test.testmodulefinder:156
 duplicate-code	high	mypy/test/testmodulefinder.py:55:1	-	11 lines (104 tokens) duplicated at mypy.test.testmodulefinder:126
-duplicate-code	high	mypy/test/testmodulefinder.py:176:1	-	10 lines (56 tokens) duplicated at mypy.test.testmodulefinder:234
-duplicate-code	high	mypy/test/testmodulefinder.py:186:1	-	27 lines (193 tokens) duplicated at mypy.test.testmodulefinder:244
 duplicate-code	high	mypy/test/testmodulefinder.py:214:1	-	15 lines (88 tokens) duplicated at mypy.test.testmodulefinder:272
 duplicate-code	high	mypy/test/testpep561.py:136:1	-	10 lines (65 tokens) duplicated at mypy.test.testpythoneval:84
 duplicate-code	high	mypy/test/testsemanal.py:48:1	-	17 lines (61 tokens) duplicated at mypy.test.testtransform:25
@@ -480,7 +477,7 @@ duplicate-code	high	mypy/test/testsubtypes.py:246:1	-	6 lines (58 tokens) duplic
 duplicate-code	high	mypy/test/testsubtypes.py:259:1	-	6 lines (69 tokens) duplicated at mypy.test.testsubtypes:264
 duplicate-code	high	mypy/test/testtypes.py:78:1	-	7 lines (59 tokens) duplicated at mypy.test.testtypes:88
 duplicate-code	high	mypy/test/testtypes.py:99:1	-	11 lines (59 tokens) duplicated at mypy.test.testtypes:112
-duplicate-code	high	mypy/test/testtypes.py:345:1	-	13 lines (88 tokens) duplicated at mypy.test.testtypes:357
+duplicate-code	high	mypy/test/testtypes.py:347:1	-	11 lines (70 tokens) duplicated at mypy.test.testtypes:359
 duplicate-code	high	mypy/test/testtypes.py:385:1	-	10 lines (54 tokens) duplicated at mypy.test.testtypes:423
 duplicate-code	high	mypy/test/testtypes.py:394:1	-	10 lines (87 tokens) duplicated at mypy.test.testtypes:403
 duplicate-code	high	mypy/test/testtypes.py:451:1	-	10 lines (79 tokens) duplicated at mypy.test.testtypes:460
@@ -502,8 +499,8 @@ duplicate-code	high	mypy/test/testtypes.py:1020:1	-	10 lines (92 tokens) duplica
 duplicate-code	high	mypy/test/testtypes.py:1057:1	-	6 lines (58 tokens) duplicated at mypy.test.testtypes:1387
 duplicate-code	high	mypy/test/testtypes.py:1062:1	-	6 lines (61 tokens) duplicated at mypy.test.testtypes:1392
 duplicate-code	high	mypy/test/testtypes.py:1067:1	-	6 lines (73 tokens) duplicated at mypy.test.testtypes:1397
-duplicate-code	high	mypy/test/testtypes.py:1076:1	-	7 lines (69 tokens) duplicated at mypy.test.testtypes:1098
 duplicate-code	high	mypy/test/testtypes.py:1090:1	-	6 lines (59 tokens) duplicated at mypy.test.testtypes:1402
+duplicate-code	high	mypy/test/testtypes.py:1095:1	-	6 lines (68 tokens) duplicated at mypy.test.testtypes:1407
 duplicate-code	high	mypy/test/testtypes.py:1136:1	-	15 lines (100 tokens) duplicated at mypy.test.testtypes:1413
 duplicate-code	high	mypy/test/testtypes.py:1150:1	-	8 lines (84 tokens) duplicated at mypy.test.testtypes:1423
 duplicate-code	high	mypy/test/testtypes.py:1161:1	-	8 lines (64 tokens) duplicated at mypy.test.testtypes:1168
@@ -542,7 +539,7 @@ duplicate-code	high	mypy/treetransform.py:356:1	-	12 lines (101 tokens) duplicat
 duplicate-code	high	mypy/treetransform.py:410:1	-	7 lines (62 tokens) duplicated at mypy.treetransform:419
 duplicate-code	high	mypy/treetransform.py:512:1	-	10 lines (73 tokens) duplicated at mypy.treetransform:594
 duplicate-code	high	mypy/treetransform.py:566:1	-	7 lines (58 tokens) duplicated at mypy.treetransform:612
-duplicate-code	high	mypy/treetransform.py:632:1	-	9 lines (83 tokens) duplicated at mypy.treetransform:644
+duplicate-code	high	mypy/treetransform.py:633:1	-	8 lines (67 tokens) duplicated at mypy.treetransform:645
 duplicate-code	high	mypy/treetransform.py:669:1	-	10 lines (52 tokens) duplicated at mypy.treetransform:678
 duplicate-code	high	mypy/treetransform.py:720:1	-	13 lines (84 tokens) duplicated at mypy.treetransform:732
 duplicate-code	high	mypy/treetransform.py:765:1	-	10 lines (95 tokens) duplicated at mypy.treetransform:776
@@ -585,7 +582,6 @@ duplicate-code	high	mypy/types.py:1701:1	-	13 lines (75 tokens) duplicated at my
 duplicate-code	high	mypy/types.py:1998:1	-	11 lines (65 tokens) duplicated at mypy.types:2312
 duplicate-code	high	mypy/types.py:2013:1	-	72 lines (513 tokens) duplicated at mypy.types:2388
 duplicate-code	high	mypy/types.py:2114:1	-	9 lines (55 tokens) duplicated at mypy.types:3546
-duplicate-code	high	mypy/types.py:2273:1	-	8 lines (81 tokens) duplicated at mypy.types:2285
 duplicate-code	high	mypy/types.py:2693:1	-	10 lines (68 tokens) duplicated at mypy.types:2921
 duplicate-code	high	mypy/types.py:2888:1	-	7 lines (53 tokens) duplicated at mypy.types:3517
 duplicate-code	high	mypy/types.py:2895:1	-	10 lines (64 tokens) duplicated at mypy.types:3693
@@ -758,10 +754,9 @@ duplicate-code	high	mypyc/irbuild/visitor.py:257:1	-	39 lines (293 tokens) dupli
 duplicate-code	high	mypyc/irbuild/visitor.py:295:1	-	10 lines (75 tokens) duplicated at mypyc.irbuild.visitor:307
 duplicate-code	high	mypyc/irbuild/visitor.py:359:1	-	18 lines (116 tokens) duplicated at mypyc.irbuild.visitor:377
 duplicate-code	high	mypyc/primitives/list_ops.py:318:1	-	24 lines (64 tokens) duplicated at mypyc.primitives.tuple_ops:108
-duplicate-code	high	mypyc/primitives/registry.py:97:1	-	10 lines (74 tokens) duplicated at mypyc.primitives.registry:265
-duplicate-code	high	mypyc/primitives/registry.py:154:1	-	15 lines (51 tokens) duplicated at mypyc.primitives.registry:205
-duplicate-code	high	mypyc/primitives/registry.py:169:1	-	25 lines (109 tokens) duplicated at mypyc.primitives.registry:352
-duplicate-code	high	mypyc/primitives/registry.py:219:1	-	9 lines (68 tokens) duplicated at mypyc.primitives.registry:308
+duplicate-code	high	mypyc/primitives/registry.py:95:1	-	15 lines (96 tokens) duplicated at mypyc.primitives.registry:163
+duplicate-code	high	mypyc/primitives/registry.py:109:1	-	34 lines (52 tokens) duplicated at mypyc.primitives.registry:359
+duplicate-code	high	mypyc/primitives/registry.py:211:1	-	12 lines (51 tokens) duplicated at mypyc.primitives.registry:301
 duplicate-code	high	mypyc/rt_subtype.py:73:1	-	13 lines (109 tokens) duplicated at mypyc.subtype:91
 duplicate-code	high	mypyc/sametype.py:21:1	-	9 lines (60 tokens) duplicated at mypyc.sametype:30
 duplicate-code	high	mypyc/test-data/fixtures/ir.py:71:1	-	5 lines (59 tokens) duplicated at mypyc/test-data/fixtures/ir.py:164

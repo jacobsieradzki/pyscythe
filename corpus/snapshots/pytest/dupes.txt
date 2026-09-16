@@ -1,8 +1,8 @@
 files_scanned=274
 symbols_checked=0
 symbols_kept=0
-findings=208
-duplication: clones=208 duplicated_lines=5634 total_lines=115782 percent_tenths=48
+findings=207
+duplication: clones=207 duplicated_lines=5618 total_lines=115782 percent_tenths=48
 --
 duplicate-code	high	doc/en/example/customdirectory/conftest.py:2:1	-	30 lines (131 tokens) duplicated at testing.example_scripts.customdirectory.conftest:3
 duplicate-code	high	doc/en/example/fixtures/test_fixtures_order_autouse.py:1:1	-	21 lines (67 tokens) duplicated at doc.en.example.fixtures.test_fixtures_order_dependencies:1
@@ -34,7 +34,6 @@ duplicate-code	high	src/_pytest/config/__init__.py:2040:1	-	11 lines (85 tokens)
 duplicate-code	high	src/_pytest/config/findpaths.py:77:1	-	14 lines (63 tokens) duplicated at _pytest.config.findpaths:93
 duplicate-code	high	src/_pytest/debugging.py:290:1	-	7 lines (56 tokens) duplicated at _pytest.doctest:310
 duplicate-code	high	src/_pytest/fixtures.py:869:1	-	12 lines (52 tokens) duplicated at _pytest.fixtures:956
-duplicate-code	high	src/_pytest/fixtures.py:1509:1	-	7 lines (67 tokens) duplicated at _pytest.fixtures:1521
 duplicate-code	high	src/_pytest/fixtures.py:2426:1	-	7 lines (51 tokens) duplicated at _pytest.fixtures:2481
 duplicate-code	high	src/_pytest/fixtures.py:2444:1	-	9 lines (62 tokens) duplicated at _pytest.fixtures:2526
 duplicate-code	high	src/_pytest/helpconfig.py:43:1	-	12 lines (51 tokens) duplicated at _pytest.terminal:105
@@ -51,7 +50,7 @@ duplicate-code	high	src/_pytest/mark/expression.py:177:1	-	9 lines (64 tokens) d
 duplicate-code	high	src/_pytest/outcomes.py:97:1	-	40 lines (65 tokens) duplicated at _pytest.outcomes:136
 duplicate-code	high	src/_pytest/pytester.py:19:1	-	58 lines (58 tokens) duplicated at _pytest.python:36
 duplicate-code	high	src/_pytest/pytester.py:320:1	-	33 lines (125 tokens) duplicated at _pytest.pytester:382
-duplicate-code	high	src/_pytest/pytester.py:603:1	-	20 lines (64 tokens) duplicated at _pytest.pytester_assertions:38
+duplicate-code	high	src/_pytest/pytester.py:604:1	-	19 lines (59 tokens) duplicated at _pytest.pytester_assertions:39
 duplicate-code	high	src/_pytest/pytester.py:1745:1	-	7 lines (54 tokens) duplicated at _pytest.pytester:1801
 duplicate-code	high	src/_pytest/raises.py:92:1	-	10 lines (52 tokens) duplicated at _pytest.recwarn:97
 duplicate-code	high	src/_pytest/raises.py:857:1	-	26 lines (134 tokens) duplicated at _pytest.raises:894

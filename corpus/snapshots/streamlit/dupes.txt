@@ -1,8 +1,8 @@
 files_scanned=1206
 symbols_checked=0
 symbols_kept=0
-findings=1650
-duplication: clones=1650 duplicated_lines=62790 total_lines=370627 percent_tenths=169
+findings=1597
+duplication: clones=1597 duplicated_lines=60749 total_lines=370627 percent_tenths=163
 --
 duplicate-code	high	e2e_playwright/asgi_app_test.py:57:1	-	11 lines (50 tokens) duplicated at e2e_playwright/mega_tester_app_test.py:128
 duplicate-code	high	e2e_playwright/auth_test.py:151:1	-	10 lines (61 tokens) duplicated at e2e_playwright/auth_test.py:175
@@ -28,12 +28,10 @@ duplicate-code	high	e2e_playwright/host_config_bypass_test.py:432:1	-	24 lines (
 duplicate-code	high	e2e_playwright/hostframe_app_test.py:130:1	-	21 lines (114 tokens) duplicated at e2e_playwright/websocket_disconnect_test.py:85
 duplicate-code	high	e2e_playwright/hostframe_app_test.py:177:1	-	12 lines (66 tokens) duplicated at e2e_playwright/hostframe_app_test.py:209
 duplicate-code	high	e2e_playwright/hostframe_app_test.py:243:1	-	9 lines (50 tokens) duplicated at e2e_playwright/hostframe_app_test.py:273
-duplicate-code	high	e2e_playwright/load_testing/generate_report.py:153:1	-	5 lines (50 tokens) duplicated at e2e_playwright/load_testing/generate_report.py:165
 duplicate-code	high	e2e_playwright/main_menu_test.py:103:1	-	15 lines (57 tokens) duplicated at e2e_playwright/main_menu_test.py:171
 duplicate-code	high	e2e_playwright/main_menu_test.py:197:1	-	16 lines (97 tokens) duplicated at e2e_playwright/st_echarts_chart_test.py:117
 duplicate-code	high	e2e_playwright/main_menu_test.py:290:1	-	17 lines (59 tokens) duplicated at e2e_playwright/main_menu_test.py:308
 duplicate-code	high	e2e_playwright/main_menu_test.py:334:1	-	9 lines (55 tokens) duplicated at e2e_playwright/main_menu_test.py:350
-duplicate-code	high	e2e_playwright/mega_tester_app.py:448:1	-	8 lines (55 tokens) duplicated at e2e_playwright/st_vega_lite_chart.py:24
 duplicate-code	high	e2e_playwright/mega_tester_app.py:831:1	-	22 lines (88 tokens) duplicated at e2e_playwright/mega_tester_app.py:854
 duplicate-code	high	e2e_playwright/mega_tester_app_test.py:120:1	-	8 lines (50 tokens) duplicated at e2e_playwright/mega_tester_app_test.py:154
 duplicate-code	high	e2e_playwright/multipage_apps/mpa_basics_test.py:40:1	-	13 lines (51 tokens) duplicated at e2e_playwright/multipage_apps_v2/mpa_v2_basics_test.py:94
@@ -65,11 +63,10 @@ duplicate-code	high	e2e_playwright/shared/app_utils.py:552:1	-	24 lines (51 toke
 duplicate-code	high	e2e_playwright/shared/app_utils.py:576:1	-	23 lines (60 tokens) duplicated at e2e_playwright/shared/app_utils.py:644
 duplicate-code	high	e2e_playwright/shared/app_utils.py:691:1	-	28 lines (74 tokens) duplicated in 3 other places: e2e_playwright/shared/app_utils.py:718, e2e_playwright/shared/app_utils.py:730, e2e_playwright/shared/app_utils.py:758
 duplicate-code	high	e2e_playwright/shared/dataframe_utils.py:260:1	-	35 lines (54 tokens) duplicated at e2e_playwright/shared/dataframe_utils.py:294
-duplicate-code	high	e2e_playwright/shared/pydeck_utils.py:44:1	-	22 lines (76 tokens) duplicated at e2e_playwright/st_pydeck_chart_select.py:214
 duplicate-code	high	e2e_playwright/shared/stats_reporter.py:86:1	-	7 lines (51 tokens) duplicated at streamlit.runtime.state.query_params:327
 duplicate-code	high	e2e_playwright/shared/stats_reporter.py:329:1	-	19 lines (71 tokens) duplicated at e2e_playwright/shared/stats_reporter.py:348
 duplicate-code	high	e2e_playwright/shared/vega_utils.py:41:1	-	15 lines (77 tokens) duplicated at e2e_playwright/shared/vega_utils.py:61
-duplicate-code	high	e2e_playwright/st_altair_chart.py:173:1	-	12 lines (62 tokens) duplicated at e2e_playwright/st_altair_chart.py:188
+duplicate-code	high	e2e_playwright/st_altair_chart.py:174:1	-	11 lines (52 tokens) duplicated at e2e_playwright/st_altair_chart.py:189
 duplicate-code	high	e2e_playwright/st_altair_chart_basic_select.py:49:1	-	15 lines (75 tokens) duplicated at e2e_playwright/st_altair_chart_basic_select.py:72
 duplicate-code	high	e2e_playwright/st_altair_chart_basic_select.py:131:1	-	12 lines (68 tokens) duplicated at e2e_playwright/st_altair_chart_basic_select.py:147
 duplicate-code	high	e2e_playwright/st_altair_chart_basic_select.py:172:1	-	12 lines (67 tokens) duplicated at e2e_playwright/st_altair_chart_basic_select.py:189
@@ -128,12 +125,9 @@ duplicate-code	high	e2e_playwright/st_data_editor_config.py:23:1	-	12 lines (66 
 duplicate-code	high	e2e_playwright/st_data_editor_config.py:76:1	-	16 lines (71 tokens) duplicated at e2e_playwright/st_dataframe_config.py:91
 duplicate-code	high	e2e_playwright/st_data_editor_config.py:130:1	-	12 lines (53 tokens) duplicated at e2e_playwright/st_dataframe_config.py:148
 duplicate-code	high	e2e_playwright/st_data_editor_config.py:180:1	-	27 lines (138 tokens) duplicated at e2e_playwright/st_dataframe_config.py:196
-duplicate-code	high	e2e_playwright/st_data_editor_config.py:225:1	-	17 lines (50 tokens) duplicated at e2e_playwright/st_dataframe_config.py:249
-duplicate-code	high	e2e_playwright/st_data_editor_config.py:267:1	-	18 lines (105 tokens) duplicated at e2e_playwright/st_dataframe_config.py:306
+duplicate-code	high	e2e_playwright/st_data_editor_config.py:260:1	-	10 lines (75 tokens) duplicated at e2e_playwright/st_dataframe_config.py:286
 duplicate-code	high	e2e_playwright/st_data_editor_config.py:295:1	-	10 lines (51 tokens) duplicated at e2e_playwright/st_dataframe_config.py:333
-duplicate-code	high	e2e_playwright/st_data_editor_config.py:309:1	-	10 lines (63 tokens) duplicated at e2e_playwright/st_dataframe_config.py:360
 duplicate-code	high	e2e_playwright/st_data_editor_config.py:329:1	-	10 lines (56 tokens) duplicated at e2e_playwright/st_dataframe_config.py:377
-duplicate-code	high	e2e_playwright/st_data_editor_config.py:343:1	-	10 lines (70 tokens) duplicated at e2e_playwright/st_dataframe_config.py:404
 duplicate-code	high	e2e_playwright/st_data_editor_config.py:406:1	-	19 lines (95 tokens) duplicated at e2e_playwright/st_dataframe_config.py:476
 duplicate-code	high	e2e_playwright/st_data_editor_config.py:430:1	-	20 lines (95 tokens) duplicated at e2e_playwright/st_dataframe_config.py:500
 duplicate-code	high	e2e_playwright/st_data_editor_config.py:529:1	-	25 lines (92 tokens) duplicated at e2e_playwright/st_dataframe_config.py:981
@@ -144,11 +138,8 @@ duplicate-code	high	e2e_playwright/st_data_editor_config_test.py:307:1	-	27 line
 duplicate-code	high	e2e_playwright/st_data_editor_config_test.py:371:1	-	18 lines (57 tokens) duplicated at e2e_playwright/st_data_editor_config_test.py:427
 duplicate-code	high	e2e_playwright/st_data_editor_editing.py:130:1	-	25 lines (94 tokens) duplicated at e2e_playwright/st_dataframe_interactions.py:50
 duplicate-code	high	e2e_playwright/st_data_editor_index_types.py:16:1	-	21 lines (57 tokens) duplicated at e2e_playwright/st_dataframe_index_types.py:15
-duplicate-code	high	e2e_playwright/st_dataframe_config.py:346:1	-	14 lines (85 tokens) duplicated at e2e_playwright/st_dataframe_config.py:390
-duplicate-code	high	e2e_playwright/st_dataframe_config.py:797:1	-	5 lines (55 tokens) duplicated in 4 other places: e2e_playwright/st_dataframe_config.py:802, e2e_playwright/st_dataframe_config.py:807, e2e_playwright/st_dataframe_config.py:812, e2e_playwright/st_dataframe_config.py:827
 duplicate-code	high	e2e_playwright/st_dataframe_config_test.py:253:1	-	11 lines (58 tokens) duplicated in 2 other places: e2e_playwright/st_dataframe_config_test.py:278, e2e_playwright/st_dataframe_config_test.py:305
 duplicate-code	high	e2e_playwright/st_dataframe_config_test.py:326:1	-	15 lines (85 tokens) duplicated at e2e_playwright/st_dataframe_config_test.py:352
-duplicate-code	high	e2e_playwright/st_dataframe_interactions.py:40:1	-	7 lines (58 tokens) duplicated at e2e_playwright/st_dataframe_interactions.py:100
 duplicate-code	high	e2e_playwright/st_dataframe_interactions_test.py:55:1	-	17 lines (51 tokens) duplicated at e2e_playwright/st_dataframe_interactions_test.py:535
 duplicate-code	high	e2e_playwright/st_dataframe_interactions_test.py:98:1	-	7 lines (52 tokens) duplicated at e2e_playwright/st_dataframe_interactions_test.py:197
 duplicate-code	high	e2e_playwright/st_dataframe_interactions_test.py:470:1	-	13 lines (55 tokens) duplicated at e2e_playwright/st_dataframe_interactions_test.py:483
@@ -208,7 +199,6 @@ duplicate-code	high	e2e_playwright/st_heading_test.py:214:1	-	8 lines (53 tokens
 duplicate-code	high	e2e_playwright/st_heading_test.py:293:1	-	14 lines (80 tokens) duplicated at e2e_playwright/st_heading_test.py:310
 duplicate-code	high	e2e_playwright/st_html_test.py:75:1	-	14 lines (52 tokens) duplicated at e2e_playwright/st_html_test.py:164
 duplicate-code	high	e2e_playwright/st_image.py:62:1	-	12 lines (70 tokens) duplicated at tests.streamlit.elements.image_test:112
-duplicate-code	high	e2e_playwright/st_image.py:192:1	-	5 lines (53 tokens) duplicated at tests.streamlit.elements.image_test:417
 duplicate-code	high	e2e_playwright/st_layouts_container_alignment.py:27:1	-	10 lines (54 tokens) duplicated in 3 other places: e2e_playwright/st_layouts_container_alignment.py:37, e2e_playwright/st_layouts_container_alignment.py:47, e2e_playwright/st_layouts_container_alignment.py:57
 duplicate-code	high	e2e_playwright/st_layouts_container_alignment.py:67:1	-	10 lines (60 tokens) duplicated at e2e_playwright/st_layouts_container_alignment.py:77
 duplicate-code	high	e2e_playwright/st_layouts_container_alignment.py:141:1	-	10 lines (54 tokens) duplicated at e2e_playwright/st_layouts_container_alignment.py:151
@@ -246,10 +236,9 @@ duplicate-code	high	e2e_playwright/st_plotly_chart_select.py:40:1	-	12 lines (73
 duplicate-code	high	e2e_playwright/st_plotly_chart_select_test.py:40:1	-	14 lines (84 tokens) duplicated at e2e_playwright/st_plotly_chart_select_test.py:115
 duplicate-code	high	e2e_playwright/st_plotly_chart_select_test.py:54:1	-	11 lines (86 tokens) duplicated at e2e_playwright/st_plotly_chart_select_test.py:133
 duplicate-code	high	e2e_playwright/st_plotly_chart_select_test.py:162:1	-	18 lines (116 tokens) duplicated at e2e_playwright/st_plotly_chart_select_test.py:187
-duplicate-code	high	e2e_playwright/st_pydeck_chart.py:156:1	-	32 lines (110 tokens) duplicated at e2e_playwright/st_pydeck_chart.py:195
+duplicate-code	high	e2e_playwright/st_pydeck_chart.py:69:1	-	19 lines (62 tokens) duplicated in 2 other places: e2e_playwright/st_pydeck_chart.py:169, e2e_playwright/st_pydeck_chart.py:208
 duplicate-code	high	e2e_playwright/st_pydeck_chart.py:331:1	-	24 lines (85 tokens) duplicated at e2e_playwright/st_pydeck_chart.py:409
 duplicate-code	high	e2e_playwright/st_pydeck_chart.py:354:1	-	22 lines (81 tokens) duplicated at e2e_playwright/st_pydeck_chart.py:457
-duplicate-code	high	e2e_playwright/st_pydeck_chart.py:508:1	-	6 lines (52 tokens) duplicated at tests.streamlit.elements.pydeck_test:77
 duplicate-code	high	e2e_playwright/st_pydeck_chart_select_test.py:252:1	-	23 lines (80 tokens) duplicated at e2e_playwright/st_pydeck_chart_select_test.py:308
 duplicate-code	high	e2e_playwright/st_radio.py:214:1	-	20 lines (122 tokens) duplicated at tests.streamlit.elements.radio_test:649
 duplicate-code	high	e2e_playwright/st_segmented_control_test.py:46:1	-	14 lines (58 tokens) duplicated at e2e_playwright/st_segmented_control_test.py:65
@@ -285,7 +274,6 @@ duplicate-code	high	e2e_playwright/st_toast_test.py:78:1	-	16 lines (70 tokens) 
 duplicate-code	high	e2e_playwright/st_vega_charts_height.py:15:1	-	16 lines (84 tokens) duplicated at e2e_playwright/st_vega_charts_width.py:15
 duplicate-code	high	e2e_playwright/st_vega_charts_height.py:68:1	-	23 lines (96 tokens) duplicated at e2e_playwright/st_vega_charts_width.py:102
 duplicate-code	high	e2e_playwright/st_vega_charts_height_test.py:64:1	-	21 lines (104 tokens) duplicated at e2e_playwright/st_vega_charts_width_test.py:60
-duplicate-code	high	e2e_playwright/st_vega_charts_width.py:124:1	-	10 lines (56 tokens) duplicated at tests.streamlit.elements.vega_charts_test:3685
 duplicate-code	high	e2e_playwright/st_vega_lite_chart.py:76:1	-	15 lines (54 tokens) duplicated at e2e_playwright/st_vega_lite_chart.py:90
 duplicate-code	high	e2e_playwright/st_vega_lite_chart_test.py:33:1	-	12 lines (54 tokens) duplicated at e2e_playwright/st_vega_lite_chart_test.py:76
 duplicate-code	high	e2e_playwright/st_vega_lite_chart_test.py:51:1	-	10 lines (50 tokens) duplicated at e2e_playwright/st_vega_lite_chart_test.py:64
@@ -323,12 +311,10 @@ duplicate-code	high	lib/streamlit/.agents/skills/developing-with-streamlit/asset
 duplicate-code	high	lib/streamlit/.agents/skills/developing-with-streamlit/assets/templates/apps/dashboard-compute/streamlit_app.py:121:1	-	11 lines (62 tokens) duplicated at streamlit_app:140
 duplicate-code	high	lib/streamlit/.agents/skills/developing-with-streamlit/assets/templates/apps/dashboard-compute/streamlit_app.py:160:1	-	39 lines (248 tokens) duplicated at streamlit_app:126
 duplicate-code	high	lib/streamlit/.agents/skills/developing-with-streamlit/assets/templates/apps/dashboard-compute/streamlit_app.py:198:1	-	14 lines (89 tokens) duplicated at streamlit_app:230
-duplicate-code	high	lib/streamlit/.agents/skills/developing-with-streamlit/assets/templates/apps/dashboard-compute/streamlit_app.py:211:1	-	6 lines (60 tokens) duplicated at streamlit_app:248
 duplicate-code	high	lib/streamlit/.agents/skills/developing-with-streamlit/assets/templates/apps/dashboard-compute/streamlit_app.py:266:1	-	17 lines (72 tokens) duplicated at streamlit_app:412
 duplicate-code	high	lib/streamlit/.agents/skills/developing-with-streamlit/assets/templates/apps/dashboard-compute/streamlit_app.py:326:1	-	20 lines (103 tokens) duplicated at streamlit_app:337
 duplicate-code	high	lib/streamlit/.agents/skills/developing-with-streamlit/assets/templates/apps/dashboard-metrics/streamlit_app.py:182:1	-	16 lines (73 tokens) duplicated at streamlit_app:211
-duplicate-code	high	lib/streamlit/.agents/skills/developing-with-streamlit/assets/templates/apps/dashboard-metrics/streamlit_app.py:226:1	-	7 lines (78 tokens) duplicated at streamlit_app:280
-duplicate-code	high	lib/streamlit/.agents/skills/developing-with-streamlit/assets/templates/apps/dashboard-metrics/streamlit_app.py:233:1	-	14 lines (58 tokens) duplicated at streamlit_app:263
+duplicate-code	high	lib/streamlit/.agents/skills/developing-with-streamlit/assets/templates/apps/dashboard-metrics/streamlit_app.py:231:1	-	16 lines (61 tokens) duplicated at streamlit_app:261
 duplicate-code	high	lib/streamlit/auth_util.py:86:1	-	15 lines (72 tokens) duplicated at streamlit.web.server.server_util:104
 duplicate-code	high	lib/streamlit/auth_util.py:392:1	-	12 lines (55 tokens) duplicated at streamlit.auth_util:403
 duplicate-code	high	lib/streamlit/components/lib/local_component_registry.py:83:1	-	6 lines (57 tokens) duplicated at tests.streamlit.runtime.runtime_test_case:111
@@ -340,7 +326,7 @@ duplicate-code	high	lib/streamlit/components/v1/component_arrow.py:74:1	-	21 lin
 duplicate-code	high	lib/streamlit/components/v1/custom_component.py:121:1	-	12 lines (61 tokens) duplicated at streamlit.elements.iframe:72
 duplicate-code	high	lib/streamlit/components/v2/bidi_component/serialization.py:142:1	-	24 lines (51 tokens) duplicated at tests.streamlit.components.v2.test_bidi_component:1944
 duplicate-code	high	lib/streamlit/components/v2/component_manifest_handler.py:81:1	-	33 lines (63 tokens) duplicated at streamlit.runtime.state.query_params:614
-duplicate-code	high	lib/streamlit/config.py:271:1	-	9 lines (51 tokens) duplicated at streamlit.config_option:133
+duplicate-code	high	lib/streamlit/config.py:272:1	-	8 lines (50 tokens) duplicated at streamlit.config_option:134
 duplicate-code	high	lib/streamlit/config.py:316:1	-	14 lines (50 tokens) duplicated at streamlit.elements.widgets.button_group:1281
 duplicate-code	high	lib/streamlit/connections/snowflake_connection.py:148:1	-	16 lines (66 tokens) duplicated at streamlit.connections.sql_connection:341
 duplicate-code	high	lib/streamlit/cursor.py:33:1	-	20 lines (50 tokens) duplicated at streamlit.elements.widgets.chat:309
@@ -354,7 +340,6 @@ duplicate-code	high	lib/streamlit/dataframe_util.py:649:1	-	8 lines (58 tokens) 
 duplicate-code	high	lib/streamlit/dataframe_util.py:679:1	-	9 lines (60 tokens) duplicated at streamlit.dataframe_util:688
 duplicate-code	high	lib/streamlit/dataframe_util.py:1403:1	-	11 lines (70 tokens) duplicated at streamlit.dataframe_util:1413
 duplicate-code	high	lib/streamlit/dataframe_util.py:1575:1	-	11 lines (62 tokens) duplicated at streamlit.dataframe_util:1593
-duplicate-code	high	lib/streamlit/delta_generator.py:201:1	-	28 lines (56 tokens) duplicated at streamlit.delta_generator:229
 duplicate-code	high	lib/streamlit/delta_generator.py:735:1	-	12 lines (65 tokens) duplicated at streamlit.delta_generator:751
 duplicate-code	high	lib/streamlit/delta_generator_singletons.py:110:1	-	21 lines (86 tokens) duplicated at streamlit.runtime.runtime:258
 duplicate-code	high	lib/streamlit/delta_generator_singletons.py:131:1	-	21 lines (62 tokens) duplicated at streamlit.delta_generator_singletons:152
@@ -366,13 +351,13 @@ duplicate-code	high	lib/streamlit/elements/arrow.py:1100:1	-	21 lines (76 tokens
 duplicate-code	high	lib/streamlit/elements/arrow.py:1348:1	-	32 lines (81 tokens) duplicated at streamlit.elements.table:44
 duplicate-code	high	lib/streamlit/elements/deck_gl_json_chart.py:231:1	-	62 lines (211 tokens) duplicated at streamlit.elements.plotly_chart:190
 duplicate-code	high	lib/streamlit/elements/deck_gl_json_chart.py:360:1	-	213 lines (72 tokens) duplicated at streamlit.elements.map:101
-duplicate-code	high	lib/streamlit/elements/form.py:232:1	-	225 lines (191 tokens) duplicated at streamlit.elements.widgets.button:430
-duplicate-code	high	lib/streamlit/elements/form.py:467:1	-	11 lines (70 tokens) duplicated at streamlit.elements.widgets.button:143
+duplicate-code	high	lib/streamlit/elements/form.py:234:1	-	223 lines (175 tokens) duplicated at streamlit.elements.widgets.button:432
+duplicate-code	high	lib/streamlit/elements/form.py:469:1	-	9 lines (54 tokens) duplicated at streamlit.elements.widgets.button:145
 duplicate-code	high	lib/streamlit/elements/heading.py:46:1	-	150 lines (139 tokens) duplicated at streamlit.elements.heading:195
 duplicate-code	high	lib/streamlit/elements/html.py:196:1	-	13 lines (62 tokens) duplicated at streamlit.elements.iframe:53
 duplicate-code	high	lib/streamlit/elements/iframe.py:83:1	-	85 lines (122 tokens) duplicated at streamlit.elements.iframe:167
 duplicate-code	high	lib/streamlit/elements/layouts.py:70:1	-	14 lines (64 tokens) duplicated at streamlit.elements.layouts:94
-duplicate-code	high	lib/streamlit/elements/layouts.py:734:1	-	8 lines (55 tokens) duplicated at streamlit.elements.layouts:1494
+duplicate-code	high	lib/streamlit/elements/layouts.py:735:1	-	7 lines (51 tokens) duplicated at streamlit.elements.layouts:1495
 duplicate-code	high	lib/streamlit/elements/layouts.py:1401:1	-	18 lines (65 tokens) duplicated at streamlit.elements.layouts:1791
 duplicate-code	high	lib/streamlit/elements/layouts.py:1457:1	-	10 lines (59 tokens) duplicated at streamlit.elements.layouts:1854
 duplicate-code	high	lib/streamlit/elements/layouts.py:1773:1	-	11 lines (51 tokens) duplicated at streamlit.elements.widgets.button:389
@@ -381,15 +366,14 @@ duplicate-code	high	lib/streamlit/elements/lib/built_in_chart_utils.py:1305:1	-	
 duplicate-code	high	lib/streamlit/elements/lib/color_util.py:159:1	-	20 lines (51 tokens) duplicated at streamlit.elements.lib.color_util:214
 duplicate-code	high	lib/streamlit/elements/lib/column_config_utils.py:196:1	-	16 lines (89 tokens) duplicated at streamlit.elements.lib.column_config_utils:211
 duplicate-code	high	lib/streamlit/elements/lib/column_config_utils.py:464:1	-	19 lines (71 tokens) duplicated at streamlit.elements.widgets.data_editor:160
-duplicate-code	high	lib/streamlit/elements/lib/column_types.py:398:1	-	116 lines (87 tokens) duplicated at streamlit.elements.lib.column_types:703
-duplicate-code	high	lib/streamlit/elements/lib/column_types.py:523:1	-	9 lines (69 tokens) duplicated at streamlit.elements.lib.column_types:2877
-duplicate-code	high	lib/streamlit/elements/lib/column_types.py:835:1	-	11 lines (66 tokens) duplicated in 2 other places: streamlit.elements.lib.column_types:1136, streamlit.elements.lib.column_types:2364
+duplicate-code	high	lib/streamlit/elements/lib/column_types.py:399:1	-	8 lines (54 tokens) duplicated at streamlit.elements.widgets.data_editor:856
+duplicate-code	high	lib/streamlit/elements/lib/column_types.py:517:1	-	11 lines (66 tokens) duplicated in 2 other places: streamlit.elements.lib.column_types:1136, streamlit.elements.lib.column_types:2364
+duplicate-code	high	lib/streamlit/elements/lib/column_types.py:697:1	-	13 lines (87 tokens) duplicated at streamlit.elements.lib.column_types:835
 duplicate-code	high	lib/streamlit/elements/lib/column_types.py:1011:1	-	122 lines (119 tokens) duplicated at streamlit.elements.lib.column_types:3133
 duplicate-code	high	lib/streamlit/elements/lib/column_types.py:1285:1	-	119 lines (113 tokens) duplicated in 2 other places: streamlit.elements.lib.column_types:1408, streamlit.elements.lib.column_types:1530
 duplicate-code	high	lib/streamlit/elements/lib/column_types.py:1655:1	-	107 lines (83 tokens) duplicated in 3 other places: streamlit.elements.lib.column_types:1765, streamlit.elements.lib.column_types:1885, streamlit.elements.lib.column_types:3035
 duplicate-code	high	lib/streamlit/elements/lib/column_types.py:1995:1	-	10 lines (66 tokens) duplicated at streamlit.elements.lib.column_types:2117
 duplicate-code	high	lib/streamlit/elements/lib/column_types.py:2378:1	-	154 lines (74 tokens) duplicated at streamlit.elements.lib.column_types:2720
-duplicate-code	high	lib/streamlit/elements/lib/column_types.py:2531:1	-	5 lines (52 tokens) duplicated at streamlit.elements.lib.column_types:2698
 duplicate-code	high	lib/streamlit/elements/lib/column_types.py:2541:1	-	12 lines (81 tokens) duplicated at streamlit.elements.lib.column_types:2707
 duplicate-code	high	lib/streamlit/elements/lib/column_types.py:3258:1	-	13 lines (79 tokens) duplicated at streamlit.elements.lib.column_types:3290
 duplicate-code	high	lib/streamlit/elements/lib/dialog.py:158:1	-	16 lines (70 tokens) duplicated at streamlit.elements.lib.mutable_status_container:107
@@ -398,9 +382,6 @@ duplicate-code	high	lib/streamlit/elements/lib/layout_utils.py:261:1	-	14 lines 
 duplicate-code	high	lib/streamlit/elements/lib/mutable_expander_container.py:17:1	-	110 lines (205 tokens) duplicated in 2 other places: streamlit.elements.lib.mutable_popover_container:15, streamlit.elements.lib.mutable_tab_container:15
 duplicate-code	high	lib/streamlit/elements/lib/options_selector_utils.py:249:1	-	17 lines (72 tokens) duplicated at streamlit.elements.lib.options_selector_utils:298
 duplicate-code	high	lib/streamlit/elements/lib/options_selector_utils.py:396:1	-	16 lines (72 tokens) duplicated at streamlit.elements.lib.options_selector_utils:483
-duplicate-code	high	lib/streamlit/elements/lib/streamlit_plotly_theme.py:88:1	-	12 lines (64 tokens) duplicated at streamlit.elements.lib.streamlit_plotly_theme:198
-duplicate-code	high	lib/streamlit/elements/lib/streamlit_plotly_theme.py:103:1	-	8 lines (61 tokens) duplicated at streamlit.elements.lib.streamlit_plotly_theme:165
-duplicate-code	high	lib/streamlit/elements/lib/streamlit_plotly_theme.py:153:1	-	5 lines (55 tokens) duplicated at streamlit.elements.lib.streamlit_plotly_theme:158
 duplicate-code	high	lib/streamlit/elements/markdown.py:64:1	-	11 lines (62 tokens) duplicated at streamlit.elements.markdown:296
 duplicate-code	high	lib/streamlit/elements/media.py:87:1	-	122 lines (53 tokens) duplicated at streamlit.elements.media:247
 duplicate-code	high	lib/streamlit/elements/media.py:588:1	-	13 lines (71 tokens) duplicated at streamlit.elements.media:847
@@ -415,104 +396,96 @@ duplicate-code	high	lib/streamlit/elements/vega_charts.py:788:1	-	11 lines (71 t
 duplicate-code	high	lib/streamlit/elements/vega_charts.py:798:1	-	211 lines (59 tokens) duplicated at streamlit.elements.vega_charts:1649
 duplicate-code	high	lib/streamlit/elements/vega_charts.py:1024:1	-	11 lines (73 tokens) duplicated at streamlit.elements.vega_charts:1638
 duplicate-code	high	lib/streamlit/elements/vega_charts.py:1294:1	-	17 lines (50 tokens) duplicated at streamlit.elements.vega_charts:1622
-duplicate-code	high	lib/streamlit/elements/vega_charts.py:1892:1	-	16 lines (83 tokens) duplicated at streamlit.elements.vega_charts:2118
-duplicate-code	high	lib/streamlit/elements/vega_charts.py:1907:1	-	12 lines (75 tokens) duplicated at streamlit.elements.vega_charts:2134
-duplicate-code	high	lib/streamlit/elements/vega_charts.py:1921:1	-	190 lines (116 tokens) duplicated at streamlit.elements.vega_charts:2149
+duplicate-code	high	lib/streamlit/elements/vega_charts.py:1889:1	-	11 lines (59 tokens) duplicated at streamlit.elements.vega_charts:1904
+duplicate-code	high	lib/streamlit/elements/vega_charts.py:1925:1	-	186 lines (94 tokens) duplicated at streamlit.elements.vega_charts:2153
+duplicate-code	high	lib/streamlit/elements/vega_charts.py:2114:1	-	12 lines (69 tokens) duplicated at streamlit.elements.vega_charts:2130
 duplicate-code	high	lib/streamlit/elements/widgets/audio_input.py:58:1	-	29 lines (162 tokens) duplicated at streamlit.elements.widgets.camera_input:63
-duplicate-code	high	lib/streamlit/elements/widgets/audio_input.py:97:1	-	8 lines (54 tokens) duplicated at streamlit.elements.widgets.button_group:766
+duplicate-code	high	lib/streamlit/elements/widgets/audio_input.py:98:1	-	8 lines (54 tokens) duplicated at streamlit.elements.widgets.file_uploader:237
 duplicate-code	high	lib/streamlit/elements/widgets/audio_input.py:279:1	-	20 lines (76 tokens) duplicated at streamlit.elements.widgets.camera_input:275
 duplicate-code	high	lib/streamlit/elements/widgets/audio_input.py:299:1	-	23 lines (92 tokens) duplicated at streamlit.elements.widgets.camera_input:295
 duplicate-code	high	lib/streamlit/elements/widgets/audio_input.py:323:1	-	20 lines (84 tokens) duplicated at streamlit.elements.widgets.camera_input:317
 duplicate-code	high	lib/streamlit/elements/widgets/audio_input.py:342:1	-	11 lines (54 tokens) duplicated at streamlit.elements.widgets.camera_input:337
+duplicate-code	high	lib/streamlit/elements/widgets/button.py:134:1	-	11 lines (56 tokens) duplicated at streamlit.elements.widgets.camera_input:96
 duplicate-code	high	lib/streamlit/elements/widgets/button.py:404:1	-	15 lines (51 tokens) duplicated at streamlit.elements.widgets.button:1136
-duplicate-code	high	lib/streamlit/elements/widgets/button.py:844:1	-	22 lines (123 tokens) duplicated at streamlit.elements.widgets.button:865
-duplicate-code	high	lib/streamlit/elements/widgets/button.py:886:1	-	13 lines (91 tokens) duplicated at streamlit.elements.widgets.button:907
+duplicate-code	high	lib/streamlit/elements/widgets/button.py:849:1	-	17 lines (83 tokens) duplicated at streamlit.elements.widgets.button:870
+duplicate-code	high	lib/streamlit/elements/widgets/button.py:891:1	-	8 lines (51 tokens) duplicated at streamlit.elements.widgets.button:912
 duplicate-code	high	lib/streamlit/elements/widgets/button.py:1151:1	-	10 lines (54 tokens) duplicated at streamlit.elements.widgets.button:1585
-duplicate-code	high	lib/streamlit/elements/widgets/button.py:1375:1	-	19 lines (117 tokens) duplicated at streamlit.elements.widgets.button:1702
+duplicate-code	high	lib/streamlit/elements/widgets/button.py:1380:1	-	14 lines (83 tokens) duplicated at streamlit.elements.widgets.button:1707
 duplicate-code	high	lib/streamlit/elements/widgets/button.py:1454:1	-	22 lines (103 tokens) duplicated at streamlit.elements.widgets.button:1788
 duplicate-code	high	lib/streamlit/elements/widgets/button.py:1545:1	-	12 lines (67 tokens) duplicated in 2 other places: streamlit.elements.widgets.button:1775, streamlit.elements.widgets.menu_button:405
 duplicate-code	high	lib/streamlit/elements/widgets/button_group.py:193:1	-	10 lines (55 tokens) duplicated at streamlit.elements.widgets.multiselect:98
-duplicate-code	high	lib/streamlit/elements/widgets/button_group.py:345:1	-	24 lines (144 tokens) duplicated at streamlit.elements.widgets.button_group:743
-duplicate-code	high	lib/streamlit/elements/widgets/button_group.py:391:1	-	33 lines (149 tokens) duplicated at streamlit.elements.widgets.button_group:789
-duplicate-code	high	lib/streamlit/elements/widgets/button_group.py:423:1	-	24 lines (147 tokens) duplicated at streamlit.elements.widgets.button_group:821
-duplicate-code	high	lib/streamlit/elements/widgets/button_group.py:446:1	-	13 lines (86 tokens) duplicated at streamlit.elements.widgets.button_group:844
-duplicate-code	high	lib/streamlit/elements/widgets/button_group.py:468:1	-	252 lines (127 tokens) duplicated at streamlit.elements.widgets.button_group:867
-duplicate-code	high	lib/streamlit/elements/widgets/button_group.py:1144:1	-	10 lines (64 tokens) duplicated at streamlit.elements.widgets.button_group:1319
-duplicate-code	high	lib/streamlit/elements/widgets/camera_input.py:99:1	-	10 lines (58 tokens) duplicated in 2 other places: streamlit.elements.widgets.checkbox:449, streamlit.elements.widgets.color_picker:89
+duplicate-code	high	lib/streamlit/elements/widgets/button_group.py:335:1	-	11 lines (60 tokens) duplicated at streamlit.elements.widgets.button_group:733
+duplicate-code	high	lib/streamlit/elements/widgets/button_group.py:348:1	-	21 lines (116 tokens) duplicated at streamlit.elements.widgets.button_group:746
+duplicate-code	high	lib/streamlit/elements/widgets/button_group.py:371:1	-	21 lines (119 tokens) duplicated at streamlit.elements.widgets.button_group:769
+duplicate-code	high	lib/streamlit/elements/widgets/button_group.py:394:1	-	30 lines (121 tokens) duplicated at streamlit.elements.widgets.button_group:792
+duplicate-code	high	lib/streamlit/elements/widgets/button_group.py:426:1	-	21 lines (121 tokens) duplicated at streamlit.elements.widgets.button_group:824
+duplicate-code	high	lib/streamlit/elements/widgets/button_group.py:449:1	-	10 lines (60 tokens) duplicated at streamlit.elements.widgets.button_group:847
+duplicate-code	high	lib/streamlit/elements/widgets/button_group.py:458:1	-	11 lines (69 tokens) duplicated at streamlit.elements.widgets.button_group:857
+duplicate-code	high	lib/streamlit/elements/widgets/button_group.py:471:1	-	249 lines (99 tokens) duplicated at streamlit.elements.widgets.button_group:870
 duplicate-code	high	lib/streamlit/elements/widgets/camera_input.py:251:1	-	21 lines (96 tokens) duplicated at streamlit.elements.widgets.color_picker:241
 duplicate-code	high	lib/streamlit/elements/widgets/chat.py:272:1	-	20 lines (103 tokens) duplicated at streamlit.elements.widgets.file_uploader:75
-duplicate-code	high	lib/streamlit/elements/widgets/chat.py:593:1	-	27 lines (141 tokens) duplicated at streamlit.elements.widgets.chat:619
-duplicate-code	high	lib/streamlit/elements/widgets/chat.py:643:1	-	9 lines (64 tokens) duplicated at streamlit.elements.widgets.chat:664
-duplicate-code	high	lib/streamlit/elements/widgets/chat.py:1036:1	-	14 lines (51 tokens) duplicated at streamlit.elements.widgets.multiselect:755
+duplicate-code	high	lib/streamlit/elements/widgets/chat.py:596:1	-	24 lines (125 tokens) duplicated at streamlit.elements.widgets.chat:622
+duplicate-code	high	lib/streamlit/elements/widgets/chat.py:645:1	-	7 lines (56 tokens) duplicated at streamlit.elements.widgets.chat:666
+duplicate-code	high	lib/streamlit/elements/widgets/chat.py:1037:1	-	13 lines (50 tokens) duplicated at streamlit.elements.widgets.multiselect:756
 duplicate-code	high	lib/streamlit/elements/widgets/checkbox.py:51:1	-	12 lines (51 tokens) duplicated at streamlit.elements.widgets.color_picker:63
 duplicate-code	high	lib/streamlit/elements/widgets/checkbox.py:66:1	-	191 lines (182 tokens) duplicated at streamlit.elements.widgets.checkbox:256
 duplicate-code	high	lib/streamlit/elements/widgets/checkbox.py:495:1	-	14 lines (60 tokens) duplicated at streamlit.elements.widgets.number_input:819
 duplicate-code	high	lib/streamlit/elements/widgets/color_picker.py:333:1	-	21 lines (88 tokens) duplicated at streamlit.elements.widgets.time_widgets:2064
 duplicate-code	high	lib/streamlit/elements/widgets/data_editor.py:777:1	-	26 lines (168 tokens) duplicated at streamlit.elements.widgets.data_editor:821
-duplicate-code	high	lib/streamlit/elements/widgets/data_editor.py:802:1	-	17 lines (134 tokens) duplicated at streamlit.elements.widgets.data_editor:846
 duplicate-code	high	lib/streamlit/elements/widgets/data_editor.py:865:1	-	20 lines (143 tokens) duplicated at streamlit.elements.widgets.data_editor:887
-duplicate-code	high	lib/streamlit/elements/widgets/feedback.py:110:1	-	10 lines (65 tokens) duplicated at streamlit.elements.widgets.feedback:124
-duplicate-code	high	lib/streamlit/elements/widgets/file_uploader.py:168:1	-	12 lines (72 tokens) duplicated at streamlit.elements.widgets.file_uploader:188
-duplicate-code	high	lib/streamlit/elements/widgets/file_uploader.py:213:1	-	12 lines (83 tokens) duplicated at streamlit.elements.widgets.file_uploader:233
+duplicate-code	high	lib/streamlit/elements/widgets/feedback.py:112:1	-	8 lines (55 tokens) duplicated at streamlit.elements.widgets.feedback:126
+duplicate-code	high	lib/streamlit/elements/widgets/file_uploader.py:171:1	-	9 lines (51 tokens) duplicated at streamlit.elements.widgets.file_uploader:191
 duplicate-code	high	lib/streamlit/elements/widgets/file_uploader.py:247:1	-	17 lines (108 tokens) duplicated at streamlit.elements.widgets.file_uploader:265
 duplicate-code	high	lib/streamlit/elements/widgets/file_uploader.py:281:1	-	231 lines (62 tokens) duplicated at streamlit.elements.widgets.pagination:88
 duplicate-code	high	lib/streamlit/elements/widgets/menu_button.py:82:1	-	9 lines (55 tokens) duplicated at streamlit.elements.widgets.select_slider:92
 duplicate-code	high	lib/streamlit/elements/widgets/menu_button.py:112:1	-	16 lines (112 tokens) duplicated at streamlit.elements.widgets.menu_button:321
-duplicate-code	high	lib/streamlit/elements/widgets/menu_button.py:128:1	-	191 lines (76 tokens) duplicated at streamlit.elements.widgets.time_widgets:784
+duplicate-code	high	lib/streamlit/elements/widgets/menu_button.py:128:1	-	191 lines (71 tokens) duplicated at streamlit.elements.widgets.select_slider:221
 duplicate-code	high	lib/streamlit/elements/widgets/multiselect.py:231:1	-	18 lines (114 tokens) duplicated at streamlit.elements.widgets.multiselect:257
 duplicate-code	high	lib/streamlit/elements/widgets/multiselect.py:283:1	-	25 lines (168 tokens) duplicated at streamlit.elements.widgets.multiselect:309
-duplicate-code	high	lib/streamlit/elements/widgets/multiselect.py:645:1	-	22 lines (91 tokens) duplicated at streamlit.elements.widgets.text_widgets:705
-duplicate-code	high	lib/streamlit/elements/widgets/multiselect.py:674:1	-	9 lines (59 tokens) duplicated at streamlit.elements.widgets.radio:451
+duplicate-code	high	lib/streamlit/elements/widgets/multiselect.py:645:1	-	21 lines (87 tokens) duplicated at streamlit.elements.widgets.number_input:604
 duplicate-code	high	lib/streamlit/elements/widgets/multiselect.py:799:1	-	21 lines (70 tokens) duplicated at streamlit.elements.widgets.select_slider:567
-duplicate-code	high	lib/streamlit/elements/widgets/number_input.py:114:1	-	27 lines (147 tokens) duplicated at streamlit.elements.widgets.number_input:296
-duplicate-code	high	lib/streamlit/elements/widgets/number_input.py:140:1	-	23 lines (131 tokens) duplicated at streamlit.elements.widgets.number_input:322
-duplicate-code	high	lib/streamlit/elements/widgets/number_input.py:169:1	-	24 lines (129 tokens) duplicated at streamlit.elements.widgets.number_input:221
-duplicate-code	high	lib/streamlit/elements/widgets/number_input.py:195:1	-	8 lines (62 tokens) duplicated at streamlit.elements.widgets.slider:533
-duplicate-code	high	lib/streamlit/elements/widgets/number_input.py:203:1	-	8 lines (50 tokens) duplicated at streamlit.elements.widgets.select_slider:472
-duplicate-code	high	lib/streamlit/elements/widgets/number_input.py:246:1	-	17 lines (106 tokens) duplicated at streamlit.elements.widgets.number_input:272
+duplicate-code	high	lib/streamlit/elements/widgets/number_input.py:124:1	-	17 lines (69 tokens) duplicated at streamlit.elements.widgets.number_input:306
+duplicate-code	high	lib/streamlit/elements/widgets/number_input.py:150:1	-	13 lines (58 tokens) duplicated at streamlit.elements.widgets.number_input:332
+duplicate-code	high	lib/streamlit/elements/widgets/number_input.py:202:1	-	18 lines (84 tokens) duplicated at streamlit.elements.widgets.number_input:280
+duplicate-code	high	lib/streamlit/elements/widgets/number_input.py:228:1	-	19 lines (80 tokens) duplicated at streamlit.elements.widgets.number_input:254
 duplicate-code	high	lib/streamlit/elements/widgets/number_input.py:343:1	-	21 lines (144 tokens) duplicated at streamlit.elements.widgets.number_input:627
-duplicate-code	high	lib/streamlit/elements/widgets/number_input.py:364:1	-	260 lines (90 tokens) duplicated at streamlit.elements.widgets.selectbox:363
 duplicate-code	high	lib/streamlit/elements/widgets/radio.py:79:1	-	16 lines (97 tokens) duplicated at streamlit.elements.widgets.selectbox:83
 duplicate-code	high	lib/streamlit/elements/widgets/radio.py:103:1	-	26 lines (72 tokens) duplicated at streamlit.elements.widgets.selectbox:131
 duplicate-code	high	lib/streamlit/elements/widgets/radio.py:143:1	-	21 lines (129 tokens) duplicated at streamlit.elements.widgets.radio:165
-duplicate-code	high	lib/streamlit/elements/widgets/radio.py:192:1	-	16 lines (109 tokens) duplicated at streamlit.elements.widgets.radio:214
-duplicate-code	high	lib/streamlit/elements/widgets/radio.py:229:1	-	222 lines (97 tokens) duplicated at streamlit.elements.widgets.time_widgets:1212
+duplicate-code	high	lib/streamlit/elements/widgets/radio.py:199:1	-	9 lines (54 tokens) duplicated at streamlit.elements.widgets.radio:221
+duplicate-code	high	lib/streamlit/elements/widgets/radio.py:209:1	-	10 lines (58 tokens) duplicated at streamlit.elements.widgets.selectbox:296
+duplicate-code	high	lib/streamlit/elements/widgets/radio.py:433:1	-	23 lines (108 tokens) duplicated at streamlit.elements.widgets.selectbox:643
 duplicate-code	high	lib/streamlit/elements/widgets/radio.py:505:1	-	11 lines (67 tokens) duplicated at streamlit.elements.widgets.selectbox:696
 duplicate-code	high	lib/streamlit/elements/widgets/radio.py:526:1	-	12 lines (90 tokens) duplicated at streamlit.elements.widgets.selectbox:740
 duplicate-code	high	lib/streamlit/elements/widgets/radio.py:551:1	-	28 lines (88 tokens) duplicated at streamlit.elements.widgets.selectbox:767
-duplicate-code	high	lib/streamlit/elements/widgets/select_slider.py:168:1	-	9 lines (61 tokens) duplicated at streamlit.elements.widgets.selectbox:324
-duplicate-code	high	lib/streamlit/elements/widgets/select_slider.py:188:1	-	14 lines (95 tokens) duplicated at streamlit.elements.widgets.select_slider:208
-duplicate-code	high	lib/streamlit/elements/widgets/select_slider.py:442:1	-	18 lines (72 tokens) duplicated at streamlit.elements.widgets.text_widgets:1152
-duplicate-code	high	lib/streamlit/elements/widgets/select_slider.py:479:1	-	17 lines (55 tokens) duplicated at streamlit.elements.widgets.slider:879
+duplicate-code	high	lib/streamlit/elements/widgets/select_slider.py:173:1	-	15 lines (74 tokens) duplicated at streamlit.elements.widgets.slider:394
+duplicate-code	high	lib/streamlit/elements/widgets/select_slider.py:193:1	-	11 lines (56 tokens) duplicated at streamlit.elements.widgets.slider:418
+duplicate-code	high	lib/streamlit/elements/widgets/select_slider.py:204:1	-	11 lines (87 tokens) duplicated at streamlit.elements.widgets.select_slider:462
 duplicate-code	high	lib/streamlit/elements/widgets/select_slider.py:549:1	-	16 lines (90 tokens) duplicated at streamlit.elements.widgets.slider:1212
 duplicate-code	high	lib/streamlit/elements/widgets/selectbox.py:176:1	-	22 lines (137 tokens) duplicated at streamlit.elements.widgets.selectbox:199
-duplicate-code	high	lib/streamlit/elements/widgets/selectbox.py:227:1	-	17 lines (116 tokens) duplicated at streamlit.elements.widgets.selectbox:273
-duplicate-code	high	lib/streamlit/elements/widgets/selectbox.py:250:1	-	24 lines (140 tokens) duplicated at streamlit.elements.widgets.selectbox:301
-duplicate-code	high	lib/streamlit/elements/widgets/selectbox.py:343:1	-	20 lines (131 tokens) duplicated at streamlit.elements.widgets.selectbox:657
-duplicate-code	high	lib/streamlit/elements/widgets/slider.py:317:1	-	23 lines (123 tokens) duplicated at streamlit.elements.widgets.slider:341
-duplicate-code	high	lib/streamlit/elements/widgets/slider.py:366:1	-	23 lines (125 tokens) duplicated at streamlit.elements.widgets.slider:487
-duplicate-code	high	lib/streamlit/elements/widgets/slider.py:389:1	-	18 lines (102 tokens) duplicated at streamlit.elements.widgets.slider:511
-duplicate-code	high	lib/streamlit/elements/widgets/slider.py:414:1	-	12 lines (80 tokens) duplicated at streamlit.elements.widgets.slider:866
-duplicate-code	high	lib/streamlit/elements/widgets/slider.py:437:1	-	21 lines (111 tokens) duplicated at streamlit.elements.widgets.slider:460
+duplicate-code	high	lib/streamlit/elements/widgets/selectbox.py:243:1	-	19 lines (107 tokens) duplicated at streamlit.elements.widgets.selectbox:266
+duplicate-code	high	lib/streamlit/elements/widgets/selectbox.py:319:1	-	22 lines (140 tokens) duplicated at streamlit.elements.widgets.selectbox:342
+duplicate-code	high	lib/streamlit/elements/widgets/slider.py:322:1	-	18 lines (82 tokens) duplicated at streamlit.elements.widgets.slider:346
+duplicate-code	high	lib/streamlit/elements/widgets/slider.py:370:1	-	19 lines (86 tokens) duplicated at streamlit.elements.widgets.slider:491
+duplicate-code	high	lib/streamlit/elements/widgets/slider.py:442:1	-	16 lines (68 tokens) duplicated at streamlit.elements.widgets.slider:465
+duplicate-code	high	lib/streamlit/elements/widgets/slider.py:527:1	-	12 lines (70 tokens) duplicated at streamlit.elements.widgets.text_widgets:937
 duplicate-code	high	lib/streamlit/elements/widgets/slider.py:541:1	-	315 lines (113 tokens) duplicated at streamlit.elements.widgets.time_widgets:1686
+duplicate-code	high	lib/streamlit/elements/widgets/slider.py:872:1	-	13 lines (61 tokens) duplicated at streamlit.elements.widgets.time_widgets:1950
 duplicate-code	high	lib/streamlit/elements/widgets/slider.py:1232:1	-	15 lines (54 tokens) duplicated at streamlit.elements.widgets.time_widgets:1558
 duplicate-code	high	lib/streamlit/elements/widgets/text_widgets.py:67:1	-	16 lines (106 tokens) duplicated at streamlit.elements.widgets.text_widgets:82
-duplicate-code	high	lib/streamlit/elements/widgets/text_widgets.py:270:1	-	16 lines (116 tokens) duplicated at streamlit.elements.widgets.text_widgets:735
-duplicate-code	high	lib/streamlit/elements/widgets/text_widgets.py:293:1	-	23 lines (157 tokens) duplicated at streamlit.elements.widgets.text_widgets:321
+duplicate-code	high	lib/streamlit/elements/widgets/text_widgets.py:280:1	-	7 lines (51 tokens) duplicated at streamlit.elements.widgets.text_widgets:308
+duplicate-code	high	lib/streamlit/elements/widgets/text_widgets.py:338:1	-	385 lines (103 tokens) duplicated at streamlit.elements.widgets.text_widgets:974
 duplicate-code	high	lib/streamlit/elements/widgets/text_widgets.py:827:1	-	25 lines (146 tokens) duplicated at streamlit.elements.widgets.text_widgets:1225
 duplicate-code	high	lib/streamlit/elements/widgets/text_widgets.py:880:1	-	26 lines (102 tokens) duplicated at streamlit.elements.widgets.text_widgets:1251
-duplicate-code	high	lib/streamlit/elements/widgets/text_widgets.py:919:1	-	15 lines (99 tokens) duplicated at streamlit.elements.widgets.text_widgets:1176
-duplicate-code	high	lib/streamlit/elements/widgets/text_widgets.py:941:1	-	17 lines (105 tokens) duplicated at streamlit.elements.widgets.text_widgets:963
+duplicate-code	high	lib/streamlit/elements/widgets/text_widgets.py:1185:1	-	19 lines (79 tokens) duplicated at streamlit.elements.widgets.time_widgets:1445
 duplicate-code	high	lib/streamlit/elements/widgets/time_widgets.py:221:1	-	13 lines (71 tokens) duplicated at streamlit.elements.widgets.time_widgets:242
 duplicate-code	high	lib/streamlit/elements/widgets/time_widgets.py:415:1	-	10 lines (53 tokens) duplicated at streamlit.elements.widgets.time_widgets:464
-duplicate-code	high	lib/streamlit/elements/widgets/time_widgets.py:728:1	-	15 lines (102 tokens) duplicated at streamlit.elements.widgets.time_widgets:749
+duplicate-code	high	lib/streamlit/elements/widgets/time_widgets.py:736:1	-	7 lines (51 tokens) duplicated at streamlit.elements.widgets.time_widgets:757
 duplicate-code	high	lib/streamlit/elements/widgets/time_widgets.py:767:1	-	17 lines (115 tokens) duplicated at streamlit.elements.widgets.time_widgets:1008
-duplicate-code	high	lib/streamlit/elements/widgets/time_widgets.py:1025:1	-	17 lines (68 tokens) duplicated at streamlit.elements.widgets.time_widgets:1451
-duplicate-code	high	lib/streamlit/elements/widgets/time_widgets.py:1152:1	-	16 lines (104 tokens) duplicated at streamlit.elements.widgets.time_widgets:1435
+duplicate-code	high	lib/streamlit/elements/widgets/time_widgets.py:784:1	-	222 lines (77 tokens) duplicated at streamlit.elements.widgets.time_widgets:1212
 duplicate-code	high	lib/streamlit/elements/widgets/time_widgets.py:1170:1	-	21 lines (122 tokens) duplicated at streamlit.elements.widgets.time_widgets:1192
 duplicate-code	high	lib/streamlit/elements/widgets/time_widgets.py:1574:1	-	27 lines (121 tokens) duplicated at streamlit.elements.widgets.time_widgets:2086
-duplicate-code	high	lib/streamlit/elements/widgets/time_widgets.py:1612:1	-	18 lines (99 tokens) duplicated at streamlit.elements.widgets.time_widgets:1656
-duplicate-code	high	lib/streamlit/elements/widgets/time_widgets.py:1633:1	-	15 lines (91 tokens) duplicated at streamlit.elements.widgets.time_widgets:1941
+duplicate-code	high	lib/streamlit/elements/widgets/time_widgets.py:1618:1	-	12 lines (56 tokens) duplicated at streamlit.elements.widgets.time_widgets:1662
 duplicate-code	high	lib/streamlit/elements/write.py:486:1	-	13 lines (97 tokens) duplicated at streamlit.elements.write:501
 duplicate-code	high	lib/streamlit/errors.py:305:1	-	15 lines (59 tokens) duplicated at streamlit.errors:320
 duplicate-code	high	lib/streamlit/errors.py:650:1	-	9 lines (50 tokens) duplicated at streamlit.errors:665
@@ -605,8 +578,7 @@ duplicate-code	high	lib/streamlit/web/server/starlette/starlette_routes.py:838:1
 duplicate-code	high	lib/streamlit/web/server/starlette/starlette_routes.py:1059:1	-	28 lines (120 tokens) duplicated at streamlit.web.server.starlette.starlette_routes:1138
 duplicate-code	high	lib/streamlit/web/server/starlette/starlette_server.py:387:1	-	9 lines (57 tokens) duplicated at streamlit.web.server.starlette.starlette_server:612
 duplicate-code	high	lib/streamlit/web/skills.py:854:1	-	13 lines (91 tokens) duplicated at streamlit.web.skills:887
-duplicate-code	high	lib/tests/exception_capturing_thread.py:74:1	-	9 lines (53 tokens) duplicated at tests.streamlit.runtime.caching.common_cache_test:261
-duplicate-code	high	lib/tests/streamlit/auth_util_test.py:79:1	-	17 lines (54 tokens) duplicated at tests.streamlit.user_info_test:46
+duplicate-code	high	lib/tests/streamlit/auth_util_test.py:81:1	-	15 lines (50 tokens) duplicated at tests.streamlit.user_info_test:48
 duplicate-code	high	lib/tests/streamlit/auth_util_test.py:210:1	-	19 lines (66 tokens) duplicated at tests.streamlit.auth_util_test:228
 duplicate-code	high	lib/tests/streamlit/auth_util_test.py:269:1	-	10 lines (54 tokens) duplicated at tests.streamlit.auth_util_test:291
 duplicate-code	high	lib/tests/streamlit/auth_util_test.py:344:1	-	14 lines (53 tokens) duplicated at tests.streamlit.auth_util_test:359
@@ -674,10 +646,6 @@ duplicate-code	high	lib/tests/streamlit/config_test.py:326:1	-	16 lines (54 toke
 duplicate-code	high	lib/tests/streamlit/config_test.py:384:1	-	23 lines (133 tokens) duplicated at tests.streamlit.config_test:419
 duplicate-code	high	lib/tests/streamlit/config_test.py:454:1	-	12 lines (67 tokens) duplicated at tests.streamlit.config_test:465
 duplicate-code	high	lib/tests/streamlit/config_test.py:481:1	-	23 lines (75 tokens) duplicated at tests.streamlit.config_test:589
-duplicate-code	high	lib/tests/streamlit/config_test.py:1246:1	-	25 lines (99 tokens) duplicated at tests.streamlit.runtime.app_session_test:1887
-duplicate-code	high	lib/tests/streamlit/config_test.py:1353:1	-	16 lines (59 tokens) duplicated at tests.streamlit.config_test:1472
-duplicate-code	high	lib/tests/streamlit/config_test.py:1395:1	-	22 lines (85 tokens) duplicated at tests.streamlit.runtime.app_session_test:1007
-duplicate-code	high	lib/tests/streamlit/config_test.py:1492:1	-	16 lines (59 tokens) duplicated at tests.streamlit.runtime.app_session_test:1115
 duplicate-code	high	lib/tests/streamlit/config_test.py:1615:1	-	22 lines (107 tokens) duplicated at tests.streamlit.config_test:1863
 duplicate-code	high	lib/tests/streamlit/config_test.py:1652:1	-	12 lines (66 tokens) duplicated at tests.streamlit.config_test:1677
 duplicate-code	high	lib/tests/streamlit/config_test.py:1706:1	-	25 lines (120 tokens) duplicated at tests.streamlit.config_test:1757
@@ -703,8 +671,6 @@ duplicate-code	high	lib/tests/streamlit/data_mocks/modin_mocks.py:33:1	-	24 line
 duplicate-code	high	lib/tests/streamlit/data_mocks/modin_mocks.py:56:1	-	11 lines (63 tokens) duplicated at tests.streamlit.data_mocks.snowpandas_mocks:90
 duplicate-code	high	lib/tests/streamlit/data_mocks/pyspark_connect_mocks.py:33:1	-	12 lines (74 tokens) duplicated at tests.streamlit.data_mocks.pyspark_mocks:33
 duplicate-code	high	lib/tests/streamlit/data_mocks/snowpandas_mocks.py:34:1	-	29 lines (107 tokens) duplicated at tests.streamlit.data_mocks.snowpandas_mocks:62
-duplicate-code	high	lib/tests/streamlit/data_test_cases.py:810:1	-	20 lines (61 tokens) duplicated in 6 other places: tests.streamlit.data_test_cases:830, tests.streamlit.data_test_cases:867, tests.streamlit.data_test_cases:915, tests.streamlit.data_test_cases:951, tests.streamlit.data_test_cases:971, tests.streamlit.data_test_cases:991
-duplicate-code	high	lib/tests/streamlit/data_test_cases.py:1218:1	-	18 lines (54 tokens) duplicated at tests.streamlit.data_test_cases:1245
 duplicate-code	high	lib/tests/streamlit/dataframe/lazy_df_source_test.py:63:1	-	14 lines (68 tokens) duplicated at tests.streamlit.runtime.dataframe_source_manager_test:62
 duplicate-code	high	lib/tests/streamlit/dataframe/lazy_df_source_test.py:197:1	-	14 lines (57 tokens) duplicated at tests.streamlit.dataframe.lazy_df_source_test:212
 duplicate-code	high	lib/tests/streamlit/dataframe/lazy_df_source_test.py:262:1	-	8 lines (51 tokens) duplicated at tests.streamlit.dataframe.lazy_df_source_test:276
@@ -712,7 +678,7 @@ duplicate-code	high	lib/tests/streamlit/dataframe_util_test.py:214:1	-	9 lines (
 duplicate-code	high	lib/tests/streamlit/dataframe_util_test.py:252:1	-	18 lines (83 tokens) duplicated at tests.streamlit.dataframe_util_test:272
 duplicate-code	high	lib/tests/streamlit/dataframe_util_test.py:342:1	-	18 lines (75 tokens) duplicated at tests.streamlit.dataframe_util_test:385
 duplicate-code	high	lib/tests/streamlit/dataframe_util_test.py:637:1	-	11 lines (89 tokens) duplicated at tests.streamlit.dataframe_util_test:814
-duplicate-code	high	lib/tests/streamlit/dataframe_util_test.py:660:1	-	19 lines (114 tokens) duplicated at tests.streamlit.elements.data_editor_test:1402
+duplicate-code	high	lib/tests/streamlit/dataframe_util_test.py:664:1	-	15 lines (79 tokens) duplicated at tests.streamlit.elements.data_editor_test:1406
 duplicate-code	high	lib/tests/streamlit/dataframe_util_test.py:724:1	-	15 lines (98 tokens) duplicated at tests.streamlit.dataframe_util_test:743
 duplicate-code	high	lib/tests/streamlit/dataframe_util_test.py:844:1	-	12 lines (59 tokens) duplicated at tests.streamlit.dataframe_util_test:870
 duplicate-code	high	lib/tests/streamlit/dataframe_util_test.py:1038:1	-	13 lines (77 tokens) duplicated at tests.streamlit.elements.data_editor_test:1329
@@ -736,7 +702,6 @@ duplicate-code	high	lib/tests/streamlit/elements/alert_test.py:231:1	-	12 lines 
 duplicate-code	high	lib/tests/streamlit/elements/alert_test.py:283:1	-	7 lines (59 tokens) duplicated at tests.streamlit.elements.alert_test:351
 duplicate-code	high	lib/tests/streamlit/elements/alert_test.py:293:1	-	6 lines (51 tokens) duplicated in 6 other places: tests.streamlit.elements.alert_test:302, tests.streamlit.elements.alert_test:312, tests.streamlit.elements.alert_test:321, tests.streamlit.elements.alert_test:330, tests.streamlit.elements.alert_test:339, tests.streamlit.elements.alert_test:361
 duplicate-code	high	lib/tests/streamlit/elements/alert_test.py:370:1	-	6 lines (55 tokens) duplicated at tests.streamlit.elements.alert_test:380
-duplicate-code	high	lib/tests/streamlit/elements/arrow_dataframe_test.py:62:1	-	5 lines (61 tokens) duplicated in 2 other places: tests.streamlit.elements.table_test:46, tests.streamlit.testing.element_tree_test:293
 duplicate-code	high	lib/tests/streamlit/elements/arrow_dataframe_test.py:72:1	-	24 lines (134 tokens) duplicated at tests.streamlit.elements.data_editor_test:1023
 duplicate-code	high	lib/tests/streamlit/elements/arrow_dataframe_test.py:111:1	-	12 lines (75 tokens) duplicated at tests.streamlit.elements.data_editor_test:1100
 duplicate-code	high	lib/tests/streamlit/elements/arrow_dataframe_test.py:140:1	-	31 lines (180 tokens) duplicated at tests.streamlit.elements.data_editor_test:1197
@@ -774,8 +739,6 @@ duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:182:1	-	16
 duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:255:1	-	18 lines (57 tokens) duplicated at tests.streamlit.elements.button_group_test:478
 duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:302:1	-	25 lines (96 tokens) duplicated at tests.streamlit.elements.button_group_test:329
 duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:447:1	-	21 lines (90 tokens) duplicated at tests.streamlit.elements.button_group_test:499
-duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:778:1	-	34 lines (208 tokens) duplicated at tests.streamlit.elements.multiselect_test:178
-duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:834:1	-	6 lines (72 tokens) duplicated at tests.streamlit.elements.multiselect_test:163
 duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:847:1	-	8 lines (72 tokens) duplicated at tests.streamlit.elements.button_group_test:864
 duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:854:1	-	10 lines (51 tokens) duplicated at tests.streamlit.elements.button_group_test:870
 duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:962:1	-	11 lines (68 tokens) duplicated at tests.streamlit.elements.pagination_test:221
@@ -783,8 +746,8 @@ duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:1021:1	-	7
 duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:1035:1	-	10 lines (51 tokens) duplicated at tests.streamlit.elements.pagination_test:279
 duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:1103:1	-	11 lines (78 tokens) duplicated at tests.streamlit.elements.html_test:243
 duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:1122:1	-	25 lines (72 tokens) duplicated at tests.streamlit.spinner_test:94
-duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:1237:1	-	21 lines (98 tokens) duplicated at tests.streamlit.elements.button_group_test:1358
-duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:1257:1	-	38 lines (164 tokens) duplicated at tests.streamlit.elements.button_group_test:1378
+duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:1242:1	-	16 lines (78 tokens) duplicated at tests.streamlit.elements.button_group_test:1363
+duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:1262:1	-	33 lines (144 tokens) duplicated at tests.streamlit.elements.button_group_test:1383
 duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:1294:1	-	32 lines (124 tokens) duplicated at tests.streamlit.elements.button_group_test:1415
 duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:1337:1	-	20 lines (56 tokens) duplicated at tests.streamlit.elements.feedback_test:319
 duplicate-code	high	lib/tests/streamlit/elements/button_group_test.py:1570:1	-	23 lines (113 tokens) duplicated at tests.streamlit.elements.button_group_test:1655
@@ -855,7 +818,7 @@ duplicate-code	high	lib/tests/streamlit/elements/date_input_test.py:263:1	-	40 l
 duplicate-code	high	lib/tests/streamlit/elements/date_input_test.py:351:1	-	66 lines (307 tokens) duplicated at tests.streamlit.elements.time_input_test:168
 duplicate-code	high	lib/tests/streamlit/elements/date_input_test.py:444:1	-	22 lines (88 tokens) duplicated at tests.streamlit.elements.date_input_test:501
 duplicate-code	high	lib/tests/streamlit/elements/date_input_test.py:465:1	-	12 lines (68 tokens) duplicated at tests.streamlit.elements.date_input_test:489
-duplicate-code	high	lib/tests/streamlit/elements/date_input_test.py:521:1	-	12 lines (79 tokens) duplicated at tests.streamlit.elements.date_input_test:545
+duplicate-code	high	lib/tests/streamlit/elements/date_input_test.py:522:1	-	11 lines (78 tokens) duplicated at tests.streamlit.elements.date_input_test:546
 duplicate-code	high	lib/tests/streamlit/elements/date_input_test.py:560:1	-	21 lines (92 tokens) duplicated at tests.streamlit.elements.number_input_test:644
 duplicate-code	high	lib/tests/streamlit/elements/date_input_test.py:602:1	-	22 lines (89 tokens) duplicated at tests.streamlit.elements.date_input_test:742
 duplicate-code	high	lib/tests/streamlit/elements/date_input_test.py:623:1	-	20 lines (151 tokens) duplicated at tests.streamlit.elements.date_input_test:671
@@ -869,7 +832,7 @@ duplicate-code	high	lib/tests/streamlit/elements/date_input_test.py:947:1	-	9 li
 duplicate-code	high	lib/tests/streamlit/elements/date_input_test.py:959:1	-	12 lines (71 tokens) duplicated at tests.streamlit.elements.date_input_test:971
 duplicate-code	high	lib/tests/streamlit/elements/date_input_test.py:995:1	-	13 lines (71 tokens) duplicated at tests.streamlit.elements.date_input_test:1024
 duplicate-code	high	lib/tests/streamlit/elements/datetime_input_test.py:200:1	-	13 lines (74 tokens) duplicated at tests.streamlit.elements.time_input_test:94
-duplicate-code	high	lib/tests/streamlit/elements/datetime_input_test.py:221:1	-	8 lines (69 tokens) duplicated at tests.streamlit.elements.datetime_input_test:233
+duplicate-code	high	lib/tests/streamlit/elements/datetime_input_test.py:221:1	-	8 lines (68 tokens) duplicated at tests.streamlit.elements.datetime_input_test:233
 duplicate-code	high	lib/tests/streamlit/elements/datetime_input_test.py:267:1	-	15 lines (73 tokens) duplicated at tests.streamlit.elements.datetime_input_test:286
 duplicate-code	high	lib/tests/streamlit/elements/datetime_input_test.py:362:1	-	13 lines (62 tokens) duplicated at tests.streamlit.elements.time_input_test:297
 duplicate-code	high	lib/tests/streamlit/elements/datetime_input_test.py:470:1	-	19 lines (66 tokens) duplicated at tests.streamlit.elements.datetime_input_test:518
@@ -952,20 +915,15 @@ duplicate-code	high	lib/tests/streamlit/elements/layouts_test.py:2054:1	-	10 lin
 duplicate-code	high	lib/tests/streamlit/elements/layouts_test.py:2154:1	-	8 lines (54 tokens) duplicated at tests.streamlit.elements.layouts_test:2169
 duplicate-code	high	lib/tests/streamlit/elements/lib/built_in_chart_utils_test.py:105:1	-	8 lines (50 tokens) duplicated at tests.streamlit.elements.lib.built_in_chart_utils_test:182
 duplicate-code	high	lib/tests/streamlit/elements/lib/color_util_test.py:186:1	-	14 lines (51 tokens) duplicated at tests.streamlit.elements.lib.color_util_test:256
-duplicate-code	high	lib/tests/streamlit/elements/lib/column_config_utils_test.py:124:1	-	5 lines (66 tokens) duplicated at tests.streamlit.elements.lib.column_config_utils_test:283
-duplicate-code	high	lib/tests/streamlit/elements/lib/column_config_utils_test.py:159:1	-	7 lines (54 tokens) duplicated at tests.streamlit.elements.lib.column_config_utils_test:169
-duplicate-code	high	lib/tests/streamlit/elements/lib/column_config_utils_test.py:203:1	-	12 lines (96 tokens) duplicated at tests.streamlit.elements.lib.column_config_utils_test:273
-duplicate-code	high	lib/tests/streamlit/elements/lib/column_config_utils_test.py:219:1	-	24 lines (226 tokens) duplicated at tests.streamlit.elements.lib.column_config_utils_test:250
+duplicate-code	high	lib/tests/streamlit/elements/lib/column_config_utils_test.py:223:1	-	20 lines (134 tokens) duplicated at tests.streamlit.elements.lib.column_config_utils_test:254
 duplicate-code	high	lib/tests/streamlit/elements/lib/column_config_utils_test.py:355:1	-	11 lines (54 tokens) duplicated at tests.streamlit.elements.lib.column_config_utils_test:374
-duplicate-code	high	lib/tests/streamlit/elements/lib/column_config_utils_test.py:526:1	-	8 lines (56 tokens) duplicated at tests.streamlit.elements.lib.column_config_utils_test:533
-duplicate-code	high	lib/tests/streamlit/elements/lib/column_config_utils_test.py:541:1	-	7 lines (51 tokens) duplicated at tests.streamlit.elements.lib.column_config_utils_test:548
 duplicate-code	high	lib/tests/streamlit/elements/lib/column_types_test.py:218:1	-	14 lines (69 tokens) duplicated at tests.streamlit.elements.lib.column_types_test:294
 duplicate-code	high	lib/tests/streamlit/elements/lib/column_types_test.py:363:1	-	13 lines (56 tokens) duplicated at tests.streamlit.elements.lib.column_types_test:382
 duplicate-code	high	lib/tests/streamlit/elements/lib/column_types_test.py:704:1	-	6 lines (78 tokens) duplicated at tests.streamlit.elements.lib.column_types_test:710
 duplicate-code	high	lib/tests/streamlit/elements/lib/index_test.py:32:1	-	12 lines (94 tokens) duplicated at tests.streamlit.elements.lib.options_selector_utils_test:196
 duplicate-code	high	lib/tests/streamlit/elements/lib/index_test.py:49:1	-	12 lines (131 tokens) duplicated at tests.streamlit.elements.lib.index_test:60
 duplicate-code	high	lib/tests/streamlit/elements/lib/layout_utils_test.py:132:1	-	37 lines (169 tokens) duplicated at tests.streamlit.elements.lib.layout_utils_test:169
-duplicate-code	high	lib/tests/streamlit/elements/lib/layout_utils_test.py:296:1	-	16 lines (107 tokens) duplicated at tests.streamlit.elements.lib.layout_utils_test:311
+duplicate-code	high	lib/tests/streamlit/elements/lib/layout_utils_test.py:298:1	-	14 lines (83 tokens) duplicated at tests.streamlit.elements.lib.layout_utils_test:313
 duplicate-code	high	lib/tests/streamlit/elements/lib/layout_utils_test.py:359:1	-	21 lines (102 tokens) duplicated at tests.streamlit.elements.lib.layout_utils_test:379
 duplicate-code	high	lib/tests/streamlit/elements/lib/options_selector_utils_test.py:210:1	-	9 lines (99 tokens) duplicated at tests.streamlit.elements.lib.options_selector_utils_test:218
 duplicate-code	high	lib/tests/streamlit/elements/lib/options_selector_utils_test.py:233:1	-	15 lines (87 tokens) duplicated at tests.streamlit.elements.lib.options_selector_utils_test:274
@@ -976,7 +934,6 @@ duplicate-code	high	lib/tests/streamlit/elements/lib/subtitle_utils_test.py:176:
 duplicate-code	high	lib/tests/streamlit/elements/map_test.py:15:1	-	26 lines (57 tokens) duplicated at tests.streamlit.elements.pydeck_test:15
 duplicate-code	high	lib/tests/streamlit/elements/map_test.py:93:1	-	8 lines (84 tokens) duplicated at tests.streamlit.elements.map_test:140
 duplicate-code	high	lib/tests/streamlit/elements/map_test.py:134:1	-	5 lines (57 tokens) duplicated at tests.streamlit.elements.map_test:152
-duplicate-code	high	lib/tests/streamlit/elements/map_test.py:166:1	-	26 lines (204 tokens) duplicated at tests.streamlit.elements.vega_charts_test:2474
 duplicate-code	high	lib/tests/streamlit/elements/map_test.py:209:1	-	10 lines (55 tokens) duplicated at tests.streamlit.elements.vega_charts_test:2520
 duplicate-code	high	lib/tests/streamlit/elements/map_test.py:248:1	-	5 lines (58 tokens) duplicated at tests.streamlit.elements.map_test:252
 duplicate-code	high	lib/tests/streamlit/elements/map_test.py:256:1	-	5 lines (61 tokens) duplicated at tests.streamlit.elements.map_test:260
@@ -1005,12 +962,11 @@ duplicate-code	high	lib/tests/streamlit/elements/metric_test.py:580:1	-	10 lines
 duplicate-code	high	lib/tests/streamlit/elements/metric_test.py:599:1	-	7 lines (58 tokens) duplicated at tests.streamlit.elements.metric_test:609
 duplicate-code	high	lib/tests/streamlit/elements/metric_test.py:693:1	-	16 lines (75 tokens) duplicated at tests.streamlit.elements.slider_test:617
 duplicate-code	high	lib/tests/streamlit/elements/multiselect_test.py:74:1	-	10 lines (54 tokens) duplicated at tests.streamlit.elements.select_slider_test:65
+duplicate-code	high	lib/tests/streamlit/elements/multiselect_test.py:148:1	-	15 lines (83 tokens) duplicated at tests.streamlit.elements.multiselect_test:167
 duplicate-code	high	lib/tests/streamlit/elements/multiselect_test.py:220:1	-	38 lines (226 tokens) duplicated at tests.streamlit.elements.selectbox_test:149
 duplicate-code	high	lib/tests/streamlit/elements/multiselect_test.py:268:1	-	39 lines (227 tokens) duplicated at tests.streamlit.elements.radio_test:172
 duplicate-code	high	lib/tests/streamlit/elements/multiselect_test.py:306:1	-	26 lines (152 tokens) duplicated at tests.streamlit.elements.selectbox_test:228
 duplicate-code	high	lib/tests/streamlit/elements/multiselect_test.py:392:1	-	16 lines (77 tokens) duplicated at tests.streamlit.elements.selectbox_test:308
-duplicate-code	high	lib/tests/streamlit/elements/multiselect_test.py:409:1	-	13 lines (72 tokens) duplicated at tests.streamlit.elements.selectbox_test:325
-duplicate-code	high	lib/tests/streamlit/elements/multiselect_test.py:433:1	-	11 lines (57 tokens) duplicated at tests.streamlit.elements.selectbox_test:347
 duplicate-code	high	lib/tests/streamlit/elements/multiselect_test.py:457:1	-	14 lines (56 tokens) duplicated at tests.streamlit.elements.selectbox_test:368
 duplicate-code	high	lib/tests/streamlit/elements/multiselect_test.py:473:1	-	18 lines (95 tokens) duplicated at tests.streamlit.elements.selectbox_test:382
 duplicate-code	high	lib/tests/streamlit/elements/multiselect_test.py:581:1	-	53 lines (259 tokens) duplicated at tests.streamlit.elements.selectbox_test:257
@@ -1100,7 +1056,6 @@ duplicate-code	high	lib/tests/streamlit/elements/selectbox_test.py:709:1	-	9 lin
 duplicate-code	high	lib/tests/streamlit/elements/selectbox_test.py:718:1	-	22 lines (107 tokens) duplicated at tests.streamlit.elements.selectbox_test:810
 duplicate-code	high	lib/tests/streamlit/elements/selectbox_test.py:1027:1	-	10 lines (62 tokens) duplicated at tests.streamlit.elements.slider_test:916
 duplicate-code	high	lib/tests/streamlit/elements/slider_test.py:21:1	-	48 lines (79 tokens) duplicated at tests.streamlit.elements.text_input_test:15
-duplicate-code	high	lib/tests/streamlit/elements/slider_test.py:101:1	-	11 lines (52 tokens) duplicated at tests.streamlit.elements.slider_test:112
 duplicate-code	high	lib/tests/streamlit/elements/slider_test.py:408:1	-	11 lines (64 tokens) duplicated at tests.streamlit.elements.slider_test:512
 duplicate-code	high	lib/tests/streamlit/elements/space_test.py:47:1	-	9 lines (52 tokens) duplicated at tests.streamlit.elements.space_test:70
 duplicate-code	high	lib/tests/streamlit/elements/table_test.py:178:1	-	11 lines (56 tokens) duplicated at tests.streamlit.elements.table_test:195
@@ -1111,8 +1066,6 @@ duplicate-code	high	lib/tests/streamlit/elements/table_test.py:319:1	-	7 lines (
 duplicate-code	high	lib/tests/streamlit/elements/text_area_test.py:15:1	-	37 lines (74 tokens) duplicated at tests.streamlit.elements.time_input_test:17
 duplicate-code	high	lib/tests/streamlit/elements/text_area_test.py:52:1	-	35 lines (206 tokens) duplicated at tests.streamlit.elements.text_input_test:57
 duplicate-code	high	lib/tests/streamlit/elements/text_area_test.py:129:1	-	73 lines (365 tokens) duplicated at tests.streamlit.elements.text_input_test:472
-duplicate-code	high	lib/tests/streamlit/elements/text_area_test.py:289:1	-	12 lines (53 tokens) duplicated at tests.streamlit.elements.text_input_test:560
-duplicate-code	high	lib/tests/streamlit/elements/text_area_test.py:308:1	-	12 lines (53 tokens) duplicated at tests.streamlit.elements.text_input_test:581
 duplicate-code	high	lib/tests/streamlit/elements/text_area_test.py:327:1	-	14 lines (51 tokens) duplicated at tests.streamlit.elements.text_input_test:603
 duplicate-code	high	lib/tests/streamlit/elements/text_area_test.py:352:1	-	50 lines (319 tokens) duplicated at tests.streamlit.elements.text_input_test:934
 duplicate-code	high	lib/tests/streamlit/elements/text_area_test.py:401:1	-	32 lines (140 tokens) duplicated at tests.streamlit.elements.text_input_test:1043
@@ -1138,15 +1091,14 @@ duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:819:1	-	60 
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:891:1	-	23 lines (135 tokens) duplicated at tests.streamlit.elements.vega_charts_test:3500
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:926:1	-	19 lines (124 tokens) duplicated at tests.streamlit.elements.vega_charts_test:1190
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:985:1	-	18 lines (105 tokens) duplicated at tests.streamlit.elements.vega_charts_test:1089
-duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:1010:1	-	12 lines (51 tokens) duplicated in 2 other places: tests.streamlit.elements.vega_charts_test:1023, tests.streamlit.elements.vega_charts_test:1036
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:1106:1	-	24 lines (121 tokens) duplicated at tests.streamlit.elements.vega_charts_test:3768
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:1138:1	-	21 lines (130 tokens) duplicated at tests.streamlit.elements.vega_charts_test:3799
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:1240:1	-	12 lines (92 tokens) duplicated in 2 other places: tests.streamlit.elements.vega_charts_test:1260, tests.streamlit.elements.vega_charts_test:1331
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:1251:1	-	10 lines (90 tokens) duplicated at tests.streamlit.elements.vega_charts_test:1271
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:1307:1	-	9 lines (53 tokens) duplicated at tests.streamlit.elements.vega_charts_test:2755
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:1354:1	-	22 lines (168 tokens) duplicated at tests.streamlit.elements.vega_charts_test:1381
-duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:1424:1	-	10 lines (69 tokens) duplicated at tests.streamlit.elements.vega_charts_test:1553
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:1441:1	-	10 lines (68 tokens) duplicated at tests.streamlit.elements.vega_charts_test:1490
+duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:1460:1	-	9 lines (51 tokens) duplicated at tests.streamlit.elements.vega_charts_test:1562
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:1511:1	-	8 lines (60 tokens) duplicated at tests.streamlit.elements.vega_charts_test:1545
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:1601:1	-	9 lines (64 tokens) duplicated at tests.streamlit.elements.vega_charts_test:1670
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:1609:1	-	10 lines (68 tokens) duplicated at tests.streamlit.elements.vega_charts_test:1630
@@ -1171,11 +1123,10 @@ duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:3115:1	-	19
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:3256:1	-	7 lines (66 tokens) duplicated at tests.streamlit.elements.vega_charts_test:3383
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:3416:1	-	9 lines (80 tokens) duplicated at tests.streamlit.elements.vega_charts_test:3534
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:3586:1	-	22 lines (129 tokens) duplicated at tests.streamlit.elements.vega_charts_test:3720
-duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:3663:1	-	18 lines (79 tokens) duplicated at tests.streamlit.elements.vega_charts_test:3701
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:3744:1	-	23 lines (113 tokens) duplicated at tests.streamlit.elements.vega_charts_test:3827
-duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:4207:1	-	18 lines (77 tokens) duplicated at tests.streamlit.elements.vega_charts_test:4280
+duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:4208:1	-	17 lines (72 tokens) duplicated at tests.streamlit.elements.vega_charts_test:4281
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:4232:1	-	19 lines (64 tokens) duplicated at tests.streamlit.elements.vega_charts_test:4259
-duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:4314:1	-	23 lines (122 tokens) duplicated at tests.streamlit.elements.vega_charts_test:4579
+duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:4319:1	-	18 lines (95 tokens) duplicated at tests.streamlit.elements.vega_charts_test:4584
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:4336:1	-	37 lines (162 tokens) duplicated at tests.streamlit.elements.vega_charts_test:4376
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:4449:1	-	27 lines (154 tokens) duplicated at tests.streamlit.elements.vega_charts_test:4475
 duplicate-code	high	lib/tests/streamlit/elements/vega_charts_test.py:4503:1	-	22 lines (148 tokens) duplicated at tests.streamlit.elements.vega_charts_test:4524
@@ -1202,7 +1153,7 @@ duplicate-code	high	lib/tests/streamlit/runtime/app_session_test.py:622:1	-	8 li
 duplicate-code	high	lib/tests/streamlit/runtime/app_session_test.py:686:1	-	14 lines (52 tokens) duplicated at tests.streamlit.runtime.app_session_test:1195
 duplicate-code	high	lib/tests/streamlit/runtime/app_session_test.py:1215:1	-	25 lines (122 tokens) duplicated at tests.streamlit.runtime.app_session_test:1289
 duplicate-code	high	lib/tests/streamlit/runtime/app_session_test.py:1724:1	-	26 lines (108 tokens) duplicated at tests.streamlit.runtime.app_session_test:1790
-duplicate-code	high	lib/tests/streamlit/runtime/app_session_test.py:1749:1	-	40 lines (147 tokens) duplicated at tests.streamlit.runtime.app_session_test:1815
+duplicate-code	high	lib/tests/streamlit/runtime/app_session_test.py:1768:1	-	21 lines (72 tokens) duplicated at tests.streamlit.runtime.app_session_test:1834
 duplicate-code	high	lib/tests/streamlit/runtime/app_session_test.py:2454:1	-	20 lines (118 tokens) duplicated at tests.streamlit.runtime.app_session_test:2523
 duplicate-code	high	lib/tests/streamlit/runtime/app_session_test.py:2902:1	-	15 lines (67 tokens) duplicated at tests.streamlit.runtime.app_session_test:2920
 duplicate-code	high	lib/tests/streamlit/runtime/backend_operation_handler_test.py:155:1	-	10 lines (51 tokens) duplicated at tests.streamlit.runtime.backend_operation_handler_test:171
@@ -1251,9 +1202,6 @@ duplicate-code	high	lib/tests/streamlit/runtime/caching/common_cache_test.py:148
 duplicate-code	high	lib/tests/streamlit/runtime/caching/common_cache_test.py:1528:1	-	10 lines (50 tokens) duplicated at tests.streamlit.runtime.caching.common_cache_test:1673
 duplicate-code	high	lib/tests/streamlit/runtime/caching/common_cache_test.py:1537:1	-	20 lines (120 tokens) duplicated at tests.streamlit.runtime.caching.common_cache_test:1689
 duplicate-code	high	lib/tests/streamlit/runtime/caching/common_cache_test.py:1620:1	-	18 lines (70 tokens) duplicated at tests.streamlit.runtime.caching.common_cache_test:1745
-duplicate-code	high	lib/tests/streamlit/runtime/caching/hashing_test.py:85:1	-	29 lines (351 tokens) duplicated at tests.streamlit.runtime.caching.hashing_test:386
-duplicate-code	high	lib/tests/streamlit/runtime/caching/hashing_test.py:113:1	-	8 lines (62 tokens) duplicated at tests.streamlit.runtime.caching.hashing_test:420
-duplicate-code	high	lib/tests/streamlit/runtime/caching/hashing_test.py:124:1	-	26 lines (214 tokens) duplicated at tests.streamlit.runtime.caching.hashing_test:431
 duplicate-code	high	lib/tests/streamlit/runtime/caching/hashing_test.py:463:1	-	13 lines (104 tokens) duplicated at tests.streamlit.runtime.caching.hashing_test:479
 duplicate-code	high	lib/tests/streamlit/runtime/caching/hashing_test.py:609:1	-	12 lines (61 tokens) duplicated at tests.streamlit.runtime.caching.hashing_test:631
 duplicate-code	high	lib/tests/streamlit/runtime/caching/hashing_test.py:715:1	-	9 lines (59 tokens) duplicated at tests.streamlit.runtime.caching.hashing_test:841
@@ -1417,7 +1365,6 @@ duplicate-code	high	lib/tests/streamlit/runtime/state/test_presentation.py:104:1
 duplicate-code	high	lib/tests/streamlit/runtime/state/test_presentation.py:131:1	-	14 lines (65 tokens) duplicated at tests.streamlit.runtime.state.test_presentation:179
 duplicate-code	high	lib/tests/streamlit/runtime/state/test_presentation.py:213:1	-	15 lines (69 tokens) duplicated at tests.streamlit.runtime.state.test_presentation:239
 duplicate-code	high	lib/tests/streamlit/runtime/state/widgets_test.py:75:1	-	9 lines (55 tokens) duplicated at tests.streamlit.runtime.state.widgets_test:128
-duplicate-code	high	lib/tests/streamlit/runtime/state/widgets_test.py:524:1	-	12 lines (52 tokens) duplicated at tests.streamlit.runtime.state.widgets_test:538
 duplicate-code	high	lib/tests/streamlit/runtime/state/widgets_test.py:651:1	-	16 lines (62 tokens) duplicated at tests.streamlit.runtime.state.widgets_test:740
 duplicate-code	high	lib/tests/streamlit/runtime/state/widgets_test.py:694:1	-	11 lines (53 tokens) duplicated in 2 other places: tests.streamlit.runtime.state.widgets_test:710, tests.streamlit.runtime.state.widgets_test:762
 duplicate-code	high	lib/tests/streamlit/runtime/stats_test.py:105:1	-	14 lines (93 tokens) duplicated at tests.streamlit.runtime.stats_test:277

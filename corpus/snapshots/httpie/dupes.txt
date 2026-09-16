@@ -1,16 +1,12 @@
 files_scanned=133
 symbols_checked=0
 symbols_kept=0
-findings=26
-duplication: clones=26 duplicated_lines=549 total_lines=19115 percent_tenths=28
+findings=22
+duplication: clones=22 duplicated_lines=487 total_lines=19115 percent_tenths=25
 --
 duplicate-code	high	httpie/core.py:85:1	-	13 lines (74 tokens) duplicated at httpie.core:103
 duplicate-code	high	httpie/legacy/v3_1_0_session_cookie_format.py:57:1	-	21 lines (96 tokens) duplicated at httpie.legacy.v3_2_0_session_header_format:39
 duplicate-code	high	httpie/output/formatters/colors.py:79:1	-	10 lines (59 tokens) duplicated at httpie.output.formatters.colors:96
-duplicate-code	high	httpie/output/formatters/colors.py:228:1	-	6 lines (55 tokens) duplicated at httpie.output.formatters.colors:246
-duplicate-code	high	httpie/output/formatters/colors.py:235:1	-	11 lines (108 tokens) duplicated at httpie.output.formatters.colors:255
-duplicate-code	high	httpie/output/formatters/colors.py:287:1	-	7 lines (68 tokens) duplicated at httpie.output.formatters.colors:297
-duplicate-code	high	httpie/output/formatters/colors.py:321:1	-	8 lines (87 tokens) duplicated at httpie.output.formatters.colors:329
 duplicate-code	high	tests/test_auth_plugins.py:39:1	-	18 lines (61 tokens) duplicated at tests.test_auth_plugins:120
 duplicate-code	high	tests/test_cli.py:155:1	-	8 lines (55 tokens) duplicated at tests.test_cli:163
 duplicate-code	high	tests/test_cli.py:246:1	-	13 lines (113 tokens) duplicated at tests.test_cli:258

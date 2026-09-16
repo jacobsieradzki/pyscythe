@@ -326,10 +326,11 @@ mod tests {
         use crate::metrics::FunctionMetrics;
         use crate::source::{ByteOffset, ByteSpan, Line};
         use crate::symbol::SymbolName;
-        use crate::tokens::CloneToken;
+        use crate::tokens::{CloneToken, Nesting};
         let token = |text: &str| CloneToken {
             text: text.to_owned(),
             line: Line::from_one_based(1).unwrap(),
+            nesting: Nesting::Statement,
         };
         let function = |cyclomatic: u32, lines: u32| FunctionMetrics {
             name: SymbolName::new("f"),

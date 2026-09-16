@@ -1,8 +1,8 @@
 files_scanned=637
 symbols_checked=0
 symbols_kept=0
-findings=249
-duplication: clones=249 duplicated_lines=9368 total_lines=36136 percent_tenths=259
+findings=241
+duplication: clones=241 duplicated_lines=8860 total_lines=36136 percent_tenths=245
 --
 duplicate-code	high	docs_src/commands/arguments/tutorial001_py310.py:1:1	-	18 lines (77 tokens) duplicated in 2 other places: docs_src.subcommands.tutorial001_py310.users:1, docs_src.subcommands.tutorial003_py310.users:1
 duplicate-code	high	docs_src/commands/callback/tutorial004_py310.py:3:1	-	22 lines (58 tokens) duplicated in 2 other places: docs_src.subcommands.name_help.tutorial005_py310:21, docs_src.subcommands.name_help.tutorial006_py310:21
@@ -93,7 +93,6 @@ duplicate-code	high	tests/test_completion/test_completion_option_colon.py:149:1	
 duplicate-code	high	tests/test_completion/test_completion_option_colon.py:176:1	-	13 lines (69 tokens) duplicated at tests.test_completion.test_completion_option_colon:193
 duplicate-code	high	tests/test_completion/test_completion_option_colon.py:266:1	-	13 lines (67 tokens) duplicated at tests.test_completion.test_completion_option_colon:304
 duplicate-code	high	tests/test_core.py:288:1	-	11 lines (58 tokens) duplicated at tests.test_core:304
-duplicate-code	high	tests/test_core.py:387:1	-	9 lines (92 tokens) duplicated at tests.test_rich_utils:245
 duplicate-code	high	tests/test_exit_errors.py:16:1	-	16 lines (68 tokens) duplicated at tests.test_exit_errors:43
 duplicate-code	high	tests/test_hidden.py:12:1	-	13 lines (86 tokens) duplicated at tests.test_hidden:37
 duplicate-code	high	tests/test_others.py:35:1	-	16 lines (85 tokens) duplicated at tests.test_others:59
@@ -213,7 +212,6 @@ duplicate-code	high	typer/_click/_termui_impl.py:56:1	-	9 lines (54 tokens) dupl
 duplicate-code	high	typer/_click/_termui_impl.py:111:1	-	12 lines (56 tokens) duplicated at typer._click.utils:177
 duplicate-code	high	typer/_click/_winconsole.py:230:1	-	11 lines (51 tokens) duplicated at typer._click._winconsole:250
 duplicate-code	high	typer/_click/core.py:182:1	-	12 lines (59 tokens) duplicated at typer._click.core:245
-duplicate-code	high	typer/_click/core.py:519:1	-	9 lines (59 tokens) duplicated at typer.core:910
 duplicate-code	high	typer/_click/core.py:549:1	-	9 lines (55 tokens) duplicated at typer._click.core:616
 duplicate-code	high	typer/_click/core.py:631:1	-	13 lines (56 tokens) duplicated at typer._click.core:656
 duplicate-code	high	typer/_click/parser.py:99:1	-	13 lines (84 tokens) duplicated at typer.core:32
@@ -226,29 +224,23 @@ duplicate-code	high	typer/_completion_classes.py:98:1	-	24 lines (164 tokens) du
 duplicate-code	high	typer/_completion_shared.py:112:1	-	13 lines (74 tokens) duplicated at typer._completion_shared:141
 duplicate-code	high	typer/cli.py:217:1	-	11 lines (80 tokens) duplicated at typer.core:864
 duplicate-code	high	typer/cli.py:227:1	-	8 lines (52 tokens) duplicated at typer.cli:235
-duplicate-code	high	typer/core.py:253:1	-	19 lines (125 tokens) duplicated at typer.core:445
 duplicate-code	high	typer/core.py:306:1	-	22 lines (123 tokens) duplicated at typer.core:728
 duplicate-code	high	typer/core.py:348:1	-	18 lines (75 tokens) duplicated in 2 other places: typer.core:803, typer.rich_utils:301
 duplicate-code	high	typer/core.py:365:1	-	17 lines (125 tokens) duplicated at typer.core:826
 duplicate-code	high	typer/core.py:788:1	-	11 lines (71 tokens) duplicated at typer.rich_utils:265
 duplicate-code	high	typer/core.py:924:1	-	14 lines (55 tokens) duplicated at typer.main:532
 duplicate-code	high	typer/core.py:955:1	-	23 lines (127 tokens) duplicated at typer.core:1188
-duplicate-code	high	typer/main.py:559:1	-	69 lines (138 tokens) duplicated at typer.main:936
-duplicate-code	high	typer/main.py:634:1	-	52 lines (113 tokens) duplicated at typer.main:1020
-duplicate-code	high	typer/main.py:730:1	-	19 lines (74 tokens) duplicated at typer.main:1112
-duplicate-code	high	typer/main.py:1343:1	-	12 lines (57 tokens) duplicated at typer.main:1421
-duplicate-code	high	typer/main.py:1744:1	-	17 lines (73 tokens) duplicated at typer.main:1777
+duplicate-code	high	typer/main.py:1749:1	-	12 lines (51 tokens) duplicated at typer.main:1783
 duplicate-code	high	typer/main.py:1800:1	-	9 lines (56 tokens) duplicated at typer.main:1850
 duplicate-code	high	typer/models.py:219:1	-	14 lines (78 tokens) duplicated at typer.models:342
 duplicate-code	high	typer/models.py:260:1	-	21 lines (112 tokens) duplicated at typer.models:364
 duplicate-code	high	typer/models.py:280:1	-	57 lines (344 tokens) duplicated at typer.models:516
-duplicate-code	high	typer/models.py:410:1	-	43 lines (255 tokens) duplicated at typer.params:99
 duplicate-code	high	typer/models.py:453:1	-	46 lines (152 tokens) duplicated at typer.models:572
 duplicate-code	high	typer/models.py:663:1	-	10 lines (59 tokens) duplicated at typer.testing:90
-duplicate-code	high	typer/params.py:265:1	-	19 lines (62 tokens) duplicated at typer.params:1219
-duplicate-code	high	typer/params.py:987:1	-	20 lines (52 tokens) duplicated at typer.params:1818
+duplicate-code	high	typer/params.py:16:1	-	21 lines (127 tokens) duplicated at typer.params:81
+duplicate-code	high	typer/params.py:135:1	-	15 lines (67 tokens) duplicated at typer.params:1107
+duplicate-code	high	typer/params.py:988:1	-	19 lines (51 tokens) duplicated at typer.params:1819
 duplicate-code	high	typer/params.py:1006:1	-	21 lines (124 tokens) duplicated at typer.params:1062
-duplicate-code	high	typer/params.py:1026:1	-	33 lines (192 tokens) duplicated at typer.params:1082
 duplicate-code	high	typer/rich_utils.py:388:1	-	8 lines (50 tokens) duplicated at typer.rich_utils:395
 duplicate-code	high	typer/rich_utils.py:448:1	-	14 lines (65 tokens) duplicated at typer.rich_utils:486
 duplicate-code	high	typer/rich_utils.py:607:1	-	20 lines (84 tokens) duplicated in 2 other places: typer.rich_utils:626, typer.rich_utils:668

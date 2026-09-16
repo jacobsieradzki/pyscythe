@@ -1,8 +1,8 @@
 files_scanned=84
 symbols_checked=0
 symbols_kept=0
-findings=180
-duplication: clones=180 duplicated_lines=4116 total_lines=21663 percent_tenths=190
+findings=178
+duplication: clones=178 duplicated_lines=4082 total_lines=21663 percent_tenths=188
 --
 duplicate-code	high	benchmarks/file_response_benchmark.py:35:1	-	6 lines (52 tokens) duplicated at tests.middleware.test_body_limit:247
 duplicate-code	high	benchmarks/gzip_benchmark.py:46:1	-	6 lines (54 tokens) duplicated at benchmarks.streaming_response_benchmark:32
@@ -49,7 +49,6 @@ duplicate-code	high	starlette/routing.py:425:1	-	8 lines (62 tokens) duplicated 
 duplicate-code	high	starlette/routing.py:435:1	-	9 lines (62 tokens) duplicated at starlette.routing:505
 duplicate-code	high	starlette/routing.py:451:1	-	15 lines (129 tokens) duplicated at starlette.routing:517
 duplicate-code	high	starlette/testclient.py:196:1	-	10 lines (54 tokens) duplicated at starlette.websockets:141
-duplicate-code	high	starlette/testclient.py:253:1	-	9 lines (58 tokens) duplicated at starlette.testclient:272
 duplicate-code	high	starlette/websockets.py:122:1	-	6 lines (53 tokens) duplicated at starlette.websockets:129
 duplicate-code	high	tests/middleware/test_base.py:208:1	-	9 lines (51 tokens) duplicated at tests.middleware.test_opentelemetry:307
 duplicate-code	high	tests/middleware/test_base.py:281:1	-	11 lines (67 tokens) duplicated at tests.middleware.test_base:436
@@ -105,7 +104,6 @@ duplicate-code	high	tests/middleware/test_session.py:219:1	-	14 lines (91 tokens
 duplicate-code	high	tests/middleware/test_wsgi.py:20:1	-	14 lines (54 tokens) duplicated at tests.middleware.test_wsgi:34
 duplicate-code	high	tests/test__utils.py:33:1	-	11 lines (52 tokens) duplicated at tests.test__utils:44
 duplicate-code	high	tests/test_applications.py:67:1	-	11 lines (59 tokens) duplicated at tests.test_routing:109
-duplicate-code	high	tests/test_applications.py:145:1	-	7 lines (54 tokens) duplicated at tests.test_applications:294
 duplicate-code	high	tests/test_applications.py:394:1	-	19 lines (75 tokens) duplicated at tests.test_applications:424
 duplicate-code	high	tests/test_applications.py:510:1	-	7 lines (59 tokens) duplicated at tests.test_routing:1001
 duplicate-code	high	tests/test_authentication.py:131:1	-	12 lines (51 tokens) duplicated at tests.test_authentication:155

@@ -1,8 +1,8 @@
 files_scanned=583
 symbols_checked=0
 symbols_kept=0
-findings=371
-duplication: clones=371 duplicated_lines=11060 total_lines=90361 percent_tenths=122
+findings=347
+duplication: clones=347 duplicated_lines=10401 total_lines=90361 percent_tenths=115
 --
 duplicate-code	high	docs/scripts/clirecording/screenplays.py:140:1	-	17 lines (74 tokens) duplicated at docs.scripts.clirecording.screenplays:209
 duplicate-code	high	examples/addons/http-trailers.py:16:1	-	18 lines (96 tokens) duplicated at examples/addons/http-trailers.py:39
@@ -23,7 +23,6 @@ duplicate-code	high	examples/contrib/webscanner_helper/test_urlindex.py:123:1	-	
 duplicate-code	high	examples/contrib/webscanner_helper/test_urlinjection.py:57:1	-	17 lines (116 tokens) duplicated at examples.contrib.webscanner_helper.test_urlinjection:75
 duplicate-code	high	examples/contrib/webscanner_helper/test_watchdog.py:52:1	-	5 lines (50 tokens) duplicated at examples.contrib.webscanner_helper.test_watchdog:65
 duplicate-code	high	examples/contrib/webscanner_helper/urlinjection.py:97:1	-	11 lines (80 tokens) duplicated at examples.contrib.webscanner_helper.urlinjection:125
-duplicate-code	high	mitmproxy/addons/__init__.py:36:1	-	15 lines (90 tokens) duplicated at mitmproxy.addons:52
 duplicate-code	high	mitmproxy/addons/blocklist.py:65:1	-	11 lines (80 tokens) duplicated at mitmproxy.addons.mapremote:53
 duplicate-code	high	mitmproxy/addons/browser.py:74:1	-	37 lines (126 tokens) duplicated at mitmproxy.addons.browser:119
 duplicate-code	high	mitmproxy/addons/core.py:184:1	-	11 lines (61 tokens) duplicated at mitmproxy.addons.core:199
@@ -163,7 +162,7 @@ duplicate-code	high	mitmproxy/tools/console/commands.py:94:1	-	12 lines (88 toke
 duplicate-code	high	mitmproxy/tools/console/commands.py:105:1	-	8 lines (57 tokens) duplicated at mitmproxy.tools.console.keybindings:109
 duplicate-code	high	mitmproxy/tools/console/commands.py:112:1	-	14 lines (114 tokens) duplicated at mitmproxy.tools.console.keybindings:116
 duplicate-code	high	mitmproxy/tools/console/commands.py:141:1	-	14 lines (94 tokens) duplicated at mitmproxy.tools.console.options:258
-duplicate-code	high	mitmproxy/tools/console/common.py:386:1	-	18 lines (84 tokens) duplicated at mitmproxy.tools.console.common:484
+duplicate-code	high	mitmproxy/tools/console/common.py:393:1	-	11 lines (59 tokens) duplicated at mitmproxy.tools.console.common:491
 duplicate-code	high	mitmproxy/tools/console/common.py:573:1	-	7 lines (57 tokens) duplicated at mitmproxy.tools.console.common:579
 duplicate-code	high	mitmproxy/tools/console/common.py:641:1	-	7 lines (63 tokens) duplicated at mitmproxy.tools.console.common:711
 duplicate-code	high	mitmproxy/tools/console/consoleaddons.py:243:1	-	13 lines (95 tokens) duplicated at mitmproxy.tools.console.consoleaddons:268
@@ -176,11 +175,8 @@ duplicate-code	high	mitmproxy/tools/console/grideditor/editors.py:32:1	-	10 line
 duplicate-code	high	mitmproxy/tools/console/keybindings.py:82:1	-	9 lines (62 tokens) duplicated at mitmproxy.tools.console.options:146
 duplicate-code	high	mitmproxy/tools/console/options.py:132:1	-	15 lines (99 tokens) duplicated at mitmproxy.tools.console.overlay:82
 duplicate-code	high	mitmproxy/tools/console/overlay.py:161:1	-	14 lines (58 tokens) duplicated at mitmproxy.tools.console.overlay:185
-duplicate-code	high	mitmproxy/tools/console/palettes.py:376:1	-	21 lines (112 tokens) duplicated at mitmproxy.tools.console.palettes:462
-duplicate-code	high	mitmproxy/tools/console/palettes.py:411:1	-	42 lines (233 tokens) duplicated at mitmproxy.tools.console.palettes:491
+duplicate-code	high	mitmproxy/tools/console/palettes.py:446:1	-	7 lines (50 tokens) duplicated at mitmproxy.tools.console.palettes:526
 duplicate-code	high	mitmproxy/tools/console/statusbar.py:61:1	-	5 lines (51 tokens) duplicated at mitmproxy.tools.console.window:142
-duplicate-code	high	mitmproxy/tools/console/window.py:56:1	-	8 lines (72 tokens) duplicated at mitmproxy.tools.console.window:65
-duplicate-code	high	mitmproxy/tools/web/app.py:104:1	-	8 lines (73 tokens) duplicated at mitmproxy.tools.web.app:121
 duplicate-code	high	mitmproxy/tools/web/app.py:140:1	-	7 lines (56 tokens) duplicated at mitmproxy.tools.web.app:161
 duplicate-code	high	mitmproxy/tools/web/app.py:590:1	-	17 lines (133 tokens) duplicated at mitmproxy.tools.web.app:615
 duplicate-code	high	mitmproxy/tools/web/master.py:29:1	-	6 lines (57 tokens) duplicated at mitmproxy.tools.web.master:34
@@ -216,8 +212,6 @@ duplicate-code	high	test/mitmproxy/addons/test_modifybody.py:117:1	-	12 lines (9
 duplicate-code	high	test/mitmproxy/addons/test_modifyheaders.py:66:1	-	12 lines (87 tokens) duplicated at test.mitmproxy.addons.test_modifyheaders:77
 duplicate-code	high	test/mitmproxy/addons/test_next_layer.py:64:1	-	64 lines (79 tokens) duplicated at test.mitmproxy.proxy.layers.quic.test__stream_layers:113
 duplicate-code	high	test/mitmproxy/addons/test_next_layer.py:438:1	-	11 lines (99 tokens) duplicated at test.mitmproxy.addons.test_next_layer:460
-duplicate-code	high	test/mitmproxy/addons/test_next_layer.py:572:1	-	11 lines (55 tokens) duplicated at test.mitmproxy.addons.test_next_layer:623
-duplicate-code	high	test/mitmproxy/addons/test_next_layer.py:670:1	-	9 lines (57 tokens) duplicated at test.mitmproxy.addons.test_next_layer:679
 duplicate-code	high	test/mitmproxy/addons/test_onboarding.py:21:1	-	8 lines (80 tokens) duplicated at test.mitmproxy.addons.test_onboarding:30
 duplicate-code	high	test/mitmproxy/addons/test_proxyserver.py:68:1	-	8 lines (62 tokens) duplicated at test.mitmproxy.addons.test_proxyserver:135
 duplicate-code	high	test/mitmproxy/addons/test_proxyserver.py:206:1	-	6 lines (52 tokens) duplicated at test.mitmproxy.addons.test_proxyserver:261
@@ -245,7 +239,6 @@ duplicate-code	high	test/mitmproxy/addons/test_tlsconfig.py:339:1	-	19 lines (11
 duplicate-code	high	test/mitmproxy/addons/test_tlsconfig.py:387:1	-	11 lines (70 tokens) duplicated at test.mitmproxy.addons.test_tlsconfig:426
 duplicate-code	high	test/mitmproxy/addons/test_view.py:40:1	-	9 lines (63 tokens) duplicated at test.mitmproxy.addons.test_view:57
 duplicate-code	high	test/mitmproxy/addons/test_view.py:154:1	-	16 lines (88 tokens) duplicated at test.mitmproxy.addons.test_view:169
-duplicate-code	high	test/mitmproxy/contentviews/_view_image/test_image_parser.py:16:1	-	17 lines (62 tokens) duplicated at test.mitmproxy.contentviews._view_image.test_image_parser:34
 duplicate-code	high	test/mitmproxy/contentviews/_view_image/test_image_parser.py:81:1	-	12 lines (67 tokens) duplicated in 2 other places: test.mitmproxy.contentviews._view_image.test_image_parser:114, test.mitmproxy.contentviews._view_image.test_image_parser:183
 duplicate-code	high	test/mitmproxy/contentviews/test___init__.py:67:1	-	11 lines (56 tokens) duplicated at test.mitmproxy.contentviews.test___init__:83
 duplicate-code	high	test/mitmproxy/contentviews/test__utils.py:31:1	-	9 lines (62 tokens) duplicated at test.mitmproxy.contentviews.test__utils:47
@@ -254,15 +247,12 @@ duplicate-code	high	test/mitmproxy/contentviews/test__view_wbxml.py:15:1	-	12 li
 duplicate-code	high	test/mitmproxy/io/test_tnetstring.py:78:1	-	7 lines (71 tokens) duplicated at test.mitmproxy.io.test_tnetstring:84
 duplicate-code	high	test/mitmproxy/io/test_tnetstring.py:105:1	-	10 lines (70 tokens) duplicated at test.mitmproxy.io.test_tnetstring:115
 duplicate-code	high	test/mitmproxy/net/dns/test_https_records.py:23:1	-	14 lines (59 tokens) duplicated at test.mitmproxy.net.dns.test_https_records:61
-duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http.py:93:1	-	8 lines (52 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http:1322
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http.py:276:1	-	17 lines (71 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http:1625
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http.py:342:1	-	55 lines (214 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http:479
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http.py:407:1	-	14 lines (93 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http:541
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http.py:598:1	-	12 lines (86 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http:637
-duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http.py:714:1	-	12 lines (54 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http:1227
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http.py:784:1	-	12 lines (55 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http_fuzz:150
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http.py:1163:1	-	9 lines (57 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http:1212
-duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http.py:1443:1	-	38 lines (98 tokens) duplicated at test.mitmproxy.proxy.layers.test_websocket:69
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http.py:1499:1	-	12 lines (60 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http:1838
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http.py:1542:1	-	16 lines (88 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http:1565
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http1.py:170:1	-	25 lines (92 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http1:202
@@ -270,7 +260,6 @@ duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http2.py:95:1	-	39 lin
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http2.py:172:1	-	12 lines (60 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http2:237
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http2.py:266:1	-	22 lines (98 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http2:1293
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http2.py:287:1	-	9 lines (57 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http2:659
-duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http2.py:343:1	-	12 lines (72 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http2:355
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http2.py:413:1	-	11 lines (58 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http2:428
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http2.py:442:1	-	7 lines (56 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http3:651
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http2.py:458:1	-	11 lines (50 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http3:666
@@ -282,20 +271,15 @@ duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http2.py:896:1	-	9 lin
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http2.py:1169:1	-	14 lines (60 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http2:1197
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http2.py:1229:1	-	15 lines (64 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http2:1269
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http2.py:1320:1	-	27 lines (141 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http2:1378
-duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http2.py:1357:1	-	16 lines (115 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http2:1408
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http3.py:106:1	-	10 lines (52 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http3:122
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http3.py:303:1	-	19 lines (94 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http3:321
-duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http3.py:453:1	-	12 lines (74 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http3:501
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http3.py:476:1	-	21 lines (105 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http3:550
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http3.py:615:1	-	15 lines (92 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http3:789
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http3.py:692:1	-	11 lines (52 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http3:751
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http3.py:822:1	-	29 lines (126 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http3:858
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http3.py:897:1	-	12 lines (93 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http3:963
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http3.py:909:1	-	10 lines (75 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http3:980
-duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http3.py:923:1	-	10 lines (64 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http3:996
 duplicate-code	high	test/mitmproxy/proxy/layers/http/test_http_version_interop.py:93:1	-	10 lines (51 tokens) duplicated at test.mitmproxy.proxy.layers.http.test_http_version_interop:133
-duplicate-code	high	test/mitmproxy/proxy/layers/quic/test__raw_layers.py:102:1	-	11 lines (86 tokens) duplicated at test.mitmproxy.proxy.layers.quic.test__raw_layers:154
-duplicate-code	high	test/mitmproxy/proxy/layers/quic/test__raw_layers.py:135:1	-	8 lines (60 tokens) duplicated at test.mitmproxy.proxy.layers.quic.test__raw_layers:164
 duplicate-code	high	test/mitmproxy/proxy/layers/quic/test__raw_layers.py:181:1	-	8 lines (65 tokens) duplicated at test.mitmproxy.proxy.layers.quic.test__raw_layers:196
 duplicate-code	high	test/mitmproxy/proxy/layers/quic/test__stream_layers.py:62:1	-	10 lines (89 tokens) duplicated at test.mitmproxy.proxy.layers.test_tls:159
 duplicate-code	high	test/mitmproxy/proxy/layers/quic/test__stream_layers.py:436:1	-	11 lines (80 tokens) duplicated at test.mitmproxy.proxy.layers.test_tls:144
@@ -309,14 +293,12 @@ duplicate-code	high	test/mitmproxy/proxy/layers/quic/test__stream_layers.py:911:
 duplicate-code	high	test/mitmproxy/proxy/layers/quic/test__stream_layers.py:967:1	-	12 lines (56 tokens) duplicated at test.mitmproxy.proxy.layers.test_tls:736
 duplicate-code	high	test/mitmproxy/proxy/layers/quic/test__stream_layers.py:979:1	-	11 lines (66 tokens) duplicated at test.mitmproxy.proxy.layers.quic.test__stream_layers:1014
 duplicate-code	high	test/mitmproxy/proxy/layers/quic/test__stream_layers.py:1073:1	-	11 lines (73 tokens) duplicated at test.mitmproxy.proxy.layers.quic.test__stream_layers:1097
-duplicate-code	high	test/mitmproxy/proxy/layers/test_dns.py:67:1	-	11 lines (54 tokens) duplicated at test.mitmproxy.proxy.layers.test_dns:101
-duplicate-code	high	test/mitmproxy/proxy/layers/test_dns.py:122:1	-	18 lines (91 tokens) duplicated at test.mitmproxy.proxy.layers.test_dns:188
+duplicate-code	high	test/mitmproxy/proxy/layers/test_dns.py:67:1	-	11 lines (54 tokens) duplicated at test.mitmproxy.proxy.layers.test_dns:283
+duplicate-code	high	test/mitmproxy/proxy/layers/test_dns.py:100:1	-	12 lines (77 tokens) duplicated at test.mitmproxy.proxy.layers.test_dns:205
 duplicate-code	high	test/mitmproxy/proxy/layers/test_dns.py:144:1	-	23 lines (127 tokens) duplicated at test.mitmproxy.proxy.layers.test_dns:246
-duplicate-code	high	test/mitmproxy/proxy/layers/test_dns.py:206:1	-	14 lines (87 tokens) duplicated at test.mitmproxy.proxy.layers.test_dns:283
-duplicate-code	high	test/mitmproxy/proxy/layers/test_dns.py:229:1	-	18 lines (144 tokens) duplicated at test.mitmproxy.proxy.layers.test_dns:314
-duplicate-code	high	test/mitmproxy/proxy/layers/test_dns.py:298:1	-	14 lines (78 tokens) duplicated at test.mitmproxy.proxy.layers.test_dns:345
+duplicate-code	high	test/mitmproxy/proxy/layers/test_dns.py:218:1	-	20 lines (133 tokens) duplicated at test.mitmproxy.proxy.layers.test_dns:297
+duplicate-code	high	test/mitmproxy/proxy/layers/test_dns.py:237:1	-	10 lines (66 tokens) duplicated at test.mitmproxy.proxy.layers.test_dns:322
 duplicate-code	high	test/mitmproxy/proxy/layers/test_dns.py:358:1	-	25 lines (176 tokens) duplicated at test.mitmproxy.proxy.layers.test_dns:405
-duplicate-code	high	test/mitmproxy/proxy/layers/test_dns.py:391:1	-	14 lines (89 tokens) duplicated at test.mitmproxy.proxy.layers.test_dns:450
 duplicate-code	high	test/mitmproxy/proxy/layers/test_modes.py:399:1	-	11 lines (52 tokens) duplicated at test.mitmproxy.proxy.layers.test_modes:509
 duplicate-code	high	test/mitmproxy/proxy/layers/test_modes.py:492:1	-	10 lines (52 tokens) duplicated at test.mitmproxy.proxy.layers.test_modes:544
 duplicate-code	high	test/mitmproxy/proxy/layers/test_tcp.py:3:1	-	60 lines (257 tokens) duplicated at test.mitmproxy.proxy.layers.test_udp:1
@@ -327,7 +309,8 @@ duplicate-code	high	test/mitmproxy/proxy/layers/test_tls.py:302:1	-	17 lines (90
 duplicate-code	high	test/mitmproxy/proxy/layers/test_tls.py:356:1	-	18 lines (90 tokens) duplicated at test.mitmproxy.proxy.layers.test_tls:719
 duplicate-code	high	test/mitmproxy/proxy/layers/test_tls.py:434:1	-	15 lines (74 tokens) duplicated at test.mitmproxy.proxy.layers.test_tls:600
 duplicate-code	high	test/mitmproxy/proxy/layers/test_tls.py:541:1	-	12 lines (65 tokens) duplicated at test.mitmproxy.proxy.layers.test_tls:813
-duplicate-code	high	test/mitmproxy/proxy/layers/test_websocket.py:109:1	-	13 lines (90 tokens) duplicated at test.mitmproxy.proxy.layers.test_websocket:187
+duplicate-code	high	test/mitmproxy/proxy/layers/test_websocket.py:67:1	-	31 lines (88 tokens) duplicated at test.mitmproxy.proxy.layers.test_websocket:143
+duplicate-code	high	test/mitmproxy/proxy/layers/test_websocket.py:115:1	-	7 lines (50 tokens) duplicated at test.mitmproxy.proxy.layers.test_websocket:193
 duplicate-code	high	test/mitmproxy/proxy/layers/test_websocket.py:224:1	-	13 lines (62 tokens) duplicated at test.mitmproxy.proxy.layers.test_websocket:256
 duplicate-code	high	test/mitmproxy/proxy/layers/test_websocket.py:285:1	-	12 lines (56 tokens) duplicated at test.mitmproxy.proxy.layers.test_websocket:305
 duplicate-code	high	test/mitmproxy/proxy/test_layer.py:108:1	-	13 lines (57 tokens) duplicated at test.mitmproxy.proxy.test_layer:133
@@ -340,12 +323,6 @@ duplicate-code	high	test/mitmproxy/test_certs.py:97:1	-	7 lines (60 tokens) dupl
 duplicate-code	high	test/mitmproxy/test_certs.py:201:1	-	14 lines (99 tokens) duplicated at test.mitmproxy.test_certs:249
 duplicate-code	high	test/mitmproxy/test_certs.py:355:1	-	9 lines (55 tokens) duplicated at test.mitmproxy.test_certs:514
 duplicate-code	high	test/mitmproxy/test_command.py:16:1	-	11 lines (65 tokens) duplicated at test.mitmproxy.test_command:621
-duplicate-code	high	test/mitmproxy/test_command.py:163:1	-	8 lines (55 tokens) duplicated at test.mitmproxy.test_command:294
-duplicate-code	high	test/mitmproxy/test_command.py:175:1	-	10 lines (58 tokens) duplicated at test.mitmproxy.test_command:252
-duplicate-code	high	test/mitmproxy/test_command.py:206:1	-	9 lines (61 tokens) duplicated at test.mitmproxy.test_command:223
-duplicate-code	high	test/mitmproxy/test_command.py:265:1	-	10 lines (53 tokens) duplicated at test.mitmproxy.test_command:281
-duplicate-code	high	test/mitmproxy/test_command.py:334:1	-	9 lines (63 tokens) duplicated at test.mitmproxy.test_command:349
-duplicate-code	high	test/mitmproxy/test_command.py:367:1	-	9 lines (50 tokens) duplicated at test.mitmproxy.test_command:382
 duplicate-code	high	test/mitmproxy/test_dns.py:322:1	-	15 lines (103 tokens) duplicated at test.mitmproxy.test_http:643
 duplicate-code	high	test/mitmproxy/test_eventsequence.py:9:1	-	12 lines (80 tokens) duplicated at test.mitmproxy.test_eventsequence:82
 duplicate-code	high	test/mitmproxy/test_eventsequence.py:49:1	-	17 lines (161 tokens) duplicated at test.mitmproxy.test_eventsequence:65
@@ -374,4 +351,3 @@ duplicate-code	high	test/mitmproxy/tools/console/test_statusbar.py:139:1	-	7 lin
 duplicate-code	high	test/mitmproxy/tools/web/test_app.py:430:1	-	8 lines (52 tokens) duplicated at test.mitmproxy.tools.web.test_app:460
 duplicate-code	high	test/mitmproxy/tools/web/test_app.py:474:1	-	14 lines (53 tokens) duplicated at test.mitmproxy.tools.web.test_app:523
 duplicate-code	high	test/mitmproxy/tools/web/test_webaddons.py:27:1	-	10 lines (73 tokens) duplicated at test.mitmproxy.tools.web.test_webaddons:38
-duplicate-code	high	web/gen/tflow_js.py:66:1	-	6 lines (54 tokens) duplicated at web.gen.tflow_js:72

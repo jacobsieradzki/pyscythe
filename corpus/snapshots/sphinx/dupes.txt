@@ -1,8 +1,8 @@
 files_scanned=435
 symbols_checked=0
 symbols_kept=0
-findings=788
-duplication: clones=788 duplicated_lines=25005 total_lines=143969 percent_tenths=173
+findings=784
+duplication: clones=784 duplicated_lines=24797 total_lines=143969 percent_tenths=172
 --
 duplicate-code	high	doc/usage/extensions/example_google.py:33:1	-	263 lines (308 tokens) duplicated at doc.usage.extensions.example_numpy:43
 duplicate-code	high	sphinx/addnodes.py:273:1	-	10 lines (52 tokens) duplicated at sphinx.addnodes:414
@@ -71,7 +71,7 @@ duplicate-code	high	sphinx/domains/c/__init__.py:226:1	-	53 lines (302 tokens) d
 duplicate-code	high	sphinx/domains/c/__init__.py:298:1	-	9 lines (65 tokens) duplicated at sphinx.domains.cpp:414
 duplicate-code	high	sphinx/domains/c/__init__.py:316:1	-	9 lines (54 tokens) duplicated at sphinx.domains.cpp:441
 duplicate-code	high	sphinx/domains/c/__init__.py:333:1	-	10 lines (63 tokens) duplicated at sphinx.domains.cpp:457
-duplicate-code	high	sphinx/domains/c/__init__.py:362:1	-	16 lines (59 tokens) duplicated at sphinx.domains.javascript:283
+duplicate-code	high	sphinx/domains/c/__init__.py:365:1	-	13 lines (50 tokens) duplicated at sphinx.domains.javascript:286
 duplicate-code	high	sphinx/domains/c/__init__.py:409:1	-	16 lines (58 tokens) duplicated at sphinx.domains.cpp:530
 duplicate-code	high	sphinx/domains/c/__init__.py:424:1	-	14 lines (119 tokens) duplicated at sphinx.domains.cpp:545
 duplicate-code	high	sphinx/domains/c/__init__.py:442:1	-	23 lines (161 tokens) duplicated at sphinx.domains.cpp:564
@@ -122,7 +122,7 @@ duplicate-code	high	sphinx/domains/c/_ast.py:874:1	-	10 lines (72 tokens) duplic
 duplicate-code	high	sphinx/domains/c/_ast.py:884:1	-	39 lines (254 tokens) duplicated at sphinx.domains.cpp._ast:2202
 duplicate-code	high	sphinx/domains/c/_ast.py:939:1	-	16 lines (103 tokens) duplicated at sphinx.domains.c._ast:1308
 duplicate-code	high	sphinx/domains/c/_ast.py:955:1	-	12 lines (57 tokens) duplicated at sphinx.domains.c._ast:1131
-duplicate-code	high	sphinx/domains/c/_ast.py:974:1	-	17 lines (136 tokens) duplicated at sphinx.domains.cpp._ast:2377
+duplicate-code	high	sphinx/domains/c/_ast.py:975:1	-	16 lines (128 tokens) duplicated at sphinx.domains.cpp._ast:2378
 duplicate-code	high	sphinx/domains/c/_ast.py:994:1	-	8 lines (50 tokens) duplicated at sphinx.domains.cpp._ast:2407
 duplicate-code	high	sphinx/domains/c/_ast.py:1023:1	-	39 lines (198 tokens) duplicated at sphinx.domains.cpp._ast:2450
 duplicate-code	high	sphinx/domains/c/_ast.py:1061:1	-	20 lines (161 tokens) duplicated at sphinx.domains.cpp._ast:2505
@@ -327,8 +327,8 @@ duplicate-code	high	sphinx/ext/autodoc/_dynamic/_signatures.py:172:1	-	18 lines 
 duplicate-code	high	sphinx/ext/autodoc/_dynamic/_signatures.py:196:1	-	8 lines (54 tokens) duplicated at sphinx.ext.autodoc._dynamic._signatures:313
 duplicate-code	high	sphinx/ext/autodoc/_dynamic/_signatures.py:627:1	-	12 lines (52 tokens) duplicated at sphinx.ext.autodoc._legacy_class_based._documenters:2369
 duplicate-code	high	sphinx/ext/autodoc/_dynamic/_type_comments.py:172:1	-	17 lines (92 tokens) duplicated at sphinx.ext.autodoc._dynamic._type_comments:188
-duplicate-code	high	sphinx/ext/autodoc/_generate.py:82:1	-	20 lines (65 tokens) duplicated at sphinx.ext.autodoc._generate:251
-duplicate-code	high	sphinx/ext/autodoc/_generate.py:181:1	-	14 lines (51 tokens) duplicated at sphinx.ext.autodoc._generate:277
+duplicate-code	high	sphinx/ext/autodoc/_generate.py:85:1	-	17 lines (55 tokens) duplicated at sphinx.ext.autodoc._generate:254
+duplicate-code	high	sphinx/ext/autodoc/_generate.py:182:1	-	13 lines (50 tokens) duplicated at sphinx.ext.autodoc._generate:278
 duplicate-code	high	sphinx/ext/autodoc/_legacy_class_based/_documenters.py:1093:1	-	12 lines (82 tokens) duplicated at sphinx.ext.autodoc._legacy_class_based._documenters:1117
 duplicate-code	high	sphinx/ext/autodoc/_legacy_class_based/_documenters.py:1266:1	-	12 lines (89 tokens) duplicated at sphinx.ext.autodoc._legacy_class_based._documenters:1592
 duplicate-code	high	sphinx/ext/autodoc/_legacy_class_based/_documenters.py:1284:1	-	12 lines (56 tokens) duplicated at sphinx.ext.autodoc._legacy_class_based._documenters:2235
@@ -495,7 +495,6 @@ duplicate-code	high	tests/test_builders/test_build_html_maths.py:36:1	-	11 lines
 duplicate-code	high	tests/test_builders/test_build_html_numfig.py:79:1	-	14 lines (78 tokens) duplicated at tests.test_builders.test_build_html_numfig:1035
 duplicate-code	high	tests/test_builders/test_build_html_numfig.py:104:1	-	19 lines (67 tokens) duplicated at tests.test_builders.test_build_html_numfig:583
 duplicate-code	high	tests/test_builders/test_build_html_numfig.py:341:1	-	55 lines (159 tokens) duplicated at tests.test_builders.test_build_html_numfig:821
-duplicate-code	high	tests/test_builders/test_build_html_numfig.py:399:1	-	14 lines (64 tokens) duplicated at tests.test_builders.test_build_html_numfig:879
 duplicate-code	high	tests/test_builders/test_build_html_numfig.py:555:1	-	18 lines (91 tokens) duplicated at tests.test_builders.test_build_html_numfig:803
 duplicate-code	high	tests/test_builders/test_build_html_numfig.py:1138:1	-	9 lines (61 tokens) duplicated at tests.test_builders.test_build_html_tocdepth:129
 duplicate-code	high	tests/test_builders/test_build_latex.py:208:1	-	7 lines (54 tokens) duplicated at tests.test_builders.test_build_latex:965
@@ -603,8 +602,6 @@ duplicate-code	high	tests/test_domains/test_domain_js.py:780:1	-	36 lines (129 t
 duplicate-code	high	tests/test_domains/test_domain_js.py:834:1	-	56 lines (224 tokens) duplicated at tests.test_domains.test_domain_py:1152
 duplicate-code	high	tests/test_domains/test_domain_js.py:898:1	-	36 lines (136 tokens) duplicated at tests.test_domains.test_domain_py:1217
 duplicate-code	high	tests/test_domains/test_domain_py.py:605:1	-	25 lines (84 tokens) duplicated at tests.test_domains.test_domain_py:716
-duplicate-code	high	tests/test_domains/test_domain_py.py:638:1	-	16 lines (55 tokens) duplicated at tests.test_domains.test_domain_py:778
-duplicate-code	high	tests/test_domains/test_domain_py.py:658:1	-	17 lines (53 tokens) duplicated at tests.test_domains.test_domain_py:831
 duplicate-code	high	tests/test_domains/test_domain_py.py:1082:1	-	9 lines (52 tokens) duplicated at tests.test_domains.test_domain_py:1209
 duplicate-code	high	tests/test_domains/test_domain_py.py:1498:1	-	24 lines (61 tokens) duplicated at tests.test_domains.test_domain_py:1563
 duplicate-code	high	tests/test_domains/test_domain_py.py:1743:1	-	18 lines (120 tokens) duplicated at tests.test_domains.test_domain_py:1761
@@ -614,7 +611,6 @@ duplicate-code	high	tests/test_domains/test_domain_py_fields.py:155:1	-	11 lines
 duplicate-code	high	tests/test_domains/test_domain_py_fields.py:197:1	-	16 lines (59 tokens) duplicated at tests.test_domains.test_domain_py_fields:274
 duplicate-code	high	tests/test_domains/test_domain_py_fields.py:214:1	-	42 lines (141 tokens) duplicated at tests.test_domains.test_domain_py_fields:291
 duplicate-code	high	tests/test_domains/test_domain_py_fields.py:416:1	-	13 lines (51 tokens) duplicated at tests.test_domains.test_domain_py_fields:462
-duplicate-code	high	tests/test_domains/test_domain_py_fields.py:509:1	-	22 lines (54 tokens) duplicated at tests.test_domains.test_domain_py_fields:530
 duplicate-code	high	tests/test_domains/test_domain_py_pyfunction.py:110:1	-	34 lines (104 tokens) duplicated at tests.test_domains.test_domain_py_pyfunction:160
 duplicate-code	high	tests/test_domains/test_domain_py_pyfunction.py:276:1	-	10 lines (54 tokens) duplicated at tests.test_domains.test_domain_py_pyfunction:293
 duplicate-code	high	tests/test_domains/test_domain_py_pyfunction.py:465:1	-	20 lines (66 tokens) duplicated at tests.test_domains.test_domain_py_pyfunction:512
@@ -650,7 +646,7 @@ duplicate-code	high	tests/test_ext_autodoc/test_ext_autodoc.py:1372:1	-	10 lines
 duplicate-code	high	tests/test_ext_autodoc/test_ext_autodoc.py:1456:1	-	17 lines (90 tokens) duplicated at tests.test_ext_autodoc.test_ext_autodoc:1474
 duplicate-code	high	tests/test_ext_autodoc/test_ext_autodoc.py:1493:1	-	8 lines (58 tokens) duplicated at tests.test_ext_autodoc.test_ext_autodoc:1516
 duplicate-code	high	tests/test_ext_autodoc/test_ext_autodoc.py:1503:1	-	7 lines (57 tokens) duplicated at tests.test_ext_autodoc.test_ext_autodoc:1757
-duplicate-code	high	tests/test_ext_autodoc/test_ext_autodoc.py:1549:1	-	10 lines (63 tokens) duplicated at tests.test_ext_autodoc.test_ext_autodoc:1643
+duplicate-code	high	tests/test_ext_autodoc/test_ext_autodoc.py:1550:1	-	9 lines (61 tokens) duplicated at tests.test_ext_autodoc.test_ext_autodoc:1644
 duplicate-code	high	tests/test_ext_autodoc/test_ext_autodoc.py:1600:1	-	11 lines (84 tokens) duplicated at tests.test_ext_autodoc.test_ext_autodoc:1633
 duplicate-code	high	tests/test_ext_autodoc/test_ext_autodoc.py:1654:1	-	7 lines (64 tokens) duplicated in 2 other places: tests.test_ext_autodoc.test_ext_autodoc:1660, tests.test_ext_autodoc.test_ext_autodoc:1666
 duplicate-code	high	tests/test_ext_autodoc/test_ext_autodoc.py:1688:1	-	8 lines (51 tokens) duplicated at tests.test_ext_autodoc.test_ext_autodoc:1695
@@ -776,7 +772,7 @@ duplicate-code	high	tests/test_util/test_util_inspect.py:496:1	-	5 lines (54 tok
 duplicate-code	high	tests/test_util/test_util_inspect.py:575:1	-	13 lines (61 tokens) duplicated at tests.test_util.test_util_inspect:587
 duplicate-code	high	tests/test_util/test_util_inspect.py:737:1	-	10 lines (50 tokens) duplicated at tests.test_util.test_util_inspect:806
 duplicate-code	high	tests/test_util/test_util_inspect.py:747:1	-	8 lines (53 tokens) duplicated at tests.test_util.test_util_inspect:820
-duplicate-code	high	tests/test_util/test_util_inspect.py:763:1	-	13 lines (77 tokens) duplicated at tests.test_util.test_util_inspect:789
+duplicate-code	high	tests/test_util/test_util_inspect.py:766:1	-	10 lines (65 tokens) duplicated at tests.test_util.test_util_inspect:792
 duplicate-code	high	tests/test_util/test_util_inspect.py:974:1	-	10 lines (63 tokens) duplicated at tests.test_util.test_util_inspect:991
 duplicate-code	high	tests/test_util/test_util_inspect_py314.py:30:1	-	12 lines (53 tokens) duplicated at tests.test_util.test_util_inspect_py314:44
 duplicate-code	high	tests/test_util/test_util_logging.py:29:1	-	10 lines (90 tokens) duplicated at tests.test_util.test_util_logging:311
@@ -791,4 +787,4 @@ duplicate-code	high	tests/test_util/test_util_rst.py:49:1	-	15 lines (86 tokens)
 duplicate-code	high	tests/test_util/test_util_rst.py:72:1	-	19 lines (88 tokens) duplicated at tests.test_util.test_util_rst:90
 duplicate-code	high	tests/test_util/test_util_rst.py:137:1	-	18 lines (106 tokens) duplicated at tests.test_util.test_util_rst:154
 duplicate-code	high	tests/test_writers/test_docutilsconf.py:19:1	-	12 lines (77 tokens) duplicated at tests.test_writers.test_docutilsconf:38
-duplicate-code	high	tests/test_writers/test_writer_text.py:86:1	-	39 lines (161 tokens) duplicated at tests.test_writers.test_writer_text:144
+duplicate-code	high	tests/test_writers/test_writer_text.py:110:1	-	15 lines (97 tokens) duplicated at tests.test_writers.test_writer_text:168

@@ -2,13 +2,13 @@ files_scanned=60
 symbols_checked=0
 symbols_kept=0
 findings=132
-duplication: clones=132 duplicated_lines=4490 total_lines=17806 percent_tenths=252
+duplication: clones=132 duplicated_lines=4479 total_lines=17806 percent_tenths=251
 --
 duplicate-code	high	httpx/_api.py:36:1	-	21 lines (123 tokens) duplicated at httpx._api:123
-duplicate-code	high	httpx/_api.py:176:1	-	20 lines (81 tokens) duplicated at httpx._api:288
+duplicate-code	high	httpx/_api.py:179:1	-	17 lines (58 tokens) duplicated at httpx._api:291
 duplicate-code	high	httpx/_api.py:196:1	-	36 lines (133 tokens) duplicated at httpx._api:232
 duplicate-code	high	httpx/_api.py:269:1	-	20 lines (79 tokens) duplicated at httpx._api:392
-duplicate-code	high	httpx/_api.py:305:1	-	41 lines (183 tokens) duplicated at httpx._api:346
+duplicate-code	high	httpx/_api.py:308:1	-	38 lines (176 tokens) duplicated at httpx._api:349
 duplicate-code	high	httpx/_auth.py:139:1	-	8 lines (71 tokens) duplicated at httpx._auth:169
 duplicate-code	high	httpx/_client.py:139:1	-	14 lines (51 tokens) duplicated at httpx._client:162
 duplicate-code	high	httpx/_client.py:594:1	-	56 lines (81 tokens) duplicated at httpx._client:1307

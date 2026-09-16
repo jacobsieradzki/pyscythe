@@ -1,18 +1,15 @@
 files_scanned=1128
 symbols_checked=0
 symbols_kept=0
-findings=363
-duplication: clones=363 duplicated_lines=8680 total_lines=249086 percent_tenths=34
+findings=310
+duplication: clones=310 duplicated_lines=6774 total_lines=249086 percent_tenths=27
 --
 duplicate-code	high	devscripts/install_deps.py:70:1	-	8 lines (50 tokens) duplicated at devscripts.update_requirements:146
 duplicate-code	high	devscripts/prepare_manpage.py:4:1	-	18 lines (64 tokens) duplicated at test.test_execution:5
 duplicate-code	high	devscripts/setup_variables.py:126:1	-	5 lines (53 tokens) duplicated at devscripts.setup_variables:138
 duplicate-code	high	devscripts/update_requirements.py:2:1	-	31 lines (54 tokens) duplicated at test.test_websockets:8
 duplicate-code	high	test/conftest.py:35:1	-	8 lines (59 tokens) duplicated at test.conftest:51
-duplicate-code	high	test/test_InfoExtractor.py:1258:1	-	34 lines (119 tokens) duplicated at test.test_InfoExtractor:1421
 duplicate-code	high	test/test_InfoExtractor.py:1470:1	-	8 lines (52 tokens) duplicated at test.test_InfoExtractor:1902
-duplicate-code	high	test/test_InfoExtractor.py:1753:1	-	17 lines (59 tokens) duplicated at test.test_InfoExtractor:1779
-duplicate-code	high	test/test_InfoExtractor.py:1851:1	-	19 lines (67 tokens) duplicated at test.test_InfoExtractor:1876
 duplicate-code	high	test/test_YoutubeDL.py:83:1	-	13 lines (71 tokens) duplicated at test.test_YoutubeDL:97
 duplicate-code	high	test/test_YoutubeDL.py:491:1	-	13 lines (103 tokens) duplicated at test.test_YoutubeDL:513
 duplicate-code	high	test/test_YoutubeDL.py:571:1	-	6 lines (50 tokens) duplicated at test.test_YoutubeDL:576
@@ -50,10 +47,8 @@ duplicate-code	high	test/test_networking.py:603:1	-	15 lines (121 tokens) duplic
 duplicate-code	high	test/test_networking.py:643:1	-	11 lines (59 tokens) duplicated at test.test_networking:654
 duplicate-code	high	test/test_networking.py:757:1	-	8 lines (79 tokens) duplicated at test.test_networking:768
 duplicate-code	high	test/test_networking.py:810:1	-	7 lines (51 tokens) duplicated at test.test_networking:822
-duplicate-code	high	test/test_networking.py:1006:1	-	5 lines (70 tokens) duplicated at test.test_networking:1012
 duplicate-code	high	test/test_networking.py:1088:1	-	12 lines (65 tokens) duplicated at test.test_networking:1262
-duplicate-code	high	test/test_networking.py:1136:1	-	9 lines (109 tokens) duplicated at test.test_networking:1168
-duplicate-code	high	test/test_networking.py:1393:1	-	8 lines (66 tokens) duplicated at test.test_networking:1404
+duplicate-code	high	test/test_networking.py:1135:1	-	7 lines (98 tokens) duplicated at test.test_networking:1163
 duplicate-code	high	test/test_networking.py:1454:1	-	8 lines (57 tokens) duplicated at test.test_networking:1466
 duplicate-code	high	test/test_networking.py:1489:1	-	5 lines (81 tokens) duplicated at test.test_networking:1498
 duplicate-code	high	test/test_networking.py:1599:1	-	7 lines (52 tokens) duplicated at test.test_networking:1640
@@ -129,7 +124,7 @@ duplicate-code	high	test/test_utils.py:1872:1	-	8 lines (57 tokens) duplicated a
 duplicate-code	high	test/test_utils.py:2181:1	-	7 lines (55 tokens) duplicated at test.test_utils:2187
 duplicate-code	high	test/test_verbose_output.py:23:1	-	13 lines (94 tokens) duplicated at test.test_verbose_output:51
 duplicate-code	high	test/test_verbose_output.py:37:1	-	9 lines (69 tokens) duplicated at test.test_verbose_output:65
-duplicate-code	high	test/test_websockets.py:487:1	-	13 lines (104 tokens) duplicated at test.test_websockets:504
+duplicate-code	high	test/test_websockets.py:487:1	-	13 lines (103 tokens) duplicated at test.test_websockets:504
 duplicate-code	high	yt_dlp/YoutubeDL.py:190:1	-	7 lines (55 tokens) duplicated at yt_dlp.networking._helper:188
 duplicate-code	high	yt_dlp/aes.py:73:1	-	19 lines (74 tokens) duplicated at yt_dlp.aes:93
 duplicate-code	high	yt_dlp/aes.py:151:1	-	17 lines (61 tokens) duplicated at yt_dlp.aes:175
@@ -148,27 +143,18 @@ duplicate-code	high	yt_dlp/extractor/alura.py:90:1	-	10 lines (71 tokens) duplic
 duplicate-code	high	yt_dlp/extractor/amp.py:34:1	-	8 lines (58 tokens) duplicated at yt_dlp.extractor.amp:64
 duplicate-code	high	yt_dlp/extractor/aol.py:108:1	-	9 lines (52 tokens) duplicated at yt_dlp.extractor.tbs:138
 duplicate-code	high	yt_dlp/extractor/ard.py:87:1	-	8 lines (55 tokens) duplicated at yt_dlp.extractor.tvplay:146
-duplicate-code	high	yt_dlp/extractor/art19.py:183:1	-	16 lines (55 tokens) duplicated at yt_dlp.extractor.art19:198
 duplicate-code	high	yt_dlp/extractor/asobichannel.py:146:1	-	8 lines (56 tokens) duplicated at yt_dlp.extractor.matchitv:19
-duplicate-code	high	yt_dlp/extractor/bandlab.py:41:1	-	5 lines (50 tokens) duplicated at yt_dlp.extractor.bandlab:423
-duplicate-code	high	yt_dlp/extractor/bandlab.py:117:1	-	15 lines (50 tokens) duplicated at yt_dlp.extractor.bandlab:139
 duplicate-code	high	yt_dlp/extractor/bbc.py:945:1	-	7 lines (52 tokens) duplicated at yt_dlp.extractor.seznamzpravy:142
-duplicate-code	high	yt_dlp/extractor/bbc.py:1286:1	-	5 lines (60 tokens) duplicated at yt_dlp.extractor.bbc:1399
 duplicate-code	high	yt_dlp/extractor/beacon.py:38:1	-	9 lines (52 tokens) duplicated at yt_dlp.extractor.polskieradio:183
 duplicate-code	high	yt_dlp/extractor/beatport.py:35:1	-	12 lines (59 tokens) duplicated at yt_dlp.extractor.giantbomb:28
 duplicate-code	high	yt_dlp/extractor/behindkink.py:18:1	-	11 lines (50 tokens) duplicated at yt_dlp.extractor.radiofrance:30
 duplicate-code	high	yt_dlp/extractor/bfmtv.py:45:1	-	12 lines (65 tokens) duplicated at yt_dlp.extractor.bfmtv:75
 duplicate-code	high	yt_dlp/extractor/bibeltv.py:142:1	-	9 lines (56 tokens) duplicated at yt_dlp.extractor.netzkino:29
-duplicate-code	high	yt_dlp/extractor/bilibili.py:423:1	-	18 lines (68 tokens) duplicated at yt_dlp.extractor.bilibili:445
 duplicate-code	high	yt_dlp/extractor/bilibili.py:1119:1	-	12 lines (54 tokens) duplicated at yt_dlp.extractor.bilibili:1175
-duplicate-code	high	yt_dlp/extractor/bilibili.py:1247:1	-	17 lines (63 tokens) duplicated at yt_dlp.extractor.bilibili:1280
 duplicate-code	high	yt_dlp/extractor/bilibili.py:1546:1	-	12 lines (63 tokens) duplicated at yt_dlp.extractor.bilibili:1606
 duplicate-code	high	yt_dlp/extractor/bilibili.py:2447:1	-	11 lines (97 tokens) duplicated at yt_dlp.extractor.bilibili:2477
-duplicate-code	high	yt_dlp/extractor/bluesky.py:45:1	-	26 lines (93 tokens) duplicated at yt_dlp.extractor.bluesky:164
 duplicate-code	high	yt_dlp/extractor/byutv.py:75:1	-	7 lines (52 tokens) duplicated at yt_dlp.extractor.dplay:119
 duplicate-code	high	yt_dlp/extractor/canalsurmas.py:64:1	-	7 lines (55 tokens) duplicated at yt_dlp.extractor.panopto:367
-duplicate-code	high	yt_dlp/extractor/cbc.py:192:1	-	17 lines (65 tokens) duplicated at yt_dlp.extractor.cbc:235
-duplicate-code	high	yt_dlp/extractor/cbc.py:210:1	-	20 lines (83 tokens) duplicated at yt_dlp.extractor.cbc:253
 duplicate-code	high	yt_dlp/extractor/cbc.py:675:1	-	6 lines (51 tokens) duplicated at yt_dlp.extractor.tenplay:157
 duplicate-code	high	yt_dlp/extractor/cbc.py:848:1	-	8 lines (56 tokens) duplicated at yt_dlp.extractor.skyit:300
 duplicate-code	high	yt_dlp/extractor/cbc.py:910:1	-	19 lines (133 tokens) duplicated at yt_dlp.extractor.cbc:1025
@@ -190,7 +176,6 @@ duplicate-code	high	yt_dlp/extractor/dailywire.py:67:1	-	7 lines (51 tokens) dup
 duplicate-code	high	yt_dlp/extractor/daum.py:183:1	-	11 lines (65 tokens) duplicated at yt_dlp.extractor.markiza:101
 duplicate-code	high	yt_dlp/extractor/dctp.py:79:1	-	13 lines (76 tokens) duplicated at yt_dlp.extractor.pinterest:35
 duplicate-code	high	yt_dlp/extractor/democracynow.py:31:1	-	12 lines (53 tokens) duplicated at yt_dlp.extractor.platzi:85
-duplicate-code	high	yt_dlp/extractor/digiview.py:48:1	-	21 lines (81 tokens) duplicated at yt_dlp.extractor.digiview:82
 duplicate-code	high	yt_dlp/extractor/disney.py:73:1	-	8 lines (54 tokens) duplicated at yt_dlp.extractor.rtl2:36
 duplicate-code	high	yt_dlp/extractor/dplay.py:382:1	-	10 lines (60 tokens) duplicated at yt_dlp.extractor.dplay:1196
 duplicate-code	high	yt_dlp/extractor/dplay.py:981:1	-	10 lines (65 tokens) duplicated at yt_dlp.extractor.dplay:1261
@@ -213,7 +198,6 @@ duplicate-code	high	yt_dlp/extractor/fptplay.py:92:1	-	5 lines (95 tokens) dupli
 duplicate-code	high	yt_dlp/extractor/francetv.py:358:1	-	9 lines (56 tokens) duplicated at yt_dlp.extractor.lci:36
 duplicate-code	high	yt_dlp/extractor/gamejolt.py:324:1	-	12 lines (51 tokens) duplicated at yt_dlp.extractor.gamejolt:351
 duplicate-code	high	yt_dlp/extractor/gaskrank.py:38:1	-	11 lines (53 tokens) duplicated at yt_dlp.extractor.webofstories:50
-duplicate-code	high	yt_dlp/extractor/getcourseru.py:68:1	-	18 lines (59 tokens) duplicated at yt_dlp.extractor.getcourseru:85
 duplicate-code	high	yt_dlp/extractor/globalplayer.py:167:1	-	11 lines (56 tokens) duplicated at yt_dlp.extractor.globalplayer:209
 duplicate-code	high	yt_dlp/extractor/globo.py:221:1	-	12 lines (78 tokens) duplicated at yt_dlp.extractor.wwe:108
 duplicate-code	high	yt_dlp/extractor/glomex.py:69:1	-	9 lines (64 tokens) duplicated at yt_dlp.extractor.rutube:78
@@ -222,12 +206,11 @@ duplicate-code	high	yt_dlp/extractor/goplay.py:73:1	-	8 lines (52 tokens) duplic
 duplicate-code	high	yt_dlp/extractor/icareus.py:79:1	-	9 lines (50 tokens) duplicated in 2 other places: yt_dlp.extractor.mojevideo:79, yt_dlp.extractor.yandexdisk:55
 duplicate-code	high	yt_dlp/extractor/icareus.py:118:1	-	7 lines (56 tokens) duplicated at yt_dlp.extractor.rtve:89
 duplicate-code	high	yt_dlp/extractor/imggaming.py:53:1	-	5 lines (54 tokens) duplicated at yt_dlp.extractor.sevenplus:95
-duplicate-code	high	yt_dlp/extractor/imgur.py:43:1	-	17 lines (55 tokens) duplicated at yt_dlp.extractor.imgur:59
 duplicate-code	high	yt_dlp/extractor/itv.py:165:1	-	11 lines (63 tokens) duplicated at yt_dlp.extractor.rentv:40
 duplicate-code	high	yt_dlp/extractor/iwara.py:254:1	-	8 lines (60 tokens) duplicated at yt_dlp.extractor.iwara:289
 duplicate-code	high	yt_dlp/extractor/jove.py:31:1	-	12 lines (50 tokens) duplicated at yt_dlp.extractor.sport5:29
 duplicate-code	high	yt_dlp/extractor/jwplatform.py:95:1	-	7 lines (55 tokens) duplicated at yt_dlp.extractor.theplatform:225
-duplicate-code	high	yt_dlp/extractor/kaltura.py:323:1	-	28 lines (79 tokens) duplicated at yt_dlp.extractor.kaltura:382
+duplicate-code	high	yt_dlp/extractor/kaltura.py:332:1	-	19 lines (50 tokens) duplicated at yt_dlp.extractor.kaltura:391
 duplicate-code	high	yt_dlp/extractor/kelbyone.py:70:1	-	9 lines (50 tokens) duplicated at yt_dlp.extractor.radioradicale:76
 duplicate-code	high	yt_dlp/extractor/kika.py:161:1	-	9 lines (56 tokens) duplicated at yt_dlp.extractor.rozhlas:333
 duplicate-code	high	yt_dlp/extractor/leeco.py:222:1	-	14 lines (72 tokens) duplicated at yt_dlp.extractor.udemy:418
@@ -241,13 +224,10 @@ duplicate-code	high	yt_dlp/extractor/mit.py:107:1	-	8 lines (50 tokens) duplicat
 duplicate-code	high	yt_dlp/extractor/msn.py:173:1	-	10 lines (84 tokens) duplicated at yt_dlp.extractor.rtp:170
 duplicate-code	high	yt_dlp/extractor/nba.py:207:1	-	11 lines (54 tokens) duplicated at yt_dlp.extractor.ondemandkorea:161
 duplicate-code	high	yt_dlp/extractor/nebula.py:232:1	-	12 lines (64 tokens) duplicated at yt_dlp.extractor.nebula:312
-duplicate-code	high	yt_dlp/extractor/nest.py:10:1	-	17 lines (52 tokens) duplicated at yt_dlp.extractor.nest:31
 duplicate-code	high	yt_dlp/extractor/newgrounds.py:236:1	-	10 lines (50 tokens) duplicated at yt_dlp.extractor.tvn24:44
 duplicate-code	high	yt_dlp/extractor/newsy.py:22:1	-	9 lines (50 tokens) duplicated in 2 other places: yt_dlp.extractor.rtnews:177, yt_dlp.extractor.threespeak:25
 duplicate-code	high	yt_dlp/extractor/nexx.py:194:1	-	11 lines (77 tokens) duplicated at yt_dlp.extractor.nexx:332
 duplicate-code	high	yt_dlp/extractor/nexx.py:230:1	-	6 lines (56 tokens) duplicated at yt_dlp.extractor.nexx:287
-duplicate-code	high	yt_dlp/extractor/nfb.py:114:1	-	18 lines (67 tokens) duplicated at yt_dlp.extractor.nfb:168
-duplicate-code	high	yt_dlp/extractor/nfb.py:132:1	-	18 lines (67 tokens) duplicated at yt_dlp.extractor.nfb:150
 duplicate-code	high	yt_dlp/extractor/nhk.py:320:1	-	11 lines (60 tokens) duplicated at yt_dlp.extractor.viewlift:335
 duplicate-code	high	yt_dlp/extractor/nhk.py:785:1	-	7 lines (50 tokens) duplicated at yt_dlp.extractor.nhk:813
 duplicate-code	high	yt_dlp/extractor/niconicochannelplus.py:334:1	-	25 lines (53 tokens) duplicated at yt_dlp.extractor.niconicochannelplus:397
@@ -260,33 +240,24 @@ duplicate-code	high	yt_dlp/extractor/onefootball.py:37:1	-	9 lines (52 tokens) d
 duplicate-code	high	yt_dlp/extractor/onet.py:132:1	-	11 lines (54 tokens) duplicated at yt_dlp.extractor.popcorntv:27
 duplicate-code	high	yt_dlp/extractor/openrec.py:377:1	-	6 lines (54 tokens) duplicated at yt_dlp.extractor.streaks:96
 duplicate-code	high	yt_dlp/extractor/openrec.py:424:1	-	10 lines (50 tokens) duplicated at yt_dlp.extractor.yappy:45
-duplicate-code	high	yt_dlp/extractor/orf.py:51:1	-	20 lines (67 tokens) duplicated at yt_dlp.extractor.orf:70
 duplicate-code	high	yt_dlp/extractor/orf.py:234:1	-	39 lines (257 tokens) duplicated at yt_dlp.extractor.orf:333
 duplicate-code	high	yt_dlp/extractor/packtpub.py:106:1	-	10 lines (59 tokens) duplicated at yt_dlp.extractor.rcti:364
 duplicate-code	high	yt_dlp/extractor/palcomp3.py:104:1	-	9 lines (59 tokens) duplicated in 3 other places: yt_dlp.extractor.picarto:26, yt_dlp.extractor.radlive:153, yt_dlp.extractor.yandexmusic:281
 duplicate-code	high	yt_dlp/extractor/panopto.py:247:1	-	9 lines (54 tokens) duplicated at yt_dlp.extractor.polskieradio:370
-duplicate-code	high	yt_dlp/extractor/peertube.py:1380:1	-	25 lines (94 tokens) duplicated at yt_dlp.extractor.peertube:1404
 duplicate-code	high	yt_dlp/extractor/philharmoniedeparis.py:68:1	-	8 lines (51 tokens) duplicated at yt_dlp.extractor.xhamster:335
 duplicate-code	high	yt_dlp/extractor/pinterest.py:224:1	-	10 lines (68 tokens) duplicated at yt_dlp.extractor.svt:295
 duplicate-code	high	yt_dlp/extractor/platzi.py:164:1	-	14 lines (77 tokens) duplicated at yt_dlp.extractor.radlive:102
 duplicate-code	high	yt_dlp/extractor/polskieradio.py:86:1	-	8 lines (65 tokens) duplicated at yt_dlp.extractor.polskieradio:435
 duplicate-code	high	yt_dlp/extractor/pornhub.py:648:1	-	9 lines (63 tokens) duplicated at yt_dlp.extractor.pornhub:827
 duplicate-code	high	yt_dlp/extractor/prankcast.py:42:1	-	9 lines (62 tokens) duplicated at yt_dlp.extractor.prankcast:133
-duplicate-code	high	yt_dlp/extractor/prx.py:194:1	-	17 lines (61 tokens) duplicated at yt_dlp.extractor.prx:218
 duplicate-code	high	yt_dlp/extractor/radiofrance.py:247:1	-	6 lines (53 tokens) duplicated at yt_dlp.extractor.tunein:34
 duplicate-code	high	yt_dlp/extractor/raywenderlich.py:149:1	-	13 lines (69 tokens) duplicated at yt_dlp.extractor.tvanouvelles:40
-duplicate-code	high	yt_dlp/extractor/redgifs.py:119:1	-	17 lines (59 tokens) duplicated at yt_dlp.extractor.redgifs:135
 duplicate-code	high	yt_dlp/extractor/rtvcplay.py:215:1	-	12 lines (69 tokens) duplicated at yt_dlp.extractor.rtvcplay:256
 duplicate-code	high	yt_dlp/extractor/rumble.py:354:1	-	11 lines (67 tokens) duplicated at yt_dlp.extractor.senategov:225
 duplicate-code	high	yt_dlp/extractor/rutube.py:85:1	-	9 lines (52 tokens) duplicated at yt_dlp.extractor.theweatherchannel:76
 duplicate-code	high	yt_dlp/extractor/safari.py:231:1	-	12 lines (69 tokens) duplicated at yt_dlp.extractor.younow:34
 duplicate-code	high	yt_dlp/extractor/skynewsarabia.py:22:1	-	8 lines (66 tokens) duplicated at yt_dlp.extractor.skynewsarabia:100
-duplicate-code	high	yt_dlp/extractor/slideslive.py:92:1	-	16 lines (52 tokens) duplicated at yt_dlp.extractor.slideslive:299
 duplicate-code	high	yt_dlp/extractor/snapchat.py:41:1	-	9 lines (56 tokens) duplicated at yt_dlp.extractor.startrek:44
-duplicate-code	high	yt_dlp/extractor/sohu.py:40:1	-	15 lines (59 tokens) duplicated at yt_dlp.extractor.sohu:257
-duplicate-code	high	yt_dlp/extractor/soundcloud.py:542:1	-	27 lines (97 tokens) duplicated at yt_dlp.extractor.soundcloud:568
-duplicate-code	high	yt_dlp/extractor/southpark.py:103:1	-	23 lines (83 tokens) duplicated at yt_dlp.extractor.southpark:200
-duplicate-code	high	yt_dlp/extractor/southpark.py:297:1	-	15 lines (56 tokens) duplicated at yt_dlp.extractor.southpark:335
 duplicate-code	high	yt_dlp/extractor/sportbox.py:67:1	-	9 lines (55 tokens) duplicated at yt_dlp.extractor.youjizz:48
 duplicate-code	high	yt_dlp/extractor/sproutvideo.py:91:1	-	6 lines (53 tokens) duplicated at yt_dlp.extractor.vidyard:412
 duplicate-code	high	yt_dlp/extractor/stacommu.py:70:1	-	10 lines (88 tokens) duplicated at yt_dlp.extractor.wrestleuniverse:324
@@ -302,37 +273,16 @@ duplicate-code	high	yt_dlp/extractor/tv2.py:58:1	-	12 lines (117 tokens) duplica
 duplicate-code	high	yt_dlp/extractor/tv2.py:74:1	-	21 lines (175 tokens) duplicated at yt_dlp.extractor.tv2:235
 duplicate-code	high	yt_dlp/extractor/tv5mondeplus.py:137:1	-	7 lines (54 tokens) duplicated at yt_dlp.extractor.yandexvideo:116
 duplicate-code	high	yt_dlp/extractor/tvplay.py:128:1	-	5 lines (58 tokens) duplicated at yt_dlp.extractor.viidea:131
-duplicate-code	high	yt_dlp/extractor/twitch.py:314:1	-	27 lines (87 tokens) duplicated at yt_dlp.extractor.twitch:351
 duplicate-code	high	yt_dlp/extractor/twitch.py:595:1	-	9 lines (50 tokens) duplicated at yt_dlp.extractor.twitch:928
-duplicate-code	high	yt_dlp/extractor/twitter.py:869:1	-	22 lines (80 tokens) duplicated at yt_dlp.extractor.twitter:894
-duplicate-code	high	yt_dlp/extractor/txxx.py:74:1	-	17 lines (59 tokens) duplicated at yt_dlp.extractor.txxx:90
-duplicate-code	high	yt_dlp/extractor/txxx.py:138:1	-	17 lines (59 tokens) duplicated at yt_dlp.extractor.txxx:154
-duplicate-code	high	yt_dlp/extractor/txxx.py:170:1	-	17 lines (59 tokens) duplicated at yt_dlp.extractor.txxx:186
-duplicate-code	high	yt_dlp/extractor/txxx.py:250:1	-	17 lines (59 tokens) duplicated at yt_dlp.extractor.txxx:266
-duplicate-code	high	yt_dlp/extractor/txxx.py:282:1	-	17 lines (59 tokens) duplicated at yt_dlp.extractor.txxx:298
-duplicate-code	high	yt_dlp/extractor/txxx.py:314:1	-	16 lines (55 tokens) duplicated at yt_dlp.extractor.txxx:330
-duplicate-code	high	yt_dlp/extractor/vidyard.py:110:1	-	13 lines (51 tokens) duplicated at yt_dlp.extractor.vidyard:155
 duplicate-code	high	yt_dlp/extractor/viewlift.py:105:1	-	7 lines (55 tokens) duplicated at yt_dlp.extractor.viewlift:351
 duplicate-code	high	yt_dlp/extractor/vimeo.py:1820:1	-	7 lines (54 tokens) duplicated at yt_dlp.extractor.vimeo:2190
-duplicate-code	high	yt_dlp/extractor/vimeo.py:1960:1	-	19 lines (68 tokens) duplicated at yt_dlp.extractor.vimeo:2125
 duplicate-code	high	yt_dlp/extractor/volejtv.py:132:1	-	9 lines (70 tokens) duplicated at yt_dlp.extractor.volejtv:162
 duplicate-code	high	yt_dlp/extractor/vtv.py:64:1	-	11 lines (63 tokens) duplicated at yt_dlp.extractor.vtv:101
 duplicate-code	high	yt_dlp/extractor/wdr.py:282:1	-	8 lines (50 tokens) duplicated at yt_dlp.extractor.wwe:121
-duplicate-code	high	yt_dlp/extractor/weibo.py:261:1	-	21 lines (82 tokens) duplicated at yt_dlp.extractor.weibo:315
-duplicate-code	high	yt_dlp/extractor/whyp.py:15:1	-	17 lines (59 tokens) duplicated at yt_dlp.extractor.whyp:31
-duplicate-code	high	yt_dlp/extractor/wrestleuniverse.py:227:1	-	7 lines (54 tokens) duplicated at yt_dlp.extractor.wrestleuniverse:305
 duplicate-code	high	yt_dlp/extractor/wykop.py:109:1	-	11 lines (64 tokens) duplicated at yt_dlp.extractor.wykop:211
 duplicate-code	high	yt_dlp/extractor/wykop.py:170:1	-	12 lines (76 tokens) duplicated at yt_dlp.extractor.wykop:221
-duplicate-code	high	yt_dlp/extractor/ximalaya.py:27:1	-	23 lines (74 tokens) duplicated at yt_dlp.extractor.ximalaya:56
 duplicate-code	high	yt_dlp/extractor/yandexmusic.py:377:1	-	7 lines (85 tokens) duplicated at yt_dlp.extractor.yandexmusic:406
-duplicate-code	high	yt_dlp/extractor/youtube/_base.py:72:1	-	18 lines (69 tokens) duplicated at yt_dlp.extractor.youtube._base:172
-duplicate-code	high	yt_dlp/extractor/youtube/_base.py:141:1	-	22 lines (80 tokens) duplicated at yt_dlp.extractor.youtube._base:321
-duplicate-code	high	yt_dlp/extractor/youtube/_base.py:204:1	-	21 lines (85 tokens) duplicated at yt_dlp.extractor.youtube._base:242
 duplicate-code	high	yt_dlp/extractor/youtube/_base.py:440:1	-	8 lines (66 tokens) duplicated at yt_dlp.extractor.youtube.pot.provider:98
-duplicate-code	high	yt_dlp/extractor/youtube/_tab.py:1212:1	-	13 lines (53 tokens) duplicated at yt_dlp.extractor.youtube._tab:1266
-duplicate-code	high	yt_dlp/extractor/youtube/_tab.py:1227:1	-	18 lines (71 tokens) duplicated at yt_dlp.extractor.youtube._tab:1245
-duplicate-code	high	yt_dlp/extractor/youtube/_video.py:155:1	-	22 lines (84 tokens) duplicated at yt_dlp.extractor.youtube._video:201
-duplicate-code	high	yt_dlp/extractor/youtube/_video.py:378:1	-	25 lines (97 tokens) duplicated at yt_dlp.extractor.youtube._video:1419
 duplicate-code	high	yt_dlp/extractor/youtube/_video.py:3204:1	-	6 lines (55 tokens) duplicated at yt_dlp.extractor.youtube._video:3223
 duplicate-code	high	yt_dlp/extractor/youtube/_video.py:3693:1	-	20 lines (184 tokens) duplicated at yt_dlp.extractor.youtube._video:3731
 duplicate-code	high	yt_dlp/extractor/youtube/jsc/_builtin/bun.py:49:1	-	10 lines (56 tokens) duplicated at yt_dlp.extractor.youtube.jsc._builtin.deno:42
@@ -343,15 +293,12 @@ duplicate-code	high	yt_dlp/extractor/youtube/jsc/_builtin/node.py:40:1	-	9 lines
 duplicate-code	high	yt_dlp/extractor/youtube/jsc/_director.py:62:1	-	10 lines (76 tokens) duplicated at yt_dlp.extractor.youtube.pot._director:107
 duplicate-code	high	yt_dlp/extractor/youtube/jsc/_director.py:209:1	-	17 lines (144 tokens) duplicated at yt_dlp.extractor.youtube.pot._director:360
 duplicate-code	high	yt_dlp/extractor/youtube/jsc/_director.py:232:1	-	9 lines (58 tokens) duplicated at yt_dlp.extractor.youtube.pot._director:400
-duplicate-code	high	yt_dlp/extractor/youtube/jsc/_director.py:266:1	-	6 lines (66 tokens) duplicated at yt_dlp.extractor.youtube.jsc._director:282
 duplicate-code	high	yt_dlp/extractor/youtube/jsc/provider.py:98:1	-	13 lines (73 tokens) duplicated at yt_dlp.extractor.youtube.pot.provider:125
 duplicate-code	high	yt_dlp/extractor/youtube/jsc/provider.py:141:1	-	20 lines (93 tokens) duplicated at yt_dlp.extractor.youtube.pot.cache:77
 duplicate-code	high	yt_dlp/extractor/youtube/pot/_director.py:61:1	-	7 lines (64 tokens) duplicated at yt_dlp.extractor.youtube.pot._director:69
 duplicate-code	high	yt_dlp/extractor/youtube/pot/_director.py:96:1	-	11 lines (76 tokens) duplicated at yt_dlp.extractor.youtube.pot._director:269
 duplicate-code	high	yt_dlp/extractor/youtube/pot/_provider.py:159:1	-	10 lines (72 tokens) duplicated at yt_dlp.networking.common:40
 duplicate-code	high	yt_dlp/extractor/zattoo.py:344:1	-	14 lines (73 tokens) duplicated in 11 other places: yt_dlp.extractor.zattoo:389, yt_dlp.extractor.zattoo:434, yt_dlp.extractor.zattoo:480, yt_dlp.extractor.zattoo:526, yt_dlp.extractor.zattoo:571, yt_dlp.extractor.zattoo:617, yt_dlp.extractor.zattoo:662, yt_dlp.extractor.zattoo:708, yt_dlp.extractor.zattoo:753, yt_dlp.extractor.zattoo:799, yt_dlp.extractor.zattoo:844
-duplicate-code	high	yt_dlp/extractor/zdf.py:222:1	-	18 lines (65 tokens) duplicated in 2 other places: yt_dlp.extractor.zdf:239, yt_dlp.extractor.zdf:656
-duplicate-code	high	yt_dlp/extractor/zdf.py:278:1	-	22 lines (81 tokens) duplicated at yt_dlp.extractor.zdf:299
 duplicate-code	high	yt_dlp/extractor/zingmp3.py:170:1	-	8 lines (53 tokens) duplicated at yt_dlp.extractor.zingmp3:495
 duplicate-code	high	yt_dlp/extractor/zingmp3.py:260:1	-	7 lines (54 tokens) duplicated at yt_dlp.extractor.zingmp3:339
 duplicate-code	high	yt_dlp/jsinterp.py:472:1	-	7 lines (55 tokens) duplicated at yt_dlp.jsinterp:480

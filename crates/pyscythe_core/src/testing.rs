@@ -4,7 +4,7 @@ use camino::Utf8PathBuf;
 
 use crate::edit::{BodyAfterRemoval, Deletable};
 use crate::metrics::FunctionMetrics;
-use crate::tokens::{CloneMode, CloneToken};
+use crate::tokens::{CloneMode, CloneToken, Nesting};
 
 use crate::index::{
     Ancestry, CodebaseIndex, ExternalImport, GlobalsAccess, Import, ImportCondition, ImportKind,
@@ -321,6 +321,17 @@ impl FakeIndex {
         self.sources.push((file, source.to_owned(), deletables));
     }
 
+    /// [`Self::set_tokens`] for a run that sits inside one expression, as a
+    /// call's arguments do.
+    pub(crate) fn set_interior_tokens(&mut self, file: FileId, source: &str) {
+        self.set_tokens(file, source);
+        if let Some((_, tokens)) = self.tokens.last_mut() {
+            for token in tokens {
+                token.nesting = Nesting::Expression;
+            }
+        }
+    }
+
     /// Gives `file` one token per whitespace-separated word of `source`, each
     /// line of `source` on its own line.
     pub(crate) fn set_tokens(&mut self, file: FileId, source: &str) {
@@ -334,6 +345,7 @@ impl FakeIndex {
                     .map(move |word| CloneToken {
                         text: word.to_owned(),
                         line: number,
+                        nesting: Nesting::Statement,
                     })
                     .collect::<Vec<_>>()
             })

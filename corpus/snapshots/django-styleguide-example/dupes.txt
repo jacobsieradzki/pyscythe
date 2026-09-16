@@ -1,12 +1,11 @@
 files_scanned=190
 symbols_checked=0
 symbols_kept=0
-findings=22
-duplication: clones=22 duplicated_lines=909 total_lines=5902 percent_tenths=154
+findings=18
+duplication: clones=18 duplicated_lines=845 total_lines=5902 percent_tenths=143
 --
 duplicate-code	high	config/settings/debug_toolbar/setup.py:56:1	-	15 lines (55 tokens) duplicated at config.settings.loggers.setup:20
 duplicate-code	high	styleguide_example/api/exception_handlers.py:13:1	-	14 lines (77 tokens) duplicated at styleguide_example.api.exception_handlers:41
-duplicate-code	high	styleguide_example/api/pagination.py:26:1	-	10 lines (55 tokens) duplicated at styleguide_example.api.pagination:43
 duplicate-code	high	styleguide_example/authentication/apis.py:18:1	-	9 lines (63 tokens) duplicated at styleguide_example.users.apis:64
 duplicate-code	high	styleguide_example/authentication/tests/apis/test_user_login.py:15:1	-	29 lines (137 tokens) duplicated at styleguide_example.authentication.tests.apis.test_user_login:89
 duplicate-code	high	styleguide_example/authentication/tests/apis/test_user_login.py:47:1	-	12 lines (63 tokens) duplicated at styleguide_example.authentication.tests.apis.test_user_login:122
@@ -18,11 +17,8 @@ duplicate-code	high	styleguide_example/blog_examples/google_login_server_flow/ra
 duplicate-code	high	styleguide_example/blog_examples/google_login_server_flow/raw/service.py:102:1	-	33 lines (180 tokens) duplicated at styleguide_example.blog_examples.google_login_server_flow.sdk.services:106
 duplicate-code	high	styleguide_example/blog_examples/google_login_server_flow/raw/views.py:1:1	-	60 lines (345 tokens) duplicated at styleguide_example.blog_examples.google_login_server_flow.sdk.views:1
 duplicate-code	high	styleguide_example/blog_examples/google_login_server_flow/raw/views.py:60:1	-	21 lines (113 tokens) duplicated at styleguide_example.blog_examples.google_login_server_flow.sdk.views:60
-duplicate-code	high	styleguide_example/blog_examples/migrations/0001_initial.py:16:1	-	5 lines (58 tokens) duplicated at styleguide_example/blog_examples/migrations/0001_initial.py:32
 duplicate-code	high	styleguide_example/blog_examples/tests/models/test_timestamps.py:30:1	-	39 lines (197 tokens) duplicated at styleguide_example.blog_examples.tests.models.test_timestamps:72
 duplicate-code	high	styleguide_example/blog_examples/tests/models/test_timestamps.py:114:1	-	13 lines (77 tokens) duplicated at styleguide_example.blog_examples.tests.models.test_timestamps:156
 duplicate-code	high	styleguide_example/blog_examples/tests/models/test_timestamps.py:130:1	-	16 lines (75 tokens) duplicated at styleguide_example.blog_examples.tests.models.test_timestamps:172
-duplicate-code	high	styleguide_example/common/migrations/0001_initial.py:17:1	-	6 lines (66 tokens) duplicated in 3 other places: styleguide_example/common/migrations/0005_simplemodel_randommodel_simple_objects.py:15, styleguide_example/emails/migrations/0001_initial.py:16, styleguide_example/files/migrations/0001_initial.py:20
 duplicate-code	high	styleguide_example/common/tests/services/test_model_update.py:110:1	-	13 lines (72 tokens) duplicated at styleguide_example.common.tests.services.test_model_update:148
-duplicate-code	high	styleguide_example/testing_examples/migrations/0001_initial.py:18:1	-	5 lines (52 tokens) duplicated at styleguide_example/testing_examples/migrations/0001_initial.py:38
 duplicate-code	high	styleguide_example/testing_examples/tests/factories.py:29:1	-	8 lines (62 tokens) duplicated at styleguide_example.testing_examples.tests.factories:88

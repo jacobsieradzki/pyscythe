@@ -12,7 +12,7 @@ use pyscythe_core::edit::{BodyAfterRemoval, Deletable, ImportPruner};
 use pyscythe_core::metrics::FunctionMetrics;
 use pyscythe_core::source::{ByteOffset, ByteSpan, Column, Line};
 use pyscythe_core::symbol::SymbolName;
-use pyscythe_core::tokens::{CloneMode, CloneToken};
+use pyscythe_core::tokens::{CloneMode, CloneToken, Nesting};
 use ruff_python_ast::token::{TokenKind, Tokens};
 use ruff_python_ast::{self as ast, Expr, Stmt};
 use ruff_source_file::LineIndex;
@@ -31,6 +31,7 @@ pub fn clone_tokens(
     mode: CloneMode,
 ) -> Vec<CloneToken> {
     let lines = LineIndex::from_source_text(source);
+    let mut depth: u32 = 0;
     let mut skipped: Vec<ruff_text_size::TextRange> = Vec::new();
     collect_boilerplate_ranges(&module.body, true, &mut skipped);
     tokens
@@ -47,6 +48,20 @@ pub fn clone_tokens(
             )
         })
         .filter_map(|token| {
+            // A bracket belongs to the expression it delimits, so both ends
+            // count as interior and only what sits outside is statement level.
+            let nesting = match token.kind() {
+                TokenKind::Lpar | TokenKind::Lsqb | TokenKind::Lbrace => {
+                    depth += 1;
+                    Nesting::Expression
+                }
+                TokenKind::Rpar | TokenKind::Rsqb | TokenKind::Rbrace => {
+                    depth = depth.saturating_sub(1);
+                    Nesting::Expression
+                }
+                _ if depth == 0 => Nesting::Statement,
+                _ => Nesting::Expression,
+            };
             let text = match token.kind() {
                 TokenKind::Newline => "\\n".to_owned(),
                 TokenKind::Indent => "\\t".to_owned(),
@@ -70,6 +85,7 @@ pub fn clone_tokens(
             Some(CloneToken {
                 text,
                 line: Line::from_one_based(u32::try_from(line).ok()?)?,
+                nesting,
             })
         })
         .collect()

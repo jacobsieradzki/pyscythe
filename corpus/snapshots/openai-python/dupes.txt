@@ -1,8 +1,8 @@
 files_scanned=2156
 symbols_checked=0
 symbols_kept=0
-findings=2180
-duplication: clones=2180 duplicated_lines=159524 total_lines=286443 percent_tenths=556
+findings=2156
+duplication: clones=2156 duplicated_lines=156777 total_lines=286443 percent_tenths=547
 --
 duplicate-code	high	examples/image_stream.py:28:1	-	7 lines (50 tokens) duplicated at examples.image_stream:39
 duplicate-code	high	examples/mtls_httpx.py:3:1	-	29 lines (115 tokens) duplicated at examples.mtls_httpx2:3
@@ -18,7 +18,6 @@ duplicate-code	high	examples/responses/background_async.py:1:1	-	24 lines (64 to
 duplicate-code	high	examples/responses/background_async.py:27:1	-	15 lines (81 tokens) duplicated at examples.responses.background_streaming_async:26
 duplicate-code	high	examples/responses/multi_agent_streaming.py:24:1	-	17 lines (150 tokens) duplicated at examples.responses.multi_agent_websocket:28
 duplicate-code	high	examples/responses/streaming_tools.py:5:1	-	48 lines (171 tokens) duplicated at tests.lib.schema_types.query:1
-duplicate-code	high	examples/responses/websocket.py:97:1	-	17 lines (50 tokens) duplicated at examples.responses.websocket:114
 duplicate-code	high	examples/x509_workload_identity.py:1:1	-	34 lines (153 tokens) duplicated at examples.x509_workload_identity_async:3
 duplicate-code	high	scripts/castiron/custom_code_report.py:223:1	-	6 lines (60 tokens) duplicated at scripts.castiron.custom_code_report:460
 duplicate-code	high	scripts/castiron/custom_code_report.py:233:1	-	17 lines (94 tokens) duplicated at scripts.castiron.custom_code_report:468
@@ -62,7 +61,7 @@ duplicate-code	high	src/openai/_base_client.py:1441:1	-	12 lines (59 tokens) dup
 duplicate-code	high	src/openai/_base_client.py:1582:1	-	13 lines (57 tokens) duplicated at openai._streaming:234
 duplicate-code	high	src/openai/_base_client.py:1922:1	-	14 lines (63 tokens) duplicated at openai._base_client:1936
 duplicate-code	high	src/openai/_client.py:124:1	-	41 lines (205 tokens) duplicated at openai._client:878
-duplicate-code	high	src/openai/_client.py:164:1	-	92 lines (474 tokens) duplicated at openai._client:918
+duplicate-code	high	src/openai/_client.py:176:1	-	80 lines (366 tokens) duplicated at openai._client:930
 duplicate-code	high	src/openai/_client.py:255:1	-	284 lines (1272 tokens) duplicated at openai._client:1009
 duplicate-code	high	src/openai/_client.py:538:1	-	24 lines (163 tokens) duplicated at openai._client:1292
 duplicate-code	high	src/openai/_client.py:578:1	-	9 lines (61 tokens) duplicated at openai._client:1332
@@ -83,7 +82,7 @@ duplicate-code	high	src/openai/_legacy_response.py:313:1	-	33 lines (137 tokens)
 duplicate-code	high	src/openai/_legacy_response.py:357:1	-	9 lines (94 tokens) duplicated at openai._response:758
 duplicate-code	high	src/openai/_legacy_response.py:365:1	-	18 lines (131 tokens) duplicated at openai._response:766
 duplicate-code	high	src/openai/_legacy_response.py:416:1	-	7 lines (54 tokens) duplicated at openai._legacy_response:425
-duplicate-code	high	src/openai/_models.py:306:1	-	14 lines (102 tokens) duplicated at openai._models:378
+duplicate-code	high	src/openai/_models.py:314:1	-	6 lines (51 tokens) duplicated at openai._models:386
 duplicate-code	high	src/openai/_models.py:350:1	-	12 lines (82 tokens) duplicated at openai._models:410
 duplicate-code	high	src/openai/_module_client.py:189:1	-	12 lines (144 tokens) duplicated at openai._module_client:202
 duplicate-code	high	src/openai/_resource.py:12:1	-	13 lines (79 tokens) duplicated at openai._resource:28
@@ -127,19 +126,18 @@ duplicate-code	high	src/openai/lib/_vector_stores.py:57:1	-	15 lines (83 tokens)
 duplicate-code	high	src/openai/lib/_vector_stores.py:71:1	-	11 lines (61 tokens) duplicated at openai.lib._vector_stores:114
 duplicate-code	high	src/openai/lib/_vector_stores.py:124:1	-	14 lines (71 tokens) duplicated at openai.lib._vector_stores:154
 duplicate-code	high	src/openai/lib/_vector_stores.py:137:1	-	12 lines (56 tokens) duplicated at openai.lib._vector_stores:167
-duplicate-code	high	src/openai/lib/azure.py:183:1	-	23 lines (166 tokens) duplicated at openai.lib.azure:205
-duplicate-code	high	src/openai/lib/azure.py:229:1	-	23 lines (170 tokens) duplicated at openai.lib.azure:581
-duplicate-code	high	src/openai/lib/azure.py:251:1	-	10 lines (68 tokens) duplicated at openai.lib.azure:603
-duplicate-code	high	src/openai/lib/azure.py:261:1	-	110 lines (471 tokens) duplicated at openai.lib.azure:613
-duplicate-code	high	src/openai/lib/azure.py:370:1	-	31 lines (267 tokens) duplicated at openai.lib.azure:722
+duplicate-code	high	src/openai/lib/azure.py:177:1	-	9 lines (60 tokens) duplicated at openai.lib.azure:526
+duplicate-code	high	src/openai/lib/azure.py:194:1	-	14 lines (90 tokens) duplicated at openai.lib.azure:544
+duplicate-code	high	src/openai/lib/azure.py:216:1	-	14 lines (86 tokens) duplicated at openai.lib.azure:567
+duplicate-code	high	src/openai/lib/azure.py:238:1	-	14 lines (95 tokens) duplicated at openai.lib.azure:590
+duplicate-code	high	src/openai/lib/azure.py:264:1	-	107 lines (447 tokens) duplicated at openai.lib.azure:616
+duplicate-code	high	src/openai/lib/azure.py:387:1	-	14 lines (97 tokens) duplicated at openai.lib.azure:739
 duplicate-code	high	src/openai/lib/azure.py:400:1	-	39 lines (158 tokens) duplicated at openai.lib.azure:752
 duplicate-code	high	src/openai/lib/azure.py:447:1	-	29 lines (171 tokens) duplicated at openai.lib.azure:801
 duplicate-code	high	src/openai/lib/azure.py:478:1	-	8 lines (50 tokens) duplicated at openai.lib.azure:832
 duplicate-code	high	src/openai/lib/azure.py:485:1	-	16 lines (107 tokens) duplicated at openai.lib.azure:839
 duplicate-code	high	src/openai/lib/azure.py:500:1	-	11 lines (87 tokens) duplicated at openai.lib.azure:854
 duplicate-code	high	src/openai/lib/azure.py:510:1	-	17 lines (116 tokens) duplicated at openai.lib.azure:864
-duplicate-code	high	src/openai/lib/azure.py:532:1	-	24 lines (177 tokens) duplicated at openai.lib.azure:555
-duplicate-code	high	src/openai/lib/bedrock.py:128:1	-	10 lines (62 tokens) duplicated at openai.lib.bedrock:211
 duplicate-code	high	src/openai/lib/bedrock.py:411:1	-	75 lines (415 tokens) duplicated at openai.lib.bedrock:647
 duplicate-code	high	src/openai/lib/bedrock.py:485:1	-	33 lines (226 tokens) duplicated at openai.lib.bedrock:721
 duplicate-code	high	src/openai/lib/bedrock.py:518:1	-	7 lines (71 tokens) duplicated at openai.lib.bedrock:754
@@ -173,8 +171,6 @@ duplicate-code	high	src/openai/lib/streaming/chat/_completions.py:197:1	-	28 lin
 duplicate-code	high	src/openai/lib/streaming/chat/_completions.py:275:1	-	19 lines (88 tokens) duplicated at openai.lib.streaming.responses._responses:220
 duplicate-code	high	src/openai/lib/streaming/chat/_completions.py:320:1	-	7 lines (51 tokens) duplicated at openai.lib.streaming.responses._responses:247
 duplicate-code	high	src/openai/lib/streaming/chat/_completions.py:676:1	-	11 lines (55 tokens) duplicated at openai.lib.streaming.chat._completions:686
-duplicate-code	high	src/openai/lib/streaming/responses/_events.py:99:1	-	30 lines (61 tokens) duplicated at openai.types.responses.parsed_response:76
-duplicate-code	high	src/openai/lib/streaming/responses/_events.py:132:1	-	26 lines (54 tokens) duplicated at openai.types.beta.assistant_stream_event:364
 duplicate-code	high	src/openai/lib/streaming/responses/_responses.py:33:1	-	16 lines (101 tokens) duplicated at openai.lib.streaming.responses._responses:135
 duplicate-code	high	src/openai/lib/streaming/responses/_responses.py:101:1	-	13 lines (76 tokens) duplicated at openai.lib.streaming.responses._responses:203
 duplicate-code	high	src/openai/pagination.py:28:1	-	23 lines (89 tokens) duplicated at openai.pagination:50
@@ -182,33 +178,31 @@ duplicate-code	high	src/openai/pagination.py:75:1	-	32 lines (201 tokens) duplic
 duplicate-code	high	src/openai/pagination.py:140:1	-	24 lines (129 tokens) duplicated at openai.pagination:285
 duplicate-code	high	src/openai/pagination.py:163:1	-	59 lines (348 tokens) duplicated at openai.pagination:221
 duplicate-code	high	src/openai/resources/admin/admin.py:16:1	-	88 lines (352 tokens) duplicated at openai.resources.safety.safety:16
-duplicate-code	high	src/openai/resources/admin/organization/__init__.py:138:1	-	43 lines (85 tokens) duplicated at openai.resources.admin.organization.projects:144
 duplicate-code	high	src/openai/resources/admin/organization/admin_api_keys.py:23:1	-	51 lines (121 tokens) duplicated at openai.resources.admin.organization.certificates:32
 duplicate-code	high	src/openai/resources/admin/organization/admin_api_keys.py:86:1	-	46 lines (145 tokens) duplicated at openai.resources.admin.organization.admin_api_keys:177
 duplicate-code	high	src/openai/resources/admin/organization/admin_api_keys.py:131:1	-	13 lines (82 tokens) duplicated at openai.resources.admin.organization.admin_api_keys:328
 duplicate-code	high	src/openai/resources/admin/organization/admin_api_keys.py:223:1	-	48 lines (122 tokens) duplicated at openai.resources.admin.organization.certificates:373
 duplicate-code	high	src/openai/resources/admin/organization/admin_api_keys.py:275:1	-	41 lines (115 tokens) duplicated in 3 other places: openai.resources.admin.organization.invites:291, openai.resources.admin.organization.roles:335, openai.resources.admin.organization.spend_alerts:352
-duplicate-code	high	src/openai/resources/admin/organization/admin_api_keys.py:360:1	-	47 lines (137 tokens) duplicated in 3 other places: openai.resources.admin.organization.certificates:569, openai.resources.admin.organization.groups.groups:459, openai.resources.admin.organization.roles:473
+duplicate-code	high	src/openai/resources/admin/organization/admin_api_keys.py:364:1	-	43 lines (118 tokens) duplicated in 3 other places: openai.resources.admin.organization.certificates:573, openai.resources.admin.organization.groups.groups:463, openai.resources.admin.organization.roles:477
 duplicate-code	high	src/openai/resources/admin/organization/admin_api_keys.py:408:1	-	83 lines (360 tokens) duplicated at openai.resources.admin.organization.invites:421
 duplicate-code	high	src/openai/resources/admin/organization/audit_logs.py:24:1	-	193 lines (494 tokens) duplicated at openai.resources.admin.organization.audit_logs:293
 duplicate-code	high	src/openai/resources/admin/organization/audit_logs.py:555:1	-	42 lines (179 tokens) duplicated at openai.resources.admin.organization.projects.service_accounts.api_keys:187
-duplicate-code	high	src/openai/resources/admin/organization/certificates.py:89:1	-	18 lines (56 tokens) duplicated at openai.resources.admin.organization.certificates:427
+duplicate-code	high	src/openai/resources/admin/organization/certificates.py:91:1	-	16 lines (51 tokens) duplicated at openai.resources.admin.organization.certificates:429
 duplicate-code	high	src/openai/resources/admin/organization/certificates.py:106:1	-	32 lines (91 tokens) duplicated at openai.resources.admin.organization.certificates:444
 duplicate-code	high	src/openai/resources/admin/organization/certificates.py:150:1	-	30 lines (85 tokens) duplicated at openai.resources.admin.organization.certificates:490
-duplicate-code	high	src/openai/resources/admin/organization/certificates.py:180:1	-	49 lines (147 tokens) duplicated at openai.resources.admin.organization.groups.groups:173
-duplicate-code	high	src/openai/resources/admin/organization/certificates.py:229:1	-	27 lines (84 tokens) duplicated at openai.resources.admin.organization.projects.groups.groups:188
+duplicate-code	high	src/openai/resources/admin/organization/certificates.py:181:1	-	48 lines (140 tokens) duplicated at openai.resources.admin.organization.groups.groups:174
+duplicate-code	high	src/openai/resources/admin/organization/certificates.py:244:1	-	32 lines (79 tokens) duplicated at openai.resources.models:103
 duplicate-code	high	src/openai/resources/admin/organization/certificates.py:276:1	-	23 lines (107 tokens) duplicated at openai.resources.admin.organization.certificates:616
 duplicate-code	high	src/openai/resources/admin/organization/certificates.py:298:1	-	43 lines (132 tokens) duplicated at openai.resources.admin.organization.certificates:638
-duplicate-code	high	src/openai/resources/admin/organization/certificates.py:520:1	-	49 lines (153 tokens) duplicated at openai.resources.admin.organization.groups.groups:411
+duplicate-code	high	src/openai/resources/admin/organization/certificates.py:521:1	-	48 lines (145 tokens) duplicated at openai.resources.admin.organization.groups.groups:412
 duplicate-code	high	src/openai/resources/admin/organization/certificates.py:727:1	-	38 lines (173 tokens) duplicated at openai.resources.admin.organization.usage:1991
 duplicate-code	high	src/openai/resources/admin/organization/certificates.py:780:1	-	39 lines (159 tokens) duplicated at openai.resources.admin.organization.usage:2068
 duplicate-code	high	src/openai/resources/admin/organization/data_retention.py:19:1	-	35 lines (109 tokens) duplicated at openai.resources.admin.organization.spend_limit:20
 duplicate-code	high	src/openai/resources/admin/organization/data_retention.py:65:1	-	31 lines (67 tokens) duplicated at openai.resources.admin.organization.data_retention:154
 duplicate-code	high	src/openai/resources/admin/organization/data_retention.py:99:1	-	44 lines (148 tokens) duplicated at openai.resources.admin.organization.spend_limit:130
-duplicate-code	high	src/openai/resources/admin/organization/data_retention.py:185:1	-	62 lines (267 tokens) duplicated at openai.resources.admin.organization.projects.data_retention:223
+duplicate-code	high	src/openai/resources/admin/organization/data_retention.py:186:1	-	61 lines (264 tokens) duplicated at openai.resources.admin.organization.projects.data_retention:224
 duplicate-code	high	src/openai/resources/admin/organization/groups/groups.py:38:1	-	38 lines (109 tokens) duplicated at openai.resources.beta.realtime.realtime:61
 duplicate-code	high	src/openai/resources/admin/organization/groups/groups.py:101:1	-	44 lines (145 tokens) duplicated at openai.resources.admin.organization.groups.groups:235
-duplicate-code	high	src/openai/resources/admin/organization/groups/groups.py:151:1	-	23 lines (66 tokens) duplicated at openai.resources.admin.organization.groups.users:53
 duplicate-code	high	src/openai/resources/admin/organization/groups/groups.py:279:1	-	29 lines (95 tokens) duplicated in 2 other places: openai.resources.beta.realtime.realtime:120, openai.resources.skills.skills:295
 duplicate-code	high	src/openai/resources/admin/organization/groups/groups.py:310:1	-	23 lines (52 tokens) duplicated at openai.resources.admin.organization.spend_limit:239
 duplicate-code	high	src/openai/resources/admin/organization/groups/groups.py:339:1	-	31 lines (85 tokens) duplicated at openai.resources.admin.organization.spend_alerts:514
@@ -217,13 +211,13 @@ duplicate-code	high	src/openai/resources/admin/organization/groups/groups.py:512
 duplicate-code	high	src/openai/resources/admin/organization/groups/roles.py:3:1	-	71 lines (144 tokens) duplicated at openai.resources.admin.organization.users.roles:3
 duplicate-code	high	src/openai/resources/admin/organization/groups/roles.py:76:1	-	39 lines (136 tokens) duplicated at openai.resources.admin.organization.groups.users:76
 duplicate-code	high	src/openai/resources/admin/organization/groups/roles.py:116:1	-	48 lines (162 tokens) duplicated at openai.resources.admin.organization.groups.users:116
-duplicate-code	high	src/openai/resources/admin/organization/groups/roles.py:163:1	-	48 lines (165 tokens) duplicated at openai.resources.admin.organization.groups.users:164
+duplicate-code	high	src/openai/resources/admin/organization/groups/roles.py:167:1	-	44 lines (141 tokens) duplicated at openai.resources.admin.organization.groups.users:168
 duplicate-code	high	src/openai/resources/admin/organization/groups/roles.py:212:1	-	62 lines (187 tokens) duplicated at openai.resources.admin.organization.groups.users:213
 duplicate-code	high	src/openai/resources/admin/organization/groups/roles.py:274:1	-	39 lines (137 tokens) duplicated at openai.resources.admin.organization.groups.users:275
 duplicate-code	high	src/openai/resources/admin/organization/groups/roles.py:314:1	-	48 lines (167 tokens) duplicated at openai.resources.admin.organization.groups.users:315
-duplicate-code	high	src/openai/resources/admin/organization/groups/roles.py:361:1	-	48 lines (166 tokens) duplicated at openai.resources.admin.organization.groups.users:363
+duplicate-code	high	src/openai/resources/admin/organization/groups/roles.py:365:1	-	44 lines (142 tokens) duplicated at openai.resources.admin.organization.groups.users:367
 duplicate-code	high	src/openai/resources/admin/organization/groups/roles.py:410:1	-	83 lines (364 tokens) duplicated in 2 other places: openai.resources.admin.organization.groups.users:412, openai.resources.admin.organization.users.roles:410
-duplicate-code	high	src/openai/resources/admin/organization/groups/users.py:23:1	-	25 lines (57 tokens) duplicated in 2 other places: openai.resources.live.sessions:30, openai.resources.realtime.calls:40
+duplicate-code	high	src/openai/resources/admin/organization/groups/users.py:44:1	-	30 lines (73 tokens) duplicated at openai.resources.admin.organization.projects.groups.groups:206
 duplicate-code	high	src/openai/resources/admin/organization/invites.py:22:1	-	24 lines (52 tokens) duplicated in 17 other places: openai.resources.admin.organization.projects.roles:22, openai.resources.admin.organization.projects.service_accounts.api_keys:19, openai.resources.admin.organization.projects.spend_alerts:25, openai.resources.admin.organization.roles:22, openai.resources.admin.organization.spend_alerts:21, openai.resources.beta.agents.environments.templates:26, openai.resources.beta.agents.sessions.events:21, openai.resources.beta.agents.vaults.credentials:29, openai.resources.beta.chatkit.sessions:27, openai.resources.beta.realtime.sessions:18, openai.resources.beta.realtime.transcription_sessions:18, openai.resources.beta.responses.input_tokens:22, openai.resources.content_provenance_checks:20, openai.resources.realtime.client_secrets:17, openai.resources.responses.input_tokens:23, openai.resources.vector_stores.file_batches:32, openai.resources.videos:47
 duplicate-code	high	src/openai/resources/admin/organization/invites.py:45:1	-	37 lines (79 tokens) duplicated at openai.resources.admin.organization.invites:249
 duplicate-code	high	src/openai/resources/admin/organization/invites.py:95:1	-	44 lines (145 tokens) duplicated at openai.resources.admin.organization.invites:184
@@ -232,8 +226,9 @@ duplicate-code	high	src/openai/resources/admin/organization/invites.py:384:1	-	3
 duplicate-code	high	src/openai/resources/admin/organization/organization.py:111:1	-	45 lines (238 tokens) duplicated at openai.resources.admin.organization.organization:185
 duplicate-code	high	src/openai/resources/admin/organization/organization.py:247:1	-	109 lines (632 tokens) duplicated at openai.resources.admin.organization.organization:355
 duplicate-code	high	src/openai/resources/admin/organization/projects/api_keys.py:42:1	-	47 lines (159 tokens) duplicated at openai.resources.admin.organization.projects.api_keys:149
-duplicate-code	high	src/openai/resources/admin/organization/projects/api_keys.py:88:1	-	14 lines (85 tokens) duplicated at openai.resources.admin.organization.projects.api_keys:263
+duplicate-code	high	src/openai/resources/admin/organization/projects/api_keys.py:94:1	-	36 lines (59 tokens) duplicated at openai.resources.beta.agents.sessions.artifacts:104
 duplicate-code	high	src/openai/resources/admin/organization/projects/api_keys.py:199:1	-	46 lines (122 tokens) duplicated at openai.resources.admin.organization.users.roles:224
+duplicate-code	high	src/openai/resources/admin/organization/projects/api_keys.py:269:1	-	38 lines (86 tokens) duplicated at openai.resources.admin.organization.projects.groups.groups:379
 duplicate-code	high	src/openai/resources/admin/organization/projects/api_keys.py:317:1	-	40 lines (119 tokens) duplicated at openai.resources.admin.organization.projects.spend_alerts:552
 duplicate-code	high	src/openai/resources/admin/organization/projects/api_keys.py:362:1	-	71 lines (303 tokens) duplicated at openai.resources.admin.organization.spend_limit:249
 duplicate-code	high	src/openai/resources/admin/organization/projects/certificates.py:29:1	-	34 lines (132 tokens) duplicated at openai.resources.admin.organization.projects.certificates:200
@@ -244,22 +239,20 @@ duplicate-code	high	src/openai/resources/admin/organization/projects/data_retent
 duplicate-code	high	src/openai/resources/admin/organization/projects/data_retention.py:79:1	-	36 lines (95 tokens) duplicated at openai.resources.admin.organization.projects.data_retention:187
 duplicate-code	high	src/openai/resources/admin/organization/projects/data_retention.py:118:1	-	59 lines (175 tokens) duplicated at openai.resources.admin.organization.projects.hosted_tool_permissions:130
 duplicate-code	high	src/openai/resources/admin/organization/projects/groups/groups.py:29:1	-	58 lines (148 tokens) duplicated at openai.resources.beta.agents.sessions.subagents.turns.turns:28
-duplicate-code	high	src/openai/resources/admin/organization/projects/groups/groups.py:89:1	-	18 lines (56 tokens) duplicated at openai.resources.admin.organization.projects.groups.groups:308
+duplicate-code	high	src/openai/resources/admin/organization/projects/groups/groups.py:91:1	-	16 lines (51 tokens) duplicated at openai.resources.admin.organization.projects.groups.groups:310
 duplicate-code	high	src/openai/resources/admin/organization/projects/groups/groups.py:106:1	-	32 lines (114 tokens) duplicated at openai.resources.admin.organization.projects.groups.groups:325
-duplicate-code	high	src/openai/resources/admin/organization/projects/groups/groups.py:147:1	-	40 lines (111 tokens) duplicated at openai.resources.containers.files.files:155
+duplicate-code	high	src/openai/resources/admin/organization/projects/groups/groups.py:146:1	-	43 lines (133 tokens) duplicated at openai.resources.admin.organization.projects.roles:190
 duplicate-code	high	src/openai/resources/admin/organization/projects/groups/groups.py:245:1	-	61 lines (161 tokens) duplicated at openai.resources.beta.agents.sessions.subagents.turns.turns:169
-duplicate-code	high	src/openai/resources/admin/organization/projects/groups/groups.py:367:1	-	41 lines (121 tokens) duplicated at openai.resources.admin.organization.users.roles:319
-duplicate-code	high	src/openai/resources/admin/organization/projects/groups/groups.py:409:1	-	48 lines (166 tokens) duplicated at openai.resources.admin.organization.projects.roles:502
+duplicate-code	high	src/openai/resources/admin/organization/projects/groups/groups.py:413:1	-	44 lines (142 tokens) duplicated at openai.resources.admin.organization.projects.roles:506
 duplicate-code	high	src/openai/resources/admin/organization/projects/groups/groups.py:459:1	-	100 lines (456 tokens) duplicated at openai.resources.admin.organization.users.users:446
 duplicate-code	high	src/openai/resources/admin/organization/projects/groups/roles.py:3:1	-	74 lines (168 tokens) duplicated at openai.resources.admin.organization.projects.users.roles:3
 duplicate-code	high	src/openai/resources/admin/organization/projects/groups/roles.py:84:1	-	55 lines (202 tokens) duplicated at openai.resources.admin.organization.projects.groups.roles:191
 duplicate-code	high	src/openai/resources/admin/organization/projects/groups/roles.py:138:1	-	38 lines (122 tokens) duplicated at openai.resources.admin.organization.projects.users.roles:138
-duplicate-code	high	src/openai/resources/admin/organization/projects/groups/roles.py:177:1	-	12 lines (54 tokens) duplicated in 3 other places: openai.resources.admin.organization.projects.users.roles:177, openai.resources.evals.runs.output_items:137, openai.resources.evals.runs.output_items:272
 duplicate-code	high	src/openai/resources/admin/organization/projects/groups/roles.py:246:1	-	51 lines (146 tokens) duplicated at openai.resources.admin.organization.projects.users.roles:246
-duplicate-code	high	src/openai/resources/admin/organization/projects/groups/roles.py:298:1	-	41 lines (158 tokens) duplicated at openai.resources.admin.organization.projects.users.roles:298
-duplicate-code	high	src/openai/resources/admin/organization/projects/groups/roles.py:343:1	-	53 lines (179 tokens) duplicated at openai.resources.admin.organization.projects.users.roles:343
-duplicate-code	high	src/openai/resources/admin/organization/projects/groups/roles.py:397:1	-	49 lines (174 tokens) duplicated at openai.resources.admin.organization.projects.users.roles:397
-duplicate-code	high	src/openai/resources/admin/organization/projects/groups/roles.py:450:1	-	87 lines (369 tokens) duplicated at openai.resources.admin.organization.projects.users.roles:450
+duplicate-code	high	src/openai/resources/admin/organization/projects/groups/roles.py:299:1	-	40 lines (146 tokens) duplicated at openai.resources.admin.organization.projects.users.roles:299
+duplicate-code	high	src/openai/resources/admin/organization/projects/groups/roles.py:344:1	-	52 lines (178 tokens) duplicated at openai.resources.admin.organization.projects.users.roles:344
+duplicate-code	high	src/openai/resources/admin/organization/projects/groups/roles.py:401:1	-	45 lines (146 tokens) duplicated at openai.resources.admin.organization.projects.users.roles:401
+duplicate-code	high	src/openai/resources/admin/organization/projects/groups/roles.py:451:1	-	86 lines (368 tokens) duplicated at openai.resources.admin.organization.projects.users.roles:451
 duplicate-code	high	src/openai/resources/admin/organization/projects/hosted_tool_permissions.py:79:1	-	41 lines (142 tokens) duplicated at openai.resources.admin.organization.projects.hosted_tool_permissions:199
 duplicate-code	high	src/openai/resources/admin/organization/projects/hosted_tool_permissions.py:247:1	-	62 lines (261 tokens) duplicated at openai.resources.admin.organization.projects.rate_limits:319
 duplicate-code	high	src/openai/resources/admin/organization/projects/model_permissions.py:80:1	-	32 lines (93 tokens) duplicated at openai.resources.admin.organization.projects.model_permissions:225
@@ -270,7 +263,7 @@ duplicate-code	high	src/openai/resources/admin/organization/projects/model_permi
 duplicate-code	high	src/openai/resources/admin/organization/projects/projects.py:125:1	-	69 lines (314 tokens) duplicated at openai.resources.admin.organization.projects.projects:448
 duplicate-code	high	src/openai/resources/admin/organization/projects/projects.py:193:1	-	45 lines (90 tokens) duplicated at openai.resources.admin.organization.projects.projects:516
 duplicate-code	high	src/openai/resources/admin/organization/projects/projects.py:295:1	-	36 lines (110 tokens) duplicated at openai.resources.admin.organization.projects.projects:618
-duplicate-code	high	src/openai/resources/admin/organization/projects/projects.py:332:1	-	31 lines (134 tokens) duplicated at openai.resources.admin.organization.projects.projects:655
+duplicate-code	high	src/openai/resources/admin/organization/projects/projects.py:335:1	-	28 lines (125 tokens) duplicated at openai.resources.admin.organization.projects.projects:658
 duplicate-code	high	src/openai/resources/admin/organization/projects/projects.py:398:1	-	37 lines (98 tokens) duplicated at openai.resources.admin.organization.users.users:197
 duplicate-code	high	src/openai/resources/admin/organization/projects/projects.py:779:1	-	66 lines (368 tokens) duplicated at openai.resources.admin.organization.projects.projects:848
 duplicate-code	high	src/openai/resources/admin/organization/projects/projects.py:916:1	-	63 lines (338 tokens) duplicated at openai.resources.admin.organization.projects.projects:985
@@ -280,9 +273,8 @@ duplicate-code	high	src/openai/resources/admin/organization/projects/rate_limits
 duplicate-code	high	src/openai/resources/admin/organization/projects/roles.py:45:1	-	35 lines (99 tokens) duplicated at openai.resources.admin.organization.projects.roles:314
 duplicate-code	high	src/openai/resources/admin/organization/projects/roles.py:93:1	-	47 lines (173 tokens) duplicated at openai.resources.admin.organization.projects.roles:247
 duplicate-code	high	src/openai/resources/admin/organization/projects/roles.py:139:1	-	38 lines (137 tokens) duplicated at openai.resources.admin.organization.projects.roles:408
-duplicate-code	high	src/openai/resources/admin/organization/projects/roles.py:178:1	-	32 lines (143 tokens) duplicated at openai.resources.admin.organization.projects.roles:447
-duplicate-code	high	src/openai/resources/admin/organization/projects/roles.py:233:1	-	12 lines (50 tokens) duplicated in 6 other places: openai.resources.admin.organization.users.roles:163, openai.resources.beta.agents.vaults.credentials:248, openai.resources.beta.agents.vaults.credentials:531, openai.resources.evals.runs.runs:205, openai.resources.evals.runs.runs:475, openai.resources.skills.versions.versions:203
 duplicate-code	high	src/openai/resources/admin/organization/projects/roles.py:354:1	-	42 lines (139 tokens) duplicated in 3 other places: openai.resources.admin.organization.projects.service_accounts.service_accounts:396, openai.resources.admin.organization.projects.spend_alerts:380, openai.resources.admin.organization.projects.users.users:367
+duplicate-code	high	src/openai/resources/admin/organization/projects/roles.py:454:1	-	47 lines (142 tokens) duplicated at openai.resources.admin.organization.users.roles:314
 duplicate-code	high	src/openai/resources/admin/organization/projects/roles.py:551:1	-	95 lines (416 tokens) duplicated at openai.resources.admin.organization.projects.spend_alerts:591
 duplicate-code	high	src/openai/resources/admin/organization/projects/service_accounts/api_keys.py:42:1	-	42 lines (131 tokens) duplicated at openai.resources.admin.organization.projects.service_accounts.api_keys:128
 duplicate-code	high	src/openai/resources/admin/organization/projects/service_accounts/service_accounts.py:35:1	-	69 lines (183 tokens) duplicated at openai.resources.admin.organization.projects.users.users:29
@@ -290,16 +282,15 @@ duplicate-code	high	src/openai/resources/admin/organization/projects/service_acc
 duplicate-code	high	src/openai/resources/admin/organization/projects/service_accounts/service_accounts.py:150:1	-	17 lines (55 tokens) duplicated at openai.resources.admin.organization.projects.service_accounts.service_accounts:438
 duplicate-code	high	src/openai/resources/admin/organization/projects/service_accounts/service_accounts.py:166:1	-	35 lines (122 tokens) duplicated at openai.resources.admin.organization.projects.service_accounts.service_accounts:454
 duplicate-code	high	src/openai/resources/admin/organization/projects/service_accounts/service_accounts.py:212:1	-	48 lines (141 tokens) duplicated at openai.resources.admin.organization.projects.users.users:189
-duplicate-code	high	src/openai/resources/admin/organization/projects/service_accounts/service_accounts.py:259:1	-	50 lines (161 tokens) duplicated at openai.resources.admin.organization.projects.users.users:236
+duplicate-code	high	src/openai/resources/admin/organization/projects/service_accounts/service_accounts.py:262:1	-	47 lines (141 tokens) duplicated at openai.resources.admin.organization.projects.users.users:239
 duplicate-code	high	src/openai/resources/admin/organization/projects/service_accounts/service_accounts.py:314:1	-	78 lines (223 tokens) duplicated at openai.resources.admin.organization.projects.users.users:289
 duplicate-code	high	src/openai/resources/admin/organization/projects/service_accounts/service_accounts.py:500:1	-	48 lines (146 tokens) duplicated at openai.resources.admin.organization.projects.users.users:458
-duplicate-code	high	src/openai/resources/admin/organization/projects/service_accounts/service_accounts.py:547:1	-	50 lines (162 tokens) duplicated at openai.resources.admin.organization.projects.users.users:505
+duplicate-code	high	src/openai/resources/admin/organization/projects/service_accounts/service_accounts.py:550:1	-	47 lines (142 tokens) duplicated at openai.resources.admin.organization.projects.users.users:508
 duplicate-code	high	src/openai/resources/admin/organization/projects/service_accounts/service_accounts.py:602:1	-	111 lines (504 tokens) duplicated at openai.resources.admin.organization.projects.users.users:558
 duplicate-code	high	src/openai/resources/admin/organization/projects/spend_alerts.py:48:1	-	38 lines (101 tokens) duplicated at openai.resources.admin.organization.projects.spend_alerts:336
 duplicate-code	high	src/openai/resources/admin/organization/projects/spend_alerts.py:100:1	-	49 lines (173 tokens) duplicated at openai.resources.admin.organization.projects.spend_alerts:267
 duplicate-code	high	src/openai/resources/admin/organization/projects/spend_alerts.py:148:1	-	41 lines (125 tokens) duplicated at openai.resources.admin.organization.projects.spend_alerts:436
-duplicate-code	high	src/openai/resources/admin/organization/projects/spend_alerts.py:192:1	-	34 lines (155 tokens) duplicated at openai.resources.admin.organization.projects.spend_alerts:480
-duplicate-code	high	src/openai/resources/admin/organization/projects/spend_alerts.py:252:1	-	13 lines (54 tokens) duplicated in 4 other places: openai.resources.beta.threads.messages:265, openai.resources.beta.threads.messages:567, openai.resources.beta.threads.runs.runs:758, openai.resources.beta.threads.runs.runs:2227
+duplicate-code	high	src/openai/resources/admin/organization/projects/spend_alerts.py:196:1	-	30 lines (142 tokens) duplicated at openai.resources.admin.organization.projects.spend_alerts:484
 duplicate-code	high	src/openai/resources/admin/organization/projects/spend_limit.py:80:1	-	36 lines (95 tokens) duplicated at openai.resources.admin.organization.projects.spend_limit:230
 duplicate-code	high	src/openai/resources/admin/organization/projects/users/roles.py:84:1	-	55 lines (202 tokens) duplicated at openai.resources.admin.organization.projects.users.roles:191
 duplicate-code	high	src/openai/resources/admin/organization/projects/users/users.py:140:1	-	15 lines (54 tokens) duplicated at openai.resources.admin.organization.projects.users.users:409
@@ -307,54 +298,51 @@ duplicate-code	high	src/openai/resources/admin/organization/projects/users/users
 duplicate-code	high	src/openai/resources/admin/organization/roles.py:45:1	-	32 lines (75 tokens) duplicated at openai.resources.admin.organization.roles:298
 duplicate-code	high	src/openai/resources/admin/organization/roles.py:90:1	-	44 lines (145 tokens) duplicated at openai.resources.admin.organization.roles:234
 duplicate-code	high	src/openai/resources/admin/organization/roles.py:133:1	-	35 lines (113 tokens) duplicated at openai.resources.admin.organization.roles:386
-duplicate-code	high	src/openai/resources/admin/organization/roles.py:169:1	-	31 lines (139 tokens) duplicated at openai.resources.admin.organization.roles:422
+duplicate-code	high	src/openai/resources/admin/organization/roles.py:172:1	-	28 lines (130 tokens) duplicated at openai.resources.admin.organization.roles:425
 duplicate-code	high	src/openai/resources/admin/organization/roles.py:519:1	-	95 lines (412 tokens) duplicated at openai.resources.admin.organization.spend_alerts:546
 duplicate-code	high	src/openai/resources/admin/organization/spend_alerts.py:44:1	-	35 lines (77 tokens) duplicated at openai.resources.admin.organization.spend_alerts:311
 duplicate-code	high	src/openai/resources/admin/organization/spend_alerts.py:93:1	-	44 lines (145 tokens) duplicated at openai.resources.admin.organization.spend_alerts:247
 duplicate-code	high	src/openai/resources/admin/organization/spend_alerts.py:136:1	-	38 lines (101 tokens) duplicated at openai.resources.admin.organization.spend_alerts:403
-duplicate-code	high	src/openai/resources/admin/organization/spend_alerts.py:175:1	-	33 lines (151 tokens) duplicated at openai.resources.admin.organization.spend_alerts:442
+duplicate-code	high	src/openai/resources/admin/organization/spend_alerts.py:179:1	-	29 lines (138 tokens) duplicated at openai.resources.admin.organization.spend_alerts:446
 duplicate-code	high	src/openai/resources/admin/organization/spend_limit.py:66:1	-	33 lines (71 tokens) duplicated at openai.resources.admin.organization.spend_limit:185
 duplicate-code	high	src/openai/resources/admin/organization/spend_limit.py:113:1	-	15 lines (61 tokens) duplicated at openai.resources.models:76
 duplicate-code	high	src/openai/resources/admin/organization/usage.py:63:1	-	62 lines (167 tokens) duplicated at openai.resources.admin.organization.usage:481
-duplicate-code	high	src/openai/resources/admin/organization/usage.py:125:1	-	14 lines (50 tokens) duplicated in 2 other places: openai.resources.admin.organization.usage:458, openai.resources.admin.organization.usage:725
 duplicate-code	high	src/openai/resources/admin/organization/usage.py:141:1	-	70 lines (196 tokens) duplicated at openai.resources.admin.organization.usage:743
-duplicate-code	high	src/openai/resources/admin/organization/usage.py:211:1	-	77 lines (216 tokens) duplicated at openai.resources.admin.organization.usage:813
-duplicate-code	high	src/openai/resources/admin/organization/usage.py:294:1	-	18 lines (56 tokens) duplicated in 3 other places: openai.resources.admin.organization.usage:896, openai.resources.admin.organization.usage:1254, openai.resources.admin.organization.usage:1856
+duplicate-code	high	src/openai/resources/admin/organization/usage.py:222:1	-	66 lines (176 tokens) duplicated at openai.resources.admin.organization.usage:824
+duplicate-code	high	src/openai/resources/admin/organization/usage.py:296:1	-	16 lines (51 tokens) duplicated in 3 other places: openai.resources.admin.organization.usage:898, openai.resources.admin.organization.usage:1256, openai.resources.admin.organization.usage:1858
 duplicate-code	high	src/openai/resources/admin/organization/usage.py:311:1	-	65 lines (172 tokens) duplicated at openai.resources.admin.organization.usage:1271
-duplicate-code	high	src/openai/resources/admin/organization/usage.py:382:1	-	22 lines (72 tokens) duplicated at openai.resources.admin.organization.usage:1342
+duplicate-code	high	src/openai/resources/admin/organization/usage.py:388:1	-	16 lines (51 tokens) duplicated in 3 other places: openai.resources.admin.organization.usage:554, openai.resources.admin.organization.usage:1348, openai.resources.admin.organization.usage:1514
 duplicate-code	high	src/openai/resources/admin/organization/usage.py:403:1	-	55 lines (143 tokens) duplicated at openai.resources.admin.organization.usage:1363
-duplicate-code	high	src/openai/resources/admin/organization/usage.py:549:1	-	21 lines (68 tokens) duplicated at openai.resources.admin.organization.usage:1509
 duplicate-code	high	src/openai/resources/admin/organization/usage.py:569:1	-	61 lines (160 tokens) duplicated at openai.resources.admin.organization.usage:1529
-duplicate-code	high	src/openai/resources/admin/organization/usage.py:636:1	-	21 lines (68 tokens) duplicated at openai.resources.admin.organization.usage:1596
+duplicate-code	high	src/openai/resources/admin/organization/usage.py:641:1	-	16 lines (51 tokens) duplicated at openai.resources.admin.organization.usage:1601
 duplicate-code	high	src/openai/resources/admin/organization/usage.py:656:1	-	69 lines (204 tokens) duplicated at openai.resources.admin.organization.usage:1616
 duplicate-code	high	src/openai/resources/admin/organization/usage.py:913:1	-	64 lines (180 tokens) duplicated at openai.resources.admin.organization.usage:1873
-duplicate-code	high	src/openai/resources/admin/organization/usage.py:983:1	-	23 lines (75 tokens) duplicated at openai.resources.admin.organization.usage:1943
+duplicate-code	high	src/openai/resources/admin/organization/usage.py:989:1	-	17 lines (54 tokens) duplicated at openai.resources.admin.organization.usage:1949
 duplicate-code	high	src/openai/resources/admin/organization/usage.py:1023:1	-	62 lines (169 tokens) duplicated at openai.resources.admin.organization.usage:1441
-duplicate-code	high	src/openai/resources/admin/organization/usage.py:1085:1	-	14 lines (51 tokens) duplicated in 2 other places: openai.resources.admin.organization.usage:1418, openai.resources.admin.organization.usage:1685
 duplicate-code	high	src/openai/resources/admin/organization/usage.py:1101:1	-	70 lines (198 tokens) duplicated at openai.resources.admin.organization.usage:1703
-duplicate-code	high	src/openai/resources/admin/organization/usage.py:1171:1	-	77 lines (219 tokens) duplicated at openai.resources.admin.organization.usage:1773
+duplicate-code	high	src/openai/resources/admin/organization/usage.py:1182:1	-	66 lines (178 tokens) duplicated at openai.resources.admin.organization.usage:1784
 duplicate-code	high	src/openai/resources/admin/organization/usage.py:2036:1	-	17 lines (68 tokens) duplicated at openai.resources.beta.agents.sessions.events:263
 duplicate-code	high	src/openai/resources/admin/organization/usage.py:2107:1	-	13 lines (50 tokens) duplicated in 2 other places: openai.resources.live.sessions:693, openai.resources.vector_stores.files:1021
 duplicate-code	high	src/openai/resources/admin/organization/users/roles.py:81:1	-	47 lines (173 tokens) duplicated at openai.resources.admin.organization.users.roles:177
-duplicate-code	high	src/openai/resources/admin/organization/users/roles.py:127:1	-	35 lines (98 tokens) duplicated at openai.resources.skills.versions.versions:168
-duplicate-code	high	src/openai/resources/admin/organization/users/roles.py:361:1	-	16 lines (57 tokens) duplicated at openai.resources.beta.agents.sessions.subagents.turns.turns:154
-duplicate-code	high	src/openai/resources/admin/organization/users/roles.py:376:1	-	31 lines (84 tokens) duplicated at openai.resources.beta.agents.vaults.credentials:547
+duplicate-code	high	src/openai/resources/admin/organization/users/roles.py:127:1	-	35 lines (98 tokens) duplicated in 2 other places: openai.resources.containers.files.files:160, openai.resources.skills.versions.versions:168
+duplicate-code	high	src/openai/resources/admin/organization/users/roles.py:381:1	-	26 lines (71 tokens) duplicated at openai.resources.evals.runs.runs:536
 duplicate-code	high	src/openai/resources/admin/organization/users/users.py:33:1	-	48 lines (130 tokens) duplicated at openai.resources.beta.agents.environments.environments:40
 duplicate-code	high	src/openai/resources/admin/organization/users/users.py:80:1	-	14 lines (61 tokens) duplicated at openai.resources.admin.organization.users.users:231
 duplicate-code	high	src/openai/resources/admin/organization/users/users.py:93:1	-	38 lines (121 tokens) duplicated at openai.resources.admin.organization.users.users:306
-duplicate-code	high	src/openai/resources/admin/organization/users/users.py:132:1	-	32 lines (141 tokens) duplicated at openai.resources.admin.organization.users.users:345
+duplicate-code	high	src/openai/resources/admin/organization/users/users.py:136:1	-	28 lines (128 tokens) duplicated at openai.resources.admin.organization.users.users:349
 duplicate-code	high	src/openai/resources/admin/organization/users/users.py:246:1	-	48 lines (131 tokens) duplicated at openai.resources.beta.agents.environments.environments:109
 duplicate-code	high	src/openai/resources/audio/audio.py:39:1	-	36 lines (119 tokens) duplicated at openai.resources.beta.beta:75
 duplicate-code	high	src/openai/resources/audio/audio.py:77:1	-	31 lines (88 tokens) duplicated in 2 other places: openai.resources.beta.beta:128, openai.resources.beta.threads.threads:65
 duplicate-code	high	src/openai/resources/audio/audio.py:107:1	-	41 lines (204 tokens) duplicated at openai.resources.audio.audio:147
 duplicate-code	high	src/openai/resources/audio/speech.py:25:1	-	26 lines (53 tokens) duplicated in 6 other places: openai.resources.batches:22, openai.resources.completions:22, openai.resources.embeddings:23, openai.resources.evals.runs.output_items:21, openai.resources.files:36, openai.resources.images:25
 duplicate-code	high	src/openai/resources/audio/speech.py:50:1	-	59 lines (140 tokens) duplicated at openai.resources.audio.speech:155
-duplicate-code	high	src/openai/resources/audio/speech.py:129:1	-	27 lines (56 tokens) duplicated in 6 other places: openai.resources.audio.transcriptions:543, openai.resources.audio.translations:179, openai.resources.batches:263, openai.resources.completions:591, openai.resources.embeddings:124, openai.resources.evals.runs.output_items:155
+duplicate-code	high	src/openai/resources/audio/speech.py:129:1	-	27 lines (56 tokens) duplicated in 5 other places: openai.resources.audio.transcriptions:543, openai.resources.audio.translations:179, openai.resources.batches:263, openai.resources.embeddings:124, openai.resources.evals.runs.output_items:155
 duplicate-code	high	src/openai/resources/audio/speech.py:226:1	-	49 lines (206 tokens) duplicated at openai.resources.skills.content:129
 duplicate-code	high	src/openai/resources/audio/transcriptions.py:46:1	-	23 lines (51 tokens) duplicated in 2 other places: openai.resources.audio.translations:31, openai.resources.files:380
-duplicate-code	high	src/openai/resources/audio/transcriptions.py:74:1	-	92 lines (157 tokens) duplicated at openai.resources.audio.transcriptions:577
+duplicate-code	high	src/openai/resources/audio/transcriptions.py:69:1	-	9 lines (58 tokens) duplicated at openai.resources.audio.transcriptions:570
+duplicate-code	high	src/openai/resources/audio/transcriptions.py:83:1	-	83 lines (59 tokens) duplicated at openai.resources.audio.transcriptions:586
 duplicate-code	high	src/openai/resources/audio/transcriptions.py:166:1	-	23 lines (160 tokens) duplicated at openai.resources.audio.transcriptions:686
-duplicate-code	high	src/openai/resources/audio/transcriptions.py:196:1	-	16 lines (110 tokens) duplicated at openai.resources.audio.transcriptions:716
+duplicate-code	high	src/openai/resources/audio/transcriptions.py:202:1	-	10 lines (57 tokens) duplicated in 2 other places: openai.resources.audio.transcriptions:225, openai.resources.audio.transcriptions:722
 duplicate-code	high	src/openai/resources/audio/transcriptions.py:235:1	-	121 lines (200 tokens) duplicated at openai.resources.audio.transcriptions:732
 duplicate-code	high	src/openai/resources/audio/transcriptions.py:356:1	-	121 lines (214 tokens) duplicated at openai.resources.audio.transcriptions:853
 duplicate-code	high	src/openai/resources/audio/transcriptions.py:477:1	-	49 lines (326 tokens) duplicated at openai.resources.audio.transcriptions:974
@@ -362,41 +350,41 @@ duplicate-code	high	src/openai/resources/audio/transcriptions.py:1040:1	-	43 lin
 duplicate-code	high	src/openai/resources/audio/translations.py:54:1	-	17 lines (97 tokens) duplicated at openai.resources.audio.translations:206
 duplicate-code	high	src/openai/resources/audio/translations.py:71:1	-	17 lines (90 tokens) duplicated at openai.resources.audio.translations:223
 duplicate-code	high	src/openai/resources/audio/translations.py:88:1	-	15 lines (91 tokens) duplicated at openai.resources.audio.translations:240
-duplicate-code	high	src/openai/resources/audio/translations.py:110:1	-	59 lines (140 tokens) duplicated at openai.resources.audio.translations:262
+duplicate-code	high	src/openai/resources/audio/translations.py:111:1	-	58 lines (134 tokens) duplicated at openai.resources.audio.translations:263
 duplicate-code	high	src/openai/resources/batches.py:47:1	-	68 lines (107 tokens) duplicated at openai.resources.batches:289
 duplicate-code	high	src/openai/resources/batches.py:122:1	-	39 lines (114 tokens) duplicated in 4 other places: openai.resources.beta.chatkit.sessions:98, openai.resources.containers.containers:107, openai.resources.fine_tuning.jobs.jobs:171, openai.resources.uploads.uploads:240
 duplicate-code	high	src/openai/resources/batches.py:161:1	-	24 lines (116 tokens) duplicated at openai.resources.batches:403
-duplicate-code	high	src/openai/resources/batches.py:207:1	-	47 lines (132 tokens) duplicated at openai.resources.fine_tuning.jobs.jobs:346
+duplicate-code	high	src/openai/resources/batches.py:210:1	-	44 lines (117 tokens) duplicated at openai.resources.fine_tuning.jobs.jobs:349
 duplicate-code	high	src/openai/resources/batches.py:364:1	-	39 lines (115 tokens) duplicated in 3 other places: openai.resources.beta.chatkit.sessions:221, openai.resources.fine_tuning.jobs.jobs:577, openai.resources.uploads.uploads:568
-duplicate-code	high	src/openai/resources/batches.py:449:1	-	47 lines (133 tokens) duplicated at openai.resources.fine_tuning.jobs.jobs:752
+duplicate-code	high	src/openai/resources/batches.py:452:1	-	44 lines (118 tokens) duplicated at openai.resources.fine_tuning.jobs.jobs:755
 duplicate-code	high	src/openai/resources/batches.py:497:1	-	83 lines (360 tokens) duplicated at openai.resources.conversations.items:501
 duplicate-code	high	src/openai/resources/beta/agents/agents.py:53:1	-	33 lines (116 tokens) duplicated in 2 other places: openai.resources.beta.agents.agents:400, openai.resources.live.live:61
 duplicate-code	high	src/openai/resources/beta/agents/agents.py:85:1	-	61 lines (180 tokens) duplicated at openai.resources.beta.agents.agents:432
 duplicate-code	high	src/openai/resources/beta/agents/agents.py:165:1	-	47 lines (161 tokens) duplicated at openai.resources.beta.agents.agents:353
 duplicate-code	high	src/openai/resources/beta/agents/agents.py:211:1	-	65 lines (208 tokens) duplicated at openai.resources.beta.agents.agents:558
-duplicate-code	high	src/openai/resources/beta/agents/agents.py:277:1	-	37 lines (166 tokens) duplicated at openai.resources.beta.agents.agents:624
+duplicate-code	high	src/openai/resources/beta/agents/agents.py:286:1	-	28 lines (133 tokens) duplicated at openai.resources.beta.agents.agents:633
 duplicate-code	high	src/openai/resources/beta/agents/agents.py:512:1	-	47 lines (163 tokens) duplicated at openai.resources.beta.agents.agents:700
 duplicate-code	high	src/openai/resources/beta/agents/agents.py:771:1	-	43 lines (218 tokens) duplicated at openai.resources.beta.agents.sessions.sessions:1016
 duplicate-code	high	src/openai/resources/beta/agents/agents.py:837:1	-	41 lines (208 tokens) duplicated at openai.resources.beta.agents.sessions.sessions:1098
 duplicate-code	high	src/openai/resources/beta/agents/environments/environments.py:161:1	-	19 lines (83 tokens) duplicated at openai.resources.fine_tuning.jobs.jobs:834
 duplicate-code	high	src/openai/resources/beta/agents/environments/environments.py:185:1	-	18 lines (88 tokens) duplicated at openai.resources.live.live:287
 duplicate-code	high	src/openai/resources/beta/agents/environments/environments.py:209:1	-	22 lines (100 tokens) duplicated at openai.resources.beta.agents.sessions.subagents.subagents:355
+duplicate-code	high	src/openai/resources/beta/agents/environments/environments.py:232:1	-	8 lines (50 tokens) duplicated at openai.resources.beta.agents.sessions.subagents.subagents:340
 duplicate-code	high	src/openai/resources/beta/agents/environments/files.py:3:1	-	42 lines (72 tokens) duplicated at openai.resources.vector_stores.files:11
 duplicate-code	high	src/openai/resources/beta/agents/environments/files.py:45:1	-	37 lines (77 tokens) duplicated at openai.resources.beta.agents.environments.files:245
 duplicate-code	high	src/openai/resources/beta/agents/environments/files.py:82:1	-	37 lines (94 tokens) duplicated at openai.resources.beta.agents.environments.files:282
 duplicate-code	high	src/openai/resources/beta/agents/environments/files.py:119:1	-	19 lines (124 tokens) duplicated at openai.resources.beta.agents.environments.files:319
-duplicate-code	high	src/openai/resources/beta/agents/environments/files.py:139:1	-	34 lines (161 tokens) duplicated at openai.resources.beta.agents.environments.files:339
+duplicate-code	high	src/openai/resources/beta/agents/environments/files.py:143:1	-	30 lines (148 tokens) duplicated at openai.resources.beta.agents.environments.files:343
 duplicate-code	high	src/openai/resources/beta/agents/environments/files.py:217:1	-	28 lines (69 tokens) duplicated in 5 other places: openai.resources.beta.responses.input_tokens:159, openai.resources.content_provenance_checks:90, openai.resources.realtime.client_secrets:99, openai.resources.responses.input_tokens:155, openai.resources.vector_stores.files:478
 duplicate-code	high	src/openai/resources/beta/agents/environments/files.py:414:1	-	57 lines (241 tokens) duplicated in 2 other places: openai.resources.beta.agents.sessions.turns:267, openai.resources.evals.runs.output_items:284
 duplicate-code	high	src/openai/resources/beta/agents/environments/templates.py:49:1	-	55 lines (192 tokens) duplicated at openai.resources.beta.agents.environments.templates:384
 duplicate-code	high	src/openai/resources/beta/agents/environments/templates.py:123:1	-	52 lines (162 tokens) duplicated at openai.resources.beta.agents.environments.templates:312
 duplicate-code	high	src/openai/resources/beta/agents/environments/templates.py:174:1	-	58 lines (216 tokens) duplicated at openai.resources.beta.agents.environments.templates:509
-duplicate-code	high	src/openai/resources/beta/agents/environments/templates.py:236:1	-	37 lines (163 tokens) duplicated at openai.resources.beta.agents.environments.templates:571
-duplicate-code	high	src/openai/resources/beta/agents/environments/templates.py:449:1	-	43 lines (119 tokens) duplicated at openai.resources.containers.containers:331
-duplicate-code	high	src/openai/resources/beta/agents/environments/templates.py:633:1	-	48 lines (137 tokens) duplicated at openai.resources.skills.skills:482
+duplicate-code	high	src/openai/resources/beta/agents/environments/templates.py:245:1	-	28 lines (130 tokens) duplicated at openai.resources.beta.agents.environments.templates:580
+duplicate-code	high	src/openai/resources/beta/agents/environments/templates.py:449:1	-	43 lines (118 tokens) duplicated at openai.resources.containers.containers:331
+duplicate-code	high	src/openai/resources/beta/agents/environments/templates.py:637:1	-	44 lines (118 tokens) duplicated at openai.resources.skills.skills:486
 duplicate-code	high	src/openai/resources/beta/agents/environments/templates.py:687:1	-	95 lines (408 tokens) duplicated at openai.resources.beta.agents.vaults.credentials:586
 duplicate-code	high	src/openai/resources/beta/agents/sessions/artifacts.py:50:1	-	52 lines (188 tokens) duplicated at openai.resources.beta.agents.sessions.artifacts:160
-duplicate-code	high	src/openai/resources/beta/agents/sessions/artifacts.py:101:1	-	11 lines (86 tokens) duplicated at openai.resources.beta.agents.sessions.artifacts:325
 duplicate-code	high	src/openai/resources/beta/agents/sessions/artifacts.py:211:1	-	29 lines (121 tokens) duplicated at openai.resources.beta.agents.sessions.artifacts:435
 duplicate-code	high	src/openai/resources/beta/agents/sessions/artifacts.py:239:1	-	18 lines (60 tokens) duplicated at openai.resources.beta.agents.sessions.artifacts:463
 duplicate-code	high	src/openai/resources/beta/agents/sessions/artifacts.py:274:1	-	48 lines (176 tokens) duplicated at openai.resources.beta.agents.sessions.artifacts:384
@@ -406,11 +394,9 @@ duplicate-code	high	src/openai/resources/beta/agents/sessions/events.py:44:1	-	3
 duplicate-code	high	src/openai/resources/beta/agents/sessions/events.py:80:1	-	12 lines (50 tokens) duplicated at openai.resources.beta.agents.sessions.events:191
 duplicate-code	high	src/openai/resources/beta/agents/sessions/events.py:92:1	-	29 lines (109 tokens) duplicated at openai.resources.beta.agents.sessions.events:203
 duplicate-code	high	src/openai/resources/beta/agents/sessions/events.py:120:1	-	16 lines (69 tokens) duplicated at openai.resources.beta.agents.sessions.events:231
-duplicate-code	high	src/openai/resources/beta/agents/sessions/events.py:247:1	-	12 lines (50 tokens) duplicated at openai.resources.beta.agents.sessions.subagents.turns.turns:336
 duplicate-code	high	src/openai/resources/beta/agents/sessions/items.py:25:1	-	58 lines (140 tokens) duplicated at openai.resources.chat.completions.messages:28
-duplicate-code	high	src/openai/resources/beta/agents/sessions/items.py:85:1	-	18 lines (71 tokens) duplicated in 2 other places: openai.resources.beta.agents.sessions.items:167, openai.resources.containers.files.files:201
 duplicate-code	high	src/openai/resources/beta/agents/sessions/items.py:107:1	-	58 lines (145 tokens) duplicated at openai.resources.chat.completions.messages:111
-duplicate-code	high	src/openai/resources/beta/agents/sessions/items.py:184:1	-	39 lines (165 tokens) duplicated at openai.resources.completions:1161
+duplicate-code	high	src/openai/resources/beta/agents/sessions/items.py:173:1	-	50 lines (212 tokens) duplicated in 2 other places: openai.resources.beta.agents.sessions.subagents.items:187, openai.resources.beta.agents.sessions.subagents.turns.items:195
 duplicate-code	high	src/openai/resources/beta/agents/sessions/sessions.py:70:1	-	67 lines (263 tokens) duplicated at openai.resources.beta.agents.sessions.sessions:527
 duplicate-code	high	src/openai/resources/beta/agents/sessions/sessions.py:137:1	-	51 lines (139 tokens) duplicated at openai.resources.beta.agents.sessions.sessions:594
 duplicate-code	high	src/openai/resources/beta/agents/sessions/sessions.py:188:1	-	51 lines (138 tokens) duplicated at openai.resources.beta.agents.sessions.sessions:645
@@ -423,37 +409,36 @@ duplicate-code	high	src/openai/resources/beta/agents/sessions/sessions.py:790:1	
 duplicate-code	high	src/openai/resources/beta/agents/sessions/sessions.py:1000:1	-	13 lines (57 tokens) duplicated at openai.resources.beta.responses.responses:4128
 duplicate-code	high	src/openai/resources/beta/agents/sessions/sessions.py:1057:1	-	28 lines (134 tokens) duplicated at openai.resources.vector_stores.vector_stores:879
 duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/items.py:42:1	-	47 lines (158 tokens) duplicated at openai.resources.beta.agents.sessions.subagents.turns.turns:104
-duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/items.py:92:1	-	18 lines (66 tokens) duplicated in 3 other places: openai.resources.beta.agents.sessions.subagents.turns.items:96, openai.resources.videos:286, openai.resources.videos:877
 duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/items.py:131:1	-	47 lines (163 tokens) duplicated at openai.resources.beta.agents.sessions.subagents.turns.turns:248
-duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/items.py:178:1	-	59 lines (246 tokens) duplicated at openai.resources.beta.agents.sessions.subagents.turns.items:186
 duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/subagents.py:48:1	-	49 lines (132 tokens) duplicated at openai.resources.beta.agents.sessions.turns:24
 duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/subagents.py:100:1	-	54 lines (178 tokens) duplicated at openai.resources.beta.agents.sessions.turns:76
-duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/subagents.py:153:1	-	23 lines (84 tokens) duplicated in 2 other places: openai.resources.beta.agents.sessions.turns:129, openai.resources.chat.completions.messages:85
+duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/subagents.py:157:1	-	19 lines (60 tokens) duplicated in 2 other places: openai.resources.beta.agents.sessions.turns:133, openai.resources.chat.completions.messages:89
 duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/subagents.py:183:1	-	49 lines (133 tokens) duplicated at openai.resources.beta.agents.sessions.turns:151
 duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/subagents.py:235:1	-	54 lines (183 tokens) duplicated at openai.resources.beta.agents.sessions.turns:203
-duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/subagents.py:288:1	-	37 lines (150 tokens) duplicated at openai.resources.beta.agents.sessions.subagents.turns.turns:298
-duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/subagents.py:331:1	-	23 lines (109 tokens) duplicated at openai.resources.beta.responses.responses:4037
+duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/subagents.py:311:1	-	28 lines (132 tokens) duplicated at openai.resources.beta.responses.responses:4037
 duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/subagents.py:376:1	-	12 lines (62 tokens) duplicated at openai.resources.vector_stores.vector_stores:907
 duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/turns/items.py:24:1	-	36 lines (140 tokens) duplicated at openai.resources.beta.agents.sessions.subagents.turns.items:117
 duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/turns/items.py:84:1	-	8 lines (73 tokens) duplicated in 2 other places: openai.resources.beta.agents.sessions.subagents.turns.items:177, openai.resources.beta.agents.sessions.subagents.turns.turns:83
+duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/turns/turns.py:323:1	-	17 lines (79 tokens) duplicated at openai.resources.beta.agents.sessions.subagents.turns.turns:339
 duplicate-code	high	src/openai/resources/beta/agents/sessions/subagents/turns/turns.py:357:1	-	17 lines (76 tokens) duplicated at openai.resources.live.live:307
 duplicate-code	high	src/openai/resources/beta/agents/vaults/credentials.py:52:1	-	37 lines (101 tokens) duplicated at openai.resources.beta.agents.vaults.credentials:335
 duplicate-code	high	src/openai/resources/beta/agents/vaults/credentials.py:101:1	-	52 lines (189 tokens) duplicated at openai.resources.beta.agents.vaults.credentials:263
 duplicate-code	high	src/openai/resources/beta/agents/vaults/credentials.py:152:1	-	35 lines (121 tokens) duplicated at openai.resources.beta.agents.vaults.credentials:435
 duplicate-code	high	src/openai/resources/beta/agents/vaults/credentials.py:190:1	-	26 lines (144 tokens) duplicated at openai.resources.beta.agents.vaults.credentials:473
 duplicate-code	high	src/openai/resources/beta/agents/vaults/credentials.py:379:1	-	39 lines (110 tokens) duplicated at openai.resources.skills.skills:395
+duplicate-code	high	src/openai/resources/beta/agents/vaults/credentials.py:543:1	-	37 lines (99 tokens) duplicated at openai.resources.skills.versions.versions:436
 duplicate-code	high	src/openai/resources/beta/agents/vaults/vaults.py:34:1	-	25 lines (72 tokens) duplicated in 7 other places: openai.resources.beta.agents.vaults.vaults:256, openai.resources.containers.containers:34, openai.resources.containers.containers:259, openai.resources.containers.files.files:35, openai.resources.containers.files.files:263, openai.resources.skills.versions.versions:44, openai.resources.skills.versions.versions:266
 duplicate-code	high	src/openai/resources/beta/agents/vaults/vaults.py:58:1	-	34 lines (93 tokens) duplicated at openai.resources.beta.agents.vaults.vaults:280
 duplicate-code	high	src/openai/resources/beta/agents/vaults/vaults.py:104:1	-	47 lines (161 tokens) duplicated at openai.resources.beta.agents.vaults.vaults:209
 duplicate-code	high	src/openai/resources/beta/agents/vaults/vaults.py:150:1	-	14 lines (90 tokens) duplicated at openai.resources.beta.agents.vaults.vaults:372
-duplicate-code	high	src/openai/resources/beta/agents/vaults/vaults.py:317:1	-	42 lines (120 tokens) duplicated at openai.resources.evals.evals:402
+duplicate-code	high	src/openai/resources/beta/agents/vaults/vaults.py:317:1	-	42 lines (118 tokens) duplicated at openai.resources.evals.evals:402
 duplicate-code	high	src/openai/resources/beta/agents/vaults/vaults.py:428:1	-	36 lines (95 tokens) duplicated in 3 other places: openai.resources.chat.completions.completions:3134, openai.resources.evals.evals:558, openai.resources.fine_tuning.jobs.jobs:674
 duplicate-code	high	src/openai/resources/beta/agents/vaults/vaults.py:466:1	-	99 lines (456 tokens) duplicated at openai.resources.containers.containers:472
 duplicate-code	high	src/openai/resources/beta/assistants.py:35:1	-	23 lines (59 tokens) duplicated at openai.resources.beta.assistants:514
 duplicate-code	high	src/openai/resources/beta/assistants.py:58:1	-	102 lines (190 tokens) duplicated at openai.resources.beta.assistants:537
 duplicate-code	high	src/openai/resources/beta/assistants.py:181:1	-	46 lines (169 tokens) duplicated at openai.resources.beta.assistants:468
 duplicate-code	high	src/openai/resources/beta/assistants.py:227:1	-	153 lines (305 tokens) duplicated at openai.resources.beta.assistants:706
-duplicate-code	high	src/openai/resources/beta/assistants.py:381:1	-	41 lines (187 tokens) duplicated at openai.resources.beta.assistants:860
+duplicate-code	high	src/openai/resources/beta/assistants.py:392:1	-	30 lines (146 tokens) duplicated at openai.resources.beta.assistants:871
 duplicate-code	high	src/openai/resources/beta/assistants.py:652:1	-	15 lines (53 tokens) duplicated at openai.resources.beta.threads.messages:409
 duplicate-code	high	src/openai/resources/beta/assistants.py:666:1	-	26 lines (69 tokens) duplicated in 3 other places: openai.resources.beta.assistants:953, openai.resources.files:672, openai.resources.videos:1153
 duplicate-code	high	src/openai/resources/beta/assistants.py:981:1	-	135 lines (452 tokens) duplicated at openai.resources.beta.threads.messages:620
@@ -485,24 +470,21 @@ duplicate-code	high	src/openai/resources/beta/realtime/realtime.py:999:1	-	87 li
 duplicate-code	high	src/openai/resources/beta/realtime/sessions.py:41:1	-	135 lines (282 tokens) duplicated at openai.resources.beta.realtime.sessions:225
 duplicate-code	high	src/openai/resources/beta/realtime/sessions.py:378:1	-	46 lines (200 tokens) duplicated at openai.resources.beta.realtime.transcription_sessions:236
 duplicate-code	high	src/openai/resources/beta/realtime/transcription_sessions.py:41:1	-	73 lines (151 tokens) duplicated at openai.resources.beta.realtime.transcription_sessions:154
-duplicate-code	high	src/openai/resources/beta/responses/input_items.py:3:1	-	51 lines (127 tokens) duplicated at openai.resources.responses.input_items:3
-duplicate-code	high	src/openai/resources/beta/responses/input_items.py:56:1	-	33 lines (65 tokens) duplicated at openai.resources.responses.input_items:55
-duplicate-code	high	src/openai/resources/beta/responses/input_items.py:93:1	-	51 lines (189 tokens) duplicated at openai.resources.responses.input_items:88
-duplicate-code	high	src/openai/resources/beta/responses/input_items.py:146:1	-	33 lines (69 tokens) duplicated at openai.resources.responses.input_items:140
-duplicate-code	high	src/openai/resources/beta/responses/input_items.py:183:1	-	57 lines (245 tokens) duplicated at openai.resources.responses.input_items:173
+duplicate-code	high	src/openai/resources/beta/responses/input_items.py:25:1	-	36 lines (157 tokens) duplicated at openai.resources.beta.responses.input_items:115
+duplicate-code	high	src/openai/resources/beta/responses/input_items.py:190:1	-	50 lines (212 tokens) duplicated at openai.resources.responses.input_items:180
 duplicate-code	high	src/openai/resources/beta/responses/input_tokens.py:45:1	-	92 lines (268 tokens) duplicated at openai.resources.beta.responses.input_tokens:186
-duplicate-code	high	src/openai/resources/beta/responses/input_tokens.py:278:1	-	64 lines (261 tokens) duplicated at openai.resources.responses.input_tokens:269
+duplicate-code	high	src/openai/resources/beta/responses/input_tokens.py:291:1	-	51 lines (212 tokens) duplicated at openai.resources.responses.input_tokens:282
 duplicate-code	high	src/openai/resources/beta/responses/responses.py:76:1	-	32 lines (95 tokens) duplicated in 3 other places: openai.resources.responses.responses:102, openai.resources.skills.skills:49, openai.resources.vector_stores.vector_stores:47
 duplicate-code	high	src/openai/resources/beta/responses/responses.py:108:1	-	401 lines (665 tokens) duplicated at openai.resources.beta.responses.responses:2081
 duplicate-code	high	src/openai/resources/beta/responses/responses.py:509:1	-	401 lines (661 tokens) duplicated at openai.resources.beta.responses.responses:2482
 duplicate-code	high	src/openai/resources/beta/responses/responses.py:910:1	-	401 lines (657 tokens) duplicated at openai.resources.beta.responses.responses:2883
 duplicate-code	high	src/openai/resources/beta/responses/responses.py:1310:1	-	156 lines (711 tokens) duplicated at openai.resources.beta.responses.responses:3283
-duplicate-code	high	src/openai/resources/beta/responses/responses.py:1467:1	-	52 lines (198 tokens) duplicated at openai.resources.beta.responses.responses:3440
+duplicate-code	high	src/openai/resources/beta/responses/responses.py:1505:1	-	14 lines (54 tokens) duplicated in 3 other places: openai.resources.beta.responses.responses:3478, openai.resources.images:585, openai.resources.images:1605
 duplicate-code	high	src/openai/resources/beta/responses/responses.py:1519:1	-	50 lines (114 tokens) duplicated at openai.resources.beta.responses.responses:3492
 duplicate-code	high	src/openai/resources/beta/responses/responses.py:1569:1	-	50 lines (113 tokens) duplicated at openai.resources.beta.responses.responses:3542
 duplicate-code	high	src/openai/resources/beta/responses/responses.py:1619:1	-	50 lines (109 tokens) duplicated at openai.resources.beta.responses.responses:3592
 duplicate-code	high	src/openai/resources/beta/responses/responses.py:1668:1	-	23 lines (180 tokens) duplicated at openai.resources.beta.responses.responses:3641
-duplicate-code	high	src/openai/resources/beta/responses/responses.py:1697:1	-	17 lines (57 tokens) duplicated in 3 other places: openai.resources.beta.responses.responses:3670, openai.resources.responses.responses:1647, openai.resources.responses.responses:3528
+duplicate-code	high	src/openai/resources/beta/responses/responses.py:1699:1	-	15 lines (51 tokens) duplicated in 3 other places: openai.resources.beta.responses.responses:3672, openai.resources.responses.responses:1649, openai.resources.responses.responses:3530
 duplicate-code	high	src/openai/resources/beta/responses/responses.py:1713:1	-	32 lines (149 tokens) duplicated at openai.resources.beta.responses.responses:3686
 duplicate-code	high	src/openai/resources/beta/responses/responses.py:1744:1	-	13 lines (50 tokens) duplicated at openai.resources.beta.responses.responses:3717
 duplicate-code	high	src/openai/resources/beta/responses/responses.py:1756:1	-	34 lines (133 tokens) duplicated at openai.resources.beta.responses.responses:3729
@@ -527,33 +509,32 @@ duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:91:1	-	152 li
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:243:1	-	152 lines (271 tokens) duplicated at openai.resources.beta.threads.runs.runs:1711
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:395:1	-	152 lines (281 tokens) duplicated at openai.resources.beta.threads.runs.runs:1863
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:547:1	-	33 lines (307 tokens) duplicated at openai.resources.beta.threads.runs.runs:2016
-duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:581:1	-	28 lines (107 tokens) duplicated at openai.resources.beta.threads.runs.runs:2050
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:614:1	-	35 lines (135 tokens) duplicated at openai.resources.beta.threads.runs.runs:776
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:699:1	-	27 lines (149 tokens) duplicated at openai.resources.beta.threads.runs.runs:2168
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:810:1	-	12 lines (56 tokens) duplicated at openai.resources.beta.threads.runs.runs:2279
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:822:1	-	35 lines (257 tokens) duplicated at openai.resources.beta.threads.runs.runs:2291
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:856:1	-	27 lines (99 tokens) duplicated at openai.resources.beta.threads.runs.runs:2325
-duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:882:1	-	28 lines (189 tokens) duplicated at openai.resources.beta.threads.runs.runs:2351
-duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:938:1	-	36 lines (286 tokens) duplicated at openai.resources.beta.threads.runs.runs:2405
-duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:974:1	-	12 lines (85 tokens) duplicated at openai.resources.beta.threads.runs.runs:2440
-duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:985:1	-	12 lines (56 tokens) duplicated in 3 other places: openai.resources.beta.threads.runs.runs:1176, openai.resources.beta.threads.runs.runs:2454, openai.resources.beta.threads.runs.runs:2645
-duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:998:1	-	17 lines (70 tokens) duplicated at openai.resources.beta.threads.runs.runs:2466
-duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1017:1	-	18 lines (81 tokens) duplicated at openai.resources.beta.threads.runs.runs:2484
+duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:893:1	-	27 lines (227 tokens) duplicated at openai.resources.beta.threads.runs.runs:957
+duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:919:1	-	23 lines (177 tokens) duplicated at openai.resources.beta.threads.runs.runs:2387
+duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:985:1	-	29 lines (136 tokens) duplicated at openai.resources.beta.threads.runs.runs:1176
+duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1019:1	-	16 lines (73 tokens) duplicated at openai.resources.beta.threads.runs.runs:2486
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1035:1	-	23 lines (124 tokens) duplicated at openai.resources.beta.threads.runs.runs:2502
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1057:1	-	22 lines (99 tokens) duplicated at openai.resources.beta.threads.runs.runs:2524
-duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1086:1	-	91 lines (759 tokens) duplicated at openai.resources.beta.threads.runs.runs:2552
-duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1189:1	-	39 lines (178 tokens) duplicated at openai.resources.beta.threads.runs.runs:2657
+duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1101:1	-	76 lines (587 tokens) duplicated at openai.resources.beta.threads.runs.runs:2567
+duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1215:1	-	13 lines (76 tokens) duplicated at openai.resources.beta.threads.runs.runs:2683
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1228:1	-	39 lines (97 tokens) duplicated at openai.resources.beta.threads.runs.runs:2696
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1267:1	-	39 lines (93 tokens) duplicated at openai.resources.beta.threads.runs.runs:2735
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1306:1	-	40 lines (115 tokens) duplicated at openai.resources.beta.threads.runs.runs:2774
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1346:1	-	20 lines (149 tokens) duplicated at openai.resources.beta.threads.runs.runs:2814
-duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1367:1	-	23 lines (87 tokens) duplicated at openai.resources.beta.threads.runs.runs:2835
+duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1376:1	-	14 lines (59 tokens) duplicated at openai.resources.beta.threads.runs.runs:2844
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1390:1	-	20 lines (79 tokens) duplicated at openai.resources.beta.threads.runs.runs:2858
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1419:1	-	70 lines (293 tokens) duplicated at openai.resources.beta.threads.runs.runs:2887
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1488:1	-	19 lines (76 tokens) duplicated at openai.resources.beta.threads.runs.runs:2959
-duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1512:1	-	35 lines (122 tokens) duplicated at openai.resources.beta.threads.threads:935
+duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:1514:1	-	33 lines (116 tokens) duplicated at openai.resources.beta.threads.threads:937
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:2083:1	-	35 lines (137 tokens) duplicated at openai.resources.beta.threads.runs.runs:2245
-duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:2982:1	-	47 lines (177 tokens) duplicated at openai.resources.beta.threads.threads:1830
+duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:2362:1	-	26 lines (216 tokens) duplicated at openai.resources.beta.threads.runs.runs:2424
+duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:2451:1	-	31 lines (136 tokens) duplicated at openai.resources.beta.threads.runs.runs:2642
+duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:2984:1	-	45 lines (171 tokens) duplicated at openai.resources.beta.threads.threads:1832
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:3033:1	-	37 lines (134 tokens) duplicated at openai.resources.beta.threads.threads:1881
 duplicate-code	high	src/openai/resources/beta/threads/runs/runs.py:3082:1	-	42 lines (136 tokens) duplicated at openai.resources.beta.threads.runs.runs:3123
 duplicate-code	high	src/openai/resources/beta/threads/runs/steps.py:49:1	-	42 lines (152 tokens) duplicated at openai.resources.beta.threads.runs.steps:214
@@ -561,37 +542,38 @@ duplicate-code	high	src/openai/resources/beta/threads/runs/steps.py:102:1	-	24 l
 duplicate-code	high	src/openai/resources/beta/threads/runs/steps.py:125:1	-	67 lines (159 tokens) duplicated at openai.resources.beta.threads.runs.steps:290
 duplicate-code	high	src/openai/resources/beta/threads/runs/steps.py:361:1	-	17 lines (59 tokens) duplicated at openai.resources.beta.threads.runs.steps:377
 duplicate-code	high	src/openai/resources/beta/threads/threads.py:95:1	-	43 lines (106 tokens) duplicated at openai.resources.beta.threads.threads:986
-duplicate-code	high	src/openai/resources/beta/threads/threads.py:142:1	-	55 lines (206 tokens) duplicated at openai.resources.beta.threads.threads:241
+duplicate-code	high	src/openai/resources/beta/threads/threads.py:142:1	-	55 lines (204 tokens) duplicated at openai.resources.beta.threads.threads:241
 duplicate-code	high	src/openai/resources/beta/threads/threads.py:197:1	-	41 lines (117 tokens) duplicated at openai.resources.beta.threads.threads:1088
 duplicate-code	high	src/openai/resources/beta/threads/threads.py:297:1	-	135 lines (245 tokens) duplicated at openai.resources.beta.threads.threads:1188
 duplicate-code	high	src/openai/resources/beta/threads/threads.py:432:1	-	135 lines (241 tokens) duplicated at openai.resources.beta.threads.threads:1323
 duplicate-code	high	src/openai/resources/beta/threads/threads.py:567:1	-	136 lines (259 tokens) duplicated at openai.resources.beta.threads.threads:1458
 duplicate-code	high	src/openai/resources/beta/threads/threads.py:703:1	-	28 lines (257 tokens) duplicated at openai.resources.beta.threads.threads:1594
-duplicate-code	high	src/openai/resources/beta/threads/threads.py:732:1	-	37 lines (135 tokens) duplicated at openai.resources.beta.threads.threads:1623
+duplicate-code	high	src/openai/resources/beta/threads/threads.py:755:1	-	14 lines (51 tokens) duplicated at openai.resources.beta.threads.threads:1646
 duplicate-code	high	src/openai/resources/beta/threads/threads.py:768:1	-	32 lines (227 tokens) duplicated at openai.resources.beta.threads.threads:1659
 duplicate-code	high	src/openai/resources/beta/threads/threads.py:799:1	-	23 lines (87 tokens) duplicated at openai.resources.beta.threads.threads:1690
 duplicate-code	high	src/openai/resources/beta/threads/threads.py:821:1	-	87 lines (702 tokens) duplicated at openai.resources.beta.threads.threads:1712
-duplicate-code	high	src/openai/resources/beta/threads/threads.py:1033:1	-	55 lines (208 tokens) duplicated at openai.resources.beta.threads.threads:1132
+duplicate-code	high	src/openai/resources/beta/threads/threads.py:1033:1	-	55 lines (206 tokens) duplicated at openai.resources.beta.threads.threads:1132
 duplicate-code	high	src/openai/resources/beta/threads/threads.py:1930:1	-	42 lines (147 tokens) duplicated at openai.resources.beta.threads.threads:1971
 duplicate-code	high	src/openai/resources/chat/chat.py:16:1	-	106 lines (358 tokens) duplicated in 2 other places: openai.resources.fine_tuning.alpha.alpha:16, openai.resources.fine_tuning.checkpoints.checkpoints:16
 duplicate-code	high	src/openai/resources/chat/completions/completions.py:57:1	-	35 lines (75 tokens) duplicated in 4 other places: openai.resources.conversations.conversations:30, openai.resources.evals.evals:34, openai.resources.fine_tuning.jobs.jobs:31, openai.resources.uploads.uploads:40
 duplicate-code	high	src/openai/resources/chat/completions/completions.py:91:1	-	89 lines (486 tokens) duplicated at openai.resources.chat.completions.completions:1714
 duplicate-code	high	src/openai/resources/chat/completions/completions.py:179:1	-	15 lines (55 tokens) duplicated at openai.resources.chat.completions.completions:1802
-duplicate-code	high	src/openai/resources/chat/completions/completions.py:195:1	-	27 lines (106 tokens) duplicated at openai.resources.chat.completions.completions:1818
-duplicate-code	high	src/openai/resources/chat/completions/completions.py:223:1	-	29 lines (110 tokens) duplicated at openai.resources.chat.completions.completions:1846
+duplicate-code	high	src/openai/resources/chat/completions/completions.py:193:1	-	26 lines (98 tokens) duplicated at openai.resources.chat.completions.completions:1308
+duplicate-code	high	src/openai/resources/chat/completions/completions.py:238:1	-	14 lines (54 tokens) duplicated at openai.resources.chat.completions.completions:1861
 duplicate-code	high	src/openai/resources/chat/completions/completions.py:252:1	-	336 lines (501 tokens) duplicated at openai.resources.chat.completions.completions:1875
 duplicate-code	high	src/openai/resources/chat/completions/completions.py:588:1	-	336 lines (497 tokens) duplicated at openai.resources.chat.completions.completions:2211
 duplicate-code	high	src/openai/resources/chat/completions/completions.py:924:1	-	336 lines (511 tokens) duplicated at openai.resources.chat.completions.completions:2547
 duplicate-code	high	src/openai/resources/chat/completions/completions.py:1260:1	-	49 lines (510 tokens) duplicated at openai.resources.chat.completions.completions:2883
-duplicate-code	high	src/openai/resources/chat/completions/completions.py:1310:1	-	57 lines (215 tokens) duplicated at openai.resources.chat.completions.completions:2933
-duplicate-code	high	src/openai/resources/chat/completions/completions.py:1372:1	-	22 lines (60 tokens) duplicated at openai.resources.chat.completions.completions:2995
+duplicate-code	high	src/openai/resources/chat/completions/completions.py:1353:1	-	14 lines (51 tokens) duplicated in 2 other places: openai.resources.completions:1151, openai.resources.images:2054
 duplicate-code	high	src/openai/resources/chat/completions/completions.py:1393:1	-	13 lines (50 tokens) duplicated at openai.resources.chat.completions.completions:3016
 duplicate-code	high	src/openai/resources/chat/completions/completions.py:1405:1	-	37 lines (84 tokens) duplicated at openai.resources.chat.completions.completions:3028
 duplicate-code	high	src/openai/resources/chat/completions/completions.py:1443:1	-	26 lines (148 tokens) duplicated at openai.resources.chat.completions.completions:3066
 duplicate-code	high	src/openai/resources/chat/completions/completions.py:1511:1	-	36 lines (94 tokens) duplicated at openai.resources.fine_tuning.jobs.jobs:268
 duplicate-code	high	src/openai/resources/chat/completions/completions.py:1547:1	-	81 lines (540 tokens) duplicated at openai.resources.chat.completions.completions:3170
-duplicate-code	high	src/openai/resources/chat/completions/completions.py:1634:1	-	50 lines (188 tokens) duplicated at openai.resources.chat.completions.completions:3258
+duplicate-code	high	src/openai/resources/chat/completions/completions.py:1663:1	-	21 lines (69 tokens) duplicated at openai.resources.chat.completions.completions:3287
 duplicate-code	high	src/openai/resources/chat/completions/completions.py:1688:1	-	27 lines (65 tokens) duplicated in 5 other places: openai.resources.conversations.conversations:238, openai.resources.evals.evals:324, openai.resources.evals.runs.runs:310, openai.resources.realtime.realtime:74, openai.resources.realtime.realtime:144
+duplicate-code	high	src/openai/resources/chat/completions/completions.py:1816:1	-	26 lines (100 tokens) duplicated at openai.resources.chat.completions.completions:2931
+duplicate-code	high	src/openai/resources/chat/completions/completions.py:2986:1	-	30 lines (71 tokens) duplicated at openai.resources.skills.skills:366
 duplicate-code	high	src/openai/resources/chat/completions/completions.py:3318:1	-	42 lines (184 tokens) duplicated at openai.resources.fine_tuning.jobs.jobs:860
 duplicate-code	high	src/openai/resources/chat/completions/completions.py:3379:1	-	43 lines (172 tokens) duplicated at openai.resources.fine_tuning.jobs.jobs:923
 duplicate-code	high	src/openai/resources/chat/completions/messages.py:179:1	-	45 lines (189 tokens) duplicated at openai.resources.fine_tuning.jobs.checkpoints:159
@@ -599,6 +581,8 @@ duplicate-code	high	src/openai/resources/completions.py:50:1	-	159 lines (292 to
 duplicate-code	high	src/openai/resources/completions.py:209:1	-	159 lines (288 tokens) duplicated at openai.resources.completions:779
 duplicate-code	high	src/openai/resources/completions.py:368:1	-	159 lines (302 tokens) duplicated at openai.resources.completions:938
 duplicate-code	high	src/openai/resources/completions.py:527:1	-	29 lines (296 tokens) duplicated at openai.resources.completions:1097
+duplicate-code	high	src/openai/resources/completions.py:581:1	-	39 lines (103 tokens) duplicated at openai.resources.images:1034
+duplicate-code	high	src/openai/resources/completions.py:1185:1	-	14 lines (52 tokens) duplicated at openai.resources.fine_tuning.checkpoints.permissions:607
 duplicate-code	high	src/openai/resources/containers/containers.py:58:1	-	41 lines (118 tokens) duplicated at openai.resources.containers.containers:283
 duplicate-code	high	src/openai/resources/containers/containers.py:146:1	-	26 lines (137 tokens) duplicated at openai.resources.containers.containers:371
 duplicate-code	high	src/openai/resources/containers/containers.py:171:1	-	50 lines (85 tokens) duplicated at openai.resources.containers.containers:396
@@ -608,13 +592,14 @@ duplicate-code	high	src/openai/resources/containers/files/content.py:74:1	-	59 l
 duplicate-code	high	src/openai/resources/containers/files/content.py:138:1	-	50 lines (214 tokens) duplicated at openai.resources.skills.versions.content:139
 duplicate-code	high	src/openai/resources/containers/files/files.py:59:1	-	48 lines (163 tokens) duplicated at openai.resources.containers.files.files:287
 duplicate-code	high	src/openai/resources/containers/files/files.py:114:1	-	32 lines (88 tokens) duplicated at openai.resources.evals.runs.runs:220
-duplicate-code	high	src/openai/resources/containers/files/files.py:232:1	-	19 lines (62 tokens) duplicated at openai.resources.containers.files.files:460
-duplicate-code	high	src/openai/resources/containers/files/files.py:335:1	-	39 lines (130 tokens) duplicated at openai.resources.skills.versions.versions:335
+duplicate-code	high	src/openai/resources/containers/files/files.py:148:1	-	13 lines (54 tokens) duplicated at openai.resources.containers.files.files:250
+duplicate-code	high	src/openai/resources/containers/files/files.py:199:1	-	23 lines (93 tokens) duplicated at openai.resources.containers.files.files:427
+duplicate-code	high	src/openai/resources/containers/files/files.py:223:1	-	28 lines (111 tokens) duplicated at openai.resources.containers.files.files:451
+duplicate-code	high	src/openai/resources/containers/files/files.py:336:1	-	38 lines (122 tokens) duplicated at openai.resources.skills.versions.versions:336
 duplicate-code	high	src/openai/resources/containers/files/files.py:377:1	-	51 lines (150 tokens) duplicated at openai.resources.skills.versions.versions:379
-duplicate-code	high	src/openai/resources/containers/files/files.py:429:1	-	32 lines (131 tokens) duplicated at openai.resources.skills.versions.versions:425
 duplicate-code	high	src/openai/resources/containers/files/files.py:479:1	-	99 lines (460 tokens) duplicated at openai.resources.skills.versions.versions:476
 duplicate-code	high	src/openai/resources/content_provenance_checks.py:43:1	-	40 lines (115 tokens) duplicated at openai.resources.content_provenance_checks:117
-duplicate-code	high	src/openai/resources/content_provenance_checks.py:157:1	-	51 lines (215 tokens) duplicated at openai.resources.uploads.parts:173
+duplicate-code	high	src/openai/resources/content_provenance_checks.py:158:1	-	50 lines (212 tokens) duplicated at openai.resources.uploads.parts:174
 duplicate-code	high	src/openai/resources/conversations/conversations.py:60:1	-	35 lines (78 tokens) duplicated at openai.resources.conversations.conversations:262
 duplicate-code	high	src/openai/resources/conversations/conversations.py:103:1	-	48 lines (162 tokens) duplicated at openai.resources.conversations.conversations:186
 duplicate-code	high	src/openai/resources/conversations/conversations.py:150:1	-	34 lines (84 tokens) duplicated at openai.resources.conversations.conversations:352
@@ -622,7 +607,7 @@ duplicate-code	high	src/openai/resources/conversations/conversations.py:304:1	-	
 duplicate-code	high	src/openai/resources/conversations/conversations.py:445:1	-	30 lines (137 tokens) duplicated at openai.resources.uploads.uploads:690
 duplicate-code	high	src/openai/resources/conversations/conversations.py:491:1	-	30 lines (125 tokens) duplicated at openai.resources.uploads.uploads:730
 duplicate-code	high	src/openai/resources/conversations/items.py:25:1	-	30 lines (67 tokens) duplicated at openai.resources.uploads.parts:20
-duplicate-code	high	src/openai/resources/conversations/items.py:54:1	-	30 lines (81 tokens) duplicated at openai.resources.conversations.items:297
+duplicate-code	high	src/openai/resources/conversations/items.py:58:1	-	26 lines (60 tokens) duplicated at openai.resources.conversations.items:301
 duplicate-code	high	src/openai/resources/conversations/items.py:97:1	-	35 lines (116 tokens) duplicated at openai.resources.conversations.items:340
 duplicate-code	high	src/openai/resources/conversations/items.py:141:1	-	22 lines (131 tokens) duplicated at openai.resources.conversations.items:384
 duplicate-code	high	src/openai/resources/conversations/items.py:162:1	-	67 lines (117 tokens) duplicated at openai.resources.conversations.items:405
@@ -633,7 +618,7 @@ duplicate-code	high	src/openai/resources/embeddings.py:223:1	-	42 lines (179 tok
 duplicate-code	high	src/openai/resources/evals/evals.py:64:1	-	49 lines (87 tokens) duplicated at openai.resources.evals.evals:348
 duplicate-code	high	src/openai/resources/evals/evals.py:127:1	-	44 lines (145 tokens) duplicated at openai.resources.evals.evals:277
 duplicate-code	high	src/openai/resources/evals/evals.py:170:1	-	37 lines (96 tokens) duplicated at openai.resources.evals.evals:454
-duplicate-code	high	src/openai/resources/evals/evals.py:208:1	-	31 lines (148 tokens) duplicated at openai.resources.evals.evals:492
+duplicate-code	high	src/openai/resources/evals/evals.py:210:1	-	29 lines (143 tokens) duplicated at openai.resources.evals.evals:494
 duplicate-code	high	src/openai/resources/evals/evals.py:593:1	-	115 lines (512 tokens) duplicated at openai.resources.evals.runs.runs:565
 duplicate-code	high	src/openai/resources/evals/runs/output_items.py:46:1	-	32 lines (125 tokens) duplicated at openai.resources.evals.runs.output_items:181
 duplicate-code	high	src/openai/resources/evals/runs/output_items.py:77:1	-	33 lines (159 tokens) duplicated at openai.resources.evals.runs.output_items:212
@@ -643,16 +628,17 @@ duplicate-code	high	src/openai/resources/evals/runs/runs.py:165:1	-	15 lines (10
 duplicate-code	high	src/openai/resources/evals/runs/runs.py:389:1	-	47 lines (175 tokens) duplicated at openai.resources.evals.runs.runs:490
 duplicate-code	high	src/openai/resources/files.py:63:1	-	81 lines (139 tokens) duplicated at openai.resources.files:404
 duplicate-code	high	src/openai/resources/files.py:151:1	-	45 lines (150 tokens) duplicated at openai.resources.files:250
-duplicate-code	high	src/openai/resources/files.py:196:1	-	12 lines (82 tokens) duplicated at openai.resources.files:537
+duplicate-code	high	src/openai/resources/files.py:200:1	-	35 lines (54 tokens) duplicated at openai.resources.videos:258
 duplicate-code	high	src/openai/resources/files.py:295:1	-	25 lines (90 tokens) duplicated at openai.resources.files:636
 duplicate-code	high	src/openai/resources/files.py:331:1	-	26 lines (68 tokens) duplicated at openai.resources.videos:560
 duplicate-code	high	src/openai/resources/files.py:492:1	-	44 lines (147 tokens) duplicated at openai.resources.files:591
-duplicate-code	high	src/openai/resources/files.py:699:1	-	16 lines (53 tokens) duplicated at openai.resources.skills.skills:358
+duplicate-code	high	src/openai/resources/files.py:541:1	-	35 lines (63 tokens) duplicated at openai.resources.videos:849
+duplicate-code	high	src/openai/resources/files.py:699:1	-	16 lines (53 tokens) duplicated at openai.resources.models:224
 duplicate-code	high	src/openai/resources/files.py:731:1	-	23 lines (93 tokens) duplicated at openai.resources.files:757
 duplicate-code	high	src/openai/resources/files.py:780:1	-	23 lines (69 tokens) duplicated at openai.resources.files:807
 duplicate-code	high	src/openai/resources/fine_tuning/alpha/graders.py:18:1	-	29 lines (63 tokens) duplicated at openai.resources.moderations:21
-duplicate-code	high	src/openai/resources/fine_tuning/alpha/graders.py:46:1	-	36 lines (61 tokens) duplicated at openai.resources.fine_tuning.alpha.graders:165
-duplicate-code	high	src/openai/resources/fine_tuning/alpha/graders.py:83:1	-	19 lines (60 tokens) duplicated at openai.resources.fine_tuning.alpha.graders:202
+duplicate-code	high	src/openai/resources/fine_tuning/alpha/graders.py:48:1	-	34 lines (54 tokens) duplicated at openai.resources.fine_tuning.alpha.graders:167
+duplicate-code	high	src/openai/resources/fine_tuning/alpha/graders.py:86:1	-	16 lines (51 tokens) duplicated at openai.resources.fine_tuning.alpha.graders:205
 duplicate-code	high	src/openai/resources/fine_tuning/alpha/graders.py:101:1	-	26 lines (59 tokens) duplicated at openai.resources.fine_tuning.alpha.graders:220
 duplicate-code	high	src/openai/resources/fine_tuning/alpha/graders.py:128:1	-	38 lines (102 tokens) duplicated at openai.resources.moderations:91
 duplicate-code	high	src/openai/resources/fine_tuning/checkpoints/permissions.py:31:1	-	34 lines (112 tokens) duplicated at openai.resources.fine_tuning.checkpoints.permissions:292
@@ -672,18 +658,16 @@ duplicate-code	high	src/openai/resources/fine_tuning/jobs/jobs.py:391:1	-	36 lin
 duplicate-code	high	src/openai/resources/fine_tuning/jobs/jobs.py:428:1	-	40 lines (114 tokens) duplicated at openai.resources.uploads.uploads:348
 duplicate-code	high	src/openai/resources/fine_tuning/jobs/jobs.py:797:1	-	36 lines (110 tokens) duplicated at openai.resources.responses.responses:3571
 duplicate-code	high	src/openai/resources/images.py:50:1	-	65 lines (205 tokens) duplicated at openai.resources.images:1070
-duplicate-code	high	src/openai/resources/images.py:115:1	-	14 lines (55 tokens) duplicated at openai.resources.videos:547
+duplicate-code	high	src/openai/resources/images.py:116:1	-	13 lines (53 tokens) duplicated at openai.resources.videos:548
 duplicate-code	high	src/openai/resources/images.py:129:1	-	133 lines (274 tokens) duplicated at openai.resources.images:1149
 duplicate-code	high	src/openai/resources/images.py:262:1	-	133 lines (270 tokens) duplicated at openai.resources.images:1282
 duplicate-code	high	src/openai/resources/images.py:395:1	-	133 lines (284 tokens) duplicated at openai.resources.images:1415
 duplicate-code	high	src/openai/resources/images.py:528:1	-	52 lines (414 tokens) duplicated at openai.resources.images:1548
-duplicate-code	high	src/openai/resources/images.py:581:1	-	18 lines (73 tokens) duplicated at openai.resources.images:1601
 duplicate-code	high	src/openai/resources/images.py:599:1	-	128 lines (277 tokens) duplicated at openai.resources.images:1619
 duplicate-code	high	src/openai/resources/images.py:727:1	-	128 lines (273 tokens) duplicated at openai.resources.images:1747
 duplicate-code	high	src/openai/resources/images.py:855:1	-	128 lines (283 tokens) duplicated at openai.resources.images:1875
 duplicate-code	high	src/openai/resources/images.py:983:1	-	30 lines (281 tokens) duplicated at openai.resources.images:2003
-duplicate-code	high	src/openai/resources/images.py:1014:1	-	35 lines (126 tokens) duplicated at openai.resources.images:2034
-duplicate-code	high	src/openai/resources/images.py:1135:1	-	14 lines (56 tokens) duplicated at openai.resources.videos:1140
+duplicate-code	high	src/openai/resources/images.py:1136:1	-	13 lines (53 tokens) duplicated at openai.resources.videos:1141
 duplicate-code	high	src/openai/resources/live/forks.py:97:1	-	341 lines (1743 tokens) duplicated at openai.resources.live.sideband:100
 duplicate-code	high	src/openai/resources/live/forks.py:447:1	-	133 lines (775 tokens) duplicated at openai.resources.live.live:666
 duplicate-code	high	src/openai/resources/live/forks.py:580:1	-	327 lines (1706 tokens) duplicated at openai.resources.live.sideband:588
@@ -694,7 +678,7 @@ duplicate-code	high	src/openai/resources/live/forks.py:1113:1	-	123 lines (556 t
 duplicate-code	high	src/openai/resources/live/forks.py:1262:1	-	10 lines (56 tokens) duplicated at openai.resources.live.live:1486
 duplicate-code	high	src/openai/resources/live/forks.py:1293:1	-	129 lines (572 tokens) duplicated at openai.resources.live.live:1492
 duplicate-code	high	src/openai/resources/live/live.py:93:1	-	31 lines (63 tokens) duplicated at openai.resources.live.live:202
-duplicate-code	high	src/openai/resources/live/live.py:343:1	-	22 lines (153 tokens) duplicated in 3 other places: openai.resources.live.live:820, openai.resources.realtime.realtime:276, openai.resources.realtime.realtime:779
+duplicate-code	high	src/openai/resources/live/live.py:344:1	-	21 lines (138 tokens) duplicated in 3 other places: openai.resources.live.live:821, openai.resources.realtime.realtime:277, openai.resources.realtime.realtime:780
 duplicate-code	high	src/openai/resources/live/live.py:364:1	-	55 lines (237 tokens) duplicated at openai.resources.realtime.realtime:301
 duplicate-code	high	src/openai/resources/live/live.py:418:1	-	133 lines (809 tokens) duplicated at openai.resources.realtime.realtime:354
 duplicate-code	high	src/openai/resources/live/live.py:550:1	-	108 lines (445 tokens) duplicated at openai.resources.realtime.realtime:488
@@ -703,31 +687,31 @@ duplicate-code	high	src/openai/resources/live/live.py:895:1	-	127 lines (781 tok
 duplicate-code	high	src/openai/resources/live/live.py:1021:1	-	101 lines (410 tokens) duplicated at openai.resources.realtime.realtime:985
 duplicate-code	high	src/openai/resources/live/live.py:1262:1	-	47 lines (291 tokens) duplicated at openai.resources.live.sideband:1063
 duplicate-code	high	src/openai/resources/live/live.py:1440:1	-	43 lines (236 tokens) duplicated at openai.resources.live.sideband:1224
-duplicate-code	high	src/openai/resources/live/sessions.py:55:1	-	34 lines (94 tokens) duplicated at openai.resources.live.sessions:343
+duplicate-code	high	src/openai/resources/live/sessions.py:30:1	-	25 lines (57 tokens) duplicated at openai.resources.realtime.calls:40
+duplicate-code	high	src/openai/resources/live/sessions.py:55:1	-	34 lines (92 tokens) duplicated at openai.resources.live.sessions:343
 duplicate-code	high	src/openai/resources/live/sessions.py:90:1	-	12 lines (50 tokens) duplicated at openai.resources.live.sessions:378
 duplicate-code	high	src/openai/resources/live/sessions.py:102:1	-	29 lines (92 tokens) duplicated at openai.resources.live.sessions:390
 duplicate-code	high	src/openai/resources/live/sessions.py:130:1	-	13 lines (52 tokens) duplicated at openai.resources.live.sessions:418
 duplicate-code	high	src/openai/resources/live/sessions.py:142:1	-	33 lines (91 tokens) duplicated at openai.resources.live.sessions:430
 duplicate-code	high	src/openai/resources/live/sessions.py:179:1	-	39 lines (114 tokens) duplicated at openai.resources.realtime.calls:284
 duplicate-code	high	src/openai/resources/live/sessions.py:220:1	-	45 lines (143 tokens) duplicated at openai.resources.live.sessions:265
-duplicate-code	high	src/openai/resources/live/sessions.py:308:1	-	35 lines (115 tokens) duplicated at openai.resources.realtime.calls:410
+duplicate-code	high	src/openai/resources/live/sessions.py:309:1	-	34 lines (108 tokens) duplicated at openai.resources.realtime.calls:411
 duplicate-code	high	src/openai/resources/live/sessions.py:467:1	-	39 lines (115 tokens) duplicated at openai.resources.realtime.calls:664
 duplicate-code	high	src/openai/resources/live/sessions.py:508:1	-	45 lines (145 tokens) duplicated at openai.resources.live.sessions:553
 duplicate-code	high	src/openai/resources/live/sessions.py:597:1	-	69 lines (308 tokens) duplicated at openai.resources.vector_stores.files:927
 duplicate-code	high	src/openai/resources/live/sessions.py:668:1	-	23 lines (97 tokens) duplicated at openai.resources.vector_stores.files:997
-duplicate-code	high	src/openai/resources/live/sideband.py:49:1	-	32 lines (140 tokens) duplicated at openai.resources.realtime.realtime:102
-duplicate-code	high	src/openai/resources/live/sideband.py:442:1	-	115 lines (662 tokens) duplicated at openai.resources.realtime.realtime:596
+duplicate-code	high	src/openai/resources/live/sideband.py:53:1	-	28 lines (116 tokens) duplicated at openai.resources.realtime.realtime:106
+duplicate-code	high	src/openai/resources/live/sideband.py:444:1	-	113 lines (652 tokens) duplicated at openai.resources.realtime.realtime:598
 duplicate-code	high	src/openai/resources/live/sideband.py:556:1	-	12 lines (78 tokens) duplicated at openai.resources.live.sideband:1030
-duplicate-code	high	src/openai/resources/live/sideband.py:916:1	-	115 lines (659 tokens) duplicated at openai.resources.realtime.realtime:1087
+duplicate-code	high	src/openai/resources/live/sideband.py:918:1	-	113 lines (649 tokens) duplicated at openai.resources.realtime.realtime:1089
 duplicate-code	high	src/openai/resources/live/sideband.py:1113:1	-	15 lines (63 tokens) duplicated at openai.resources.live.sideband:1153
 duplicate-code	high	src/openai/resources/live/sideband.py:1182:1	-	21 lines (67 tokens) duplicated at openai.resources.live.sideband:1343
 duplicate-code	high	src/openai/resources/live/sideband.py:1268:1	-	17 lines (65 tokens) duplicated at openai.resources.live.sideband:1310
 duplicate-code	high	src/openai/resources/models.py:24:1	-	30 lines (94 tokens) duplicated at openai.resources.skills.content:24
-duplicate-code	high	src/openai/resources/models.py:90:1	-	19 lines (56 tokens) duplicated at openai.resources.models:217
 duplicate-code	high	src/openai/resources/models.py:176:1	-	33 lines (111 tokens) duplicated at openai.resources.models:241
-duplicate-code	high	src/openai/resources/moderations.py:51:1	-	33 lines (73 tokens) duplicated at openai.resources.moderations:130
+duplicate-code	high	src/openai/resources/moderations.py:52:1	-	32 lines (56 tokens) duplicated at openai.resources.moderations:131
 duplicate-code	high	src/openai/resources/moderations.py:167:1	-	50 lines (209 tokens) duplicated at openai.resources.realtime.client_secrets:177
-duplicate-code	high	src/openai/resources/realtime/calls.py:65:1	-	32 lines (95 tokens) duplicated at openai.resources.realtime.calls:445
+duplicate-code	high	src/openai/resources/realtime/calls.py:67:1	-	30 lines (89 tokens) duplicated at openai.resources.realtime.calls:447
 duplicate-code	high	src/openai/resources/realtime/calls.py:96:1	-	20 lines (101 tokens) duplicated at openai.resources.realtime.calls:476
 duplicate-code	high	src/openai/resources/realtime/calls.py:115:1	-	16 lines (57 tokens) duplicated at openai.resources.realtime.calls:495
 duplicate-code	high	src/openai/resources/realtime/calls.py:130:1	-	138 lines (278 tokens) duplicated at openai.resources.realtime.calls:510
@@ -739,14 +723,15 @@ duplicate-code	high	src/openai/resources/realtime/calls.py:791:1	-	17 lines (76 
 duplicate-code	high	src/openai/resources/realtime/calls.py:845:1	-	23 lines (89 tokens) duplicated at openai.resources.realtime.calls:867
 duplicate-code	high	src/openai/resources/realtime/client_secrets.py:40:1	-	47 lines (73 tokens) duplicated at openai.resources.realtime.client_secrets:126
 duplicate-code	high	src/openai/resources/realtime/realtime.py:721:1	-	14 lines (91 tokens) duplicated at openai.resources.realtime.realtime:1210
+duplicate-code	high	src/openai/resources/responses/input_items.py:25:1	-	35 lines (143 tokens) duplicated at openai.resources.responses.input_items:110
 duplicate-code	high	src/openai/resources/responses/input_tokens.py:46:1	-	87 lines (210 tokens) duplicated at openai.resources.responses.input_tokens:182
 duplicate-code	high	src/openai/resources/responses/responses.py:134:1	-	289 lines (417 tokens) duplicated at openai.resources.responses.responses:2016
 duplicate-code	high	src/openai/resources/responses/responses.py:423:1	-	289 lines (413 tokens) duplicated at openai.resources.responses.responses:2305
 duplicate-code	high	src/openai/resources/responses/responses.py:712:1	-	289 lines (409 tokens) duplicated at openai.resources.responses.responses:2594
 duplicate-code	high	src/openai/resources/responses/responses.py:1000:1	-	42 lines (421 tokens) duplicated at openai.resources.responses.responses:2882
-duplicate-code	high	src/openai/resources/responses/responses.py:1043:1	-	192 lines (1309 tokens) duplicated at openai.resources.responses.responses:2925
+duplicate-code	high	src/openai/resources/responses/responses.py:1080:1	-	155 lines (1169 tokens) duplicated at openai.resources.responses.responses:2962
 duplicate-code	high	src/openai/resources/responses/responses.py:1234:1	-	17 lines (81 tokens) duplicated at openai.resources.responses.responses:3117
-duplicate-code	high	src/openai/resources/responses/responses.py:1274:1	-	23 lines (76 tokens) duplicated at openai.resources.responses.responses:3155
+duplicate-code	high	src/openai/resources/responses/responses.py:1275:1	-	22 lines (75 tokens) duplicated at openai.resources.responses.responses:3156
 duplicate-code	high	src/openai/resources/responses/responses.py:1315:1	-	62 lines (540 tokens) duplicated at openai.resources.responses.responses:3196
 duplicate-code	high	src/openai/resources/responses/responses.py:1376:1	-	53 lines (202 tokens) duplicated at openai.resources.responses.responses:3257
 duplicate-code	high	src/openai/resources/responses/responses.py:1429:1	-	17 lines (96 tokens) duplicated at openai.resources.responses.responses:3310
@@ -765,7 +750,6 @@ duplicate-code	high	src/openai/resources/responses/responses.py:5059:1	-	45 line
 duplicate-code	high	src/openai/resources/skills/content.py:83:1	-	26 lines (57 tokens) duplicated at openai.resources.uploads.parts:108
 duplicate-code	high	src/openai/resources/skills/skills.py:80:1	-	33 lines (145 tokens) duplicated at openai.resources.skills.skills:323
 duplicate-code	high	src/openai/resources/skills/skills.py:120:1	-	44 lines (145 tokens) duplicated at openai.resources.skills.skills:251
-duplicate-code	high	src/openai/resources/skills/skills.py:170:1	-	22 lines (60 tokens) duplicated at openai.resources.skills.skills:375
 duplicate-code	high	src/openai/resources/skills/skills.py:193:1	-	24 lines (129 tokens) duplicated at openai.resources.skills.skills:436
 duplicate-code	high	src/openai/resources/skills/versions/versions.py:68:1	-	45 lines (183 tokens) duplicated at openai.resources.skills.versions.versions:290
 duplicate-code	high	src/openai/resources/skills/versions/versions.py:120:1	-	49 lines (173 tokens) duplicated at openai.resources.skills.versions.versions:217
@@ -790,15 +774,15 @@ duplicate-code	high	src/openai/resources/vector_stores/files.py:53:1	-	47 lines 
 duplicate-code	high	src/openai/resources/vector_stores/files.py:113:1	-	55 lines (222 tokens) duplicated at openai.resources.vector_stores.files:279
 duplicate-code	high	src/openai/resources/vector_stores/files.py:170:1	-	29 lines (96 tokens) duplicated at openai.resources.vector_stores.files:622
 duplicate-code	high	src/openai/resources/vector_stores/files.py:202:1	-	27 lines (158 tokens) duplicated at openai.resources.vector_stores.files:654
-duplicate-code	high	src/openai/resources/vector_stores/files.py:337:1	-	16 lines (79 tokens) duplicated at openai.resources.vector_stores.files:789
+duplicate-code	high	src/openai/resources/vector_stores/files.py:340:1	-	13 lines (58 tokens) duplicated at openai.resources.vector_stores.files:792
 duplicate-code	high	src/openai/resources/vector_stores/files.py:413:1	-	16 lines (76 tokens) duplicated at openai.resources.vector_stores.files:867
 duplicate-code	high	src/openai/resources/vector_stores/files.py:429:1	-	21 lines (91 tokens) duplicated at openai.resources.vector_stores.files:883
 duplicate-code	high	src/openai/resources/vector_stores/files.py:565:1	-	55 lines (225 tokens) duplicated at openai.resources.vector_stores.files:731
 duplicate-code	high	src/openai/resources/vector_stores/vector_stores.py:78:1	-	51 lines (125 tokens) duplicated at openai.resources.vector_stores.vector_stores:449
 duplicate-code	high	src/openai/resources/vector_stores/vector_stores.py:145:1	-	49 lines (177 tokens) duplicated at openai.resources.vector_stores.vector_stores:309
-duplicate-code	high	src/openai/resources/vector_stores/vector_stores.py:193:1	-	37 lines (112 tokens) duplicated at openai.resources.vector_stores.vector_stores:564
-duplicate-code	high	src/openai/resources/vector_stores/vector_stores.py:231:1	-	32 lines (147 tokens) duplicated at openai.resources.vector_stores.vector_stores:602
-duplicate-code	high	src/openai/resources/vector_stores/vector_stores.py:357:1	-	12 lines (86 tokens) duplicated at openai.resources.vector_stores.vector_stores:728
+duplicate-code	high	src/openai/resources/vector_stores/vector_stores.py:198:1	-	32 lines (76 tokens) duplicated at openai.resources.vector_stores.vector_stores:569
+duplicate-code	high	src/openai/resources/vector_stores/vector_stores.py:234:1	-	29 lines (138 tokens) duplicated at openai.resources.vector_stores.vector_stores:605
+duplicate-code	high	src/openai/resources/vector_stores/vector_stores.py:361:1	-	8 lines (51 tokens) duplicated at openai.resources.vector_stores.vector_stores:732
 duplicate-code	high	src/openai/resources/vector_stores/vector_stores.py:368:1	-	54 lines (139 tokens) duplicated at openai.resources.vector_stores.vector_stores:739
 duplicate-code	high	src/openai/resources/vector_stores/vector_stores.py:516:1	-	45 lines (163 tokens) duplicated at openai.resources.vector_stores.vector_stores:680
 duplicate-code	high	src/openai/resources/videos.py:71:1	-	55 lines (167 tokens) duplicated at openai.resources.videos:662
@@ -815,7 +799,6 @@ duplicate-code	high	src/openai/resources/videos.py:805:1	-	39 lines (146 tokens)
 duplicate-code	high	src/openai/resources/videos.py:1239:1	-	57 lines (187 tokens) duplicated at openai.resources.videos:1295
 duplicate-code	high	src/openai/resources/videos.py:1351:1	-	53 lines (138 tokens) duplicated at openai.resources.videos:1408
 duplicate-code	high	src/openai/resources/webhooks/webhooks.py:30:1	-	34 lines (93 tokens) duplicated at openai.resources.webhooks.webhooks:85
-duplicate-code	high	src/openai/types/admin/organization/audit_log_list_params.py:45:1	-	149 lines (297 tokens) duplicated at openai.types.admin.organization.audit_log_list_response:980
 duplicate-code	high	src/openai/types/admin/organization/audit_log_list_response.py:98:1	-	17 lines (52 tokens) duplicated at openai.types.admin.organization.audit_log_list_response:124
 duplicate-code	high	src/openai/types/admin/organization/audit_log_list_response.py:157:1	-	17 lines (55 tokens) duplicated at openai.types.admin.organization.audit_log_list_response:181
 duplicate-code	high	src/openai/types/admin/organization/audit_log_list_response.py:235:1	-	15 lines (53 tokens) duplicated at openai.types.admin.organization.audit_log_list_response:249
@@ -943,7 +926,7 @@ duplicate-code	high	src/openai/types/beta/beta_response_input_item.py:862:1	-	40
 duplicate-code	high	src/openai/types/beta/beta_response_input_item.py:914:1	-	20 lines (57 tokens) duplicated at openai.types.realtime.realtime_mcp_list_tools:11
 duplicate-code	high	src/openai/types/beta/beta_response_input_item.py:1017:1	-	49 lines (125 tokens) duplicated at openai.types.beta.beta_response_item:559
 duplicate-code	high	src/openai/types/beta/beta_response_input_item.py:1156:1	-	33 lines (70 tokens) duplicated at openai.types.beta.beta_response_output_item:605
-duplicate-code	high	src/openai/types/beta/beta_response_input_item_param.py:34:1	-	1148 lines (3674 tokens) duplicated at openai.types.beta.beta_response_input_param:35
+duplicate-code	high	src/openai/types/beta/beta_response_input_item_param.py:88:1	-	1094 lines (3566 tokens) duplicated at openai.types.beta.beta_response_input_param:89
 duplicate-code	high	src/openai/types/beta/beta_response_input_text.py:8:1	-	29 lines (59 tokens) duplicated in 3 other places: openai.types.beta.beta_response_input_text_content:8, openai.types.responses.response_input_text:8, openai.types.responses.response_input_text_content:8
 duplicate-code	high	src/openai/types/beta/beta_response_input_text_content_param.py:8:1	-	29 lines (74 tokens) duplicated at openai.types.responses.response_input_text_content_param:8
 duplicate-code	high	src/openai/types/beta/beta_response_input_text_param.py:7:1	-	29 lines (71 tokens) duplicated at openai.types.responses.response_input_text_param:7
@@ -1082,7 +1065,7 @@ duplicate-code	high	src/openai/types/responses/response_custom_tool_call_output.
 duplicate-code	high	src/openai/types/responses/response_custom_tool_call_param.py:8:1	-	18 lines (78 tokens) duplicated at openai.types.responses.response_function_tool_call_param:8
 duplicate-code	high	src/openai/types/responses/response_input_item.py:232:1	-	101 lines (347 tokens) duplicated at openai.types.responses.response_output_item:91
 duplicate-code	high	src/openai/types/responses/response_input_item.py:583:1	-	61 lines (153 tokens) duplicated at openai.types.responses.response_output_item:223
-duplicate-code	high	src/openai/types/responses/response_input_item_param.py:32:1	-	739 lines (2362 tokens) duplicated at openai.types.responses.response_input_param:33
+duplicate-code	high	src/openai/types/responses/response_input_item_param.py:53:1	-	718 lines (2320 tokens) duplicated at openai.types.responses.response_input_param:54
 duplicate-code	high	src/openai/types/responses/response_item.py:62:1	-	36 lines (97 tokens) duplicated at openai.types.responses.response_output_item:46
 duplicate-code	high	src/openai/types/responses/response_reasoning_summary_part_added_event.py:7:1	-	23 lines (54 tokens) duplicated at openai.types.responses.response_reasoning_summary_part_done_event:8
 duplicate-code	high	src/openai/types/responses/response_text_delta_event.py:8:1	-	32 lines (86 tokens) duplicated at openai.types.responses.response_text_done_event:8
@@ -1168,7 +1151,6 @@ duplicate-code	high	tests/api_resources/admin/organization/projects/test_groups.
 duplicate-code	high	tests/api_resources/admin/organization/projects/test_groups.py:307:1	-	16 lines (116 tokens) duplicated in 4 other places: tests.api_resources.admin.organization.projects.test_groups:403, tests.api_resources.admin.organization.projects.test_rate_limits:224, tests.api_resources.admin.organization.projects.test_roles:427, tests.api_resources.admin.organization.projects.test_users:414
 duplicate-code	high	tests/api_resources/admin/organization/projects/test_groups.py:326:1	-	58 lines (435 tokens) duplicated at tests.api_resources.admin.organization.projects.test_roles:446
 duplicate-code	high	tests/api_resources/admin/organization/projects/test_hosted_tool_permissions.py:18:1	-	5 lines (54 tokens) duplicated in 2 other places: tests.api_resources.admin.organization.projects.test_spend_alerts:22, tests.api_resources.beta.agents.environments.test_templates:22
-duplicate-code	high	tests/api_resources/admin/organization/projects/test_hosted_tool_permissions.py:35:1	-	6 lines (52 tokens) duplicated in 3 other places: tests.api_resources.admin.organization.projects.test_model_permissions:122, tests.api_resources.beta.agents.environments.test_templates:85, tests.api_resources.beta.agents.environments.test_templates:205
 duplicate-code	high	tests/api_resources/admin/organization/projects/test_hosted_tool_permissions.py:60:1	-	8 lines (58 tokens) duplicated at tests.api_resources.admin.organization.test_projects:102
 duplicate-code	high	tests/api_resources/admin/organization/projects/test_hosted_tool_permissions.py:90:1	-	15 lines (119 tokens) duplicated at tests.api_resources.admin.organization.test_projects:130
 duplicate-code	high	tests/api_resources/admin/organization/projects/test_hosted_tool_permissions.py:105:1	-	51 lines (370 tokens) duplicated at tests.api_resources.admin.organization.projects.test_model_permissions:142
@@ -1243,14 +1225,14 @@ duplicate-code	high	tests/api_resources/admin/organization/test_audit_logs.py:70
 duplicate-code	high	tests/api_resources/admin/organization/test_audit_logs.py:97:1	-	22 lines (195 tokens) duplicated in 2 other places: tests.api_resources.admin.organization.test_users:285, tests.api_resources.beta.chatkit.test_threads:241
 duplicate-code	high	tests/api_resources/admin/organization/test_certificates.py:44:1	-	10 lines (64 tokens) duplicated at tests.api_resources.admin.organization.test_certificates:315
 duplicate-code	high	tests/api_resources/admin/organization/test_certificates.py:66:1	-	12 lines (85 tokens) duplicated at tests.api_resources.admin.organization.test_certificates:112
-duplicate-code	high	tests/api_resources/admin/organization/test_certificates.py:77:1	-	8 lines (50 tokens) duplicated in 3 other places: tests.api_resources.admin.organization.test_certificates:123, tests.api_resources.admin.organization.test_groups:98, tests.api_resources.beta.agents.environments.test_templates:142
+duplicate-code	high	tests/api_resources/admin/organization/test_certificates.py:77:1	-	8 lines (50 tokens) duplicated in 2 other places: tests.api_resources.admin.organization.test_certificates:123, tests.api_resources.admin.organization.test_groups:98
 duplicate-code	high	tests/api_resources/admin/organization/test_certificates.py:84:1	-	11 lines (77 tokens) duplicated in 2 other places: tests.api_resources.admin.organization.test_certificates:130, tests.api_resources.admin.organization.test_certificates:202
 duplicate-code	high	tests/api_resources/admin/organization/test_certificates.py:95:1	-	14 lines (106 tokens) duplicated at tests.api_resources.admin.organization.test_certificates:213
 duplicate-code	high	tests/api_resources/admin/organization/test_certificates.py:153:1	-	42 lines (334 tokens) duplicated at tests.api_resources.admin.organization.test_roles:148
 duplicate-code	high	tests/api_resources/admin/organization/test_certificates.py:230:1	-	32 lines (239 tokens) duplicated at tests.api_resources.admin.organization.test_certificates:261
 duplicate-code	high	tests/api_resources/admin/organization/test_certificates.py:295:1	-	7 lines (54 tokens) duplicated in 6 other places: tests.api_resources.admin.organization.test_groups:211, tests.api_resources.admin.organization.test_invites:181, tests.api_resources.admin.organization.test_projects:223, tests.api_resources.admin.organization.test_roles:228, tests.api_resources.beta.agents.test_sessions:321, tests.api_resources.fine_tuning.checkpoints.test_permissions:234
 duplicate-code	high	tests/api_resources/admin/organization/test_certificates.py:337:1	-	12 lines (89 tokens) duplicated at tests.api_resources.admin.organization.test_certificates:383
-duplicate-code	high	tests/api_resources/admin/organization/test_certificates.py:349:1	-	7 lines (51 tokens) duplicated in 3 other places: tests.api_resources.admin.organization.test_certificates:395, tests.api_resources.admin.organization.test_groups:288, tests.api_resources.beta.agents.environments.test_templates:429
+duplicate-code	high	tests/api_resources/admin/organization/test_certificates.py:349:1	-	7 lines (51 tokens) duplicated in 2 other places: tests.api_resources.admin.organization.test_certificates:395, tests.api_resources.admin.organization.test_groups:288
 duplicate-code	high	tests/api_resources/admin/organization/test_certificates.py:355:1	-	11 lines (79 tokens) duplicated in 2 other places: tests.api_resources.admin.organization.test_certificates:401, tests.api_resources.admin.organization.test_certificates:473
 duplicate-code	high	tests/api_resources/admin/organization/test_certificates.py:366:1	-	14 lines (109 tokens) duplicated at tests.api_resources.admin.organization.test_certificates:484
 duplicate-code	high	tests/api_resources/admin/organization/test_certificates.py:424:1	-	42 lines (346 tokens) duplicated at tests.api_resources.admin.organization.test_roles:355
@@ -1294,7 +1276,7 @@ duplicate-code	high	tests/api_resources/admin/organization/test_spend_alerts.py:
 duplicate-code	high	tests/api_resources/admin/organization/test_spend_alerts.py:315:1	-	18 lines (106 tokens) duplicated at tests.api_resources.admin.organization.test_spend_alerts:419
 duplicate-code	high	tests/api_resources/admin/organization/test_spend_alerts.py:344:1	-	43 lines (299 tokens) duplicated at tests.api_resources.admin.organization.test_spend_alerts:498
 duplicate-code	high	tests/api_resources/admin/organization/test_spend_alerts.py:443:1	-	11 lines (66 tokens) duplicated at tests.api_resources.admin.organization.test_usage:1056
-duplicate-code	high	tests/api_resources/admin/organization/test_spend_limit.py:92:1	-	10 lines (78 tokens) duplicated in 5 other places: tests.api_resources.beta.agents.test_vaults:39, tests.api_resources.beta.responses.test_input_tokens:67, tests.api_resources.test_conversations:45, tests.api_resources.test_skills:35, tests.api_resources.test_vector_stores:47
+duplicate-code	high	tests/api_resources/admin/organization/test_spend_limit.py:92:1	-	10 lines (86 tokens) duplicated in 3 other places: tests.api_resources.beta.agents.environments.test_templates:81, tests.api_resources.beta.agents.test_vaults:39, tests.api_resources.beta.responses.test_input_tokens:67
 duplicate-code	high	tests/api_resources/admin/organization/test_spend_limit.py:180:1	-	23 lines (189 tokens) duplicated at tests.api_resources.beta.responses.test_input_tokens:133
 duplicate-code	high	tests/api_resources/admin/organization/test_usage.py:50:1	-	133 lines (909 tokens) duplicated at tests.api_resources.admin.organization.test_usage:378
 duplicate-code	high	tests/api_resources/admin/organization/test_usage.py:190:1	-	41 lines (284 tokens) duplicated at tests.api_resources.admin.organization.test_usage:283
@@ -1343,10 +1325,11 @@ duplicate-code	high	tests/api_resources/beta/agents/environments/test_files.py:1
 duplicate-code	high	tests/api_resources/beta/agents/environments/test_files.py:191:1	-	12 lines (79 tokens) duplicated at tests.api_resources.vector_stores.test_files:351
 duplicate-code	high	tests/api_resources/beta/agents/environments/test_files.py:205:1	-	14 lines (94 tokens) duplicated at tests.api_resources.vector_stores.test_files:363
 duplicate-code	high	tests/api_resources/beta/agents/environments/test_files.py:262:1	-	8 lines (66 tokens) duplicated at tests.api_resources.beta.agents.test_environments:91
-duplicate-code	high	tests/api_resources/beta/agents/environments/test_templates.py:32:1	-	50 lines (194 tokens) duplicated at tests.api_resources.beta.agents.environments.test_templates:150
+duplicate-code	high	tests/api_resources/beta/agents/environments/test_templates.py:31:1	-	49 lines (176 tokens) duplicated at tests.api_resources.beta.agents.environments.test_templates:317
 duplicate-code	high	tests/api_resources/beta/agents/environments/test_templates.py:95:1	-	45 lines (299 tokens) duplicated at tests.api_resources.beta.agents.environments.test_templates:260
-duplicate-code	high	tests/api_resources/beta/agents/environments/test_templates.py:318:1	-	50 lines (196 tokens) duplicated at tests.api_resources.beta.agents.environments.test_templates:436
-duplicate-code	high	tests/api_resources/beta/agents/environments/test_templates.py:371:1	-	6 lines (52 tokens) duplicated at tests.api_resources.beta.agents.environments.test_templates:491
+duplicate-code	high	tests/api_resources/beta/agents/environments/test_templates.py:148:1	-	50 lines (180 tokens) duplicated at tests.api_resources.beta.agents.environments.test_templates:434
+duplicate-code	high	tests/api_resources/beta/agents/environments/test_templates.py:199:1	-	10 lines (66 tokens) duplicated at tests.api_resources.beta.agents.environments.test_templates:485
+duplicate-code	high	tests/api_resources/beta/agents/environments/test_templates.py:367:1	-	10 lines (88 tokens) duplicated at tests.api_resources.beta.agents.test_vaults:189
 duplicate-code	high	tests/api_resources/beta/agents/environments/test_templates.py:381:1	-	45 lines (307 tokens) duplicated at tests.api_resources.beta.agents.environments.test_templates:546
 duplicate-code	high	tests/api_resources/beta/agents/sessions/subagents/test_items.py:21:1	-	69 lines (509 tokens) duplicated at tests.api_resources.beta.agents.sessions.subagents.test_turns:81
 duplicate-code	high	tests/api_resources/beta/agents/sessions/subagents/test_items.py:89:1	-	56 lines (405 tokens) duplicated at tests.api_resources.beta.agents.sessions.subagents.test_turns:209
@@ -1397,7 +1380,6 @@ duplicate-code	high	tests/api_resources/beta/agents/test_sessions.py:383:1	-	13 
 duplicate-code	high	tests/api_resources/beta/agents/test_sessions.py:460:1	-	43 lines (292 tokens) duplicated at tests.api_resources.beta.agents.test_sessions:579
 duplicate-code	high	tests/api_resources/beta/agents/test_vaults.py:22:1	-	11 lines (99 tokens) duplicated at tests.api_resources.beta.responses.test_input_tokens:18
 duplicate-code	high	tests/api_resources/beta/agents/test_vaults.py:53:1	-	43 lines (291 tokens) duplicated at tests.api_resources.beta.agents.test_vaults:126
-duplicate-code	high	tests/api_resources/beta/agents/test_vaults.py:189:1	-	10 lines (80 tokens) duplicated in 3 other places: tests.api_resources.test_conversations:209, tests.api_resources.test_skills:225, tests.api_resources.test_vector_stores:316
 duplicate-code	high	tests/api_resources/beta/agents/test_vaults.py:203:1	-	43 lines (299 tokens) duplicated at tests.api_resources.beta.agents.test_vaults:276
 duplicate-code	high	tests/api_resources/beta/agents/vaults/test_credentials.py:39:1	-	21 lines (93 tokens) duplicated at tests.api_resources.beta.agents.vaults.test_credentials:348
 duplicate-code	high	tests/api_resources/beta/agents/vaults/test_credentials.py:61:1	-	16 lines (87 tokens) duplicated at tests.api_resources.beta.agents.vaults.test_credentials:370
@@ -1420,14 +1402,14 @@ duplicate-code	high	tests/api_resources/beta/responses/test_input_items.py:42:1	
 duplicate-code	high	tests/api_resources/beta/responses/test_input_items.py:53:1	-	15 lines (118 tokens) duplicated at tests.api_resources.responses.test_input_items:52
 duplicate-code	high	tests/api_resources/beta/responses/test_input_items.py:109:1	-	15 lines (121 tokens) duplicated at tests.api_resources.responses.test_input_items:107
 duplicate-code	high	tests/api_resources/beta/test_agents.py:22:1	-	6 lines (52 tokens) duplicated in 7 other places: tests.api_resources.chat.test_completions:22, tests.api_resources.containers.test_files:23, tests.api_resources.conversations.test_items:23, tests.api_resources.fine_tuning.test_jobs:22, tests.api_resources.responses.test_input_items:19, tests.api_resources.skills.test_versions:19, tests.api_resources.uploads.test_parts:18
-duplicate-code	high	tests/api_resources/beta/test_agents.py:36:1	-	31 lines (130 tokens) duplicated at tests.api_resources.beta.test_agents:138
-duplicate-code	high	tests/api_resources/beta/test_agents.py:71:1	-	7 lines (52 tokens) duplicated at tests.api_resources.beta.test_agents:173
+duplicate-code	high	tests/api_resources/beta/test_agents.py:33:1	-	31 lines (125 tokens) duplicated at tests.api_resources.beta.test_agents:283
+duplicate-code	high	tests/api_resources/beta/test_agents.py:65:1	-	10 lines (62 tokens) duplicated at tests.api_resources.beta.test_agents:315
 duplicate-code	high	tests/api_resources/beta/test_agents.py:83:1	-	43 lines (283 tokens) duplicated at tests.api_resources.beta.test_agents:226
+duplicate-code	high	tests/api_resources/beta/test_agents.py:134:1	-	32 lines (129 tokens) duplicated at tests.api_resources.beta.test_agents:384
+duplicate-code	high	tests/api_resources/beta/test_agents.py:167:1	-	10 lines (62 tokens) duplicated at tests.api_resources.beta.test_agents:417
 duplicate-code	high	tests/api_resources/beta/test_agents.py:193:1	-	13 lines (84 tokens) duplicated at tests.api_resources.chat.test_completions:389
 duplicate-code	high	tests/api_resources/beta/test_agents.py:212:1	-	10 lines (81 tokens) duplicated in 7 other places: tests.api_resources.chat.test_completions:410, tests.api_resources.fine_tuning.test_jobs:176, tests.api_resources.test_batches:125, tests.api_resources.test_evals:242, tests.api_resources.test_files:127, tests.api_resources.test_skills:149, tests.api_resources.test_vector_stores:171
 duplicate-code	high	tests/api_resources/beta/test_agents.py:271:1	-	7 lines (52 tokens) duplicated in 7 other places: tests.api_resources.chat.test_completions:469, tests.api_resources.containers.test_files:219, tests.api_resources.conversations.test_items:264, tests.api_resources.fine_tuning.test_jobs:358, tests.api_resources.live.test_sessions:381, tests.api_resources.skills.test_versions:215, tests.api_resources.uploads.test_parts:65
-duplicate-code	high	tests/api_resources/beta/test_agents.py:286:1	-	31 lines (132 tokens) duplicated at tests.api_resources.beta.test_agents:388
-duplicate-code	high	tests/api_resources/beta/test_agents.py:321:1	-	7 lines (52 tokens) duplicated at tests.api_resources.beta.test_agents:423
 duplicate-code	high	tests/api_resources/beta/test_agents.py:333:1	-	43 lines (291 tokens) duplicated at tests.api_resources.beta.test_agents:476
 duplicate-code	high	tests/api_resources/beta/test_agents.py:443:1	-	13 lines (88 tokens) duplicated at tests.api_resources.chat.test_completions:837
 duplicate-code	high	tests/api_resources/beta/test_agents.py:462:1	-	10 lines (83 tokens) duplicated in 7 other places: tests.api_resources.chat.test_completions:858, tests.api_resources.fine_tuning.test_jobs:513, tests.api_resources.test_batches:291, tests.api_resources.test_evals:519, tests.api_resources.test_files:380, tests.api_resources.test_skills:339, tests.api_resources.test_vector_stores:440
@@ -1668,6 +1650,7 @@ duplicate-code	high	tests/api_resources/test_containers.py:296:1	-	26 lines (216
 duplicate-code	high	tests/api_resources/test_content_provenance_checks.py:23:1	-	30 lines (184 tokens) duplicated at tests.api_resources.test_images:35
 duplicate-code	high	tests/api_resources/test_content_provenance_checks.py:60:1	-	28 lines (189 tokens) duplicated at tests.api_resources.test_images:300
 duplicate-code	high	tests/api_resources/test_conversations.py:21:1	-	11 lines (94 tokens) duplicated at tests.api_resources.test_skills:19
+duplicate-code	high	tests/api_resources/test_conversations.py:45:1	-	8 lines (56 tokens) duplicated in 7 other places: tests.api_resources.test_conversations:209, tests.api_resources.test_responses:107, tests.api_resources.test_responses:547, tests.api_resources.test_skills:35, tests.api_resources.test_skills:225, tests.api_resources.test_vector_stores:47, tests.api_resources.test_vector_stores:316
 duplicate-code	high	tests/api_resources/test_conversations.py:63:1	-	39 lines (252 tokens) duplicated at tests.api_resources.test_conversations:143
 duplicate-code	high	tests/api_resources/test_conversations.py:111:1	-	11 lines (68 tokens) duplicated at tests.api_resources.test_conversations:275
 duplicate-code	high	tests/api_resources/test_conversations.py:184:1	-	12 lines (96 tokens) duplicated at tests.api_resources.test_skills:208
@@ -1707,7 +1690,6 @@ duplicate-code	high	tests/api_resources/test_models.py:30:1	-	10 lines (58 token
 duplicate-code	high	tests/api_resources/test_models.py:93:1	-	10 lines (58 tokens) duplicated at tests.api_resources.test_models:200
 duplicate-code	high	tests/api_resources/test_moderations.py:37:1	-	10 lines (60 tokens) duplicated at tests.api_resources.test_moderations:82
 duplicate-code	high	tests/api_resources/test_responses.py:30:1	-	76 lines (309 tokens) duplicated at tests.api_resources.test_responses:470
-duplicate-code	high	tests/api_resources/test_responses.py:107:1	-	8 lines (56 tokens) duplicated at tests.api_resources.test_responses:547
 duplicate-code	high	tests/api_resources/test_responses.py:134:1	-	73 lines (292 tokens) duplicated at tests.api_resources.test_responses:574
 duplicate-code	high	tests/api_resources/test_responses.py:253:1	-	11 lines (73 tokens) duplicated at tests.api_resources.test_responses:381
 duplicate-code	high	tests/api_resources/test_responses.py:264:1	-	14 lines (102 tokens) duplicated at tests.api_resources.test_responses:392
@@ -1782,7 +1764,6 @@ duplicate-code	high	tests/lib/chat/test_completions.py:756:1	-	37 lines (145 tok
 duplicate-code	high	tests/lib/chat/test_completions.py:852:1	-	8 lines (62 tokens) duplicated at tests.lib.chat.test_completions_streaming:97
 duplicate-code	high	tests/lib/chat/test_completions.py:872:1	-	12 lines (79 tokens) duplicated at tests.lib.chat.test_completions:952
 duplicate-code	high	tests/lib/chat/test_completions.py:1006:1	-	13 lines (88 tokens) duplicated at tests.lib.chat.test_completions_streaming:1110
-duplicate-code	high	tests/lib/chat/test_completions_streaming.py:224:1	-	45 lines (90 tokens) duplicated at tests.lib.chat.test_completions_streaming:270
 duplicate-code	high	tests/lib/chat/test_completions_streaming.py:1152:1	-	29 lines (122 tokens) duplicated at tests.lib.chat.test_completions_streaming:1199
 duplicate-code	high	tests/lib/chat/test_create_validation.py:1:1	-	16 lines (56 tokens) duplicated at tests.lib.test_fine_tuning_positional_arguments:7
 duplicate-code	high	tests/lib/live/helpers.py:76:1	-	17 lines (121 tokens) duplicated at tests.lib.live.helpers:92
@@ -1795,7 +1776,6 @@ duplicate-code	high	tests/lib/live/test_transcript_grouping.py:79:1	-	5 lines (6
 duplicate-code	high	tests/lib/live/test_transcript_grouping.py:101:1	-	7 lines (77 tokens) duplicated at tests.lib.live.test_transcript_grouping:107
 duplicate-code	high	tests/lib/responses/test_null_output.py:78:1	-	6 lines (69 tokens) duplicated at tests.lib.responses.test_null_output_items:16
 duplicate-code	high	tests/lib/responses/test_responses.py:83:1	-	12 lines (81 tokens) duplicated at tests.lib.responses.test_responses:94
-duplicate-code	high	tests/lib/responses/test_responses.py:136:1	-	17 lines (85 tokens) duplicated at tests.lib.test_bedrock:31
 duplicate-code	high	tests/lib/snapshots.py:30:1	-	23 lines (87 tokens) duplicated at tests.lib.snapshots:73
 duplicate-code	high	tests/lib/streaming/agents/test_streams.py:254:1	-	7 lines (51 tokens) duplicated at tests.lib.streaming.agents.test_streams:474
 duplicate-code	high	tests/lib/streaming/agents/test_streams.py:503:1	-	6 lines (53 tokens) duplicated at tests.lib.streaming.agents.test_streams:512
@@ -1815,10 +1795,8 @@ duplicate-code	high	tests/lib/test_azure.py:329:1	-	9 lines (67 tokens) duplicat
 duplicate-code	high	tests/lib/test_azure.py:337:1	-	10 lines (84 tokens) duplicated at tests.lib.test_azure:356
 duplicate-code	high	tests/lib/test_azure.py:365:1	-	14 lines (81 tokens) duplicated at tests.lib.test_azure:387
 duplicate-code	high	tests/lib/test_azure.py:378:1	-	10 lines (85 tokens) duplicated at tests.lib.test_azure:400
-duplicate-code	high	tests/lib/test_azure.py:417:1	-	62 lines (167 tokens) duplicated at tests.lib.test_azure:480
-duplicate-code	high	tests/lib/test_azure.py:563:1	-	87 lines (218 tokens) duplicated at tests.lib.test_azure:651
 duplicate-code	high	tests/lib/test_azure.py:750:1	-	61 lines (162 tokens) duplicated at tests.lib.test_azure:832
-duplicate-code	high	tests/lib/test_azure.py:810:1	-	20 lines (52 tokens) duplicated at tests.lib.test_azure:891
+duplicate-code	high	tests/lib/test_azure.py:811:1	-	19 lines (50 tokens) duplicated at tests.lib.test_azure:892
 duplicate-code	high	tests/lib/test_azure_auth.py:20:1	-	7 lines (68 tokens) duplicated at tests.lib.test_azure_provider_diagnostics:98
 duplicate-code	high	tests/lib/test_azure_auth.py:160:1	-	8 lines (77 tokens) duplicated at tests.lib.test_azure_auth:218
 duplicate-code	high	tests/lib/test_azure_deployment_path.py:83:1	-	8 lines (73 tokens) duplicated at tests.lib.test_azure_deployment_path:103
@@ -1866,8 +1844,6 @@ duplicate-code	high	tests/lib/test_fine_tuning_positional_arguments.py:46:1	-	15
 duplicate-code	high	tests/lib/test_fine_tuning_positional_arguments.py:79:1	-	10 lines (67 tokens) duplicated at tests.lib.test_fine_tuning_positional_arguments:183
 duplicate-code	high	tests/lib/test_fine_tuning_positional_arguments.py:99:1	-	15 lines (119 tokens) duplicated at tests.lib.test_fine_tuning_positional_arguments:203
 duplicate-code	high	tests/lib/test_fine_tuning_positional_arguments.py:139:1	-	10 lines (54 tokens) duplicated at tests.lib.test_fine_tuning_positional_arguments:192
-duplicate-code	high	tests/lib/test_pydantic.py:275:1	-	25 lines (88 tokens) duplicated at tests.lib.test_pydantic:309
-duplicate-code	high	tests/lib/test_pydantic.py:361:1	-	16 lines (67 tokens) duplicated at tests.lib.test_pydantic:392
 duplicate-code	high	tests/lib/test_realtime_calls.py:73:1	-	8 lines (60 tokens) duplicated at tests.lib.test_realtime_calls:90
 duplicate-code	high	tests/lib/test_realtime_calls.py:80:1	-	8 lines (58 tokens) duplicated at tests.lib.test_realtime_calls:97
 duplicate-code	high	tests/lib/test_vector_store_file_poll_timeout.py:63:1	-	5 lines (50 tokens) duplicated at tests.lib.test_vector_store_file_poll_timeout:82
@@ -2045,13 +2021,15 @@ duplicate-code	high	tests/test_uv_workflows.py:556:1	-	14 lines (63 tokens) dupl
 duplicate-code	high	tests/test_uv_workflows.py:583:1	-	12 lines (92 tokens) duplicated at tests.test_uv_workflows:772
 duplicate-code	high	tests/test_uv_workflows.py:662:1	-	19 lines (80 tokens) duplicated at tests.test_uv_workflows:5468
 duplicate-code	high	tests/test_uv_workflows.py:2264:1	-	11 lines (53 tokens) duplicated at tests.test_uv_workflows:3297
+duplicate-code	high	tests/test_uv_workflows.py:2357:1	-	9 lines (53 tokens) duplicated at tests.test_uv_workflows:4686
 duplicate-code	high	tests/test_uv_workflows.py:2494:1	-	11 lines (62 tokens) duplicated at tests.test_uv_workflows:2532
-duplicate-code	high	tests/test_uv_workflows.py:2505:1	-	11 lines (122 tokens) duplicated at tests.test_uv_workflows:2543
+duplicate-code	high	tests/test_uv_workflows.py:2510:1	-	6 lines (55 tokens) duplicated at tests.test_uv_workflows:2548
 duplicate-code	high	tests/test_uv_workflows.py:2637:1	-	15 lines (68 tokens) duplicated in 2 other places: tests.test_uv_workflows:3742, tests.test_uv_workflows:4383
 duplicate-code	high	tests/test_uv_workflows.py:2749:1	-	6 lines (70 tokens) duplicated at tests.test_uv_workflows:2867
-duplicate-code	high	tests/test_uv_workflows.py:2814:1	-	6 lines (51 tokens) duplicated at tests.test_uv_workflows:8289
-duplicate-code	high	tests/test_uv_workflows.py:2820:1	-	14 lines (116 tokens) duplicated at tests.test_uv_workflows:2932
+duplicate-code	high	tests/test_uv_workflows.py:2815:1	-	7 lines (88 tokens) duplicated at tests.test_uv_workflows:8351
+duplicate-code	high	tests/test_uv_workflows.py:2824:1	-	10 lines (80 tokens) duplicated at tests.test_uv_workflows:2936
 duplicate-code	high	tests/test_uv_workflows.py:2981:1	-	8 lines (64 tokens) duplicated at tests.test_uv_workflows:7499
+duplicate-code	high	tests/test_uv_workflows.py:2988:1	-	5 lines (50 tokens) duplicated at tests.test_uv_workflows:8290
 duplicate-code	high	tests/test_uv_workflows.py:2993:1	-	11 lines (64 tokens) duplicated at tests.test_uv_workflows:6537
 duplicate-code	high	tests/test_uv_workflows.py:3126:1	-	18 lines (78 tokens) duplicated at tests.test_uv_workflows:5122
 duplicate-code	high	tests/test_uv_workflows.py:3492:1	-	11 lines (54 tokens) duplicated at tests.test_uv_workflows:6382
@@ -2062,8 +2040,7 @@ duplicate-code	high	tests/test_uv_workflows.py:3788:1	-	6 lines (57 tokens) dupl
 duplicate-code	high	tests/test_uv_workflows.py:4027:1	-	17 lines (81 tokens) duplicated at tests.test_uv_workflows:4226
 duplicate-code	high	tests/test_uv_workflows.py:4490:1	-	18 lines (81 tokens) duplicated at tests.test_uv_workflows:5310
 duplicate-code	high	tests/test_uv_workflows.py:4540:1	-	6 lines (55 tokens) duplicated at tests.test_uv_workflows:7364
-duplicate-code	high	tests/test_uv_workflows.py:4686:1	-	9 lines (54 tokens) duplicated at tests.test_uv_workflows:8356
-duplicate-code	high	tests/test_uv_workflows.py:5057:1	-	8 lines (73 tokens) duplicated at tests.test_uv_workflows:5250
+duplicate-code	high	tests/test_uv_workflows.py:5058:1	-	7 lines (72 tokens) duplicated at tests.test_uv_workflows:5251
 duplicate-code	high	tests/test_uv_workflows.py:5407:1	-	13 lines (75 tokens) duplicated at tests.test_uv_workflows:7375
 duplicate-code	high	tests/test_uv_workflows.py:5511:1	-	8 lines (56 tokens) duplicated in 2 other places: tests.test_uv_workflows:6581, tests.test_uv_workflows:7586
 duplicate-code	high	tests/test_uv_workflows.py:5604:1	-	18 lines (125 tokens) duplicated at tests.test_uv_workflows:6690
@@ -2071,7 +2048,7 @@ duplicate-code	high	tests/test_uv_workflows.py:5752:1	-	9 lines (77 tokens) dupl
 duplicate-code	high	tests/test_uv_workflows.py:5792:1	-	13 lines (102 tokens) duplicated at tests.test_uv_workflows:6228
 duplicate-code	high	tests/test_uv_workflows.py:5907:1	-	9 lines (58 tokens) duplicated at tests.test_uv_workflows:7539
 duplicate-code	high	tests/test_uv_workflows.py:5916:1	-	17 lines (140 tokens) duplicated at tests.test_uv_workflows:6032
-duplicate-code	high	tests/test_uv_workflows.py:6078:1	-	7 lines (57 tokens) duplicated at tests.test_uv_workflows:6119
+duplicate-code	high	tests/test_uv_workflows.py:6077:1	-	8 lines (71 tokens) duplicated at tests.test_uv_workflows:8189
 duplicate-code	high	tests/test_uv_workflows.py:6198:1	-	18 lines (145 tokens) duplicated at tests.test_uv_workflows:6393
 duplicate-code	high	tests/test_uv_workflows.py:6452:1	-	9 lines (65 tokens) duplicated at tests.test_uv_workflows:8146
 duplicate-code	high	tests/test_uv_workflows.py:6461:1	-	9 lines (63 tokens) duplicated at tests.test_uv_workflows:8155
@@ -2081,7 +2058,6 @@ duplicate-code	high	tests/test_uv_workflows.py:6962:1	-	8 lines (71 tokens) dupl
 duplicate-code	high	tests/test_uv_workflows.py:7289:1	-	6 lines (70 tokens) duplicated at tests.test_uv_workflows:7312
 duplicate-code	high	tests/test_uv_workflows.py:7460:1	-	20 lines (192 tokens) duplicated at tests.test_uv_workflows:7506
 duplicate-code	high	tests/test_uv_workflows.py:7550:1	-	17 lines (123 tokens) duplicated at tests.test_uv_workflows:7595
-duplicate-code	high	tests/test_uv_workflows.py:8183:1	-	8 lines (90 tokens) duplicated at tests.test_uv_workflows:8296
 duplicate-code	high	tests/test_x509_host_authority.py:13:1	-	6 lines (63 tokens) duplicated at tests.test_x509_security_boundaries:55
 duplicate-code	high	tests/test_x509_host_authority.py:37:1	-	10 lines (88 tokens) duplicated at tests.test_x509_host_authority:73
 duplicate-code	high	tests/test_x509_host_authority.py:49:1	-	6 lines (57 tokens) duplicated at tests.test_x509_host_authority:85

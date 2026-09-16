@@ -1,14 +1,13 @@
 files_scanned=1850
 symbols_checked=0
 symbols_kept=0
-findings=836
-duplication: clones=836 duplicated_lines=26625 total_lines=268266 percent_tenths=99
+findings=810
+duplication: clones=810 duplicated_lines=25987 total_lines=268266 percent_tenths=96
 --
 duplicate-code	high	hacking/test-module.py:91:1	-	17 lines (86 tokens) duplicated at lib.ansible.parsing.utils.jsonify:27
 duplicate-code	high	lib/ansible/_internal/_collection_proxy.py:30:1	-	9 lines (54 tokens) duplicated at lib.ansible.vars.hostvars:96
 duplicate-code	high	lib/ansible/_internal/_json/__init__.py:89:1	-	14 lines (63 tokens) duplicated at lib.ansible.playbook.attribute:74
 duplicate-code	high	lib/ansible/_internal/_json/_legacy_encoder.py:5:1	-	11 lines (52 tokens) duplicated at lib.ansible.module_utils._internal._json._legacy_encoder:1
-duplicate-code	high	lib/ansible/_internal/_json/_profiles/_cache_persistence.py:23:1	-	14 lines (56 tokens) duplicated at lib.ansible.executor.play_iterator:88
 duplicate-code	high	lib/ansible/_internal/_json/_profiles/_cache_persistence.py:42:1	-	17 lines (78 tokens) duplicated at lib.ansible.module_utils._internal._json._profiles._module_legacy_m2c:22
 duplicate-code	high	lib/ansible/_internal/_json/_profiles/_legacy.py:136:1	-	18 lines (134 tokens) duplicated at lib.ansible.module_utils._internal._json._profiles._tagless:17
 duplicate-code	high	lib/ansible/_internal/_ssh/_ssh_agent.py:191:1	-	10 lines (72 tokens) duplicated at lib.ansible._internal._ssh._ssh_agent:226
@@ -25,7 +24,7 @@ duplicate-code	high	lib/ansible/_internal/_task.py:795:1	-	11 lines (70 tokens) 
 duplicate-code	high	lib/ansible/_internal/_task.py:817:1	-	11 lines (74 tokens) duplicated at lib.ansible._internal._task:829
 duplicate-code	high	lib/ansible/_internal/_task.py:842:1	-	5 lines (79 tokens) duplicated at lib.ansible._internal._task:881
 duplicate-code	high	lib/ansible/_internal/_task.py:1364:1	-	13 lines (69 tokens) duplicated at lib.ansible._internal._task:1418
-duplicate-code	high	lib/ansible/_internal/_templating/_jinja_bits.py:658:1	-	20 lines (125 tokens) duplicated at lib.ansible._internal._templating._jinja_bits:678
+duplicate-code	high	lib/ansible/_internal/_templating/_jinja_bits.py:659:1	-	19 lines (119 tokens) duplicated at lib.ansible._internal._templating._jinja_bits:679
 duplicate-code	high	lib/ansible/_internal/_templating/_jinja_bits.py:1046:1	-	11 lines (92 tokens) duplicated at lib.ansible._internal._templating._jinja_bits:1067
 duplicate-code	high	lib/ansible/_internal/_templating/_jinja_bits.py:1058:1	-	10 lines (56 tokens) duplicated at lib.ansible._internal._templating._jinja_bits:1077
 duplicate-code	high	lib/ansible/_internal/_templating/_lazy_containers.py:303:1	-	10 lines (69 tokens) duplicated at lib.ansible._internal._templating._lazy_containers:413
@@ -61,7 +60,7 @@ duplicate-code	high	lib/ansible/cli/inventory.py:279:1	-	11 lines (69 tokens) du
 duplicate-code	high	lib/ansible/config/manager.py:217:1	-	6 lines (53 tokens) duplicated at lib.ansible.config.manager:224
 duplicate-code	high	lib/ansible/config/manager.py:568:1	-	13 lines (56 tokens) duplicated at lib.ansible.config.manager:595
 duplicate-code	high	lib/ansible/errors/__init__.py:378:1	-	27 lines (90 tokens) duplicated at lib.ansible.errors:404
-duplicate-code	high	lib/ansible/executor/module_common.py:1600:1	-	14 lines (52 tokens) duplicated at test.lib.ansible_test._internal.util_common:533
+duplicate-code	high	lib/ansible/executor/module_common.py:1601:1	-	13 lines (50 tokens) duplicated at test.lib.ansible_test._internal.util_common:534
 duplicate-code	high	lib/ansible/executor/play_iterator.py:129:1	-	7 lines (50 tokens) duplicated at lib.ansible.playbook.base:438
 duplicate-code	high	lib/ansible/executor/play_iterator.py:350:1	-	27 lines (169 tokens) duplicated at lib.ansible.executor.play_iterator:382
 duplicate-code	high	lib/ansible/executor/play_iterator.py:494:1	-	9 lines (84 tokens) duplicated at lib.ansible.executor.play_iterator:503
@@ -95,16 +94,12 @@ duplicate-code	high	lib/ansible/module_utils/_internal/_datatag/__init__.py:756:
 duplicate-code	high	lib/ansible/module_utils/_internal/_datatag/__init__.py:768:1	-	14 lines (65 tokens) duplicated at lib.ansible.module_utils._internal._datatag:806
 duplicate-code	high	lib/ansible/module_utils/_internal/_datatag/__init__.py:782:1	-	19 lines (133 tokens) duplicated at lib.ansible.module_utils._internal._datatag:852
 duplicate-code	high	lib/ansible/module_utils/_internal/_datatag/__init__.py:878:1	-	14 lines (52 tokens) duplicated at lib.ansible.module_utils._internal._datatag:891
-duplicate-code	high	lib/ansible/module_utils/_internal/_errors.py:43:1	-	6 lines (54 tokens) duplicated at lib.ansible.modules.stat:395
-duplicate-code	high	lib/ansible/module_utils/_internal/_json/_profiles/_fallback_to_str.py:28:1	-	10 lines (79 tokens) duplicated at lib.ansible.utils.display:208
 duplicate-code	high	lib/ansible/module_utils/_internal/_json/_profiles/_module_legacy_c2m.py:11:1	-	13 lines (77 tokens) duplicated at lib.ansible.module_utils._internal._json._profiles._module_modern_c2m:14
 duplicate-code	high	lib/ansible/module_utils/_internal/_messages.py:28:1	-	9 lines (72 tokens) duplicated at lib.ansible.module_utils._internal._messages:37
 duplicate-code	high	lib/ansible/module_utils/_internal/_messages.py:81:1	-	6 lines (52 tokens) duplicated at test.lib.ansible_test._internal.cli.compat:126
 duplicate-code	high	lib/ansible/module_utils/_internal/_no_six.py:11:1	-	47 lines (280 tokens) duplicated at lib.ansible.module_utils.six:882
-duplicate-code	high	lib/ansible/module_utils/basic.py:186:1	-	8 lines (66 tokens) duplicated at lib.ansible.modules.iptables:833
 duplicate-code	high	lib/ansible/module_utils/basic.py:768:1	-	25 lines (162 tokens) duplicated at lib.ansible.module_utils.basic:809
 duplicate-code	high	lib/ansible/module_utils/basic.py:852:1	-	15 lines (94 tokens) duplicated at lib.ansible.module_utils.basic:936
-duplicate-code	high	lib/ansible/module_utils/basic.py:1095:1	-	7 lines (56 tokens) duplicated at lib.ansible.module_utils.basic:1104
 duplicate-code	high	lib/ansible/module_utils/common/arg_spec.py:198:1	-	9 lines (54 tokens) duplicated at lib.ansible.module_utils.common.arg_spec:260
 duplicate-code	high	lib/ansible/module_utils/common/network.py:105:1	-	21 lines (79 tokens) duplicated at lib.ansible.module_utils.common.network:133
 duplicate-code	high	lib/ansible/module_utils/common/parameters.py:513:1	-	9 lines (53 tokens) duplicated at lib.ansible.module_utils.common.parameters:521
@@ -150,14 +145,11 @@ duplicate-code	high	lib/ansible/module_utils/splitter.py:32:1	-	54 lines (164 to
 duplicate-code	high	lib/ansible/module_utils/splitter.py:159:1	-	34 lines (201 tokens) duplicated at lib.ansible.parsing.splitter:253
 duplicate-code	high	lib/ansible/module_utils/urls.py:751:1	-	17 lines (96 tokens) duplicated at test.lib.ansible_test._internal.provider.layout:101
 duplicate-code	high	lib/ansible/module_utils/urls.py:836:1	-	12 lines (122 tokens) duplicated at lib.ansible.module_utils.urls:847
-duplicate-code	high	lib/ansible/module_utils/urls.py:1002:1	-	7 lines (89 tokens) duplicated at test.units.module_utils.urls.test_Request:456
-duplicate-code	high	lib/ansible/module_utils/urls.py:1015:1	-	7 lines (91 tokens) duplicated at lib.ansible.module_utils.urls:1464
+duplicate-code	high	lib/ansible/module_utils/urls.py:1017:1	-	5 lines (50 tokens) duplicated at lib.ansible.module_utils.urls:1467
 duplicate-code	high	lib/ansible/module_utils/urls.py:1109:1	-	12 lines (55 tokens) duplicated at lib.ansible.module_utils.urls:1148
-duplicate-code	high	lib/ansible/module_utils/yumdnf.py:30:1	-	5 lines (62 tokens) duplicated at lib.ansible.modules.unarchive:1062
 duplicate-code	high	lib/ansible/modules/apt.py:1033:1	-	17 lines (71 tokens) duplicated at lib.ansible.modules.apt:1074
 duplicate-code	high	lib/ansible/modules/apt.py:1323:1	-	33 lines (78 tokens) duplicated at lib.ansible.modules.apt_repository:690
 duplicate-code	high	lib/ansible/modules/apt_repository.py:395:1	-	11 lines (70 tokens) duplicated at lib.ansible.modules.apt_repository:430
-duplicate-code	high	lib/ansible/modules/assemble.py:197:1	-	6 lines (56 tokens) duplicated at lib.ansible.modules.copy:471
 duplicate-code	high	lib/ansible/modules/blockinfile.py:211:1	-	18 lines (140 tokens) duplicated at lib.ansible.modules.replace:193
 duplicate-code	high	lib/ansible/modules/blockinfile.py:231:1	-	15 lines (77 tokens) duplicated at lib.ansible.modules.replace:213
 duplicate-code	high	lib/ansible/modules/blockinfile.py:276:1	-	7 lines (61 tokens) duplicated at lib.ansible.modules.lineinfile:307
@@ -171,9 +163,8 @@ duplicate-code	high	lib/ansible/modules/file.py:711:1	-	8 lines (61 tokens) dupl
 duplicate-code	high	lib/ansible/modules/file.py:782:1	-	17 lines (91 tokens) duplicated at lib.ansible.modules.file:901
 duplicate-code	high	lib/ansible/modules/file.py:799:1	-	12 lines (82 tokens) duplicated at lib.ansible.modules.file:922
 duplicate-code	high	lib/ansible/modules/file.py:810:1	-	15 lines (89 tokens) duplicated at lib.ansible.modules.file:935
-duplicate-code	high	lib/ansible/modules/find.py:490:1	-	7 lines (70 tokens) duplicated at lib.ansible.modules.lineinfile:578
 duplicate-code	high	lib/ansible/modules/find.py:608:1	-	9 lines (78 tokens) duplicated at lib.ansible.modules.find:628
-duplicate-code	high	lib/ansible/modules/get_url.py:521:1	-	12 lines (75 tokens) duplicated at lib.ansible.modules.uri:596
+duplicate-code	high	lib/ansible/modules/get_url.py:522:1	-	11 lines (64 tokens) duplicated at lib.ansible.modules.uri:597
 duplicate-code	high	lib/ansible/modules/git.py:768:1	-	9 lines (67 tokens) duplicated at lib.ansible.modules.git:803
 duplicate-code	high	lib/ansible/modules/git.py:1066:1	-	5 lines (56 tokens) duplicated at lib.ansible.modules.git:1082
 duplicate-code	high	lib/ansible/modules/git.py:1369:1	-	8 lines (69 tokens) duplicated at lib.ansible.modules.git:1417
@@ -198,7 +189,6 @@ duplicate-code	high	lib/ansible/modules/hostname.py:366:1	-	12 lines (66 tokens)
 duplicate-code	high	lib/ansible/modules/hostname.py:388:1	-	19 lines (115 tokens) duplicated at lib.ansible.modules.hostname:423
 duplicate-code	high	lib/ansible/modules/hostname.py:599:1	-	10 lines (71 tokens) duplicated at lib.ansible.modules.service:200
 duplicate-code	high	lib/ansible/modules/iptables.py:743:1	-	9 lines (73 tokens) duplicated at lib.ansible.modules.iptables:766
-duplicate-code	high	lib/ansible/modules/iptables.py:791:1	-	10 lines (89 tokens) duplicated at lib.ansible.modules.iptables:813
 duplicate-code	high	lib/ansible/modules/lineinfile.py:415:1	-	6 lines (54 tokens) duplicated at lib.ansible.modules.lineinfile:470
 duplicate-code	high	lib/ansible/modules/lineinfile.py:496:1	-	10 lines (61 tokens) duplicated at lib.ansible.modules.lineinfile:556
 duplicate-code	high	lib/ansible/modules/ping.py:64:1	-	26 lines (92 tokens) duplicated at test/integration/targets/ansible-galaxy-collection/files/test_module.py:55
@@ -207,8 +197,6 @@ duplicate-code	high	lib/ansible/modules/rpm_key.py:284:1	-	20 lines (80 tokens) 
 duplicate-code	high	lib/ansible/modules/service.py:837:1	-	7 lines (59 tokens) duplicated at lib.ansible.modules.service:847
 duplicate-code	high	lib/ansible/modules/service.py:1120:1	-	17 lines (91 tokens) duplicated at lib.ansible.modules.service:1232
 duplicate-code	high	lib/ansible/modules/service.py:1446:1	-	10 lines (59 tokens) duplicated at lib.ansible.modules.service:1475
-duplicate-code	high	lib/ansible/modules/stat.py:402:1	-	9 lines (51 tokens) duplicated at lib.ansible.plugins.loader:421
-duplicate-code	high	lib/ansible/modules/stat.py:410:1	-	6 lines (56 tokens) duplicated at lib.ansible.modules.stat:416
 duplicate-code	high	lib/ansible/modules/subversion.py:217:1	-	9 lines (55 tokens) duplicated at lib.ansible.modules.subversion:225
 duplicate-code	high	lib/ansible/modules/subversion.py:238:1	-	10 lines (69 tokens) duplicated at lib.ansible.modules.subversion:255
 duplicate-code	high	lib/ansible/modules/systemd.py:6:1	-	583 lines (2011 tokens) duplicated at lib.ansible.modules.systemd_service:6
@@ -250,7 +238,6 @@ duplicate-code	high	lib/ansible/modules/user.py:3255:1	-	8 lines (54 tokens) dup
 duplicate-code	high	lib/ansible/modules/user.py:3265:1	-	7 lines (67 tokens) duplicated at lib.ansible.modules.user:3317
 duplicate-code	high	lib/ansible/modules/user.py:3325:1	-	7 lines (50 tokens) duplicated at lib.ansible.modules.user:3349
 duplicate-code	high	lib/ansible/modules/wait_for.py:298:1	-	11 lines (74 tokens) duplicated at lib.ansible.modules.wait_for:376
-duplicate-code	high	lib/ansible/parsing/dataloader.py:258:1	-	6 lines (66 tokens) duplicated at lib.ansible.parsing.dataloader:264
 duplicate-code	high	lib/ansible/parsing/vault/__init__.py:463:1	-	10 lines (57 tokens) duplicated at lib.ansible.parsing.vault:497
 duplicate-code	high	lib/ansible/parsing/yaml/objects.py:17:1	-	11 lines (59 tokens) duplicated at lib.ansible.parsing.yaml.objects:27
 duplicate-code	high	lib/ansible/playbook/attribute.py:91:1	-	12 lines (57 tokens) duplicated at test.lib.ansible_test._internal.test:444
@@ -341,7 +328,6 @@ duplicate-code	high	test/integration/targets/ansible-test-sanity-import/ansible_
 duplicate-code	high	test/integration/targets/ansible-test-sanity-pylint/ansible_collections/ns/col/plugins/lookup/deprecated.py:92:1	-	7 lines (58 tokens) duplicated at test/integration/targets/ansible-test-sanity-pylint/ansible_collections/ns/col/plugins/lookup/deprecated.py:101
 duplicate-code	high	test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/invalid_argument_spec_extra_key.py:16:1	-	22 lines (54 tokens) duplicated at test/integration/targets/ansible-test-sanity-validate-modules/ansible_collections/ns/col/plugins/modules/invalid_argument_spec_incorrect_context.py:16
 duplicate-code	high	test/integration/targets/ansible-test/venv-pythons.py:20:1	-	8 lines (63 tokens) duplicated at test/integration/targets/collection/update-ignore.py:12
-duplicate-code	high	test/integration/targets/argspec/collections/ansible_collections/foo/bar/plugins/modules/argspec.py:179:1	-	33 lines (96 tokens) duplicated at test.integration.targets.argspec.collections.ansible_collections.foo.bar.plugins.modules.argspec:214
 duplicate-code	high	test/integration/targets/async/library/async_test.py:1:1	-	29 lines (102 tokens) duplicated at test.integration.targets.async_fail.library.async_test:1
 duplicate-code	high	test/integration/targets/cache-plugins/cache_plugins/dummy_file_cache.py:43:1	-	8 lines (81 tokens) duplicated at test/integration/targets/cache-plugins/cache_plugins/dummy_file_cache_persistent.py:41
 duplicate-code	high	test/integration/targets/callback-dispatch/library/noisy.py:1:1	-	15 lines (56 tokens) duplicated at test.integration.targets.templating.library.noisy:1
@@ -466,7 +452,6 @@ duplicate-code	high	test/lib/ansible_test/_internal/core_ci.py:501:1	-	10 lines 
 duplicate-code	high	test/lib/ansible_test/_internal/delegation.py:103:1	-	10 lines (53 tokens) duplicated at test.lib.ansible_test._internal.delegation:131
 duplicate-code	high	test/lib/ansible_test/_internal/docker_util.py:749:1	-	11 lines (55 tokens) duplicated at test.lib.ansible_test._internal.docker_util:869
 duplicate-code	high	test/lib/ansible_test/_internal/docker_util.py:912:1	-	10 lines (64 tokens) duplicated at test.lib.ansible_test._internal.docker_util:945
-duplicate-code	high	test/lib/ansible_test/_internal/docker_util.py:973:1	-	6 lines (53 tokens) duplicated at test.lib.ansible_test._internal.docker_util:1002
 duplicate-code	high	test/lib/ansible_test/_internal/encoding.py:20:1	-	12 lines (55 tokens) duplicated at test.lib.ansible_test._util.target.setup.requirements:378
 duplicate-code	high	test/lib/ansible_test/_internal/encoding.py:31:1	-	10 lines (51 tokens) duplicated at test.lib.ansible_test._util.target.setup.requirements:389
 duplicate-code	high	test/lib/ansible_test/_internal/host_configs.py:343:1	-	21 lines (174 tokens) duplicated at test.lib.ansible_test._internal.host_configs:402
@@ -493,8 +478,7 @@ duplicate-code	high	test/lib/ansible_test/_internal/ssh.py:157:1	-	5 lines (50 t
 duplicate-code	high	test/lib/ansible_test/_internal/target.py:115:1	-	6 lines (54 tokens) duplicated at test.lib.ansible_test._internal.target:125
 duplicate-code	high	test/lib/ansible_test/_internal/util.py:318:1	-	18 lines (89 tokens) duplicated at test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:42
 duplicate-code	high	test/lib/ansible_test/_internal/util.py:339:1	-	19 lines (111 tokens) duplicated at test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:57
-duplicate-code	high	test/lib/ansible_test/_internal/util.py:415:1	-	7 lines (68 tokens) duplicated at test.lib.ansible_test._internal.util_common:516
-duplicate-code	high	test/lib/ansible_test/_internal/util.py:422:1	-	9 lines (80 tokens) duplicated at test.lib.ansible_test._internal.util_common:523
+duplicate-code	high	test/lib/ansible_test/_internal/util.py:423:1	-	8 lines (73 tokens) duplicated at test.lib.ansible_test._internal.util_common:524
 duplicate-code	high	test/lib/ansible_test/_internal/util.py:662:1	-	11 lines (52 tokens) duplicated at test.lib.ansible_test._internal.util:677
 duplicate-code	high	test/lib/ansible_test/_internal/util.py:1076:1	-	12 lines (64 tokens) duplicated at test/sanity/code-smell/pymarkdown.py:142
 duplicate-code	high	test/lib/ansible_test/_internal/util_common.py:245:1	-	6 lines (86 tokens) duplicated at test.lib.ansible_test._internal.util_common:257
@@ -633,13 +617,11 @@ duplicate-code	high	test/units/module_utils/basic/test_argument_spec.py:249:1	-	
 duplicate-code	high	test/units/module_utils/basic/test_argument_spec.py:312:1	-	10 lines (68 tokens) duplicated at test.units.module_utils.basic.test_argument_spec:585
 duplicate-code	high	test/units/module_utils/basic/test_argument_spec.py:324:1	-	11 lines (77 tokens) duplicated at test.units.module_utils.basic.test_argument_spec:336
 duplicate-code	high	test/units/module_utils/basic/test_argument_spec.py:351:1	-	11 lines (70 tokens) duplicated at test.units.module_utils.basic.test_argument_spec:366
-duplicate-code	high	test/units/module_utils/basic/test_argument_spec.py:431:1	-	5 lines (56 tokens) duplicated at test.units.module_utils.basic.test_argument_spec:436
 duplicate-code	high	test/units/module_utils/basic/test_argument_spec.py:561:1	-	13 lines (90 tokens) duplicated at test.units.module_utils.basic.test_argument_spec:573
 duplicate-code	high	test/units/module_utils/basic/test_atomic_move.py:84:1	-	6 lines (58 tokens) duplicated at test.units.module_utils.basic.test_atomic_move:205
 duplicate-code	high	test/units/module_utils/basic/test_atomic_move.py:92:1	-	7 lines (52 tokens) duplicated at test.units.module_utils.basic.test_atomic_move:190
 duplicate-code	high	test/units/module_utils/basic/test_atomic_move.py:130:1	-	8 lines (68 tokens) duplicated at test.units.module_utils.basic.test_atomic_move:160
 duplicate-code	high	test/units/module_utils/basic/test_exit_json.py:38:1	-	5 lines (55 tokens) duplicated at test.units.module_utils.basic.test_exit_json:49
-duplicate-code	high	test/units/module_utils/basic/test_exit_json.py:108:1	-	6 lines (57 tokens) duplicated at test.units.module_utils.basic.test_exit_json:117
 duplicate-code	high	test/units/module_utils/basic/test_exit_json.py:136:1	-	6 lines (75 tokens) duplicated at test.units.module_utils.basic.test_exit_json:147
 duplicate-code	high	test/units/module_utils/basic/test_filesystem.py:62:1	-	8 lines (72 tokens) duplicated at test.units.module_utils.basic.test_filesystem:100
 duplicate-code	high	test/units/module_utils/basic/test_filesystem.py:81:1	-	18 lines (119 tokens) duplicated at test.units.module_utils.basic.test_filesystem:119
@@ -681,9 +663,6 @@ duplicate-code	high	test/units/module_utils/datatag/test_datatag.py:468:1	-	10 l
 duplicate-code	high	test/units/module_utils/datatag/test_datatag.py:521:1	-	8 lines (51 tokens) duplicated at test.units.module_utils.datatag.test_datatag:531
 duplicate-code	high	test/units/module_utils/datatag/test_datatag.py:585:1	-	6 lines (51 tokens) duplicated at test.units.module_utils.datatag.test_datatag:601
 duplicate-code	high	test/units/module_utils/facts/hardware/linux_data.py:118:1	-	209 lines (507 tokens) duplicated at test.units.module_utils.facts.test_facts:308
-duplicate-code	high	test/units/module_utils/facts/hardware/linux_data.py:418:1	-	8 lines (51 tokens) duplicated at test.units.module_utils.facts.hardware.linux_data:445
-duplicate-code	high	test/units/module_utils/facts/hardware/linux_data.py:435:1	-	6 lines (52 tokens) duplicated at test.units.module_utils.facts.hardware.linux_data:532
-duplicate-code	high	test/units/module_utils/facts/hardware/linux_data.py:571:1	-	5 lines (66 tokens) duplicated at test.units.module_utils.facts.hardware.linux_data:644
 duplicate-code	high	test/units/module_utils/facts/hardware/test_darwin_facts.py:23:1	-	11 lines (70 tokens) duplicated at test.units.module_utils.facts.hardware.test_darwin_facts:39
 duplicate-code	high	test/units/module_utils/facts/hardware/test_linux.py:34:1	-	16 lines (76 tokens) duplicated at test.units.module_utils.facts.test_facts:526
 duplicate-code	high	test/units/module_utils/facts/hardware/test_linux.py:59:1	-	10 lines (68 tokens) duplicated at test.units.module_utils.facts.test_facts:553
@@ -792,18 +771,16 @@ duplicate-code	high	test/units/plugins/action/test_gather_facts.py:49:1	-	22 lin
 duplicate-code	high	test/units/plugins/action/test_raw.py:46:1	-	15 lines (76 tokens) duplicated at test.units.plugins.action.test_raw:80
 duplicate-code	high	test/units/plugins/action/test_reboot.py:100:1	-	23 lines (103 tokens) duplicated at test.units.plugins.action.test_reboot:162
 duplicate-code	high	test/units/plugins/connection/test_local.py:19:1	-	20 lines (62 tokens) duplicated at test.units.plugins.connection.test_ssh:29
-duplicate-code	high	test/units/plugins/connection/test_psrp.py:59:1	-	28 lines (109 tokens) duplicated at test.units.plugins.connection.test_psrp:127
 duplicate-code	high	test/units/plugins/connection/test_ssh.py:121:1	-	5 lines (50 tokens) duplicated at test.units.plugins.connection.test_ssh:196
 duplicate-code	high	test/units/plugins/connection/test_ssh.py:140:1	-	17 lines (95 tokens) duplicated at test.units.plugins.connection.test_ssh:176
 duplicate-code	high	test/units/plugins/connection/test_ssh.py:210:1	-	10 lines (57 tokens) duplicated at test.units.plugins.connection.test_ssh:260
 duplicate-code	high	test/units/plugins/connection/test_ssh.py:233:1	-	15 lines (110 tokens) duplicated at test.units.plugins.connection.test_ssh:286
-duplicate-code	high	test/units/plugins/connection/test_ssh.py:369:1	-	7 lines (86 tokens) duplicated at test.units.plugins.connection.test_ssh:489
+duplicate-code	high	test/units/plugins/connection/test_ssh.py:367:1	-	5 lines (78 tokens) duplicated at test.units.plugins.connection.test_ssh:399
 duplicate-code	high	test/units/plugins/connection/test_ssh.py:411:1	-	10 lines (77 tokens) duplicated at test.units.plugins.connection.test_ssh:440
 duplicate-code	high	test/units/plugins/connection/test_ssh.py:427:1	-	10 lines (135 tokens) duplicated at test.units.plugins.connection.test_ssh:455
 duplicate-code	high	test/units/plugins/connection/test_ssh.py:483:1	-	6 lines (60 tokens) duplicated at test.units.plugins.connection.test_ssh:512
 duplicate-code	high	test/units/plugins/connection/test_ssh.py:522:1	-	8 lines (57 tokens) duplicated at test.units.plugins.connection.test_ssh:536
 duplicate-code	high	test/units/plugins/connection/test_ssh.py:545:1	-	27 lines (267 tokens) duplicated at test.units.plugins.connection.test_ssh:575
-duplicate-code	high	test/units/plugins/connection/test_winrm.py:55:1	-	14 lines (53 tokens) duplicated at test.units.plugins.connection.test_winrm:70
 duplicate-code	high	test/units/plugins/connection/test_winrm.py:279:1	-	14 lines (86 tokens) duplicated at test.units.plugins.connection.test_winrm:299
 duplicate-code	high	test/units/plugins/connection/test_winrm.py:323:1	-	15 lines (91 tokens) duplicated at test.units.plugins.connection.test_winrm:343
 duplicate-code	high	test/units/plugins/connection/test_winrm.py:368:1	-	10 lines (80 tokens) duplicated at test.units.plugins.connection.test_winrm:383
@@ -825,14 +802,11 @@ duplicate-code	high	test/units/utils/collection_loader/test_collection_loader.py
 duplicate-code	high	test/units/utils/display/test_curses.py:19:1	-	9 lines (62 tokens) duplicated at test.units.utils.display.test_curses:72
 duplicate-code	high	test/units/utils/display/test_curses.py:28:1	-	14 lines (57 tokens) duplicated at test.units.utils.display.test_curses:81
 duplicate-code	high	test/units/utils/test_display.py:98:1	-	14 lines (80 tokens) duplicated at test.units.utils.test_display:111
-duplicate-code	high	test/units/utils/test_plugin_docs.py:19:1	-	84 lines (224 tokens) duplicated at test.units.utils.test_plugin_docs:166
 duplicate-code	high	test/units/utils/test_serialization.py:45:1	-	25 lines (137 tokens) duplicated at test.units.utils.test_serialization:250
 duplicate-code	high	test/units/utils/test_serialization.py:72:1	-	20 lines (103 tokens) duplicated at test.units.utils.test_serialization:144
 duplicate-code	high	test/units/utils/test_serialization.py:106:1	-	18 lines (141 tokens) duplicated at test.units.utils.test_serialization:220
 duplicate-code	high	test/units/utils/test_serialization.py:123:1	-	7 lines (52 tokens) duplicated at test.units.utils.test_serialization:241
 duplicate-code	high	test/units/utils/test_serialization.py:287:1	-	12 lines (75 tokens) duplicated at test.units.utils.test_serialization:299
-duplicate-code	high	test/units/utils/test_vars.py:41:1	-	5 lines (65 tokens) duplicated at test.units.utils.test_vars:46
-duplicate-code	high	test/units/utils/test_vars.py:58:1	-	5 lines (61 tokens) duplicated at test.units.utils.test_vars:63
 duplicate-code	high	test/units/utils/test_vars.py:71:1	-	7 lines (63 tokens) duplicated at test.units.utils.test_vars:77
 duplicate-code	high	test/units/utils/test_vars.py:120:1	-	14 lines (64 tokens) duplicated at test.units.utils.test_vars:187
 duplicate-code	high	test/units/utils/test_vars.py:148:1	-	10 lines (67 tokens) duplicated at test.units.utils.test_vars:157

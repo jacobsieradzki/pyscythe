@@ -1,8 +1,8 @@
 files_scanned=447
 symbols_checked=0
 symbols_kept=0
-findings=413
-duplication: clones=413 duplicated_lines=13440 total_lines=81058 percent_tenths=165
+findings=410
+duplication: clones=410 duplicated_lines=13271 total_lines=81058 percent_tenths=163
 --
 duplicate-code	high	src/poetry/config/config.py:204:1	-	17 lines (74 tokens) duplicated at poetry.installation.installer:85
 duplicate-code	high	src/poetry/config/dict_config_source.py:25:1	-	13 lines (90 tokens) duplicated at poetry.config.file_config_source:39
@@ -45,8 +45,8 @@ duplicate-code	high	src/poetry/utils/env/mock_env.py:46:1	-	17 lines (77 tokens)
 duplicate-code	high	src/poetry/utils/env/python/manager.py:188:1	-	9 lines (50 tokens) duplicated at poetry.utils.env.python.manager:196
 duplicate-code	high	src/poetry/utils/helpers.py:57:1	-	12 lines (55 tokens) duplicated at tests.console.commands.test_init:39
 duplicate-code	high	tests/config/test_file_config_source.py:34:1	-	16 lines (83 tokens) duplicated at tests.config.test_file_config_source:59
-duplicate-code	high	tests/conftest.py:461:1	-	10 lines (87 tokens) duplicated at tests.types:58
-duplicate-code	high	tests/conftest.py:709:1	-	7 lines (59 tokens) duplicated at tests.types:84
+duplicate-code	high	tests/conftest.py:464:1	-	7 lines (52 tokens) duplicated at tests.types:61
+duplicate-code	high	tests/conftest.py:710:1	-	6 lines (52 tokens) duplicated at tests.types:85
 duplicate-code	high	tests/console/commands/cache/test_clear.py:29:1	-	10 lines (73 tokens) duplicated at tests.console.commands.cache.test_clear:59
 duplicate-code	high	tests/console/commands/cache/test_clear.py:38:1	-	8 lines (57 tokens) duplicated at tests.console.commands.cache.test_clear:68
 duplicate-code	high	tests/console/commands/debug/test_info.py:3:1	-	29 lines (79 tokens) duplicated at tests.console.commands.env.test_info:1
@@ -115,7 +115,6 @@ duplicate-code	high	tests/console/commands/test_run.py:202:1	-	10 lines (60 toke
 duplicate-code	high	tests/console/commands/test_search.py:62:1	-	16 lines (61 tokens) duplicated at tests.console.commands.test_search:98
 duplicate-code	high	tests/console/commands/test_show.py:47:1	-	9 lines (58 tokens) duplicated at tests.console.commands.test_show:752
 duplicate-code	high	tests/console/commands/test_show.py:56:1	-	56 lines (227 tokens) duplicated at tests.console.commands.test_show:156
-duplicate-code	high	tests/console/commands/test_show.py:117:1	-	20 lines (59 tokens) duplicated at tests.console.commands.test_show:251
 duplicate-code	high	tests/console/commands/test_show.py:414:1	-	11 lines (53 tokens) duplicated at tests.console.commands.test_show:2277
 duplicate-code	high	tests/console/commands/test_show.py:427:1	-	16 lines (58 tokens) duplicated at tests.console.commands.test_show:1667
 duplicate-code	high	tests/console/commands/test_show.py:464:1	-	15 lines (68 tokens) duplicated at tests.console.commands.test_show:522
@@ -127,17 +126,16 @@ duplicate-code	high	tests/console/commands/test_show.py:823:1	-	17 lines (99 tok
 duplicate-code	high	tests/console/commands/test_show.py:840:1	-	71 lines (290 tokens) duplicated at tests.console.commands.test_show:971
 duplicate-code	high	tests/console/commands/test_show.py:927:1	-	17 lines (72 tokens) duplicated at tests.console.commands.test_show:2725
 duplicate-code	high	tests/console/commands/test_show.py:1057:1	-	19 lines (70 tokens) duplicated at tests.console.commands.test_show:1245
-duplicate-code	high	tests/console/commands/test_show.py:1080:1	-	22 lines (76 tokens) duplicated at tests.console.commands.test_show:1683
+duplicate-code	high	tests/console/commands/test_show.py:1096:1	-	13 lines (55 tokens) duplicated at tests.console.commands.test_show:1439
 duplicate-code	high	tests/console/commands/test_show.py:1221:1	-	11 lines (51 tokens) duplicated at tests.console.commands.test_show:1655
 duplicate-code	high	tests/console/commands/test_show.py:1352:1	-	69 lines (305 tokens) duplicated at tests.console.commands.test_show:1470
-duplicate-code	high	tests/console/commands/test_show.py:1422:1	-	23 lines (88 tokens) duplicated at tests.console.commands.test_show:1539
 duplicate-code	high	tests/console/commands/test_show.py:1561:1	-	30 lines (128 tokens) duplicated at tests.console.commands.test_show:2632
-duplicate-code	high	tests/console/commands/test_show.py:1704:1	-	13 lines (55 tokens) duplicated at tests.console.commands.test_show:1835
+duplicate-code	high	tests/console/commands/test_show.py:1704:1	-	13 lines (56 tokens) duplicated at tests.console.commands.test_show:1835
 duplicate-code	high	tests/console/commands/test_show.py:1727:1	-	47 lines (195 tokens) duplicated at tests.console.commands.test_show:1789
 duplicate-code	high	tests/console/commands/test_show.py:1868:1	-	27 lines (101 tokens) duplicated at tests.console.commands.test_show:1927
 duplicate-code	high	tests/console/commands/test_show.py:1979:1	-	54 lines (253 tokens) duplicated at tests.console.commands.test_show:2124
 duplicate-code	high	tests/console/commands/test_show.py:2373:1	-	16 lines (83 tokens) duplicated at tests.console.commands.test_show:2764
-duplicate-code	high	tests/console/commands/test_show.py:2388:1	-	29 lines (108 tokens) duplicated at tests.console.commands.test_show:2779
+duplicate-code	high	tests/console/commands/test_show.py:2402:1	-	15 lines (54 tokens) duplicated at tests.console.commands.test_show:2793
 duplicate-code	high	tests/console/commands/test_show.py:2498:1	-	26 lines (122 tokens) duplicated at tests.console.commands.test_show:2559
 duplicate-code	high	tests/console/commands/test_show.py:2595:1	-	24 lines (81 tokens) duplicated at tests.console.commands.test_show:2704
 duplicate-code	high	tests/console/commands/test_show.py:2872:1	-	12 lines (51 tokens) duplicated at tests.console.commands.test_show:2962
@@ -178,9 +176,9 @@ duplicate-code	high	tests/installation/test_executor.py:2169:1	-	12 lines (59 to
 duplicate-code	high	tests/installation/test_executor.py:2180:1	-	13 lines (85 tokens) duplicated at tests.installation.test_executor:2206
 duplicate-code	high	tests/installation/test_executor.py:2237:1	-	7 lines (52 tokens) duplicated at tests.installation.test_executor:2284
 duplicate-code	high	tests/installation/test_installer.py:254:1	-	36 lines (141 tokens) duplicated at tests.installation.test_installer:810
-duplicate-code	high	tests/installation/test_installer.py:292:1	-	18 lines (80 tokens) duplicated at tests.installation.test_installer:2270
+duplicate-code	high	tests/installation/test_installer.py:296:1	-	15 lines (72 tokens) duplicated at tests.installation.test_installer:1956
 duplicate-code	high	tests/installation/test_installer.py:311:1	-	10 lines (52 tokens) duplicated at tests.installation.test_installer:554
-duplicate-code	high	tests/installation/test_installer.py:367:1	-	14 lines (60 tokens) duplicated at tests.installation.test_installer:2097
+duplicate-code	high	tests/installation/test_installer.py:370:1	-	11 lines (50 tokens) duplicated in 2 other places: tests.installation.test_installer:2100, tests.installation.test_installer:2273
 duplicate-code	high	tests/installation/test_installer.py:465:1	-	68 lines (322 tokens) duplicated at tests.installation.test_installer:611
 duplicate-code	high	tests/installation/test_installer.py:542:1	-	13 lines (59 tokens) duplicated at tests.installation.test_installer:693
 duplicate-code	high	tests/installation/test_installer.py:767:1	-	20 lines (81 tokens) duplicated at tests.installation.test_installer:1919
@@ -348,10 +346,9 @@ duplicate-code	high	tests/puzzle/test_solver_internals.py:282:1	-	9 lines (81 to
 duplicate-code	high	tests/puzzle/test_solver_internals.py:290:1	-	5 lines (52 tokens) duplicated at tests.puzzle.test_solver_internals:320
 duplicate-code	high	tests/puzzle/test_solver_internals.py:348:1	-	7 lines (53 tokens) duplicated at tests.puzzle.test_solver_internals:373
 duplicate-code	high	tests/puzzle/test_solver_internals.py:427:1	-	23 lines (77 tokens) duplicated at tests.puzzle.test_solver_internals:468
-duplicate-code	high	tests/puzzle/test_solver_internals.py:631:1	-	14 lines (50 tokens) duplicated at tests.puzzle.test_solver_internals:645
 duplicate-code	high	tests/puzzle/test_transaction.py:60:1	-	6 lines (64 tokens) duplicated at tests.puzzle.test_transaction:157
 duplicate-code	high	tests/puzzle/test_transaction.py:73:1	-	24 lines (138 tokens) duplicated at tests.puzzle.test_transaction:104
-duplicate-code	high	tests/puzzle/test_transaction.py:131:1	-	13 lines (73 tokens) duplicated at tests.puzzle.test_transaction:184
+duplicate-code	high	tests/puzzle/test_transaction.py:133:1	-	11 lines (60 tokens) duplicated at tests.puzzle.test_transaction:186
 duplicate-code	high	tests/puzzle/test_transaction.py:263:1	-	9 lines (68 tokens) duplicated at tests.puzzle.test_transaction:406
 duplicate-code	high	tests/puzzle/test_transaction.py:296:1	-	11 lines (53 tokens) duplicated at tests.puzzle.test_transaction:342
 duplicate-code	high	tests/repositories/fixtures/legacy.py:143:1	-	18 lines (74 tokens) duplicated at tests.repositories.fixtures.legacy:161

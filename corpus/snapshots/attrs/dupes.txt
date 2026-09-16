@@ -1,8 +1,8 @@
 files_scanned=56
 symbols_checked=0
 symbols_kept=0
-findings=97
-duplication: clones=97 duplicated_lines=3670 total_lines=21048 percent_tenths=174
+findings=96
+duplication: clones=96 duplicated_lines=3602 total_lines=21048 percent_tenths=171
 --
 duplicate-code	high	bench/test_benchmarks.py:127:1	-	23 lines (75 tokens) duplicated at bench.test_benchmarks:158
 duplicate-code	high	src/attr/_funcs.py:124:1	-	23 lines (75 tokens) duplicated at attr._funcs:201
@@ -30,8 +30,8 @@ duplicate-code	high	tests/test_dunders.py:209:1	-	10 lines (51 tokens) duplicate
 duplicate-code	high	tests/test_dunders.py:258:1	-	20 lines (120 tokens) duplicated at tests.test_dunders:291
 duplicate-code	high	tests/test_dunders.py:554:1	-	10 lines (58 tokens) duplicated at tests.test_dunders:765
 duplicate-code	high	tests/test_dunders.py:887:1	-	15 lines (60 tokens) duplicated at tests.test_dunders:906
-duplicate-code	high	tests/test_filters.py:43:1	-	18 lines (134 tokens) duplicated at tests.test_filters:109
-duplicate-code	high	tests/test_filters.py:63:1	-	18 lines (134 tokens) duplicated at tests.test_filters:89
+duplicate-code	high	tests/test_filters.py:48:1	-	13 lines (84 tokens) duplicated at tests.test_filters:114
+duplicate-code	high	tests/test_filters.py:68:1	-	13 lines (84 tokens) duplicated at tests.test_filters:94
 duplicate-code	high	tests/test_funcs.py:101:1	-	14 lines (67 tokens) duplicated at tests.test_funcs:322
 duplicate-code	high	tests/test_funcs.py:143:1	-	12 lines (67 tokens) duplicated at tests.test_funcs:388
 duplicate-code	high	tests/test_funcs.py:171:1	-	14 lines (63 tokens) duplicated at tests.test_funcs:445
@@ -58,8 +58,7 @@ duplicate-code	high	tests/test_make.py:1301:1	-	15 lines (93 tokens) duplicated 
 duplicate-code	high	tests/test_make.py:1320:1	-	10 lines (66 tokens) duplicated at tests.test_make:1370
 duplicate-code	high	tests/test_make.py:1611:1	-	12 lines (50 tokens) duplicated at tests.test_make:1687
 duplicate-code	high	tests/test_make.py:1782:1	-	13 lines (55 tokens) duplicated at tests.test_make:1801
-duplicate-code	high	tests/test_make.py:2077:1	-	21 lines (83 tokens) duplicated at tests.test_make:2112
-duplicate-code	high	tests/test_make.py:2217:1	-	15 lines (62 tokens) duplicated at tests.test_next_gen:515
+duplicate-code	high	tests/test_make.py:2086:1	-	12 lines (50 tokens) duplicated at tests.test_make:2121
 duplicate-code	high	tests/test_make.py:2621:1	-	26 lines (129 tokens) duplicated at tests.test_make:2686
 duplicate-code	high	tests/test_make.py:2788:1	-	13 lines (56 tokens) duplicated at tests.test_make:2802
 duplicate-code	high	tests/test_make.py:2856:1	-	9 lines (67 tokens) duplicated at tests.test_make:2866
@@ -97,7 +96,7 @@ duplicate-code	high	typing_tests/baseline.py:201:1	-	14 lines (51 tokens) duplic
 duplicate-code	high	typing_tests/mypy.py:82:1	-	14 lines (81 tokens) duplicated at typing_tests.pyrefly:54
 duplicate-code	high	typing_tests/mypy.py:103:1	-	14 lines (56 tokens) duplicated at typing_tests.pyrefly:71
 duplicate-code	high	typing_tests/mypy.py:116:1	-	61 lines (164 tokens) duplicated at typing_tests.pyrefly:84
-duplicate-code	high	typing_tests/mypy.py:242:1	-	91 lines (748 tokens) duplicated at typing_tests.pyrefly:213
+duplicate-code	high	typing_tests/mypy.py:242:1	-	91 lines (747 tokens) duplicated at typing_tests.pyrefly:213
 duplicate-code	high	typing_tests/mypy.py:341:1	-	37 lines (185 tokens) duplicated at typing_tests.pyrefly:328
 duplicate-code	high	typing_tests/mypy.py:382:1	-	19 lines (152 tokens) duplicated at typing_tests.pyrefly:366
 duplicate-code	high	typing_tests/mypy.py:416:1	-	14 lines (75 tokens) duplicated at typing_tests.pyrefly:387

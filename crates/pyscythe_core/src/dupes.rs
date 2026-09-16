@@ -10,7 +10,7 @@ use crate::finding::{Confidence, Detail, Finding, Location, Occurrence, Rule};
 use crate::index::CodebaseIndex;
 use crate::report::{DuplicationSummary, Report, ReportKind, Summary};
 use crate::source::{FileId, Line};
-use crate::tokens::{CloneMode, CloneToken};
+use crate::tokens::{CloneMode, CloneToken, Nesting};
 
 /// What counts as a clone.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -112,17 +112,34 @@ struct TokenStream {
     texts: Vec<String>,
     ids: Vec<u32>,
     lines: Vec<Line>,
+    nesting: Vec<Nesting>,
 }
 
 impl TokenStream {
     fn intern(file: FileId, tokens: Vec<CloneToken>) -> Self {
-        let (texts, lines) = tokens.into_iter().map(|t| (t.text, t.line)).unzip();
+        let mut texts = Vec::with_capacity(tokens.len());
+        let mut lines = Vec::with_capacity(tokens.len());
+        let mut nesting = Vec::with_capacity(tokens.len());
+        for token in tokens {
+            texts.push(token.text);
+            lines.push(token.line);
+            nesting.push(token.nesting);
+        }
         Self {
             file,
             texts,
             ids: Vec::new(),
             lines,
+            nesting,
         }
+    }
+
+    /// Whether the run starting at `token` ever stands at statement level. One
+    /// that never does is a fragment of a single call or collection literal.
+    fn spans_a_statement(&self, token: usize, length: usize) -> bool {
+        self.nesting
+            .get(token..token + length)
+            .is_some_and(|run| run.contains(&Nesting::Statement))
     }
 
     fn with_ids(mut self, interner: &mut Interner) -> Self {
@@ -173,6 +190,11 @@ fn maximal_clones(streams: &[TokenStream], options: &DupesOptions) -> Vec<Clone>
     let mut by_window: BTreeMap<Vec<u32>, Vec<Position>> = BTreeMap::new();
     for (stream_index, stream) in streams.iter().enumerate() {
         for (token, ids) in stream.ids.windows(window).enumerate() {
+            // With identifiers normalised, one run of call arguments reads like
+            // every other; only runs that reach statement level are evidence.
+            if options.mode != CloneMode::Strict && !stream.spans_a_statement(token, window) {
+                continue;
+            }
             by_window.entry(ids.to_vec()).or_default().push(Position {
                 stream: stream_index,
                 token,
@@ -397,6 +419,27 @@ mod tests {
     }
 
     const BLOCK: &str = "a b c\nd e f\ng h i\nj k l\nm n o\n";
+
+    #[test]
+    fn a_run_that_never_reaches_statement_level_is_not_a_clone() {
+        let mut index = FakeIndex::new();
+        let run = (1..=30)
+            .map(|n| format!("name_{n} = value . attr_{n} ,"))
+            .collect::<Vec<_>>()
+            .join("\n");
+        let a = index.add_file("/proj/pkg/a.py", "pkg.a");
+        let b = index.add_file("/proj/pkg/b.py", "pkg.b");
+        index.set_interior_tokens(a, &run);
+        index.set_interior_tokens(b, &run);
+
+        let report = analyze(&index, &DupesOptions::default());
+
+        assert!(
+            report.findings.is_empty(),
+            "a call's arguments are one expression, not duplicated code: {:?}",
+            report.findings
+        );
+    }
 
     #[test]
     fn an_identical_block_in_two_files_is_one_clone() {

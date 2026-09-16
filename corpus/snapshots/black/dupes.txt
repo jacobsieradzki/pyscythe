@@ -1,8 +1,8 @@
 files_scanned=333
 symbols_checked=0
 symbols_kept=0
-findings=242
-duplication: clones=242 duplicated_lines=39945 total_lines=133851 percent_tenths=298
+findings=238
+duplication: clones=238 duplicated_lines=39764 total_lines=133851 percent_tenths=297
 --
 duplicate-code	high	profiling/dict_big.py:1:1	-	7999 lines (31997 tokens) duplicated at profiling.dict_huge:1
 duplicate-code	high	profiling/list_big.py:1:1	-	4000 lines (8008 tokens) duplicated at profiling.list_huge:1
@@ -10,11 +10,8 @@ duplicate-code	high	profiling/mix_big.py:1:1	-	1000 lines (23457 tokens) duplica
 duplicate-code	high	src/black/brackets.py:167:1	-	13 lines (68 tokens) duplicated at black.brackets:194
 duplicate-code	high	src/black/handle_ipynb_magics.py:443:1	-	20 lines (68 tokens) duplicated at black.handle_ipynb_magics:476
 duplicate-code	high	src/black/linegen.py:619:1	-	21 lines (116 tokens) duplicated at black.linegen:639
-duplicate-code	high	src/black/linegen.py:2097:1	-	16 lines (54 tokens) duplicated at tests.test_black:1695
 duplicate-code	high	src/black/linegen.py:2270:1	-	7 lines (60 tokens) duplicated at black.lines:510
 duplicate-code	high	src/black/mode.py:17:1	-	13 lines (52 tokens) duplicated at black.mode:38
-duplicate-code	high	src/black/mode.py:93:1	-	26 lines (103 tokens) duplicated at black.mode:124
-duplicate-code	high	src/black/mode.py:155:1	-	37 lines (147 tokens) duplicated at black.mode:197
 duplicate-code	high	src/black/nodes.py:45:1	-	22 lines (87 tokens) duplicated at black.nodes:81
 duplicate-code	high	src/black/nodes.py:642:1	-	15 lines (81 tokens) duplicated at black.nodes:664
 duplicate-code	high	src/black/nodes.py:971:1	-	15 lines (67 tokens) duplicated at black.nodes:985
@@ -33,7 +30,6 @@ duplicate-code	high	src/blib2to3/pgen2/conv.py:53:1	-	16 lines (51 tokens) dupli
 duplicate-code	high	src/blib2to3/pgen2/conv.py:168:1	-	6 lines (54 tokens) duplicated at blib2to3.pgen2.conv:200
 duplicate-code	high	src/blib2to3/pgen2/parse.py:357:1	-	5 lines (65 tokens) duplicated at blib2to3.pgen2.parse:370
 duplicate-code	high	src/blib2to3/pgen2/pgen.py:90:1	-	8 lines (51 tokens) duplicated at blib2to3.pgen2.pgen:116
-duplicate-code	high	src/blib2to3/pgen2/tokenize.py:77:1	-	12 lines (72 tokens) duplicated at blib2to3.pgen2.tokenize:89
 duplicate-code	high	src/blib2to3/pytree.py:191:1	-	15 lines (73 tokens) duplicated at blib2to3.pytree:205
 duplicate-code	high	src/blib2to3/pytree.py:405:1	-	12 lines (92 tokens) duplicated at blib2to3.pytree:420
 duplicate-code	high	tests/data/cases/allow_empty_first_line.py:1:1	-	86 lines (218 tokens) duplicated at tests.data.cases.allow_empty_first_line:86

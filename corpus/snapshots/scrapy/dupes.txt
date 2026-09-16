@@ -1,8 +1,8 @@
 files_scanned=491
 symbols_checked=0
 symbols_kept=0
-findings=461
-duplication: clones=461 duplicated_lines=13319 total_lines=92341 percent_tenths=144
+findings=455
+duplication: clones=455 duplicated_lines=13099 total_lines=92341 percent_tenths=141
 --
 duplicate-code	high	docs/_ext/scrapydocs.py:136:1	-	8 lines (53 tokens) duplicated at docs._ext.scrapydocs:144
 duplicate-code	high	scrapy/commands/__init__.py:211:1	-	12 lines (72 tokens) duplicated at scrapy.commands.check:80
@@ -39,10 +39,8 @@ duplicate-code	high	scrapy/http/request/__init__.py:289:1	-	11 lines (71 tokens)
 duplicate-code	high	scrapy/http/request/__init__.py:312:1	-	15 lines (80 tokens) duplicated at scrapy.http.response:146
 duplicate-code	high	scrapy/http/request/__init__.py:334:1	-	21 lines (148 tokens) duplicated at scrapy.http.response:177
 duplicate-code	high	scrapy/http/request/json_request.py:34:1	-	10 lines (73 tokens) duplicated at scrapy.http.request.json_request:68
-duplicate-code	high	scrapy/http/response/__init__.py:260:1	-	17 lines (140 tokens) duplicated at scrapy.http.response:313
+duplicate-code	high	scrapy/http/response/__init__.py:271:1	-	17 lines (57 tokens) duplicated at scrapy.http.response.text:195
 duplicate-code	high	scrapy/http/response/__init__.py:295:1	-	19 lines (70 tokens) duplicated at scrapy.http.response.text:222
-duplicate-code	high	scrapy/http/response/__init__.py:349:1	-	14 lines (50 tokens) duplicated at scrapy.http.response.text:302
-duplicate-code	high	scrapy/http/response/text.py:184:1	-	16 lines (137 tokens) duplicated at scrapy.http.response.text:240
 duplicate-code	high	scrapy/pipelines/files.py:92:1	-	8 lines (51 tokens) duplicated at scrapy.pipelines.files:224
 duplicate-code	high	scrapy/pipelines/files.py:349:1	-	11 lines (58 tokens) duplicated at scrapy.pipelines.files:391
 duplicate-code	high	scrapy/pipelines/files.py:736:1	-	18 lines (123 tokens) duplicated at scrapy.pipelines.images:247
@@ -324,7 +322,6 @@ duplicate-code	high	tests/test_mail.py:103:1	-	14 lines (68 tokens) duplicated a
 duplicate-code	high	tests/test_pipeline_crawl.py:77:1	-	12 lines (66 tokens) duplicated at tests.utils.bases.feedexport:27
 duplicate-code	high	tests/test_pipeline_crawl.py:153:1	-	12 lines (78 tokens) duplicated at tests.test_pipeline_crawl:164
 duplicate-code	high	tests/test_pipeline_crawl.py:199:1	-	11 lines (61 tokens) duplicated at tests.test_pipeline_crawl:224
-duplicate-code	high	tests/test_pipeline_files.py:220:1	-	13 lines (61 tokens) duplicated at tests.test_pipeline_files:246
 duplicate-code	high	tests/test_pipeline_files.py:234:1	-	8 lines (56 tokens) duplicated at tests.test_pipeline_files:279
 duplicate-code	high	tests/test_pipeline_files.py:291:1	-	10 lines (57 tokens) duplicated at tests.test_pipeline_files:495
 duplicate-code	high	tests/test_pipeline_files.py:300:1	-	14 lines (61 tokens) duplicated at tests.test_pipeline_files:331
@@ -357,10 +354,7 @@ duplicate-code	high	tests/test_scheduler_base.py:112:1	-	8 lines (59 tokens) dup
 duplicate-code	high	tests/test_settings/__init__.py:451:1	-	12 lines (73 tokens) duplicated at tests.test_settings:471
 duplicate-code	high	tests/test_settings/__init__.py:721:1	-	10 lines (72 tokens) duplicated at tests.test_settings:752
 duplicate-code	high	tests/test_settings/__init__.py:744:1	-	6 lines (56 tokens) duplicated at tests.test_settings:1017
-duplicate-code	high	tests/test_settings/__init__.py:817:1	-	19 lines (69 tokens) duplicated at tests.test_settings:841
 duplicate-code	high	tests/test_settings/__init__.py:1032:1	-	50 lines (231 tokens) duplicated at tests.test_settings:1172
-duplicate-code	high	tests/test_settings/__init__.py:1104:1	-	24 lines (64 tokens) duplicated at tests.test_settings:1248
-duplicate-code	high	tests/test_settings/__init__.py:1128:1	-	28 lines (62 tokens) duplicated at tests.test_settings:1274
 duplicate-code	high	tests/test_settings/__init__.py:1160:1	-	11 lines (87 tokens) duplicated at tests.test_settings:1307
 duplicate-code	high	tests/test_spider.py:85:1	-	7 lines (53 tokens) duplicated at tests.test_spider:116
 duplicate-code	high	tests/test_spider.py:175:1	-	8 lines (63 tokens) duplicated at tests.test_spider:192

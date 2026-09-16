@@ -1,8 +1,8 @@
 files_scanned=1581
 symbols_checked=0
 symbols_kept=0
-findings=378
-duplication: clones=378 duplicated_lines=16850 total_lines=88290 percent_tenths=190
+findings=371
+duplication: clones=371 duplicated_lines=16378 total_lines=88290 percent_tenths=185
 --
 duplicate-code	high	langchain_classic/_api/module_import.py:95:1	-	24 lines (110 tokens) duplicated at langchain_classic._api.module_import:129
 duplicate-code	high	langchain_classic/agents/__init__.py:108:1	-	14 lines (55 tokens) duplicated at langchain_classic.agents.agent_toolkits:121
@@ -72,6 +72,7 @@ duplicate-code	high	langchain_classic/agents/react/agent.py:20:1	-	123 lines (14
 duplicate-code	high	langchain_classic/agents/react/base.py:35:1	-	27 lines (141 tokens) duplicated at langchain_classic.agents.self_ask_with_search.base:31
 duplicate-code	high	langchain_classic/agents/self_ask_with_search/base.py:100:1	-	95 lines (52 tokens) duplicated at langchain_classic.agents.tool_calling_agent.base:23
 duplicate-code	high	langchain_classic/agents/tools.py:20:1	-	14 lines (61 tokens) duplicated at langchain_classic.agents.tools:34
+duplicate-code	high	langchain_classic/agents/types.py:17:1	-	10 lines (57 tokens) duplicated at langchain_classic.evaluation.loading:91
 duplicate-code	high	langchain_classic/agents/xml/base.py:65:1	-	22 lines (137 tokens) duplicated at langchain_classic.agents.xml.base:90
 duplicate-code	high	langchain_classic/callbacks/streaming_aiter_final_only.py:1:1	-	67 lines (295 tokens) duplicated at langchain_classic.callbacks.streaming_stdout_final_only:1
 duplicate-code	high	langchain_classic/callbacks/streaming_aiter_final_only.py:87:1	-	12 lines (64 tokens) duplicated at langchain_classic.callbacks.streaming_stdout_final_only:83
@@ -134,7 +135,7 @@ duplicate-code	high	langchain_classic/chains/qa_with_sources/loading.py:52:1	-	1
 duplicate-code	high	langchain_classic/chains/qa_with_sources/loading.py:100:1	-	22 lines (87 tokens) duplicated at langchain_classic.chains.summarize.chain:128
 duplicate-code	high	langchain_classic/chains/qa_with_sources/loading.py:147:1	-	15 lines (97 tokens) duplicated at langchain_classic.chains.summarize.chain:177
 duplicate-code	high	langchain_classic/chains/qa_with_sources/loading.py:178:1	-	30 lines (86 tokens) duplicated at langchain_classic.chains.question_answering.chain:244
-duplicate-code	high	langchain_classic/chains/query_constructor/base.py:202:1	-	8 lines (61 tokens) duplicated at langchain_classic.chains.query_constructor.base:328
+duplicate-code	high	langchain_classic/chains/query_constructor/base.py:205:1	-	25 lines (57 tokens) duplicated at langchain_classic.chains.query_constructor.base:277
 duplicate-code	high	langchain_classic/chains/question_answering/chain.py:57:1	-	21 lines (71 tokens) duplicated at langchain_classic.chains.question_answering.chain:170
 duplicate-code	high	langchain_classic/chains/question_answering/chain.py:85:1	-	21 lines (63 tokens) duplicated at langchain_classic.chains.summarize.chain:156
 duplicate-code	high	langchain_classic/chains/question_answering/chain.py:123:1	-	16 lines (60 tokens) duplicated at langchain_classic.chains.question_answering.chain:204
@@ -151,12 +152,10 @@ duplicate-code	high	langchain_classic/chat_models/base.py:807:1	-	10 lines (59 t
 duplicate-code	high	langchain_classic/chat_models/base.py:816:1	-	8 lines (55 tokens) duplicated at langchain_classic.chat_models.base:953
 duplicate-code	high	langchain_classic/chat_models/base.py:823:1	-	14 lines (95 tokens) duplicated at langchain_classic.chat_models.base:851
 duplicate-code	high	langchain_classic/chat_models/base.py:886:1	-	7 lines (51 tokens) duplicated at langchain_classic.chat_models.base:915
-duplicate-code	high	langchain_classic/chat_models/base.py:966:1	-	12 lines (90 tokens) duplicated at langchain_classic.chat_models.base:983
-duplicate-code	high	langchain_classic/chat_models/base.py:1001:1	-	9 lines (78 tokens) duplicated at langchain_classic.chat_models.base:1031
+duplicate-code	high	langchain_classic/chat_models/base.py:970:1	-	8 lines (60 tokens) duplicated at langchain_classic.chat_models.base:987
+duplicate-code	high	langchain_classic/chat_models/base.py:1004:1	-	6 lines (54 tokens) duplicated at langchain_classic.chat_models.base:1034
 duplicate-code	high	langchain_classic/chat_models/base.py:1009:1	-	11 lines (50 tokens) duplicated at langchain_classic.chat_models.base:1039
-duplicate-code	high	langchain_classic/document_loaders/__init__.py:390:1	-	42 lines (83 tokens) duplicated at tests.unit_tests.document_loaders.test_imports:23
-duplicate-code	high	langchain_classic/document_loaders/__init__.py:450:1	-	54 lines (107 tokens) duplicated at tests.unit_tests.document_loaders.test_imports:83
-duplicate-code	high	langchain_classic/document_loaders/__init__.py:506:1	-	36 lines (71 tokens) duplicated at tests.unit_tests.document_loaders.test_imports:139
+duplicate-code	high	langchain_classic/document_loaders/__init__.py:517:1	-	25 lines (50 tokens) duplicated at tests.unit_tests.document_loaders.test_imports:150
 duplicate-code	high	langchain_classic/document_loaders/parsers/html/__init__.py:1:1	-	25 lines (56 tokens) duplicated at langchain_classic.document_loaders.parsers.html.bs4:1
 duplicate-code	high	langchain_classic/document_loaders/parsers/language/__init__.py:1:1	-	29 lines (58 tokens) duplicated at langchain_classic.document_loaders.parsers.language.language_parser:1
 duplicate-code	high	langchain_classic/embeddings/cache.py:180:1	-	8 lines (55 tokens) duplicated at langchain_classic.embeddings.cache:216
@@ -178,11 +177,10 @@ duplicate-code	high	langchain_classic/evaluation/embedding_distance/base.py:240:
 duplicate-code	high	langchain_classic/evaluation/embedding_distance/base.py:281:1	-	23 lines (104 tokens) duplicated at langchain_classic.evaluation.embedding_distance.base:303
 duplicate-code	high	langchain_classic/evaluation/embedding_distance/base.py:380:1	-	19 lines (55 tokens) duplicated at langchain_classic.evaluation.embedding_distance.base:531
 duplicate-code	high	langchain_classic/evaluation/embedding_distance/base.py:398:1	-	27 lines (99 tokens) duplicated at langchain_classic.evaluation.embedding_distance.base:552
-duplicate-code	high	langchain_classic/evaluation/embedding_distance/base.py:437:1	-	39 lines (126 tokens) duplicated at langchain_classic.evaluation.string_distance.base:254
+duplicate-code	high	langchain_classic/evaluation/embedding_distance/base.py:438:1	-	38 lines (124 tokens) duplicated at langchain_classic.evaluation.string_distance.base:255
 duplicate-code	high	langchain_classic/evaluation/embedding_distance/base.py:475:1	-	34 lines (98 tokens) duplicated at langchain_classic.evaluation.string_distance.base:294
 duplicate-code	high	langchain_classic/evaluation/embedding_distance/base.py:585:1	-	74 lines (226 tokens) duplicated at langchain_classic.evaluation.string_distance.base:382
 duplicate-code	high	langchain_classic/evaluation/exact_match/base.py:43:1	-	30 lines (84 tokens) duplicated at langchain_classic.evaluation.regex_match.base:38
-duplicate-code	high	langchain_classic/evaluation/loading.py:92:1	-	10 lines (60 tokens) duplicated at langchain_classic.evaluation.loading:102
 duplicate-code	high	langchain_classic/evaluation/parsing/base.py:134:1	-	14 lines (58 tokens) duplicated at langchain_classic.evaluation.parsing.json_distance:79
 duplicate-code	high	langchain_classic/evaluation/parsing/base.py:152:1	-	13 lines (70 tokens) duplicated at langchain_classic.evaluation.parsing.json_distance:94
 duplicate-code	high	langchain_classic/evaluation/parsing/json_schema.py:52:1	-	14 lines (52 tokens) duplicated at langchain_classic.evaluation.scoring.eval_chain:194
@@ -206,7 +204,6 @@ duplicate-code	high	langchain_classic/indexes/_sql_record_manager.py:451:1	-	10 
 duplicate-code	high	langchain_classic/indexes/_sql_record_manager.py:462:1	-	14 lines (92 tokens) duplicated at langchain_classic.indexes._sql_record_manager:489
 duplicate-code	high	langchain_classic/indexes/vectorstore.py:34:1	-	34 lines (111 tokens) duplicated at langchain_classic.indexes.vectorstore:104
 duplicate-code	high	langchain_classic/indexes/vectorstore.py:67:1	-	36 lines (102 tokens) duplicated at langchain_classic.indexes.vectorstore:137
-duplicate-code	high	langchain_classic/llms/__init__.py:557:1	-	26 lines (51 tokens) duplicated at tests.unit_tests.llms.test_imports:4
 duplicate-code	high	langchain_classic/memory/__init__.py:73:1	-	20 lines (61 tokens) duplicated at langchain_classic.memory.chat_message_histories:48
 duplicate-code	high	langchain_classic/memory/buffer.py:5:1	-	32 lines (58 tokens) duplicated at langchain_classic.memory.buffer_window:1
 duplicate-code	high	langchain_classic/memory/buffer.py:75:1	-	13 lines (67 tokens) duplicated in 2 other places: langchain_classic.memory.buffer:132, langchain_classic.memory.buffer_window:52
@@ -260,7 +257,6 @@ duplicate-code	high	langchain_classic/smith/evaluation/string_run_evaluator.py:3
 duplicate-code	high	langchain_classic/smith/evaluation/string_run_evaluator.py:374:1	-	11 lines (62 tokens) duplicated at langchain_classic.smith.evaluation.string_run_evaluator:396
 duplicate-code	high	langchain_classic/storage/_lc_store.py:55:1	-	44 lines (52 tokens) duplicated at langchain_classic.storage._lc_store:98
 duplicate-code	high	langchain_classic/tools/__init__.py:75:1	-	66 lines (133 tokens) duplicated at tests.unit_tests.tools.test_imports:3
-duplicate-code	high	langchain_classic/tools/__init__.py:169:1	-	26 lines (51 tokens) duplicated at tests.unit_tests.tools.test_imports:96
 duplicate-code	high	langchain_classic/tools/bing_search/__init__.py:3:1	-	27 lines (62 tokens) duplicated at langchain_classic.tools.bing_search.tool:1
 duplicate-code	high	langchain_classic/tools/dataforseo_api_search/__init__.py:3:1	-	32 lines (64 tokens) duplicated at langchain_classic.tools.dataforseo_api_search.tool:1
 duplicate-code	high	langchain_classic/tools/eleven_labs/__init__.py:3:1	-	23 lines (55 tokens) duplicated at langchain_classic.tools.eleven_labs.text2speech:1
@@ -297,9 +293,6 @@ duplicate-code	high	tests/unit_tests/agents/test_agent.py:536:1	-	23 lines (73 t
 duplicate-code	high	tests/unit_tests/agents/test_agent.py:583:1	-	27 lines (147 tokens) duplicated at tests.unit_tests.agents.test_agent:703
 duplicate-code	high	tests/unit_tests/agents/test_agent.py:867:1	-	12 lines (69 tokens) duplicated at tests.unit_tests.agents.test_agent:1074
 duplicate-code	high	tests/unit_tests/agents/test_agent.py:955:1	-	41 lines (136 tokens) duplicated at tests.unit_tests.agents.test_agent:1292
-duplicate-code	high	tests/unit_tests/agents/test_agent.py:1088:1	-	30 lines (91 tokens) duplicated at tests.unit_tests.agents.test_agent:1211
-duplicate-code	high	tests/unit_tests/agents/test_agent.py:1118:1	-	27 lines (72 tokens) duplicated at tests.unit_tests.agents.test_agent:1176
-duplicate-code	high	tests/unit_tests/agents/test_agent.py:1146:1	-	30 lines (88 tokens) duplicated at tests.unit_tests.agents.test_agent:1255
 duplicate-code	high	tests/unit_tests/agents/test_agent_iterator.py:38:1	-	13 lines (55 tokens) duplicated at tests.unit_tests.agents.test_agent_iterator:71
 duplicate-code	high	tests/unit_tests/agents/test_agent_iterator.py:93:1	-	35 lines (145 tokens) duplicated at tests.unit_tests.agents.test_agent_iterator:159
 duplicate-code	high	tests/unit_tests/agents/test_agent_iterator.py:130:1	-	13 lines (82 tokens) duplicated at tests.unit_tests.agents.test_agent_iterator:197

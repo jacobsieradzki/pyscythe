@@ -1,14 +1,13 @@
 files_scanned=1388
 symbols_checked=0
 symbols_kept=0
-findings=2270
-duplication: clones=2270 duplicated_lines=79017 total_lines=273949 percent_tenths=288
+findings=2172
+duplication: clones=2172 duplicated_lines=72356 total_lines=273949 percent_tenths=264
 --
 duplicate-code	high	wagtail/actions/__init__.py:64:1	-	12 lines (68 tokens) duplicated at wagtail.actions:76
 duplicate-code	high	wagtail/actions/copy_page.py:4:1	-	33 lines (50 tokens) duplicated at wagtail.actions.create_alias:1
 duplicate-code	high	wagtail/actions/copy_page.py:52:1	-	13 lines (66 tokens) duplicated at wagtail.actions.create_alias:69
 duplicate-code	high	wagtail/actions/copy_page.py:168:1	-	18 lines (94 tokens) duplicated at wagtail.actions.create_alias:178
-duplicate-code	high	wagtail/actions/copy_page.py:306:1	-	13 lines (52 tokens) duplicated at wagtail.actions.create_alias:202
 duplicate-code	high	wagtail/actions/copy_page.py:343:1	-	12 lines (69 tokens) duplicated at wagtail.actions.create_alias:227
 duplicate-code	high	wagtail/actions/copy_page.py:355:1	-	12 lines (56 tokens) duplicated at wagtail.actions.create_alias:247
 duplicate-code	high	wagtail/actions/copy_page.py:369:1	-	19 lines (112 tokens) duplicated at wagtail.actions.create_alias:261
@@ -44,8 +43,6 @@ duplicate-code	high	wagtail/admin/mail.py:308:1	-	13 lines (62 tokens) duplicate
 duplicate-code	high	wagtail/admin/menu.py:12:1	-	16 lines (76 tokens) duplicated at wagtail.admin.search:15
 duplicate-code	high	wagtail/admin/messages.py:15:1	-	12 lines (87 tokens) duplicated at wagtail.admin.messages:27
 duplicate-code	high	wagtail/admin/migrations/0001_create_admin_access_permissions.py:1:1	-	11 lines (50 tokens) duplicated at wagtail/images/migrations/0023_add_choose_permissions.py:3
-duplicate-code	high	wagtail/admin/migrations/0002_admin.py:15:1	-	15 lines (53 tokens) duplicated at wagtail/admin/migrations/0003_admin_managed.py:14
-duplicate-code	high	wagtail/admin/migrations/0004_editingsession.py:30:1	-	14 lines (60 tokens) duplicated at wagtail/admin/migrations/0006_formstate.py:32
 duplicate-code	high	wagtail/admin/panels/field_panel.py:35:1	-	13 lines (72 tokens) duplicated at wagtail.admin.panels.inline_panel:38
 duplicate-code	high	wagtail/admin/rich_text/converters/html_to_contentstate.py:152:1	-	16 lines (79 tokens) duplicated at wagtail.admin.rich_text.converters.html_to_contentstate:186
 duplicate-code	high	wagtail/admin/rich_text/converters/html_to_contentstate.py:270:1	-	11 lines (53 tokens) duplicated at wagtail.admin.rich_text.converters.html_to_contentstate:280
@@ -201,14 +198,13 @@ duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:376:1	-	32 lin
 duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:502:1	-	35 lines (170 tokens) duplicated at wagtail.admin.tests.pages.test_create_page:609
 duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:546:1	-	25 lines (150 tokens) duplicated at wagtail.admin.tests.pages.test_create_page:865
 duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:586:1	-	12 lines (54 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:808
-duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:733:1	-	32 lines (123 tokens) duplicated at wagtail.admin.tests.pages.test_create_page:835
+duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:743:1	-	22 lines (83 tokens) duplicated at wagtail.admin.tests.pages.test_create_page:845
 duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:773:1	-	35 lines (128 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:1289
 duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:809:1	-	21 lines (84 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:1325
 duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:935:1	-	21 lines (93 tokens) duplicated at wagtail.admin.tests.pages.test_create_page:975
 duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:1004:1	-	33 lines (122 tokens) duplicated at wagtail.admin.tests.pages.test_create_page:1050
-duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:1083:1	-	22 lines (68 tokens) duplicated at wagtail.admin.tests.pages.test_create_page:1130
 duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:1254:1	-	23 lines (139 tokens) duplicated at wagtail.admin.tests.pages.test_create_page:1438
-duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:1287:1	-	12 lines (61 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:1566
+duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:1288:1	-	11 lines (60 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:1567
 duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:1303:1	-	36 lines (112 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:1578
 duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:1351:1	-	31 lines (91 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:1622
 duplicate-code	high	wagtail/admin/tests/pages/test_create_page.py:1390:1	-	22 lines (100 tokens) duplicated at wagtail.admin.tests.pages.test_create_page:1481
@@ -274,7 +270,8 @@ duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:980:1	-	27 lines
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:1045:1	-	31 lines (139 tokens) duplicated at wagtail.snippets.tests.test_edit_view:902
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:1115:1	-	17 lines (88 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:1165
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:1194:1	-	9 lines (52 tokens) duplicated at wagtail.contrib.forms.tests.test_views:2452
-duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:1215:1	-	23 lines (140 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:1265
+duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:1205:1	-	11 lines (54 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:1254
+duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:1222:1	-	16 lines (90 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:1272
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:1348:1	-	11 lines (58 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:1372
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:1413:1	-	35 lines (160 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:2174
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:1450:1	-	16 lines (60 tokens) duplicated at wagtail.snippets.tests.test_edit_view:2919
@@ -301,18 +298,17 @@ duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:2851:1	-	11 line
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:2948:1	-	16 lines (98 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:2972
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3031:1	-	26 lines (112 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:3057
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3103:1	-	25 lines (114 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:3134
-duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3220:1	-	35 lines (217 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:3267
+duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3242:1	-	13 lines (82 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:3289
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3300:1	-	12 lines (53 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:5309
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3339:1	-	13 lines (52 tokens) duplicated at wagtail.admin.tests.test_edit_handlers:2139
-duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3542:1	-	17 lines (65 tokens) duplicated at wagtail.admin.tests.pages.test_preview:116
+duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3547:1	-	17 lines (78 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:3938
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3588:1	-	13 lines (57 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:3637
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3600:1	-	33 lines (149 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:3649
-duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3696:1	-	32 lines (139 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:3739
-duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3780:1	-	30 lines (142 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:3823
+duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3710:1	-	18 lines (83 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:3753
+duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3794:1	-	16 lines (86 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:3837
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3857:1	-	10 lines (72 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:4079
-duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3872:1	-	34 lines (153 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:4015
+duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3881:1	-	25 lines (120 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:4024
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3912:1	-	7 lines (52 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:4054
-duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:3929:1	-	25 lines (109 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:3971
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:4092:1	-	8 lines (59 tokens) duplicated at wagtail.contrib.forms.tests.test_views:2431
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:4130:1	-	36 lines (138 tokens) duplicated at wagtail.admin.tests.pages.test_edit_page:4187
 duplicate-code	high	wagtail/admin/tests/pages/test_edit_page.py:4247:1	-	10 lines (51 tokens) duplicated at wagtail.snippets.tests.test_create_view:585
@@ -431,7 +427,7 @@ duplicate-code	high	wagtail/admin/tests/test_admin_search.py:125:1	-	71 lines (3
 duplicate-code	high	wagtail/admin/tests/test_audit_log.py:24:1	-	12 lines (63 tokens) duplicated at wagtail.tests.test_management_commands:637
 duplicate-code	high	wagtail/admin/tests/test_audit_log.py:118:1	-	17 lines (120 tokens) duplicated at wagtail.admin.tests.test_audit_log:444
 duplicate-code	high	wagtail/admin/tests/test_audit_log.py:205:1	-	9 lines (68 tokens) duplicated at wagtail.snippets.tests.test_history_view:201
-duplicate-code	high	wagtail/admin/tests/test_audit_log.py:222:1	-	30 lines (97 tokens) duplicated at wagtail.snippets.tests.test_history_view:216
+duplicate-code	high	wagtail/admin/tests/test_audit_log.py:234:1	-	18 lines (51 tokens) duplicated at wagtail.snippets.tests.test_history_view:228
 duplicate-code	high	wagtail/admin/tests/test_audit_log.py:256:1	-	12 lines (83 tokens) duplicated at wagtail.snippets.tests.test_history_view:245
 duplicate-code	high	wagtail/admin/tests/test_audit_log.py:301:1	-	10 lines (67 tokens) duplicated at wagtail.admin.tests.test_audit_log:354
 duplicate-code	high	wagtail/admin/tests/test_audit_log.py:325:1	-	30 lines (99 tokens) duplicated at wagtail.admin.tests.test_audit_log:645
@@ -482,22 +478,18 @@ duplicate-code	high	wagtail/admin/tests/test_compare.py:1321:1	-	13 lines (55 to
 duplicate-code	high	wagtail/admin/tests/test_compare.py:1477:1	-	24 lines (110 tokens) duplicated at wagtail.admin.tests.test_compare:1510
 duplicate-code	high	wagtail/admin/tests/test_compare.py:1567:1	-	21 lines (83 tokens) duplicated at wagtail.admin.tests.test_compare:1595
 duplicate-code	high	wagtail/admin/tests/test_compare.py:1655:1	-	27 lines (135 tokens) duplicated at wagtail.admin.tests.test_compare:1696
-duplicate-code	high	wagtail/admin/tests/test_contentstate.py:61:1	-	21 lines (70 tokens) duplicated in 2 other places: wagtail.admin.tests.test_contentstate:1927, wagtail.admin.tests.test_contentstate:2020
+duplicate-code	high	wagtail/admin/tests/test_contentstate.py:57:1	-	18 lines (55 tokens) duplicated at wagtail.admin.tests.test_contentstate:94
 duplicate-code	high	wagtail/admin/tests/test_contentstate.py:119:1	-	14 lines (55 tokens) duplicated in 4 other places: wagtail.admin.tests.test_contentstate:181, wagtail.admin.tests.test_contentstate:1435, wagtail.admin.tests.test_contentstate:1472, wagtail.admin.tests.test_contentstate:1501
-duplicate-code	high	wagtail/admin/tests/test_contentstate.py:149:1	-	17 lines (57 tokens) duplicated at wagtail.admin.tests.test_contentstate:165
 duplicate-code	high	wagtail/admin/tests/test_contentstate.py:224:1	-	26 lines (113 tokens) duplicated at wagtail.admin.tests.test_contentstate:253
-duplicate-code	high	wagtail/admin/tests/test_contentstate.py:345:1	-	21 lines (71 tokens) duplicated at wagtail.admin.tests.test_contentstate:1963
 duplicate-code	high	wagtail/admin/tests/test_contentstate.py:465:1	-	29 lines (116 tokens) duplicated at wagtail.admin.tests.test_contentstate:495
-duplicate-code	high	wagtail/admin/tests/test_contentstate.py:574:1	-	20 lines (86 tokens) duplicated at wagtail.admin.tests.test_contentstate:610
-duplicate-code	high	wagtail/admin/tests/test_contentstate.py:678:1	-	20 lines (86 tokens) duplicated at wagtail.admin.tests.test_contentstate:710
+duplicate-code	high	wagtail/admin/tests/test_contentstate.py:577:1	-	17 lines (80 tokens) duplicated at wagtail.admin.tests.test_contentstate:613
+duplicate-code	high	wagtail/admin/tests/test_contentstate.py:681:1	-	17 lines (80 tokens) duplicated at wagtail.admin.tests.test_contentstate:713
 duplicate-code	high	wagtail/admin/tests/test_contentstate.py:763:1	-	48 lines (174 tokens) duplicated at wagtail.admin.tests.test_contentstate:1587
 duplicate-code	high	wagtail/admin/tests/test_contentstate.py:817:1	-	50 lines (195 tokens) duplicated in 2 other places: wagtail.admin.tests.test_contentstate:1062, wagtail.admin.tests.test_contentstate:1196
-duplicate-code	high	wagtail/admin/tests/test_contentstate.py:867:1	-	24 lines (77 tokens) duplicated at wagtail.admin.tests.test_contentstate:1710
+duplicate-code	high	wagtail/admin/tests/test_contentstate.py:872:1	-	19 lines (59 tokens) duplicated at wagtail.admin.tests.test_contentstate:1715
 duplicate-code	high	wagtail/admin/tests/test_contentstate.py:965:1	-	22 lines (91 tokens) duplicated at wagtail.admin.tests.test_contentstate:1036
-duplicate-code	high	wagtail/admin/tests/test_contentstate.py:1000:1	-	17 lines (71 tokens) duplicated at wagtail.admin.tests.test_contentstate:1654
 duplicate-code	high	wagtail/admin/tests/test_contentstate.py:1147:1	-	43 lines (157 tokens) duplicated at wagtail.admin.tests.test_contentstate:1265
-duplicate-code	high	wagtail/admin/tests/test_contentstate.py:1685:1	-	14 lines (57 tokens) duplicated at wagtail.admin.tests.test_contentstate:1754
-duplicate-code	high	wagtail/admin/tests/test_contentstate.py:1843:1	-	19 lines (70 tokens) duplicated in 2 other places: wagtail.admin.tests.test_contentstate:1873, wagtail.admin.tests.test_contentstate:1903
+duplicate-code	high	wagtail/admin/tests/test_contentstate.py:1846:1	-	16 lines (65 tokens) duplicated in 2 other places: wagtail.admin.tests.test_contentstate:1876, wagtail.admin.tests.test_contentstate:1906
 duplicate-code	high	wagtail/admin/tests/test_dashboard.py:152:1	-	11 lines (73 tokens) duplicated at wagtail.admin.tests.test_dashboard:209
 duplicate-code	high	wagtail/admin/tests/test_dashboard.py:238:1	-	18 lines (110 tokens) duplicated at wagtail.admin.tests.test_dashboard:312
 duplicate-code	high	wagtail/admin/tests/test_dashboard.py:273:1	-	27 lines (205 tokens) duplicated at wagtail.admin.tests.test_dashboard:363
@@ -537,7 +529,7 @@ duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:96:1	-	16 lines
 duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:133:1	-	14 lines (92 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:156
 duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:196:1	-	9 lines (50 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:322
 duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:205:1	-	33 lines (202 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:242
-duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:289:1	-	13 lines (50 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:924
+duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:286:1	-	10 lines (51 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:1197
 duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:331:1	-	35 lines (198 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:498
 duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:372:1	-	28 lines (156 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:547
 duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:410:1	-	20 lines (113 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:583
@@ -547,10 +539,10 @@ duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:666:1	-	32 line
 duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:697:1	-	19 lines (79 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:1032
 duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:735:1	-	16 lines (100 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:811
 duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:753:1	-	18 lines (98 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:1231
-duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:770:1	-	22 lines (110 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:1251
+duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:773:1	-	19 lines (96 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:1254
 duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:905:1	-	12 lines (78 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:1063
 duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:972:1	-	53 lines (285 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:1076
-duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:1172:1	-	20 lines (70 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:1209
+duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:1176:1	-	16 lines (51 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:1213
 duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:1367:1	-	10 lines (62 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:1436
 duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:1404:1	-	13 lines (77 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:1445
 duplicate-code	high	wagtail/admin/tests/test_editing_sessions.py:1480:1	-	20 lines (99 tokens) duplicated at wagtail.admin.tests.test_editing_sessions:1504
@@ -646,7 +638,6 @@ duplicate-code	high	wagtail/admin/tests/test_upgrade_notification.py:67:1	-	8 li
 duplicate-code	high	wagtail/admin/tests/test_upgrade_notification.py:74:1	-	11 lines (66 tokens) duplicated at wagtail.admin.tests.test_upgrade_notification:112
 duplicate-code	high	wagtail/admin/tests/test_userbar.py:26:1	-	8 lines (53 tokens) duplicated at wagtail.admin.tests.test_userbar:752
 duplicate-code	high	wagtail/admin/tests/test_userbar.py:150:1	-	26 lines (178 tokens) duplicated at wagtail.admin.tests.test_userbar:175
-duplicate-code	high	wagtail/admin/tests/test_userbar.py:531:1	-	17 lines (63 tokens) duplicated at wagtail.admin.userbar:83
 duplicate-code	high	wagtail/admin/tests/test_userbar.py:582:1	-	5 lines (57 tokens) duplicated at wagtail.admin.tests.test_userbar:703
 duplicate-code	high	wagtail/admin/tests/test_userbar.py:628:1	-	13 lines (78 tokens) duplicated at wagtail.admin.tests.test_userbar:644
 duplicate-code	high	wagtail/admin/tests/test_userbar.py:714:1	-	12 lines (61 tokens) duplicated at wagtail.admin.tests.test_userbar:733
@@ -673,11 +664,11 @@ duplicate-code	high	wagtail/admin/tests/test_workflows.py:264:1	-	22 lines (214 
 duplicate-code	high	wagtail/admin/tests/test_workflows.py:319:1	-	9 lines (65 tokens) duplicated at wagtail.admin.tests.test_workflows:1305
 duplicate-code	high	wagtail/admin/tests/test_workflows.py:395:1	-	18 lines (108 tokens) duplicated at wagtail.admin.tests.test_workflows:1488
 duplicate-code	high	wagtail/admin/tests/test_workflows.py:436:1	-	40 lines (175 tokens) duplicated at wagtail.admin.tests.test_workflows:702
+duplicate-code	high	wagtail/admin/tests/test_workflows.py:492:1	-	14 lines (72 tokens) duplicated at wagtail.admin.tests.test_workflows:759
 duplicate-code	high	wagtail/admin/tests/test_workflows.py:505:1	-	32 lines (140 tokens) duplicated at wagtail.admin.tests.test_workflows:772
 duplicate-code	high	wagtail/admin/tests/test_workflows.py:552:1	-	30 lines (201 tokens) duplicated at wagtail.admin.tests.test_workflows:591
 duplicate-code	high	wagtail/admin/tests/test_workflows.py:637:1	-	8 lines (50 tokens) duplicated at wagtail.admin.tests.test_workflows:1481
 duplicate-code	high	wagtail/admin/tests/test_workflows.py:657:1	-	25 lines (153 tokens) duplicated at wagtail.admin.tests.test_workflows:1011
-duplicate-code	high	wagtail/admin/tests/test_workflows.py:742:1	-	21 lines (147 tokens) duplicated at wagtail.admin.tests.test_workflows:832
 duplicate-code	high	wagtail/admin/tests/test_workflows.py:804:1	-	19 lines (109 tokens) duplicated in 2 other places: wagtail.admin.tests.test_workflows:1425, wagtail.admin.tests.test_workflows:1548
 duplicate-code	high	wagtail/admin/tests/test_workflows.py:870:1	-	32 lines (197 tokens) duplicated at wagtail.admin.tests.test_workflows:963
 duplicate-code	high	wagtail/admin/tests/test_workflows.py:914:1	-	17 lines (132 tokens) duplicated at wagtail.admin.tests.test_workflows:933
@@ -734,7 +725,7 @@ duplicate-code	high	wagtail/admin/tests/tests.py:322:1	-	12 lines (78 tokens) du
 duplicate-code	high	wagtail/admin/tests/tests.py:345:1	-	10 lines (70 tokens) duplicated at wagtail.admin.tests.tests:354
 duplicate-code	high	wagtail/admin/tests/tests.py:366:1	-	8 lines (50 tokens) duplicated at wagtail.admin.tests.tests:380
 duplicate-code	high	wagtail/admin/tests/tests.py:439:1	-	10 lines (57 tokens) duplicated at wagtail.admin.tests.tests:449
-duplicate-code	high	wagtail/admin/tests/ui/test_sidebar.py:93:1	-	23 lines (56 tokens) duplicated at wagtail.admin.tests.ui.test_sidebar:136
+duplicate-code	high	wagtail/admin/tests/ui/test_sidebar.py:94:1	-	22 lines (51 tokens) duplicated at wagtail.admin.tests.ui.test_sidebar:137
 duplicate-code	high	wagtail/admin/tests/ui/test_tables.py:19:1	-	10 lines (75 tokens) duplicated at wagtail.admin.tests.ui.test_tables:335
 duplicate-code	high	wagtail/admin/tests/ui/test_tables.py:200:1	-	25 lines (115 tokens) duplicated at wagtail.admin.tests.ui.test_tables:249
 duplicate-code	high	wagtail/admin/tests/viewsets/test_chooser_viewset.py:84:1	-	5 lines (60 tokens) duplicated at wagtail.snippets.tests.test_chooser_views:109
@@ -791,7 +782,6 @@ duplicate-code	high	wagtail/admin/userbar.py:169:1	-	13 lines (51 tokens) duplic
 duplicate-code	high	wagtail/admin/userbar.py:255:1	-	15 lines (75 tokens) duplicated at wagtail.admin.userbar:276
 duplicate-code	high	wagtail/admin/views/chooser.py:50:1	-	15 lines (66 tokens) duplicated at wagtail.api.v2.utils:22
 duplicate-code	high	wagtail/admin/views/chooser.py:110:1	-	7 lines (50 tokens) duplicated at wagtail.users.tests.test_admin_views:323
-duplicate-code	high	wagtail/admin/views/chooser.py:191:1	-	14 lines (60 tokens) duplicated at wagtail.admin.views.chooser:420
 duplicate-code	high	wagtail/admin/views/chooser.py:559:1	-	14 lines (84 tokens) duplicated at wagtail.admin.views.chooser:803
 duplicate-code	high	wagtail/admin/views/generic/base.py:129:1	-	7 lines (59 tokens) duplicated at wagtail.admin.views.generic.models:1167
 duplicate-code	high	wagtail/admin/views/generic/chooser.py:351:1	-	10 lines (50 tokens) duplicated at wagtail.users.views.groups:29
@@ -1149,7 +1139,6 @@ duplicate-code	high	wagtail/contrib/redirects/urls.py:5:1	-	6 lines (60 tokens) 
 duplicate-code	high	wagtail/contrib/routable_page/tests.py:268:1	-	62 lines (327 tokens) duplicated at wagtail.contrib.routable_page.tests:356
 duplicate-code	high	wagtail/contrib/routable_page/tests.py:446:1	-	17 lines (90 tokens) duplicated at wagtail.contrib.routable_page.tests:534
 duplicate-code	high	wagtail/contrib/routable_page/tests.py:508:1	-	15 lines (57 tokens) duplicated at wagtail.contrib.routable_page.tests:549
-duplicate-code	high	wagtail/contrib/search_promotions/migrations/0001_initial.py:17:1	-	16 lines (54 tokens) duplicated in 8 other places: wagtail/migrations/0047_add_workflow_models.py:288, wagtail/test/demosite/migrations/0001_initial.py:1232, wagtail/test/i18n/migrations/0002_clusterabletestmodel_clusterabletestmodelchild_clusterabletestmodeltranslatablechild.py:50, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1948, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2558, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3173, wagtail/test/testapp/migrations/0015_gallerypage_gallerypageimage.py:43, wagtail/test/testapp/migrations/0053_pagewithexcludedcopyfield_special_stream_and_more.py:27
 duplicate-code	high	wagtail/contrib/search_promotions/tests.py:45:1	-	8 lines (50 tokens) duplicated at wagtail.contrib.search_promotions.tests:59
 duplicate-code	high	wagtail/contrib/search_promotions/tests.py:187:1	-	9 lines (53 tokens) duplicated at wagtail.contrib.search_promotions.tests:477
 duplicate-code	high	wagtail/contrib/search_promotions/tests.py:451:1	-	20 lines (102 tokens) duplicated at wagtail.contrib.search_promotions.tests:1339
@@ -1163,7 +1152,7 @@ duplicate-code	high	wagtail/contrib/search_promotions/tests.py:737:1	-	13 lines 
 duplicate-code	high	wagtail/contrib/search_promotions/tests.py:813:1	-	15 lines (86 tokens) duplicated at wagtail.contrib.search_promotions.tests:1323
 duplicate-code	high	wagtail/contrib/search_promotions/tests.py:827:1	-	16 lines (86 tokens) duplicated at wagtail.contrib.search_promotions.tests:1417
 duplicate-code	high	wagtail/contrib/search_promotions/tests.py:851:1	-	8 lines (54 tokens) duplicated at wagtail.contrib.search_promotions.tests:1365
-duplicate-code	high	wagtail/contrib/search_promotions/tests.py:889:1	-	24 lines (103 tokens) duplicated at wagtail.contrib.search_promotions.tests:1014
+duplicate-code	high	wagtail/contrib/search_promotions/tests.py:893:1	-	20 lines (90 tokens) duplicated at wagtail.contrib.search_promotions.tests:1018
 duplicate-code	high	wagtail/contrib/search_promotions/tests.py:972:1	-	18 lines (94 tokens) duplicated at wagtail.contrib.search_promotions.tests:1289
 duplicate-code	high	wagtail/contrib/search_promotions/tests.py:990:1	-	12 lines (58 tokens) duplicated in 2 other places: wagtail.contrib.search_promotions.tests:1273, wagtail.contrib.search_promotions.tests:1306
 duplicate-code	high	wagtail/contrib/search_promotions/tests.py:1065:1	-	13 lines (53 tokens) duplicated at wagtail.contrib.search_promotions.tests:1104
@@ -1257,7 +1246,7 @@ duplicate-code	high	wagtail/documents/migrations/0002_initial_data.py:1:1	-	16 l
 duplicate-code	high	wagtail/documents/migrations/0006_copy_document_permissions_to_collections.py:4:1	-	12 lines (60 tokens) duplicated at wagtail/documents/migrations/0011_add_choose_permissions.py:44
 duplicate-code	high	wagtail/documents/migrations/0011_add_choose_permissions.py:20:1	-	16 lines (70 tokens) duplicated at wagtail/images/migrations/0023_add_choose_permissions.py:20
 duplicate-code	high	wagtail/documents/migrations/0011_add_choose_permissions.py:53:1	-	30 lines (170 tokens) duplicated at wagtail/images/migrations/0023_add_choose_permissions.py:53
-duplicate-code	high	wagtail/documents/migrations/0012_uploadeddocument.py:30:1	-	17 lines (56 tokens) duplicated in 2 other places: wagtail/images/migrations/0022_uploadedimage.py:30, wagtail/migrations/0093_uploadedfile.py:38
+duplicate-code	high	wagtail/documents/migrations/0012_uploadeddocument.py:33:1	-	14 lines (51 tokens) duplicated in 2 other places: wagtail/images/migrations/0022_uploadedimage.py:33, wagtail/migrations/0093_uploadedfile.py:41
 duplicate-code	high	wagtail/documents/models.py:29:1	-	14 lines (81 tokens) duplicated at wagtail.images.models:278
 duplicate-code	high	wagtail/documents/models.py:130:1	-	24 lines (119 tokens) duplicated at wagtail.images.models:308
 duplicate-code	high	wagtail/documents/rich_text/__init__.py:10:1	-	13 lines (71 tokens) duplicated at wagtail.images.rich_text:9
@@ -1409,7 +1398,6 @@ duplicate-code	high	wagtail/embeds/blocks.py:45:1	-	17 lines (70 tokens) duplica
 duplicate-code	high	wagtail/embeds/finders/embedly.py:56:1	-	12 lines (76 tokens) duplicated at wagtail.embeds.finders.instagram:75
 duplicate-code	high	wagtail/embeds/finders/facebook.py:41:1	-	16 lines (56 tokens) duplicated at wagtail.embeds.finders.instagram:25
 duplicate-code	high	wagtail/embeds/finders/facebook.py:56:1	-	33 lines (234 tokens) duplicated at wagtail.embeds.finders.instagram:40
-duplicate-code	high	wagtail/embeds/oembed_providers.py:655:1	-	40 lines (80 tokens) duplicated at wagtail.embeds.oembed_providers:695
 duplicate-code	high	wagtail/embeds/tests/test_embeds.py:84:1	-	9 lines (52 tokens) duplicated at wagtail.embeds.tests.test_embeds:96
 duplicate-code	high	wagtail/embeds/tests/test_embeds.py:109:1	-	17 lines (95 tokens) duplicated at wagtail.embeds.tests.test_embeds:128
 duplicate-code	high	wagtail/embeds/tests/test_embeds.py:147:1	-	13 lines (54 tokens) duplicated at wagtail.embeds.tests.test_embeds:213
@@ -1429,7 +1417,6 @@ duplicate-code	high	wagtail/images/image_operations.py:127:1	-	10 lines (70 toke
 duplicate-code	high	wagtail/images/image_operations.py:297:1	-	17 lines (91 tokens) duplicated at wagtail.images.image_operations:333
 duplicate-code	high	wagtail/images/migrations/0001_squashed_0021.py:9:1	-	58 lines (250 tokens) duplicated at wagtail/images/migrations/0002_initial_data.py:1
 duplicate-code	high	wagtail/images/migrations/0001_squashed_0021.py:66:1	-	39 lines (221 tokens) duplicated at wagtail/images/migrations/0012_copy_image_permissions_to_collections.py:4
-duplicate-code	high	wagtail/images/migrations/0001_squashed_0021.py:173:1	-	25 lines (100 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2354
 duplicate-code	high	wagtail/images/models.py:453:1	-	8 lines (50 tokens) duplicated at wagtail.images.models:463
 duplicate-code	high	wagtail/images/models.py:1420:1	-	23 lines (58 tokens) duplicated at wagtail.images.models:1442
 duplicate-code	high	wagtail/images/rect.py:30:1	-	20 lines (131 tokens) duplicated at wagtail.images.rect:50
@@ -1560,15 +1547,9 @@ duplicate-code	high	wagtail/management/commands/show_references_index.py:21:1	-	
 duplicate-code	high	wagtail/migrations/0001_initial.py:8:1	-	22 lines (75 tokens) duplicated at wagtail/migrations/0001_squashed_0016_change_page_url_path_to_text_field.py:113
 duplicate-code	high	wagtail/migrations/0001_squashed_0016_change_page_url_path_to_text_field.py:4:1	-	46 lines (189 tokens) duplicated at wagtail/migrations/0002_initial_data.py:1
 duplicate-code	high	wagtail/migrations/0001_squashed_0016_change_page_url_path_to_text_field.py:50:1	-	29 lines (113 tokens) duplicated at wagtail/migrations/0002_initial_data.py:46
-duplicate-code	high	wagtail/migrations/0010_change_page_owner_to_null_on_delete.py:13:1	-	10 lines (52 tokens) duplicated at wagtail/migrations/0015_add_more_verbose_names.py:82
 duplicate-code	high	wagtail/migrations/0032_add_bulk_delete_page_permission.py:8:1	-	14 lines (55 tokens) duplicated at wagtail/migrations/0044_add_unlock_grouppagepermission.py:9
-duplicate-code	high	wagtail/migrations/0043_lock_fields.py:24:1	-	14 lines (56 tokens) duplicated at wagtail/test/testapp/migrations/0013_draftstatemodel_add_lockablemixin.py:31
-duplicate-code	high	wagtail/migrations/0047_add_workflow_models.py:21:1	-	17 lines (61 tokens) duplicated at wagtail/migrations/0047_add_workflow_models.py:127
-duplicate-code	high	wagtail/migrations/0047_add_workflow_models.py:57:1	-	19 lines (60 tokens) duplicated at wagtail/migrations/0047_add_workflow_models.py:175
+duplicate-code	high	wagtail/migrations/0043_lock_fields.py:26:1	-	12 lines (51 tokens) duplicated at wagtail/test/testapp/migrations/0013_draftstatemodel_add_lockablemixin.py:33
 duplicate-code	high	wagtail/migrations/0050_workflow_rejected_to_needs_changes.py:30:1	-	12 lines (50 tokens) duplicated at wagtail/migrations/0060_fix_workflow_unique_constraint.py:15
-duplicate-code	high	wagtail/migrations/0052_pagelogentry.py:19:1	-	18 lines (119 tokens) duplicated at wagtail/migrations/0063_modellogentry.py:18
-duplicate-code	high	wagtail/migrations/0052_pagelogentry.py:64:1	-	17 lines (57 tokens) duplicated at wagtail/migrations/0063_modellogentry.py:44
-duplicate-code	high	wagtail/migrations/0073_page_latest_revision.py:15:1	-	12 lines (51 tokens) duplicated at wagtail/test/basepage/migrations/0003_finalize_basepage_model.py:17
 duplicate-code	high	wagtail/migrations/0088_fix_log_entry_json_timestamps.py:124:1	-	12 lines (57 tokens) duplicated at wagtail/migrations/0088_fix_log_entry_json_timestamps.py:135
 duplicate-code	high	wagtail/models/draft_state.py:43:1	-	16 lines (73 tokens) duplicated in 2 other places: wagtail.models.locking:27, wagtail.models.workflows:1183
 duplicate-code	high	wagtail/models/draft_state.py:114:1	-	10 lines (55 tokens) duplicated at wagtail.models.pages:1287
@@ -1790,25 +1771,9 @@ duplicate-code	high	wagtail/snippets/views/snippets.py:206:1	-	18 lines (89 toke
 duplicate-code	high	wagtail/snippets/views/snippets.py:259:1	-	11 lines (70 tokens) duplicated at wagtail.snippets.views.snippets:327
 duplicate-code	high	wagtail/snippets/views/snippets.py:292:1	-	11 lines (66 tokens) duplicated at wagtail.snippets.views.snippets:376
 duplicate-code	high	wagtail/snippets/views/snippets.py:769:1	-	12 lines (55 tokens) duplicated at wagtail.snippets.views.snippets:780
-duplicate-code	high	wagtail/test/basepage/migrations/0001_initial.py:37:1	-	61 lines (207 tokens) duplicated at wagtail/test/testapp/migrations/0016_fullfeaturedsnippet.py:29
 duplicate-code	high	wagtail/test/customuser/forms.py:6:1	-	9 lines (64 tokens) duplicated at wagtail.test.customuser.forms:14
-duplicate-code	high	wagtail/test/customuser/migrations/0001_initial.py:33:1	-	6 lines (64 tokens) duplicated at wagtail/test/customuser/migrations/0001_initial.py:89
 duplicate-code	high	wagtail/test/customuser/models.py:61:1	-	7 lines (81 tokens) duplicated at wagtail.test.emailuser.models:36
 duplicate-code	high	wagtail/test/demosite/migrations/0001_initial.py:3:1	-	15 lines (52 tokens) duplicated at wagtail/test/testapp/migrations/0015_gallerypage_gallerypageimage.py:3
-duplicate-code	high	wagtail/test/demosite/migrations/0001_initial.py:25:1	-	14 lines (57 tokens) duplicated at wagtail/test/demosite/migrations/0001_initial.py:537
-duplicate-code	high	wagtail/test/demosite/migrations/0001_initial.py:43:1	-	15 lines (63 tokens) duplicated at wagtail/test/demosite/migrations/0001_initial.py:379
-duplicate-code	high	wagtail/test/demosite/migrations/0001_initial.py:57:1	-	50 lines (211 tokens) duplicated in 2 other places: wagtail/test/demosite/migrations/0001_initial.py:393, wagtail/test/demosite/migrations/0001_initial.py:558
-duplicate-code	high	wagtail/test/demosite/migrations/0001_initial.py:106:1	-	39 lines (155 tokens) duplicated in 6 other places: wagtail/test/demosite/migrations/0001_initial.py:199, wagtail/test/demosite/migrations/0001_initial.py:296, wagtail/test/demosite/migrations/0001_initial.py:442, wagtail/test/demosite/migrations/0001_initial.py:607, wagtail/test/demosite/migrations/0001_initial.py:696, wagtail/test/demosite/migrations/0001_initial.py:765
-duplicate-code	high	wagtail/test/demosite/migrations/0001_initial.py:178:1	-	22 lines (96 tokens) duplicated at wagtail/test/demosite/migrations/0001_initial.py:275
-duplicate-code	high	wagtail/test/demosite/migrations/0001_initial.py:237:1	-	21 lines (168 tokens) duplicated at wagtail/test/demosite/migrations/0001_initial.py:645
-duplicate-code	high	wagtail/test/demosite/migrations/0001_initial.py:259:1	-	17 lines (73 tokens) duplicated at wagtail/test/demosite/migrations/0001_initial.py:680
-duplicate-code	high	wagtail/test/demosite/migrations/0001_initial.py:363:1	-	17 lines (98 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:362
-duplicate-code	high	wagtail/test/demosite/migrations/0001_initial.py:480:1	-	20 lines (72 tokens) duplicated in 2 other places: wagtail/test/demosite/migrations/0001_initial.py:835, wagtail/test/demosite/migrations/0001_initial.py:902
-duplicate-code	high	wagtail/test/demosite/migrations/0001_initial.py:747:1	-	19 lines (85 tokens) duplicated at wagtail/test/demosite/migrations/0001_initial.py:817
-duplicate-code	high	wagtail/test/demosite/migrations/0001_initial.py:865:1	-	27 lines (96 tokens) duplicated at wagtail/test/demosite/migrations/0001_initial.py:921
-duplicate-code	high	wagtail/test/demosite/migrations/0001_initial.py:958:1	-	13 lines (54 tokens) duplicated in 10 other places: wagtail/test/demosite/migrations/0001_initial.py:980, wagtail/test/demosite/migrations/0001_initial.py:1002, wagtail/test/demosite/migrations/0001_initial.py:1024, wagtail/test/demosite/migrations/0001_initial.py:1046, wagtail/test/demosite/migrations/0001_initial.py:1068, wagtail/test/demosite/migrations/0001_initial.py:1090, wagtail/test/demosite/migrations/0001_initial.py:1112, wagtail/test/demosite/migrations/0001_initial.py:1134, wagtail/test/demosite/migrations/0001_initial.py:1156, wagtail/test/demosite/migrations/0001_initial.py:1178
-duplicate-code	high	wagtail/test/demosite/migrations/0001_initial.py:1212:1	-	21 lines (87 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1072
-duplicate-code	high	wagtail/test/demosite/migrations/0001_initial.py:1255:1	-	63 lines (238 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3475
 duplicate-code	high	wagtail/test/demosite/models.py:29:1	-	27 lines (138 tokens) duplicated at wagtail.test.testapp.models:135
 duplicate-code	high	wagtail/test/demosite/models.py:89:1	-	19 lines (81 tokens) duplicated at wagtail.test.testapp.models:164
 duplicate-code	high	wagtail/test/demosite/models.py:163:1	-	19 lines (99 tokens) duplicated at wagtail.test.demosite.models:217
@@ -1820,75 +1785,15 @@ duplicate-code	high	wagtail/test/demosite/models.py:596:1	-	10 lines (64 tokens)
 duplicate-code	high	wagtail/test/demosite/models.py:696:1	-	24 lines (97 tokens) duplicated at wagtail.test.demosite.models:775
 duplicate-code	high	wagtail/test/dummy_external_storage.py:41:1	-	12 lines (73 tokens) duplicated at wagtail.test.dummy_external_storage:53
 duplicate-code	high	wagtail/test/earlypage/migrations/0001_initial.py:3:1	-	15 lines (55 tokens) duplicated at wagtail/test/routablepage/migrations/0001_initial.py:3
-duplicate-code	high	wagtail/test/earlypage/migrations/0001_initial.py:22:1	-	14 lines (60 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:312
 duplicate-code	high	wagtail/test/i18n/migrations/0001_initial.py:3:1	-	17 lines (57 tokens) duplicated at wagtail/test/streamfield_migrations/migrations/0001_initial.py:3
-duplicate-code	high	wagtail/test/i18n/migrations/0001_initial.py:24:1	-	23 lines (93 tokens) duplicated at wagtail/test/i18n/migrations/0002_clusterabletestmodel_clusterabletestmodelchild_clusterabletestmodeltranslatablechild.py:18
-duplicate-code	high	wagtail/test/i18n/migrations/0001_initial.py:56:1	-	21 lines (87 tokens) duplicated in 20 other places: wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:212, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:232, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:252, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:272, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:292, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:559, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:646, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:688, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:708, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:728, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1160, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1253, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1479, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1866, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1908, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1928, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2055, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3750, wagtail/test/testapp/migrations/0015_gallerypage_gallerypageimage.py:23, wagtail/test/testapp/migrations/0040_nocreatablesubpagetypespage_nosubpagetypespage.py:20
-duplicate-code	high	wagtail/test/i18n/migrations/0001_initial.py:93:1	-	32 lines (124 tokens) duplicated at wagtail/test/i18n/migrations/0001_initial.py:137
-duplicate-code	high	wagtail/test/i18n/migrations/0002_clusterabletestmodel_clusterabletestmodelchild_clusterabletestmodeltranslatablechild.py:81:1	-	16 lines (52 tokens) duplicated at wagtail/test/snippets/migrations/0007_translatablesnippet.py:17
-duplicate-code	high	wagtail/test/routablepage/migrations/0001_initial.py:23:1	-	24 lines (94 tokens) duplicated at wagtail/test/routablepage/migrations/0002_routablepagewithoutindexroutetest.py:21
+duplicate-code	high	wagtail/test/routablepage/migrations/0001_initial.py:33:1	-	14 lines (51 tokens) duplicated at wagtail/test/routablepage/migrations/0002_routablepagewithoutindexroutetest.py:31
 duplicate-code	high	wagtail/test/routablepage/migrations/0002_routablepagewithoutindexroutetest.py:3:1	-	13 lines (51 tokens) duplicated in 4 other places: wagtail/test/testapp/migrations/0006_multipreviewmodespage.py:3, wagtail/test/testapp/migrations/0032_custompermissionpage.py:3, wagtail/test/testapp/migrations/0033_customcopyformpage.py:3, wagtail/test/testapp/migrations/0040_nocreatablesubpagetypespage_nosubpagetypespage.py:3
-duplicate-code	high	wagtail/test/snippets/migrations/0001_initial.py:10:1	-	16 lines (62 tokens) duplicated at wagtail/test/snippets/migrations/0001_initial.py:59
-duplicate-code	high	wagtail/test/snippets/migrations/0001_initial.py:27:1	-	17 lines (55 tokens) duplicated at wagtail/test/snippets/migrations/0001_initial.py:43
 duplicate-code	high	wagtail/test/streamfield_migrations/factories.py:27:1	-	11 lines (56 tokens) duplicated at wagtail.test.streamfield_migrations.factories:37
-duplicate-code	high	wagtail/test/streamfield_migrations/migrations/0001_initial.py:33:1	-	146 lines (499 tokens) duplicated at wagtail/test/streamfield_migrations/migrations/0001_initial.py:191
 duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:17:1	-	15 lines (53 tokens) duplicated at wagtail/test/testapp/migrations/0056_commentablejsonpage.py:3
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:123:1	-	13 lines (61 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1459
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:142:1	-	17 lines (58 tokens) duplicated in 3 other places: wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:748, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2001, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2106
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:158:1	-	18 lines (55 tokens) duplicated in 2 other places: wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:764, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2017
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:333:1	-	14 lines (55 tokens) duplicated in 11 other places: wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:392, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:455, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:808, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1520, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1547, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1736, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1886, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1972, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3071, wagtail/test/testapp/migrations/0048_requireddatepage.py:21, wagtail/test/testapp/migrations/0056_commentablejsonpage.py:24
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:413:1	-	43 lines (172 tokens) duplicated in 2 other places: wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1211, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1679
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:484:1	-	26 lines (81 tokens) duplicated in 3 other places: wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:579, wagtail/test/testapp/migrations/0002_recreate_setting_models.py:78, wagtail/test/testapp/migrations/0002_recreate_setting_models.py:216
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:509:1	-	14 lines (63 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2841
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:604:1	-	22 lines (97 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:625
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:781:1	-	28 lines (107 tokens) duplicated at wagtail/test/testapp/migrations/0002_recreate_setting_models.py:260
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:984:1	-	41 lines (225 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3835
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1028:1	-	39 lines (157 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3876
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1092:1	-	27 lines (94 tokens) duplicated at wagtail/test/testapp/migrations/0002_recreate_setting_models.py:35
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1118:1	-	22 lines (99 tokens) duplicated in 2 other places: wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1139, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1499
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1180:1	-	16 lines (62 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2927
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1273:1	-	45 lines (202 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1635
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1339:1	-	21 lines (73 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1359
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1390:1	-	16 lines (62 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2582
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1417:1	-	34 lines (154 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2287
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1603:1	-	11 lines (53 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1856
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1758:1	-	20 lines (72 tokens) duplicated in 2 other places: wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2409, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2489
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1786:1	-	36 lines (149 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2429
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:1822:1	-	26 lines (99 tokens) duplicated in 2 other places: wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2464, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2533
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2150:1	-	53 lines (207 tokens) duplicated at wagtail/test/testapp/migrations/0002_recreate_setting_models.py:147
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2202:1	-	44 lines (237 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:4016
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2245:1	-	37 lines (154 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2624
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2329:1	-	18 lines (84 tokens) duplicated in 2 other places: wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2604, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3919
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2392:1	-	16 lines (58 tokens) duplicated at wagtail/test/testapp/migrations/0058_customlocktask.py:15
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2707:1	-	18 lines (79 tokens) duplicated in 2 other places: wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2735, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2763
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2789:1	-	26 lines (99 tokens) duplicated in 2 other places: wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2968, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2993
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2814:1	-	17 lines (73 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2868
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2857:1	-	12 lines (56 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3087
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:2895:1	-	20 lines (98 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3018
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3098:1	-	26 lines (99 tokens) duplicated in 2 other places: wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3123, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3148
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3250:1	-	21 lines (61 tokens) duplicated in 3 other places: wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3346, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3538, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3634
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3270:1	-	77 lines (291 tokens) duplicated in 3 other places: wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3366, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3558, wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3654
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3442:1	-	21 lines (61 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3730
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3939:1	-	14 lines (59 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:4058
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:3960:1	-	17 lines (56 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:4081
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:4004:1	-	13 lines (55 tokens) duplicated at wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:4125
-duplicate-code	high	wagtail/test/testapp/migrations/0001_squashed_0073_revisablechildmodel_secret_text.py:4144:1	-	31 lines (107 tokens) duplicated at wagtail/test/testapp/migrations/0061_revisablecluster_revisableclusterchild.py:16
-duplicate-code	high	wagtail/test/testapp/migrations/0002_recreate_setting_models.py:61:1	-	18 lines (50 tokens) duplicated at wagtail/test/testapp/migrations/0002_recreate_setting_models.py:199
-duplicate-code	high	wagtail/test/testapp/migrations/0002_recreate_setting_models.py:287:1	-	21 lines (73 tokens) duplicated at wagtail/test/testapp/migrations/0002_recreate_setting_models.py:327
-duplicate-code	high	wagtail/test/testapp/migrations/0002_recreate_setting_models.py:307:1	-	21 lines (73 tokens) duplicated at wagtail/test/testapp/migrations/0002_recreate_setting_models.py:347
-duplicate-code	high	wagtail/test/testapp/migrations/0003_draftstatemodel.py:16:1	-	87 lines (306 tokens) duplicated at wagtail/test/testapp/migrations/0017_moderatedmodel.py:17
-duplicate-code	high	wagtail/test/testapp/migrations/0005_previewablemodel_nonpreviewablemodel_and_more.py:43:1	-	30 lines (115 tokens) duplicated at wagtail/test/testapp/migrations/0005_previewablemodel_nonpreviewablemodel_and_more.py:74
-duplicate-code	high	wagtail/test/testapp/migrations/0006_multipreviewmodespage.py:21:1	-	21 lines (84 tokens) duplicated in 5 other places: wagtail/test/testapp/migrations/0032_custompermissionpage.py:21, wagtail/test/testapp/migrations/0033_customcopyformpage.py:21, wagtail/test/testapp/migrations/0040_nocreatablesubpagetypespage_nosubpagetypespage.py:40, wagtail/test/testapp/migrations/0044_custompreviewsizesmodel_custompreviewsizespage.py:38, wagtail/test/testapp/migrations/0049_promotionalpage.py:21
-duplicate-code	high	wagtail/test/testapp/migrations/0007_draftstatecustomprimarykeymodel.py:69:1	-	25 lines (103 tokens) duplicated at wagtail/test/testapp/migrations/0016_fullfeaturedsnippet.py:89
-duplicate-code	high	wagtail/test/testapp/migrations/0014_lockablemodel.py:41:1	-	14 lines (54 tokens) duplicated at wagtail/test/testapp/migrations/0016_fullfeaturedsnippet.py:114
-duplicate-code	high	wagtail/test/testapp/migrations/0018_alter_streampage_body.py:16:1	-	33 lines (175 tokens) duplicated at wagtail/test/testapp/migrations/0021_remove_non_json_field_streamfields.py:104
-duplicate-code	high	wagtail/test/testapp/migrations/0021_remove_non_json_field_streamfields.py:80:1	-	9 lines (56 tokens) duplicated at wagtail/test/testapp/migrations/0021_remove_non_json_field_streamfields.py:93
+duplicate-code	high	wagtail/test/testapp/migrations/0003_draftstatemodel.py:91:1	-	15 lines (51 tokens) duplicated at wagtail/test/testapp/migrations/0007_draftstatecustomprimarykeymodel.py:86
+duplicate-code	high	wagtail/test/testapp/migrations/0006_multipreviewmodespage.py:29:1	-	13 lines (51 tokens) duplicated in 5 other places: wagtail/test/testapp/migrations/0032_custompermissionpage.py:29, wagtail/test/testapp/migrations/0033_customcopyformpage.py:29, wagtail/test/testapp/migrations/0040_nocreatablesubpagetypespage_nosubpagetypespage.py:48, wagtail/test/testapp/migrations/0044_custompreviewsizesmodel_custompreviewsizespage.py:46, wagtail/test/testapp/migrations/0049_promotionalpage.py:29
 duplicate-code	high	wagtail/test/testapp/migrations/0036_complexdefaultstreampage.py:3:1	-	15 lines (53 tokens) duplicated at wagtail/test/testapp/migrations/0064_headlessform.py:3
-duplicate-code	high	wagtail/test/testapp/migrations/0037_testpermissionedgenericsetting_and_more.py:16:1	-	5 lines (55 tokens) duplicated at wagtail/test/testapp/migrations/0037_testpermissionedgenericsetting_and_more.py:31
 duplicate-code	high	wagtail/test/testapp/migrations/0044_custompreviewsizesmodel_custompreviewsizespage.py:4:1	-	13 lines (51 tokens) duplicated in 2 other places: wagtail/test/testapp/migrations/0048_requireddatepage.py:3, wagtail/test/testapp/migrations/0049_promotionalpage.py:3
-duplicate-code	high	wagtail/test/testapp/migrations/0045_alter_streampage_body.py:17:1	-	12 lines (59 tokens) duplicated at wagtail/test/testapp/migrations/0062_uuidsnippetwithrelations_and_more.py:46
-duplicate-code	high	wagtail/test/testapp/migrations/0045_alter_streampage_body.py:35:1	-	17 lines (98 tokens) duplicated at wagtail/test/testapp/migrations/0062_uuidsnippetwithrelations_and_more.py:61
-duplicate-code	high	wagtail/test/testapp/migrations/0059_nopromotepage.py:21:1	-	8 lines (69 tokens) duplicated at wagtail/test/testapp/migrations/0064_headlessform.py:23
 duplicate-code	high	wagtail/test/testapp/models.py:697:1	-	20 lines (53 tokens) duplicated at wagtail.test.testapp.models:1044
 duplicate-code	high	wagtail/test/testapp/models.py:985:1	-	25 lines (258 tokens) duplicated at wagtail.test.testapp.models:1013
 duplicate-code	high	wagtail/test/testapp/models.py:1203:1	-	29 lines (111 tokens) duplicated at wagtail.test.testapp.models:1965
@@ -1909,17 +1814,16 @@ duplicate-code	high	wagtail/tests/actions/test_edit.py:35:1	-	10 lines (64 token
 duplicate-code	high	wagtail/tests/actions/test_edit.py:66:1	-	11 lines (50 tokens) duplicated at wagtail.tests.actions.test_edit:95
 duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:62:1	-	15 lines (57 tokens) duplicated at wagtail.tests.permission_policies.test_page_permission_policies:49
 duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:153:1	-	8 lines (57 tokens) duplicated at wagtail.tests.permission_policies.test_collection_permission_policies:669
-duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:163:1	-	19 lines (142 tokens) duplicated at wagtail.tests.permission_policies.test_collection_permission_policies:679
+duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:165:1	-	17 lines (120 tokens) duplicated at wagtail.tests.permission_policies.test_collection_permission_policies:681
 duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:184:1	-	36 lines (146 tokens) duplicated at wagtail.tests.permission_policies.test_collection_permission_policies:703
 duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:220:1	-	30 lines (113 tokens) duplicated at wagtail.tests.permission_policies.test_collection_permission_policies:740
-duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:249:1	-	19 lines (150 tokens) duplicated at wagtail.tests.permission_policies.test_collection_permission_policies:769
-duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:269:1	-	8 lines (78 tokens) duplicated at wagtail.tests.permission_policies.test_collection_permission_policies:789
 duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:279:1	-	102 lines (348 tokens) duplicated at wagtail.tests.permission_policies.test_collection_permission_policies:828
 duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:382:1	-	71 lines (265 tokens) duplicated at wagtail.tests.permission_policies.test_collection_permission_policies:941
 duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:467:1	-	33 lines (185 tokens) duplicated at wagtail.tests.permission_policies.test_collection_permission_policies:1036
 duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:522:1	-	42 lines (144 tokens) duplicated at wagtail.tests.permission_policies.test_collection_permission_policies:1091
 duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:563:1	-	69 lines (254 tokens) duplicated at wagtail.tests.permission_policies.test_collection_permission_policies:1132
 duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:631:1	-	33 lines (122 tokens) duplicated at wagtail.tests.permission_policies.test_collection_permission_policies:1200
+duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:773:1	-	18 lines (130 tokens) duplicated at wagtail.tests.permission_policies.test_collection_permission_policies:791
 duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:1020:1	-	13 lines (71 tokens) duplicated at wagtail.tests.permission_policies.test_page_permission_policies:468
 duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:1079:1	-	13 lines (66 tokens) duplicated at wagtail.tests.permission_policies.test_page_permission_policies:510
 duplicate-code	high	wagtail/tests/permission_policies/test_collection_permission_policies.py:1311:1	-	7 lines (61 tokens) duplicated at wagtail.tests.permission_policies.test_page_permission_policies:184
@@ -1949,8 +1853,8 @@ duplicate-code	high	wagtail/tests/permission_policies/test_permission_policies.p
 duplicate-code	high	wagtail/tests/permission_policies/test_permission_policies.py:1116:1	-	24 lines (145 tokens) duplicated at wagtail.tests.permission_policies.test_permission_policies:1143
 duplicate-code	high	wagtail/tests/permission_policies/test_permission_policies.py:1162:1	-	18 lines (69 tokens) duplicated at wagtail.tests.permission_policies.test_permission_policies:1190
 duplicate-code	high	wagtail/tests/permission_policies/test_permission_policies.py:1219:1	-	19 lines (60 tokens) duplicated at wagtail.tests.permission_policies.test_permission_policies:1244
-duplicate-code	high	wagtail/tests/permission_policies/test_site_permission_policies.py:92:1	-	14 lines (71 tokens) duplicated at wagtail.tests.permission_policies.test_site_permission_policies:111
-duplicate-code	high	wagtail/tests/permission_policies/test_site_permission_policies.py:253:1	-	14 lines (75 tokens) duplicated at wagtail.tests.permission_policies.test_site_permission_policies:267
+duplicate-code	high	wagtail/tests/permission_policies/test_site_permission_policies.py:95:1	-	11 lines (60 tokens) duplicated at wagtail.tests.permission_policies.test_site_permission_policies:114
+duplicate-code	high	wagtail/tests/permission_policies/test_site_permission_policies.py:255:1	-	12 lines (66 tokens) duplicated at wagtail.tests.permission_policies.test_site_permission_policies:269
 duplicate-code	high	wagtail/tests/streamfield_migrations/test_bad_data.py:33:1	-	16 lines (60 tokens) duplicated at wagtail.tests.streamfield_migrations.test_bad_data:102
 duplicate-code	high	wagtail/tests/streamfield_migrations/test_bad_data.py:182:1	-	16 lines (70 tokens) duplicated at wagtail.tests.streamfield_migrations.test_bad_data:213
 duplicate-code	high	wagtail/tests/streamfield_migrations/test_migrations.py:133:1	-	14 lines (98 tokens) duplicated at wagtail.tests.streamfield_migrations.test_migrations:162
@@ -2044,7 +1948,6 @@ duplicate-code	high	wagtail/tests/test_blocks.py:5379:1	-	17 lines (91 tokens) d
 duplicate-code	high	wagtail/tests/test_blocks.py:5444:1	-	17 lines (102 tokens) duplicated at wagtail.tests.test_blocks:5467
 duplicate-code	high	wagtail/tests/test_blocks.py:5513:1	-	14 lines (53 tokens) duplicated at wagtail.tests.test_blocks:5529
 duplicate-code	high	wagtail/tests/test_blocks.py:5597:1	-	19 lines (77 tokens) duplicated at wagtail.tests.test_blocks:5696
-duplicate-code	high	wagtail/tests/test_blocks.py:5789:1	-	11 lines (52 tokens) duplicated at wagtail.tests.test_blocks:5802
 duplicate-code	high	wagtail/tests/test_blocks.py:6064:1	-	10 lines (57 tokens) duplicated at wagtail.tests.test_blocks:6074
 duplicate-code	high	wagtail/tests/test_blocks.py:6085:1	-	10 lines (59 tokens) duplicated at wagtail.tests.test_blocks:6095
 duplicate-code	high	wagtail/tests/test_blocks.py:6260:1	-	23 lines (105 tokens) duplicated at wagtail.tests.test_blocks:6285
@@ -2165,7 +2068,6 @@ duplicate-code	high	wagtail/tests/test_page_queryset.py:1130:1	-	13 lines (62 to
 duplicate-code	high	wagtail/tests/test_page_queryset.py:1237:1	-	11 lines (51 tokens) duplicated at wagtail.tests.test_page_queryset:1248
 duplicate-code	high	wagtail/tests/test_permissions.py:143:1	-	16 lines (108 tokens) duplicated at wagtail.tests.test_permissions:158
 duplicate-code	high	wagtail/tests/test_reference_index.py:51:1	-	17 lines (58 tokens) duplicated at wagtail.tests.test_reference_index:641
-duplicate-code	high	wagtail/tests/test_reference_index.py:79:1	-	26 lines (147 tokens) duplicated at wagtail.tests.test_reference_index:150
 duplicate-code	high	wagtail/tests/test_reference_index.py:212:1	-	15 lines (96 tokens) duplicated at wagtail.tests.test_reference_index:226
 duplicate-code	high	wagtail/tests/test_reference_index.py:551:1	-	11 lines (58 tokens) duplicated at wagtail.tests.test_reference_index:591
 duplicate-code	high	wagtail/tests/test_reference_index.py:690:1	-	11 lines (50 tokens) duplicated at wagtail.tests.test_reference_index:834

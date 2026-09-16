@@ -1,8 +1,8 @@
 files_scanned=987
 symbols_checked=0
 symbols_kept=0
-findings=649
-duplication: clones=649 duplicated_lines=21546 total_lines=142026 percent_tenths=151
+findings=628
+duplication: clones=628 duplicated_lines=20949 total_lines=142026 percent_tenths=147
 --
 duplicate-code	high	docs/blog/snippets/2022-12-07-responsive-app-background-task/blocking02.py:2:1	-	39 lines (154 tokens) duplicated at docs/blog/snippets/2022-12-07-responsive-app-background-task/nonblocking01.py:1
 duplicate-code	high	docs/examples/app/question02.py:6:1	-	16 lines (106 tokens) duplicated at docs.examples.app.question03:24
@@ -72,9 +72,8 @@ duplicate-code	high	docs/examples/tutorial/stopwatch.py:100:1	-	11 lines (50 tok
 duplicate-code	high	docs/examples/tutorial/stopwatch02.py:22:1	-	21 lines (100 tokens) duplicated in 2 other places: docs.examples.tutorial.stopwatch03:24, docs.examples.tutorial.stopwatch06:74
 duplicate-code	high	docs/examples/tutorial/stopwatch04.py:10:1	-	16 lines (118 tokens) duplicated at docs.examples.tutorial.stopwatch05:30
 duplicate-code	high	docs/examples/tutorial/stopwatch04.py:25:1	-	26 lines (116 tokens) duplicated at docs.examples.tutorial.stopwatch05:45
-duplicate-code	high	docs/examples/widgets/button.py:20:1	-	9 lines (67 tokens) duplicated at docs.examples.widgets.button:28
 duplicate-code	high	docs/examples/widgets/data_table.py:19:1	-	7 lines (50 tokens) duplicated at tests.snapshot_tests.test_snapshots:356
-duplicate-code	high	docs/examples/widgets/data_table_cursors.py:8:1	-	12 lines (94 tokens) duplicated at examples.theme_sandbox:39
+duplicate-code	high	docs/examples/widgets/data_table_cursors.py:12:1	-	8 lines (52 tokens) duplicated at examples.theme_sandbox:43
 duplicate-code	high	docs/examples/widgets/data_table_labels.py:1:1	-	27 lines (164 tokens) duplicated at docs.examples.widgets.data_table_renderables:1
 duplicate-code	high	docs/examples/widgets/footer.py:3:1	-	18 lines (96 tokens) duplicated at tests.snapshot_tests.test_snapshots:1929
 duplicate-code	high	docs/examples/widgets/progress_bar_isolated.py:8:1	-	28 lines (152 tokens) duplicated at docs.examples.widgets.progress_bar_styled:9
@@ -106,7 +105,6 @@ duplicate-code	high	src/textual/_resolve.py:281:1	-	17 lines (72 tokens) duplica
 duplicate-code	high	src/textual/_segment_tools.py:122:1	-	12 lines (72 tokens) duplicated at textual.strip:562
 duplicate-code	high	src/textual/_segment_tools.py:236:1	-	14 lines (68 tokens) duplicated at textual.strip:212
 duplicate-code	high	src/textual/_styles_cache.py:434:1	-	10 lines (82 tokens) duplicated at textual._styles_cache:471
-duplicate-code	high	src/textual/_text_area_theme.py:357:1	-	6 lines (52 tokens) duplicated at textual._text_area_theme:412
 duplicate-code	high	src/textual/_work_decorator.py:40:1	-	12 lines (59 tokens) duplicated at textual._work_decorator:52
 duplicate-code	high	src/textual/app.py:216:1	-	28 lines (56 tokens) duplicated at textual.css.query:29
 duplicate-code	high	src/textual/app.py:956:1	-	21 lines (54 tokens) duplicated at textual.worker:230
@@ -163,7 +161,6 @@ duplicate-code	high	src/textual/css/_styles_builder.py:1086:1	-	9 lines (91 toke
 duplicate-code	high	src/textual/css/_styles_builder.py:1095:1	-	8 lines (63 tokens) duplicated at textual.css._styles_builder:1121
 duplicate-code	high	src/textual/css/_styles_builder.py:1102:1	-	6 lines (55 tokens) duplicated at textual.css._styles_builder:1128
 duplicate-code	high	src/textual/css/_styles_builder.py:1136:1	-	16 lines (111 tokens) duplicated at textual.css._styles_builder:1170
-duplicate-code	high	src/textual/css/constants.py:95:1	-	30 lines (60 tokens) duplicated at textual.css.types:45
 duplicate-code	high	src/textual/css/parse.py:112:1	-	12 lines (60 tokens) duplicated at textual.css.parse:159
 duplicate-code	high	src/textual/css/query.py:215:1	-	25 lines (68 tokens) duplicated at textual.css.query:251
 duplicate-code	high	src/textual/css/query.py:429:1	-	6 lines (54 tokens) duplicated at textual.dom:1715
@@ -212,9 +209,6 @@ duplicate-code	high	src/textual/geometry.py:1190:1	-	9 lines (53 tokens) duplica
 duplicate-code	high	src/textual/geometry.py:1282:1	-	8 lines (50 tokens) duplicated at textual.geometry:1291
 duplicate-code	high	src/textual/geometry.py:1358:1	-	7 lines (72 tokens) duplicated at tests.test_geometry:646
 duplicate-code	high	src/textual/getters.py:47:1	-	10 lines (52 tokens) duplicated at textual.message_pump:257
-duplicate-code	high	src/textual/highlight.py:60:1	-	11 lines (77 tokens) duplicated at textual.highlight:99
-duplicate-code	high	src/textual/highlight.py:70:1	-	10 lines (77 tokens) duplicated at textual.highlight:109
-duplicate-code	high	src/textual/highlight.py:79:1	-	8 lines (55 tokens) duplicated at textual.highlight:118
 duplicate-code	high	src/textual/layouts/grid.py:188:1	-	24 lines (103 tokens) duplicated at textual.layouts.grid:211
 duplicate-code	high	src/textual/layouts/grid.py:235:1	-	13 lines (87 tokens) duplicated at textual.layouts.grid:286
 duplicate-code	high	src/textual/layouts/horizontal.py:20:1	-	19 lines (111 tokens) duplicated at textual.layouts.vertical:18
@@ -237,7 +231,7 @@ duplicate-code	high	src/textual/scrollbar.py:155:1	-	7 lines (53 tokens) duplica
 duplicate-code	high	src/textual/scrollbar.py:328:1	-	8 lines (52 tokens) duplicated at textual.widget:4759
 duplicate-code	high	src/textual/style.py:100:1	-	12 lines (85 tokens) duplicated at textual.theme:24
 duplicate-code	high	src/textual/style.py:163:1	-	27 lines (241 tokens) duplicated at textual.style:205
-duplicate-code	high	src/textual/style.py:377:1	-	14 lines (69 tokens) duplicated at textual.style:404
+duplicate-code	high	src/textual/style.py:379:1	-	12 lines (62 tokens) duplicated at textual.style:406
 duplicate-code	high	src/textual/style.py:429:1	-	37 lines (117 tokens) duplicated at textual.style:468
 duplicate-code	high	src/textual/validation.py:271:1	-	8 lines (52 tokens) duplicated at textual.validation:394
 duplicate-code	high	src/textual/validation.py:330:1	-	14 lines (112 tokens) duplicated at textual.validation:379
@@ -259,7 +253,6 @@ duplicate-code	high	src/textual/widget.py:3080:1	-	87 lines (293 tokens) duplica
 duplicate-code	high	src/textual/widget.py:3167:1	-	65 lines (171 tokens) duplicated at textual.widget:3244
 duplicate-code	high	src/textual/widget.py:3232:1	-	12 lines (62 tokens) duplicated at textual.widget:3420
 duplicate-code	high	src/textual/widget.py:3445:1	-	36 lines (128 tokens) duplicated at textual.widget:3480
-duplicate-code	high	src/textual/widget.py:3528:1	-	12 lines (75 tokens) duplicated at textual.widget:3616
 duplicate-code	high	src/textual/widget.py:3995:1	-	10 lines (56 tokens) duplicated at textual.widget:4004
 duplicate-code	high	src/textual/widget.py:4778:1	-	11 lines (88 tokens) duplicated at textual.widget:4788
 duplicate-code	high	src/textual/widget.py:4812:1	-	11 lines (70 tokens) duplicated at textual.widget:4822
@@ -288,12 +281,12 @@ duplicate-code	high	src/textual/widgets/_directory_tree.py:563:1	-	8 lines (76 t
 duplicate-code	high	src/textual/widgets/_footer.py:212:1	-	10 lines (53 tokens) duplicated at textual.widgets._option_list:257
 duplicate-code	high	src/textual/widgets/_footer.py:315:1	-	8 lines (56 tokens) duplicated at textual.widgets._footer:322
 duplicate-code	high	src/textual/widgets/_input.py:286:1	-	24 lines (55 tokens) duplicated at textual.widgets._input:331
-duplicate-code	high	src/textual/widgets/_input.py:364:1	-	38 lines (89 tokens) duplicated at textual.widgets._masked_input:454
+duplicate-code	high	src/textual/widgets/_input.py:368:1	-	36 lines (78 tokens) duplicated at textual.widgets._toggle_button:141
 duplicate-code	high	src/textual/widgets/_input.py:570:1	-	23 lines (54 tokens) duplicated at textual.widgets._masked_input:526
 duplicate-code	high	src/textual/widgets/_input.py:938:1	-	10 lines (52 tokens) duplicated at textual.widgets._input:1088
 duplicate-code	high	src/textual/widgets/_input.py:1039:1	-	16 lines (63 tokens) duplicated at textual.widgets._input:1073
 duplicate-code	high	src/textual/widgets/_input.py:1121:1	-	10 lines (55 tokens) duplicated at textual.widgets._text_area:2653
-duplicate-code	high	src/textual/widgets/_label.py:53:1	-	11 lines (62 tokens) duplicated at textual.widgets._static:35
+duplicate-code	high	src/textual/widgets/_label.py:54:1	-	10 lines (61 tokens) duplicated at textual.widgets._static:36
 duplicate-code	high	src/textual/widgets/_list_view.py:182:1	-	19 lines (86 tokens) duplicated at textual.widgets._option_list:919
 duplicate-code	high	src/textual/widgets/_list_view.py:310:1	-	12 lines (55 tokens) duplicated at textual.widgets._list_view:345
 duplicate-code	high	src/textual/widgets/_log.py:50:1	-	20 lines (73 tokens) duplicated at textual.widgets._rich_log:75
@@ -302,14 +295,13 @@ duplicate-code	high	src/textual/widgets/_markdown.py:1030:1	-	19 lines (72 token
 duplicate-code	high	src/textual/widgets/_markdown.py:1077:1	-	17 lines (66 tokens) duplicated at textual.widgets._markdown:1096
 duplicate-code	high	src/textual/widgets/_markdown.py:1682:1	-	7 lines (50 tokens) duplicated at textual.widgets._markdown:1688
 duplicate-code	high	src/textual/widgets/_masked_input.py:347:1	-	18 lines (55 tokens) duplicated at textual.widgets._masked_input:367
+duplicate-code	high	src/textual/widgets/_masked_input.py:458:1	-	27 lines (57 tokens) duplicated at textual.widgets._radio_set:147
 duplicate-code	high	src/textual/widgets/_masked_input.py:635:1	-	7 lines (57 tokens) duplicated at textual.widgets._masked_input:682
 duplicate-code	high	src/textual/widgets/_option_list.py:326:1	-	13 lines (56 tokens) duplicated at textual.widgets._option_list:343
 duplicate-code	high	src/textual/widgets/_option_list.py:963:1	-	20 lines (87 tokens) duplicated at textual.widgets._radio_set:280
 duplicate-code	high	src/textual/widgets/_placeholder.py:163:1	-	8 lines (58 tokens) duplicated at textual.widgets._rule:180
-duplicate-code	high	src/textual/widgets/_radio_set.py:147:1	-	25 lines (53 tokens) duplicated at textual.widgets._toggle_button:141
 duplicate-code	high	src/textual/widgets/_rule.py:80:1	-	12 lines (67 tokens) duplicated at textual.widgets._rule:94
 duplicate-code	high	src/textual/widgets/_rule.py:208:1	-	25 lines (58 tokens) duplicated at textual.widgets._rule:238
-duplicate-code	high	src/textual/widgets/_select.py:403:1	-	11 lines (63 tokens) duplicated at textual.widgets._select:452
 duplicate-code	high	src/textual/widgets/_selection_list.py:335:1	-	36 lines (96 tokens) duplicated at textual.widgets._selection_list:376
 duplicate-code	high	src/textual/widgets/_selection_list.py:567:1	-	23 lines (84 tokens) duplicated at textual.widgets._tabs:767
 duplicate-code	high	src/textual/widgets/_static.py:63:1	-	11 lines (53 tokens) duplicated at textual.widgets._tree:237
@@ -319,7 +311,7 @@ duplicate-code	high	src/textual/widgets/_tabbed_content.py:634:1	-	10 lines (62 
 duplicate-code	high	src/textual/widgets/_tabbed_content.py:670:1	-	25 lines (56 tokens) duplicated at textual.widgets._tabbed_content:694
 duplicate-code	high	src/textual/widgets/_tabs.py:183:1	-	11 lines (57 tokens) duplicated at textual.widgets._toggle_button:182
 duplicate-code	high	src/textual/widgets/_tabs.py:799:1	-	21 lines (58 tokens) duplicated in 2 other places: textual.widgets._tabs:822, textual.widgets._tabs:848
-duplicate-code	high	src/textual/widgets/_text_area.py:594:1	-	12 lines (73 tokens) duplicated at textual.widgets._text_area:719
+duplicate-code	high	src/textual/widgets/_text_area.py:598:1	-	8 lines (50 tokens) duplicated at textual.widgets._text_area:723
 duplicate-code	high	src/textual/widgets/_text_area.py:933:1	-	15 lines (73 tokens) duplicated at textual.widgets._text_area:952
 duplicate-code	high	src/textual/widgets/_text_area.py:1629:1	-	17 lines (50 tokens) duplicated at textual.widgets._text_area:2140
 duplicate-code	high	src/textual/widgets/_text_area.py:1706:1	-	10 lines (51 tokens) duplicated at textual.widgets._text_area:1715
@@ -350,15 +342,9 @@ duplicate-code	high	tests/command_palette/test_run_on_select.py:36:1	-	8 lines (
 duplicate-code	high	tests/css/test_nested_css.py:173:1	-	6 lines (57 tokens) duplicated at tests.css.test_nested_css:180
 duplicate-code	high	tests/css/test_parse.py:21:1	-	25 lines (111 tokens) duplicated at tests.css.test_parse:794
 duplicate-code	high	tests/css/test_parse.py:125:1	-	35 lines (150 tokens) duplicated at tests.css.test_tokenize:462
-duplicate-code	high	tests/css/test_parse.py:160:1	-	12 lines (54 tokens) duplicated at tests.css.test_tokenize:497
 duplicate-code	high	tests/css/test_parse.py:241:1	-	52 lines (229 tokens) duplicated at tests.css.test_tokenize:393
-duplicate-code	high	tests/css/test_parse.py:305:1	-	54 lines (232 tokens) duplicated at tests.css.test_parse:518
-duplicate-code	high	tests/css/test_parse.py:361:1	-	25 lines (114 tokens) duplicated at tests.css.test_parse:634
+duplicate-code	high	tests/css/test_parse.py:371:1	-	15 lines (61 tokens) duplicated at tests.css.test_parse:644
 duplicate-code	high	tests/css/test_parse.py:385:1	-	13 lines (64 tokens) duplicated at tests.css.test_parse:822
-duplicate-code	high	tests/css/test_parse.py:437:1	-	12 lines (54 tokens) duplicated at tests.css.test_parse:694
-duplicate-code	high	tests/css/test_parse.py:472:1	-	11 lines (54 tokens) duplicated at tests.css.test_parse:492
-duplicate-code	high	tests/css/test_parse.py:574:1	-	11 lines (56 tokens) duplicated at tests.css.test_parse:594
-duplicate-code	high	tests/css/test_parse.py:584:1	-	11 lines (54 tokens) duplicated at tests.css.test_parse:624
 duplicate-code	high	tests/css/test_parse.py:659:1	-	28 lines (121 tokens) duplicated at tests.css.test_tokenize:301
 duplicate-code	high	tests/css/test_parse.py:984:1	-	16 lines (79 tokens) duplicated at tests.css.test_parse:1022
 duplicate-code	high	tests/css/test_parse.py:1001:1	-	8 lines (51 tokens) duplicated at tests.css.test_parse:1039
@@ -373,11 +359,7 @@ duplicate-code	high	tests/css/test_styles.py:52:1	-	5 lines (56 tokens) duplicat
 duplicate-code	high	tests/css/test_stylesheet.py:45:1	-	12 lines (52 tokens) duplicated at tests.css.test_stylesheet:76
 duplicate-code	high	tests/css/test_stylesheet.py:170:1	-	17 lines (83 tokens) duplicated at tests.css.test_stylesheet:210
 duplicate-code	high	tests/css/test_stylesheet.py:195:1	-	10 lines (64 tokens) duplicated at tests.css.test_stylesheet:281
-duplicate-code	high	tests/css/test_tokenize.py:43:1	-	12 lines (54 tokens) duplicated at tests.css.test_tokenize:677
 duplicate-code	high	tests/css/test_tokenize.py:93:1	-	20 lines (93 tokens) duplicated at tests.css.test_tokenize:346
-duplicate-code	high	tests/css/test_tokenize.py:153:1	-	12 lines (54 tokens) duplicated at tests.css.test_tokenize:513
-duplicate-code	high	tests/css/test_tokenize.py:583:1	-	17 lines (71 tokens) duplicated at tests.css.test_tokenize:645
-duplicate-code	high	tests/css/test_tokenize.py:599:1	-	12 lines (54 tokens) duplicated at tests.css.test_tokenize:661
 duplicate-code	high	tests/css/test_tokenize.py:719:1	-	28 lines (129 tokens) duplicated at tests.css.test_tokenize:757
 duplicate-code	high	tests/css/test_tokenize.py:900:1	-	26 lines (124 tokens) duplicated at tests.css.test_tokenize:935
 duplicate-code	high	tests/document/test_document.py:79:1	-	13 lines (78 tokens) duplicated at tests.document.test_document:91
@@ -477,7 +459,6 @@ duplicate-code	high	tests/test_binding_inheritance.py:302:1	-	16 lines (68 token
 duplicate-code	high	tests/test_binding_inheritance.py:425:1	-	54 lines (183 tokens) duplicated at tests.test_binding_inheritance:482
 duplicate-code	high	tests/test_border.py:41:1	-	22 lines (85 tokens) duplicated at tests.test_border:64
 duplicate-code	high	tests/test_border_subtitle.py:10:1	-	8 lines (53 tokens) duplicated at tests.test_reactive:775
-duplicate-code	high	tests/test_box_drawing.py:9:1	-	6 lines (192 tokens) duplicated at tests.test_box_drawing:16
 duplicate-code	high	tests/test_box_model.py:44:1	-	28 lines (211 tokens) duplicated at tests.test_box_model:93
 duplicate-code	high	tests/test_box_model.py:81:1	-	9 lines (76 tokens) duplicated at tests.test_box_model:124
 duplicate-code	high	tests/test_box_model.py:143:1	-	18 lines (97 tokens) duplicated at tests.test_box_model:166
@@ -588,8 +569,6 @@ duplicate-code	high	tests/test_widget_child_moving.py:117:1	-	8 lines (89 tokens
 duplicate-code	high	tests/test_widget_child_moving.py:172:1	-	7 lines (81 tokens) duplicated at tests.test_widget_child_moving:183
 duplicate-code	high	tests/test_widget_mounting.py:100:1	-	8 lines (51 tokens) duplicated at tests.test_widget_mounting:109
 duplicate-code	high	tests/test_widget_navigation.py:57:1	-	21 lines (186 tokens) duplicated at tests.test_widget_navigation:98
-duplicate-code	high	tests/test_widget_navigation.py:79:1	-	6 lines (61 tokens) duplicated at tests.test_widget_navigation:120
-duplicate-code	high	tests/test_widget_navigation.py:84:1	-	8 lines (156 tokens) duplicated at tests.test_widget_navigation:125
 duplicate-code	high	tests/test_widget_removing.py:15:1	-	8 lines (51 tokens) duplicated at tests.test_widget_removing:24
 duplicate-code	high	tests/test_widget_removing.py:34:1	-	13 lines (102 tokens) duplicated at tests.test_widget_removing:47
 duplicate-code	high	tests/test_widget_removing.py:81:1	-	15 lines (120 tokens) duplicated at tests.test_widget_removing:100

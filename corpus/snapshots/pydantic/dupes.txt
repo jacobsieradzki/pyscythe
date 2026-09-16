@@ -1,23 +1,11 @@
 files_scanned=449
 symbols_checked=0
 symbols_kept=0
-findings=1178
-duplication: clones=1178 duplicated_lines=48930 total_lines=176699 percent_tenths=276
+findings=1079
+duplication: clones=1079 duplicated_lines=40899 total_lines=176699 percent_tenths=231
 --
 duplicate-code	high	.github/actions/people/people.py:233:1	-	31 lines (74 tokens) duplicated at .github/actions/people/people.py:323
 duplicate-code	high	.github/actions/people/people.py:448:1	-	42 lines (238 tokens) duplicated at .github/actions/people/people.py:494
-duplicate-code	high	docs/plugins/conversion_table.py:132:1	-	16 lines (53 tokens) duplicated in 2 other places: docs.plugins.conversion_table:470, docs.plugins.conversion_table:525
-duplicate-code	high	docs/plugins/conversion_table.py:171:1	-	16 lines (52 tokens) duplicated at docs.plugins.conversion_table:1410
-duplicate-code	high	docs/plugins/conversion_table.py:197:1	-	17 lines (61 tokens) duplicated at docs.plugins.conversion_table:269
-duplicate-code	high	docs/plugins/conversion_table.py:334:1	-	17 lines (55 tokens) duplicated at docs.plugins.conversion_table:647
-duplicate-code	high	docs/plugins/conversion_table.py:672:1	-	101 lines (336 tokens) duplicated at docs.plugins.conversion_table:772
-duplicate-code	high	docs/plugins/conversion_table.py:898:1	-	30 lines (97 tokens) duplicated at docs.plugins.conversion_table:1042
-duplicate-code	high	docs/plugins/conversion_table.py:944:1	-	50 lines (186 tokens) duplicated at docs.plugins.conversion_table:993
-duplicate-code	high	docs/plugins/conversion_table.py:1078:1	-	44 lines (147 tokens) duplicated at docs.plugins.conversion_table:1454
-duplicate-code	high	docs/plugins/conversion_table.py:1130:1	-	36 lines (120 tokens) duplicated at docs.plugins.conversion_table:1270
-duplicate-code	high	docs/plugins/conversion_table.py:1173:1	-	35 lines (117 tokens) duplicated at docs.plugins.conversion_table:1313
-duplicate-code	high	docs/plugins/conversion_table.py:1222:1	-	41 lines (137 tokens) duplicated at docs.plugins.conversion_table:1362
-duplicate-code	high	docs/plugins/conversion_table.py:1499:1	-	22 lines (71 tokens) duplicated at docs.plugins.conversion_table:1526
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:139:1	-	17 lines (61 tokens) duplicated at python.pydantic_core.core_schema:159
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:329:1	-	22 lines (55 tokens) duplicated at python.pydantic_core.core_schema:396
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:351:1	-	10 lines (52 tokens) duplicated at python.pydantic_core.core_schema:2585
@@ -26,12 +14,10 @@ duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:643:1	-	20
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:689:1	-	15 lines (58 tokens) duplicated in 4 other places: python.pydantic_core.core_schema:1333, python.pydantic_core.core_schema:1960, python.pydantic_core.core_schema:2214, python.pydantic_core.core_schema:3055
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:703:1	-	24 lines (119 tokens) duplicated at python.pydantic_core.core_schema:770
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:753:1	-	16 lines (62 tokens) duplicated in 3 other places: python.pydantic_core.core_schema:1126, python.pydantic_core.core_schema:1192, python.pydantic_core.core_schema:3151
-duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:825:1	-	18 lines (70 tokens) duplicated in 3 other places: python.pydantic_core.core_schema:1007, python.pydantic_core.core_schema:1268, python.pydantic_core.core_schema:3444
+duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:826:1	-	17 lines (69 tokens) duplicated in 5 other places: python.pydantic_core.core_schema:1008, python.pydantic_core.core_schema:1269, python.pydantic_core.core_schema:3445, python.pydantic_core.core_schema:3671, python.pydantic_core.core_schema:3883
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:887:1	-	14 lines (54 tokens) duplicated in 5 other places: python.pydantic_core.core_schema:1467, python.pydantic_core.core_schema:1741, python.pydantic_core.core_schema:2020, python.pydantic_core.core_schema:2079, python.pydantic_core.core_schema:3809
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:908:1	-	26 lines (50 tokens) duplicated at python.pydantic_core.core_schema:1095
-duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:960:1	-	8 lines (52 tokens) duplicated at pydantic.types:760
-duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:967:1	-	40 lines (63 tokens) duplicated at python.pydantic_core.core_schema:3088
-duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:1034:1	-	29 lines (67 tokens) duplicated at python.pydantic_core.core_schema:1867
+duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:967:1	-	40 lines (60 tokens) duplicated in 5 other places: python.pydantic_core.core_schema:1035, python.pydantic_core.core_schema:1868, python.pydantic_core.core_schema:3088, python.pydantic_core.core_schema:3533, python.pydantic_core.core_schema:3611
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:1082:1	-	14 lines (68 tokens) duplicated at python.pydantic_core.core_schema:1148
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:1161:1	-	32 lines (58 tokens) duplicated at python.pydantic_core.core_schema:1233
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:1214:1	-	18 lines (82 tokens) duplicated at python.pydantic_core.core_schema:1289
@@ -52,51 +38,12 @@ duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:2453:1	-	1
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:2621:1	-	49 lines (101 tokens) duplicated at python.pydantic_core.core_schema:3208
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:3274:1	-	13 lines (63 tokens) duplicated at python.pydantic_core.core_schema:4297
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:3330:1	-	11 lines (62 tokens) duplicated at python.pydantic_core.core_schema:3692
-duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:3341:1	-	7 lines (78 tokens) duplicated at python.pydantic_core.core_schema:3706
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:3368:1	-	13 lines (50 tokens) duplicated in 4 other places: python.pydantic_core.core_schema:3500, python.pydantic_core.core_schema:4216, python.pydantic_core.core_schema:4281, python.pydantic_core.core_schema:4338
-duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:3404:1	-	41 lines (62 tokens) duplicated at python.pydantic_core.core_schema:3774
-duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:3531:1	-	38 lines (78 tokens) duplicated at python.pydantic_core.core_schema:3609
+duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:3404:1	-	41 lines (60 tokens) duplicated at python.pydantic_core.core_schema:3774
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:3568:1	-	17 lines (66 tokens) duplicated in 3 other places: python.pydantic_core.core_schema:3743, python.pydantic_core.core_schema:4457, python.pydantic_core.core_schema:4526
-duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:3668:1	-	20 lines (78 tokens) duplicated at python.pydantic_core.core_schema:3880
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:3994:1	-	14 lines (63 tokens) duplicated at python.pydantic_core.core_schema:4103
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:4015:1	-	27 lines (59 tokens) duplicated at python.pydantic_core.core_schema:4138
 duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:4404:1	-	54 lines (165 tokens) duplicated at python.pydantic_core.core_schema:4473
-duplicate-code	high	pydantic-core/python/pydantic_core/core_schema.py:4620:1	-	28 lines (56 tokens) duplicated at python.pydantic_core.core_schema:4648
-duplicate-code	high	pydantic-core/src/self_schema.py:12:1	-	17 lines (87 tokens) duplicated in 3 other places: src.self_schema:32, src.self_schema:52, src.self_schema:456
-duplicate-code	high	pydantic-core/src/self_schema.py:72:1	-	18 lines (103 tokens) duplicated at src.self_schema:5925
-duplicate-code	high	pydantic-core/src/self_schema.py:98:1	-	18 lines (110 tokens) duplicated in 2 other places: src.self_schema:154, src.self_schema:212
-duplicate-code	high	pydantic-core/src/self_schema.py:125:1	-	18 lines (102 tokens) duplicated in 3 other places: src.self_schema:391, src.self_schema:4648, src.self_schema:5904
-duplicate-code	high	pydantic-core/src/self_schema.py:190:1	-	17 lines (94 tokens) duplicated at src.self_schema:4671
-duplicate-code	high	pydantic-core/src/self_schema.py:241:1	-	16 lines (65 tokens) duplicated at src.self_schema:5863
-duplicate-code	high	pydantic-core/src/self_schema.py:274:1	-	19 lines (88 tokens) duplicated at src.self_schema:5685
-duplicate-code	high	pydantic-core/src/self_schema.py:310:1	-	21 lines (111 tokens) duplicated at src.self_schema:339
-duplicate-code	high	pydantic-core/src/self_schema.py:364:1	-	17 lines (86 tokens) duplicated at src.self_schema:5883
-duplicate-code	high	pydantic-core/src/self_schema.py:412:1	-	19 lines (119 tokens) duplicated at src.self_schema:434
-duplicate-code	high	pydantic-core/src/self_schema.py:480:1	-	960 lines (2689 tokens) duplicated at src.self_schema:1451
-duplicate-code	high	pydantic-core/src/self_schema.py:2414:1	-	25 lines (172 tokens) duplicated at src.self_schema:2442
-duplicate-code	high	pydantic-core/src/self_schema.py:2476:1	-	15 lines (74 tokens) duplicated at src.self_schema:3446
-duplicate-code	high	pydantic-core/src/self_schema.py:2503:1	-	929 lines (2481 tokens) duplicated at src.self_schema:3485
-duplicate-code	high	pydantic-core/src/self_schema.py:4414:1	-	49 lines (262 tokens) duplicated at src.self_schema:4466
-duplicate-code	high	pydantic-core/src/self_schema.py:4525:1	-	32 lines (157 tokens) duplicated at src.self_schema:4581
-duplicate-code	high	pydantic-core/src/self_schema.py:4558:1	-	20 lines (100 tokens) duplicated at src.self_schema:4613
-duplicate-code	high	pydantic-core/src/self_schema.py:4711:1	-	14 lines (91 tokens) duplicated at src.self_schema:4784
-duplicate-code	high	pydantic-core/src/self_schema.py:4727:1	-	19 lines (98 tokens) duplicated at src.self_schema:4853
-duplicate-code	high	pydantic-core/src/self_schema.py:4758:1	-	22 lines (91 tokens) duplicated at src.self_schema:5107
-duplicate-code	high	pydantic-core/src/self_schema.py:4798:1	-	18 lines (97 tokens) duplicated at src.self_schema:5193
-duplicate-code	high	pydantic-core/src/self_schema.py:4824:1	-	19 lines (87 tokens) duplicated at src.self_schema:4881
-duplicate-code	high	pydantic-core/src/self_schema.py:4919:1	-	43 lines (199 tokens) duplicated at src.self_schema:5338
-duplicate-code	high	pydantic-core/src/self_schema.py:4963:1	-	36 lines (198 tokens) duplicated at src.self_schema:5150
-duplicate-code	high	pydantic-core/src/self_schema.py:5016:1	-	72 lines (556 tokens) duplicated at src.self_schema:5461
-duplicate-code	high	pydantic-core/src/self_schema.py:5135:1	-	14 lines (53 tokens) duplicated at src.self_schema:5396
-duplicate-code	high	pydantic-core/src/self_schema.py:5295:1	-	20 lines (88 tokens) duplicated at src.self_schema:5748
-duplicate-code	high	pydantic-core/src/self_schema.py:5411:1	-	14 lines (86 tokens) duplicated at src.self_schema:5447
-duplicate-code	high	pydantic-core/src/self_schema.py:5554:1	-	39 lines (161 tokens) duplicated at src.self_schema:5645
-duplicate-code	high	pydantic-core/src/self_schema.py:5601:1	-	20 lines (99 tokens) duplicated in 2 other places: src.self_schema:5714, src.self_schema:5772
-duplicate-code	high	pydantic-core/src/self_schema.py:5795:1	-	27 lines (208 tokens) duplicated at src.self_schema:5825
-duplicate-code	high	pydantic-core/src/self_schema.py:6746:1	-	15 lines (87 tokens) duplicated at src.self_schema:6778
-duplicate-code	high	pydantic-core/src/self_schema.py:6761:1	-	14 lines (59 tokens) duplicated at src.self_schema:6797
-duplicate-code	high	pydantic-core/tests/benchmarks/complete_schema.py:203:1	-	24 lines (97 tokens) duplicated at pydantic-core/tests/test_typing.py:123
-duplicate-code	high	pydantic-core/tests/benchmarks/complete_schema.py:251:1	-	25 lines (296 tokens) duplicated at tests.benchmarks.test_complete_benchmark:42
 duplicate-code	high	pydantic-core/tests/benchmarks/test_micro_benchmarks.py:40:1	-	12 lines (64 tokens) duplicated at tests.benchmarks.test_micro_benchmarks:570
 duplicate-code	high	pydantic-core/tests/benchmarks/test_micro_benchmarks.py:65:1	-	5 lines (56 tokens) duplicated at tests.benchmarks.test_serialization_micro:43
 duplicate-code	high	pydantic-core/tests/benchmarks/test_micro_benchmarks.py:80:1	-	15 lines (68 tokens) duplicated at tests.benchmarks.test_micro_benchmarks:718
@@ -149,7 +96,8 @@ duplicate-code	high	pydantic-core/tests/serializers/test_datetime.py:159:1	-	16 
 duplicate-code	high	pydantic-core/tests/serializers/test_datetime.py:375:1	-	21 lines (108 tokens) duplicated at tests.serializers.test_timedelta:356
 duplicate-code	high	pydantic-core/tests/serializers/test_datetime.py:395:1	-	16 lines (86 tokens) duplicated at tests.serializers.test_datetime:410
 duplicate-code	high	pydantic-core/tests/serializers/test_decimal.py:49:1	-	12 lines (85 tokens) duplicated at tests.serializers.test_uuid:50
-duplicate-code	high	pydantic-core/tests/serializers/test_definitions.py:45:1	-	30 lines (140 tokens) duplicated at tests.validators.test_definitions:81
+duplicate-code	high	pydantic-core/tests/serializers/test_definitions.py:31:1	-	15 lines (76 tokens) duplicated at tests.validators.test_definitions:67
+duplicate-code	high	pydantic-core/tests/serializers/test_definitions.py:46:1	-	29 lines (134 tokens) duplicated at tests.validators.test_definitions:82
 duplicate-code	high	pydantic-core/tests/serializers/test_definitions_recursive.py:6:1	-	17 lines (72 tokens) duplicated at tests.serializers.test_definitions_recursive:33
 duplicate-code	high	pydantic-core/tests/serializers/test_dict.py:19:1	-	11 lines (180 tokens) duplicated at tests.serializers.test_pickling:17
 duplicate-code	high	pydantic-core/tests/serializers/test_dict.py:65:1	-	17 lines (351 tokens) duplicated at tests.serializers.test_typed_dict:50
@@ -163,7 +111,7 @@ duplicate-code	high	pydantic-core/tests/serializers/test_functions.py:21:1	-	12 
 duplicate-code	high	pydantic-core/tests/serializers/test_functions.py:349:1	-	6 lines (60 tokens) duplicated at tests.serializers.test_functions:402
 duplicate-code	high	pydantic-core/tests/serializers/test_functions.py:455:1	-	13 lines (72 tokens) duplicated at pydantic._internal._serializers:42
 duplicate-code	high	pydantic-core/tests/serializers/test_functions.py:516:1	-	13 lines (62 tokens) duplicated at tests.serializers.test_functions:568
-duplicate-code	high	pydantic-core/tests/serializers/test_functions.py:529:1	-	9 lines (65 tokens) duplicated at tests.serializers.test_functions:581
+duplicate-code	high	pydantic-core/tests/serializers/test_functions.py:529:1	-	9 lines (64 tokens) duplicated at tests.serializers.test_functions:581
 duplicate-code	high	pydantic-core/tests/serializers/test_generator.py:73:1	-	5 lines (54 tokens) duplicated at tests.serializers.test_generator:93
 duplicate-code	high	pydantic-core/tests/serializers/test_generator.py:127:1	-	5 lines (94 tokens) duplicated at tests.serializers.test_list_tuple:101
 duplicate-code	high	pydantic-core/tests/serializers/test_infer.py:7:1	-	6 lines (56 tokens) duplicated at tests.serializers.test_infer:15
@@ -171,10 +119,8 @@ duplicate-code	high	pydantic-core/tests/serializers/test_list_tuple.py:90:1	-	11
 duplicate-code	high	pydantic-core/tests/serializers/test_list_tuple.py:115:1	-	8 lines (51 tokens) duplicated at tests.serializers.test_list_tuple:128
 duplicate-code	high	pydantic-core/tests/serializers/test_list_tuple.py:291:1	-	7 lines (65 tokens) duplicated at tests.serializers.test_model:196
 duplicate-code	high	pydantic-core/tests/serializers/test_literal.py:36:1	-	9 lines (51 tokens) duplicated at tests.serializers.test_literal:52
-duplicate-code	high	pydantic-core/tests/serializers/test_literal.py:107:1	-	13 lines (74 tokens) duplicated at tests.serializers.test_literal:122
 duplicate-code	high	pydantic-core/tests/serializers/test_missing_sentinel.py:24:1	-	6 lines (51 tokens) duplicated at tests.validators.test_missing_sentinel:24
 duplicate-code	high	pydantic-core/tests/serializers/test_model.py:36:1	-	12 lines (51 tokens) duplicated at tests.serializers.test_model:113
-duplicate-code	high	pydantic-core/tests/serializers/test_model.py:236:1	-	7 lines (54 tokens) duplicated at tests.serializers.test_typed_dict:117
 duplicate-code	high	pydantic-core/tests/serializers/test_model.py:356:1	-	78 lines (983 tokens) duplicated at tests.test_edge_cases:726
 duplicate-code	high	pydantic-core/tests/serializers/test_model.py:478:1	-	29 lines (114 tokens) duplicated at tests.serializers.test_model:586
 duplicate-code	high	pydantic-core/tests/serializers/test_model.py:567:1	-	20 lines (77 tokens) duplicated at tests.serializers.test_model:660
@@ -195,7 +141,7 @@ duplicate-code	high	pydantic-core/tests/serializers/test_other.py:82:1	-	14 line
 duplicate-code	high	pydantic-core/tests/serializers/test_pickling.py:50:1	-	25 lines (111 tokens) duplicated at tests.validators.test_pickling:51
 duplicate-code	high	pydantic-core/tests/serializers/test_serialize_as_any.py:45:1	-	6 lines (64 tokens) duplicated at tests.serializers.test_serialize_as_any:295
 duplicate-code	high	pydantic-core/tests/serializers/test_serialize_as_any.py:84:1	-	14 lines (100 tokens) duplicated at tests.serializers.test_serialize_as_any:116
-duplicate-code	high	pydantic-core/tests/serializers/test_timedelta.py:58:1	-	121 lines (705 tokens) duplicated at tests.serializers.test_timedelta:198
+duplicate-code	high	pydantic-core/tests/serializers/test_timedelta.py:165:1	-	14 lines (50 tokens) duplicated at tests.serializers.test_timedelta:305
 duplicate-code	high	pydantic-core/tests/serializers/test_typed_dict.py:186:1	-	11 lines (54 tokens) duplicated at tests.serializers.test_typed_dict:259
 duplicate-code	high	pydantic-core/tests/serializers/test_typed_dict.py:197:1	-	14 lines (63 tokens) duplicated at tests.serializers.test_typed_dict:222
 duplicate-code	high	pydantic-core/tests/serializers/test_typed_dict.py:236:1	-	10 lines (51 tokens) duplicated at tests.serializers.test_typed_dict:288
@@ -204,11 +150,10 @@ duplicate-code	high	pydantic-core/tests/serializers/test_union.py:94:1	-	10 line
 duplicate-code	high	pydantic-core/tests/serializers/test_union.py:235:1	-	10 lines (94 tokens) duplicated at tests.serializers.test_union:274
 duplicate-code	high	pydantic-core/tests/serializers/test_union.py:326:1	-	9 lines (101 tokens) duplicated at tests.serializers.test_union:370
 duplicate-code	high	pydantic-core/tests/serializers/test_union.py:403:1	-	37 lines (176 tokens) duplicated at tests.serializers.test_union:456
-duplicate-code	high	pydantic-core/tests/serializers/test_union.py:439:1	-	18 lines (78 tokens) duplicated at tests.serializers.test_union:495
+duplicate-code	high	pydantic-core/tests/serializers/test_union.py:444:1	-	13 lines (55 tokens) duplicated at tests.serializers.test_union:500
 duplicate-code	high	pydantic-core/tests/serializers/test_union.py:519:1	-	16 lines (139 tokens) duplicated at tests.serializers.test_union:578
 duplicate-code	high	pydantic-core/tests/serializers/test_union.py:566:1	-	13 lines (53 tokens) duplicated at tests.serializers.test_union:613
 duplicate-code	high	pydantic-core/tests/serializers/test_union.py:626:1	-	24 lines (120 tokens) duplicated at tests.serializers.test_union:711
-duplicate-code	high	pydantic-core/tests/serializers/test_union.py:649:1	-	12 lines (64 tokens) duplicated at tests.serializers.test_union:739
 duplicate-code	high	pydantic-core/tests/serializers/test_union.py:902:1	-	20 lines (148 tokens) duplicated at tests.serializers.test_union:964
 duplicate-code	high	pydantic-core/tests/serializers/test_union.py:921:1	-	19 lines (95 tokens) duplicated at tests.serializers.test_union:987
 duplicate-code	high	pydantic-core/tests/test_config.py:111:1	-	10 lines (69 tokens) duplicated at tests.validators.test_datetime:169
@@ -234,16 +179,13 @@ duplicate-code	high	pydantic-core/tests/test_prebuilt.py:153:1	-	43 lines (181 t
 duplicate-code	high	pydantic-core/tests/test_prebuilt.py:211:1	-	59 lines (254 tokens) duplicated at tests.test_prebuilt:271
 duplicate-code	high	pydantic-core/tests/test_prebuilt.py:378:1	-	13 lines (71 tokens) duplicated at tests.test_prebuilt:432
 duplicate-code	high	pydantic-core/tests/test_prebuilt.py:392:1	-	34 lines (121 tokens) duplicated at tests.test_prebuilt:454
-duplicate-code	high	pydantic-core/tests/test_schema_functions.py:245:1	-	11 lines (57 tokens) duplicated at tests.test_schema_functions:263
 duplicate-code	high	pydantic-core/tests/test_tzinfo.py:34:1	-	14 lines (51 tokens) duplicated at tests.test_tzinfo:50
 duplicate-code	high	pydantic-core/tests/validators/arguments_v3/test_alias.py:13:1	-	6 lines (72 tokens) duplicated at tests.validators.arguments_v3.test_alias:39
 duplicate-code	high	pydantic-core/tests/validators/arguments_v3/test_alias.py:30:1	-	10 lines (59 tokens) duplicated at tests.validators.test_dict:43
-duplicate-code	high	pydantic-core/tests/validators/arguments_v3/test_alias.py:44:1	-	6 lines (59 tokens) duplicated at tests.validators.test_arguments:875
 duplicate-code	high	pydantic-core/tests/validators/arguments_v3/test_alias.py:63:1	-	10 lines (71 tokens) duplicated at tests.validators.test_arguments:893
 duplicate-code	high	pydantic-core/tests/validators/arguments_v3/test_alias.py:114:1	-	46 lines (342 tokens) duplicated at tests.validators.test_arguments:1177
 duplicate-code	high	pydantic-core/tests/validators/arguments_v3/test_build_errors.py:37:1	-	6 lines (52 tokens) duplicated at tests.validators.arguments_v3.test_build_errors:51
 duplicate-code	high	pydantic-core/tests/validators/arguments_v3/test_general.py:19:1	-	9 lines (63 tokens) duplicated at tests.validators.arguments_v3.test_var_kwargs_unpacked_typed_dict:86
-duplicate-code	high	pydantic-core/tests/validators/arguments_v3/test_general.py:33:1	-	6 lines (105 tokens) duplicated at tests.validators.test_arguments:711
 duplicate-code	high	pydantic-core/tests/validators/arguments_v3/test_general.py:44:1	-	9 lines (67 tokens) duplicated at tests.validators.arguments_v3.test_general:84
 duplicate-code	high	pydantic-core/tests/validators/arguments_v3/test_general.py:107:1	-	16 lines (50 tokens) duplicated at tests.validators.arguments_v3.test_positional_or_keyword:17
 duplicate-code	high	pydantic-core/tests/validators/arguments_v3/test_keyword_only.py:13:1	-	17 lines (64 tokens) duplicated at tests.validators.arguments_v3.test_positional_only:13
@@ -256,46 +198,40 @@ duplicate-code	high	pydantic-core/tests/validators/test_allow_partial.py:17:1	-	
 duplicate-code	high	pydantic-core/tests/validators/test_allow_partial.py:33:1	-	6 lines (69 tokens) duplicated at tests.validators.test_allow_partial:67
 duplicate-code	high	pydantic-core/tests/validators/test_allow_partial.py:124:1	-	9 lines (52 tokens) duplicated at tests.validators.test_allow_partial:215
 duplicate-code	high	pydantic-core/tests/validators/test_allow_partial.py:145:1	-	12 lines (50 tokens) duplicated at tests.validators.test_allow_partial:163
-duplicate-code	high	pydantic-core/tests/validators/test_arguments.py:97:1	-	17 lines (52 tokens) duplicated at tests.validators.test_arguments:601
 duplicate-code	high	pydantic-core/tests/validators/test_arguments.py:159:1	-	11 lines (61 tokens) duplicated at tests.validators.test_arguments:781
 duplicate-code	high	pydantic-core/tests/validators/test_arguments.py:170:1	-	18 lines (108 tokens) duplicated at tests.validators.test_arguments:630
 duplicate-code	high	pydantic-core/tests/validators/test_arguments.py:274:1	-	16 lines (125 tokens) duplicated at tests.validators.test_arguments:359
-duplicate-code	high	pydantic-core/tests/validators/test_arguments.py:349:1	-	10 lines (52 tokens) duplicated at tests.validators.test_arguments:850
+duplicate-code	high	pydantic-core/tests/validators/test_arguments.py:348:1	-	11 lines (54 tokens) duplicated at tests.validators.test_arguments:879
 duplicate-code	high	pydantic-core/tests/validators/test_arguments.py:463:1	-	13 lines (95 tokens) duplicated at tests.validators.test_literal:108
 duplicate-code	high	pydantic-core/tests/validators/test_arguments.py:495:1	-	17 lines (122 tokens) duplicated at tests.validators.test_arguments:519
 duplicate-code	high	pydantic-core/tests/validators/test_arguments.py:513:1	-	7 lines (60 tokens) duplicated at tests.validators.test_arguments:570
 duplicate-code	high	pydantic-core/tests/validators/test_arguments.py:580:1	-	17 lines (101 tokens) duplicated at tests.validators.test_call:41
 duplicate-code	high	pydantic-core/tests/validators/test_arguments.py:674:1	-	12 lines (90 tokens) duplicated at tests.validators.test_tuple:382
-duplicate-code	high	pydantic-core/tests/validators/test_arguments.py:717:1	-	9 lines (50 tokens) duplicated at tests.validators.test_arguments:881
+duplicate-code	high	pydantic-core/tests/validators/test_arguments.py:716:1	-	10 lines (53 tokens) duplicated at tests.validators.test_arguments:850
 duplicate-code	high	pydantic-core/tests/validators/test_arguments.py:794:1	-	12 lines (69 tokens) duplicated in 2 other places: tests.validators.test_set:24, tests.validators.test_string:27
 duplicate-code	high	pydantic-core/tests/validators/test_arguments.py:834:1	-	17 lines (128 tokens) duplicated at tests.validators.test_arguments:860
 duplicate-code	high	pydantic-core/tests/validators/test_bool.py:40:1	-	11 lines (82 tokens) duplicated at tests.validators.test_bytes:83
 duplicate-code	high	pydantic-core/tests/validators/test_bytes.py:33:1	-	16 lines (63 tokens) duplicated at tests.validators.test_string:128
 duplicate-code	high	pydantic-core/tests/validators/test_bytes.py:58:1	-	11 lines (96 tokens) duplicated at tests.validators.test_list:175
-duplicate-code	high	pydantic-core/tests/validators/test_call.py:131:1	-	9 lines (52 tokens) duplicated at tests.validators.test_call:182
-duplicate-code	high	pydantic-core/tests/validators/test_complex.py:30:1	-	7 lines (81 tokens) duplicated at tests.validators.test_complex:69
+duplicate-code	high	pydantic-core/tests/validators/test_call.py:132:1	-	8 lines (50 tokens) duplicated at tests.validators.test_call:183
 duplicate-code	high	pydantic-core/tests/validators/test_complex.py:46:1	-	15 lines (91 tokens) duplicated at tests.validators.test_json:86
 duplicate-code	high	pydantic-core/tests/validators/test_complex.py:80:1	-	9 lines (70 tokens) duplicated at tests.validators.test_complex:218
-duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:23:1	-	22 lines (100 tokens) duplicated at tests.validators.test_dataclasses:73
-duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:45:1	-	8 lines (67 tokens) duplicated at tests.validators.test_dataclasses:109
+duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:42:1	-	11 lines (74 tokens) duplicated at tests.validators.test_dataclasses:105
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:53:1	-	18 lines (106 tokens) duplicated at tests.validators.test_dataclasses:118
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:159:1	-	15 lines (95 tokens) duplicated at tests.validators.test_json:121
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:194:1	-	17 lines (77 tokens) duplicated at tests.validators.test_dataclasses:1488
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:243:1	-	15 lines (139 tokens) duplicated at tests.validators.test_dataclasses:1382
-duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:258:1	-	10 lines (162 tokens) duplicated at tests.validators.test_dataclasses:1399
-duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:268:1	-	8 lines (160 tokens) duplicated at tests.validators.test_dataclasses:1413
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:275:1	-	16 lines (85 tokens) duplicated at tests.validators.test_dataclasses:1424
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:304:1	-	16 lines (73 tokens) duplicated at tests.validators.test_dataclasses:331
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:360:1	-	16 lines (91 tokens) duplicated at tests.validators.test_dataclasses:1635
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:397:1	-	11 lines (61 tokens) duplicated at tests.validators.test_dataclasses:433
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:407:1	-	12 lines (75 tokens) duplicated at tests.validators.test_dataclasses:443
-duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:470:1	-	10 lines (57 tokens) duplicated at tests.validators.test_dataclasses:1524
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:496:1	-	33 lines (184 tokens) duplicated at tests.validators.test_dataclasses:598
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:529:1	-	13 lines (73 tokens) duplicated at tests.validators.test_dataclasses:1340
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:542:1	-	13 lines (68 tokens) duplicated at tests.validators.test_dataclasses:647
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:554:1	-	25 lines (134 tokens) duplicated at tests.validators.test_dataclasses:1299
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:579:1	-	9 lines (56 tokens) duplicated at tests.validators.test_dataclasses:1325
-duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:670:1	-	11 lines (66 tokens) duplicated at tests.validators.test_dataclasses:811
+duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:665:1	-	9 lines (62 tokens) duplicated at tests.validators.test_dataclasses:783
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:682:1	-	19 lines (104 tokens) duplicated at tests.validators.test_dataclasses:724
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:701:1	-	10 lines (68 tokens) duplicated at tests.validators.test_dataclasses:744
 duplicate-code	high	pydantic-core/tests/validators/test_dataclasses.py:711:1	-	10 lines (58 tokens) duplicated at tests.validators.test_dataclasses:753
@@ -331,19 +267,16 @@ duplicate-code	high	pydantic-core/tests/validators/test_datetime.py:410:1	-	7 li
 duplicate-code	high	pydantic-core/tests/validators/test_datetime.py:447:1	-	16 lines (101 tokens) duplicated at tests.validators.test_time:260
 duplicate-code	high	pydantic-core/tests/validators/test_datetime.py:510:1	-	34 lines (421 tokens) duplicated at tests.test_datetime:202
 duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:31:1	-	14 lines (75 tokens) duplicated at tests.validators.test_int:24
-duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:44:1	-	8 lines (63 tokens) duplicated at tests.types.test_fraction:18
-duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:54:1	-	11 lines (57 tokens) duplicated at tests.types.test_fraction:33
 duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:88:1	-	12 lines (78 tokens) duplicated at tests.validators.test_int:172
 duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:137:1	-	14 lines (102 tokens) duplicated at tests.validators.test_uuid:99
 duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:208:1	-	55 lines (515 tokens) duplicated at tests.validators.test_float:100
 duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:304:1	-	7 lines (57 tokens) duplicated in 2 other places: tests.validators.test_float:186, tests.validators.test_int:391
 duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:333:1	-	14 lines (110 tokens) duplicated at tests.validators.test_float:222
-duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:369:1	-	25 lines (143 tokens) duplicated at tests.validators.test_float:257
+duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:364:1	-	7 lines (59 tokens) duplicated at tests.validators.test_float:251
 duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:408:1	-	17 lines (115 tokens) duplicated at tests.validators.test_float:302
 duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:424:1	-	21 lines (142 tokens) duplicated at tests.validators.test_float:318
 duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:460:1	-	18 lines (107 tokens) duplicated at tests.validators.test_float:348
-duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:517:1	-	9 lines (93 tokens) duplicated at tests.test_annotated:631
-duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:529:1	-	15 lines (116 tokens) duplicated at tests.test_annotated:641
+duplicate-code	high	pydantic-core/tests/validators/test_decimal.py:534:1	-	10 lines (80 tokens) duplicated at tests.test_annotated:646
 duplicate-code	high	pydantic-core/tests/validators/test_definitions_recursive.py:285:1	-	25 lines (95 tokens) duplicated at tests.validators.test_definitions_recursive:329
 duplicate-code	high	pydantic-core/tests/validators/test_definitions_recursive.py:355:1	-	7 lines (61 tokens) duplicated at tests.validators.test_definitions_recursive:362
 duplicate-code	high	pydantic-core/tests/validators/test_definitions_recursive.py:448:1	-	9 lines (54 tokens) duplicated at tests.validators.test_list:29
@@ -355,7 +288,6 @@ duplicate-code	high	pydantic-core/tests/validators/test_definitions_recursive.py
 duplicate-code	high	pydantic-core/tests/validators/test_deque.py:62:1	-	13 lines (88 tokens) duplicated at tests.validators.test_frozendict:56
 duplicate-code	high	pydantic-core/tests/validators/test_deque.py:108:1	-	13 lines (96 tokens) duplicated at tests.validators.test_frozenset:87
 duplicate-code	high	pydantic-core/tests/validators/test_deque.py:207:1	-	12 lines (74 tokens) duplicated at tests.validators.test_uuid:194
-duplicate-code	high	pydantic-core/tests/validators/test_deque.py:280:1	-	7 lines (52 tokens) duplicated at tests.validators.test_frozenset:285
 duplicate-code	high	pydantic-core/tests/validators/test_dict.py:19:1	-	8 lines (69 tokens) duplicated at tests.validators.test_pickling:15
 duplicate-code	high	pydantic-core/tests/validators/test_dict.py:63:1	-	7 lines (53 tokens) duplicated at tests.validators.test_dict:84
 duplicate-code	high	pydantic-core/tests/validators/test_dict.py:107:1	-	15 lines (91 tokens) duplicated at tests.validators.test_frozendict:90
@@ -367,14 +299,12 @@ duplicate-code	high	pydantic-core/tests/validators/test_enums.py:46:1	-	7 lines 
 duplicate-code	high	pydantic-core/tests/validators/test_enums.py:416:1	-	12 lines (64 tokens) duplicated at tests.validators.test_enums:456
 duplicate-code	high	pydantic-core/tests/validators/test_float.py:40:1	-	16 lines (98 tokens) duplicated at tests.validators.test_int:289
 duplicate-code	high	pydantic-core/tests/validators/test_float.py:64:1	-	8 lines (65 tokens) duplicated at tests.validators.test_int:113
-duplicate-code	high	pydantic-core/tests/validators/test_float.py:88:1	-	5 lines (50 tokens) duplicated at tests.validators.test_int:343
 duplicate-code	high	pydantic-core/tests/validators/test_float.py:158:1	-	10 lines (56 tokens) duplicated at tests.validators.test_int:364
 duplicate-code	high	pydantic-core/tests/validators/test_float.py:167:1	-	8 lines (65 tokens) duplicated at tests.validators.test_int:372
 duplicate-code	high	pydantic-core/tests/validators/test_float.py:195:1	-	17 lines (62 tokens) duplicated at tests.validators.test_int:400
 duplicate-code	high	pydantic-core/tests/validators/test_frozenset.py:1:1	-	15 lines (83 tokens) duplicated at tests.validators.test_set:1
 duplicate-code	high	pydantic-core/tests/validators/test_frozenset.py:55:1	-	14 lines (81 tokens) duplicated in 2 other places: tests.validators.test_int:238, tests.validators.test_uuid:166
 duplicate-code	high	pydantic-core/tests/validators/test_frozenset.py:106:1	-	21 lines (150 tokens) duplicated at tests.validators.test_set:90
-duplicate-code	high	pydantic-core/tests/validators/test_frozenset.py:159:1	-	8 lines (65 tokens) duplicated at tests.validators.test_set:155
 duplicate-code	high	pydantic-core/tests/validators/test_frozenset.py:168:1	-	8 lines (74 tokens) duplicated at tests.validators.test_set:165
 duplicate-code	high	pydantic-core/tests/validators/test_frozenset.py:179:1	-	11 lines (131 tokens) duplicated at tests.validators.test_set:175
 duplicate-code	high	pydantic-core/tests/validators/test_frozenset.py:189:1	-	16 lines (71 tokens) duplicated at tests.validators.test_set:185
@@ -440,11 +370,11 @@ duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:456:1	-	
 duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:489:1	-	9 lines (73 tokens) duplicated at tests.validators.test_typed_dict:363
 duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:545:1	-	10 lines (58 tokens) duplicated at tests.validators.test_model_fields:558
 duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:569:1	-	9 lines (50 tokens) duplicated at tests.validators.test_typed_dict:437
-duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:577:1	-	12 lines (93 tokens) duplicated at tests.validators.test_typed_dict:445
+duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:579:1	-	10 lines (71 tokens) duplicated at tests.validators.test_typed_dict:447
 duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:590:1	-	16 lines (94 tokens) duplicated at tests.validators.test_typed_dict:458
-duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:609:1	-	13 lines (106 tokens) duplicated at tests.validators.test_typed_dict:477
+duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:612:1	-	10 lines (71 tokens) duplicated at tests.validators.test_typed_dict:480
 duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:631:1	-	14 lines (93 tokens) duplicated at tests.validators.test_typed_dict:499
-duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:646:1	-	15 lines (172 tokens) duplicated at tests.validators.test_typed_dict:514
+duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:651:1	-	10 lines (95 tokens) duplicated at tests.validators.test_typed_dict:519
 duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:663:1	-	14 lines (94 tokens) duplicated at tests.validators.test_typed_dict:533
 duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:676:1	-	10 lines (65 tokens) duplicated at tests.validators.test_typed_dict:546
 duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:686:1	-	24 lines (153 tokens) duplicated at tests.validators.test_typed_dict:557
@@ -473,7 +403,7 @@ duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:1776:1	-
 duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:1848:1	-	20 lines (109 tokens) duplicated at tests.test_aliases:822
 duplicate-code	high	pydantic-core/tests/validators/test_model_fields.py:1890:1	-	8 lines (105 tokens) duplicated at tests.test_aliases:856
 duplicate-code	high	pydantic-core/tests/validators/test_model_init.py:31:1	-	7 lines (50 tokens) duplicated at tests.validators.test_with_default:327
-duplicate-code	high	pydantic-core/tests/validators/test_model_init.py:130:1	-	27 lines (168 tokens) duplicated at tests.validators.test_model_init:166
+duplicate-code	high	pydantic-core/tests/validators/test_model_init.py:133:1	-	24 lines (148 tokens) duplicated at tests.validators.test_model_init:169
 duplicate-code	high	pydantic-core/tests/validators/test_model_init.py:261:1	-	11 lines (57 tokens) duplicated at tests.validators.test_model_init:320
 duplicate-code	high	pydantic-core/tests/validators/test_model_init.py:282:1	-	12 lines (57 tokens) duplicated at tests.validators.test_model_init:346
 duplicate-code	high	pydantic-core/tests/validators/test_model_init.py:308:1	-	12 lines (55 tokens) duplicated at tests.validators.test_model_init:333
@@ -484,15 +414,13 @@ duplicate-code	high	pydantic-core/tests/validators/test_nullable.py:39:1	-	14 li
 duplicate-code	high	pydantic-core/tests/validators/test_nullable.py:52:1	-	17 lines (53 tokens) duplicated at tests.validators.test_with_default:650
 duplicate-code	high	pydantic-core/tests/validators/test_string.py:317:1	-	13 lines (83 tokens) duplicated at tests.types.test_str:288
 duplicate-code	high	pydantic-core/tests/validators/test_string.py:331:1	-	14 lines (89 tokens) duplicated at tests.types.test_str:300
-duplicate-code	high	pydantic-core/tests/validators/test_tagged_union.py:98:1	-	28 lines (162 tokens) duplicated at tests.validators.test_tagged_union:173
-duplicate-code	high	pydantic-core/tests/validators/test_tagged_union.py:319:1	-	22 lines (54 tokens) duplicated at tests.validators.test_tagged_union:391
+duplicate-code	high	pydantic-core/tests/validators/test_tagged_union.py:105:1	-	21 lines (129 tokens) duplicated at tests.validators.test_tagged_union:180
 duplicate-code	high	pydantic-core/tests/validators/test_tagged_union.py:374:1	-	14 lines (90 tokens) duplicated at tests.validators.test_tagged_union:440
-duplicate-code	high	pydantic-core/tests/validators/test_tagged_union.py:531:1	-	25 lines (170 tokens) duplicated at tests.validators.test_tagged_union:568
+duplicate-code	high	pydantic-core/tests/validators/test_tagged_union.py:539:1	-	17 lines (120 tokens) duplicated at tests.validators.test_tagged_union:576
 duplicate-code	high	pydantic-core/tests/validators/test_time.py:42:1	-	15 lines (94 tokens) duplicated at tests.validators.test_timedelta:97
 duplicate-code	high	pydantic-core/tests/validators/test_time.py:82:1	-	7 lines (56 tokens) duplicated at tests.validators.test_url:1224
 duplicate-code	high	pydantic-core/tests/validators/test_time.py:139:1	-	17 lines (105 tokens) duplicated at tests.validators.test_timedelta:135
 duplicate-code	high	pydantic-core/tests/validators/test_time.py:223:1	-	6 lines (61 tokens) duplicated at tests.validators.test_time:251
-duplicate-code	high	pydantic-core/tests/validators/test_timedelta.py:40:1	-	5 lines (62 tokens) duplicated at tests.validators.test_timedelta:112
 duplicate-code	high	pydantic-core/tests/validators/test_timedelta.py:75:1	-	14 lines (105 tokens) duplicated at tests.validators.test_timedelta:121
 duplicate-code	high	pydantic-core/tests/validators/test_tuple.py:128:1	-	12 lines (108 tokens) duplicated at tests.validators.test_tuple:155
 duplicate-code	high	pydantic-core/tests/validators/test_tuple.py:185:1	-	14 lines (61 tokens) duplicated at tests.validators.test_tuple:213
@@ -515,14 +443,12 @@ duplicate-code	high	pydantic-core/tests/validators/test_union.py:478:1	-	12 line
 duplicate-code	high	pydantic-core/tests/validators/test_union.py:650:1	-	17 lines (76 tokens) duplicated at tests.validators.test_union:689
 duplicate-code	high	pydantic-core/tests/validators/test_union.py:842:1	-	9 lines (75 tokens) duplicated at tests.validators.test_union:877
 duplicate-code	high	pydantic-core/tests/validators/test_union.py:1071:1	-	15 lines (108 tokens) duplicated at tests.validators.test_union:1154
-duplicate-code	high	pydantic-core/tests/validators/test_union.py:1222:1	-	11 lines (86 tokens) duplicated at tests.validators.test_union:1233
+duplicate-code	high	pydantic-core/tests/validators/test_union.py:1222:1	-	11 lines (65 tokens) duplicated at tests.validators.test_union:1233
 duplicate-code	high	pydantic-core/tests/validators/test_url.py:23:1	-	19 lines (119 tokens) duplicated at tests.validators.test_url:42
 duplicate-code	high	pydantic-core/tests/validators/test_url.py:94:1	-	17 lines (119 tokens) duplicated at tests.validators.test_url:494
 duplicate-code	high	pydantic-core/tests/validators/test_url.py:304:1	-	23 lines (169 tokens) duplicated at tests.validators.test_url:339
-duplicate-code	high	pydantic-core/tests/validators/test_url.py:405:1	-	10 lines (53 tokens) duplicated at tests.validators.test_url:434
 duplicate-code	high	pydantic-core/tests/validators/test_url.py:582:1	-	9 lines (65 tokens) duplicated at tests.validators.test_url:1064
 duplicate-code	high	pydantic-core/tests/validators/test_url.py:590:1	-	11 lines (60 tokens) duplicated at tests.validators.test_url:686
-duplicate-code	high	pydantic-core/tests/validators/test_url.py:764:1	-	12 lines (74 tokens) duplicated at tests.validators.test_url:829
 duplicate-code	high	pydantic-core/tests/validators/test_url.py:979:1	-	10 lines (81 tokens) duplicated at tests.validators.test_url:1035
 duplicate-code	high	pydantic-core/tests/validators/test_url.py:988:1	-	22 lines (153 tokens) duplicated at tests.validators.test_url:1044
 duplicate-code	high	pydantic-core/tests/validators/test_url.py:1313:1	-	16 lines (67 tokens) duplicated at tests.validators.test_url:1507
@@ -531,10 +457,6 @@ duplicate-code	high	pydantic-core/tests/validators/test_uuid.py:205:1	-	9 lines 
 duplicate-code	high	pydantic-core/tests/validators/test_with_default.py:22:1	-	7 lines (55 tokens) duplicated at tests.validators.test_with_default:249
 duplicate-code	high	pydantic-core/tests/validators/test_with_default.py:109:1	-	13 lines (56 tokens) duplicated at tests.validators.test_with_default:128
 duplicate-code	high	pydantic-core/tests/validators/test_with_default.py:493:1	-	9 lines (59 tokens) duplicated at tests.validators.test_with_default:503
-duplicate-code	high	pydantic-core/tests/validators/test_with_default.py:669:1	-	5 lines (64 tokens) duplicated at tests.validators.test_with_default:699
-duplicate-code	high	pydantic-core/tests/validators/test_with_default.py:677:1	-	8 lines (54 tokens) duplicated at tests.validators.test_with_default:692
-duplicate-code	high	pydantic-core/tests/validators/test_with_default.py:684:1	-	5 lines (69 tokens) duplicated at tests.validators.test_with_default:714
-duplicate-code	high	pydantic-core/tests/validators/test_with_default.py:707:1	-	8 lines (60 tokens) duplicated at tests.validators.test_with_default:722
 duplicate-code	high	pydantic-core/tests/validators/test_with_default.py:765:1	-	9 lines (53 tokens) duplicated at tests.validators.test_with_default:793
 duplicate-code	high	pydantic/_internal/_dataclasses.py:162:1	-	22 lines (102 tokens) duplicated at pydantic._internal._model_construction:624
 duplicate-code	high	pydantic/_internal/_decorators.py:419:1	-	5 lines (58 tokens) duplicated at pydantic._internal._decorators:424
@@ -544,10 +466,6 @@ duplicate-code	high	pydantic/_internal/_discriminated_union.py:208:1	-	13 lines 
 duplicate-code	high	pydantic/_internal/_discriminated_union.py:402:1	-	12 lines (91 tokens) duplicated at pydantic._internal._discriminated_union:413
 duplicate-code	high	pydantic/_internal/_fields.py:191:1	-	7 lines (54 tokens) duplicated at pydantic.fields:1806
 duplicate-code	high	pydantic/_internal/_fields.py:604:1	-	8 lines (60 tokens) duplicated at pydantic._internal._fields:808
-duplicate-code	high	pydantic/_internal/_generate_schema.py:353:1	-	6 lines (78 tokens) duplicated at pydantic._internal._generate_schema:363
-duplicate-code	high	pydantic/_internal/_generate_schema.py:380:1	-	5 lines (69 tokens) duplicated at pydantic._internal._generate_schema:447
-duplicate-code	high	pydantic/_internal/_generate_schema.py:398:1	-	5 lines (71 tokens) duplicated at pydantic._internal._generate_schema:402
-duplicate-code	high	pydantic/_internal/_generate_schema.py:435:1	-	5 lines (80 tokens) duplicated at pydantic._internal._generate_schema:439
 duplicate-code	high	pydantic/_internal/_generate_schema.py:576:1	-	10 lines (62 tokens) duplicated at pydantic._internal._generate_schema:626
 duplicate-code	high	pydantic/_internal/_generate_schema.py:784:1	-	15 lines (88 tokens) duplicated at pydantic._internal._generate_schema:2255
 duplicate-code	high	pydantic/_internal/_generate_schema.py:810:1	-	15 lines (101 tokens) duplicated at pydantic._internal._generate_schema:1869
@@ -594,11 +512,10 @@ duplicate-code	high	pydantic/color.py:314:1	-	16 lines (130 tokens) duplicated a
 duplicate-code	high	pydantic/color.py:382:1	-	21 lines (72 tokens) duplicated at pydantic.v1.color:299
 duplicate-code	high	pydantic/color.py:412:1	-	26 lines (106 tokens) duplicated at pydantic.v1.color:321
 duplicate-code	high	pydantic/color.py:452:1	-	154 lines (1505 tokens) duplicated at pydantic.v1.color:341
-duplicate-code	high	pydantic/dataclasses.py:52:1	-	11 lines (69 tokens) duplicated at pydantic.dataclasses:67
 duplicate-code	high	pydantic/dataclasses.py:349:1	-	9 lines (56 tokens) duplicated at pydantic.type_adapter:346
 duplicate-code	high	pydantic/deprecated/copy_internals.py:86:1	-	14 lines (58 tokens) duplicated at pydantic.v1.main:890
-duplicate-code	high	pydantic/deprecated/copy_internals.py:157:1	-	15 lines (85 tokens) duplicated at pydantic.v1.main:785
-duplicate-code	high	pydantic/deprecated/copy_internals.py:175:1	-	15 lines (91 tokens) duplicated at pydantic.v1.main:802
+duplicate-code	high	pydantic/deprecated/copy_internals.py:163:1	-	9 lines (53 tokens) duplicated at pydantic.v1.main:791
+duplicate-code	high	pydantic/deprecated/copy_internals.py:181:1	-	9 lines (60 tokens) duplicated at pydantic.v1.main:808
 duplicate-code	high	pydantic/deprecated/copy_internals.py:189:1	-	10 lines (50 tokens) duplicated at pydantic.v1.main:816
 duplicate-code	high	pydantic/deprecated/copy_internals.py:213:1	-	10 lines (60 tokens) duplicated at pydantic.v1.main:915
 duplicate-code	high	pydantic/deprecated/decorator.py:23:1	-	10 lines (62 tokens) duplicated at pydantic.v1.decorator:14
@@ -623,15 +540,13 @@ duplicate-code	high	pydantic/experimental/pipeline.py:597:1	-	5 lines (54 tokens
 duplicate-code	high	pydantic/experimental/pipeline.py:629:1	-	8 lines (55 tokens) duplicated at pydantic.experimental.pipeline:636
 duplicate-code	high	pydantic/fields.py:54:1	-	13 lines (113 tokens) duplicated at pydantic.fields:145
 duplicate-code	high	pydantic/fields.py:79:1	-	10 lines (69 tokens) duplicated at pydantic.fields:157
-duplicate-code	high	pydantic/fields.py:224:1	-	36 lines (346 tokens) duplicated at pydantic.fields:1329
 duplicate-code	high	pydantic/fields.py:524:1	-	19 lines (70 tokens) duplicated at pydantic.fields:585
 duplicate-code	high	pydantic/fields.py:873:1	-	12 lines (74 tokens) duplicated at pydantic.fields:1776
 duplicate-code	high	pydantic/fields.py:893:1	-	31 lines (130 tokens) duplicated at pydantic.fields:1625
-duplicate-code	high	pydantic/fields.py:1100:1	-	41 lines (351 tokens) duplicated at pydantic.fields:1140
-duplicate-code	high	pydantic/fields.py:1183:1	-	41 lines (371 tokens) duplicated at pydantic.fields:1223
-duplicate-code	high	pydantic/fields.py:1266:1	-	22 lines (187 tokens) duplicated at pydantic.fields:1305
+duplicate-code	high	pydantic/fields.py:1115:1	-	26 lines (222 tokens) duplicated at pydantic.fields:1155
+duplicate-code	high	pydantic/fields.py:1198:1	-	26 lines (242 tokens) duplicated at pydantic.fields:1238
+duplicate-code	high	pydantic/fields.py:1281:1	-	7 lines (54 tokens) duplicated at pydantic.fields:1320
 duplicate-code	high	pydantic/fields.py:1515:1	-	26 lines (100 tokens) duplicated at pydantic.v1.fields:301
-duplicate-code	high	pydantic/fields.py:1850:1	-	11 lines (109 tokens) duplicated at pydantic.fields:1868
 duplicate-code	high	pydantic/functional_serializers.py:20:1	-	64 lines (176 tokens) duplicated at pydantic.functional_serializers:90
 duplicate-code	high	pydantic/functional_serializers.py:437:1	-	16 lines (62 tokens) duplicated at pydantic.json_schema:3133
 duplicate-code	high	pydantic/functional_validators.py:90:1	-	46 lines (94 tokens) duplicated at pydantic.functional_validators:257
@@ -639,7 +554,8 @@ duplicate-code	high	pydantic/functional_validators.py:233:1	-	25 lines (123 toke
 duplicate-code	high	pydantic/functional_validators.py:383:1	-	12 lines (50 tokens) duplicated at pydantic.functional_validators:394
 duplicate-code	high	pydantic/json_schema.py:594:1	-	9 lines (71 tokens) duplicated at pydantic.json_schema:605
 duplicate-code	high	pydantic/json_schema.py:667:1	-	15 lines (73 tokens) duplicated at pydantic.json_schema:681
-duplicate-code	high	pydantic/json_schema.py:706:1	-	12 lines (79 tokens) duplicated at pydantic.json_schema:743
+duplicate-code	high	pydantic/json_schema.py:698:1	-	9 lines (52 tokens) duplicated at pydantic.json_schema:733
+duplicate-code	high	pydantic/json_schema.py:706:1	-	12 lines (68 tokens) duplicated at pydantic.json_schema:743
 duplicate-code	high	pydantic/json_schema.py:924:1	-	7 lines (50 tokens) duplicated at pydantic.json_schema:988
 duplicate-code	high	pydantic/json_schema.py:1047:1	-	19 lines (93 tokens) duplicated at pydantic.json_schema:1146
 duplicate-code	high	pydantic/json_schema.py:1122:1	-	24 lines (73 tokens) duplicated at pydantic.json_schema:1164
@@ -648,18 +564,18 @@ duplicate-code	high	pydantic/json_schema.py:1582:1	-	7 lines (62 tokens) duplica
 duplicate-code	high	pydantic/json_schema.py:1674:1	-	23 lines (55 tokens) duplicated at pydantic.json_schema:1696
 duplicate-code	high	pydantic/json_schema.py:1982:1	-	16 lines (109 tokens) duplicated at pydantic.json_schema:2092
 duplicate-code	high	pydantic/json_schema.py:2688:1	-	31 lines (51 tokens) duplicated at pydantic.type_adapter:672
-duplicate-code	high	pydantic/json_schema.py:2736:1	-	9 lines (60 tokens) duplicated at pydantic.type_adapter:713
+duplicate-code	high	pydantic/json_schema.py:2738:1	-	7 lines (57 tokens) duplicated at pydantic.type_adapter:715
 duplicate-code	high	pydantic/json_schema.py:2779:1	-	25 lines (68 tokens) duplicated at pydantic.type_adapter:766
 duplicate-code	high	pydantic/main.py:472:1	-	18 lines (129 tokens) duplicated at pydantic.root_model:128
 duplicate-code	high	pydantic/main.py:489:1	-	47 lines (69 tokens) duplicated at pydantic.main:556
-duplicate-code	high	pydantic/main.py:749:1	-	9 lines (54 tokens) duplicated at pydantic.plugin:146
+duplicate-code	high	pydantic/main.py:751:1	-	30 lines (55 tokens) duplicated at pydantic.networks:490
 duplicate-code	high	pydantic/main.py:782:1	-	16 lines (58 tokens) duplicated at pydantic.type_adapter:403
 duplicate-code	high	pydantic/main.py:803:1	-	50 lines (120 tokens) duplicated at pydantic.main:852
 duplicate-code	high	pydantic/main.py:1039:1	-	9 lines (55 tokens) duplicated at pydantic.main:1058
 duplicate-code	high	pydantic/main.py:1051:1	-	8 lines (66 tokens) duplicated at pydantic.root_model:108
 duplicate-code	high	pydantic/main.py:1385:1	-	10 lines (53 tokens) duplicated at pydantic.main:1410
 duplicate-code	high	pydantic/main.py:1457:1	-	13 lines (58 tokens) duplicated at pydantic.main:1511
-duplicate-code	high	pydantic/main.py:1773:1	-	7 lines (73 tokens) duplicated at pydantic.main:1789
+duplicate-code	high	pydantic/main.py:1775:1	-	5 lines (57 tokens) duplicated at pydantic.main:1791
 duplicate-code	high	pydantic/mypy.py:135:1	-	6 lines (55 tokens) duplicated at pydantic.v1.mypy:109
 duplicate-code	high	pydantic/mypy.py:175:1	-	17 lines (90 tokens) duplicated at pydantic.v1.mypy:155
 duplicate-code	high	pydantic/mypy.py:252:1	-	19 lines (133 tokens) duplicated at pydantic.v1.mypy:233
@@ -672,7 +588,6 @@ duplicate-code	high	pydantic/mypy.py:1101:1	-	8 lines (51 tokens) duplicated at 
 duplicate-code	high	pydantic/mypy.py:1133:1	-	18 lines (65 tokens) duplicated at pydantic.v1.mypy:644
 duplicate-code	high	pydantic/mypy.py:1225:1	-	9 lines (54 tokens) duplicated at pydantic.v1.mypy:695
 duplicate-code	high	pydantic/mypy.py:1233:1	-	15 lines (65 tokens) duplicated at pydantic.v1.mypy:703
-duplicate-code	high	pydantic/mypy.py:1266:1	-	9 lines (62 tokens) duplicated at pydantic.networks:488
 duplicate-code	high	pydantic/mypy.py:1277:1	-	9 lines (52 tokens) duplicated at pydantic.v1.mypy:765
 duplicate-code	high	pydantic/mypy.py:1293:1	-	7 lines (56 tokens) duplicated at pydantic.v1.mypy:776
 duplicate-code	high	pydantic/mypy.py:1309:1	-	6 lines (59 tokens) duplicated at pydantic.v1.mypy:786
@@ -684,12 +599,13 @@ duplicate-code	high	pydantic/networks.py:126:1	-	32 lines (127 tokens) duplicate
 duplicate-code	high	pydantic/networks.py:200:1	-	16 lines (60 tokens) duplicated at pydantic.networks:387
 duplicate-code	high	pydantic/networks.py:228:1	-	18 lines (126 tokens) duplicated at pydantic.networks:430
 duplicate-code	high	pydantic/networks.py:301:1	-	56 lines (320 tokens) duplicated at pydantic.networks:519
+duplicate-code	high	pydantic/networks.py:476:1	-	7 lines (50 tokens) duplicated at pydantic.plugin:148
 duplicate-code	high	pydantic/networks.py:1100:1	-	12 lines (89 tokens) duplicated at pydantic.v1.networks:602
 duplicate-code	high	pydantic/networks.py:1212:1	-	33 lines (143 tokens) duplicated at pydantic.networks:1251
 duplicate-code	high	pydantic/plugin/__init__.py:114:1	-	13 lines (73 tokens) duplicated at tests.test_plugins:222
-duplicate-code	high	pydantic/type_adapter.py:423:1	-	55 lines (133 tokens) duplicated at pydantic.type_adapter:478
-duplicate-code	high	pydantic/type_adapter.py:540:1	-	57 lines (179 tokens) duplicated at pydantic.type_adapter:605
-duplicate-code	high	pydantic/types.py:158:1	-	83 lines (111 tokens) duplicated at pydantic.types:419
+duplicate-code	high	pydantic/type_adapter.py:426:1	-	52 lines (120 tokens) duplicated at pydantic.type_adapter:481
+duplicate-code	high	pydantic/type_adapter.py:549:1	-	48 lines (120 tokens) duplicated at pydantic.type_adapter:614
+duplicate-code	high	pydantic/types.py:159:1	-	82 lines (110 tokens) duplicated at pydantic.types:420
 duplicate-code	high	pydantic/types.py:852:1	-	17 lines (61 tokens) duplicated at pydantic.types:868
 duplicate-code	high	pydantic/types.py:921:1	-	92 lines (65 tokens) duplicated at pydantic.types:1439
 duplicate-code	high	pydantic/types.py:1060:1	-	81 lines (78 tokens) duplicated at pydantic.types:2285
@@ -703,14 +619,11 @@ duplicate-code	high	pydantic/types.py:2260:1	-	15 lines (71 tokens) duplicated a
 duplicate-code	high	pydantic/types.py:2451:1	-	17 lines (65 tokens) duplicated at pydantic.types:2502
 duplicate-code	high	pydantic/types.py:2524:1	-	70 lines (113 tokens) duplicated at pydantic.types:2623
 duplicate-code	high	pydantic/types.py:2593:1	-	17 lines (68 tokens) duplicated at pydantic.types:2692
-duplicate-code	high	pydantic/v1/__init__.py:75:1	-	31 lines (62 tokens) duplicated at pydantic.v1.types:59
 duplicate-code	high	pydantic/v1/_hypothesis_plugin.py:260:1	-	10 lines (53 tokens) duplicated at pydantic.v1._hypothesis_plugin:310
 duplicate-code	high	pydantic/v1/class_validators.py:288:1	-	11 lines (71 tokens) duplicated at pydantic.v1.class_validators:322
-duplicate-code	high	pydantic/v1/dataclasses.py:107:1	-	11 lines (76 tokens) duplicated at pydantic.v1.dataclasses:178
 duplicate-code	high	pydantic/v1/dataclasses.py:117:1	-	18 lines (119 tokens) duplicated at pydantic.v1.dataclasses:153
 duplicate-code	high	pydantic/v1/datetime_parse.py:152:1	-	24 lines (175 tokens) duplicated at pydantic.v1.datetime_parse:190
 duplicate-code	high	pydantic/v1/decorator.py:241:1	-	10 lines (86 tokens) duplicated at pydantic.v1.decorator:250
-duplicate-code	high	pydantic/v1/fields.py:230:1	-	8 lines (63 tokens) duplicated at pydantic.v1.fields:237
 duplicate-code	high	pydantic/v1/fields.py:689:1	-	11 lines (85 tokens) duplicated at pydantic.v1.fields:699
 duplicate-code	high	pydantic/v1/fields.py:723:1	-	7 lines (70 tokens) duplicated at pydantic.v1.fields:731
 duplicate-code	high	pydantic/v1/main.py:450:1	-	10 lines (69 tokens) duplicated at pydantic.v1.main:484
@@ -722,7 +635,7 @@ duplicate-code	high	pydantic/v1/schema.py:429:1	-	22 lines (76 tokens) duplicate
 duplicate-code	high	pydantic/v1/schema.py:461:1	-	12 lines (50 tokens) duplicated at pydantic.v1.schema:500
 duplicate-code	high	pydantic/v1/schema.py:1072:1	-	5 lines (62 tokens) duplicated at pydantic.v1.schema:1076
 duplicate-code	high	pydantic/v1/schema.py:1096:1	-	10 lines (73 tokens) duplicated at pydantic.v1.schema:1105
-duplicate-code	high	pydantic/v1/tools.py:43:1	-	22 lines (104 tokens) duplicated at pydantic.v1.tools:65
+duplicate-code	high	pydantic/v1/tools.py:45:1	-	20 lines (101 tokens) duplicated at pydantic.v1.tools:67
 duplicate-code	high	pydantic/v1/types.py:203:1	-	21 lines (105 tokens) duplicated at pydantic.v1.types:669
 duplicate-code	high	pydantic/v1/types.py:231:1	-	8 lines (73 tokens) duplicated at pydantic.v1.types:454
 duplicate-code	high	pydantic/v1/types.py:243:1	-	27 lines (90 tokens) duplicated at pydantic.v1.types:323
@@ -737,7 +650,6 @@ duplicate-code	high	pydantic/v1/validators.py:271:1	-	19 lines (109 tokens) dupl
 duplicate-code	high	pydantic/v1/validators.py:366:1	-	22 lines (115 tokens) duplicated at pydantic.v1.validators:418
 duplicate-code	high	pydantic/v1/validators.py:393:1	-	11 lines (51 tokens) duplicated at pydantic.v1.validators:439
 duplicate-code	high	pydantic/v1/validators.py:507:1	-	14 lines (62 tokens) duplicated at pydantic.v1.validators:523
-duplicate-code	high	pydantic/v1/validators.py:676:1	-	10 lines (80 tokens) duplicated at pydantic.v1.validators:686
 duplicate-code	high	pydantic/warnings.py:61:1	-	8 lines (57 tokens) duplicated in 5 other places: pydantic.warnings:68, pydantic.warnings:75, pydantic.warnings:82, pydantic.warnings:89, pydantic.warnings:96
 duplicate-code	high	release/push.py:69:1	-	10 lines (76 tokens) duplicated at release.push:124
 duplicate-code	high	tests/benchmarks/basemodel_eq_performance.py:30:1	-	8 lines (66 tokens) duplicated at tests.benchmarks.basemodel_eq_performance:155
@@ -746,7 +658,6 @@ duplicate-code	high	tests/benchmarks/basemodel_eq_performance.py:88:1	-	31 lines
 duplicate-code	high	tests/benchmarks/basemodel_eq_performance.py:321:1	-	35 lines (115 tokens) duplicated at tests.benchmarks.basemodel_eq_performance:367
 duplicate-code	high	tests/benchmarks/generate_north_star_data.py:33:1	-	15 lines (103 tokens) duplicated at tests.benchmarks.generate_north_star_data:55
 duplicate-code	high	tests/benchmarks/shared.py:80:1	-	7 lines (51 tokens) duplicated at tests.benchmarks.test_model_schema_generation:75
-duplicate-code	high	tests/benchmarks/shared.py:120:1	-	26 lines (56 tokens) duplicated at tests.benchmarks.shared:183
 duplicate-code	high	tests/benchmarks/test_fastapi_startup_generics.py:53:1	-	15 lines (89 tokens) duplicated at tests.benchmarks.test_fastapi_startup_generics:73
 duplicate-code	high	tests/benchmarks/test_fastapi_startup_generics.py:131:1	-	13 lines (94 tokens) duplicated at tests.benchmarks.test_fastapi_startup_simple:104
 duplicate-code	high	tests/benchmarks/test_model_schema_generation.py:257:1	-	14 lines (66 tokens) duplicated at tests.types.unions.test_discriminated_union:1325
@@ -837,7 +748,6 @@ duplicate-code	high	tests/test_dataclasses.py:3287:1	-	8 lines (68 tokens) dupli
 duplicate-code	high	tests/test_dataclasses.py:3311:1	-	10 lines (147 tokens) duplicated at tests.types.test_model:34
 duplicate-code	high	tests/test_dataclasses.py:3342:1	-	13 lines (70 tokens) duplicated at tests.types.test_model:62
 duplicate-code	high	tests/test_datetime.py:29:1	-	16 lines (117 tokens) duplicated at tests.test_datetime:44
-duplicate-code	high	tests/test_datetime.py:68:1	-	12 lines (112 tokens) duplicated at tests.test_types:861
 duplicate-code	high	tests/test_datetime.py:93:1	-	12 lines (85 tokens) duplicated at tests.test_datetime:139
 duplicate-code	high	tests/test_datetime.py:289:1	-	12 lines (74 tokens) duplicated at tests.test_datetime:424
 duplicate-code	high	tests/test_datetime.py:452:1	-	9 lines (64 tokens) duplicated at tests.test_datetime:467
@@ -959,15 +869,11 @@ duplicate-code	high	tests/test_json_schema.py:3793:1	-	16 lines (51 tokens) dupl
 duplicate-code	high	tests/test_json_schema.py:3957:1	-	12 lines (64 tokens) duplicated at tests.test_json_schema:4013
 duplicate-code	high	tests/test_json_schema.py:3968:1	-	46 lines (222 tokens) duplicated at tests.test_json_schema:4024
 duplicate-code	high	tests/test_json_schema.py:4217:1	-	20 lines (107 tokens) duplicated at tests.test_json_schema:4668
-duplicate-code	high	tests/test_json_schema.py:4241:1	-	12 lines (81 tokens) duplicated at tests.test_json_schema:4425
-duplicate-code	high	tests/test_json_schema.py:4252:1	-	38 lines (212 tokens) duplicated at tests.test_json_schema:4436
-duplicate-code	high	tests/test_json_schema.py:4290:1	-	31 lines (102 tokens) duplicated at tests.test_json_schema:4332
-duplicate-code	high	tests/test_json_schema.py:4474:1	-	20 lines (64 tokens) duplicated at tests.test_json_schema:4516
 duplicate-code	high	tests/test_json_schema.py:4555:1	-	11 lines (83 tokens) duplicated at tests.types.unions.test_discriminated_union:468
 duplicate-code	high	tests/test_json_schema.py:4946:1	-	12 lines (74 tokens) duplicated at tests.test_json_schema:4983
 duplicate-code	high	tests/test_json_schema.py:5052:1	-	12 lines (63 tokens) duplicated at tests.test_json_schema:5068
 duplicate-code	high	tests/test_json_schema.py:5116:1	-	12 lines (52 tokens) duplicated at tests.test_json_schema:5135
-duplicate-code	high	tests/test_json_schema.py:5171:1	-	16 lines (63 tokens) duplicated at tests.test_json_schema:5190
+duplicate-code	high	tests/test_json_schema.py:5173:1	-	14 lines (60 tokens) duplicated at tests.test_json_schema:5191
 duplicate-code	high	tests/test_json_schema.py:5288:1	-	16 lines (149 tokens) duplicated at tests.test_json_schema:5324
 duplicate-code	high	tests/test_json_schema.py:5304:1	-	16 lines (116 tokens) duplicated at tests.test_json_schema:5340
 duplicate-code	high	tests/test_json_schema.py:5408:1	-	6 lines (51 tokens) duplicated at tests.test_json_schema:5453
@@ -998,8 +904,7 @@ duplicate-code	high	tests/test_main.py:2914:1	-	11 lines (88 tokens) duplicated 
 duplicate-code	high	tests/test_main.py:2930:1	-	11 lines (70 tokens) duplicated at tests.test_main:2946
 duplicate-code	high	tests/test_main.py:3191:1	-	17 lines (107 tokens) duplicated at tests.test_type_adapter:384
 duplicate-code	high	tests/test_main.py:3209:1	-	17 lines (105 tokens) duplicated at tests.test_type_adapter:404
-duplicate-code	high	tests/test_main.py:3225:1	-	18 lines (106 tokens) duplicated at tests.test_type_adapter:422
-duplicate-code	high	tests/test_main.py:3262:1	-	26 lines (305 tokens) duplicated at tests.test_root_model:664
+duplicate-code	high	tests/test_main.py:3258:1	-	28 lines (299 tokens) duplicated at tests.test_type_adapter:436
 duplicate-code	high	tests/test_main.py:3527:1	-	9 lines (55 tokens) duplicated at tests.test_main:3546
 duplicate-code	high	tests/test_main.py:3600:1	-	11 lines (51 tokens) duplicated at tests.test_main:3623
 duplicate-code	high	tests/test_model_validator.py:43:1	-	19 lines (123 tokens) duplicated at tests.test_model_validator:69
@@ -1125,7 +1030,7 @@ duplicate-code	high	tests/test_validators.py:2726:1	-	12 lines (61 tokens) dupli
 duplicate-code	high	tests/test_validators.py:2769:1	-	14 lines (75 tokens) duplicated at tests.test_validators:2829
 duplicate-code	high	tests/test_validators.py:2785:1	-	9 lines (52 tokens) duplicated at tests.test_validators:2795
 duplicate-code	high	tests/test_validators.py:2843:1	-	18 lines (140 tokens) duplicated at tests.test_validators:2880
-duplicate-code	high	tests/test_validators.py:2860:1	-	20 lines (80 tokens) duplicated at tests.test_validators:2897
+duplicate-code	high	tests/test_validators.py:2865:1	-	15 lines (60 tokens) duplicated at tests.test_validators:2902
 duplicate-code	high	tests/test_validators.py:3027:1	-	19 lines (66 tokens) duplicated at tests.test_validators:3080
 duplicate-code	high	tests/test_validators.py:3066:1	-	15 lines (100 tokens) duplicated at tests.test_validators:3098
 duplicate-code	high	tests/test_validators.py:3193:1	-	11 lines (59 tokens) duplicated at tests.test_validators:3229
@@ -1172,13 +1077,9 @@ duplicate-code	high	tests/types/unions/test_discriminated_union.py:571:1	-	28 li
 duplicate-code	high	tests/types/unions/test_discriminated_union.py:653:1	-	9 lines (51 tokens) duplicated at tests.types.unions.test_discriminated_union:1485
 duplicate-code	high	tests/types/unions/test_discriminated_union.py:791:1	-	5 lines (68 tokens) duplicated at tests.types.unions.test_discriminated_union:815
 duplicate-code	high	tests/types/unions/test_discriminated_union.py:796:1	-	20 lines (148 tokens) duplicated at tests.types.unions.test_discriminated_union:826
-duplicate-code	high	tests/types/unions/test_discriminated_union.py:1003:1	-	19 lines (101 tokens) duplicated at tests.types.unions.test_discriminated_union:1022
-duplicate-code	high	tests/types/unions/test_discriminated_union.py:1094:1	-	33 lines (120 tokens) duplicated at tests.types.unions.test_discriminated_union:1127
-duplicate-code	high	tests/types/unions/test_discriminated_union.py:1220:1	-	13 lines (60 tokens) duplicated at tests.types.unions.test_discriminated_union:1235
 duplicate-code	high	tests/types/unions/test_discriminated_union.py:1413:1	-	21 lines (111 tokens) duplicated at tests.types.unions.test_discriminated_union:1461
 duplicate-code	high	tests/types/unions/test_discriminated_union.py:1558:1	-	6 lines (52 tokens) duplicated at tests.types.unions.test_discriminated_union:1643
 duplicate-code	high	tests/types/unions/test_discriminated_union.py:1698:1	-	7 lines (52 tokens) duplicated at tests.types.unions.test_discriminated_union:1757
-duplicate-code	high	tests/types/unions/test_discriminated_union.py:1926:1	-	13 lines (94 tokens) duplicated at tests.types.unions.test_discriminated_union:1944
 duplicate-code	high	tests/types/unions/test_discriminated_union.py:1981:1	-	28 lines (205 tokens) duplicated at tests.types.unions.test_discriminated_union:2008
 duplicate-code	high	tests/types/unions/test_discriminated_union.py:2296:1	-	12 lines (56 tokens) duplicated at tests.types.unions.test_discriminated_union:2374
 duplicate-code	high	tests/types/unions/test_discriminated_union.py:2313:1	-	15 lines (75 tokens) duplicated at tests.types.unions.test_discriminated_union:2338

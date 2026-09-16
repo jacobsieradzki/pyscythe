@@ -1,8 +1,8 @@
 files_scanned=1132
 symbols_checked=0
 symbols_kept=0
-findings=593
-duplication: clones=593 duplicated_lines=20132 total_lines=106139 percent_tenths=189
+findings=569
+duplication: clones=569 duplicated_lines=19536 total_lines=106139 percent_tenths=184
 --
 duplicate-code	high	docs/examples/data_transfer_objects/factory/dto_data_problem_statement.py:15:1	-	14 lines (50 tokens) duplicated at docs.examples.data_transfer_objects.factory.dto_data_usage:13
 duplicate-code	high	docs/examples/data_transfer_objects/factory/excluding_fields.py:1:1	-	38 lines (200 tokens) duplicated at docs.examples.data_transfer_objects.factory.included_fields:1
@@ -92,12 +92,7 @@ duplicate-code	high	docs/examples/websockets/custom_websocket.py:10:1	-	8 lines 
 duplicate-code	high	litestar/_kwargs/kwargs_model.py:123:1	-	10 lines (54 tokens) duplicated at litestar.utils.scope.state:53
 duplicate-code	high	litestar/_layers/utils.py:16:1	-	12 lines (58 tokens) duplicated at litestar._layers.utils:27
 duplicate-code	high	litestar/_openapi/schema_generation/plugins/dataclass.py:5:1	-	19 lines (79 tokens) duplicated at litestar._openapi.schema_generation.plugins.typed_dict:1
-duplicate-code	high	litestar/_openapi/schema_generation/schema.py:83:1	-	6 lines (60 tokens) duplicated at litestar._openapi.schema_generation.schema:93
-duplicate-code	high	litestar/_openapi/schema_generation/schema.py:99:1	-	9 lines (108 tokens) duplicated at litestar._openapi.schema_generation.schema:110
-duplicate-code	high	litestar/app.py:176:1	-	8 lines (55 tokens) duplicated in 2 other places: litestar.testing.helpers:63, litestar.testing.helpers:316
-duplicate-code	high	litestar/app.py:185:1	-	18 lines (159 tokens) duplicated at litestar.testing.helpers:72
-duplicate-code	high	litestar/app.py:445:1	-	9 lines (50 tokens) duplicated at litestar.plugins.pydantic:97
-duplicate-code	high	litestar/app.py:454:1	-	13 lines (69 tokens) duplicated at litestar.dto.data_structures:112
+duplicate-code	high	litestar/app.py:466:1	-	11 lines (51 tokens) duplicated at litestar.security.jwt.middleware:156
 duplicate-code	high	litestar/channels/backends/asyncpg.py:84:1	-	13 lines (85 tokens) duplicated at litestar.channels.backends.memory:66
 duplicate-code	high	litestar/channels/backends/psycopg.py:65:1	-	7 lines (51 tokens) duplicated at litestar.channels.backends.psycopg:80
 duplicate-code	high	litestar/channels/plugin.py:135:1	-	12 lines (50 tokens) duplicated at litestar.channels.plugin:152
@@ -111,8 +106,7 @@ duplicate-code	high	litestar/connection/base.py:173:1	-	11 lines (52 tokens) dup
 duplicate-code	high	litestar/connection/request.py:65:1	-	19 lines (57 tokens) duplicated at litestar.connection.websocket:45
 duplicate-code	high	litestar/connection/request.py:130:1	-	16 lines (81 tokens) duplicated at litestar.connection.request:146
 duplicate-code	high	litestar/controller.py:17:1	-	49 lines (56 tokens) duplicated at litestar.router:14
-duplicate-code	high	litestar/controller.py:212:1	-	15 lines (82 tokens) duplicated at litestar.handlers.http_handlers.base:349
-duplicate-code	high	litestar/controller.py:230:1	-	12 lines (52 tokens) duplicated in 2 other places: litestar.plugins.opentelemetry.middleware:40, litestar.security.jwt.auth:723
+duplicate-code	high	litestar/controller.py:231:1	-	11 lines (51 tokens) duplicated in 2 other places: litestar.plugins.opentelemetry.middleware:41, litestar.security.jwt.auth:724
 duplicate-code	high	litestar/datastructures/multi_dicts.py:44:1	-	11 lines (67 tokens) duplicated at litestar.datastructures.multi_dicts:71
 duplicate-code	high	litestar/dto/_backend.py:269:1	-	26 lines (89 tokens) duplicated at litestar.dto._backend:311
 duplicate-code	high	litestar/dto/_backend.py:443:1	-	21 lines (109 tokens) duplicated at litestar.dto._backend:465
@@ -124,25 +118,20 @@ duplicate-code	high	litestar/dto/_types.py:122:1	-	18 lines (98 tokens) duplicat
 duplicate-code	high	litestar/dto/dataclass_dto.py:26:1	-	8 lines (56 tokens) duplicated at litestar.dto.msgspec_dto:36
 duplicate-code	high	litestar/dto/dataclass_dto.py:57:1	-	16 lines (77 tokens) duplicated at litestar.dto.msgspec_dto:69
 duplicate-code	high	litestar/file_system.py:256:1	-	19 lines (73 tokens) duplicated at litestar.file_system:342
-duplicate-code	high	litestar/handlers/asgi_handlers.py:38:1	-	8 lines (63 tokens) duplicated at litestar.handlers.asgi_handlers:142
-duplicate-code	high	litestar/handlers/asgi_handlers.py:149:1	-	34 lines (72 tokens) duplicated at litestar.handlers.websocket_handlers.route_handler:176
+duplicate-code	high	litestar/handlers/base.py:90:1	-	36 lines (52 tokens) duplicated at litestar.handlers.http_handlers.base:176
 duplicate-code	high	litestar/handlers/base.py:408:1	-	9 lines (54 tokens) duplicated at litestar.handlers.base:449
-duplicate-code	high	litestar/handlers/http_handlers/base.py:137:1	-	14 lines (117 tokens) duplicated at litestar.handlers.http_handlers.decorators:404
-duplicate-code	high	litestar/handlers/http_handlers/base.py:151:1	-	6 lines (51 tokens) duplicated at litestar.handlers.http_handlers.decorators:417
-duplicate-code	high	litestar/handlers/http_handlers/base.py:171:1	-	6 lines (59 tokens) duplicated at litestar.handlers.websocket_handlers.route_handler:34
 duplicate-code	high	litestar/handlers/http_handlers/base.py:281:1	-	14 lines (54 tokens) duplicated at litestar.static_files:163
 duplicate-code	high	litestar/handlers/http_handlers/base.py:321:1	-	15 lines (73 tokens) duplicated at litestar.security.jwt.middleware:104
 duplicate-code	high	litestar/handlers/http_handlers/base.py:405:1	-	16 lines (55 tokens) duplicated at litestar.handlers.http_handlers.base:421
-duplicate-code	high	litestar/handlers/http_handlers/decorators.py:65:1	-	139 lines (486 tokens) duplicated at litestar.handlers.http_handlers.decorators:236
-duplicate-code	high	litestar/handlers/http_handlers/decorators.py:371:1	-	32 lines (109 tokens) duplicated at litestar.handlers.http_handlers.decorators:1225
-duplicate-code	high	litestar/handlers/http_handlers/decorators.py:424:1	-	16 lines (130 tokens) duplicated in 2 other places: litestar.handlers.http_handlers.decorators:770, litestar.handlers.http_handlers.decorators:1112
-duplicate-code	high	litestar/handlers/http_handlers/decorators.py:446:1	-	98 lines (105 tokens) duplicated in 3 other places: litestar.handlers.http_handlers.decorators:791, litestar.handlers.http_handlers.decorators:1133, litestar.handlers.websocket_handlers.listener:483
-duplicate-code	high	litestar/handlers/http_handlers/decorators.py:555:1	-	212 lines (870 tokens) duplicated at litestar.handlers.http_handlers.decorators:899
+duplicate-code	high	litestar/handlers/http_handlers/decorators.py:102:1	-	102 lines (148 tokens) duplicated in 4 other places: litestar.handlers.http_handlers.decorators:273, litestar.handlers.http_handlers.decorators:441, litestar.handlers.http_handlers.decorators:786, litestar.handlers.http_handlers.decorators:1128
+duplicate-code	high	litestar/handlers/http_handlers/decorators.py:216:1	-	42 lines (269 tokens) duplicated at litestar.handlers.http_handlers.decorators:384
+duplicate-code	high	litestar/handlers/http_handlers/decorators.py:556:1	-	211 lines (866 tokens) duplicated at litestar.handlers.http_handlers.decorators:900
+duplicate-code	high	litestar/handlers/http_handlers/decorators.py:1240:1	-	15 lines (50 tokens) duplicated at litestar.handlers.websocket_handlers.listener:535
 duplicate-code	high	litestar/handlers/websocket_handlers/_utils.py:33:1	-	7 lines (61 tokens) duplicated at litestar.handlers.websocket_handlers._utils:39
-duplicate-code	high	litestar/handlers/websocket_handlers/listener.py:73:1	-	16 lines (164 tokens) duplicated at litestar.handlers.websocket_handlers.listener:417
-duplicate-code	high	litestar/handlers/websocket_handlers/listener.py:98:1	-	18 lines (186 tokens) duplicated at litestar.handlers.websocket_handlers.listener:440
-duplicate-code	high	litestar/handlers/websocket_handlers/listener.py:124:1	-	19 lines (202 tokens) duplicated at litestar.handlers.websocket_handlers.listener:464
+duplicate-code	high	litestar/handlers/websocket_handlers/listener.py:85:1	-	7 lines (54 tokens) duplicated at litestar.handlers.websocket_handlers.listener:112
 duplicate-code	high	litestar/handlers/websocket_handlers/listener.py:217:1	-	16 lines (82 tokens) duplicated at litestar.handlers.websocket_handlers.route_handler:69
+duplicate-code	high	litestar/handlers/websocket_handlers/listener.py:428:1	-	7 lines (61 tokens) duplicated at litestar.handlers.websocket_handlers.listener:453
+duplicate-code	high	litestar/handlers/websocket_handlers/listener.py:482:1	-	53 lines (75 tokens) duplicated at litestar.handlers.websocket_handlers.route_handler:176
 duplicate-code	high	litestar/handlers/websocket_handlers/route_handler.py:165:1	-	12 lines (116 tokens) duplicated at litestar.handlers.websocket_handlers.stream:127
 duplicate-code	high	litestar/middleware/allowed_hosts.py:22:1	-	13 lines (52 tokens) duplicated at litestar.plugins.prometheus.middleware:35
 duplicate-code	high	litestar/middleware/compression/brotli_facade.py:15:1	-	16 lines (55 tokens) duplicated at litestar.middleware.compression.gzip_facade:9
@@ -156,8 +145,6 @@ duplicate-code	high	litestar/pagination.py:92:1	-	35 lines (69 tokens) duplicate
 duplicate-code	high	litestar/pagination.py:128:1	-	14 lines (55 tokens) duplicated in 2 other places: litestar.pagination:178, litestar.pagination:225
 duplicate-code	high	litestar/pagination.py:142:1	-	35 lines (72 tokens) duplicated at litestar.pagination:237
 duplicate-code	high	litestar/params.py:208:1	-	9 lines (62 tokens) duplicated at litestar.params:216
-duplicate-code	high	litestar/params.py:284:1	-	13 lines (96 tokens) duplicated at litestar.params:415
-duplicate-code	high	litestar/params.py:296:1	-	8 lines (52 tokens) duplicated at litestar.params:427
 duplicate-code	high	litestar/params.py:306:1	-	69 lines (91 tokens) duplicated at litestar.params:435
 duplicate-code	high	litestar/plugins/jinja.py:71:1	-	17 lines (59 tokens) duplicated at litestar.plugins.mako:104
 duplicate-code	high	litestar/plugins/pydantic/__init__.py:46:1	-	44 lines (134 tokens) duplicated at litestar.plugins.pydantic.plugins.init:44
@@ -179,25 +166,23 @@ duplicate-code	high	litestar/repository/testing/generic_mock_repository.py:261:1
 duplicate-code	high	litestar/repository/testing/generic_mock_repository.py:280:1	-	22 lines (98 tokens) duplicated at litestar.repository.testing.generic_mock_repository:658
 duplicate-code	high	litestar/repository/testing/generic_mock_repository.py:323:1	-	18 lines (72 tokens) duplicated at litestar.repository.testing.generic_mock_repository:699
 duplicate-code	high	litestar/repository/testing/generic_mock_repository.py:360:1	-	48 lines (227 tokens) duplicated at litestar.repository.testing.generic_mock_repository:736
-duplicate-code	high	litestar/response/base.py:215:1	-	8 lines (55 tokens) duplicated at litestar.response.streaming:137
-duplicate-code	high	litestar/response/base.py:261:1	-	10 lines (69 tokens) duplicated at litestar.response.base:274
+duplicate-code	high	litestar/response/base.py:211:1	-	11 lines (50 tokens) duplicated at litestar.response.redirect:83
+duplicate-code	high	litestar/response/base.py:263:1	-	8 lines (52 tokens) duplicated at litestar.response.base:276
 duplicate-code	high	litestar/response/base.py:390:1	-	31 lines (107 tokens) duplicated at litestar.response.streaming:169
 duplicate-code	high	litestar/response/file.py:281:1	-	22 lines (111 tokens) duplicated at litestar.response.redirect:130
 duplicate-code	high	litestar/response/sse.py:86:1	-	14 lines (83 tokens) duplicated at litestar.utils.sync:65
 duplicate-code	high	litestar/response/sse.py:248:1	-	15 lines (85 tokens) duplicated at litestar.response.template:98
-duplicate-code	high	litestar/router.py:88:1	-	8 lines (63 tokens) duplicated at litestar.static_files:54
-duplicate-code	high	litestar/router.py:95:1	-	6 lines (51 tokens) duplicated at litestar.router:103
 duplicate-code	high	litestar/routes/asgi.py:6:1	-	43 lines (100 tokens) duplicated at litestar.routes.websocket:1
 duplicate-code	high	litestar/security/jwt/auth.py:31:1	-	26 lines (78 tokens) duplicated at litestar.security.jwt.auth:356
 duplicate-code	high	litestar/security/jwt/auth.py:73:1	-	40 lines (119 tokens) duplicated at litestar.security.jwt.auth:434
-duplicate-code	high	litestar/security/jwt/auth.py:149:1	-	51 lines (178 tokens) duplicated at litestar.security.jwt.auth:500
+duplicate-code	high	litestar/security/jwt/auth.py:150:1	-	50 lines (177 tokens) duplicated at litestar.security.jwt.auth:501
 duplicate-code	high	litestar/security/jwt/auth.py:201:1	-	11 lines (62 tokens) duplicated at litestar.security.jwt.auth:563
 duplicate-code	high	litestar/security/jwt/auth.py:276:1	-	38 lines (220 tokens) duplicated at litestar.security.jwt.auth:610
 duplicate-code	high	litestar/security/jwt/auth.py:328:1	-	26 lines (83 tokens) duplicated at litestar.security.jwt.auth:677
 duplicate-code	high	litestar/security/jwt/auth.py:383:1	-	7 lines (51 tokens) duplicated at litestar.security.session_auth.auth:45
 duplicate-code	high	litestar/security/jwt/auth.py:395:1	-	8 lines (54 tokens) duplicated at litestar.security.session_auth.auth:57
 duplicate-code	high	litestar/security/jwt/auth.py:414:1	-	15 lines (85 tokens) duplicated at litestar.security.jwt.auth:655
-duplicate-code	high	litestar/security/jwt/middleware.py:52:1	-	52 lines (162 tokens) duplicated at litestar.security.jwt.middleware:191
+duplicate-code	high	litestar/security/jwt/middleware.py:60:1	-	44 lines (81 tokens) duplicated at litestar.security.jwt.middleware:199
 duplicate-code	high	litestar/security/jwt/middleware.py:252:1	-	21 lines (54 tokens) duplicated at litestar.security.session_auth.middleware:91
 duplicate-code	high	litestar/serialization/msgspec_hooks.py:189:1	-	28 lines (72 tokens) duplicated at litestar.serialization.msgspec_hooks:265
 duplicate-code	high	litestar/stores/memory.py:27:1	-	14 lines (52 tokens) duplicated at litestar.stores.valkey:144
@@ -212,15 +197,14 @@ duplicate-code	high	litestar/testing/client/async_client.py:126:1	-	30 lines (92
 duplicate-code	high	litestar/testing/client/async_client.py:155:1	-	17 lines (64 tokens) duplicated at litestar.testing.client.sync_client:154
 duplicate-code	high	litestar/testing/client/subprocess_client.py:12:1	-	12 lines (65 tokens) duplicated at tools.sphinx_ext.run_examples:50
 duplicate-code	high	litestar/testing/helpers.py:51:1	-	11 lines (63 tokens) duplicated at litestar.testing.helpers:306
-duplicate-code	high	litestar/testing/helpers.py:91:1	-	212 lines (460 tokens) duplicated at litestar.testing.helpers:344
-duplicate-code	high	litestar/testing/request_factory.py:246:1	-	33 lines (90 tokens) duplicated at litestar.testing.request_factory:319
+duplicate-code	high	litestar/testing/helpers.py:105:1	-	198 lines (319 tokens) duplicated at litestar.testing.helpers:358
+duplicate-code	high	litestar/testing/request_factory.py:137:1	-	6 lines (51 tokens) duplicated at litestar.testing.request_factory:425
+duplicate-code	high	litestar/testing/request_factory.py:247:1	-	32 lines (75 tokens) duplicated in 2 other places: litestar.testing.request_factory:320, litestar.testing.request_factory:531
 duplicate-code	high	litestar/testing/request_factory.py:359:1	-	65 lines (293 tokens) duplicated at litestar.testing.request_factory:467
-duplicate-code	high	litestar/testing/request_factory.py:425:1	-	27 lines (71 tokens) duplicated at litestar.testing.request_factory:531
 duplicate-code	high	litestar/testing/websocket_test_session.py:161:1	-	18 lines (70 tokens) duplicated at litestar.testing.websocket_test_session:188
 duplicate-code	high	litestar/types/protocols.py:16:1	-	37 lines (104 tokens) duplicated at litestar.types.protocols:52
 duplicate-code	high	litestar/typing.py:243:1	-	16 lines (52 tokens) duplicated at litestar.typing:306
 duplicate-code	high	litestar/utils/predicates.py:165:1	-	14 lines (62 tokens) duplicated at litestar.utils.predicates:186
-duplicate-code	high	litestar/utils/typing.py:72:1	-	13 lines (63 tokens) duplicated at litestar.utils.typing:95
 duplicate-code	high	tests/conftest.py:86:1	-	15 lines (63 tokens) duplicated at tests.unit.test_channels.conftest:36
 duplicate-code	high	tests/conftest.py:289:1	-	12 lines (52 tokens) duplicated at tests.examples.conftest:7
 duplicate-code	high	tests/docker_service_fixtures.py:120:1	-	12 lines (66 tokens) duplicated at tests.docker_service_fixtures:135
@@ -236,7 +220,6 @@ duplicate-code	high	tests/e2e/test_dependency_injection/test_inter_dependencies.
 duplicate-code	high	tests/e2e/test_dependency_injection/test_websocket_handler_dependency_injection.py:84:1	-	10 lines (52 tokens) duplicated at tests.e2e.test_dependency_injection.test_websocket_handler_dependency_injection:120
 duplicate-code	high	tests/e2e/test_life_cycle_hooks/test_after_request.py:11:1	-	13 lines (101 tokens) duplicated at tests.e2e.test_life_cycle_hooks.test_before_request:31
 duplicate-code	high	tests/e2e/test_life_cycle_hooks/test_after_request.py:35:1	-	15 lines (96 tokens) duplicated at tests.e2e.test_life_cycle_hooks.test_before_request:51
-duplicate-code	high	tests/e2e/test_life_cycle_hooks/test_after_request.py:50:1	-	8 lines (96 tokens) duplicated at tests.e2e.test_life_cycle_hooks.test_before_request:64
 duplicate-code	high	tests/e2e/test_life_cycle_hooks/test_after_request.py:59:1	-	28 lines (171 tokens) duplicated at tests.e2e.test_life_cycle_hooks.test_before_request:91
 duplicate-code	high	tests/e2e/test_logging/test_structlog_to_file.py:34:1	-	9 lines (53 tokens) duplicated at tests.unit.test_middleware.test_logging_middleware:68
 duplicate-code	high	tests/e2e/test_option_requests.py:24:1	-	9 lines (63 tokens) duplicated at tests.e2e.test_option_requests:44
@@ -352,9 +335,6 @@ duplicate-code	high	tests/unit/test_dto/test_integration.py:21:1	-	8 lines (67 t
 duplicate-code	high	tests/unit/test_dto/test_integration.py:36:1	-	13 lines (105 tokens) duplicated at tests.unit.test_dto.test_integration:50
 duplicate-code	high	tests/unit/test_dto/test_integration.py:129:1	-	14 lines (80 tokens) duplicated at tests.unit.test_dto.test_integration:143
 duplicate-code	high	tests/unit/test_dto/test_msgspec.py:3:1	-	28 lines (79 tokens) duplicated at tests.unit.test_plugins.test_pydantic.test_pydantic_dto_factory:3
-duplicate-code	high	tests/unit/test_dto/test_msgspec.py:31:1	-	15 lines (61 tokens) duplicated at tests.unit.test_plugins.test_pydantic.test_pydantic_dto_factory:33
-duplicate-code	high	tests/unit/test_dto/test_msgspec.py:60:1	-	17 lines (61 tokens) duplicated at tests.unit.test_plugins.test_pydantic.test_pydantic_dto_factory:64
-duplicate-code	high	tests/unit/test_dto/test_msgspec.py:77:1	-	15 lines (56 tokens) duplicated at tests.unit.test_plugins.test_pydantic.test_pydantic_dto_factory:82
 duplicate-code	high	tests/unit/test_dto/test_msgspec.py:135:1	-	15 lines (73 tokens) duplicated at tests.unit.test_plugins.test_pydantic.test_pydantic_dto_factory:119
 duplicate-code	high	tests/unit/test_dto/test_msgspec.py:149:1	-	14 lines (86 tokens) duplicated at tests.unit.test_plugins.test_pydantic.test_pydantic_dto_factory:133
 duplicate-code	high	tests/unit/test_exceptions.py:45:1	-	7 lines (52 tokens) duplicated at tests.unit.test_exceptions:77
@@ -515,7 +495,6 @@ duplicate-code	high	tests/unit/test_repository/test_generic_mock_repository.py:3
 duplicate-code	high	tests/unit/test_repository/test_generic_mock_repository.py:315:1	-	15 lines (87 tokens) duplicated at tests.unit.test_repository.test_generic_mock_repository:354
 duplicate-code	high	tests/unit/test_repository/test_generic_mock_repository.py:373:1	-	12 lines (99 tokens) duplicated at tests.unit.test_repository.test_generic_mock_repository:389
 duplicate-code	high	tests/unit/test_repository/test_generic_mock_repository.py:402:1	-	16 lines (105 tokens) duplicated at tests.unit.test_repository.test_generic_mock_repository:423
-duplicate-code	high	tests/unit/test_request_class_resolution.py:15:1	-	7 lines (62 tokens) duplicated at tests.unit.test_response_class_resolution:15
 duplicate-code	high	tests/unit/test_request_class_resolution.py:30:1	-	15 lines (85 tokens) duplicated at tests.unit.test_response_class_resolution:28
 duplicate-code	high	tests/unit/test_request_class_resolution.py:45:1	-	11 lines (65 tokens) duplicated at tests.unit.test_response_class_resolution:43
 duplicate-code	high	tests/unit/test_response/test_file_response.py:28:1	-	8 lines (72 tokens) duplicated at tests.unit.test_response.test_file_response:44
@@ -539,8 +518,7 @@ duplicate-code	high	tests/unit/test_response/test_sse.py:293:1	-	17 lines (75 to
 duplicate-code	high	tests/unit/test_response/test_streaming_response.py:45:1	-	18 lines (107 tokens) duplicated at tests.unit.test_response.test_streaming_response:75
 duplicate-code	high	tests/unit/test_response/test_streaming_response.py:104:1	-	6 lines (50 tokens) duplicated at tests.unit.test_response.test_streaming_response:171
 duplicate-code	high	tests/unit/test_response/test_streaming_response.py:144:1	-	12 lines (94 tokens) duplicated at tests.unit.test_response.test_streaming_response:160
-duplicate-code	high	tests/unit/test_security/test_jwt/test_auth.py:44:1	-	18 lines (183 tokens) duplicated at tests.unit.test_security.test_jwt.test_auth:222
-duplicate-code	high	tests/unit/test_security/test_jwt/test_auth.py:61:1	-	11 lines (83 tokens) duplicated at tests.unit.test_security.test_jwt.test_auth:240
+duplicate-code	high	tests/unit/test_security/test_jwt/test_auth.py:57:1	-	15 lines (101 tokens) duplicated at tests.unit.test_security.test_jwt.test_auth:236
 duplicate-code	high	tests/unit/test_security/test_jwt/test_auth.py:82:1	-	50 lines (381 tokens) duplicated at tests.unit.test_security.test_jwt.test_auth:263
 duplicate-code	high	tests/unit/test_security/test_jwt/test_auth.py:148:1	-	12 lines (60 tokens) duplicated at tests.unit.test_security.test_jwt.test_auth:343
 duplicate-code	high	tests/unit/test_security/test_jwt/test_auth.py:316:1	-	7 lines (58 tokens) duplicated at tests.unit.test_security.test_jwt.test_auth:353
@@ -586,7 +564,6 @@ duplicate-code	high	tests/unit/test_testing/test_test_client.py:366:1	-	8 lines 
 duplicate-code	high	tests/unit/test_testing/test_test_client.py:424:1	-	9 lines (60 tokens) duplicated at tests.unit.test_testing.test_test_client:538
 duplicate-code	high	tests/unit/test_testing/test_test_client.py:490:1	-	7 lines (52 tokens) duplicated at tests.unit.test_testing.test_test_client:501
 duplicate-code	high	tests/unit/test_testing/test_test_client.py:523:1	-	9 lines (67 tokens) duplicated at tests.unit.test_testing.test_test_client:552
-duplicate-code	high	tests/unit/test_types/test_protocols.py:13:1	-	9 lines (50 tokens) duplicated at tests.unit.test_utils.test_predicates:106
 duplicate-code	high	tests/unit/test_typing.py:215:1	-	9 lines (65 tokens) duplicated at tests.unit.test_typing:223
 duplicate-code	high	tests/unit/test_typing.py:433:1	-	10 lines (90 tokens) duplicated at tests.unit.test_typing:444
 duplicate-code	high	tests/unit/test_utils/test_dataclass.py:40:1	-	16 lines (65 tokens) duplicated at tests.unit.test_utils.test_dataclass:56
@@ -595,5 +572,4 @@ duplicate-code	high	tests/unit/test_utils/test_predicates.py:152:1	-	15 lines (9
 duplicate-code	high	tests/unit/test_utils/test_sync.py:9:1	-	16 lines (76 tokens) duplicated at tests.unit.test_utils.test_sync:28
 duplicate-code	high	tests/unit/test_utils/test_sync.py:45:1	-	14 lines (68 tokens) duplicated at tests.unit.test_utils.test_sync:60
 duplicate-code	high	tests/unit/test_utils/test_sync.py:76:1	-	15 lines (64 tokens) duplicated at tests.unit.test_utils.test_sync:94
-duplicate-code	high	tests/unit/test_utils/test_typing.py:140:1	-	5 lines (133 tokens) duplicated at tests.unit.test_utils.test_typing:145
 duplicate-code	high	tests/unit/test_websocket_class_resolution.py:27:1	-	11 lines (55 tokens) duplicated at tests.unit.test_websocket_class_resolution:72
