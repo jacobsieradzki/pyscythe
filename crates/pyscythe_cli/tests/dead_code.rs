@@ -804,3 +804,32 @@ fn reports_attributes_nothing_reads_but_not_the_fields_of_a_data_class() {
         "{report}"
     );
 }
+
+#[test]
+fn entry_points_declared_in_setup_py_and_setup_cfg_keep_their_targets() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json", "--show-kept"])
+        .arg(fixture("legacy_entry_points"))
+        .output()
+        .expect("runs");
+
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let mut kept: Vec<&str> = report["kept"]
+        .as_array()
+        .expect("kept array")
+        .iter()
+        .filter(|k| k["plugin"] == "entry-points")
+        .filter_map(|k| k["symbol"].as_str())
+        .collect();
+    kept.sort_unstable();
+    assert_eq!(kept, ["launch", "main"], "{report}");
+
+    let mut reported: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| f["symbol"].as_str().or_else(|| f["module"].as_str()))
+        .collect();
+    reported.sort_unstable();
+    assert_eq!(reported, ["forgotten", "pkg.orphan"], "{report}");
+}

@@ -243,6 +243,32 @@ fn manifest_in(
             break;
         }
     }
+    // Entry points are additive: a setuptools project declares its scripts in
+    // `setup.py` or `setup.cfg` whether or not a `pyproject.toml` sits beside
+    // it, and each one keeps a module alive.
+    for (file_name, read) in [
+        (
+            "setup.py",
+            setup_py_entry_points as fn(&str) -> Vec<EntryPoint>,
+        ),
+        ("setup.cfg", setup_cfg_entry_points),
+    ] {
+        let path = directory.join(file_name);
+        let Ok(text) = std::fs::read_to_string(&path) else {
+            continue;
+        };
+        let declared = read(&text);
+        if declared.is_empty() {
+            continue;
+        }
+        if manifest.is_none() {
+            source_path = path;
+        }
+        manifest
+            .get_or_insert_with(Manifest::empty)
+            .entry_points
+            .extend(declared);
+    }
     if manifest.as_ref().is_none_or(|m| m.dependencies.is_empty())
         && let Some((path, pinned)) = requirements_dependencies(directory)
     {
@@ -440,12 +466,7 @@ fn setup_py_dependencies(source: &str) -> Vec<Dependency> {
         let Expr::Call(call) = &*expression.value else {
             continue;
         };
-        let is_setup = match &*call.func {
-            Expr::Name(name) => name.id.as_str() == "setup",
-            Expr::Attribute(attribute) => attribute.attr.as_str() == "setup",
-            _ => false,
-        };
-        if !is_setup {
+        if !is_setup_call(&call.func) {
             continue;
         }
         for keyword in &call.arguments.keywords {
@@ -483,6 +504,154 @@ fn setup_py_dependencies(source: &str) -> Vec<Dependency> {
         }
     }
     out
+}
+
+/// The entry points a `setup()` call declares, from the `entry_points=`
+/// keyword. setuptools takes either a dict of group name to a list of
+/// `name = module:attr` strings, or one INI-format string holding the same
+/// thing; both are read here.
+fn setup_py_entry_points(source: &str) -> Vec<EntryPoint> {
+    use ruff_python_ast::{Expr, Stmt};
+    let Ok(parsed) = ruff_python_parser::parse_module(source) else {
+        return Vec::new();
+    };
+    let mut out = Vec::new();
+    for statement in &parsed.syntax().body {
+        let Stmt::Expr(expression) = statement else {
+            continue;
+        };
+        let Expr::Call(call) = &*expression.value else {
+            continue;
+        };
+        if !is_setup_call(&call.func) {
+            continue;
+        }
+        for keyword in &call.arguments.keywords {
+            if keyword.arg.as_deref() != Some("entry_points") {
+                continue;
+            }
+            match &keyword.value {
+                Expr::Dict(dict) => {
+                    for item in &dict.items {
+                        let Some(Expr::StringLiteral(group)) = &item.key else {
+                            continue;
+                        };
+                        let kind = group_kind(group.value.to_str());
+                        out.extend(
+                            string_elements(&item.value)
+                                .iter()
+                                .filter_map(|line| declared_entry_point(kind, line)),
+                        );
+                    }
+                }
+                Expr::StringLiteral(text) => {
+                    out.extend(ini_entry_points(text.value.to_str()));
+                }
+                _ => {}
+            }
+        }
+    }
+    out
+}
+
+/// Whether the called expression is `setup` or `setuptools.setup`.
+fn is_setup_call(func: &ruff_python_ast::Expr) -> bool {
+    use ruff_python_ast::Expr;
+    match func {
+        Expr::Name(name) => name.id.as_str() == "setup",
+        Expr::Attribute(attribute) => attribute.attr.as_str() == "setup",
+        _ => false,
+    }
+}
+
+/// The string literals of a list or tuple expression.
+fn string_elements(value: &ruff_python_ast::Expr) -> Vec<String> {
+    use ruff_python_ast::Expr;
+    let elements = match value {
+        Expr::List(list) => &list.elts,
+        Expr::Tuple(tuple) => &tuple.elts,
+        _ => return Vec::new(),
+    };
+    elements
+        .iter()
+        .filter_map(|element| match element {
+            Expr::StringLiteral(s) => Some(s.value.to_str().to_owned()),
+            _ => None,
+        })
+        .collect()
+}
+
+/// `[options.entry_points]` in `setup.cfg`: group names at the left margin,
+/// each followed by indented `name = module:attr` lines.
+fn setup_cfg_entry_points(text: &str) -> Vec<EntryPoint> {
+    let mut out = Vec::new();
+    let mut in_section = false;
+    let mut kind = EntryPointKind::Plugin;
+    for line in text.lines() {
+        let trimmed = line.trim();
+        if trimmed.starts_with('[') {
+            in_section = trimmed == "[options.entry_points]";
+            continue;
+        }
+        if !in_section || trimmed.is_empty() || trimmed.starts_with('#') {
+            continue;
+        }
+        let indented = line.starts_with(char::is_whitespace);
+        if indented {
+            if let Some(entry) = declared_entry_point(kind, trimmed) {
+                out.push(entry);
+            }
+            continue;
+        }
+        // `console_scripts =` opens a group; `console_scripts = a = pkg:main`
+        // declares one on the same line.
+        let Some((group, rest)) = trimmed.split_once('=') else {
+            continue;
+        };
+        kind = group_kind(group.trim());
+        if let Some(entry) = declared_entry_point(kind, rest.trim()) {
+            out.push(entry);
+        }
+    }
+    out
+}
+
+/// The entry points an INI-format `entry_points=` string declares.
+fn ini_entry_points(text: &str) -> Vec<EntryPoint> {
+    let mut out = Vec::new();
+    let mut kind = None;
+    for line in text.lines() {
+        let trimmed = line.trim();
+        if let Some(group) = trimmed.strip_prefix('[').and_then(|g| g.strip_suffix(']')) {
+            kind = Some(group_kind(group.trim()));
+            continue;
+        }
+        if trimmed.is_empty() || trimmed.starts_with('#') {
+            continue;
+        }
+        if let Some(kind) = kind
+            && let Some(entry) = declared_entry_point(kind, trimmed)
+        {
+            out.push(entry);
+        }
+    }
+    out
+}
+
+/// What kind of entry point a group name declares.
+fn group_kind(group: &str) -> EntryPointKind {
+    match group {
+        "console_scripts" => EntryPointKind::Script,
+        "gui_scripts" => EntryPointKind::GuiScript,
+        _ => EntryPointKind::Plugin,
+    }
+}
+
+/// `name = pkg.module:attr`, as written in a group.
+fn declared_entry_point(kind: EntryPointKind, line: &str) -> Option<EntryPoint> {
+    let (_, target) = line.split_once('=')?;
+    let target = target.trim();
+    (!target.is_empty()).then(|| entry_point(kind, target))
 }
 
 /// `install_requires =` under `[options]` in `setup.cfg`, one requirement per line.
@@ -1099,6 +1268,60 @@ ignore = ["my_plugin"]
         assert_eq!(
             settings.config.ignored_dependencies[0].as_str(),
             "my-plugin"
+        );
+    }
+
+    #[test]
+    fn reads_entry_points_from_setup_py_as_a_dict_or_as_one_ini_string() {
+        let described = |points: &[super::EntryPoint]| -> Vec<(EntryPointKind, String, String)> {
+            points
+                .iter()
+                .map(|point| {
+                    (
+                        point.kind,
+                        point.module.as_str().to_owned(),
+                        point
+                            .attribute
+                            .as_ref()
+                            .map_or_else(String::new, |a| a.as_str().to_owned()),
+                    )
+                })
+                .collect()
+        };
+        let dict = super::setup_py_entry_points(
+            "from setuptools import setup\nsetup(entry_points={'console_scripts': ['legacy = pkg.cli:main'], 'gui_scripts': ('legacy-gui = pkg.gui:launch',), 'pytest11': ['legacy = pkg.plugin']})\n",
+        );
+        assert_eq!(
+            described(&dict),
+            [
+                (EntryPointKind::Script, "pkg.cli".into(), "main".into()),
+                (EntryPointKind::GuiScript, "pkg.gui".into(), "launch".into()),
+                (EntryPointKind::Plugin, "pkg.plugin".into(), String::new()),
+            ]
+        );
+
+        let ini = super::setup_py_entry_points(
+            "setup(entry_points=\"\"\"\n[console_scripts]\nlegacy = pkg.cli:main\n\n[pytest11]\nlegacy = pkg.plugin\n\"\"\")\n",
+        );
+        assert_eq!(
+            described(&ini),
+            [
+                (EntryPointKind::Script, "pkg.cli".into(), "main".into()),
+                (EntryPointKind::Plugin, "pkg.plugin".into(), String::new()),
+            ]
+        );
+
+        let cfg = super::setup_cfg_entry_points(
+            "[metadata]\nname = legacy\n\n[options.entry_points]\nconsole_scripts =\n    legacy = pkg.cli:main\n    other = pkg.other:run\ngui_scripts = legacy-gui = pkg.gui:launch\n\n[options]\nzip_safe = False\n",
+        );
+        assert_eq!(
+            described(&cfg),
+            [
+                (EntryPointKind::Script, "pkg.cli".into(), "main".into()),
+                (EntryPointKind::Script, "pkg.other".into(), "run".into()),
+                (EntryPointKind::GuiScript, "pkg.gui".into(), "launch".into()),
+            ],
+            "a group may open a block or declare one target on its own line"
         );
     }
 

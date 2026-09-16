@@ -1,0 +1,2 @@
+def launch() -> None:
+    pass
