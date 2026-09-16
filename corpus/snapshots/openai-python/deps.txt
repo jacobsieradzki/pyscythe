@@ -1,7 +1,7 @@
 files_scanned=2156
 symbols_checked=34
 symbols_kept=0
-findings=13
+findings=12
 --
 unresolved-import	low	examples/realtime/audio_util.py:10:8		import `pyaudio` resolves to nothing on the search path
 unresolved-import	low	examples/realtime/audio_util.py:12:1		import `pydub` resolves to nothing on the search path
@@ -15,4 +15,3 @@ unused-dependency	low	pyproject.toml	urllib3	dependency `urllib3` (optional-depe
 missing-dependency	low	src/openai/_compat.py:97:5	pydantic-core	`pydantic_core` is imported but `pydantic-core` is not a declared dependency; it arrives through a declared dependency
 missing-dependency	low	tests/respx2/mocks.py:7:8	httpcore2	`httpcore2` is imported but `httpcore2` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	tests/test_tls_hostname.py:120:5		import `cryptography` resolves to nothing on the search path
-unresolved-import	low	tests/test_uv_workflows.py:24:12		import `tomllib` resolves to nothing on the search path

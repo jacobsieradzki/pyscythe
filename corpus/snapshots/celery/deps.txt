@@ -1,9 +1,8 @@
 files_scanned=427
 symbols_checked=77
 symbols_kept=0
-findings=60
+findings=58
 --
-unresolved-import	low	celery/app/base.py:65:12		import `annotationlib` resolves to nothing on the search path
 missing-dependency	low	celery/app/base.py:1385:27	amqp	`amqp` is imported but `amqp` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	celery/backends/azureblockblob.py:12:12		import `azure` resolves to nothing on the search path
 unresolved-import	low	celery/backends/cache.py:36:24		import `memcache` resolves to nothing on the search path
@@ -28,7 +27,6 @@ unresolved-import	low	celery/utils/serialization.py:14:12		import `cPickle` reso
 unresolved-import	low	celery/utils/threads.py:20:13		import `thread` resolves to nothing on the search path
 unresolved-import	low	celery/utils/threads.py:23:17		import `_dummy_thread` resolves to nothing on the search path
 unresolved-import	low	celery/utils/threads.py:25:17		import `dummy_thread` resolves to nothing on the search path
-unresolved-import	low	celery/utils/time.py:29:5		import `backports` resolves to nothing on the search path
 unresolved-import	low	celery/worker/control.py:516:16		import `objgraph` resolves to nothing on the search path
 unresolved-import	low	docs/changelog_formatter.py:8:1		import `colorama` resolves to nothing on the search path
 unresolved-import	low	examples/celery_http_gateway/manage.py:6:12		import `settings` resolves to nothing on the search path

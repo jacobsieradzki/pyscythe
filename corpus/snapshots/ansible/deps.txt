@@ -1,7 +1,7 @@
 files_scanned=1850
 symbols_checked=5
 symbols_kept=0
-findings=49
+findings=48
 --
 unresolved-import	low	hacking/ansible-profile.py:8:1		import `ansible` resolves to nothing on the search path
 unresolved-import	low	hacking/azp/download.py:36:12		import `argcomplete` resolves to nothing on the search path
@@ -16,7 +16,6 @@ unresolved-import	low	lib/ansible/module_utils/_internal/_ansiballz/_extensions/
 unresolved-import	low	lib/ansible/module_utils/_internal/_logging.py:13:5		import `systemd` resolves to nothing on the search path
 unresolved-import	low	lib/ansible/module_utils/compat/typing.py:12:5		import `typing_extensions` resolves to nothing on the search path
 unresolved-import	low	lib/ansible/module_utils/distro/__init__.py:37:12		import `distro` resolves to nothing on the search path
-unresolved-import	low	lib/ansible/module_utils/six/__init__.py:710:12		import `StringIO` resolves to nothing on the search path
 unresolved-import	low	lib/ansible/module_utils/urls.py:88:12		import `urllib_gssapi` resolves to nothing on the search path
 unresolved-import	low	lib/ansible/module_utils/urls.py:95:12		import `gssapi` resolves to nothing on the search path
 unresolved-import	low	lib/ansible/modules/apt.py:406:12		import `apt` resolves to nothing on the search path

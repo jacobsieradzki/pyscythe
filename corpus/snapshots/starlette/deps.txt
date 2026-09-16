@@ -1,7 +1,7 @@
 files_scanned=84
 symbols_checked=26
 symbols_kept=0
-findings=10
+findings=9
 --
 unused-dependency	low	pyproject.toml	importlib-metadata	dependency `importlib-metadata` (dependency-groups.dev) is never imported
 unused-dependency	low	pyproject.toml	mkdocstrings	dependency `mkdocstrings` (dependency-groups.docs) is never imported
@@ -9,7 +9,6 @@ unused-dependency	low	pyproject.toml	mkdocstrings-python	dependency `mkdocstring
 unused-dependency	low	pyproject.toml	opentelemetry-api	dependency `opentelemetry-api` (optional-dependencies.full) is never imported
 unused-dependency	low	pyproject.toml	opentelemetry-sdk	dependency `opentelemetry-sdk` (dependency-groups.dev) is never imported
 unused-dependency	low	pyproject.toml	zensical	dependency `zensical` (dependency-groups.docs) is never imported
-unresolved-import	low	starlette/_utils.py:25:5		import `exceptiongroup` resolves to nothing on the search path
 unresolved-import	low	starlette/formparsers.py:23:20		import `multipart` resolves to nothing on the search path
 unresolved-import	low	starlette/middleware/opentelemetry.py:7:5		import `opentelemetry` resolves to nothing on the search path
 unresolved-import	low	tests/test_testclient.py:13:8		import `sniffio` resolves to nothing on the search path

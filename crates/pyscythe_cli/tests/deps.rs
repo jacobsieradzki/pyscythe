@@ -206,3 +206,27 @@ fn imports_that_arrive_through_a_declared_dependency_are_low_confidence() {
         findings[0].3
     );
 }
+
+#[test]
+fn an_import_guarded_by_a_python_version_check_is_not_a_missing_module() {
+    let output = pyscythe()
+        .args(["deps", "--format", "json"])
+        .arg(fixture("version_guard"))
+        .output()
+        .expect("runs");
+
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let mut unresolved: Vec<&str> = report["findings"]
+        .as_array()
+        .expect("findings")
+        .iter()
+        .filter(|f| f["rule"] == "unresolved-import")
+        .filter_map(|f| f["message"].as_str())
+        .collect();
+    unresolved.sort_unstable();
+    assert_eq!(
+        unresolved,
+        ["import `missingmodule` resolves to nothing on the search path"],
+        "a module behind a `sys.version_info` check belongs to another interpreter: {report}"
+    );
+}

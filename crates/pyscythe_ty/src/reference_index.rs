@@ -5,7 +5,7 @@
 //! Building this once is far cheaper than searching the workspace per symbol,
 //! and resolving from the use site handles aliased imports uniformly.
 
-use pyscythe_core::index::{ImportKind, ImportedNames};
+use pyscythe_core::index::{ImportCondition, ImportKind, ImportedNames};
 use ruff_db::files::{File, FileRange};
 use ruff_db::parsed::parsed_module;
 use ruff_python_ast::visitor::source_order::{SourceOrderVisitor, TraversalSignal, walk_body};
@@ -133,6 +133,8 @@ pub(crate) struct ExternalImportRecord {
     pub(crate) range: TextRange,
     /// The resolved file in site-packages, or `None` when unresolved.
     pub(crate) site_packages_file: Option<File>,
+    /// Whether every interpreter runs the import.
+    pub(crate) condition: ImportCondition,
 }
 
 /// One file importing another.
@@ -401,6 +403,8 @@ fn collect_uses(
         resolution,
         function_depth: 0,
         type_checking_depth: 0,
+        version_guard_depth: 0,
+        version_flags: FxHashSet::default(),
         out: FileUses::default(),
     };
     walk_body(&mut collector, &module.syntax().body);
@@ -417,10 +421,75 @@ struct UseCollector<'a, 'db> {
     function_depth: u32,
     /// How many `if TYPE_CHECKING:` blocks enclose the current node.
     type_checking_depth: u32,
+    /// How many `if sys.version_info ...:` statements enclose the current node.
+    version_guard_depth: u32,
+    /// Names assigned from a version test, as in `PY_3_14_PLUS = sys.version_info >= (3, 14)`.
+    version_flags: FxHashSet<String>,
     out: FileUses,
 }
 
 impl UseCollector<'_, '_> {
+    /// Whether the test decides something from the Python version, following
+    /// a name the file assigned from such a test.
+    fn tests_the_version(&self, test: &Expr) -> bool {
+        if let Expr::Name(name) = test
+            && self.version_flags.contains(name.id.as_str())
+        {
+            return true;
+        }
+        is_version_test(test)
+    }
+
+    /// Records `PY_3_14_PLUS = sys.version_info >= (3, 14)` so that a later
+    /// `if PY_3_14_PLUS:` reads as the version test it stands for.
+    fn note_version_flag(&mut self, targets: &[Expr], value: &Expr) {
+        if !is_version_test(value) {
+            return;
+        }
+        for target in targets {
+            if let Expr::Name(name) = target {
+                self.version_flags.insert(name.id.as_str().to_owned());
+            }
+        }
+    }
+
+    /// Records `from x import a, b`: the module itself and each name it binds.
+    fn record_import_from(&mut self, import: &ast::StmtImportFrom) {
+        let module_name = import.module.as_deref().unwrap_or_default();
+        let names = if import.names.iter().any(|alias| alias.name.as_str() == "*") {
+            ImportedNames::Wildcard
+        } else {
+            ImportedNames::Explicit
+        };
+        self.record_module_and_ancestors(import.range(), module_name, import.level, names);
+        for alias in &import.names {
+            let name = alias.name.as_str();
+            if name == "*" {
+                continue;
+            }
+            if self.resolution == Resolution::ByName {
+                self.out.attribute_names.insert(name.to_owned());
+                continue;
+            }
+            let resolved = definitions_for_imported_symbol(
+                self.model,
+                import,
+                name,
+                ImportAliasResolution::ResolveAliases,
+            );
+            self.record(alias.name.range(), import.range(), resolved);
+        }
+    }
+
+    /// Whether the import the collector is looking at runs on every interpreter.
+    const fn import_condition(&self) -> ImportCondition {
+        if self.version_guard_depth > 0 {
+            ImportCondition::InterpreterVersion
+        } else {
+            ImportCondition::Always
+        }
+    }
+
     const fn import_kind(&self) -> ImportKind {
         if self.type_checking_depth > 0 {
             ImportKind::TypeOnly
@@ -554,6 +623,7 @@ impl UseCollector<'_, '_> {
             top_level,
             range,
             site_packages_file,
+            condition: self.import_condition(),
         });
     }
 
@@ -770,6 +840,28 @@ fn split_dotted_reference(text: &str) -> Option<(&str, Option<&str>)> {
     Some((module, attribute))
 }
 
+/// Whether the test decides something from the running Python version, as in
+/// `sys.version_info >= (3, 14)` or `sys.version_info[:2] < (3, 11)`.
+///
+/// Every branch of such a statement, `else` included, belongs to some
+/// interpreter but not to this one.
+fn is_version_test(test: &Expr) -> bool {
+    match test {
+        Expr::Name(name) => name.id.as_str() == "version_info",
+        Expr::Attribute(attribute) => {
+            attribute.attr.as_str() == "version_info" || is_version_test(&attribute.value)
+        }
+        Expr::Subscript(subscript) => is_version_test(&subscript.value),
+        Expr::Compare(compare) => {
+            is_version_test(&compare.left) || compare.comparators.iter().any(is_version_test)
+        }
+        Expr::BoolOp(operation) => operation.values.iter().any(is_version_test),
+        Expr::UnaryOp(operation) => is_version_test(&operation.operand),
+        Expr::Call(call) => is_version_test(&call.func),
+        _ => false,
+    }
+}
+
 fn is_type_checking_test(test: &Expr) -> bool {
     match test {
         Expr::Name(name) => name.id.as_str() == "TYPE_CHECKING",
@@ -784,6 +876,17 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
             AnyNodeRef::StmtFunctionDef(_) => self.function_depth += 1,
             AnyNodeRef::StmtIf(if_statement) if is_type_checking_test(&if_statement.test) => {
                 self.type_checking_depth += 1;
+            }
+            AnyNodeRef::StmtIf(if_statement) if self.tests_the_version(&if_statement.test) => {
+                self.version_guard_depth += 1;
+            }
+            AnyNodeRef::StmtAssign(assign) => {
+                self.note_version_flag(&assign.targets, &assign.value);
+            }
+            AnyNodeRef::StmtAnnAssign(assign) => {
+                if let Some(value) = &assign.value {
+                    self.note_version_flag(std::slice::from_ref(&assign.target), value);
+                }
             }
             AnyNodeRef::ExprName(name) if name.ctx.is_load() => match self.resolution {
                 Resolution::Semantic => {
@@ -841,32 +944,7 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
                         .collect();
                 self.record(parameter.range(), parameter.range(), fixtures);
             }
-            AnyNodeRef::StmtImportFrom(import) => {
-                let module_name = import.module.as_deref().unwrap_or_default();
-                let names = if import.names.iter().any(|alias| alias.name.as_str() == "*") {
-                    ImportedNames::Wildcard
-                } else {
-                    ImportedNames::Explicit
-                };
-                self.record_module_and_ancestors(import.range(), module_name, import.level, names);
-                for alias in &import.names {
-                    let name = alias.name.as_str();
-                    if name == "*" {
-                        continue;
-                    }
-                    if self.resolution == Resolution::ByName {
-                        self.out.attribute_names.insert(name.to_owned());
-                        continue;
-                    }
-                    let resolved = definitions_for_imported_symbol(
-                        self.model,
-                        import,
-                        name,
-                        ImportAliasResolution::ResolveAliases,
-                    );
-                    self.record(alias.name.range(), import.range(), resolved);
-                }
-            }
+            AnyNodeRef::StmtImportFrom(import) => self.record_import_from(import),
             AnyNodeRef::StmtImport(import) => {
                 for alias in &import.names {
                     self.record_module_and_ancestors(
@@ -887,6 +965,9 @@ impl<'a> SourceOrderVisitor<'a> for UseCollector<'a, '_> {
             AnyNodeRef::StmtFunctionDef(_) => self.function_depth -= 1,
             AnyNodeRef::StmtIf(if_statement) if is_type_checking_test(&if_statement.test) => {
                 self.type_checking_depth -= 1;
+            }
+            AnyNodeRef::StmtIf(if_statement) if self.tests_the_version(&if_statement.test) => {
+                self.version_guard_depth -= 1;
             }
             _ => {}
         }

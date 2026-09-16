@@ -1,7 +1,7 @@
 files_scanned=583
 symbols_checked=50
 symbols_kept=0
-findings=21
+findings=20
 --
 unresolved-import	low	docs/scripts/clirecording/clidirector.py:8:8		import `libtmux` resolves to nothing on the search path
 unresolved-import	low	examples/contrib/modify_body_inject_iframe.py:2:1		import `bs4` resolves to nothing on the search path
@@ -13,7 +13,6 @@ unresolved-import	low	examples/contrib/webscanner_helper/proxyauth_selenium.py:9
 missing-dependency	low	mitmproxy/addons/core.py:131:23	attrs	`attr` is imported but `attrs` is not a declared dependency; it arrives through a declared dependency
 missing-dependency	low	mitmproxy/addons/maplocal.py:9:1	werkzeug	`werkzeug` is imported but `werkzeug` is not a declared dependency; it arrives through a declared dependency
 missing-dependency	low	mitmproxy/contentviews/_view_http3.py:5:8	pylsqpack	`pylsqpack` is imported but `pylsqpack` is not a declared dependency; it arrives through a declared dependency
-unresolved-import	low	mitmproxy/net/encoding.py:16:5		import `compression` resolves to nothing on the search path
 missing-dependency	low	mitmproxy/tools/main.py:60:27	hpack	`hpack` is imported but `hpack` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	mitmproxy/utils/debug.py:41:20		import `psutil` resolves to nothing on the search path
 unused-dependency	low	pyproject.toml	awscli	dependency `awscli` (dependency-groups.deploy) is never imported

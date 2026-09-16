@@ -18,7 +18,6 @@ unresolved-import	low	sphinx/search/ja.py:23:12		import `MeCab` resolves to noth
 unresolved-import	low	sphinx/search/ja.py:30:12		import `janome` resolves to nothing on the search path
 unresolved-import	low	sphinx/search/zh.py:18:12		import `jieba` resolves to nothing on the search path
 missing-dependency	low	sphinx/util/_uri.py:8:28	idna	`idna` is imported but `idna` is not a declared dependency; it arrives through a declared dependency
-unresolved-import	low	sphinx/util/inspect.py:718:12		import `annotationlib` resolves to nothing on the search path
 missing-dependency	low	sphinx/util/requests.py:10:1	urllib3	`urllib3` is imported but `urllib3` is not a declared dependency; it arrives through a declared dependency
 unresolved-import	low	sphinx/versioning.py:23:12		import `Levenshtein` resolves to nothing on the search path
 unresolved-import	low	tests/test_ext_autodoc/test_ext_autodoc.py:35:12		import `pyximport` resolves to nothing on the search path
@@ -26,5 +25,6 @@ unresolved-import	low	tests/test_ext_autosummary/test_ext_autosummary.py:249:12	
 unresolved-import	low	tests/test_ext_autosummary/test_ext_autosummary.py:474:12		import `autosummary_dummy_inherited_module` resolves to nothing on the search path
 unresolved-import	low	tests/test_extensions/test_ext_inheritance_diagram.py:336:9		import `example` resolves to nothing on the search path
 unresolved-import	low	tests/test_util/test_util_inspect.py:916:16		import `_testcapi` resolves to nothing on the search path
+unresolved-import	low	tests/test_util/test_util_inspect_py314.py:10:5		import `annotationlib` resolves to nothing on the search path
 unresolved-import	low	tests/test_util/test_util_typing.py:509:16		import `unknown` resolves to nothing on the search path
 unresolved-import	low	utils/convert_attestations.py:21:1		import `sigstore` resolves to nothing on the search path

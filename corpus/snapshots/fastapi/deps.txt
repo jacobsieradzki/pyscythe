@@ -1,11 +1,10 @@
 files_scanned=1028
 symbols_checked=125
 symbols_kept=0
-findings=33
+findings=32
 --
 unresolved-import	low	docs_src/graphql_/tutorial001_py310.py:1:8		import `strawberry` resolves to nothing on the search path
 missing-dependency	low	fastapi/_compat/v2.py:32:1	pydantic-core	`pydantic_core` is imported but `pydantic-core` is not a declared dependency; it arrives through a declared dependency
-unresolved-import	low	fastapi/dependencies/utils.py:205:13		import `annotationlib` resolves to nothing on the search path
 unused-dependency	low	pyproject.toml	a2wsgi	dependency `a2wsgi` (dependency-groups.dev) is never imported
 unused-dependency	low	pyproject.toml	cairosvg	dependency `cairosvg` (dependency-groups.dev) is never imported
 unused-dependency	low	pyproject.toml	fastar	dependency `fastar` (optional-dependencies.standard) is never imported

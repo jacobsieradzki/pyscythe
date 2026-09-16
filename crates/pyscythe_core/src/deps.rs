@@ -6,7 +6,7 @@ use camino::{Utf8Path, Utf8PathBuf};
 
 use crate::config::Config;
 use crate::finding::{Confidence, Detail, Finding, Rule};
-use crate::index::{CodebaseIndex, ImportOrigin};
+use crate::index::{CodebaseIndex, ImportCondition, ImportOrigin};
 use crate::manifest::{DependencyGroup, DistributionName, Manifest};
 use crate::report::{Report, ReportKind, Summary};
 
@@ -335,7 +335,9 @@ fn survey_imports(
                             .entry((*distribution).clone())
                             .or_default()
                             .insert(module);
-                    } else if import.origin == ImportOrigin::Unresolved {
+                    } else if import.origin == ImportOrigin::Unresolved
+                        && import.condition == ImportCondition::Always
+                    {
                         survey
                             .unresolved
                             .entry(module.clone())
@@ -420,7 +422,7 @@ mod tests {
     use super::analyze;
     use crate::config::Config;
     use crate::finding::Rule;
-    use crate::index::ImportOrigin;
+    use crate::index::{ImportCondition, ImportOrigin};
     use crate::manifest::{Dependency, DependencyGroup, DistributionName, Manifest};
     use crate::testing::FakeIndex;
 
@@ -451,6 +453,38 @@ mod tests {
             .iter()
             .map(|f| (f.rule, f.message.clone()))
             .collect()
+    }
+
+    #[test]
+    fn an_import_behind_a_version_check_is_not_reported_as_unresolved() {
+        let mut index = FakeIndex::new();
+        let file = index.add_file("/proj/pkg/compat.py", "pkg.compat");
+        index.add_conditional_import(
+            file,
+            "annotationlib",
+            ImportOrigin::Unresolved,
+            ImportCondition::InterpreterVersion,
+        );
+        index.add_external_import(file, "missingmodule", ImportOrigin::Unresolved);
+
+        let report = analyze(
+            &index,
+            &scopes(&[]),
+            &Config::default(),
+            Utf8Path::new("/proj"),
+        );
+
+        let unresolved: Vec<String> = report
+            .findings
+            .iter()
+            .filter(|finding| finding.rule == Rule::UnresolvedImport)
+            .map(|finding| finding.message.clone())
+            .collect();
+        assert_eq!(
+            unresolved,
+            ["import `missingmodule` resolves to nothing on the search path"],
+            "only the unguarded import is missing"
+        );
     }
 
     #[test]

@@ -7,8 +7,9 @@ use crate::metrics::FunctionMetrics;
 use crate::tokens::{CloneMode, CloneToken};
 
 use crate::index::{
-    Ancestry, CodebaseIndex, ExternalImport, Import, ImportKind, ImportOrigin, ImportedNames,
-    Inheritance, NameUsage, Reference, SubclassRegistration, Suppression, SuppressionScope,
+    Ancestry, CodebaseIndex, ExternalImport, Import, ImportCondition, ImportKind, ImportOrigin,
+    ImportedNames, Inheritance, NameUsage, Reference, SubclassRegistration, Suppression,
+    SuppressionScope,
 };
 use crate::manifest::DistributionName;
 use crate::source::{
@@ -204,6 +205,16 @@ impl FakeIndex {
         top_level: &str,
         origin: ImportOrigin,
     ) {
+        self.add_conditional_import(file, top_level, origin, ImportCondition::Always);
+    }
+
+    pub(crate) fn add_conditional_import(
+        &mut self,
+        file: FileId,
+        top_level: &str,
+        origin: ImportOrigin,
+        condition: ImportCondition,
+    ) {
         let ordinal = u32::try_from(self.external_imports.len()).expect("few imports");
         self.external_imports.push((
             file,
@@ -211,6 +222,7 @@ impl FakeIndex {
                 top_level: top_level.to_owned(),
                 span: ByteSpan::new(ByteOffset::new(ordinal), ByteOffset::new(ordinal + 1)),
                 origin,
+                condition,
             },
         ));
     }

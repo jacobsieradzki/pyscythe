@@ -1,13 +1,11 @@
 files_scanned=447
 symbols_checked=35
 symbols_kept=0
-findings=16
+findings=14
 --
 unused-dependency	low	pyproject.toml	jaraco-classes	dependency `jaraco-classes` (dependency-groups.test) is never imported
 unused-dependency	medium	pyproject.toml	poetry-core	dependency `poetry-core` is never imported
 unresolved-import	low	src/poetry/inspection/lazy_wheel.py:35:5		import `typing_extensions` resolves to nothing on the search path
-unresolved-import	low	src/poetry/utils/_compat.py:15:12		import `tomllib` resolves to nothing on the search path
-unresolved-import	low	src/poetry/utils/env/site_packages.py:34:16		import `importlib_metadata` resolves to nothing on the search path
 missing-dependency	low	tests/console/commands/test_add.py:92:42	msgpack	`msgpack` is imported but `msgpack` is not a declared dependency; it arrives through a declared dependency
 missing-dependency	low	tests/console/test_application.py:270:12	urllib3	`urllib3` is imported but `urllib3` is not a declared dependency; it arrives through a declared dependency
 missing-dependency	low	tests/console/test_application_global_options.py:145:12	certifi	`certifi` is imported but `certifi` is not a declared dependency; it arrives through a declared dependency

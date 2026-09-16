@@ -1,7 +1,7 @@
 files_scanned=491
 symbols_checked=107
 symbols_kept=0
-findings=91
+findings=89
 --
 missing-dependency	medium	conftest.py:8:8	pytest	`pytest` is imported but `pytest` is not a declared dependency
 missing-dependency	low	docs/conf.py:167:5	platformdirs	`platformdirs` is imported but `platformdirs` is not a declared dependency; it arrives through a declared dependency
@@ -86,10 +86,8 @@ unresolved-import	low	scrapy/core/downloader/handlers/_httpx.py:65:16		import `s
 unresolved-import	low	scrapy/core/downloader/handlers/s3.py:34:20		import `botocore` resolves to nothing on the search path
 missing-dependency	low	scrapy/http/response/text.py:170:39	jmespath	`jmespath` is imported but `jmespath` is not a declared dependency; it arrives through a declared dependency
 missing-dependency	low	scrapy/resolver.py:5:8	attrs	`attr` is imported but `attrs` is not a declared dependency; it arrives through a declared dependency
-unresolved-import	low	scrapy/utils/_compression.py:11:5		import `compression` resolves to nothing on the search path
 missing-dependency	medium	scrapy/utils/display.py:37:9	pygments	`pygments` is imported but `pygments` is not a declared dependency
 missing-dependency	low	scrapy/utils/log.py:73:9	filelock	`filelock` is imported but `filelock` is not a declared dependency; it arrives through a declared dependency
-unresolved-import	low	scrapy/utils/python.py:187:5		import `annotationlib` resolves to nothing on the search path
 unresolved-import	low	tests/benchmarks/test_crawl.py:20:5		import `pytest_codspeed` resolves to nothing on the search path
 unresolved-import	low	tests/mockserver/ftp.py:12:1		import `pyftpdlib` resolves to nothing on the search path
 unresolved-import	low	tests/test_command_shell.py:13:1		import `pexpect` resolves to nothing on the search path

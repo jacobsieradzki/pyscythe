@@ -584,6 +584,7 @@ impl CodebaseIndex for TyIndex {
                     top_level: record.top_level.clone(),
                     span: span_of(record.range),
                     origin,
+                    condition: record.condition,
                 }
             })
             .collect()

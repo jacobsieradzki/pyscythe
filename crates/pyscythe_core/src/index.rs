@@ -29,6 +29,18 @@ pub struct ExternalImport {
     pub span: ByteSpan,
     /// What it resolved to.
     pub origin: ImportOrigin,
+    /// Whether every interpreter runs it.
+    pub condition: ImportCondition,
+}
+
+/// Whether an import runs on every interpreter that loads the module.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ImportCondition {
+    /// Nothing guards it, so every interpreter runs it.
+    Always,
+    /// Guarded by a `sys.version_info` check, so whether the module exists
+    /// depends on the interpreter rather than on the declared dependencies.
+    InterpreterVersion,
 }
 
 /// Whether an attribute name appears anywhere, regardless of what it resolves to.

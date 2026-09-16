@@ -1,7 +1,7 @@
 files_scanned=274
 symbols_checked=46
 symbols_kept=0
-findings=33
+findings=31
 --
 missing-dependency	medium	doc/en/conf.py:146:5	packaging	`packaging` is imported but `packaging` is not a declared dependency
 unresolved-import	low	doc/en/example/assertion/failure_demo.py:113:16		import `attr` resolves to nothing on the search path
@@ -23,8 +23,6 @@ unresolved-import	low	scripts/update-plugin-list.py:20:8		import `tabulate` reso
 unresolved-import	low	scripts/update-plugin-list.py:21:1		import `tqdm` resolves to nothing on the search path
 unresolved-import	low	scripts/update-plugin-list.py:22:8		import `wcwidth` resolves to nothing on the search path
 unresolved-import	low	src/_pytest/_py/error.py:14:5		import `typing_extensions` resolves to nothing on the search path
-unresolved-import	low	src/_pytest/compat.py:24:5		import `annotationlib` resolves to nothing on the search path
-unresolved-import	low	src/_pytest/config/findpaths.py:66:16		import `tomllib` resolves to nothing on the search path
 unresolved-import	low	src/_pytest/monkeypatch.py:372:20		import `pkg_resources` resolves to nothing on the search path
 unresolved-import	low	src/_pytest/unittest.py:50:12		import `twisted` resolves to nothing on the search path
 unresolved-import	low	src/_pytest/unittest.py:534:9		import `zope` resolves to nothing on the search path

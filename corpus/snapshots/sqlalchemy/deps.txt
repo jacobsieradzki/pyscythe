@@ -10,7 +10,6 @@ unresolved-import	low	lib/sqlalchemy/dialects/sqlite/pysqlcipher.py:121:9		impor
 unresolved-import	low	lib/sqlalchemy/engine/_processors_cy.py:22:12		import `cython` resolves to nothing on the search path
 unresolved-import	low	lib/sqlalchemy/testing/plugin/pytestplugin.py:28:16		import `sqla_plugin_base` resolves to nothing on the search path
 unresolved-import	low	lib/sqlalchemy/testing/plugin/pytestplugin.py:127:9		import `pyannotate_runtime` resolves to nothing on the search path
-unresolved-import	low	lib/sqlalchemy/util/compat.py:56:12		import `annotationlib` resolves to nothing on the search path
 unused-dependency	low	pyproject.toml	aiomysql	dependency `aiomysql` (optional-dependencies.aiomysql) is never imported
 unused-dependency	low	pyproject.toml	aioodbc	dependency `aioodbc` (optional-dependencies.aioodbc) is never imported
 unused-dependency	low	pyproject.toml	cymysql	dependency `cymysql` (optional-dependencies.cymysql) is never imported
@@ -35,5 +34,6 @@ unused-dependency	low	pyproject.toml	zimports	dependency `zimports` (dependency-
 unresolved-import	low	setup.py:11:1		import `setuptools` resolves to nothing on the search path
 unresolved-import	low	setup.py:17:5		import `Cython` resolves to nothing on the search path
 unresolved-import	low	test/conftest.py:59:5		import `sqla_pytestplugin` resolves to nothing on the search path
+unresolved-import	low	test/orm/declarative/test_dc_transforms.py:994:16		import `annotationlib` resolves to nothing on the search path
 unresolved-import	low	test/perf/compiled_extensions/collections_.py:456:9		import `orderedset` resolves to nothing on the search path
 unresolved-import	low	test/perf/invalidate_stresstest.py:5:8		import `gevent` resolves to nothing on the search path

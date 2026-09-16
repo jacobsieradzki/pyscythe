@@ -1,12 +1,10 @@
 files_scanned=1132
 symbols_checked=97
 symbols_kept=0
-findings=31
+findings=29
 --
 unresolved-import	low	docs/conf.py:11:1		import `shibuya` resolves to nothing on the search path
 unresolved-import	low	docs/conf.py:13:1		import `sqlalchemy` resolves to nothing on the search path
-unresolved-import	low	litestar/middleware/compression/zstd_facade.py:11:5		import `compression` resolves to nothing on the search path
-unresolved-import	low	litestar/middleware/compression/zstd_facade.py:14:9		import `backports` resolves to nothing on the search path
 unresolved-import	low	litestar/plugins/opentelemetry/_utils.py:9:12		import `opentelemetry` resolves to nothing on the search path
 unresolved-import	low	litestar/plugins/pydantic/utils.py:12:1		import `pydantic_core` resolves to nothing on the search path
 unresolved-import	low	litestar/utils/helpers.py:106:9		import `exceptiongroup` resolves to nothing on the search path

@@ -49,7 +49,6 @@ missing-dependency	low	lib/streamlit/elements/help.py:394:33	attrs	`attr` is imp
 unresolved-import	low	lib/streamlit/elements/markdown.py:33:12		import `sympy` resolves to nothing on the search path
 unresolved-import	low	lib/streamlit/elements/write.py:514:17		import `tensorflow` resolves to nothing on the search path
 unresolved-import	low	lib/streamlit/runtime/state/query_params.py:30:5		import `_typeshed` resolves to nothing on the search path
-unresolved-import	low	lib/streamlit/type_util.py:319:9		import `annotationlib` resolves to nothing on the search path
 missing-dependency	medium	lib/tests/conftest.py:27:8	pytest	`pytest` is imported but `pytest` is not a declared dependency
 unresolved-import	low	lib/tests/streamlit/cli_util_test.py:20:1		import `parameterized` resolves to nothing on the search path
 unresolved-import	low	lib/tests/streamlit/data_test_cases.py:1185:5		import `pydantic` resolves to nothing on the search path
@@ -61,6 +60,7 @@ unresolved-import	low	lib/tests/streamlit/runtime/caching/storage/in_memory_cach
 unresolved-import	low	lib/tests/streamlit/runtime/state/session_state_test.py:28:1		import `hypothesis` resolves to nothing on the search path
 unresolved-import	low	lib/tests/streamlit/streamlit_test.py:29:12		import `tomllib` resolves to nothing on the search path
 unresolved-import	low	lib/tests/streamlit/streamlit_test.py:31:12		import `tomli` resolves to nothing on the search path
+unresolved-import	low	lib/tests/testutil.py:209:5		import `annotationlib` resolves to nothing on the search path
 unused-dependency	low	pyproject.toml	dask	dependency `dask` (dependency-groups.integration) is never imported
 unused-dependency	low	pyproject.toml	duckdb	dependency `duckdb` (dependency-groups.integration) is never imported
 unused-dependency	low	pyproject.toml	httpx2	dependency `httpx2` (dependency-groups.dev) is never imported

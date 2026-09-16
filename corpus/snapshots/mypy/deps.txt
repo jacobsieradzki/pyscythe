@@ -1,11 +1,10 @@
 files_scanned=442
 symbols_checked=12
 symbols_kept=0
-findings=13
+findings=12
 --
 unresolved-import	low	docs/source/conf.py:20:1		import `sphinx` resolves to nothing on the search path
 unresolved-import	low	misc/sync-typeshed.py:24:8		import `requests` resolves to nothing on the search path
-unresolved-import	low	mypy/config_parser.py:12:12		import `tomllib` resolves to nothing on the search path
 missing-dependency	medium	mypy/known_modules.py:48:9	packaging	`packaging` is imported but `packaging` is not a declared dependency
 missing-dependency	medium	mypy/known_modules.py:90:9	pytest	`pytest` is imported but `pytest` is not a declared dependency
 missing-dependency	medium	mypy/known_modules.py:91:9	pluggy	`pluggy` is imported but `pluggy` is not a declared dependency
