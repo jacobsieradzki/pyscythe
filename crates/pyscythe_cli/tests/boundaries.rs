@@ -87,3 +87,40 @@ fn suggest_prints_a_layers_table_from_the_import_graph() {
         .stdout(predicate::str::contains("[\"app.api\", \"app.services\"],"))
         .stdout(predicate::str::contains("import each other"));
 }
+
+#[test]
+fn a_config_file_supplies_boundaries_a_project_does_not_declare() {
+    let project = fixture("unconfigured_boundaries");
+    pyscythe()
+        .arg("boundaries")
+        .arg(&project)
+        .assert()
+        .code(2)
+        .stderr(predicate::str::contains("no boundaries configured"));
+
+    let output = pyscythe()
+        .args(["boundaries", "--format", "json", "--config"])
+        .arg(fixture("configs/layered.toml"))
+        .arg(&project)
+        .output()
+        .expect("runs");
+
+    assert_eq!(output.status.code(), Some(1));
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let edges: Vec<(&str, &str)> = report["findings"]
+        .as_array()
+        .expect("findings")
+        .iter()
+        .map(|f| {
+            (
+                f["from_module"].as_str().expect("from"),
+                f["to_module"].as_str().expect("to"),
+            )
+        })
+        .collect();
+    assert_eq!(
+        edges,
+        [("app.services.orders", "app.api.routes")],
+        "{report}"
+    );
+}

@@ -38,15 +38,17 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 - [x] Health: per-file and per-package scores, radon-style maintainability index; trend is the JSON `score` diffed across runs.
 - [x] `pyscythe boundaries`: `layers` (ranks, several prefixes per rank), `rules` with `from`/`deny`, `preset = "hexagonal"` with `root`, type-only imports allowed unless `check-type-only`.
 - [x] `pyscythe boundaries --suggest` proposes layers from second-level package imports (tangles called out); rules take `allow` lists.
+- [x] `--config FILE` reads `[tool.pyscythe]` from elsewhere, for a project whose checkout must stay as published or whose rules differ between CI and a desk. One file depending on another is one violation however many times it names it.
 - [x] `pyscythe fix [--dry-run]`: removes dead definitions (whole lines, decorators included, gap preserved) and unused files; skips nested definitions and methods whose removal would empty a class; medium confidence and better by default.
 - [x] Fix drops imports orphaned by a removal and takes `--only RULE,...`. Interactive confirmation is not planned: `--dry-run` plus git is the review step.
+- [x] `pyscythe fix --format json` reports the plan instead of a diff, so the corpus snapshots what fix removes from every pinned project. `pyscythe-corpus repair` carries the plan out for real and checks every package the project ships still imports, then restores the checkout; it runs on Linux in CI, where the pinned wheels can actually be imported. Added 2026-09-16.
 
 ## Output and integration
 
 - [x] `--format sarif|github|markdown` alongside `human` and `json`.
 - [x] `--format pr-comment`: Markdown with a `<!-- pyscythe:<analysis> -->` marker.
 - [x] Composite GitHub Action (`action.yml`) that installs from git and runs any analysis with annotations or SARIF; CI workflow for this repo.
-- [x] Corpus: 35 public projects pinned by commit in `corpus/corpus.toml`, environments pinned in `corpus/locks`, every analysis snapshotted in `corpus/snapshots`; `mise run corpus` and the `corpus` workflow fail on any change in output. Added 2026-09-13.
+- [x] Corpus: 36 public projects pinned by commit in `corpus/corpus.toml`, environments pinned in `corpus/locks`, every analysis snapshotted in `corpus/snapshots`; `mise run corpus` and the `corpus` workflow fail on any change in output. Added 2026-09-13. `boundaries` runs for a project that states its own architecture, with the layers in `corpus/configs/<name>.toml`; kedro's come from its import-linter contracts.
 
 ## Deferred by decision
 

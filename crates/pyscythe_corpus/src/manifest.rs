@@ -168,6 +168,11 @@ pub(crate) struct Project {
     /// The directory inside the clone that pyscythe analyses; the environment lives there.
     #[serde(default = "default_root")]
     pub(crate) root: Utf8PathBuf,
+    /// A `[tool.pyscythe.boundaries]` file beside the manifest, translating the
+    /// project's own architecture rules. Without one, `boundaries` is skipped:
+    /// a project that does not say what its layers are has none to check.
+    #[serde(default)]
+    pub(crate) boundaries: Option<Utf8PathBuf>,
 }
 
 fn default_root() -> Utf8PathBuf {

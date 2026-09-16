@@ -1,0 +1,65 @@
+files_scanned=1132
+symbols_checked=8370
+symbols_kept=2542
+findings=60
+--
+unused-variable	medium	litestar/_signature/model.py:65:1	MSGSPEC_CONSTRAINT_FIELDS	variable `MSGSPEC_CONSTRAINT_FIELDS` is never used
+unused-function	high	litestar/cli/_utils.py:293:5	_bool_from_env	function `_bool_from_env` is never used
+unused-variable	medium	litestar/constants.py:14:1	DEFAULT_CHUNK_SIZE	variable `DEFAULT_CHUNK_SIZE` is never used
+unused-variable	medium	litestar/constants.py:15:1	HTTP_DISCONNECT	variable `HTTP_DISCONNECT` is never used
+unused-variable	medium	litestar/constants.py:20:1	OPENAPI_NOT_INITIALIZED	variable `OPENAPI_NOT_INITIALIZED` is never used
+unused-variable	medium	litestar/constants.py:26:1	WEBSOCKET_CLOSE	variable `WEBSOCKET_CLOSE` is never used
+unused-variable	medium	litestar/constants.py:27:1	WEBSOCKET_DISCONNECT	variable `WEBSOCKET_DISCONNECT` is never used
+unused-function	medium	litestar/handlers/http_handlers/_utils.py:221:11	cleanup_temporary_files	function `cleanup_temporary_files` is never used
+unused-class	medium	litestar/handlers/http_handlers/base.py:90:7	ResponseHandlerMap	class `ResponseHandlerMap` is never used
+unused-variable	medium	litestar/plugins/pydantic/dto.py:34:1	ModelType	variable `ModelType` is never used
+unused-variable	high	litestar/plugins/pydantic/utils.py:159:1	_CreateFieldDefinition	variable `_CreateFieldDefinition` is never used
+unused-variable	medium	litestar/types/callable_types.py:27:1	SyncAfterRequestHookHandler	variable `SyncAfterRequestHookHandler` is never used
+unused-variable	medium	litestar/types/callable_types.py:31:1	SyncAfterResponseHookHandler	variable `SyncAfterResponseHookHandler` is never used
+unused-variable	medium	litestar/types/callable_types.py:44:1	ExceptionLoggingHandler	variable `ExceptionLoggingHandler` is never used
+unused-variable	medium	litestar/types/callable_types.py:47:1	SyncGuard	variable `SyncGuard` is never used
+unused-function	high	litestar/utils/signature.py:46:5	_unwrap_implicit_optional_hints	function `_unwrap_implicit_optional_hints` is never used
+unused-function	medium	tests/helpers.py:60:5	maybe_async_cm	function `maybe_async_cm` is never used
+unused-function	medium	tests/helpers.py:103:5	purge_module	function `purge_module` is never used
+unused-class	high	tests/unit/test_channels/test_psycopg_backend.py:41:7	_Notification	class `_Notification` is never used
+unused-variable	medium	tests/unit/test_cli/test_core_commands.py:33:1	project_base	variable `project_base` is never used
+unused-function	medium	tests/unit/test_dto/test_factory/test_base_dto.py:24:5	get_backend	function `get_backend` is never used
+unused-function	medium	tests/unit/test_middleware/test_base_authentication_middleware.py:27:11	dummy_app	function `dummy_app` is never used
+unused-variable	medium	tests/unit/test_middleware/test_compression_middleware.py:38:1	BrotliMode	variable `BrotliMode` is never used
+unused-variable	medium	tests/unit/test_openapi/test_integration.py:28:1	CREATE_EXAMPLES_VALUES	variable `CREATE_EXAMPLES_VALUES` is never used
+unused-class	medium	tests/unit/test_plugins/test_pydantic/test_plugin_serialization.py:37:7	CustomStr	class `CustomStr` is never used
+unused-class	medium	tests/unit/test_plugins/test_pydantic/test_plugin_serialization.py:41:7	CustomInt	class `CustomInt` is never used
+unused-class	medium	tests/unit/test_plugins/test_pydantic/test_plugin_serialization.py:45:7	CustomFloat	class `CustomFloat` is never used
+unused-class	medium	tests/unit/test_plugins/test_pydantic/test_plugin_serialization.py:49:7	CustomList	class `CustomList` is never used
+unused-class	medium	tests/unit/test_plugins/test_pydantic/test_plugin_serialization.py:53:7	CustomSet	class `CustomSet` is never used
+unused-class	medium	tests/unit/test_plugins/test_pydantic/test_plugin_serialization.py:57:7	CustomFrozenSet	class `CustomFrozenSet` is never used
+unused-class	medium	tests/unit/test_plugins/test_pydantic/test_plugin_serialization.py:61:7	CustomTuple	class `CustomTuple` is never used
+unused-class	medium	tests/unit/test_repository/models_bigint.py:83:7	RuleAsyncRepository	class `RuleAsyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_bigint.py:89:7	AuthorAsyncRepository	class `AuthorAsyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_bigint.py:95:7	BookAsyncRepository	class `BookAsyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_bigint.py:101:7	EventLogAsyncRepository	class `EventLogAsyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_bigint.py:107:7	ModelWithFetchedValueAsyncRepository	class `ModelWithFetchedValueAsyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_bigint.py:113:7	TagAsyncRepository	class `TagAsyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_bigint.py:119:7	ItemAsyncRepository	class `ItemAsyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_bigint.py:125:7	AuthorSyncRepository	class `AuthorSyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_bigint.py:131:7	BookSyncRepository	class `BookSyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_bigint.py:137:7	EventLogSyncRepository	class `EventLogSyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_bigint.py:143:7	RuleSyncRepository	class `RuleSyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_bigint.py:149:7	ModelWithFetchedValueSyncRepository	class `ModelWithFetchedValueSyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_bigint.py:155:7	TagSyncRepository	class `TagSyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_bigint.py:161:7	ItemSyncRepository	class `ItemSyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_uuid.py:80:7	RuleAsyncRepository	class `RuleAsyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_uuid.py:86:7	AuthorAsyncRepository	class `AuthorAsyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_uuid.py:92:7	BookAsyncRepository	class `BookAsyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_uuid.py:98:7	EventLogAsyncRepository	class `EventLogAsyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_uuid.py:104:7	ModelWithFetchedValueAsyncRepository	class `ModelWithFetchedValueAsyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_uuid.py:110:7	TagAsyncRepository	class `TagAsyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_uuid.py:116:7	ItemAsyncRepository	class `ItemAsyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_uuid.py:122:7	AuthorSyncRepository	class `AuthorSyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_uuid.py:128:7	BookSyncRepository	class `BookSyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_uuid.py:134:7	EventLogSyncRepository	class `EventLogSyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_uuid.py:140:7	RuleSyncRepository	class `RuleSyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_uuid.py:146:7	ModelWithFetchedValueSyncRepository	class `ModelWithFetchedValueSyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_uuid.py:152:7	TagSyncRepository	class `TagSyncRepository` is never used
+unused-class	medium	tests/unit/test_repository/models_uuid.py:158:7	ItemSyncRepository	class `ItemSyncRepository` is never used
+unused-variable	medium	tests/unit/test_utils/test_typing.py:18:1	py_310_plus_annotation	variable `py_310_plus_annotation` is never used

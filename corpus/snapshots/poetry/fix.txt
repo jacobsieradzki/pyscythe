@@ -1,0 +1,39 @@
+files_scanned=447
+symbols_checked=4241
+symbols_kept=1664
+findings=34
+--
+unused-class	medium	src/poetry/console/commands/about.py:6:7	AboutCommand	class `AboutCommand` is never used
+unused-class	medium	src/poetry/console/commands/cache/clear.py:22:7	CacheClearCommand	class `CacheClearCommand` is never used
+unused-class	medium	src/poetry/console/commands/check.py:18:7	CheckCommand	class `CheckCommand` is never used
+unused-class	medium	src/poetry/console/commands/debug/resolve.py:20:7	DebugResolveCommand	class `DebugResolveCommand` is never used
+unused-class	medium	src/poetry/console/commands/env/remove.py:18:7	EnvRemoveCommand	class `EnvRemoveCommand` is never used
+unused-attribute	medium	src/poetry/console/commands/install.py:81:5	_loggers	attribute `InstallCommand._loggers` is never used
+unused-class	medium	src/poetry/console/commands/new.py:17:7	NewCommand	class `NewCommand` is never used
+unused-class	medium	src/poetry/console/commands/publish.py:16:7	PublishCommand	class `PublishCommand` is never used
+unused-class	medium	src/poetry/console/commands/python/install.py:26:7	PythonInstallCommand	class `PythonInstallCommand` is never used
+unused-class	medium	src/poetry/console/commands/python/list.py:24:7	PythonListCommand	class `PythonListCommand` is never used
+unused-class	medium	src/poetry/console/commands/run.py:17:7	RunCommand	class `RunCommand` is never used
+unused-class	medium	src/poetry/console/commands/search.py:15:7	SearchCommand	class `SearchCommand` is never used
+unused-class	medium	src/poetry/console/commands/self/add.py:17:7	SelfAddCommand	class `SelfAddCommand` is never used
+unused-class	medium	src/poetry/console/commands/self/lock.py:7:7	SelfLockCommand	class `SelfLockCommand` is never used
+unused-class	medium	src/poetry/console/commands/self/remove.py:14:7	SelfRemoveCommand	class `SelfRemoveCommand` is never used
+unused-class	medium	src/poetry/console/commands/self/show/__init__.py:17:7	SelfShowCommand	class `SelfShowCommand` is never used
+unused-class	medium	src/poetry/console/commands/self/show/plugins.py:39:7	SelfShowPluginsCommand	class `SelfShowPluginsCommand` is never used
+unused-class	medium	src/poetry/console/commands/self/update.py:20:7	SelfUpdateCommand	class `SelfUpdateCommand` is never used
+unused-class	medium	src/poetry/console/commands/source/add.py:22:7	SourceAddCommand	class `SourceAddCommand` is never used
+unused-class	medium	src/poetry/console/commands/source/remove.py:16:7	SourceRemoveCommand	class `SourceRemoveCommand` is never used
+unused-class	medium	src/poetry/console/commands/source/show.py:16:7	SourceShowCommand	class `SourceShowCommand` is never used
+unused-class	medium	src/poetry/installation/chef.py:27:7	ChefError	class `ChefError` is never used
+unused-variable	medium	src/poetry/puzzle/provider.py:60:1	logger	variable `logger` is never used
+unused-method	medium	src/poetry/puzzle/provider.py:116:9	_formatter_context	method `Indicator._formatter_context` is never used
+unused-variable	medium	src/poetry/repositories/pypi_repository.py:28:1	logger	variable `logger` is never used
+unused-variable	medium	src/poetry/utils/wheel.py:16:1	logger	variable `logger` is never used
+unused-variable	medium	tests/installation/test_chooser.py:27:1	JSON_FIXTURES	variable `JSON_FIXTURES` is never used
+unused-variable	medium	tests/installation/test_chooser.py:31:1	LEGACY_FIXTURES	variable `LEGACY_FIXTURES` is never used
+unused-variable	medium	tests/integration/test_utils_vcs_git.py:76:1	REF_TO_REVISION_MAP	variable `REF_TO_REVISION_MAP` is never used
+unused-class	medium	tests/plugins/test_plugin_manager.py:56:7	MyCommandPlugin	class `MyCommandPlugin` is never used
+unused-class	medium	tests/types.py:49:7	SourcesFactory	class `SourcesFactory` is never used
+unused-function	medium	tests/utils/env/python/test_manager.py:111:5	find_downloadable_versions_include_incompatible	function `find_downloadable_versions_include_incompatible` is never used
+unused-variable	medium	tests/utils/env/test_env.py:47:1	ERRORING_SCRIPT	variable `ERRORING_SCRIPT` is never used
+unused-class	medium	tests/utils/env/test_env.py:54:7	MockVirtualEnv	class `MockVirtualEnv` is never used

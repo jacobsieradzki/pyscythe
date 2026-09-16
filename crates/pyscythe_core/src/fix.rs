@@ -54,6 +54,17 @@ impl FixPlan {
     pub fn removed_definitions(&self) -> usize {
         self.edits.iter().map(|e| e.removed.len()).sum()
     }
+
+    /// The findings the plan carries out: everything in `report` that is not
+    /// skipped. This is what `fix` did, as opposed to what it was asked to do.
+    #[must_use]
+    pub fn acted_on<'a>(&self, report: &'a Report) -> Vec<&'a Finding> {
+        report
+            .findings
+            .iter()
+            .filter(|finding| !self.skipped.iter().any(|s| s.finding == **finding))
+            .collect()
+    }
 }
 
 /// Plans deletions for the symbol and file findings in `report`.

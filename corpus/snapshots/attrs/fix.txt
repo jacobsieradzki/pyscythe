@@ -1,0 +1,9 @@
+files_scanned=56
+symbols_checked=1618
+symbols_kept=882
+findings=4
+--
+unused-variable	medium	src/attr/_compat.py:95:1	repr_context	variable `repr_context` is never used
+unused-class	high	src/attr/_make.py:88:7	_CacheHashWrapper	class `_CacheHashWrapper` is never used
+unused-class	medium	src/attr/exceptions.py:72:7	PythonTooOldError	class `PythonTooOldError` is never used
+unused-variable	medium	tests/test_cmp.py:58:1	indent	variable `indent` is never used

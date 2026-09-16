@@ -1,0 +1,9 @@
+files_scanned=232
+symbols_checked=0
+symbols_kept=0
+findings=4
+--
+boundary-violation	high	kedro/framework/project/__init__.py:134:36	kedro.framework.context	`kedro.framework.project` imports `kedro.framework.context`: layer `kedro.framework.project` may not depend on the layer above it, `kedro.framework.context`
+boundary-violation	high	kedro/framework/project/__init__.py:138:36	kedro.framework.session	`kedro.framework.project` imports `kedro.framework.session`: layer `kedro.framework.project` may not depend on the layer above it, `kedro.framework.session`
+boundary-violation	high	kedro/framework/project/__init__.py:142:36	kedro.framework.session.store	`kedro.framework.project` imports `kedro.framework.session.store`: layer `kedro.framework.project` may not depend on the layer above it, `kedro.framework.session`
+boundary-violation	high	kedro/runner/task.py:22:1	kedro.framework.project	`kedro.runner.task` imports `kedro.framework.project`: layer `kedro.runner` may not depend on the layer above it, `kedro.framework.project`

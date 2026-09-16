@@ -1,0 +1,38 @@
+files_scanned=442
+symbols_checked=13395
+symbols_kept=324
+findings=33
+--
+unused-function	medium	misc/analyze_cache.py:74:5	pluck	function `pluck` is never used
+unused-file	medium	misc/build_wheel.py	-	file `misc.build_wheel` is never imported or run
+unused-function	medium	mypy/api.py:77:5	run_dmypy	function `run_dmypy` is never used
+unused-variable	medium	mypy/cache.py:331:1	RESERVED	variable `RESERVED` is never used
+unused-variable	medium	mypy/checkstrformat.py:68:1	MatchMap	variable `MatchMap` is never used
+unused-variable	medium	mypy/message_registry.py:180:1	IMPLICIT_GENERIC_ANY_BUILTIN	variable `IMPLICIT_GENERIC_ANY_BUILTIN` is never used
+unused-variable	medium	mypy/operators.py:34:1	ops_falling_back_to_cmp	variable `ops_falling_back_to_cmp` is never used
+unused-method	medium	mypy/stubgenc.py:199:9	_from_sig	method `CFunctionStub._from_sig` is never used
+unused-method	medium	mypy/stubgenc.py:203:9	_from_sigs	method `CFunctionStub._from_sigs` is never used
+unused-variable	medium	mypy/subtypes.py:87:1	TypeParameterChecker	variable `TypeParameterChecker` is never used
+unused-function	medium	mypy/test/data.py:825:5	has_stable_flags	function `has_stable_flags` is never used
+unused-function	medium	mypy/test/helpers.py:39:5	run_mypy	function `run_mypy` is never used
+unused-class	medium	mypy/traverser.py:1094:7	YieldFromCollector	class `YieldFromCollector` is never used
+unused-function	medium	mypy/util.py:82:5	split_module_names	function `split_module_names` is never used
+unused-variable	medium	mypy/util.py:253:1	JUNIT_ERROR_TEMPLATE	variable `JUNIT_ERROR_TEMPLATE` is never used
+unused-variable	medium	mypyc/analysis/attrdefined.py:283:1	GenAndKill	variable `GenAndKill` is never used
+unused-class	medium	mypyc/analysis/dataflow.py:438:7	UndefinedVisitor	class `UndefinedVisitor` is never used
+unused-function	medium	mypyc/codegen/emitfunc.py:110:5	native_function_type	function `native_function_type` is never used
+unused-variable	medium	mypyc/ir/rtypes.py:184:1	RStructLike	variable `RStructLike` is never used
+unused-variable	medium	mypyc/ir/rtypes.py:330:1	object_non_refcounted_rprimitive	variable `object_non_refcounted_rprimitive` is never used
+unused-variable	medium	mypyc/ir/rtypes.py:403:1	u16_rprimitive	variable `u16_rprimitive` is never used
+unused-variable	medium	mypyc/ir/rtypes.py:1467:1	VecNestedBufObject_rprimitive	variable `VecNestedBufObject_rprimitive` is never used
+unused-variable	medium	mypyc/ir/rtypes.py:1494:1	vec_api_fields	variable `vec_api_fields` is never used
+unused-variable	medium	mypyc/irbuild/vec.py:207:1	VEC_TYPE_INFO_I64	variable `VEC_TYPE_INFO_I64` is never used
+unused-variable	medium	mypyc/primitives/dict_ops.py:168:1	dict_setdefault_op	variable `dict_setdefault_op` is never used
+unused-variable	medium	mypyc/primitives/float_ops.py:136:1	pow_op	variable `pow_op` is never used
+unused-variable	medium	mypyc/primitives/int_ops.py:198:1	int_invert_op	variable `int_invert_op` is never used
+unused-variable	medium	mypyc/primitives/weakref_ops.py:7:1	new_ref_op	variable `new_ref_op` is never used
+unused-variable	medium	mypyc/primitives/weakref_ops.py:16:1	new_ref__with_callback_op	variable `new_ref__with_callback_op` is never used
+unused-variable	medium	mypyc/primitives/weakref_ops.py:24:1	new_proxy_op	variable `new_proxy_op` is never used
+unused-variable	medium	mypyc/primitives/weakref_ops.py:33:1	new_proxy_with_callback_op	variable `new_proxy_with_callback_op` is never used
+unused-function	medium	mypyc/test/librt_cache.py:218:5	run_with_librt	function `run_with_librt` is never used
+unused-file	medium	test-data/unit/plugins/noentry.py	-	file `noentry.py` is never imported or run

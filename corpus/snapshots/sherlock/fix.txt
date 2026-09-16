@@ -1,0 +1,6 @@
+files_scanned=17
+symbols_checked=105
+symbols_kept=20
+findings=1
+--
+unused-function	medium	tests/few_test_basic.py:6:5	test_username_via_message	function `test_username_via_message` is never used

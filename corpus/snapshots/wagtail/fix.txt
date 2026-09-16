@@ -1,0 +1,35 @@
+files_scanned=1388
+symbols_checked=25583
+symbols_kept=1876
+findings=30
+--
+unused-variable	medium	wagtail/actions/publish_page_revision.py:9:1	logger	variable `logger` is never used
+unused-variable	medium	wagtail/actions/unpublish_page.py:6:1	logger	variable `logger` is never used
+unused-class	medium	wagtail/admin/rich_text/editors/draftail/features.py:79:7	DecoratorFeature	class `DecoratorFeature` is never used
+unused-class	medium	wagtail/admin/rich_text/editors/draftail/features.py:85:7	ControlFeature	class `ControlFeature` is never used
+unused-class	medium	wagtail/admin/rich_text/editors/draftail/features.py:91:7	PluginFeature	class `PluginFeature` is never used
+unused-function	medium	wagtail/admin/tests/pages/test_preview.py:77:5	clear_edit_handler	function `clear_edit_handler` is never used
+unused-method	medium	wagtail/blocks/stream_block.py:550:13	_as_tuple	method `StreamChild._as_tuple` is never used
+unused-class	medium	wagtail/contrib/forms/forms.py:157:7	SelectDateForm	class `SelectDateForm` is never used
+unused-variable	medium	wagtail/contrib/frontend_cache/backends/base.py:5:1	logger	variable `logger` is never used
+unused-variable	medium	wagtail/contrib/frontend_cache/utils.py:7:1	logger	variable `logger` is never used
+unused-class	medium	wagtail/contrib/legacy/sitemiddleware/__init__.py:9:7	SiteMiddleware	class `SiteMiddleware` is never used
+unused-class	medium	wagtail/contrib/redirects/tmp_storages.py:95:7	MediaStorage	class `MediaStorage` is never used
+unused-variable	medium	wagtail/contrib/routable_page/models.py:17:1	logger	variable `logger` is never used
+unused-variable	medium	wagtail/coreutils.py:31:1	logger	variable `logger` is never used
+unused-function	medium	wagtail/images/formats.py:64:5	unregister_image_format	function `unregister_image_format` is never used
+unused-method	medium	wagtail/images/models.py:226:9	_get_image_dimensions	method `WagtailImageFieldFile._get_image_dimensions` is never used
+unused-function	medium	wagtail/management/commands/publish_scheduled.py:11:5	revision_date_expired	function `revision_date_expired` is never used
+unused-method	medium	wagtail/models/i18n.py:100:9	_get_language_info	method `Locale._get_language_info` is never used
+unused-function	medium	wagtail/snippets/permissions.py:14:5	user_can_edit_snippet_type	function `user_can_edit_snippet_type` is never used
+unused-method	medium	wagtail/test/dummy_external_storage.py:25:9	_open	method `DummyExternalStorage._open` is never used
+unused-attribute	medium	wagtail/test/utils/wagtail_factories/blocks.py:32:5	_options_class	attribute `StreamBlockFactory._options_class` is never used
+unused-method	medium	wagtail/test/utils/wagtail_factories/blocks.py:36:9	_generate	method `StreamBlockFactory._generate` is never used
+unused-attribute	medium	wagtail/test/utils/wagtail_factories/blocks.py:141:5	_options_class	attribute `StructBlockFactory._options_class` is never used
+unused-attribute	medium	wagtail/test/utils/wagtail_factories/blocks.py:165:5	_options_class	attribute `BlockFactory._options_class` is never used
+unused-class	medium	wagtail/tests/test_blocks.py:39:7	FooStreamBlock	class `FooStreamBlock` is never used
+unused-function	medium	wagtail/tests/test_locale_model.py:11:5	make_test_page	function `make_test_page` is never used
+unused-function	medium	wagtail/tests/test_utils.py:312:5	TestGetContentTypeLabel	function `TestGetContentTypeLabel` is never used
+unused-variable	medium	wagtail/users/templatetags/wagtailusers_tags.py:60:1	VIEW_PERMISSION_LABEL	variable `VIEW_PERMISSION_LABEL` is never used
+unused-class	medium	wagtail/utils/deprecation.py:12:7	RemovedInWagtail100Warning	class `RemovedInWagtail100Warning` is never used
+unused-class	medium	wagtail/utils/deprecation.py:16:7	MovedDefinitionHandler	class `MovedDefinitionHandler` is never used

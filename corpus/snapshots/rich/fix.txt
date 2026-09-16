@@ -1,0 +1,39 @@
+files_scanned=213
+symbols_checked=2813
+symbols_kept=796
+findings=34
+--
+unused-variable	high	rich/_export_format.py:75:1	_SVG_FONT_FAMILY	variable `_SVG_FONT_FAMILY` is never used
+unused-variable	high	rich/_export_format.py:76:1	_SVG_CLASSES_PREFIX	variable `_SVG_CLASSES_PREFIX` is never used
+unused-file	medium	rich/_unicode_data/unicode10-0-0.py	-	file `unicode10-0-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode11-0-0.py	-	file `unicode11-0-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode12-0-0.py	-	file `unicode12-0-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode12-1-0.py	-	file `unicode12-1-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode13-0-0.py	-	file `unicode13-0-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode14-0-0.py	-	file `unicode14-0-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode15-0-0.py	-	file `unicode15-0-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode15-1-0.py	-	file `unicode15-1-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode16-0-0.py	-	file `unicode16-0-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode17-0-0.py	-	file `unicode17-0-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode4-1-0.py	-	file `unicode4-1-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode5-0-0.py	-	file `unicode5-0-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode5-1-0.py	-	file `unicode5-1-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode5-2-0.py	-	file `unicode5-2-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode6-0-0.py	-	file `unicode6-0-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode6-1-0.py	-	file `unicode6-1-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode6-2-0.py	-	file `unicode6-2-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode6-3-0.py	-	file `unicode6-3-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode7-0-0.py	-	file `unicode7-0-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode8-0-0.py	-	file `unicode8-0-0.py` is never imported or run
+unused-file	medium	rich/_unicode_data/unicode9-0-0.py	-	file `unicode9-0-0.py` is never imported or run
+unused-class	medium	rich/errors.py:17:7	StyleStackError	class `StyleStackError` is never used
+unused-class	medium	rich/errors.py:29:7	LiveError	class `LiveError` is never used
+unused-method	medium	rich/jupyter.py:25:9	_repr_mimebundle_	method `JupyterRenderable._repr_mimebundle_` is never used
+unused-method	medium	rich/jupyter.py:41:9	_repr_mimebundle_	method `JupyterMixin._repr_mimebundle_` is never used
+unused-class	medium	rich/markdown.py:128:7	HeadingFormat	class `HeadingFormat` is never used
+unused-class	medium	rich/prompt.py:328:7	FloatPrompt	class `FloatPrompt` is never used
+unused-variable	medium	rich/terminal_theme.py:57:1	MONOKAI	variable `MONOKAI` is never used
+unused-variable	medium	rich/terminal_theme.py:81:1	DIMMED_MONOKAI	variable `DIMMED_MONOKAI` is never used
+unused-variable	medium	rich/terminal_theme.py:105:1	NIGHT_OWLISH	variable `NIGHT_OWLISH` is never used
+unused-variable	medium	rich/tree.py:11:1	GuideType	variable `GuideType` is never used
+unused-function	medium	tests/test_traceback.py:76:5	get_exception	function `get_exception` is never used

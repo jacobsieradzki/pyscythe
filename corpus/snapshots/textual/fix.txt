@@ -1,0 +1,61 @@
+files_scanned=987
+symbols_checked=12785
+symbols_kept=2268
+findings=56
+--
+unused-function	medium	src/textual/_ansi_sequences.py:440:5	set_pointer_shape	function `set_pointer_shape` is never used
+unused-variable	medium	src/textual/_border.py:17:1	INNER	variable `INNER` is never used
+unused-variable	medium	src/textual/_border.py:18:1	OUTER	variable `OUTER` is never used
+unused-variable	medium	src/textual/_border.py:251:1	INVISIBLE_EDGE_TYPES	variable `INVISIBLE_EDGE_TYPES` is never used
+unused-variable	medium	src/textual/_border.py:261:1	Borders	variable `Borders` is never used
+unused-variable	medium	src/textual/_border.py:263:1	REVERSE_STYLE	variable `REVERSE_STYLE` is never used
+unused-class	medium	src/textual/_types.py:19:7	EventTarget	class `EventTarget` is never used
+unused-method	medium	src/textual/app.py:3680:9	_unregister	method `App._unregister` is never used
+unused-variable	medium	src/textual/constants.py:128:1	DEVTOOLS_PORT	variable `DEVTOOLS_PORT` is never used
+unused-variable	medium	src/textual/content.py:46:1	ANSI_DEFAULT	variable `ANSI_DEFAULT` is never used
+unused-variable	medium	src/textual/content.py:52:1	TRANSPARENT_STYLE	variable `TRANSPARENT_STYLE` is never used
+unused-attribute	medium	src/textual/content.py:143:5	_NORMALIZE_TEXT_ALIGN	attribute `Content._NORMALIZE_TEXT_ALIGN` is never used
+unused-method	medium	src/textual/content.py:183:9	_is_regular	method `Content._is_regular` is never used
+unused-variable	medium	src/textual/css/tokenize.py:310:1	tokenize_style	variable `tokenize_style` is never used
+unused-variable	medium	src/textual/css/types.py:43:1	Position	variable `Position` is never used
+unused-function	medium	src/textual/design.py:533:5	show_design	function `show_design` is never used
+unused-class	medium	src/textual/drivers/_byte_stream.py:23:7	ParseEOF	class `ParseEOF` is never used
+unused-variable	medium	src/textual/drivers/linux_driver.py:31:1	KITTY_REPORT_EVENT_TYPES	variable `KITTY_REPORT_EVENT_TYPES` is never used
+unused-variable	medium	src/textual/drivers/linux_driver.py:32:1	KITTY_REPORT_ALTERNATE_KEYS	variable `KITTY_REPORT_ALTERNATE_KEYS` is never used
+unused-variable	medium	src/textual/drivers/win32.py:23:1	ENABLE_ECHO_INPUT	variable `ENABLE_ECHO_INPUT` is never used
+unused-variable	medium	src/textual/drivers/win32.py:24:1	ENABLE_EXTENDED_FLAGS	variable `ENABLE_EXTENDED_FLAGS` is never used
+unused-variable	medium	src/textual/drivers/win32.py:25:1	ENABLE_INSERT_MODE	variable `ENABLE_INSERT_MODE` is never used
+unused-variable	medium	src/textual/drivers/win32.py:26:1	ENABLE_LINE_INPUT	variable `ENABLE_LINE_INPUT` is never used
+unused-variable	medium	src/textual/drivers/win32.py:27:1	ENABLE_MOUSE_INPUT	variable `ENABLE_MOUSE_INPUT` is never used
+unused-variable	medium	src/textual/drivers/win32.py:28:1	ENABLE_PROCESSED_INPUT	variable `ENABLE_PROCESSED_INPUT` is never used
+unused-variable	medium	src/textual/drivers/win32.py:29:1	ENABLE_QUICK_EDIT_MODE	variable `ENABLE_QUICK_EDIT_MODE` is never used
+unused-variable	medium	src/textual/drivers/win32.py:30:1	ENABLE_WINDOW_INPUT	variable `ENABLE_WINDOW_INPUT` is never used
+unused-variable	medium	src/textual/drivers/win32.py:34:1	ENABLE_PROCESSED_OUTPUT	variable `ENABLE_PROCESSED_OUTPUT` is never used
+unused-variable	medium	src/textual/drivers/win32.py:35:1	ENABLE_WRAP_AT_EOL_OUTPUT	variable `ENABLE_WRAP_AT_EOL_OUTPUT` is never used
+unused-variable	medium	src/textual/drivers/win32.py:37:1	DISABLE_NEWLINE_AUTO_RETURN	variable `DISABLE_NEWLINE_AUTO_RETURN` is never used
+unused-variable	medium	src/textual/drivers/win32.py:38:1	ENABLE_LVB_GRID_WORLDWIDE	variable `ENABLE_LVB_GRID_WORLDWIDE` is never used
+unused-variable	medium	src/textual/drivers/win32.py:41:1	STD_OUTPUT_HANDLE	variable `STD_OUTPUT_HANDLE` is never used
+unused-class	medium	src/textual/errors.py:17:7	RenderError	class `RenderError` is never used
+unused-variable	medium	src/textual/filter.py:152:1	DEFAULT_COLOR	variable `DEFAULT_COLOR` is never used
+unused-class	medium	src/textual/logging.py:15:7	TextualHandler	class `TextualHandler` is never used
+unused-method	medium	src/textual/message_pump.py:521:9	_on_invoke_later	method `MessagePump._on_invoke_later` is never used
+unused-method	medium	src/textual/message_pump.py:631:15	_on_close_messages	method `MessagePump._on_close_messages` is never used
+unused-class	medium	src/textual/renderables/gradient.py:13:7	VerticalGradient	class `VerticalGradient` is never used
+unused-method	medium	src/textual/screen.py:1961:9	_collect_select_widgets	method `Screen._collect_select_widgets` is never used
+unused-function	medium	src/textual/visual.py:30:5	is_visual	function `is_visual` is never used
+unused-method	medium	src/textual/visual.py:286:9	_measure	method `RichVisual._measure` is never used
+unused-method	medium	src/textual/widget.py:1508:9	_refresh_styles	method `Widget._refresh_styles` is never used
+unused-method	medium	src/textual/widget.py:2402:9	_console	method `Widget._console` is never used
+unused-method	medium	src/textual/widgets/_markdown.py:682:9	_update_content	method `MarkdownTableContent._update_content` is never used
+unused-method	medium	src/textual/widgets/_markdown.py:1359:9	_build_from_source	method `Markdown._build_from_source` is never used
+unused-method	medium	src/textual/widgets/_option_list.py:874:9	_get_line	method `OptionList._get_line` is never used
+unused-variable	medium	src/textual/widgets/_select.py:278:1	SelectOption	variable `SelectOption` is never used
+unused-method	medium	src/textual/widgets/_text_area.py:1189:9	_visible_line_indices	method `TextArea._visible_line_indices` is never used
+unused-method	medium	src/textual/widgets/_tree.py:1221:9	_refresh_node_line	method `Tree._refresh_node_line` is never used
+unused-variable	medium	tests/test_screens.py:17:1	skip_py310	variable `skip_py310` is never used
+unused-function	medium	tests/tree/test_tree_messages.py:90:11	tree_node_expanded_by_code_message	function `tree_node_expanded_by_code_message` is never used
+unused-function	medium	tests/tree/test_tree_messages.py:100:11	tree_node_all_expanded_by_code_message	function `tree_node_all_expanded_by_code_message` is never used
+unused-function	medium	tests/tree/test_tree_messages.py:122:11	tree_node_collapsed_by_code_message	function `tree_node_collapsed_by_code_message` is never used
+unused-function	medium	tests/tree/test_tree_messages.py:133:11	tree_node_all_collapsed_by_code_message	function `tree_node_all_collapsed_by_code_message` is never used
+unused-function	medium	tests/tree/test_tree_messages.py:144:11	tree_node_toggled_by_code_message	function `tree_node_toggled_by_code_message` is never used
+unused-function	medium	tests/tree/test_tree_messages.py:155:11	tree_node_all_toggled_by_code_message	function `tree_node_all_toggled_by_code_message` is never used

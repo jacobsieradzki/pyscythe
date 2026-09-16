@@ -1,0 +1,40 @@
+files_scanned=491
+symbols_checked=9273
+symbols_kept=3307
+findings=35
+--
+unused-file	medium	extras/qps-bench-server.py	-	file `qps-bench-server.py` is never imported or run
+unused-file	medium	extras/qpsclient.py	-	file `extras.qpsclient` is never imported or run
+unused-function	medium	scrapy/core/downloader/contextfactory.py:324:5	load_context_factory_from_settings	function `load_context_factory_from_settings` is never used
+unused-class	medium	scrapy/pipelines/__init__.py:31:7	ItemProcessorProtocol	class `ItemProcessorProtocol` is never used
+unused-function	medium	scrapy/utils/decorators.py:58:5	defers	function `defers` is never used
+unused-function	medium	scrapy/utils/defer.py:47:5	defer_fail	function `defer_fail` is never used
+unused-function	medium	scrapy/utils/defer.py:68:5	defer_succeed	function `defer_succeed` is never used
+unused-function	medium	scrapy/utils/defer.py:295:5	process_chain	function `process_chain` is never used
+unused-function	medium	scrapy/utils/defer.py:314:5	process_parallel	function `process_parallel` is never used
+unused-function	medium	scrapy/utils/python.py:116:5	re_rsearch	function `re_rsearch` is never used
+unused-class	medium	scrapy/utils/python.py:324:7	MutableChain	class `MutableChain` is never used
+unused-function	medium	scrapy/utils/test.py:110:5	get_web_client_agent_req	function `get_web_client_agent_req` is never used
+unused-class	medium	tests/test_cmdline_crawl_with_pipeline/test_spider/spiders/exception.py:4:7	ExceptionSpider	class `ExceptionSpider` is never used
+unused-class	medium	tests/test_cmdline_crawl_with_pipeline/test_spider/spiders/normal.py:4:7	NormalSpider	class `NormalSpider` is never used
+unused-class	medium	tests/test_crawler_runners.py:29:7	SpiderLoaderWithWrongInterface	class `SpiderLoaderWithWrongInterface` is never used
+unused-attribute	medium	tests/test_request_dict.py:224:5	__parse_item_reference	attribute `MethodsSpider.__parse_item_reference` is never used
+unused-attribute	medium	tests/test_request_dict.py:225:5	__handle_error_reference	attribute `MethodsSpider.__handle_error_reference` is never used
+unused-method	medium	tests/test_request_dict.py:237:9	__parse_item_private	method `MethodsSpider.__parse_item_private` is never used
+unused-function	medium	tests/test_settings/__init__.py:761:5	test_default_settings_all	function `test_default_settings_all` is never used
+unused-function	medium	tests/test_settings/__init__.py:770:5	test_deprecated_dns_resolver_setting	function `test_deprecated_dns_resolver_setting` is never used
+unused-function	medium	tests/test_settings/__init__.py:779:5	test_deprecated_concurrent_requests_per_ip_setting	function `test_deprecated_concurrent_requests_per_ip_setting` is never used
+unused-function	medium	tests/test_spiderloader/__init__.py:214:5	test_custom_spider_loader	function `test_custom_spider_loader` is never used
+unused-function	medium	tests/test_spiderloader/__init__.py:224:5	test_dummy_spider_loader	function `test_dummy_spider_loader` is never used
+unused-class	medium	tests/test_spiderloader/spiders_from_addons/spider0.py:4:7	SpiderFromAddon	class `SpiderFromAddon` is never used
+unused-class	medium	tests/test_spiderloader/test_spiders/nested/spider4.py:4:7	Spider4	class `Spider4` is never used
+unused-class	medium	tests/test_spiderloader/test_spiders/spider0.py:4:7	Spider0	class `Spider0` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:23:5	test_load_object_class	function `test_load_object_class` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:30:5	test_load_object_function	function `test_load_object_function` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:37:5	test_load_object_exceptions	function `test_load_object_exceptions` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:46:5	test_walk_modules	function `test_walk_modules` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:84:5	test_walk_modules_egg	function `test_walk_modules_egg` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:100:5	test_arg_to_iter	function `test_arg_to_iter` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:119:5	test_build_from_crawler	function `test_build_from_crawler` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:151:5	test_set_environ	function `test_set_environ` is never used
+unused-function	medium	tests/test_utils_misc/__init__.py:164:5	test_rel_has_nofollow	function `test_rel_has_nofollow` is never used

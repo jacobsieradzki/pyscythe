@@ -1,0 +1,52 @@
+files_scanned=232
+symbols_checked=3124
+symbols_kept=0
+findings=46
+health: score=95 grade=A functions=3124 max_cyclomatic=27 max_cognitive=49
+--
+complex-function	high	features/steps/cli_steps.py:512:5	check_created_project_structure_from_tools	function `check_created_project_structure_from_tools` has cyclomatic complexity 15 and cognitive complexity 8 over 39 lines
+complex-function	high	kedro/config/omegaconf_config.py:202:9	OmegaConfigLoader.__getitem__	function `OmegaConfigLoader.__getitem__` has cyclomatic complexity 18 and cognitive complexity 23 over 96 lines
+complex-function	high	kedro/config/omegaconf_config.py:314:9	OmegaConfigLoader.load_and_merge_dir_config	function `OmegaConfigLoader.load_and_merge_dir_config` has cyclomatic complexity 20 and cognitive complexity 20 over 99 lines
+complex-function	high	kedro/config/omegaconf_config.py:651:9	OmegaConfigLoader._check_duplicates	function `OmegaConfigLoader._check_duplicates` has cyclomatic complexity 11 and cognitive complexity 13 over 35 lines
+complex-function	high	kedro/framework/cli/pipeline.py:163:5	delete_pipeline	function `delete_pipeline` has cyclomatic complexity 12 and cognitive complexity 6 over 55 lines
+complex-function	high	kedro/framework/cli/pipeline.py:261:5	_sync_dirs	function `_sync_dirs` has cyclomatic complexity 16 and cognitive complexity 17 over 53 lines
+complex-function	high	kedro/framework/cli/starters.py:331:5	new	function `new` has cyclomatic complexity 11 and cognitive complexity 13 over 109 lines
+complex-function	high	kedro/framework/project/__init__.py:440:9	_ProjectLogging._prepare_logging_config	function `_ProjectLogging._prepare_logging_config` has cyclomatic complexity 12 and cognitive complexity 13 over 54 lines
+complex-function	high	kedro/framework/project/__init__.py:619:5	find_pipelines	function `find_pipelines` has cyclomatic complexity 27 and cognitive complexity 49 over 141 lines
+complex-function	high	kedro/framework/session/service_session.py:200:9	KedroServiceSession.run	function `KedroServiceSession.run` has cyclomatic complexity 16 and cognitive complexity 21 over 137 lines
+complex-function	high	kedro/framework/session/session.py:276:9	KedroSession.run	function `KedroSession.run` has cyclomatic complexity 15 and cognitive complexity 18 over 181 lines
+complex-function	high	kedro/inspection/helper.py:72:5	_resolve_factory_patterns	function `_resolve_factory_patterns` has cyclomatic complexity 11 and cognitive complexity 9 over 58 lines
+complex-function	high	kedro/io/core.py:92:5	_redact_url_credentials	function `_redact_url_credentials` has cyclomatic complexity 11 and cognitive complexity 7 over 42 lines
+complex-function	high	kedro/io/core.py:422:9	AbstractDataset.__init_subclass__	function `AbstractDataset.__init_subclass__` has cyclomatic complexity 11 and cognitive complexity 12 over 49 lines
+complex-function	high	kedro/io/core.py:621:5	parse_dataset_definition	function `parse_dataset_definition` has cyclomatic complexity 16 and cognitive complexity 20 over 106 lines
+complex-function	high	kedro/io/data_catalog.py:957:9	DataCatalog.filter	function `DataCatalog.filter` has cyclomatic complexity 15 and cognitive complexity 17 over 74 lines
+complex-function	high	kedro/io/data_catalog.py:1190:9	DataCatalog._validate	function `DataCatalog._validate` has cyclomatic complexity 14 and cognitive complexity 14 over 73 lines
+complex-function	high	kedro/io/data_catalog.py:1323:9	DataCatalog._validate_versions	function `DataCatalog._validate_versions` has cyclomatic complexity 10 and cognitive complexity 18 over 49 lines
+complex-function	high	kedro/io/memory_dataset.py:86:5	_infer_copy_mode	function `_infer_copy_mode` has cyclomatic complexity 11 and cognitive complexity 11 over 28 lines
+complex-function	high	kedro/ipython/__init__.py:237:5	_resolve_project_path	function `_resolve_project_path` has cyclomatic complexity 11 and cognitive complexity 10 over 40 lines
+complex-function	high	kedro/ipython/__init__.py:429:5	_prepare_imports	function `_prepare_imports` has cyclomatic complexity 9 and cognitive complexity 22 over 38 lines
+complex-function	high	kedro/pipeline/node.py:51:9	Node.__init__	function `Node.__init__` has cyclomatic complexity 19 and cognitive complexity 23 over 147 lines
+complex-function	high	kedro/pipeline/pipeline.py:133:9	Pipeline.__init__	function `Pipeline.__init__` has cyclomatic complexity 16 and cognitive complexity 15 over 158 lines
+complex-function	high	kedro/pipeline/pipeline.py:315:9	Pipeline._validate_namespaces	function `Pipeline._validate_namespaces` has cyclomatic complexity 16 and cognitive complexity 25 over 44 lines
+complex-function	high	kedro/pipeline/pipeline.py:603:9	Pipeline._group_by_namespace	function `Pipeline._group_by_namespace` has cyclomatic complexity 9 and cognitive complexity 17 over 26 lines
+complex-function	high	kedro/runner/runner.py:198:9	AbstractRunner._run	function `AbstractRunner._run` has cyclomatic complexity 15 and cognitive complexity 22 over 87 lines
+complex-function	high	kedro/templates/project/hooks/utils.py:182:5	setup_template_tools	function `setup_template_tools` has cyclomatic complexity 11 and cognitive complexity 10 over 42 lines
+complex-function	high	kedro/utils.py:40:5	_parse_filepath	function `_parse_filepath` has cyclomatic complexity 13 and cognitive complexity 14 over 46 lines
+complex-function	high	kedro/validation/api.py:275:5	validate_dataset	function `validate_dataset` has cyclomatic complexity 11 and cognitive complexity 11 over 70 lines
+complex-function	high	kedro/validation/core.py:104:9	ValidatorSpec.from_dataset_config	function `ValidatorSpec.from_dataset_config` has cyclomatic complexity 17 and cognitive complexity 18 over 106 lines
+complex-function	high	kedro/validation/core.py:275:5	resolve_validator	function `resolve_validator` has cyclomatic complexity 13 and cognitive complexity 18 over 95 lines
+complex-function	high	kedro/validation/exceptions.py:144:9	DataValidationError.__str__	function `DataValidationError.__str__` has cyclomatic complexity 11 and cognitive complexity 13 over 24 lines
+complex-function	high	kedro/validation/type_extractor.py:93:9	TypeExtractor._extract_types_from_node	function `TypeExtractor._extract_types_from_node` has cyclomatic complexity 12 and cognitive complexity 15 over 66 lines
+complex-function	high	kedro_benchmarks/_utils.py:23:5	build_benchmark_project	function `build_benchmark_project` has cyclomatic complexity 19 and cognitive complexity 23 over 120 lines
+complex-function	high	tests/framework/cli/pipeline/conftest.py:23:5	cleanup_pipelines	function `cleanup_pipelines` has cyclomatic complexity 14 and cognitive complexity 19 over 32 lines
+complex-function	high	tests/framework/cli/pipeline/test_pipeline.py:52:9	TestPipelineCreateCommand.test_create_pipeline	function `TestPipelineCreateCommand.test_create_pipeline` has cyclomatic complexity 12 and cognitive complexity 2 over 32 lines
+complex-function	high	tests/framework/cli/pipeline/test_pipeline.py:356:9	TestPipelineDeleteCommand.test_delete_pipeline	function `TestPipelineDeleteCommand.test_delete_pipeline` has cyclomatic complexity 12 and cognitive complexity 1 over 38 lines
+complex-function	high	tests/framework/cli/pipeline/test_pipeline.py:487:9	TestPipelineDeleteCommand.test_pipeline_delete_confirmation	function `TestPipelineDeleteCommand.test_pipeline_delete_confirmation` has cyclomatic complexity 13 and cognitive complexity 3 over 42 lines
+complex-function	high	tests/framework/cli/pipeline/test_pipeline.py:531:9	TestPipelineDeleteCommand.test_pipeline_delete_confirmation_skip	function `TestPipelineDeleteCommand.test_pipeline_delete_confirmation_skip` has cyclomatic complexity 12 and cognitive complexity 3 over 45 lines
+complex-function	high	tests/framework/cli/starters/utils.py:216:5	_assert_requirements_ok	function `_assert_requirements_ok` has cyclomatic complexity 16 and cognitive complexity 3 over 90 lines
+complex-function	high	tests/framework/cli/starters/utils.py:308:5	_assert_template_ok	function `_assert_template_ok` has cyclomatic complexity 17 and cognitive complexity 3 over 37 lines
+complex-function	high	tests/framework/hooks/test_manager.py:84:5	test_hook_args_doc_table_matches_specs	function `test_hook_args_doc_table_matches_specs` has cyclomatic complexity 11 and cognitive complexity 7 over 68 lines
+complex-function	high	tests/framework/project/test_settings.py:108:5	test_settings_after_configuring_project_shows_updated_values	function `test_settings_after_configuring_project_shows_updated_values` has cyclomatic complexity 12 and cognitive complexity 1 over 14 lines
+complex-function	high	tests/framework/session/test_session_extension_hooks.py:263:9	TestNodeHooks.test_before_and_after_node_run_hooks_parallel_runner	function `TestNodeHooks.test_before_and_after_node_run_hooks_parallel_runner` has cyclomatic complexity 15 and cognitive complexity 2 over 27 lines
+complex-function	high	tests/framework/session/test_session_extension_hooks.py:331:9	TestDatasetHooks.test_before_and_after_dataset_loaded_hooks_parallel_runner	function `TestDatasetHooks.test_before_and_after_dataset_loaded_hooks_parallel_runner` has cyclomatic complexity 13 and cognitive complexity 2 over 26 lines
+complex-function	high	tests/framework/session/test_session_extension_hooks.py:396:9	TestDatasetHooks.test_before_and_after_dataset_saved_hooks_parallel_runner	function `TestDatasetHooks.test_before_and_after_dataset_saved_hooks_parallel_runner` has cyclomatic complexity 15 and cognitive complexity 2 over 27 lines

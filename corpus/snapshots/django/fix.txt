@@ -1,0 +1,47 @@
+files_scanned=2932
+symbols_checked=53396
+symbols_kept=3718
+findings=42
+--
+unused-file	medium	django/conf/locale/is/formats.py	-	file `formats.py` is never imported or run
+unused-variable	medium	django/contrib/gis/gdal/field.py:266:1	ROGRFieldTypes	variable `ROGRFieldTypes` is never used
+unused-variable	medium	django/contrib/gis/gdal/prototypes/ds.py:29:1	GDAL_OF_ALL	variable `GDAL_OF_ALL` is never used
+unused-variable	medium	django/contrib/gis/gdal/prototypes/ds.py:30:1	GDAL_OF_RASTER	variable `GDAL_OF_RASTER` is never used
+unused-variable	medium	django/contrib/gis/gdal/prototypes/ds.py:35:1	cleanup_all	variable `cleanup_all` is never used
+unused-variable	medium	django/contrib/gis/gdal/prototypes/ds.py:84:1	clone_feature	variable `clone_feature` is never used
+unused-variable	medium	django/contrib/gis/gdal/prototypes/srs.py:35:1	destroy_srs	variable `destroy_srs` is never used
+unused-class	medium	django/contrib/gis/geos/prototypes/io.py:35:7	WKBWriter_st	class `WKBWriter_st` is never used
+unused-class	medium	django/contrib/sessions/exceptions.py:10:7	SuspiciousSession	class `SuspiciousSession` is never used
+unused-class	medium	django/contrib/syndication/views.py:25:7	FeedDoesNotExist	class `FeedDoesNotExist` is never used
+unused-method	medium	django/test/runner.py:361:9	_exc_info_to_string	method `RemoteTestResult._exc_info_to_string` is never used
+unused-variable	medium	django/utils/safestring.py:53:1	SafeText	variable `SafeText` is never used
+unused-variable	medium	django/views/static.py:68:1	template_translatable	variable `template_translatable` is never used
+unused-class	medium	tests/apps/two_configs_app/apps.py:8:7	TwoConfigBis	class `TwoConfigBis` is never used
+unused-class	medium	tests/apps/two_configs_one_default_app/apps.py:9:7	TwoConfigAlt	class `TwoConfigAlt` is never used
+unused-class	medium	tests/apps/two_default_configs_app/apps.py:9:7	TwoConfigBis	class `TwoConfigBis` is never used
+unused-class	medium	tests/auth_tests/test_auth_backends.py:1086:7	TypeErrorValidator	class `TypeErrorValidator` is never used
+unused-function	medium	tests/check_framework/urls/bad_function_based_error_handlers.py:9:5	bad_handler	function `bad_handler` is never used
+unused-function	medium	tests/check_framework/urls/good_error_handler_deferred_annotations.py:14:5	good_handler_deferred_annotations	function `good_handler_deferred_annotations` is never used
+unused-function	medium	tests/check_framework/urls/good_function_based_error_handlers.py:9:5	good_handler	function `good_handler` is never used
+unused-variable	medium	tests/i18n/commands/__init__.py:5:1	dummy1	variable `dummy1` is never used
+unused-variable	medium	tests/i18n/commands/__init__.py:15:1	dummy4	variable `dummy4` is never used
+unused-variable	medium	tests/i18n/commands/__init__.py:18:1	dummy5	variable `dummy5` is never used
+unused-variable	medium	tests/i18n/exclude/__init__.py:9:1	dummy1	variable `dummy1` is never used
+unused-variable	medium	tests/i18n/obsolete_translations/__init__.py:3:1	string1	variable `string1` is never used
+unused-variable	medium	tests/i18n/unchanged/__init__.py:3:1	string1	variable `string1` is never used
+unused-variable	medium	tests/i18n/unchanged/__init__.py:4:1	string2	variable `string2` is never used
+unused-class	medium	tests/logging_tests/logconfig.py:7:7	MyHandler	class `MyHandler` is never used
+unused-class	medium	tests/middleware_exceptions/middleware.py:41:7	ProcessExceptionExcMiddleware	class `ProcessExceptionExcMiddleware` is never used
+unused-class	medium	tests/urlpatterns_reverse/middleware.py:8:7	ChangeURLconfMiddleware	class `ChangeURLconfMiddleware` is never used
+unused-class	medium	tests/urlpatterns_reverse/middleware.py:13:7	NullChangeURLconfMiddleware	class `NullChangeURLconfMiddleware` is never used
+unused-class	medium	tests/urlpatterns_reverse/middleware.py:18:7	ReverseInnerInResponseMiddleware	class `ReverseInnerInResponseMiddleware` is never used
+unused-class	medium	tests/urlpatterns_reverse/middleware.py:23:7	ReverseOuterInResponseMiddleware	class `ReverseOuterInResponseMiddleware` is never used
+unused-class	medium	tests/urlpatterns_reverse/middleware.py:28:7	ReverseInnerInStreaming	class `ReverseInnerInStreaming` is never used
+unused-class	medium	tests/urlpatterns_reverse/middleware.py:36:7	ReverseOuterInStreaming	class `ReverseOuterInStreaming` is never used
+unused-function	medium	tests/urlpatterns_reverse/views.py:25:5	erroneous_view	function `erroneous_view` is never used
+unused-variable	medium	tests/utils_tests/test_csp.py:11:1	alt_config	variable `alt_config` is never used
+unused-variable	medium	tests/utils_tests/test_text.py:12:1	IS_WIDE_BUILD	variable `IS_WIDE_BUILD` is never used
+unused-variable	medium	tests/view_tests/generic_urls.py:14:1	object_list_dict	variable `object_list_dict` is never used
+unused-variable	medium	tests/view_tests/generic_urls.py:19:1	object_list_no_paginate_by	variable `object_list_no_paginate_by` is never used
+unused-variable	medium	tests/view_tests/generic_urls.py:23:1	numeric_days_info_dict	variable `numeric_days_info_dict` is never used
+unused-variable	medium	tests/view_tests/generic_urls.py:25:1	date_based_datefield_info_dict	variable `date_based_datefield_info_dict` is never used

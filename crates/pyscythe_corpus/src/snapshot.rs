@@ -53,6 +53,7 @@ struct Finding {
     symbol: Option<String>,
     distribution: Option<String>,
     function: Option<String>,
+    to_module: Option<String>,
 }
 
 #[derive(Debug, Clone, Copy, Deserialize)]
@@ -82,6 +83,7 @@ impl Line {
             .symbol
             .or(finding.distribution)
             .or(finding.function)
+            .or(finding.to_module)
             .unwrap_or_else(|| "-".to_owned());
         Self {
             path: relative(&finding.path, root),

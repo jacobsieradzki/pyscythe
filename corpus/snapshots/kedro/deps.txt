@@ -1,0 +1,52 @@
+files_scanned=232
+symbols_checked=101
+symbols_kept=0
+findings=47
+--
+missing-dependency	low	features/steps/cli_steps.py:11:8	requests	`requests` is imported but `requests` is not a declared dependency; it arrives through a declared dependency
+missing-dependency	low	features/steps/cli_steps.py:15:1	packaging	`packaging` is imported but `packaging` is not a declared dependency; it arrives through a declared dependency
+unresolved-import	low	features/steps/sh_run.py:7:8		import `psutil` resolves to nothing on the search path
+unused-dependency	low	features/test_starter/{{ cookiecutter.repo_name }}/pyproject.toml	docutils	dependency `docutils` (optional-dependencies.docs) is never imported
+unused-dependency	low	features/test_starter/{{ cookiecutter.repo_name }}/pyproject.toml	jinja2	dependency `jinja2` (optional-dependencies.docs) is never imported
+unused-dependency	medium	features/test_starter/{{ cookiecutter.repo_name }}/pyproject.toml	kedro	dependency `kedro` is never imported
+unused-dependency	medium	features/test_starter/{{ cookiecutter.repo_name }}/pyproject.toml	kedro-datasets	dependency `kedro-datasets` is never imported
+unused-dependency	low	features/test_starter/{{ cookiecutter.repo_name }}/pyproject.toml	myst-parser	dependency `myst-parser` (optional-dependencies.docs) is never imported
+unused-dependency	low	features/test_starter/{{ cookiecutter.repo_name }}/pyproject.toml	nbsphinx	dependency `nbsphinx` (optional-dependencies.docs) is never imported
+unused-dependency	low	features/test_starter/{{ cookiecutter.repo_name }}/pyproject.toml	sphinx-autodoc-typehints	dependency `sphinx-autodoc-typehints` (optional-dependencies.docs) is never imported
+unused-dependency	low	features/test_starter/{{ cookiecutter.repo_name }}/pyproject.toml	sphinx-copybutton	dependency `sphinx-copybutton` (optional-dependencies.docs) is never imported
+unused-dependency	low	features/test_starter/{{ cookiecutter.repo_name }}/pyproject.toml	sphinx-rtd-theme	dependency `sphinx-rtd-theme` (optional-dependencies.docs) is never imported
+unresolved-import	low	features/test_starter/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_engineering/nodes.py:10:8		import `pandas` resolves to nothing on the search path
+unresolved-import	low	features/test_starter/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_science/nodes.py:12:8		import `numpy` resolves to nothing on the search path
+unresolved-import	low	kedro/framework/cli/jupyter.py:148:5		import `ipykernel` resolves to nothing on the search path
+unresolved-import	low	kedro/io/memory_dataset.py:100:16		import `numpy` resolves to nothing on the search path
+unresolved-import	low	kedro/io/memory_dataset.py:104:16		import `ibis` resolves to nothing on the search path
+unused-dependency	low	kedro/templates/project/{{ cookiecutter.repo_name }}/pyproject.toml	docutils	dependency `docutils` (optional-dependencies.docs) is never imported
+unused-dependency	low	kedro/templates/project/{{ cookiecutter.repo_name }}/pyproject.toml	jinja2	dependency `jinja2` (optional-dependencies.docs) is never imported
+unused-dependency	medium	kedro/templates/project/{{ cookiecutter.repo_name }}/pyproject.toml	kedro	dependency `kedro` is never imported
+unused-dependency	low	kedro/templates/project/{{ cookiecutter.repo_name }}/pyproject.toml	myst-parser	dependency `myst-parser` (optional-dependencies.docs) is never imported
+unused-dependency	low	kedro/templates/project/{{ cookiecutter.repo_name }}/pyproject.toml	nbsphinx	dependency `nbsphinx` (optional-dependencies.docs) is never imported
+unused-dependency	low	kedro/templates/project/{{ cookiecutter.repo_name }}/pyproject.toml	sphinx-autodoc-typehints	dependency `sphinx-autodoc-typehints` (optional-dependencies.docs) is never imported
+unused-dependency	low	kedro/templates/project/{{ cookiecutter.repo_name }}/pyproject.toml	sphinx-copybutton	dependency `sphinx-copybutton` (optional-dependencies.docs) is never imported
+unused-dependency	low	kedro/templates/project/{{ cookiecutter.repo_name }}/pyproject.toml	sphinx-rtd-theme	dependency `sphinx-rtd-theme` (optional-dependencies.docs) is never imported
+unresolved-import	low	kedro/validation/pandera_validator.py:45:9		import `pyspark` resolves to nothing on the search path
+unresolved-import	low	kedro/validation/pandera_validator.py:59:16		import `polars` resolves to nothing on the search path
+unused-dependency	low	pyproject.toml	asv	dependency `asv` (optional-dependencies.benchmark) is never imported
+unused-dependency	low	pyproject.toml	detect-secrets	dependency `detect-secrets` (optional-dependencies.test) is never imported
+unused-dependency	low	pyproject.toml	griffe	dependency `griffe` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	import-linter	dependency `import-linter` (optional-dependencies.test) is never imported
+unused-dependency	low	pyproject.toml	ipylab	dependency `ipylab` (optional-dependencies.jupyter) is never imported
+unused-dependency	low	pyproject.toml	jupyterlab-server	dependency `jupyterlab-server` (optional-dependencies.test) is never imported
+unused-dependency	low	pyproject.toml	mkdocs-autorefs	dependency `mkdocs-autorefs` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	mkdocs-click	dependency `mkdocs-click` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	mkdocs-get-deps	dependency `mkdocs-get-deps` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	mkdocs-llmstxt	dependency `mkdocs-llmstxt` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	mkdocs-material-extensions	dependency `mkdocs-material-extensions` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	mkdocs-mermaid2-plugin	dependency `mkdocs-mermaid2-plugin` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	mkdocs-redirects	dependency `mkdocs-redirects` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	mkdocstrings	dependency `mkdocstrings` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	mkdocstrings-python	dependency `mkdocstrings-python` (optional-dependencies.docs) is never imported
+unused-dependency	low	pyproject.toml	requests-mock	dependency `requests-mock` (optional-dependencies.test) is never imported
+unused-dependency	low	pyproject.toml	s3fs	dependency `s3fs` (optional-dependencies.test) is never imported
+unresolved-import	low	tests/framework/cli/test_jupyter.py:5:1		import `jupyter_client` resolves to nothing on the search path
+unresolved-import	low	tests/io/test_core.py:357:20		import `random_package` resolves to nothing on the search path
+unresolved-import	low	tools/databricks_build.py:5:1		import `databricks_cli` resolves to nothing on the search path

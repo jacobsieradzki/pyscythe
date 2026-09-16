@@ -6,6 +6,11 @@
 # them). `mise run corpus` checks every project. Pick projects for the shape
 # they add, not their fame: each one should exercise a layout or framework the
 # others do not.
+#
+# `boundaries = "configs/<name>.toml"` adds the boundaries analysis for a
+# project, reading its layers from that file instead of from the checkout,
+# which stays exactly as published. Only add one for a project that states its
+# own architecture somewhere; inventing layers would test nothing.
 
 # A framework with a huge test tree, template tags, settings modules, and a
 # `django.contrib` full of registrations.
@@ -305,3 +310,15 @@ commit = "e12b81d3bbf644ec7045e152d69bc4b68d69cd48"
 python = "3.12"
 requirements = ["pytest"]
 editable = ["."]
+
+# A data pipeline framework that declares its own layers: kedro runs
+# import-linter over a layers contract plus forbidden and independence
+# contracts, which `corpus/configs/kedro.toml` translates. The only project
+# here whose architecture rules are its own rather than invented.
+[projects.kedro]
+repository = "https://github.com/kedro-org/kedro"
+commit = "c98ccf77df26ced121859bf52c1c805445d0c646"
+python = "3.12"
+requirements = ["pytest"]
+editable = ["."]
+boundaries = "configs/kedro.toml"

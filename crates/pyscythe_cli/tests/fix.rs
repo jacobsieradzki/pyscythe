@@ -150,3 +150,39 @@ fn only_restricts_the_rules_acted_on() {
         .stderr(predicate::str::contains("unknown rule"));
     std::fs::remove_dir_all(project).ok();
 }
+
+#[test]
+fn json_lists_what_fix_would_remove_without_touching_the_files() {
+    let project = copy_fixture("fix_imports");
+    let before = std::fs::read_to_string(project.join("pkg/util.py")).expect("reads");
+
+    let output = pyscythe()
+        .args(["fix", "--dry-run", "--format", "json"])
+        .arg(&project)
+        .output()
+        .expect("runs");
+
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    assert_eq!(report["kind"], "fix");
+    let mut removed: Vec<(&str, &str)> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter_map(|f| Some((f["rule"].as_str()?, f["symbol"].as_str().unwrap_or("-"))))
+        .collect();
+    removed.sort_unstable();
+    assert!(
+        !removed.is_empty(),
+        "the plan is what fix would carry out: {report}"
+    );
+    assert_eq!(
+        std::fs::read_to_string(project.join("pkg/util.py")).expect("reads"),
+        before,
+        "a dry run writes nothing"
+    );
+    assert_eq!(
+        report["summary"]["findings"].as_u64(),
+        Some(removed.len() as u64),
+        "{report}"
+    );
+}

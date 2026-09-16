@@ -41,6 +41,8 @@ pub enum ReportKind {
     Boundaries,
     /// Declared versus imported dependencies.
     Deps,
+    /// The dead code a fix removes.
+    Fix,
 }
 
 impl ReportKind {
@@ -54,6 +56,7 @@ impl ReportKind {
             Self::Dupes => "dupes",
             Self::Boundaries => "boundaries",
             Self::Deps => "deps",
+            Self::Fix => "fix",
         }
     }
 }

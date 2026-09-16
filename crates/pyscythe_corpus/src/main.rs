@@ -21,6 +21,7 @@ mod checkout;
 mod environment;
 mod manifest;
 mod process;
+mod repair;
 mod snapshot;
 
 use analysis::Analysis;
@@ -68,6 +69,9 @@ enum Mode {
     Update,
     /// Re-resolve the projects' environments into the lock files.
     Lock,
+    /// Carry out `pyscythe fix`, check every package it ships still imports,
+    /// and restore the checkout.
+    Repair,
 }
 
 /// A slice of the projects: every `count`th project starting from `index`, in name order.
@@ -173,6 +177,10 @@ fn main() -> ExitCode {
 
 fn run(cli: &Cli, out: &mut dyn Write) -> Result<bool> {
     let manifest = Manifest::load(&cli.manifest)?;
+    let manifest_directory = cli
+        .manifest
+        .parent()
+        .map_or_else(|| Utf8PathBuf::from("."), Utf8Path::to_path_buf);
     let layout = Layout::from_cli(cli)?;
     for name in &cli.project {
         if !manifest.projects.contains_key(name) {
@@ -205,19 +213,44 @@ fn run(cli: &Cli, out: &mut dyn Write) -> Result<bool> {
         }
         environment::ensure(name, &clone, project, &lock_file, out)?;
         let root = canonical(&clone.join(&project.root))?;
-        for analysis in &analyses {
+        if matches!(cli.mode, Mode::Repair) {
             let started = Instant::now();
-            let outcome = analyse(&layout, cli.mode, name, &root, *analysis)?;
+            let repaired = repair::repair(&layout.binary, &clone, &root)?;
+            all_succeeded &= repaired.is_success();
+            report_repair(out, name, started.elapsed().as_secs_f64(), &repaired)?;
+            continue;
+        }
+        // The runner's working directory is the checkout, so the config a
+        // project's boundaries need is resolved against the manifest first.
+        let boundaries = project
+            .boundaries
+            .as_ref()
+            .map(|path| canonical(&manifest_directory.join(path)))
+            .transpose()?;
+        for analysis in &analyses {
+            if *analysis == Analysis::Boundaries && boundaries.is_none() {
+                continue;
+            }
+            // Only boundaries reads it: the other analyses judge the project by
+            // what the project itself declares.
+            let config = match analysis {
+                Analysis::Boundaries => boundaries.as_deref(),
+                _ => None,
+            };
+            let started = Instant::now();
+            let outcome = analyse(&layout, cli.mode, name, &root, *analysis, config)?;
             let seconds = started.elapsed().as_secs_f64();
             all_succeeded &= outcome.is_success();
             report(out, name, *analysis, seconds, &outcome)?;
         }
     }
     if !all_succeeded {
-        writeln!(
-            out,
+        let advice = if matches!(cli.mode, Mode::Repair) {
+            "\n`pyscythe fix` removed live code. The packages named above no longer import."
+        } else {
             "\nSnapshots differ. Review the diffs, then run `pyscythe-corpus update` to accept them."
-        )?;
+        };
+        writeln!(out, "{advice}")?;
     }
     Ok(all_succeeded)
 }
@@ -228,8 +261,9 @@ fn analyse(
     name: &ProjectName,
     root: &Utf8Path,
     analysis: Analysis,
+    config: Option<&Utf8Path>,
 ) -> Result<Outcome> {
-    let fresh = match fresh_snapshot(layout, root, analysis)? {
+    let fresh = match fresh_snapshot(layout, root, analysis, config)? {
         Ok(text) => text,
         Err(failure) => return Ok(Outcome::Failed(failure)),
     };
@@ -262,8 +296,40 @@ fn analyse(
                 }
             })
         }
-        Mode::Lock => bail!("lock mode does not analyse"),
+        Mode::Lock | Mode::Repair => bail!("{mode:?} mode does not analyse"),
     }
+}
+
+/// One line per project saying what `fix` removed and whether it broke anything.
+fn report_repair(
+    out: &mut dyn Write,
+    name: &ProjectName,
+    seconds: f64,
+    repaired: &repair::Repair,
+) -> Result<()> {
+    let verdict = if repaired.is_success() {
+        format!(
+            "ok  {} of {} package(s) import before and after",
+            repaired.imported_before.len(),
+            repaired.imported_before.len() + repaired.unimportable.len()
+        )
+    } else {
+        format!("BROKE {}", repaired.broken.join(", "))
+    };
+    writeln!(
+        out,
+        "{name:28} fix {seconds:6.1}s  {verdict}; {}",
+        repaired.summary
+    )?;
+    if !repaired.unimportable.is_empty() {
+        writeln!(
+            out,
+            "{:28}     {} did not import even before the fix, so they prove nothing",
+            "",
+            repaired.unimportable.join(", ")
+        )?;
+    }
+    Ok(())
 }
 
 /// Runs pyscythe and renders its report; the inner error is a failed run, reported not raised.
@@ -271,6 +337,7 @@ fn fresh_snapshot(
     layout: &Layout,
     root: &Utf8Path,
     analysis: Analysis,
+    config: Option<&Utf8Path>,
 ) -> Result<Result<String, String>> {
     if !layout.binary.is_file() {
         bail!(
@@ -278,8 +345,13 @@ fn fresh_snapshot(
             layout.binary
         );
     }
-    let output = Command::new(&layout.binary)
-        .arg(analysis.subcommand())
+    let mut command = Command::new(&layout.binary);
+    command.arg(analysis.subcommand());
+    command.args(analysis.extra_arguments());
+    if let Some(config) = config {
+        command.arg("--config").arg(config);
+    }
+    let output = command
         .args(["--format", "json"])
         .arg(root)
         .current_dir(root)

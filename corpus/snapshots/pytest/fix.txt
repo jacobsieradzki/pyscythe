@@ -1,0 +1,43 @@
+files_scanned=274
+symbols_checked=7227
+symbols_kept=1707
+findings=38
+--
+unused-function	medium	src/_pytest/capture.py:1041:5	capteesys	function `capteesys` is never used
+unused-function	medium	src/_pytest/capture.py:1076:5	capsysbinary	function `capsysbinary` is never used
+unused-function	medium	src/_pytest/capture.py:1132:5	capfdbinary	function `capfdbinary` is never used
+unused-variable	medium	src/_pytest/monkeypatch.py:28:1	RE_IMPORT_ERROR_NAME	variable `RE_IMPORT_ERROR_NAME` is never used
+unused-method	medium	src/_pytest/unittest.py:240:9	_testcase	method `TestCaseFunction._testcase` is never used
+unused-file	medium	testing/plugins_integration/pytest_anyio_integration.py	-	file `testing.plugins_integration.pytest_anyio_integration` is never imported or run
+unused-file	medium	testing/plugins_integration/pytest_asyncio_integration.py	-	file `testing.plugins_integration.pytest_asyncio_integration` is never imported or run
+unused-file	medium	testing/plugins_integration/pytest_mock_integration.py	-	file `testing.plugins_integration.pytest_mock_integration` is never imported or run
+unused-file	medium	testing/plugins_integration/pytest_trio_integration.py	-	file `testing.plugins_integration.pytest_trio_integration` is never imported or run
+unused-file	medium	testing/plugins_integration/pytest_twisted_integration.py	-	file `testing.plugins_integration.pytest_twisted_integration` is never imported or run
+unused-file	medium	testing/plugins_integration/simple_integration.py	-	file `testing.plugins_integration.simple_integration` is never imported or run
+unused-class	medium	testing/python/approx.py:101:7	TestApprox	class `TestApprox` is never used
+unused-class	medium	testing/python/approx.py:1401:7	TestApproxDatetime	class `TestApproxDatetime` is never used
+unused-class	medium	testing/python/approx.py:1740:7	TestRecursiveSequenceMap	class `TestRecursiveSequenceMap` is never used
+unused-file	medium	testing/python/collect.py	-	file `testing.python.collect` is never imported or run
+unused-class	medium	testing/python/fixtures.py:715:7	TestRequestBasic	class `TestRequestBasic` is never used
+unused-class	medium	testing/python/fixtures.py:1294:7	TestRequestSessionScoped	class `TestRequestSessionScoped` is never used
+unused-class	medium	testing/python/fixtures.py:1309:7	TestRequestMarking	class `TestRequestMarking` is never used
+unused-class	medium	testing/python/fixtures.py:1380:7	TestFixtureUsages	class `TestFixtureUsages` is never used
+unused-class	medium	testing/python/fixtures.py:1842:7	TestFixtureManagerParseFactories	class `TestFixtureManagerParseFactories` is never used
+unused-class	medium	testing/python/fixtures.py:2114:7	TestAutouseDiscovery	class `TestAutouseDiscovery` is never used
+unused-class	medium	testing/python/fixtures.py:2292:7	TestAutouseManagement	class `TestAutouseManagement` is never used
+unused-class	medium	testing/python/fixtures.py:2580:7	TestFixtureMarker	class `TestFixtureMarker` is never used
+unused-class	medium	testing/python/fixtures.py:3666:7	TestRequestScopeAccess	class `TestRequestScopeAccess` is never used
+unused-class	medium	testing/python/fixtures.py:3718:7	TestErrors	class `TestErrors` is never used
+unused-class	medium	testing/python/fixtures.py:3807:7	TestShowFixtures	class `TestShowFixtures` is never used
+unused-class	medium	testing/python/fixtures.py:4099:7	TestContextManagerFixtureFuncs	class `TestContextManagerFixtureFuncs` is never used
+unused-class	medium	testing/python/fixtures.py:4228:7	TestParameterizedSubRequest	class `TestParameterizedSubRequest` is never used
+unused-class	medium	testing/python/fixtures.py:4539:7	TestParamValueKey	class `TestParamValueKey` is never used
+unused-class	medium	testing/python/fixtures.py:4594:7	TestScopeOrdering	class `TestScopeOrdering` is never used
+unused-file	medium	testing/python/integration.py	-	file `testing.python.integration` is never imported or run
+unused-file	medium	testing/python/metafunc.py	-	file `testing.python.metafunc` is never imported or run
+unused-file	medium	testing/python/raises.py	-	file `testing.python.raises` is never imported or run
+unused-file	medium	testing/python/raises_group.py	-	file `testing.python.raises_group` is never imported or run
+unused-variable	medium	testing/test_subtests.py:14:1	IS_PY311	variable `IS_PY311` is never used
+unused-function	high	testing/test_unraisableexception.py:221:5	_set_gc_state	function `_set_gc_state` is never used
+unused-file	medium	testing/typing_checks.py	-	file `testing.typing_checks` is never imported or run
+unused-file	medium	testing/typing_raises_group.py	-	file `testing.typing_raises_group` is never imported or run

@@ -1,0 +1,10 @@
+files_scanned=1028
+symbols_checked=6732
+symbols_kept=3490
+findings=5
+--
+unused-variable	medium	fastapi/exceptions.py:157:1	RequestErrorModel	variable `RequestErrorModel` is never used
+unused-variable	medium	fastapi/exceptions.py:158:1	WebSocketErrorModel	variable `WebSocketErrorModel` is never used
+unused-function	medium	fastapi/openapi/utils.py:266:5	generate_operation_id	function `generate_operation_id` is never used
+unused-variable	medium	tests/test_params_repr.py:5:1	test_data	variable `test_data` is never used
+unused-class	medium	tests/test_response_class_no_mediatype.py:10:7	JsonApiResponse	class `JsonApiResponse` is never used

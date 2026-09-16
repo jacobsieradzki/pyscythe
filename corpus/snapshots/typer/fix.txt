@@ -1,0 +1,26 @@
+files_scanned=637
+symbols_checked=3238
+symbols_kept=1351
+findings=21
+--
+unused-variable	medium	tests/assets/cli/multi_app_norich.py:5:1	variable	variable `variable` is never used
+unused-variable	high	typer/_click/_compat.py:554:1	_default_text_stdin	variable `_default_text_stdin` is never used
+unused-variable	medium	typer/_click/_winconsole.py:68:1	STDIN_FILENO	variable `STDIN_FILENO` is never used
+unused-variable	medium	typer/_click/_winconsole.py:69:1	STDOUT_FILENO	variable `STDOUT_FILENO` is never used
+unused-variable	medium	typer/_click/_winconsole.py:70:1	STDERR_FILENO	variable `STDERR_FILENO` is never used
+unused-variable	high	typer/_click/decorators.py:17:1	_AnyCallable	variable `_AnyCallable` is never used
+unused-class	medium	typer/_click/types.py:691:7	OptionHelpExtra	class `OptionHelpExtra` is never used
+unused-variable	medium	typer/colors.py:2:1	BLACK	variable `BLACK` is never used
+unused-variable	medium	typer/colors.py:5:1	YELLOW	variable `YELLOW` is never used
+unused-variable	medium	typer/colors.py:6:1	BLUE	variable `BLUE` is never used
+unused-variable	medium	typer/colors.py:8:1	CYAN	variable `CYAN` is never used
+unused-variable	medium	typer/colors.py:11:1	RESET	variable `RESET` is never used
+unused-variable	medium	typer/colors.py:13:1	BRIGHT_BLACK	variable `BRIGHT_BLACK` is never used
+unused-variable	medium	typer/colors.py:14:1	BRIGHT_RED	variable `BRIGHT_RED` is never used
+unused-variable	medium	typer/colors.py:15:1	BRIGHT_GREEN	variable `BRIGHT_GREEN` is never used
+unused-variable	medium	typer/colors.py:16:1	BRIGHT_YELLOW	variable `BRIGHT_YELLOW` is never used
+unused-variable	medium	typer/colors.py:17:1	BRIGHT_BLUE	variable `BRIGHT_BLUE` is never used
+unused-variable	medium	typer/colors.py:18:1	BRIGHT_MAGENTA	variable `BRIGHT_MAGENTA` is never used
+unused-variable	medium	typer/colors.py:19:1	BRIGHT_CYAN	variable `BRIGHT_CYAN` is never used
+unused-variable	medium	typer/colors.py:20:1	BRIGHT_WHITE	variable `BRIGHT_WHITE` is never used
+unused-variable	high	typer/completion.py:14:1	_click_patched	variable `_click_patched` is never used

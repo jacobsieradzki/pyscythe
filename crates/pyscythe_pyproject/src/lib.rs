@@ -128,6 +128,22 @@ fn boundary_config(table: BoundariesTable) -> Result<BoundaryConfig, ParseError>
 ///
 /// Returns [`ManifestError`] when a file exists but cannot be read or parsed.
 pub fn load(root: &Utf8Path) -> Result<ProjectSettings, ManifestError> {
+    load_with_config(root, None)
+}
+
+/// The same, with `[tool.pyscythe]` read from `config_path` instead of from
+/// the project's own `pyproject.toml`.
+///
+/// The manifest still comes from the project: what it declares about itself is
+/// a fact about the project, while how to analyse it is the caller's to choose.
+///
+/// # Errors
+///
+/// Returns [`ManifestError`] when a file exists but cannot be read or parsed.
+pub fn load_with_config(
+    root: &Utf8Path,
+    config_path: Option<&Utf8Path>,
+) -> Result<ProjectSettings, ManifestError> {
     let mut scopes = Vec::new();
     let mut root_settings = RootSettings::default();
     let mut directories = vec![root.to_path_buf()];
@@ -138,6 +154,18 @@ pub fn load(root: &Utf8Path) -> Result<ProjectSettings, ManifestError> {
             continue;
         };
         scopes.push(scope);
+    }
+    if let Some(path) = config_path {
+        let text = std::fs::read_to_string(path).map_err(|source| ManifestError::Io {
+            path: path.to_path_buf(),
+            source,
+        })?;
+        let settings = parse(&text).map_err(|source| ManifestError::Parse {
+            path: path.to_path_buf(),
+            source,
+        })?;
+        root_settings.config = settings.config;
+        root_settings.pytest = settings.pytest;
     }
     let RootSettings { mut config, pytest } = root_settings;
     config.tests =

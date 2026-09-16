@@ -1,0 +1,55 @@
+files_scanned=427
+symbols_checked=10821
+symbols_kept=4303
+findings=50
+--
+unused-function	medium	celery/app/builtins.py:27:5	add_accumulate_task	function `add_accumulate_task` is never used
+unused-function	medium	celery/app/builtins.py:37:5	add_unlock_chord_task	function `add_unlock_chord_task` is never used
+unused-function	medium	celery/app/builtins.py:110:5	add_map_task	function `add_map_task` is never used
+unused-function	medium	celery/app/builtins.py:121:5	add_starmap_task	function `add_starmap_task` is never used
+unused-function	medium	celery/app/builtins.py:132:5	add_chunk_task	function `add_chunk_task` is never used
+unused-variable	medium	celery/app/task.py:55:1	TaskType	variable `TaskType` is never used
+unused-function	medium	celery/apps/worker.py:78:5	active_thread_count	function `active_thread_count` is never used
+unused-attribute	medium	celery/backends/asynchronous.py:117:5	_g	attribute `greenletDrainer._g` is never used
+unused-attribute	medium	celery/beat.py:132:5	_default_now	attribute `ScheduleEntry._default_now` is never used
+unused-attribute	medium	celery/canvas.py:534:5	_freeze	attribute `Signature._freeze` is never used
+unused-variable	medium	celery/canvas.py:2458:1	maybe_subtask	variable `maybe_subtask` is never used
+unused-variable	medium	celery/contrib/migrate.py:415:1	move_direct_by_idmap	variable `move_direct_by_idmap` is never used
+unused-variable	medium	celery/contrib/migrate.py:416:1	move_direct_by_taskmap	variable `move_direct_by_taskmap` is never used
+unused-attribute	medium	celery/contrib/rdb.py:88:5	_prev_outs	attribute `Rdb._prev_outs` is never used
+unused-file	medium	celery/contrib/sphinx.py	-	file `celery.contrib.sphinx` is never imported or run
+unused-function	high	celery/contrib/testing/worker.py:196:5	_start_worker_process	function `_start_worker_process` is never used
+unused-variable	medium	celery/exceptions.py:193:1	RetryTaskError	variable `RetryTaskError` is never used
+unused-variable	medium	celery/exceptions.py:281:1	SystemTerminate	variable `SystemTerminate` is never used
+unused-variable	medium	celery/local.py:371:1	MODULE_DEPRECATED	variable `MODULE_DEPRECATED` is never used
+unused-function	medium	celery/local.py:450:5	reclassmethod	function `reclassmethod` is never used
+unused-variable	medium	celery/platforms.py:250:1	PIDFile	variable `PIDFile` is never used
+unused-variable	medium	celery/platforms.py:759:1	get_signal	variable `get_signal` is never used
+unused-variable	medium	celery/platforms.py:760:1	install_signal_handler	variable `install_signal_handler` is never used
+unused-variable	medium	celery/platforms.py:761:1	reset_signal	variable `reset_signal` is never used
+unused-variable	medium	celery/platforms.py:762:1	ignore_signal	variable `ignore_signal` is never used
+unused-variable	medium	celery/states.py:149:1	ALL_STATES	variable `ALL_STATES` is never used
+unused-variable	high	celery/utils/log.py:24:1	_process_aware	variable `_process_aware` is never used
+unused-variable	high	celery/utils/time.py:65:1	_local_timezone	variable `_local_timezone` is never used
+unused-file	medium	extra/release/sphinx2rst_config.py	-	file `extra.release.sphinx2rst_config` is never imported or run
+unused-variable	medium	t/smoke/tests/failover/test_broker_failover.py:8:1	failover_broker	variable `failover_broker` is never used
+unused-variable	medium	t/smoke/workers/alt.py:31:1	alt_dev_worker_container	variable `alt_dev_worker_container` is never used
+unused-variable	medium	t/smoke/workers/dev.py:48:1	default_worker_container	variable `default_worker_container` is never used
+unused-variable	medium	t/smoke/workers/other.py:35:1	other_dev_worker_container	variable `other_dev_worker_container` is never used
+unused-variable	medium	t/unit/app/test_app.py:57:1	object_config	variable `object_config` is never used
+unused-variable	medium	t/unit/app/test_app.py:58:1	dict_config	variable `dict_config` is never used
+unused-class	medium	t/unit/app/test_beat.py:153:7	mSchedulerRuntimeError	class `mSchedulerRuntimeError` is never used
+unused-class	medium	t/unit/app/test_log.py:434:7	MockLogger	class `MockLogger` is never used
+unused-variable	medium	t/unit/backends/test_base.py:45:1	Oldstyle	variable `Oldstyle` is never used
+unused-variable	medium	t/unit/backends/test_couchbase.py:18:1	COUCHBASE_BUCKET	variable `COUCHBASE_BUCKET` is never used
+unused-variable	medium	t/unit/backends/test_couchdb.py:18:1	COUCHDB_CONTAINER	variable `COUCHDB_CONTAINER` is never used
+unused-variable	medium	t/unit/backends/test_mongodb.py:29:1	COLLECTION	variable `COLLECTION` is never used
+unused-variable	medium	t/unit/backends/test_mongodb.py:35:1	MONGODB_DATABASE	variable `MONGODB_DATABASE` is never used
+unused-function	medium	t/unit/concurrency/test_pool.py:14:5	long_something	function `long_something` is never used
+unused-class	medium	t/unit/concurrency/test_prefork.py:232:7	ExeMockTaskPool	class `ExeMockTaskPool` is never used
+unused-variable	medium	t/unit/contrib/proj/conf.py:4:1	extensions	variable `extensions` is never used
+unused-variable	medium	t/unit/contrib/proj/conf.py:5:1	autodoc_default_flags	variable `autodoc_default_flags` is never used
+unused-variable	medium	t/unit/contrib/test_pytest.py:3:1	pytest_plugins	variable `pytest_plugins` is never used
+unused-function	medium	t/unit/tasks/test_canvas.py:24:5	return_True	function `return_True` is never used
+unused-class	medium	t/unit/tasks/test_result.py:631:7	MockAsyncResultFailure	class `MockAsyncResultFailure` is never used
+unused-class	medium	t/unit/tasks/test_tasks.py:52:7	TaskWithRetryButForTypeError	class `TaskWithRetryButForTypeError` is never used

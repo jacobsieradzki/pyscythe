@@ -1,0 +1,41 @@
+files_scanned=1581
+symbols_checked=5415
+symbols_kept=835
+findings=36
+--
+unused-variable	medium	langchain_classic/agents/loading.py:19:1	URL_BASE	variable `URL_BASE` is never used
+unused-class	medium	langchain_classic/callbacks/streaming_aiter_final_only.py:13:7	AsyncFinalIteratorCallbackHandler	class `AsyncFinalIteratorCallbackHandler` is never used
+unused-variable	medium	langchain_classic/chains/base.py:43:1	logger	variable `logger` is never used
+unused-variable	medium	langchain_classic/chains/conversational_retrieval/prompts.py:17:1	QA_PROMPT	variable `QA_PROMPT` is never used
+unused-variable	medium	langchain_classic/chains/loading.py:69:1	URL_BASE	variable `URL_BASE` is never used
+unused-function	medium	langchain_classic/chains/prompt_selector.py:44:5	is_llm	function `is_llm` is never used
+unused-variable	medium	langchain_classic/chains/sql_database/prompt.py:37:1	DECIDER_PROMPT	variable `DECIDER_PROMPT` is never used
+unused-variable	medium	langchain_classic/embeddings/__init__.py:76:1	logger	variable `logger` is never used
+unused-method	medium	langchain_classic/evaluation/embedding_distance/base.py:105:9	_validate_tiktoken_installed	method `_EmbeddingDistanceChainMixin._validate_tiktoken_installed` is never used
+unused-variable	medium	langchain_classic/evaluation/qa/eval_prompt.py:76:1	SQL_PROMPT	variable `SQL_PROMPT` is never used
+unused-variable	medium	langchain_classic/evaluation/schema.py:18:1	logger	variable `logger` is never used
+unused-function	high	langchain_classic/llms/__init__.py:172:5	_import_fireworks	function `_import_fireworks` is never used
+unused-function	high	langchain_classic/llms/__init__.py:264:5	_import_manifest	function `_import_manifest` is never used
+unused-function	high	langchain_classic/llms/__init__.py:312:5	_import_octoai_endpoint	function `_import_octoai_endpoint` is never used
+unused-function	high	langchain_classic/llms/__init__.py:342:5	_import_openai_chat	function `_import_openai_chat` is never used
+unused-function	high	langchain_classic/llms/__init__.py:384:5	_import_predictionguard	function `_import_predictionguard` is never used
+unused-function	high	langchain_classic/llms/__init__.py:390:5	_import_promptlayer	function `_import_promptlayer` is never used
+unused-function	high	langchain_classic/llms/__init__.py:396:5	_import_promptlayer_chat	function `_import_promptlayer_chat` is never used
+unused-method	medium	langchain_classic/output_parsers/enum.py:16:9	_raise_deprecation	method `EnumOutputParser._raise_deprecation` is never used
+unused-variable	medium	langchain_classic/output_parsers/format_instructions.py:17:1	PYDANTIC_FORMAT_INSTRUCTIONS	variable `PYDANTIC_FORMAT_INSTRUCTIONS` is never used
+unused-class	medium	langchain_classic/smith/evaluation/runner_utils.py:364:7	ChatModelInput	class `ChatModelInput` is never used
+unused-variable	medium	tests/data.py:10:1	HELLO_PDF	variable `HELLO_PDF` is never used
+unused-variable	medium	tests/data.py:11:1	LAYOUT_PARSER_PAPER_PDF	variable `LAYOUT_PARSER_PAPER_PDF` is never used
+unused-variable	medium	tests/data.py:12:1	DUPLICATE_CHARS	variable `DUPLICATE_CHARS` is never used
+unused-variable	medium	tests/integration_tests/cache/fake_embeddings.py:8:1	fake_texts	variable `fake_texts` is never used
+unused-class	medium	tests/integration_tests/cache/fake_embeddings.py:51:7	ConsistentFakeEmbeddings	class `ConsistentFakeEmbeddings` is never used
+unused-class	medium	tests/integration_tests/cache/fake_embeddings.py:90:7	AngularTwoDimensionalEmbeddings	class `AngularTwoDimensionalEmbeddings` is never used
+unused-function	medium	tests/unit_tests/__init__.py:6:5	assert_all_importable	function `assert_all_importable` is never used
+unused-class	medium	tests/unit_tests/load/test_dump.py:52:7	NotSerializable	class `NotSerializable` is never used
+unused-variable	medium	tests/unit_tests/output_parsers/test_json.py:59:1	JSON_WITH_MARKDOWN_CODE_BLOCK	variable `JSON_WITH_MARKDOWN_CODE_BLOCK` is never used
+unused-variable	medium	tests/unit_tests/output_parsers/test_json.py:65:1	JSON_WITH_MARKDOWN_CODE_BLOCK_AND_NEWLINES	variable `JSON_WITH_MARKDOWN_CODE_BLOCK_AND_NEWLINES` is never used
+unused-variable	medium	tests/unit_tests/output_parsers/test_json.py:86:1	JSON_WITH_PYTHON_DICT	variable `JSON_WITH_PYTHON_DICT` is never used
+unused-variable	medium	tests/unit_tests/output_parsers/test_json.py:126:1	TEXT_BEFORE_AND_AFTER	variable `TEXT_BEFORE_AND_AFTER` is never used
+unused-variable	medium	tests/unit_tests/output_parsers/test_json.py:135:1	TEST_CASES	variable `TEST_CASES` is never used
+unused-variable	medium	tests/unit_tests/output_parsers/test_json.py:148:1	TEST_CASES_ESCAPED_QUOTES	variable `TEST_CASES_ESCAPED_QUOTES` is never used
+unused-variable	medium	tests/unit_tests/output_parsers/test_json.py:155:1	TEST_CASES_PARTIAL	variable `TEST_CASES_PARTIAL` is never used

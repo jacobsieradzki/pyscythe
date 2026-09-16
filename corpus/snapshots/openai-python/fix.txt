@@ -1,0 +1,29 @@
+files_scanned=2156
+symbols_checked=20749
+symbols_kept=5237
+findings=24
+--
+unused-class	medium	src/openai/_models.py:710:7	CachedDiscriminatorType	class `CachedDiscriminatorType` is never used
+unused-function	medium	src/openai/_models.py:847:5	set_pydantic_config	function `set_pydantic_config` is never used
+unused-variable	medium	src/openai/_types.py:44:1	AsyncTransport	variable `AsyncTransport` is never used
+unused-variable	medium	src/openai/_types.py:189:1	Omittable	variable `Omittable` is never used
+unused-function	medium	src/openai/_utils/_compat.py:40:5	parse_date	function `parse_date` is never used
+unused-function	medium	src/openai/_utils/_compat.py:44:5	parse_datetime	function `parse_datetime` is never used
+unused-variable	high	src/openai/lib/_parsing/_completions.py:38:1	_default_response_format	variable `_default_response_format` is never used
+unused-function	medium	src/openai/lib/_parsing/_completions.py:55:5	select_strict_chat_completion_tools	function `select_strict_chat_completion_tools` is never used
+unused-variable	medium	src/openai/types/responses/tool.py:43:1	WebSearchToolFilters	variable `WebSearchToolFilters` is never used
+unused-variable	medium	src/openai/types/responses/tool.py:44:1	WebSearchToolUserLocation	variable `WebSearchToolUserLocation` is never used
+unused-variable	medium	src/openai/types/responses/tool_param.py:45:1	WebSearchToolFilters	variable `WebSearchToolFilters` is never used
+unused-variable	medium	src/openai/types/responses/tool_param.py:46:1	WebSearchToolUserLocation	variable `WebSearchToolUserLocation` is never used
+unused-function	medium	tests/lib/bedrock_live.py:114:5	test_bedrock_live_response	function `test_bedrock_live_response` is never used
+unused-class	medium	tests/lib/test_azure.py:35:7	MockRequestCall	class `MockRequestCall` is never used
+unused-class	medium	tests/lib/test_bedrock.py:77:7	MockRequestCall	class `MockRequestCall` is never used
+unused-method	medium	tests/respx2/patterns.py:168:9	_eq	method `Pattern._eq` is never used
+unused-method	medium	tests/respx2/patterns.py:171:9	_regex	method `Pattern._regex` is never used
+unused-method	medium	tests/respx2/patterns.py:177:9	_startswith	method `Pattern._startswith` is never used
+unused-method	medium	tests/respx2/patterns.py:180:9	_contains	method `Pattern._contains` is never used
+unused-method	medium	tests/respx2/patterns.py:183:9	_in	method `Pattern._in` is never used
+unused-method	medium	tests/respx2/patterns.py:324:9	_eq	method `MultiItemsMixin._eq` is never used
+unused-method	medium	tests/respx2/patterns.py:329:9	_contains	method `MultiItemsMixin._contains` is never used
+unused-class	medium	tests/test_transform.py:111:7	Bar5	class `Bar5` is never used
+unused-class	medium	tests/test_transform.py:115:7	Baz5	class `Baz5` is never used

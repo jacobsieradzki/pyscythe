@@ -1,0 +1,15 @@
+files_scanned=133
+symbols_checked=1799
+symbols_kept=471
+findings=10
+--
+unused-variable	medium	httpie/cli/constants.py:45:1	SEPARATOR_GROUP_DATA_EMBED_ITEMS	variable `SEPARATOR_GROUP_DATA_EMBED_ITEMS` is never used
+unused-variable	medium	httpie/output/ui/rich_help.py:15:1	SEPARATORS	variable `SEPARATORS` is never used
+unused-variable	medium	httpie/output/ui/rich_help.py:19:1	STYLE_PROGRAM_NAME	variable `STYLE_PROGRAM_NAME` is never used
+unused-variable	medium	httpie/output/ui/rich_help.py:31:1	LEFT_PADDING_5	variable `LEFT_PADDING_5` is never used
+unused-function	medium	httpie/output/ui/rich_help.py:128:5	to_help_message	function `to_help_message` is never used
+unused-function	medium	httpie/output/ui/rich_utils.py:23:5	enable_highlighter	function `enable_highlighter` is never used
+unused-variable	medium	httpie/sessions.py:30:1	DEFAULT_SESSIONS_DIR	variable `DEFAULT_SESSIONS_DIR` is never used
+unused-function	medium	httpie/utils.py:80:5	humanize_bytes	function `humanize_bytes` is never used
+unused-variable	medium	tests/test_httpie_cli.py:11:1	OLD_SESSION_FILES_PATH	variable `OLD_SESSION_FILES_PATH` is never used
+unused-variable	medium	tests/utils/__init__.py:43:1	HTTP_OK_COLOR	variable `HTTP_OK_COLOR` is never used

@@ -1,0 +1,3 @@
+# The architecture of a project that does not declare one itself.
+[tool.pyscythe.boundaries]
+layers = ["app.api", "app.services", "app.domain"]

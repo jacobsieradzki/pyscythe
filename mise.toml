@@ -36,6 +36,10 @@ run = "uvx maturin build --release --out target/wheels"
 description = "Analyse the pinned public projects in corpus/ and compare with the snapshots"
 run = "cargo build --release -p pyscythe && cargo run --release -p pyscythe_corpus -- check"
 
+[tasks."corpus:repair"]
+description = "Run `fix` over every pinned project and check its packages still import"
+run = "cargo build --release -p pyscythe && cargo run --release -p pyscythe_corpus -- repair"
+
 [tasks."corpus:update"]
 description = "Rewrite corpus/snapshots after a deliberate change in output"
 run = "cargo build --release -p pyscythe && cargo run --release -p pyscythe_corpus -- update"

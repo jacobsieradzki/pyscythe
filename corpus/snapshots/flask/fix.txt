@@ -1,0 +1,12 @@
+files_scanned=83
+symbols_checked=1216
+symbols_kept=490
+findings=7
+--
+unused-function	high	src/flask/cli.py:691:5	_path_is_ancestor	function `_path_is_ancestor` is never used
+unused-class	medium	src/flask/debughelpers.py:17:7	UnexpectedUnicodeError	class `UnexpectedUnicodeError` is never used
+unused-variable	medium	src/flask/typing.py:54:1	BeforeFirstRequestCallable	variable `BeforeFirstRequestCallable` is never used
+unused-function	medium	tests/test_apps/cliapp/factory.py:8:5	create_app2	function `create_app2` is never used
+unused-variable	medium	tests/test_apps/subdomaintestmodule/__init__.py:3:1	mod	variable `mod` is never used
+unused-class	medium	tests/test_helpers.py:25:7	PyBytesIO	class `PyBytesIO` is never used
+unused-function	high	tests/test_json.py:260:5	_has_encoding	function `_has_encoding` is never used

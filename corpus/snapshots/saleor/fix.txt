@@ -1,0 +1,108 @@
+files_scanned=4331
+symbols_checked=44027
+symbols_kept=18131
+findings=103
+--
+unused-file	medium	.semgrep/correctness/celery/task-logger-without-suffix.py	-	file `task-logger-without-suffix.py` is never imported or run
+unused-function	medium	.semgrep/correctness/django/django-migration-wrong-app-config.py:24:5	wrong_app_config_multiline	function `wrong_app_config_multiline` is never used
+unused-function	medium	.semgrep/correctness/django/django-migration-wrong-app-config.py:35:5	correct_app_config_multiline	function `correct_app_config_multiline` is never used
+unused-file	medium	.semgrep/correctness/django/django-no-default-token-generator.py	-	file `django-no-default-token-generator.py` is never imported or run
+unused-file	medium	.semgrep/security/logging/exception-object-in-logger-extra.py	-	file `exception-object-in-logger-extra.py` is never imported or run
+unused-file	medium	.semgrep/security/requests/no-use-requests-lib.fixed.py	-	file `no-use-requests-lib.fixed.py` is never imported or run
+unused-file	medium	.semgrep/security/requests/no-use-requests-lib.py	-	file `no-use-requests-lib.py` is never imported or run
+unused-variable	medium	saleor/app/manifest_validations.py:36:1	logger	variable `logger` is never used
+unused-variable	medium	saleor/asgi/tests/test_cors.py:12:1	ACCESS_CONTROL_ALLOW_ORIGIN	variable `ACCESS_CONTROL_ALLOW_ORIGIN` is never used
+unused-variable	medium	saleor/asgi/tests/test_cors.py:13:1	ACCESS_CONTROL_ALLOW_CREDENTIALS	variable `ACCESS_CONTROL_ALLOW_CREDENTIALS` is never used
+unused-variable	medium	saleor/asgi/tests/test_cors.py:14:1	ACCESS_CONTROL_ALLOW_HEADERS	variable `ACCESS_CONTROL_ALLOW_HEADERS` is never used
+unused-variable	medium	saleor/asgi/tests/test_cors.py:15:1	ACCESS_CONTROL_ALLOW_METHODS	variable `ACCESS_CONTROL_ALLOW_METHODS` is never used
+unused-function	medium	saleor/attribute/migrations/0025_attribute_value_translations_propagate_names.py:16:5	clean_editor_js	function `clean_editor_js` is never used
+unused-variable	medium	saleor/checkout/__init__.py:3:1	logger	variable `logger` is never used
+unused-function	medium	saleor/checkout/calculations.py:287:5	checkout_line_undiscounted_total_price	function `checkout_line_undiscounted_total_price` is never used
+unused-function	medium	saleor/checkout/migrations/0044_fulfill_checkout_line_new_fields.py:30:5	set_checkout_line_old_id	function `set_checkout_line_old_id` is never used
+unused-variable	medium	saleor/checkout/webhooks/calculate_taxes.py:27:1	logger	variable `logger` is never used
+unused-variable	medium	saleor/checkout/webhooks/exclude_shipping.py:26:1	logger	variable `logger` is never used
+unused-class	medium	saleor/core/error_codes.py:37:7	CoreErrorCode	class `CoreErrorCode` is never used
+unused-class	medium	saleor/core/exceptions.py:98:7	SyncEventError	class `SyncEventError` is never used
+unused-variable	medium	saleor/core/middleware.py:15:1	logger	variable `logger` is never used
+unused-class	medium	saleor/core/storages.py:35:7	AzureStorage	class `AzureStorage` is never used
+unused-variable	medium	saleor/core/tests/test_core.py:44:1	type_schema	variable `type_schema` is never used
+unused-variable	medium	saleor/core/tests/test_postgresql_search.py:69:1	ORDERS	variable `ORDERS` is never used
+unused-function	medium	saleor/core/tests/test_postgresql_search.py:72:5	gen_address_for_user	function `gen_address_for_user` is never used
+unused-class	medium	saleor/core/utils/json_serializer.py:9:7	Serializer	class `Serializer` is never used
+unused-function	medium	saleor/core/utils/lazyobjects.py:8:5	lazy_no_retry	function `lazy_no_retry` is never used
+unused-variable	medium	saleor/core/utils/random_data.py:129:1	DUMMY_STAFF_PASSWORD	variable `DUMMY_STAFF_PASSWORD` is never used
+unused-variable	medium	saleor/core/views.py:11:1	logger	variable `logger` is never used
+unused-variable	medium	saleor/discount/tests/test_discounts.py:511:1	date_time_now	variable `date_time_now` is never used
+unused-class	medium	saleor/graphql/account/dataloaders.py:166:7	PermissionByCodenameLoader	class `PermissionByCodenameLoader` is never used
+unused-variable	medium	saleor/graphql/account/resolvers.py:28:1	USER_SEARCH_FIELDS	variable `USER_SEARCH_FIELDS` is never used
+unused-variable	medium	saleor/graphql/account/tests/test_i18n.py:13:1	logger	variable `logger` is never used
+unused-class	medium	saleor/graphql/app/types.py:174:7	HttpMethod	class `HttpMethod` is never used
+unused-class	medium	saleor/graphql/attribute/dataloaders/attributes.py:7:7	AttributeValuesByAttributeIdLoader	class `AttributeValuesByAttributeIdLoader` is never used
+unused-class	medium	saleor/graphql/attribute/shared_filters.py:105:7	SharedContainsFilterParams	class `SharedContainsFilterParams` is never used
+unused-function	medium	saleor/graphql/checkout/filters.py:53:5	filter_checkout_by_payment	function `filter_checkout_by_payment` is never used
+unused-class	medium	saleor/graphql/context.py:64:7	RequestWithUser	class `RequestWithUser` is never used
+unused-function	medium	saleor/graphql/core/types/converter.py:41:5	convert_form_field_to_string	function `convert_form_field_to_string` is never used
+unused-function	medium	saleor/graphql/core/types/converter.py:48:5	convert_form_field_to_nullboolean	function `convert_form_field_to_nullboolean` is never used
+unused-function	medium	saleor/graphql/core/types/converter.py:54:5	convert_form_field_to_float	function `convert_form_field_to_float` is never used
+unused-function	medium	saleor/graphql/core/types/converter.py:66:5	convert_convert_enum	function `convert_convert_enum` is never used
+unused-function	medium	saleor/graphql/core/types/converter.py:71:5	convert_form_field_to_id	function `convert_form_field_to_id` is never used
+unused-function	medium	saleor/graphql/core/types/converter.py:77:5	convert_list_object_type	function `convert_list_object_type` is never used
+unused-function	medium	saleor/graphql/core/types/converter.py:82:5	convert_form_field_to_list	function `convert_form_field_to_list` is never used
+unused-method	medium	saleor/graphql/core/utils/reordering.py:21:9	_prepare_related_fields_for_save	method `FinalSortOrder._prepare_related_fields_for_save` is never used
+unused-method	medium	saleor/graphql/core/utils/reordering.py:24:9	_is_pk_set	method `FinalSortOrder._is_pk_set` is never used
+unused-function	medium	saleor/graphql/core/validators/query_cost.py:330:5	validate_query_cost	function `validate_query_cost` is never used
+unused-function	medium	saleor/graphql/decorators.py:72:5	permission_required	function `permission_required` is never used
+unused-variable	medium	saleor/graphql/decorators.py:116:1	staff_member_or_app_required	variable `staff_member_or_app_required` is never used
+unused-function	medium	saleor/graphql/discount/mutations/utils.py:19:5	convert_catalogue_info_to_global_ids	function `convert_catalogue_info_to_global_ids` is never used
+unused-variable	medium	saleor/graphql/meta/tests/queries/utils.py:13:1	PUBLIC_KEY2	variable `PUBLIC_KEY2` is never used
+unused-variable	medium	saleor/graphql/meta/tests/queries/utils.py:15:1	PUBLIC_VALUE2	variable `PUBLIC_VALUE2` is never used
+unused-function	medium	saleor/graphql/middleware.py:4:5	process_view	function `process_view` is never used
+unused-function	medium	saleor/graphql/order/filters.py:113:5	filter_order_by_payment	function `filter_order_by_payment` is never used
+unused-function	medium	saleor/graphql/order/mutations/draft_order_cleaner.py:108:5	clean_voucher_listing	function `clean_voucher_listing` is never used
+unused-variable	medium	saleor/graphql/order/resolvers.py:17:1	ORDER_SEARCH_FIELDS	variable `ORDER_SEARCH_FIELDS` is never used
+unused-variable	medium	saleor/graphql/order/types.py:186:1	logger	variable `logger` is never used
+unused-variable	medium	saleor/graphql/page/dataloaders.py:10:1	PageTypeIdAndAttributeSlug	variable `PageTypeIdAndAttributeSlug` is never used
+unused-variable	medium	saleor/graphql/payment/tests/mutations/test_transaction_request_action_reason.py:60:1	MUTATION_TRANSACTION_REQUEST_ACTION_BY_TOKEN	variable `MUTATION_TRANSACTION_REQUEST_ACTION_BY_TOKEN` is never used
+unused-class	medium	saleor/graphql/product/dataloaders/products.py:484:7	ProductImageByIdLoader	class `ProductImageByIdLoader` is never used
+unused-variable	medium	saleor/graphql/product/filters/product.py:78:1	T_PRODUCT_FILTER_QUERIES	variable `T_PRODUCT_FILTER_QUERIES` is never used
+unused-variable	medium	saleor/graphql/product/mutations/product/product_create.py:120:1	T_INPUT_MAP	variable `T_INPUT_MAP` is never used
+unused-variable	medium	saleor/graphql/product/mutations/product/product_update.py:23:1	T_INPUT_MAP	variable `T_INPUT_MAP` is never used
+unused-variable	medium	saleor/graphql/product/mutations/product_variant/product_variant_cleaner.py:11:1	T_INPUT_MAP	variable `T_INPUT_MAP` is never used
+unused-variable	medium	saleor/graphql/product/tests/queries/test_collections_query.py:231:1	GET_SORTED_COLLECTION_QUERY	variable `GET_SORTED_COLLECTION_QUERY` is never used
+unused-variable	medium	saleor/graphql/product/tests/test_product_sorting_attributes.py:14:1	HERE	variable `HERE` is never used
+unused-function	medium	saleor/graphql/schema_printer.py:99:5	is_schema_of_common_names	function `is_schema_of_common_names` is never used
+unused-class	medium	saleor/graphql/shipping/dataloaders.py:26:7	ShippingZoneByIdLoader	class `ShippingZoneByIdLoader` is never used
+unused-variable	medium	saleor/graphql/shipping/mutations/shipping_method_channel_listing_update.py:28:1	ErrorType	variable `ErrorType` is never used
+unused-variable	medium	saleor/graphql/tests/queries/fragments.py:46:1	COLLECTION_POINT	variable `COLLECTION_POINT` is never used
+unused-variable	medium	saleor/graphql/tests/queries/fragments.py:58:1	PRICING_DETAILS	variable `PRICING_DETAILS` is never used
+unused-variable	medium	saleor/graphql/tests/queries/fragments.py:150:1	SHIPPING_ZONE_DETAILS	variable `SHIPPING_ZONE_DETAILS` is never used
+unused-variable	medium	saleor/graphql/utils/__init__.py:36:1	REVERSED_DIRECTION	variable `REVERSED_DIRECTION` is never used
+unused-function	medium	saleor/graphql/warehouse/filters.py:23:5	prefech_qs_for_filter	function `prefech_qs_for_filter` is never used
+unused-variable	medium	saleor/graphql/warehouse/tests/queries/test_warehouses_filtering.py:28:1	QUERY_WERHOUSES_WITH_FILTERS_NO_IDS	variable `QUERY_WERHOUSES_WITH_FILTERS_NO_IDS` is never used
+unused-variable	medium	saleor/order/actions.py:113:1	WEBHOOK_EVENTS_FOR_ORDER_AUTHORIZED	variable `WEBHOOK_EVENTS_FOR_ORDER_AUTHORIZED` is never used
+unused-function	medium	saleor/order/base_calculations.py:20:5	base_order_shipping	function `base_order_shipping` is never used
+unused-variable	medium	saleor/order/delivery_context.py:24:1	logger	variable `logger` is never used
+unused-function	medium	saleor/order/events.py:231:5	email_resent_event	function `email_resent_event` is never used
+unused-variable	medium	saleor/order/tasks.py:28:1	logger	variable `logger` is never used
+unused-function	medium	saleor/order/tests/test_calculations.py:117:5	create_order_taxed_prices_data	function `create_order_taxed_prices_data` is never used
+unused-variable	medium	saleor/order/tests/webhooks/test_exclude_shipping.py:24:1	ORDER_QUERY_SHIPPING_METHOD	variable `ORDER_QUERY_SHIPPING_METHOD` is never used
+unused-variable	medium	saleor/order/webhooks/exclude_shipping.py:28:1	logger	variable `logger` is never used
+unused-variable	medium	saleor/order/webhooks/order_calculate_taxes.py:28:1	logger	variable `logger` is never used
+unused-class	medium	saleor/payment/__init__.py:28:7	OperationType	class `OperationType` is never used
+unused-variable	medium	saleor/payment/tests/test_payment.py:35:1	NOT_ACTIVE_PAYMENT_ERROR	variable `NOT_ACTIVE_PAYMENT_ERROR` is never used
+unused-variable	medium	saleor/payment/utils.py:93:1	GENERIC_TRANSACTION_ERROR	variable `GENERIC_TRANSACTION_ERROR` is never used
+unused-function	medium	saleor/payment/utils.py:1051:5	parse_available_actions	function `parse_available_actions` is never used
+unused-variable	medium	saleor/plugins/avatax/__init__.py:49:1	COMMON_DISCOUNT_VOUCHER_CODE	variable `COMMON_DISCOUNT_VOUCHER_CODE` is never used
+unused-method	medium	saleor/plugins/manager.py:632:9	__run_tax_method_until_first_success	method `PluginsManager.__run_tax_method_until_first_success` is never used
+unused-variable	medium	saleor/product/management/commands/update_all_products_discounted_prices.py:8:1	logger	variable `logger` is never used
+unused-variable	medium	saleor/product/product_images.py:14:1	logger	variable `logger` is never used
+unused-variable	medium	saleor/product/search.py:18:1	PRODUCT_SEARCH_FIELDS	variable `PRODUCT_SEARCH_FIELDS` is never used
+unused-class	medium	saleor/schedulers/schedulers.py:157:7	DatabaseScheduler	class `DatabaseScheduler` is never used
+unused-variable	medium	saleor/shipping/utils.py:17:1	logger	variable `logger` is never used
+unused-variable	medium	saleor/tax/migrations/0004_migrate_tax_classes.py:18:1	AVATAX_PLUGIN_ID	variable `AVATAX_PLUGIN_ID` is never used
+unused-variable	medium	saleor/tax/utils.py:21:1	logger	variable `logger` is never used
+unused-variable	high	saleor/webhook/observability/buffers.py:12:1	_local	variable `_local` is never used
+unused-variable	medium	saleor/webhook/observability/payloads.py:80:1	EMPTY_TRUNC	variable `EMPTY_TRUNC` is never used
+unused-variable	high	saleor/webhook/observability/utils.py:36:1	_active_webhooks_exists_cache	variable `_active_webhooks_exists_cache` is never used
+unused-function	medium	saleor/webhook/tests/response_schemas/test_shipping.py:20:5	decode_id	function `decode_id` is never used
+unused-variable	medium	saleor/webhook/tests/subscription_webhooks/subscription_queries.py:2782:1	TEST_VALID_SUBSCRIPTION	variable `TEST_VALID_SUBSCRIPTION` is never used

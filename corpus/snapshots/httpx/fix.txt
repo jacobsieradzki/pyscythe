@@ -1,0 +1,6 @@
+files_scanned=60
+symbols_checked=1314
+symbols_kept=598
+findings=1
+--
+unused-variable	medium	httpx/_types.py:33:1	URLTypes	variable `URLTypes` is never used

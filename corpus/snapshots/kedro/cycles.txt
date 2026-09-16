@@ -1,0 +1,13 @@
+files_scanned=232
+symbols_checked=0
+symbols_kept=0
+findings=8
+--
+circular-import	high	kedro/config/__init__.py:10:1	-	import cycle: kedro.config -> kedro.config.omegaconf_config -> kedro.config
+circular-import	high	kedro/framework/cli/__init__.py:7:1	-	import cycle: kedro.framework.cli -> kedro.framework.cli.cli -> kedro.framework.cli
+circular-import	high	kedro/framework/context/__init__.py:6:1	-	import cycle: kedro.framework.context -> kedro.framework.context.context -> kedro.framework.context
+circular-import	high	kedro/inspection/__init__.py:7:1	-	import cycle among 3 modules, shortest: kedro.inspection -> kedro.inspection.snapshot -> kedro.inspection
+circular-import	high	kedro/io/__init__.py:7:1	-	import cycle among 6 modules, shortest: kedro.io -> kedro.io.cached_dataset -> kedro.io
+circular-import	high	kedro/pipeline/__init__.py:7:1	-	import cycle: kedro.pipeline -> kedro.pipeline.pipeline -> kedro.pipeline
+circular-import	high	kedro/runner/__init__.py:5:1	-	import cycle among 5 modules, shortest: kedro.runner -> kedro.runner.parallel_runner -> kedro.runner
+circular-import	high	kedro/validation/__init__.py:3:1	-	import cycle among 4 modules, shortest: kedro.validation -> kedro.validation.api -> kedro.validation

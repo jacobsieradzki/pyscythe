@@ -1,0 +1,45 @@
+files_scanned=435
+symbols_checked=9658
+symbols_kept=1895
+findings=40
+--
+unused-variable	high	sphinx/_cli/util/errors.py:19:1	_CSI	variable `_CSI` is never used
+unused-function	medium	sphinx/_cli/util/errors.py:36:5	terminal_safe	function `terminal_safe` is never used
+unused-function	medium	sphinx/builders/linkcheck.py:769:5	rewrite_github_anchor	function `rewrite_github_anchor` is never used
+unused-function	medium	sphinx/cmd/build.py:291:5	make_main	function `make_main` is never used
+unused-class	medium	sphinx/environment/adapters/toctree.py:578:7	TocTree	class `TocTree` is never used
+unused-variable	high	sphinx/ext/autodoc/importer.py:44:1	_NATIVE_SUFFIXES	variable `_NATIVE_SUFFIXES` is never used
+unused-method	medium	sphinx/ext/doctest.py:271:9	_DocTestRunner__patched_linecache_getlines	method `SphinxDocTestRunner._DocTestRunner__patched_linecache_getlines` is never used
+unused-attribute	medium	sphinx/ext/intersphinx/_resolve.py:373:5	_re_inv_ref	attribute `IntersphinxRole._re_inv_ref` is never used
+unused-function	medium	sphinx/ext/linkcode.py:30:5	add_linkcode_domain	function `add_linkcode_domain` is never used
+unused-method	medium	sphinx/ext/napoleon/docstring.py:920:9	_parse_usage_section	method `GoogleDocstring._parse_usage_section` is never used
+unused-variable	medium	sphinx/highlighting.py:53:1	escape_hl_chars	variable `escape_hl_chars` is never used
+unused-class	medium	sphinx/pygments_styles.py:40:7	PyramidStyle	class `PyramidStyle` is never used
+unused-function	medium	sphinx/search/__init__.py:124:5	parse_stop_word	function `parse_stop_word` is never used
+unused-class	medium	sphinx/search/__init__.py:209:7	WordCollector	class `WordCollector` is never used
+unused-class	medium	sphinx/search/ja.py:53:7	MecabSplitter	class `MecabSplitter` is never used
+unused-class	medium	sphinx/search/ja.py:126:7	JanomeSplitter	class `JanomeSplitter` is never used
+unused-function	high	sphinx/util/__init__.py:39:5	_md5	function `_md5` is never used
+unused-function	high	sphinx/util/__init__.py:49:5	_sha1	function `_sha1` is never used
+unused-class	medium	sphinx/util/docutils.py:299:7	ElementLookupError	class `ElementLookupError` is never used
+unused-variable	medium	sphinx/util/inventory.py:15:1	BUFSIZE	variable `BUFSIZE` is never used
+unused-variable	medium	sphinx/util/logging.py:332:1	skip_warningiserror	variable `skip_warningiserror` is never used
+unused-function	medium	sphinx/util/nodes.py:684:5	set_role_source_info	function `set_role_source_info` is never used
+unused-variable	medium	sphinx/util/osutil.py:192:1	safe_relpath	variable `safe_relpath` is never used
+unused-variable	medium	sphinx/writers/html.py:17:1	HTMLTranslator	variable `HTMLTranslator` is never used
+unused-function	medium	sphinx/writers/html5.py:34:5	multiply_length	function `multiply_length` is never used
+unused-class	medium	sphinx/writers/text.py:397:7	TextWriter	class `TextWriter` is never used
+unused-class	medium	sphinx/writers/xml.py:17:7	XMLWriter	class `XMLWriter` is never used
+unused-class	medium	sphinx/writers/xml.py:41:7	PseudoXMLWriter	class `PseudoXMLWriter` is never used
+unused-variable	medium	tests/test_builders/test_build_linkcheck.py:37:1	ts_re	variable `ts_re` is never used
+unused-class	high	tests/test_ext_autodoc/test_ext_autodoc.py:131:7	_MyDocumenter	class `_MyDocumenter` is never used
+unused-variable	medium	tests/test_ext_autosummary/test_ext_autosummary.py:41:1	html_warnfile	variable `html_warnfile` is never used
+unused-variable	medium	tests/test_ext_napoleon/pep526_data_google.py:5:1	module_level_var	variable `module_level_var` is never used
+unused-variable	medium	tests/test_ext_napoleon/pep526_data_numpy.py:5:1	module_level_var	variable `module_level_var` is never used
+unused-function	medium	tests/test_extensions/test_ext_doctest.py:77:5	cleanup_call	function `cleanup_call` is never used
+unused-function	medium	tests/test_quickstart.py:23:5	setup_module	function `setup_module` is never used
+unused-function	medium	tests/test_quickstart.py:51:5	teardown_module	function `teardown_module` is never used
+unused-function	medium	tests/test_util/test_util_inspect.py:80:11	asyncgenerator	function `asyncgenerator` is never used
+unused-file	medium	utils/bump_docker.py	-	file `utils.bump_docker` is never imported or run
+unused-file	medium	utils/convert_attestations.py	-	file `convert_attestations.py` is never imported or run
+unused-file	medium	utils/generate_js_fixtures.py	-	file `utils.generate_js_fixtures` is never imported or run

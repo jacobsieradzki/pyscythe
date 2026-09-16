@@ -1,0 +1,30 @@
+# kedro's own architecture, translated from the import-linter contracts in its
+# `pyproject.toml` at the pinned commit. The layers contract names modules
+# inside the `kedro` container; the forbidden and independence contracts become
+# deny rules. kedro's `ignore_imports` exemptions are left out: the snapshot
+# records what the rules say, including the edges kedro knows it breaks.
+[tool.pyscythe.boundaries]
+layers = [
+    "kedro.framework.cli",
+    "kedro.framework.session",
+    "kedro.framework.context",
+    "kedro.framework.project",
+    "kedro.runner",
+    "kedro.io",
+    "kedro.pipeline",
+    "kedro.config",
+]
+
+# "Pipeline and IO are independent".
+[[tool.pyscythe.boundaries.rules]]
+from = "kedro.pipeline"
+deny = ["kedro.io"]
+
+[[tool.pyscythe.boundaries.rules]]
+from = "kedro.io"
+deny = ["kedro.pipeline"]
+
+# "Config cannot import Runner et al".
+[[tool.pyscythe.boundaries.rules]]
+from = "kedro.config"
+deny = ["kedro.runner", "kedro.io", "kedro.pipeline"]

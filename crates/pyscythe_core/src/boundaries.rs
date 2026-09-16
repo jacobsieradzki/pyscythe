@@ -1,9 +1,14 @@
 //! Checks the import graph against configured architecture boundaries.
 
+use std::collections::BTreeSet;
+
+use camino::Utf8PathBuf;
+
 use crate::config::{BoundaryConfig, ModulePrefix, TypeOnlyImports};
 use crate::finding::{Confidence, Detail, Finding, Rule};
 use crate::index::{CodebaseIndex, ImportKind};
 use crate::report::{Report, ReportKind, Summary};
+use crate::source::ModulePath;
 
 /// Runs the boundary analysis over every import in `index`.
 #[must_use]
@@ -62,6 +67,19 @@ pub fn analyze(index: &dyn CodebaseIndex, config: &BoundaryConfig) -> Report {
     });
     findings.dedup_by(|later, earlier| {
         later.path == earlier.path && later.position == earlier.position
+    });
+
+    // One file depending on another is one violation, however many times it
+    // names it: the import statement and every later `routes.NAME` are the
+    // same edge. Keep the first, which is where the dependency enters.
+    let mut seen: BTreeSet<(Utf8PathBuf, ModulePath, ModulePath)> = BTreeSet::new();
+    findings.retain(|finding| match &finding.detail {
+        Detail::Import {
+            from_module,
+            to_module,
+            ..
+        } => seen.insert((finding.path.clone(), from_module.clone(), to_module.clone())),
+        _ => true,
     });
 
     Report {
@@ -338,6 +356,21 @@ mod tests {
             report.findings[0].message,
             "`app.domain.order` imports `app.api.routes`: layer `app.domain` may not depend on the layer above it, `app.api`"
         );
+    }
+
+    #[test]
+    fn a_file_that_names_the_same_module_twice_crosses_one_boundary() {
+        let mut index = FakeIndex::new();
+        let api = index.add_file("/p/app/api/routes.py", "app.api.routes");
+        let domain = index.add_file("/p/app/domain/order.py", "app.domain.order");
+        // The import statement, then every later `routes.NAME`.
+        index.add_import(domain, api, ImportKind::Runtime);
+        index.add_import(domain, api, ImportKind::Runtime);
+        index.add_import(domain, api, ImportKind::Runtime);
+
+        let report = analyze(&index, &layered());
+
+        assert_eq!(report.findings.len(), 1, "{:?}", report.findings);
     }
 
     #[test]

@@ -1,0 +1,17 @@
+files_scanned=583
+symbols_checked=8025
+symbols_kept=1603
+findings=12
+--
+unused-variable	medium	mitmproxy/addons/core.py:18:1	CONF_DIR	variable `CONF_DIR` is never used
+unused-variable	medium	mitmproxy/addons/core.py:19:1	LISTEN_PORT	variable `LISTEN_PORT` is never used
+unused-attribute	medium	mitmproxy/addons/termlog.py:14:5	_teardown_task	attribute `TermLog._teardown_task` is never used
+unused-function	medium	mitmproxy/contentviews/base.py:124:5	format_text	function `format_text` is never used
+unused-class	medium	mitmproxy/contrib/kaitaistruct/google_protobuf.py:12:7	GoogleProtobuf	class `GoogleProtobuf` is never used
+unused-variable	medium	mitmproxy/proxy/layers/modes.py:109:1	SOCKS5_REP_HOST_UNREACHABLE	variable `SOCKS5_REP_HOST_UNREACHABLE` is never used
+unused-file	medium	release/deploy-microsoft-store.py	-	file `deploy-microsoft-store.py` is never imported or run
+unused-attribute	medium	test/mitmproxy/addons/test_keepserving.py:35:5	_is_shutdown	attribute `TKS._is_shutdown` is never used
+unused-function	medium	test/mitmproxy/io/test_tnetstring.py:132:5	suite	function `suite` is never used
+unused-variable	medium	test/mitmproxy/proxy/layers/http/hyper_h2_test_helpers.py:24:1	SAMPLE_SETTINGS	variable `SAMPLE_SETTINGS` is never used
+unused-variable	medium	test/mitmproxy/proxy/layers/http/test_http_version_interop.py:30:1	h2f	variable `h2f` is never used
+unused-method	medium	test/mitmproxy/test_http.py:794:9	_2host	method `TestHeaders._2host` is never used

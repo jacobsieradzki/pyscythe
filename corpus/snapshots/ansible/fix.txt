@@ -1,0 +1,158 @@
+files_scanned=1850
+symbols_checked=18188
+symbols_kept=3024
+findings=153
+--
+unused-file	medium	hacking/ansible-profile.py	-	file `ansible-profile.py` is never imported or run
+unused-attribute	medium	lib/ansible/_internal/_rpc_host.py:73:5	_Server	attribute `LocalManager._Server` is never used
+unused-variable	high	lib/ansible/_internal/_templating/_engine.py:56:1	_shared_empty_unmask_type_names	variable `_shared_empty_unmask_type_names` is never used
+unused-method	medium	lib/ansible/_internal/_templating/_jinja_bits.py:772:9	_access_const	method `AnsibleEnvironment._access_const` is never used
+unused-file	medium	lib/ansible/_internal/_testing.py	-	file `lib.ansible._internal._testing` is never imported or run
+unused-file	medium	lib/ansible/compat/importlib_resources.py	-	file `lib.ansible.compat.importlib_resources` is never imported or run
+unused-method	medium	lib/ansible/config/manager.py:475:9	_find_yaml_config_files	method `ConfigManager._find_yaml_config_files` is never used
+unused-class	medium	lib/ansible/errors/__init__.py:227:7	AnsibleInternalError	class `AnsibleInternalError` is never used
+unused-class	medium	lib/ansible/errors/__init__.py:235:7	AnsibleModuleError	class `AnsibleModuleError` is never used
+unused-variable	medium	lib/ansible/errors/__init__.py:315:1	AnsibleLookupError	variable `AnsibleLookupError` is never used
+unused-class	medium	lib/ansible/errors/__init__.py:392:7	AnsibleActionNoCheckMode	class `AnsibleActionNoCheckMode` is never used
+unused-class	medium	lib/ansible/errors/__init__.py:478:7	AnsibleConditionalError	class `AnsibleConditionalError` is never used
+unused-method	medium	lib/ansible/executor/module_common.py:583:9	_get_module_utils_remainder	method `ModuleUtilLocatorBase._get_module_utils_remainder` is never used
+unused-method	medium	lib/ansible/executor/task_result.py:68:9	_task_fields	method `CallbackTaskResult._task_fields` is never used
+unused-variable	medium	lib/ansible/executor/task_result.py:130:1	TaskResult	variable `TaskResult` is never used
+unused-function	high	lib/ansible/module_utils/_internal/_ansiballz/_respawn_wrapper.py:4:5	_respawn_main	function `_respawn_main` is never used
+unused-file	medium	lib/ansible/module_utils/_internal/_testing.py	-	file `lib.ansible.module_utils._internal._testing` is never imported or run
+unused-function	medium	lib/ansible/module_utils/api.py:37:5	rate_limit_argument_spec	function `rate_limit_argument_spec` is never used
+unused-function	medium	lib/ansible/module_utils/api.py:48:5	retry_argument_spec	function `retry_argument_spec` is never used
+unused-function	medium	lib/ansible/module_utils/api.py:59:5	basic_auth_argument_spec	function `basic_auth_argument_spec` is never used
+unused-function	medium	lib/ansible/module_utils/api.py:98:5	retry	function `retry` is never used
+unused-file	medium	lib/ansible/module_utils/common/_collections_compat.py	-	file `lib.ansible.module_utils.common._collections_compat` is never imported or run
+unused-file	medium	lib/ansible/module_utils/common/dict_transformations.py	-	file `lib.ansible.module_utils.common.dict_transformations` is never imported or run
+unused-file	medium	lib/ansible/module_utils/common/network.py	-	file `lib.ansible.module_utils.common.network` is never imported or run
+unused-function	medium	lib/ansible/module_utils/splitter.py:67:5	split_args	function `split_args` is never used
+unused-function	medium	lib/ansible/module_utils/testing.py:19:5	patch_module_args	function `patch_module_args` is never used
+unused-class	medium	lib/ansible/module_utils/urls.py:192:7	ProxyError	class `ProxyError` is never used
+unused-class	medium	lib/ansible/module_utils/urls.py:205:7	NoSSLError	class `NoSSLError` is never used
+unused-attribute	medium	lib/ansible/modules/service_facts.py:435:5	_pid_regex	attribute `FreeBSDScanService._pid_regex` is never used
+unused-file	medium	lib/ansible/parsing/ajson.py	-	file `lib.ansible.parsing.ajson` is never imported or run
+unused-file	medium	lib/ansible/parsing/utils/jsonify.py	-	file `lib.ansible.parsing.utils.jsonify` is never imported or run
+unused-method	medium	lib/ansible/playbook/base.py:95:9	_fattributes	method `FieldAttributeBase._fattributes` is never used
+unused-variable	medium	lib/ansible/playbook/play_context.py:48:1	RESET_VARS	variable `RESET_VARS` is never used
+unused-method	medium	lib/ansible/playbook/task.py:159:9	_merge_kv	method `Task._merge_kv` is never used
+unused-method	medium	lib/ansible/plugins/__init__.py:168:9	_check_required	method `AnsiblePlugin._check_required` is never used
+unused-attribute	medium	lib/ansible/plugins/callback/__init__.py:208:5	_copy_result	attribute `CallbackBase._copy_result` is never used
+unused-method	medium	lib/ansible/plugins/cliconf/__init__.py:85:9	_alarm_handler	method `CliconfBase._alarm_handler` is never used
+unused-method	medium	lib/ansible/plugins/cliconf/__init__.py:456:9	_update_cli_prompt_context	method `CliconfBase._update_cli_prompt_context` is never used
+unused-method	medium	lib/ansible/plugins/connection/__init__.py:454:9	_log_messages	method `NetworkConnectionBase._log_messages` is never used
+unused-function	medium	lib/ansible/plugins/list.py:143:5	list_collection_plugins	function `list_collection_plugins` is never used
+unused-function	medium	lib/ansible/plugins/list.py:265:5	list_plugin_names	function `list_plugin_names` is never used
+unused-function	medium	lib/ansible/plugins/list.py:269:5	list_plugin_files	function `list_plugin_files` is never used
+unused-function	medium	lib/ansible/plugins/list.py:274:5	list_plugin_classes	function `list_plugin_classes` is never used
+unused-method	medium	lib/ansible/plugins/terminal/__init__.py:66:9	_exec_cli_command	method `TerminalBase._exec_cli_command` is never used
+unused-method	medium	lib/ansible/plugins/terminal/__init__.py:74:9	_get_prompt	method `TerminalBase._get_prompt` is never used
+unused-variable	medium	lib/ansible/template/__init__.py:30:1	AnsibleUndefined	variable `AnsibleUndefined` is never used
+unused-function	medium	lib/ansible/template/__init__.py:377:5	is_trusted_as_template	function `is_trusted_as_template` is never used
+unused-file	medium	lib/ansible/utils/cmd_functions.py	-	file `lib.ansible.utils.cmd_functions` is never imported or run
+unused-method	medium	lib/ansible/utils/collection_loader/_collection_finder.py:121:9	_get_name	method `_AnsibleTraversableResources._get_name` is never used
+unused-method	medium	lib/ansible/utils/collection_loader/_collection_finder.py:221:9	_find_existing_finder	method `_AnsibleCollectionFinder._find_existing_finder` is never used
+unused-attribute	medium	lib/ansible/utils/collection_loader/_collection_finder.py:448:5	_allows_package_code	attribute `_AnsibleCollectionPkgLoaderBase._allows_package_code` is never used
+unused-function	high	lib/ansible/utils/collection_loader/_collection_finder.py:1203:5	_get_import_redirect	function `_get_import_redirect` is never used
+unused-method	medium	lib/ansible/utils/display.py:427:9	_meets_verbosity	method `Display._meets_verbosity` is never used
+unused-function	medium	lib/ansible/utils/galaxy.py:36:5	scm_archive_collection	function `scm_archive_collection` is never used
+unused-function	medium	lib/ansible/utils/plugin_docs.py:122:5	remove_current_collection_from_versions_and_dates	function `remove_current_collection_from_versions_and_dates` is never used
+unused-file	medium	lib/ansible/utils/ssh_functions.py	-	file `lib.ansible.utils.ssh_functions` is never imported or run
+unused-file	medium	lib/ansible/utils/unsafe_proxy.py	-	file `lib.ansible.utils.unsafe_proxy` is never imported or run
+unused-function	medium	lib/ansible/vars/reserved.py:85:5	is_reserved_name	function `is_reserved_name` is never used
+unused-class	medium	test/lib/ansible_test/_internal/become.py:51:7	DoasSudo	class `DoasSudo` is never used
+unused-class	medium	test/lib/ansible_test/_internal/become.py:83:7	SuSudo	class `SuSudo` is never used
+unused-class	medium	test/lib/ansible_test/_internal/ci/azp.py:45:7	AzurePipelines	class `AzurePipelines` is never used
+unused-class	medium	test/lib/ansible_test/_internal/ci/gha.py:29:7	GitHubActions	class `GitHubActions` is never used
+unused-class	medium	test/lib/ansible_test/_internal/ci/local.py:250:7	PasswordAuthenticator	class `PasswordAuthenticator` is never used
+unused-class	medium	test/lib/ansible_test/_internal/ci/local.py:275:7	SshAuthenticator	class `SshAuthenticator` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/acme.py:22:7	ACMEProvider	class `ACMEProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/acme.py:69:7	ACMEEnvironment	class `ACMEEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/aws.py:39:7	AwsCloudProvider	class `AwsCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/aws.py:100:7	AwsCloudEnvironment	class `AwsCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/azure.py:33:7	AzureCloudProvider	class `AzureCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/azure.py:106:7	AzureCloudEnvironment	class `AzureCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/cloudscale.py:26:7	CloudscaleCloudProvider	class `CloudscaleCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/cloudscale.py:41:7	CloudscaleCloudEnvironment	class `CloudscaleCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/cs.py:36:7	CsCloudProvider	class `CsCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/cs.py:147:7	CsCloudEnvironment	class `CsCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/digitalocean.py:22:7	DigitalOceanCloudProvider	class `DigitalOceanCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/digitalocean.py:37:7	DigitalOceanCloudEnvironment	class `DigitalOceanCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/galaxy.py:55:7	GalaxyProvider	class `GalaxyProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/galaxy.py:170:7	GalaxyEnvironment	class `GalaxyEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/gcp.py:23:7	GcpCloudProvider	class `GcpCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/gcp.py:41:7	GcpCloudEnvironment	class `GcpCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/hcloud.py:31:7	HcloudCloudProvider	class `HcloudCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/hcloud.py:86:7	HcloudCloudEnvironment	class `HcloudCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/httptester.py:29:7	HttptesterProvider	class `HttptesterProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/httptester.py:82:7	HttptesterEnvironment	class `HttptesterEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/nios.py:22:7	NiosProvider	class `NiosProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/nios.py:83:7	NiosEnvironment	class `NiosEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/opennebula.py:18:7	OpenNebulaCloudProvider	class `OpenNebulaCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/opennebula.py:45:7	OpenNebulaCloudEnvironment	class `OpenNebulaCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/openshift.py:31:7	OpenShiftCloudProvider	class `OpenShiftCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/openshift.py:101:7	OpenShiftCloudEnvironment	class `OpenShiftCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/scaleway.py:22:7	ScalewayCloudProvider	class `ScalewayCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/scaleway.py:37:7	ScalewayCloudEnvironment	class `ScalewayCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/vcenter.py:23:7	VcenterProvider	class `VcenterProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/vcenter.py:39:7	VcenterEnvironment	class `VcenterEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/vultr.py:22:7	VultrCloudProvider	class `VultrCloudProvider` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/cloud/vultr.py:37:7	VultrCloudEnvironment	class `VultrCloudEnvironment` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/coverage.py:126:7	PosixCoverageHandler	class `PosixCoverageHandler` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/coverage.py:270:7	WindowsCoverageHandler	class `WindowsCoverageHandler` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:155:7	DockerTargetFilter	class `DockerTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:168:7	PosixSshTargetFilter	class `PosixSshTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:210:7	PosixRemoteTargetFilter	class `PosixRemoteTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:214:7	WindowsRemoteTargetFilter	class `WindowsRemoteTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:218:7	WindowsInventoryTargetFilter	class `WindowsInventoryTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:222:7	NetworkRemoteTargetFilter	class `NetworkRemoteTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:226:7	NetworkInventoryTargetFilter	class `NetworkInventoryTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/integration/filters.py:230:7	OriginTargetFilter	class `OriginTargetFilter` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/ansible_doc.py:52:7	AnsibleDocTest	class `AnsibleDocTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/bin_symlinks.py:40:7	BinSymlinksTest	class `BinSymlinksTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/ignores.py:27:7	IgnoresTest	class `IgnoresTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/import.py:77:7	ImportTest	class `ImportTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/integration_aliases.py:63:7	IntegrationAliasesTest	class `IntegrationAliasesTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/pep8.py:46:7	Pep8Test	class `Pep8Test` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/pslint.py:49:7	PslintTest	class `PslintTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/pylint.py:71:7	PylintTest	class `PylintTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/shellcheck.py:46:7	ShellcheckTest	class `ShellcheckTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/validate_modules.py:80:7	ValidateModulesTest	class `ValidateModulesTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/yamllint.py:49:7	YamllintTest	class `YamllintTest` is never used
+unused-class	medium	test/lib/ansible_test/_internal/host_profiles.py:1457:7	OriginProfile	class `OriginProfile` is never used
+unused-class	medium	test/lib/ansible_test/_internal/host_profiles.py:1474:7	PosixRemoteProfile	class `PosixRemoteProfile` is never used
+unused-class	medium	test/lib/ansible_test/_internal/host_profiles.py:1584:7	PosixSshProfile	class `PosixSshProfile` is never used
+unused-class	medium	test/lib/ansible_test/_internal/provider/layout/ansible.py:18:7	AnsibleLayout	class `AnsibleLayout` is never used
+unused-class	medium	test/lib/ansible_test/_internal/provider/layout/collection.py:19:7	CollectionLayout	class `CollectionLayout` is never used
+unused-class	medium	test/lib/ansible_test/_internal/provider/source/git.py:25:7	GitSource	class `GitSource` is never used
+unused-variable	medium	test/lib/ansible_test/_internal/util.py:98:1	MODE_FILE_WRITE	variable `MODE_FILE_WRITE` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:23:1	REJECTLIST_DIRS	variable `REJECTLIST_DIRS` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:24:1	SYS_EXIT_REGEX	variable `SYS_EXIT_REGEX` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:25:1	NO_LOG_REGEX	variable `NO_LOG_REGEX` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:29:1	FORBIDDEN_DICTIONARY_KEYS	variable `FORBIDDEN_DICTIONARY_KEYS` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:44:1	REJECTLIST_IMPORTS	variable `REJECTLIST_IMPORTS` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:63:1	PLUGINS_WITH_RETURN_VALUES	variable `PLUGINS_WITH_RETURN_VALUES` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:64:1	PLUGINS_WITH_EXAMPLES	variable `PLUGINS_WITH_EXAMPLES` is never used
+unused-variable	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/constants.py:65:1	PLUGINS_WITH_YAML_EXAMPLES	variable `PLUGINS_WITH_YAML_EXAMPLES` is never used
+unused-method	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/main.py:353:9	_get_collection_meta	method `ModuleValidator._get_collection_meta` is never used
+unused-function	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/schema.py:721:5	return_schema	function `return_schema` is never used
+unused-function	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/schema.py:840:5	doc_schema	function `doc_schema` is never used
+unused-function	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:42:5	find_executable	function `find_executable` is never used
+unused-function	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:78:5	find_globals	function `find_globals` is never used
+unused-class	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:101:7	CaptureStd	class `CaptureStd` is never used
+unused-function	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:136:5	parse_yaml	function `parse_yaml` is never used
+unused-function	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:187:5	compare_unordered_lists	function `compare_unordered_lists` is never used
+unused-class	medium	test/lib/ansible_test/_util/controller/sanity/validate-modules/validate_modules/utils.py:197:7	NoArgsAnsibleModule	class `NoArgsAnsibleModule` is never used
+unused-variable	medium	test/units/config/manager/test_find_ini_config_file.py:16:1	real_exists	variable `real_exists` is never used
+unused-variable	medium	test/units/executor/module_common/test_recursive_finder.py:91:1	ONLY_BASIC_FILE	variable `ONLY_BASIC_FILE` is never used
+unused-method	medium	test/units/mock/yaml_helper.py:16:9	_dump_stream	method `YamlTestUtils._dump_stream` is never used
+unused-method	medium	test/units/mock/yaml_helper.py:24:9	_dump_load_cycle	method `YamlTestUtils._dump_load_cycle` is never used
+unused-variable	medium	test/units/module_utils/basic/test_platform_distribution.py:23:1	realimport	variable `realimport` is never used
+unused-variable	medium	test/units/module_utils/common/test_sys_info.py:21:1	realimport	variable `realimport` is never used
+unused-class	medium	test/units/module_utils/datatag/test_datatag.py:112:7	AnsibleSerializableSet	class `AnsibleSerializableSet` is never used
+unused-class	medium	test/units/module_utils/datatag/test_datatag.py:125:7	AnsibleSerializableTuple	class `AnsibleSerializableTuple` is never used
+unused-class	medium	test/units/module_utils/datatag/test_datatag.py:138:7	AnsibleSerializableBytes	class `AnsibleSerializableBytes` is never used
+unused-variable	high	test/units/module_utils/datatag/test_datatag.py:208:1	_str_override_method_args	variable `_str_override_method_args` is never used
+unused-method	medium	test/units/module_utils/facts/test_ansible_collector.py:244:9	_assert_ansible_namespace	method `TestCollectedFacts._assert_ansible_namespace` is never used
+unused-method	medium	test/units/parsing/yaml/test_loader.py:197:9	_encrypt_plaintext	method `TestAnsibleLoaderVault._encrypt_plaintext` is never used

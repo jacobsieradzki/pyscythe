@@ -29,3 +29,25 @@ jobs:
           name: corpus-diffs-${{ matrix.shard }}
           path: corpus/cache/*.diff
           if-no-files-found: ignore
+
+  # A snapshot says the plan did not change; only carrying it out says the plan
+  # is safe. Every package a project ships must still import once its dead code
+  # is gone. Linux is where the pinned wheels run, so this is where it means
+  # something.
+  repair:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.8.3"
+          enable-cache: true
+          cache-dependency-glob: corpus/locks/*.txt
+      - run: cargo build --release -p pyscythe -p pyscythe_corpus
+      - run: ./target/release/pyscythe-corpus repair --shard ${{ matrix.shard }}/3

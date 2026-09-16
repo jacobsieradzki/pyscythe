@@ -12,15 +12,21 @@ pub(crate) enum Analysis {
     Deps,
     Dupes,
     Health,
+    /// Only for projects whose `boundaries` config says what their layers are.
+    Boundaries,
+    /// What `fix` would remove, as a dry run: the plan, not the diff.
+    Fix,
 }
 
 impl Analysis {
-    pub(crate) const ALL: [Self; 5] = [
+    pub(crate) const ALL: [Self; 7] = [
         Self::DeadCode,
         Self::Cycles,
         Self::Deps,
         Self::Dupes,
         Self::Health,
+        Self::Boundaries,
+        Self::Fix,
     ];
 
     /// The subcommand name as typed on the command line.
@@ -31,6 +37,16 @@ impl Analysis {
             Self::Deps => "deps",
             Self::Dupes => "dupes",
             Self::Health => "health",
+            Self::Boundaries => "boundaries",
+            Self::Fix => "fix",
+        }
+    }
+
+    /// Arguments the subcommand needs beyond a path and a format.
+    pub(crate) const fn extra_arguments(self) -> &'static [&'static str] {
+        match self {
+            Self::Fix => &["--dry-run"],
+            _ => &[],
         }
     }
 

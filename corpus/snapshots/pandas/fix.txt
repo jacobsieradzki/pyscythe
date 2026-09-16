@@ -1,0 +1,72 @@
+files_scanned=1527
+symbols_checked=38542
+symbols_kept=24425
+findings=67
+--
+unused-file	medium	ci/import_pandas_check.py	-	file `ci.import_pandas_check` is never imported or run
+unused-file	medium	generate_pxi.py	-	file `generate_pxi` is never imported or run
+unused-file	medium	generate_version.py	-	file `generate_version` is never imported or run
+unused-variable	medium	pandas/_typing.py:173:1	Timezone	variable `Timezone` is never used
+unused-variable	medium	pandas/_typing.py:515:1	NaAction	variable `NaAction` is never used
+unused-variable	medium	pandas/compat/numpy/__init__.py:11:1	np_version_gt2_3	variable `np_version_gt2_3` is never used
+unused-method	medium	pandas/core/arrays/base.py:3309:9	_add_comparison_ops	method `ExtensionOpsMixin._add_comparison_ops` is never used
+unused-method	medium	pandas/core/arrays/base.py:3322:9	_add_logical_ops	method `ExtensionOpsMixin._add_logical_ops` is never used
+unused-attribute	medium	pandas/core/arrays/period.py:194:5	_other_ops	attribute `PeriodArray._other_ops` is never used
+unused-attribute	medium	pandas/core/arrays/sparse/array.py:561:5	_subtyp	attribute `SparseArray._subtyp` is never used
+unused-attribute	medium	pandas/core/arrays/timedeltas.py:195:5	_other_ops	attribute `TimedeltaArray._other_ops` is never used
+unused-variable	high	pandas/core/col.py:24:1	_OP_SYMBOLS	variable `_OP_SYMBOLS` is never used
+unused-variable	high	pandas/core/computation/expr.py:207:1	_expr_nodes	variable `_expr_nodes` is never used
+unused-variable	high	pandas/core/computation/expr.py:210:1	_operator_nodes	variable `_operator_nodes` is never used
+unused-variable	high	pandas/core/computation/expr.py:211:1	_unary_op_nodes	variable `_unary_op_nodes` is never used
+unused-variable	high	pandas/core/computation/expr.py:212:1	_cmp_op_nodes	variable `_cmp_op_nodes` is never used
+unused-variable	high	pandas/core/computation/expr.py:213:1	_comprehension_nodes	variable `_comprehension_nodes` is never used
+unused-variable	high	pandas/core/computation/expr.py:776:1	_numexpr_supported_calls	variable `_numexpr_supported_calls` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:135:5	_base	attribute `MultiIndexUInt64Engine._base` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:136:5	_codes_dtype	attribute `MultiIndexUInt64Engine._codes_dtype` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:145:5	_base	attribute `MultiIndexUInt32Engine._base` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:146:5	_codes_dtype	attribute `MultiIndexUInt32Engine._codes_dtype` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:155:5	_base	attribute `MultiIndexUInt16Engine._base` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:156:5	_codes_dtype	attribute `MultiIndexUInt16Engine._codes_dtype` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:165:5	_base	attribute `MultiIndexUInt8Engine._base` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:166:5	_codes_dtype	attribute `MultiIndexUInt8Engine._codes_dtype` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:177:5	_base	attribute `MultiIndexPyIntEngine._base` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:178:5	_codes_dtype	attribute `MultiIndexPyIntEngine._codes_dtype` is never used
+unused-method	medium	pandas/core/indexes/multi.py:3182:9	_recode_for_new_levels	method `MultiIndex._recode_for_new_levels` is never used
+unused-method	medium	pandas/core/resample.py:2799:9	_get_time_period_bins	method `TimeGrouper._get_time_period_bins` is never used
+unused-attribute	medium	pandas/core/reshape/merge.py:940:5	_merge_type	attribute `_MergeOperation._merge_type` is never used
+unused-function	medium	pandas/io/common.py:1246:5	file_exists	function `file_exists` is never used
+unused-method	medium	pandas/io/parsers/readers.py:2988:9	_failover_to_python	method `TextFileReader._failover_to_python` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:15:1	align_1_value	variable `align_1_value` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:22:1	platform_offset	variable `platform_offset` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:23:1	platform_length	variable `platform_length` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:26:1	dataset_offset	variable `dataset_offset` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:27:1	dataset_length	variable `dataset_length` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:28:1	file_type_offset	variable `file_type_offset` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:29:1	file_type_length	variable `file_type_length` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:38:1	page_count_offset	variable `page_count_offset` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:39:1	page_count_length	variable `page_count_length` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:40:1	sas_release_offset	variable `sas_release_offset` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:41:1	sas_release_length	variable `sas_release_length` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:42:1	sas_server_type_offset	variable `sas_server_type_offset` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:43:1	sas_server_type_length	variable `sas_server_type_length` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:44:1	os_version_number_offset	variable `os_version_number_offset` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:45:1	os_version_number_length	variable `os_version_number_length` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:46:1	os_maker_offset	variable `os_maker_offset` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:47:1	os_maker_length	variable `os_maker_length` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:48:1	os_name_offset	variable `os_name_offset` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:49:1	os_name_length	variable `os_name_length` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:68:1	page_comp_type	variable `page_comp_type` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:71:1	truncated_subheader_id	variable `truncated_subheader_id` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:72:1	compressed_subheader_id	variable `compressed_subheader_id` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:73:1	compressed_subheader_type	variable `compressed_subheader_type` is never used
+unused-variable	medium	pandas/io/sas/sas_constants.py:228:1	subheader_signature_to_index	variable `subheader_signature_to_index` is never used
+unused-variable	high	pandas/io/sas/sas_xport.py:92:1	_read_sas_doc	variable `_read_sas_doc` is never used
+unused-variable	medium	pandas/tests/io/parser/common/test_file_buffer_url.py:28:1	xfail_pyarrow	variable `xfail_pyarrow` is never used
+unused-variable	medium	pandas/tests/io/parser/common/test_index.py:14:1	xfail_pyarrow	variable `xfail_pyarrow` is never used
+unused-variable	medium	pandas/tests/io/parser/common/test_read_errors.py:22:1	xfail_pyarrow	variable `xfail_pyarrow` is never used
+unused-variable	medium	pandas/tests/io/parser/test_header.py:17:1	xfail_pyarrow	variable `xfail_pyarrow` is never used
+unused-variable	medium	pandas/tests/io/parser/usecols/test_parse_dates.py:13:1	xfail_pyarrow	variable `xfail_pyarrow` is never used
+unused-variable	high	pandas/tests/io/parser/usecols/test_parse_dates.py:16:1	_msg_pyarrow_requires_names	variable `_msg_pyarrow_requires_names` is never used
+unused-variable	medium	pandas/tests/io/parser/usecols/test_usecols_basic.py:29:1	xfail_pyarrow	variable `xfail_pyarrow` is never used
+unused-variable	medium	pandas/tests/io/test_feather.py:20:1	pa	variable `pa` is never used
+unused-variable	medium	pandas/util/version/__init__.py:95:1	VersionComparisonMethod	variable `VersionComparisonMethod` is never used

@@ -4,6 +4,7 @@ use std::io::Write as _;
 use std::path::PathBuf;
 use std::process::ExitCode;
 
+use anyhow::Context as _;
 use camino::Utf8Path;
 use clap::{Parser, Subcommand, ValueEnum};
 use pyscythe_core::baseline::Baseline;
@@ -74,13 +75,21 @@ struct FixArgs {
     /// Only act on these rules, such as `unused-function,unused-file`.
     #[arg(long, value_name = "RULES", value_delimiter = ',')]
     only: Vec<String>,
+
+    /// Read `[tool.pyscythe]` from this file instead of the project's pyproject.toml.
+    #[arg(long, value_name = "FILE")]
+    config: Option<PathBuf>,
+
+    /// Output format. Anything but `human` reports the plan instead of a diff.
+    #[arg(long, value_enum, default_value_t = Format::Human)]
+    format: Format,
 }
 
 impl FixArgs {
     fn as_analysis_args(&self) -> AnalysisArgs {
         AnalysisArgs {
             path: self.path.clone(),
-            format: Format::Human,
+            format: self.format,
             no_plugins: self.no_plugins,
             show_kept: false,
             exclude: self.exclude.clone(),
@@ -89,6 +98,7 @@ impl FixArgs {
             write_baseline: None,
             min_confidence: self.min_confidence,
             since: None,
+            config: self.config.clone(),
         }
     }
 }
@@ -172,6 +182,10 @@ struct AnalysisArgs {
     /// Only report findings in files changed since this git ref (plus untracked files).
     #[arg(long, value_name = "REF")]
     since: Option<String>,
+
+    /// Read `[tool.pyscythe]` from this file instead of the project's pyproject.toml.
+    #[arg(long, value_name = "FILE")]
+    config: Option<PathBuf>,
 }
 
 #[derive(Debug, clap::Args)]
@@ -480,6 +494,29 @@ fn run_fix(args: &FixArgs, out: &mut impl std::io::Write) -> anyhow::Result<Outc
     }
 
     let plan = pyscythe_core::fix::plan(&index, &report, &pyscythe_metrics::RuffImportPruner);
+    if args.format != Format::Human {
+        let acted = plan.acted_on(&report);
+        let planned = Report {
+            schema_version: Report::SCHEMA_VERSION,
+            kind: pyscythe_core::report::ReportKind::Fix,
+            // The counts are the dead-code run's; only the findings narrow,
+            // to the ones the plan carries out.
+            summary: pyscythe_core::report::Summary {
+                findings: acted.len(),
+                ..report.summary.clone()
+            },
+            findings: acted.into_iter().cloned().collect(),
+            kept: Vec::new(),
+        };
+        std::mem::forget(index);
+        apply_plan(args, &plan)?;
+        emit(&planned, &analysis_args, &root, out)?;
+        return Ok(if planned.is_clean() {
+            Outcome::Clean
+        } else {
+            Outcome::Findings
+        });
+    }
     std::mem::forget(index);
 
     for edit in &plan.edits {
@@ -510,16 +547,7 @@ fn run_fix(args: &FixArgs, out: &mut impl std::io::Write) -> anyhow::Result<Outc
         )?;
     }
 
-    if !args.dry_run {
-        for edit in &plan.edits {
-            std::fs::write(&edit.path, &edit.after)
-                .map_err(|error| anyhow::anyhow!("cannot write {}: {error}", edit.path))?;
-        }
-        for path in &plan.deletions {
-            std::fs::remove_file(path)
-                .map_err(|error| anyhow::anyhow!("cannot delete {path}: {error}"))?;
-        }
-    }
+    apply_plan(args, &plan)?;
 
     let verb = if args.dry_run {
         "Would remove"
@@ -535,6 +563,22 @@ fn run_fix(args: &FixArgs, out: &mut impl std::io::Write) -> anyhow::Result<Outc
         plan.skipped.len()
     )?;
     Ok(Outcome::Clean)
+}
+
+/// Writes the plan to disk, unless this was a dry run.
+fn apply_plan(args: &FixArgs, plan: &pyscythe_core::fix::FixPlan) -> anyhow::Result<()> {
+    if args.dry_run {
+        return Ok(());
+    }
+    for edit in &plan.edits {
+        std::fs::write(&edit.path, &edit.after)
+            .map_err(|error| anyhow::anyhow!("cannot write {}: {error}", edit.path))?;
+    }
+    for path in &plan.deletions {
+        std::fs::remove_file(path)
+            .map_err(|error| anyhow::anyhow!("cannot delete {path}: {error}"))?;
+    }
+    Ok(())
 }
 
 /// Opens the project, reads its `pyproject.toml`, and applies the file selection it asks for.
@@ -564,7 +608,13 @@ fn open_project(
 ) -> anyhow::Result<(TyIndex, ProjectSettings)> {
     let mut index = TyIndex::open(&args.path)?;
     timings.mark("open project");
-    let settings = pyscythe_pyproject::load(index.root())?;
+    let config_path = args
+        .config
+        .as_deref()
+        .map(Utf8Path::from_path)
+        .map(|path| path.context("configuration path is not valid UTF-8"))
+        .transpose()?;
+    let settings = pyscythe_pyproject::load_with_config(index.root(), config_path)?;
     let options = IndexOptions {
         exclude: settings
             .config
@@ -601,7 +651,7 @@ fn boundaries(
 ) -> anyhow::Result<Report> {
     let config = settings.config.boundaries.as_ref().ok_or_else(|| {
         anyhow::anyhow!(
-            "no boundaries configured: add `layers`, `rules`, or a `preset` under [tool.pyscythe.boundaries] in pyproject.toml"
+            "no boundaries configured: add `layers`, `rules`, or a `preset` under [tool.pyscythe.boundaries] in pyproject.toml, or pass one with --config"
         )
     })?;
     Ok(pyscythe_core::boundaries::analyze(index, config))

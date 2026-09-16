@@ -1,0 +1,55 @@
+files_scanned=717
+symbols_checked=8281
+symbols_kept=1853
+findings=50
+--
+unused-function	medium	src/dispatch/__init__.py:115:5	get_version	function `get_version` is never used
+unused-function	medium	src/dispatch/__init__.py:121:5	is_docker	function `is_docker` is never used
+unused-function	medium	src/dispatch/auth/service.py:60:5	create_or_update_project_role	function `create_or_update_project_role` is never used
+unused-function	medium	src/dispatch/case/flows.py:587:5	case_new_status_flow	function `case_new_status_flow` is never used
+unused-variable	medium	src/dispatch/case/priority/models.py:33:1	default_listener_doc	variable `default_listener_doc` is never used
+unused-function	medium	src/dispatch/case_cost_type/service.py:55:5	get_all_response_case_cost_types	function `get_all_response_case_cost_types` is never used
+unused-class	medium	src/dispatch/conversation/enums.py:28:7	ConversationFilters	class `ConversationFilters` is never used
+unused-variable	medium	src/dispatch/database/core.py:84:1	raise_attribute_error	variable `raise_attribute_error` is never used
+unused-function	medium	src/dispatch/database/service.py:846:5	restricted_incident_type_filter	function `restricted_incident_type_filter` is never used
+unused-function	medium	src/dispatch/entity/service.py:59:5	get_by_value	function `get_by_value` is never used
+unused-function	medium	src/dispatch/entity/service.py:192:5	get_case_count_with_entity	function `get_case_count_with_entity` is never used
+unused-class	medium	src/dispatch/exceptions.py:15:7	NotFoundError	class `NotFoundError` is never used
+unused-class	medium	src/dispatch/exceptions.py:20:7	FieldNotFoundError	class `FieldNotFoundError` is never used
+unused-class	medium	src/dispatch/exceptions.py:25:7	ModelNotFoundError	class `ModelNotFoundError` is never used
+unused-class	medium	src/dispatch/exceptions.py:40:7	InvalidFilterError	class `InvalidFilterError` is never used
+unused-class	medium	src/dispatch/exceptions.py:45:7	InvalidUsernameError	class `InvalidUsernameError` is never used
+unused-class	medium	src/dispatch/exceptions.py:50:7	InvalidPasswordError	class `InvalidPasswordError` is never used
+unused-function	medium	src/dispatch/incident/messaging.py:61:5	get_suggested_documents	function `get_suggested_documents` is never used
+unused-function	medium	src/dispatch/incident/messaging.py:807:5	send_incident_participant_has_role_ephemeral_message	function `send_incident_participant_has_role_ephemeral_message` is never used
+unused-function	medium	src/dispatch/incident/messaging.py:847:5	send_incident_participant_role_not_assigned_ephemeral_message	function `send_incident_participant_role_not_assigned_ephemeral_message` is never used
+unused-function	medium	src/dispatch/individual/service.py:20:5	resolve_user_by_email	function `resolve_user_by_email` is never used
+unused-variable	medium	src/dispatch/messaging/strings.py:155:1	NOTIFICATIONS_GROUP_DESCRIPTION	variable `NOTIFICATIONS_GROUP_DESCRIPTION` is never used
+unused-variable	medium	src/dispatch/messaging/strings.py:503:1	CASE_NAME_WITH_ENGAGEMENT_NO_DESCRIPTION	variable `CASE_NAME_WITH_ENGAGEMENT_NO_DESCRIPTION` is never used
+unused-variable	medium	src/dispatch/messaging/strings.py:692:1	INCIDENT_PARTICIPANT_SUGGESTED_READING_ITEM	variable `INCIDENT_PARTICIPANT_SUGGESTED_READING_ITEM` is never used
+unused-variable	medium	src/dispatch/messaging/strings.py:988:1	INCIDENT_MONITOR_CREATED_NOTIFICATION	variable `INCIDENT_MONITOR_CREATED_NOTIFICATION` is never used
+unused-variable	medium	src/dispatch/messaging/strings.py:1004:1	INCIDENT_MONITOR_IGNORE_NOTIFICATION	variable `INCIDENT_MONITOR_IGNORE_NOTIFICATION` is never used
+unused-function	medium	src/dispatch/participant/service.py:44:5	get_by_incident_id	function `get_by_incident_id` is never used
+unused-function	medium	src/dispatch/participant_activity/service.py:16:5	get_all_incident_participant_activities_from_last_update	function `get_all_incident_participant_activities_from_last_update` is never used
+unused-variable	medium	src/dispatch/plugins/base/v1.py:16:1	logger	variable `logger` is never used
+unused-function	medium	src/dispatch/plugins/dispatch_google/drive/drive.py:134:5	get_file	function `get_file` is never used
+unused-class	medium	src/dispatch/plugins/dispatch_google/drive/task.py:27:7	PostSubTypes	class `PostSubTypes` is never used
+unused-function	medium	src/dispatch/plugins/dispatch_slack/case/interactive.py:309:5	ack_engage_oncall_submission_event	function `ack_engage_oncall_submission_event` is never used
+unused-class	medium	src/dispatch/plugins/dispatch_slack/case/messages.py:203:7	EntityGroup	class `EntityGroup` is never used
+unused-function	medium	src/dispatch/plugins/dispatch_slack/endpoints.py:29:11	parse_request	function `parse_request` is never used
+unused-class	medium	src/dispatch/plugins/dispatch_slack/exceptions.py:29:7	SubmissionError	class `SubmissionError` is never used
+unused-function	medium	src/dispatch/plugins/dispatch_slack/incident/interactive.py:1866:5	ack_create_task_submission_event	function `ack_create_task_submission_event` is never used
+unused-function	medium	src/dispatch/plugins/dispatch_slack/service.py:289:5	get_conversations_by_user_id	function `get_conversations_by_user_id` is never used
+unused-class	medium	src/dispatch/search/fulltext/__init__.py:21:7	SearchQueryMixin	class `SearchQueryMixin` is never used
+unused-function	medium	src/dispatch/search/fulltext/__init__.py:425:5	drop_trigger	function `drop_trigger` is never used
+unused-class	medium	src/dispatch/signal/exceptions.py:12:7	SignalNotEnabledException	class `SignalNotEnabledException` is never used
+unused-function	medium	src/dispatch/signal/flows.py:423:5	main_processing_loop	function `main_processing_loop` is never used
+unused-class	medium	src/dispatch/signal/models.py:46:7	RuleMode	class `RuleMode` is never used
+unused-function	medium	src/dispatch/signal/service.py:149:5	get_all_by_entity_type	function `get_all_by_entity_type` is never used
+unused-function	medium	src/dispatch/signal/service.py:943:5	get_cases_for_signal	function `get_cases_for_signal` is never used
+unused-function	medium	src/dispatch/tag/recommender.py:139:5	get_recommendations	function `get_recommendations` is never used
+unused-function	medium	src/dispatch/task/service.py:39:5	get_all_by_incident_id_and_status	function `get_all_by_incident_id_and_status` is never used
+unused-function	medium	src/dispatch/term/service.py:60:5	update_or_create	function `update_or_create` is never used
+unused-function	medium	src/dispatch/ticket/service.py:22:5	get_or_create_by_weblink	function `get_or_create_by_weblink` is never used
+unused-class	medium	tests/factories.py:823:7	CaseReadFactory	class `CaseReadFactory` is never used
+unused-function	medium	tests/incident_severity/test_incident_severity_service.py:40:5	get_by_name_or_raise__fail	function `get_by_name_or_raise__fail` is never used

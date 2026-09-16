@@ -1,0 +1,12 @@
+files_scanned=661
+symbols_checked=11040
+symbols_kept=2003
+findings=7
+--
+unused-function	high	src/pip/_internal/req/req_install.py:837:5	_has_option	function `_has_option` is never used
+unused-function	medium	src/pip/_internal/utils/datetime.py:7:5	today_is_later_than	function `today_is_later_than` is never used
+unused-function	medium	tests/lib/filesystem.py:13:5	get_filelist	function `get_filelist` is never used
+unused-variable	high	tests/unit/test_collector.py:629:1	_pkg1_requirement	variable `_pkg1_requirement` is never used
+unused-function	medium	tests/unit/test_utils_filesystem.py:15:5	make_valid_symlink	function `make_valid_symlink` is never used
+unused-function	medium	tests/unit/test_utils_filesystem.py:21:5	make_broken_symlink	function `make_broken_symlink` is never used
+unused-function	medium	tests/unit/test_utils_filesystem.py:25:5	make_dir	function `make_dir` is never used

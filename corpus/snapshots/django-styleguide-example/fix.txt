@@ -1,0 +1,29 @@
+files_scanned=190
+symbols_checked=744
+symbols_kept=273
+findings=24
+--
+unused-file	medium	styleguide_example/blog_examples/google_login_server_flow/raw/views.py	-	file `styleguide_example.blog_examples.google_login_server_flow.raw.views` is never imported or run
+unused-file	medium	styleguide_example/blog_examples/google_login_server_flow/sdk/views.py	-	file `styleguide_example.blog_examples.google_login_server_flow.sdk.views` is never imported or run
+unused-file	medium	styleguide_example/blog_examples/print_qs_in_shell/utils.py	-	file `styleguide_example.blog_examples.print_qs_in_shell.utils` is never imported or run
+unused-function	medium	styleguide_example/errors/services.py:25:5	trigger_django_validation	function `trigger_django_validation` is never used
+unused-function	medium	styleguide_example/errors/services.py:29:5	trigger_django_permission_denied	function `trigger_django_permission_denied` is never used
+unused-function	medium	styleguide_example/errors/services.py:33:5	trigger_django_object_does_not_exist	function `trigger_django_object_does_not_exist` is never used
+unused-function	medium	styleguide_example/errors/services.py:37:5	trigger_django_404	function `trigger_django_404` is never used
+unused-function	medium	styleguide_example/errors/services.py:41:5	trigger_model_clean	function `trigger_model_clean` is never used
+unused-function	medium	styleguide_example/errors/services.py:46:5	trigger_rest_validation_plain	function `trigger_rest_validation_plain` is never used
+unused-function	medium	styleguide_example/errors/services.py:50:5	trigger_rest_validation_detail	function `trigger_rest_validation_detail` is never used
+unused-function	medium	styleguide_example/errors/services.py:54:5	trigger_serialization_validation	function `trigger_serialization_validation` is never used
+unused-function	medium	styleguide_example/errors/services.py:59:5	trigger_rest_throttled	function `trigger_rest_throttled` is never used
+unused-function	medium	styleguide_example/errors/services.py:63:5	trigger_rest_unsupported_media_type	function `trigger_rest_unsupported_media_type` is never used
+unused-function	medium	styleguide_example/errors/services.py:67:5	trigger_rest_not_acceptable	function `trigger_rest_not_acceptable` is never used
+unused-function	medium	styleguide_example/errors/services.py:71:5	trigger_rest_method_not_allowed	function `trigger_rest_method_not_allowed` is never used
+unused-function	medium	styleguide_example/errors/services.py:75:5	trigger_rest_not_found	function `trigger_rest_not_found` is never used
+unused-function	medium	styleguide_example/errors/services.py:79:5	trigger_rest_permission_denied	function `trigger_rest_permission_denied` is never used
+unused-function	medium	styleguide_example/errors/services.py:83:5	trigger_rest_not_authenticated	function `trigger_rest_not_authenticated` is never used
+unused-function	medium	styleguide_example/errors/services.py:87:5	trigger_rest_authentication_failed	function `trigger_rest_authentication_failed` is never used
+unused-function	medium	styleguide_example/errors/services.py:91:5	trigger_rest_parse_error	function `trigger_rest_parse_error` is never used
+unused-function	medium	styleguide_example/errors/services.py:95:5	trigger_application_error	function `trigger_application_error` is never used
+unused-class	medium	styleguide_example/testing_examples/tests/factories.py:32:7	SchoolWithStudentsFactory	class `SchoolWithStudentsFactory` is never used
+unused-class	medium	styleguide_example/testing_examples/tests/factories.py:78:7	FutureRosterFactory	class `FutureRosterFactory` is never used
+unused-class	medium	styleguide_example/testing_examples/tests/factories.py:91:7	SchoolCourseWithRostersFactory	class `SchoolCourseWithRostersFactory` is never used

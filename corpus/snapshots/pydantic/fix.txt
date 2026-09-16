@@ -1,0 +1,34 @@
+files_scanned=449
+symbols_checked=11395
+symbols_kept=5370
+findings=29
+--
+unused-function	medium	.github/actions/people/people.py:451:5	get_issues_experts	function `get_issues_experts` is never used
+unused-class	medium	pydantic-core/python/pydantic_core/__init__.py:114:7	ErrorTypeInfo	class `ErrorTypeInfo` is never used
+unused-class	medium	pydantic-core/python/pydantic_core/__init__.py:133:7	MultiHostHost	class `MultiHostHost` is never used
+unused-file	medium	pydantic-core/src/self_schema.py	-	file `src.self_schema` is never imported or run
+unused-function	medium	pydantic-core/tests/test_typing.py:28:5	validator_deprecated	function `validator_deprecated` is never used
+unused-function	medium	pydantic-core/tests/validators/test_enums.py:467:5	support_custom_new_method	function `support_custom_new_method` is never used
+unused-function	medium	pydantic-core/tests/validators/test_model_fields.py:714:5	get_int_key	function `get_int_key` is never used
+unused-function	medium	pydantic-core/tests/validators/test_model_fields.py:733:5	get_custom_getitem	function `get_custom_getitem` is never used
+unused-function	medium	pydantic-core/tests/validators/test_typed_dict.py:586:5	get_int_key	function `get_int_key` is never used
+unused-function	medium	pydantic-core/tests/validators/test_typed_dict.py:605:5	get_custom_getitem	function `get_custom_getitem` is never used
+unused-function	medium	pydantic-core/tests/validators/test_uuid.py:233:5	uuid_safety_unknown	function `uuid_safety_unknown` is never used
+unused-file	medium	pydantic-core/wasm-preview/run_tests.py	-	file `run_tests.py` is never imported or run
+unused-variable	medium	pydantic/_internal/_core_utils.py:12:1	AnyFunctionSchema	variable `AnyFunctionSchema` is never used
+unused-variable	medium	pydantic/_internal/_core_utils.py:156:1	pps	variable `pps` is never used
+unused-variable	medium	pydantic/_internal/_known_annotated_metadata.py:42:1	SEQUENCE_CONSTRAINTS	variable `SEQUENCE_CONSTRAINTS` is never used
+unused-function	medium	pydantic/_internal/_known_annotated_metadata.py:383:5	check_metadata	function `check_metadata` is never used
+unused-variable	medium	pydantic/_internal/_typing_extra.py:117:1	origin_is_union	variable `origin_is_union` is never used
+unused-function	medium	pydantic/_internal/_typing_extra.py:407:5	eval_type_lenient	function `eval_type_lenient` is never used
+unused-variable	medium	pydantic/plugin/_schema_validator.py:19:1	events	variable `events` is never used
+unused-variable	medium	pydantic/v1/schema.py:89:1	default_prefix	variable `default_prefix` is never used
+unused-variable	medium	pydantic/v1/schema.py:801:1	json_scheme	variable `json_scheme` is never used
+unused-function	medium	release/push.py:87:5	create_github_release	function `create_github_release` is never used
+unused-variable	medium	tests/mypy/test_mypy.py:36:1	MYPY_VERSION_TUPLE	variable `MYPY_VERSION_TUPLE` is never used
+unused-variable	medium	tests/plugin/example_plugin.py:31:1	plugin	variable `plugin` is never used
+unused-class	medium	tests/test_edge_cases.py:1635:7	DisplayGen	class `DisplayGen` is never used
+unused-class	medium	tests/test_main.py:2107:7	MyDict	class `MyDict` is never used
+unused-variable	medium	tests/test_pickle.py:31:1	TEST_DATA_DIR	variable `TEST_DATA_DIR` is never used
+unused-variable	medium	tests/test_typing.py:25:1	ALL_TYPEDDICT_KINDS	variable `ALL_TYPEDDICT_KINDS` is never used
+unused-function	medium	tests/test_validate_call.py:70:5	validate_bare_none	function `validate_bare_none` is never used

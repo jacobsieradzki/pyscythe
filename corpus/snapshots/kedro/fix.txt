@@ -1,0 +1,46 @@
+files_scanned=232
+symbols_checked=3916
+symbols_kept=1940
+findings=41
+--
+unused-file	medium	features/environment.py	-	file `features.environment` is never imported or run
+unused-file	medium	features/steps/cli_steps.py	-	file `features.steps.cli_steps` is never imported or run
+unused-function	medium	features/steps/util.py:38:5	wait_for	function `wait_for` is never used
+unused-file	medium	features/steps/validation_steps.py	-	file `features.steps.validation_steps` is never imported or run
+unused-file	medium	features/test_plugin/plugin.py	-	file `features.test_plugin.plugin` is never imported or run
+unused-variable	medium	kedro/framework/cli/project.py:34:1	NO_DEPENDENCY_MESSAGE	variable `NO_DEPENDENCY_MESSAGE` is never used
+unused-variable	medium	kedro/framework/cli/project.py:36:1	LINT_CHECK_ONLY_HELP	variable `LINT_CHECK_ONLY_HELP` is never used
+unused-variable	medium	kedro/framework/cli/project.py:38:1	OPEN_ARG_HELP	variable `OPEN_ARG_HELP` is never used
+unused-variable	medium	kedro/framework/cli/project.py:72:1	INPUT_FILE_HELP	variable `INPUT_FILE_HELP` is never used
+unused-variable	medium	kedro/framework/cli/project.py:73:1	OUTPUT_FILE_HELP	variable `OUTPUT_FILE_HELP` is never used
+unused-variable	medium	kedro/ipython/__init__.py:55:1	FunctionParameters	variable `FunctionParameters` is never used
+unused-variable	medium	kedro/utils.py:34:1	PROTOCOL_DELIMITER	variable `PROTOCOL_DELIMITER` is never used
+unused-file	medium	kedro_benchmarks/benchmark_datacatalog.py	-	file `kedro_benchmarks.benchmark_datacatalog` is never imported or run
+unused-file	medium	kedro_benchmarks/benchmark_ocl.py	-	file `kedro_benchmarks.benchmark_ocl` is never imported or run
+unused-file	medium	kedro_benchmarks/benchmark_runner.py	-	file `kedro_benchmarks.benchmark_runner` is never imported or run
+unused-file	medium	kedro_benchmarks/benchmark_service_session.py	-	file `kedro_benchmarks.benchmark_service_session` is never imported or run
+unused-file	medium	kedro_benchmarks/benchmark_session.py	-	file `kedro_benchmarks.benchmark_session` is never imported or run
+unused-file	medium	kedro_benchmarks/benchmark_validation.py	-	file `kedro_benchmarks.benchmark_validation` is never imported or run
+unused-function	medium	tests/framework/cli/test_cli.py:63:5	requirements_file	function `requirements_file` is never used
+unused-variable	medium	tests/framework/cli/test_cli_hooks.py:16:1	logger	variable `logger` is never used
+unused-class	medium	tests/framework/context/test_context.py:38:7	BadCatalog	class `BadCatalog` is never used
+unused-function	high	tests/framework/context/test_context.py:62:5	_write_dummy_ini	function `_write_dummy_ini` is never used
+unused-variable	medium	tests/framework/context/test_context.py:160:1	expected_message_middle	variable `expected_message_middle` is never used
+unused-variable	medium	tests/framework/context/test_context.py:167:1	expected_message_head	variable `expected_message_head` is never used
+unused-class	medium	tests/framework/project/test_logging.py:24:7	NotALoggingClass	class `NotALoggingClass` is never used
+unused-class	medium	tests/framework/session/test_session.py:57:7	BadStore	class `BadStore` is never used
+unused-variable	medium	tests/io/test_cached_dataset.py:27:1	YML_CONFIG_VERSIONED_BAD	variable `YML_CONFIG_VERSIONED_BAD` is never used
+unused-function	medium	tests/test_utils.py:139:5	exception_fn	function `exception_fn` is never used
+unused-function	medium	tests/test_utils.py:149:5	return_not_serialisable	function `return_not_serialisable` is never used
+unused-class	medium	tests/validation/test_api.py:31:7	ExplodingValidator	class `ExplodingValidator` is never used
+unused-class	medium	tests/validation/test_catalog_validation.py:35:7	CountingValidator	class `CountingValidator` is never used
+unused-class	medium	tests/validation/test_catalog_validation.py:46:7	UppercasingValidator	class `UppercasingValidator` is never used
+unused-function	high	tests/validation/test_catalog_validation.py:549:5	_raise_bare_validation_error	function `_raise_bare_validation_error` is never used
+unused-function	high	tests/validation/test_catalog_validation.py:553:5	_raise_value_error	function `_raise_value_error` is never used
+unused-variable	medium	tests/validation/test_core.py:34:1	COMPANIES_SCHEMA_INSTANCE	variable `COMPANIES_SCHEMA_INSTANCE` is never used
+unused-class	medium	tests/validation/test_core.py:57:7	NoValidateMethod	class `NoValidateMethod` is never used
+unused-function	medium	tests/validation/test_core.py:72:5	double_ratings	function `double_ratings` is never used
+unused-variable	medium	tests/validation/test_core.py:79:1	NOT_A_VALIDATOR	variable `NOT_A_VALIDATOR` is never used
+unused-class	medium	tests/validation/test_core.py:82:7	RejectingValidator	class `RejectingValidator` is never used
+unused-class	medium	tests/validation/test_core.py:92:7	NonCallableValidate	class `NonCallableValidate` is never used
+unused-class	medium	tests/validation/test_core.py:98:7	NotItsOwnInstance	class `NotItsOwnInstance` is never used
