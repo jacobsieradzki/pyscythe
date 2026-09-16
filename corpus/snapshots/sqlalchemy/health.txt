@@ -1,14 +1,10 @@
 files_scanned=673
 symbols_checked=31654
 symbols_kept=0
-findings=602
+findings=568
 health: score=89 grade=B functions=31654 max_cyclomatic=75 max_cognitive=167
 --
 complex-function	high	examples/dogpile_caching/caching_query.py:45:9	ORMCache._do_orm_execute	function `ORMCache._do_orm_execute` has cyclomatic complexity 8 and cognitive complexity 17 over 45 lines
-complex-function	high	examples/sharding/asyncio.py:268:11	main	function `main` has cyclomatic complexity 12 and cognitive complexity 0 over 79 lines
-complex-function	high	examples/sharding/separate_databases.py:251:5	main	function `main` has cyclomatic complexity 12 and cognitive complexity 0 over 71 lines
-complex-function	high	examples/sharding/separate_schema_translates.py:176:5	main	function `main` has cyclomatic complexity 12 and cognitive complexity 0 over 75 lines
-complex-function	high	examples/sharding/separate_tables.py:265:5	main	function `main` has cyclomatic complexity 12 and cognitive complexity 0 over 70 lines
 complex-function	high	examples/space_invaders/space_invaders.py:561:5	move_army	function `move_army` has cyclomatic complexity 12 and cognitive complexity 13 over 49 lines
 complex-function	high	examples/versioned_history/history_meta.py:33:5	_history_mapper	function `_history_mapper` has cyclomatic complexity 26 and cognitive complexity 46 over 198 lines
 complex-function	high	examples/versioned_history/history_meta.py:261:5	create_version	function `create_version` has cyclomatic complexity 20 and cognitive complexity 42 over 80 lines
@@ -435,7 +431,6 @@ complex-function	high	lib/sqlalchemy/util/typing.py:480:5	_de_optionalize_fwd_re
 complex-function	high	noxfile.py:277:5	_tests	function `_tests` has cyclomatic complexity 21 and cognitive complexity 24 over 130 lines
 complex-function	high	noxfile.py:415:5	profiles	function `profiles` has cyclomatic complexity 14 and cognitive complexity 13 over 128 lines
 complex-function	high	test/aaa_profiling/test_memusage.py:117:13	profile	function `profile` has cyclomatic complexity 12 and cognitive complexity 22 over 86 lines
-complex-function	high	test/aaa_profiling/test_memusage.py:1830:9	WeakIdentityMapTest.test_weakref	function `WeakIdentityMapTest.test_weakref` has cyclomatic complexity 12 and cognitive complexity 0 over 45 lines
 complex-function	high	test/base/test_utils.py:811:9	ColumnCollectionCommon._assert_collection_integrity	function `ColumnCollectionCommon._assert_collection_integrity` has cyclomatic complexity 13 and cognitive complexity 8 over 26 lines
 complex-function	high	test/base/test_utils.py:1542:9	LRUTest.test_lru	function `LRUTest.test_lru` has cyclomatic complexity 12 and cognitive complexity 3 over 40 lines
 complex-function	high	test/base/test_utils.py:2168:9	IdentitySetTest.test_basic_sanity	function `IdentitySetTest.test_basic_sanity` has cyclomatic complexity 15 and cognitive complexity 2 over 66 lines
@@ -444,27 +439,15 @@ complex-function	high	test/dialect/mssql/test_types.py:1360:9	StringRoundTripTes
 complex-function	high	test/dialect/mysql/test_reflection.py:154:9	TypeReflectionTest.test_integer_types	function `TypeReflectionTest.test_integer_types` has cyclomatic complexity 11 and cognitive complexity 37 over 64 lines
 complex-function	high	test/dialect/mysql/test_reflection.py:308:9	ReflectionTest.test_reflection_with_table_options	function `ReflectionTest.test_reflection_with_table_options` has cyclomatic complexity 29 and cognitive complexity 4 over 74 lines
 complex-function	high	test/dialect/mysql/test_reflection.py:581:9	ReflectionTest.test_autoincrement	function `ReflectionTest.test_autoincrement` has cyclomatic complexity 12 and cognitive complexity 10 over 113 lines
-complex-function	high	test/dialect/mysql/test_reflection.py:1457:9	RawReflectionTest.test_key_reflection	function `RawReflectionTest.test_key_reflection` has cyclomatic complexity 18 and cognitive complexity 0 over 44 lines
-complex-function	high	test/dialect/oracle/test_types.py:896:9	TypesTest.test_reflect_dates	function `TypesTest.test_reflect_dates` has cyclomatic complexity 12 and cognitive complexity 0 over 25 lines
 complex-function	high	test/dialect/postgresql/test_compiler.py:4833:9	FullTextSearchTest.test_ts_headline	function `FullTextSearchTest.test_ts_headline` has cyclomatic complexity 13 and cognitive complexity 15 over 70 lines
 complex-function	high	test/dialect/postgresql/test_on_conflict.py:914:9	OnConflictTest.test_on_conflict_do_update_bindparam	function `OnConflictTest.test_on_conflict_do_update_bindparam` has cyclomatic complexity 16 and cognitive complexity 18 over 138 lines
 complex-function	high	test/dialect/postgresql/test_query.py:176:9	InsertTest.test_full_cursor_insertmanyvalues_sql	function `InsertTest.test_full_cursor_insertmanyvalues_sql` has cyclomatic complexity 27 and cognitive complexity 27 over 155 lines
-complex-function	high	test/dialect/postgresql/test_query.py:967:9	InsertTest._assert_data_noautoincrement	function `InsertTest._assert_data_noautoincrement` has cyclomatic complexity 13 and cognitive complexity 0 over 114 lines
 complex-function	high	test/dialect/postgresql/test_types.py:587:9	NamedTypeTest.test_schema_inheritance	function `NamedTypeTest.test_schema_inheritance` has cyclomatic complexity 12 and cognitive complexity 10 over 95 lines
 complex-function	high	test/dialect/postgresql/test_types.py:927:9	NamedTypeTest.test_create_type_parameter	function `NamedTypeTest.test_create_type_parameter` has cyclomatic complexity 17 and cognitive complexity 12 over 94 lines
 complex-function	high	test/dialect/postgresql/test_types.py:1431:9	NamedTypeTest.test_builtin_name_conflict	function `NamedTypeTest.test_builtin_name_conflict` has cyclomatic complexity 16 and cognitive complexity 12 over 56 lines
-complex-function	high	test/dialect/postgresql/test_types.py:3891:9	SpecialTypesTest.test_reflection	function `SpecialTypesTest.test_reflection` has cyclomatic complexity 11 and cognitive complexity 0 over 24 lines
 complex-function	high	test/dialect/sqlite/test_on_conflict.py:622:9	OnConflictTest.test_on_conflict_do_update_bindparam	function `OnConflictTest.test_on_conflict_do_update_bindparam` has cyclomatic complexity 16 and cognitive complexity 18 over 135 lines
-complex-function	high	test/engine/test_ddlevents.py:611:9	DDLExecutionTest.test_table_standalone	function `DDLExecutionTest.test_table_standalone` has cyclomatic complexity 11 and cognitive complexity 0 over 20 lines
-complex-function	high	test/engine/test_ddlevents.py:632:9	DDLExecutionTest.test_table_by_metadata	function `DDLExecutionTest.test_table_by_metadata` has cyclomatic complexity 11 and cognitive complexity 0 over 21 lines
-complex-function	high	test/engine/test_ddlevents.py:654:9	DDLExecutionTest.test_metadata	function `DDLExecutionTest.test_metadata` has cyclomatic complexity 11 and cognitive complexity 0 over 21 lines
 complex-function	high	test/engine/test_pool.py:760:9	PoolEventsTest.test_checkin_event_gc	function `PoolEventsTest.test_checkin_event_gc` has cyclomatic complexity 12 and cognitive complexity 16 over 58 lines
-complex-function	high	test/engine/test_reconnect.py:470:9	MockReconnectTest.test_invalidate_on_execute_trans	function `MockReconnectTest.test_invalidate_on_execute_trans` has cyclomatic complexity 11 and cognitive complexity 0 over 52 lines
-complex-function	high	test/engine/test_reconnect.py:1350:9	RealReconnectTest.test_with_transaction	function `RealReconnectTest.test_with_transaction` has cyclomatic complexity 16 and cognitive complexity 0 over 64 lines
 complex-function	high	test/engine/test_reflection.py:333:9	ReflectionTest.test_extend_existing	function `ReflectionTest.test_extend_existing` has cyclomatic complexity 13 and cognitive complexity 4 over 77 lines
-complex-function	high	test/engine/test_reflection.py:822:9	ReflectionTest.test_override_nonexistent_fk	function `ReflectionTest.test_override_nonexistent_fk` has cyclomatic complexity 16 and cognitive complexity 0 over 75 lines
-complex-function	high	test/engine/test_reflection.py:988:9	ReflectionTest.test_override_existing_fk	function `ReflectionTest.test_override_existing_fk` has cyclomatic complexity 21 and cognitive complexity 0 over 65 lines
-complex-function	high	test/engine/test_reflection.py:1355:9	ReflectionTest.test_index_reflection	function `ReflectionTest.test_index_reflection` has cyclomatic complexity 12 and cognitive complexity 0 over 28 lines
 complex-function	high	test/engine/test_reflection.py:2523:9	IncludeColsFksTest.test_include_columns	function `IncludeColsFksTest.test_include_columns` has cyclomatic complexity 11 and cognitive complexity 4 over 28 lines
 complex-function	high	test/engine/test_transaction.py:127:9	TransactionTest.test_ctxmanager_rolls_back_savepoint	function `TransactionTest.test_ctxmanager_rolls_back_savepoint` has cyclomatic complexity 11 and cognitive complexity 2 over 35 lines
 complex-function	high	test/ext/asyncio/test_engine.py:74:19	run_test	function `run_test` has cyclomatic complexity 23 and cognitive complexity 46 over 102 lines
@@ -472,10 +455,8 @@ complex-function	high	test/ext/asyncio/test_engine.py:1259:15	AsyncResultTest.te
 complex-function	high	test/ext/asyncio/test_engine.py:1335:15	AsyncResultTest.test_partitions	function `AsyncResultTest.test_partitions` has cyclomatic complexity 21 and cognitive complexity 15 over 69 lines
 complex-function	high	test/ext/asyncio/test_session.py:173:15	AsyncSessionTest.test_execution_options	function `AsyncSessionTest.test_execution_options` has cyclomatic complexity 14 and cognitive complexity 22 over 87 lines
 complex-function	high	test/ext/test_associationproxy.py:303:9	_CollectionOperations._test_sequence_ops	function `_CollectionOperations._test_sequence_ops` has cyclomatic complexity 18 and cognitive complexity 2 over 204 lines
-complex-function	high	test/ext/test_associationproxy.py:740:9	SetTest.test_special_binops_checks	function `SetTest.test_special_binops_checks` has cyclomatic complexity 17 and cognitive complexity 0 over 56 lines
 complex-function	high	test/ext/test_associationproxy.py:855:9	SetTest.test_set_mutation	function `SetTest.test_set_mutation` has cyclomatic complexity 11 and cognitive complexity 28 over 83 lines
 complex-function	high	test/ext/test_associationproxy.py:2918:9	ScalarRemoveTest.test_set_nonnone_to_none	function `ScalarRemoveTest.test_set_nonnone_to_none` has cyclomatic complexity 13 and cognitive complexity 14 over 33 lines
-complex-function	high	test/ext/test_automap.py:535:9	CascadeTest.test_o2m_relationship_cascade	function `CascadeTest.test_o2m_relationship_cascade` has cyclomatic complexity 17 and cognitive complexity 0 over 33 lines
 complex-function	high	test/ext/test_baked.py:657:9	ResultTest.test_conditional_step	function `ResultTest.test_conditional_step` has cyclomatic complexity 14 and cognitive complexity 44 over 68 lines
 complex-function	high	test/ext/test_baked.py:813:9	ResultTest.test_subquery_eagerloading	function `ResultTest.test_subquery_eagerloading` has cyclomatic complexity 8 and cognitive complexity 24 over 91 lines
 complex-function	high	test/ext/test_horizontal_shard.py:273:9	ShardTest.test_set_shard_option_relationship	function `ShardTest.test_set_shard_option_relationship` has cyclomatic complexity 12 and cognitive complexity 13 over 43 lines
@@ -509,7 +490,6 @@ complex-function	high	test/orm/inheritance/test_abc_inheritance.py:35:9	ABCTest.
 complex-function	high	test/orm/inheritance/test_abc_inheritance.py:248:9	ABCTest.test_roundtrip	function `ABCTest.test_roundtrip` has cyclomatic complexity 17 and cognitive complexity 6 over 56 lines
 complex-function	high	test/orm/inheritance/test_assorted_poly.py:2728:9	PolyIntoSelfReferentialTest.test_all_load	function `PolyIntoSelfReferentialTest.test_all_load` has cyclomatic complexity 13 and cognitive complexity 18 over 43 lines
 complex-function	high	test/orm/inheritance/test_assorted_poly.py:3284:9	SubclassWithPolyEagerLoadTest.test_thing	function `SubclassWithPolyEagerLoadTest.test_thing` has cyclomatic complexity 17 and cognitive complexity 15 over 47 lines
-complex-function	high	test/orm/inheritance/test_concrete.py:210:9	ConcreteTest.test_multi_level_no_base	function `ConcreteTest.test_multi_level_no_base` has cyclomatic complexity 15 and cognitive complexity 0 over 126 lines
 complex-function	high	test/orm/inheritance/test_poly_linked_list.py:189:9	PolymorphicCircularTest._testlist	function `PolymorphicCircularTest._testlist` has cyclomatic complexity 14 and cognitive complexity 16 over 71 lines
 complex-function	high	test/orm/inheritance/test_poly_loading.py:1250:9	IgnoreOptionsOnSubclassAttrLoad.test_subclass_loadattr	function `IgnoreOptionsOnSubclassAttrLoad.test_subclass_loadattr` has cyclomatic complexity 13 and cognitive complexity 13 over 84 lines
 complex-function	high	test/orm/test_attributes.py:859:9	AttributesTest.test_collectionclasses	function `AttributesTest.test_collectionclasses` has cyclomatic complexity 14 and cognitive complexity 3 over 91 lines
@@ -524,24 +504,17 @@ complex-function	high	test/orm/test_collection.py:1265:9	CollectionsTest._test_d
 complex-function	high	test/orm/test_collection.py:2581:9	CustomCollectionsTest._test_list	function `CustomCollectionsTest._test_list` has cyclomatic complexity 49 and cognitive complexity 2 over 143 lines
 complex-function	high	test/orm/test_composites.py:326:9	PointTest.test_bulk_insert	function `PointTest.test_bulk_insert` has cyclomatic complexity 11 and cognitive complexity 7 over 50 lines
 complex-function	high	test/orm/test_composites.py:378:9	PointTest.test_bulk_insert_heterogeneous	function `PointTest.test_bulk_insert_heterogeneous` has cyclomatic complexity 16 and cognitive complexity 18 over 74 lines
-complex-function	high	test/orm/test_deprecations.py:2369:9	ExpireTest.test_state_noload_to_lazy	function `ExpireTest.test_state_noload_to_lazy` has cyclomatic complexity 11 and cognitive complexity 0 over 58 lines
 complex-function	high	test/orm/test_events.py:501:9	ORMExecuteTest.test_load_option_propagation_to_post_load	function `ORMExecuteTest.test_load_option_propagation_to_post_load` has cyclomatic complexity 14 and cognitive complexity 12 over 123 lines
 complex-function	high	test/orm/test_events.py:1897:9	MapperEventsTest.test_before_after_configured_only_on_mappercls_or_registry	function `MapperEventsTest.test_before_after_configured_only_on_mappercls_or_registry` has cyclomatic complexity 11 and cognitive complexity 10 over 53 lines
 complex-function	high	test/orm/test_events.py:4326:9	RegistryEventsTest.test_resolve_type_annotation_event	function `RegistryEventsTest.test_resolve_type_annotation_event` has cyclomatic complexity 16 and cognitive complexity 12 over 126 lines
 complex-function	high	test/orm/test_events.py:4365:13	resolve_custom_type	function `resolve_custom_type` has cyclomatic complexity 35 and cognitive complexity 13 over 49 lines
 complex-function	high	test/orm/test_expire.py:688:9	ExpireTest.test_unexpire_eager_dont_include_contains_eager	function `ExpireTest.test_unexpire_eager_dont_include_contains_eager` has cyclomatic complexity 12 and cognitive complexity 6 over 110 lines
 complex-function	high	test/orm/test_expire.py:990:9	ExpireTest.test_load_only_relationships	function `ExpireTest.test_load_only_relationships` has cyclomatic complexity 41 and cognitive complexity 30 over 144 lines
-complex-function	high	test/orm/test_expire.py:1219:9	ExpireTest.test_partial_expire	function `ExpireTest.test_partial_expire` has cyclomatic complexity 15 and cognitive complexity 0 over 58 lines
-complex-function	high	test/orm/test_expire.py:1431:9	ExpireTest.test_partial_expire_deferred	function `ExpireTest.test_partial_expire_deferred` has cyclomatic complexity 12 and cognitive complexity 0 over 77 lines
-complex-function	high	test/orm/test_expire.py:1572:9	ExpireTest.test_state_change_col_to_deferred	function `ExpireTest.test_state_change_col_to_deferred` has cyclomatic complexity 12 and cognitive complexity 0 over 49 lines
-complex-function	high	test/orm/test_expire.py:2081:9	RefreshTest.test_refresh	function `RefreshTest.test_refresh` has cyclomatic complexity 16 and cognitive complexity 0 over 48 lines
 complex-function	high	test/orm/test_immediate_load.py:255:9	SelfReferentialTest.test_self_referential_recursive	function `SelfReferentialTest.test_self_referential_recursive` has cyclomatic complexity 16 and cognitive complexity 17 over 50 lines
 complex-function	high	test/orm/test_mapper.py:1050:9	MapperTest.test_add_property_in_mapper_event	function `MapperTest.test_add_property_in_mapper_event` has cyclomatic complexity 18 and cognitive complexity 11 over 110 lines
-complex-function	high	test/orm/test_mapper.py:2011:9	MapperTest.test_synonym	function `MapperTest.test_synonym` has cyclomatic complexity 11 and cognitive complexity 0 over 78 lines
 complex-function	high	test/orm/test_merge.py:618:9	MergeTest.test_attribute_cascade	function `MergeTest.test_attribute_cascade` has cyclomatic complexity 14 and cognitive complexity 2 over 144 lines
 complex-function	high	test/orm/test_merge.py:1285:9	MergeTest.test_no_load_preserves_parents	function `MergeTest.test_no_load_preserves_parents` has cyclomatic complexity 11 and cognitive complexity 1 over 93 lines
 complex-function	high	test/orm/test_merge.py:1387:9	MergeTest.test_relationship_population_maintained	function `MergeTest.test_relationship_population_maintained` has cyclomatic complexity 15 and cognitive complexity 10 over 110 lines
-complex-function	high	test/orm/test_pickled.py:518:9	PickleTest.test_instance_deferred_cols	function `PickleTest.test_instance_deferred_cols` has cyclomatic complexity 11 and cognitive complexity 0 over 63 lines
 complex-function	high	test/orm/test_pickled.py:1153:9	TupleLabelTest.test_tuple_labeling	function `TupleLabelTest.test_tuple_labeling` has cyclomatic complexity 14 and cognitive complexity 30 over 57 lines
 complex-function	high	test/orm/test_query.py:708:13	go	function `go` has cyclomatic complexity 12 and cognitive complexity 11 over 42 lines
 complex-function	high	test/orm/test_query.py:5843:9	YieldIterationTest.test_iter_combinations	function `YieldIterationTest.test_iter_combinations` has cyclomatic complexity 15 and cognitive complexity 18 over 39 lines
@@ -550,9 +523,7 @@ complex-function	high	test/orm/test_relationships.py:6484:9	InactiveHistoryNoRai
 complex-function	high	test/orm/test_session.py:258:9	TransScopingTest.test_no_autobegin	function `TransScopingTest.test_no_autobegin` has cyclomatic complexity 17 and cognitive complexity 20 over 61 lines
 complex-function	high	test/orm/test_session.py:337:9	TransScopingTest.test_autobegin_attr_change	function `TransScopingTest.test_autobegin_attr_change` has cyclomatic complexity 15 and cognitive complexity 11 over 57 lines
 complex-function	high	test/orm/test_session.py:806:9	SessionStateTest.test_execution_options	function `SessionStateTest.test_execution_options` has cyclomatic complexity 16 and cognitive complexity 25 over 93 lines
-complex-function	high	test/orm/test_session.py:1338:9	SessionStateTest.test_add_delete	function `SessionStateTest.test_add_delete` has cyclomatic complexity 13 and cognitive complexity 0 over 71 lines
 complex-function	high	test/orm/test_session.py:1515:9	SessionStateTest.test_duplicate_update	function `SessionStateTest.test_duplicate_update` has cyclomatic complexity 14 and cognitive complexity 2 over 47 lines
-complex-function	high	test/orm/test_session.py:2355:9	IsModifiedTest.test_is_modified	function `IsModifiedTest.test_is_modified` has cyclomatic complexity 12 and cognitive complexity 0 over 29 lines
 complex-function	high	test/orm/test_session.py:2532:9	SessionInterface._public_session_methods	function `SessionInterface._public_session_methods` has cyclomatic complexity 11 and cognitive complexity 13 over 28 lines
 complex-function	high	test/orm/test_transaction.py:127:9	SessionTransactionTest.test_join_transaction_modes	function `SessionTransactionTest.test_join_transaction_modes` has cyclomatic complexity 57 and cognitive complexity 53 over 122 lines
 complex-function	high	test/orm/test_transaction.py:1283:9	SubtransactionRecipeTest.test_recipe_multi_nesting	function `SubtransactionRecipeTest.test_recipe_multi_nesting` has cyclomatic complexity 11 and cognitive complexity 3 over 18 lines
@@ -563,11 +534,9 @@ complex-function	high	test/perf/many_table_reflection.py:17:5	generate_table	fun
 complex-function	high	test/perf/many_table_reflection.py:465:5	main	function `main` has cyclomatic complexity 23 and cognitive complexity 17 over 83 lines
 complex-function	high	test/sql/test_compare.py:1641:9	HasCacheKeySubclass.test_traverse_internals	function `HasCacheKeySubclass.test_traverse_internals` has cyclomatic complexity 11 and cognitive complexity 15 over 31 lines
 complex-function	high	test/sql/test_compare.py:1961:9	CompareAndCopyTest.test_copy_internals	function `CompareAndCopyTest.test_copy_internals` has cyclomatic complexity 12 and cognitive complexity 20 over 41 lines
-complex-function	high	test/sql/test_compiler.py:3494:9	SelectTest.test_over_invalid_framespecs	function `SelectTest.test_over_invalid_framespecs` has cyclomatic complexity 13 and cognitive complexity 0 over 83 lines
 complex-function	high	test/sql/test_compiler.py:3686:9	SelectTest.test_naming	function `SelectTest.test_naming` has cyclomatic complexity 8 and cognitive complexity 16 over 90 lines
 complex-function	high	test/sql/test_ddlemit.py:533:9	EmitDDLTest._assert_create_tables	function `EmitDDLTest._assert_create_tables` has cyclomatic complexity 17 and cognitive complexity 10 over 30 lines
 complex-function	high	test/sql/test_ddlemit.py:564:9	EmitDDLTest._assert_drop_tables	function `EmitDDLTest._assert_drop_tables` has cyclomatic complexity 17 and cognitive complexity 10 over 26 lines
-complex-function	high	test/sql/test_deprecations.py:377:9	LegacyOperatorTest.test_issue_5429_operators	function `LegacyOperatorTest.test_issue_5429_operators` has cyclomatic complexity 13 and cognitive complexity 0 over 33 lines
 complex-function	high	test/sql/test_from_linter.py:98:9	TestFindUnmatchingFroms.test_lateral_subqueries	function `TestFindUnmatchingFroms.test_lateral_subqueries` has cyclomatic complexity 13 and cognitive complexity 6 over 52 lines
 complex-function	high	test/sql/test_from_linter.py:204:9	TestFindUnmatchingFroms.test_fn_valued	function `TestFindUnmatchingFroms.test_fn_valued` has cyclomatic complexity 15 and cognitive complexity 16 over 52 lines
 complex-function	high	test/sql/test_insert_exec.py:813:9	InsertManyValuesTest.test_insert_returning_values	function `InsertManyValuesTest.test_insert_returning_values` has cyclomatic complexity 13 and cognitive complexity 4 over 36 lines
@@ -585,12 +554,9 @@ complex-function	high	test/sql/test_metadata.py:1205:9	ToMetaDataTest.test_copy	
 complex-function	high	test/sql/test_metadata.py:3394:9	UseExistingTest.test_table_w_two_same_named_columns	function `UseExistingTest.test_table_w_two_same_named_columns` has cyclomatic complexity 19 and cognitive complexity 26 over 100 lines
 complex-function	high	test/sql/test_metadata.py:5045:9	ColumnDefinitionTest.test_merge_column	function `ColumnDefinitionTest.test_merge_column` has cyclomatic complexity 15 and cognitive complexity 14 over 51 lines
 complex-function	high	test/sql/test_operators.py:557:9	MultiElementExprTest.test_non_associatives	function `MultiElementExprTest.test_non_associatives` has cyclomatic complexity 11 and cognitive complexity 26 over 84 lines
-complex-function	high	test/sql/test_operators.py:3170:9	NegationTest.test_implicitly_boolean	function `NegationTest.test_implicitly_boolean` has cyclomatic complexity 13 and cognitive complexity 0 over 21 lines
 complex-function	high	test/sql/test_resultset.py:2132:9	CursorResultTest.test_stream_options	function `CursorResultTest.test_stream_options` has cyclomatic complexity 34 and cognitive complexity 38 over 120 lines
 complex-function	high	test/sql/test_resultset.py:3241:9	AlternateCursorResultTest._test_proxy	function `AlternateCursorResultTest._test_proxy` has cyclomatic complexity 11 and cognitive complexity 2 over 51 lines
 complex-function	high	test/sql/test_resultset.py:3515:9	AlternateCursorResultTest.test_buffered_fetch_auto_soft_close	function `AlternateCursorResultTest.test_buffered_fetch_auto_soft_close` has cyclomatic complexity 14 and cognitive complexity 18 over 57 lines
-complex-function	high	test/sql/test_selectable.py:1203:9	SelectableTest.test_union_alias_dupe_keys	function `SelectableTest.test_union_alias_dupe_keys` has cyclomatic complexity 17 and cognitive complexity 0 over 44 lines
-complex-function	high	test/sql/test_selectable.py:1302:9	SelectableTest.test_union_alias_dupe_keys_grouped	function `SelectableTest.test_union_alias_dupe_keys_grouped` has cyclomatic complexity 17 and cognitive complexity 0 over 44 lines
 complex-function	high	test/sql/test_selectable.py:3280:9	AnnotationsTest.test_annotated_corresponding_column	function `AnnotationsTest.test_annotated_corresponding_column` has cyclomatic complexity 15 and cognitive complexity 9 over 61 lines
 complex-function	high	test/sql/test_types.py:129:5	_all_dialect_impls	function `_all_dialect_impls` has cyclomatic complexity 10 and cognitive complexity 18 over 24 lines
 complex-function	high	test/sql/test_types.py:205:5	_all_types_w_all_dialect_impls	function `_all_types_w_all_dialect_impls` has cyclomatic complexity 13 and cognitive complexity 22 over 55 lines

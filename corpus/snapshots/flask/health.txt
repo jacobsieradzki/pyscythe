@@ -1,7 +1,7 @@
 files_scanned=83
 symbols_checked=1462
 symbols_kept=0
-findings=35
+findings=17
 health: score=93 grade=A functions=1462 max_cyclomatic=27 max_cognitive=29
 --
 complex-function	high	src/flask/app.py:633:9	Flask.run	function `Flask.run` has cyclomatic complexity 12 and cognitive complexity 16 over 124 lines
@@ -17,25 +17,7 @@ complex-function	high	src/flask/debughelpers.py:124:5	explain_template_loading_a
 complex-function	high	src/flask/sansio/app.py:605:9	App.add_url_rule	function `App.add_url_rule` has cyclomatic complexity 13 and cognitive complexity 13 over 57 lines
 complex-function	high	src/flask/sansio/blueprints.py:273:9	Blueprint.register	function `Blueprint.register` has cyclomatic complexity 23 and cognitive complexity 29 over 105 lines
 complex-function	high	src/flask/testing.py:49:9	EnvironBuilder.__init__	function `EnvironBuilder.__init__` has cyclomatic complexity 11 and cognitive complexity 11 over 38 lines
-complex-function	high	tests/test_appctx.py:139:5	test_app_ctx_globals_methods	function `test_app_ctx_globals_methods` has cyclomatic complexity 11 and cognitive complexity 0 over 21 lines
 complex-function	high	tests/test_appctx.py:216:5	test_robust_teardown	function `test_robust_teardown` has cyclomatic complexity 13 and cognitive complexity 2 over 50 lines
-complex-function	high	tests/test_basic.py:160:5	test_url_mapping	function `test_url_mapping` has cyclomatic complexity 12 and cognitive complexity 0 over 34 lines
-complex-function	high	tests/test_basic.py:237:5	test_session_accessed	function `test_session_accessed` has cyclomatic complexity 20 and cognitive complexity 0 over 40 lines
 complex-function	high	tests/test_basic.py:313:5	test_session_using_session_settings	function `test_session_using_session_settings` has cyclomatic complexity 15 and cognitive complexity 2 over 41 lines
-complex-function	high	tests/test_basic.py:470:5	test_session_special_types	function `test_session_special_types` has cyclomatic complexity 12 and cognitive complexity 0 over 29 lines
-complex-function	high	tests/test_basic.py:1144:5	test_response_types	function `test_response_types` has cyclomatic complexity 27 and cognitive complexity 0 over 92 lines
-complex-function	high	tests/test_basic.py:1287:5	test_make_response	function `test_make_response` has cyclomatic complexity 14 and cognitive complexity 0 over 20 lines
 complex-function	high	tests/test_basic.py:1565:5	test_server_name_subdomain	function `test_server_name_subdomain` has cyclomatic complexity 12 and cognitive complexity 3 over 43 lines
 complex-function	high	tests/test_blueprints.py:175:5	test_templates_and_static	function `test_templates_and_static` has cyclomatic complexity 18 and cognitive complexity 1 over 44 lines
-complex-function	high	tests/test_blueprints.py:350:5	test_template_filter	function `test_template_filter` has cyclomatic complexity 13 and cognitive complexity 0 over 35 lines
-complex-function	high	tests/test_blueprints.py:510:5	test_template_test	function `test_template_test` has cyclomatic complexity 13 and cognitive complexity 0 over 35 lines
-complex-function	high	tests/test_blueprints.py:711:5	test_template_global	function `test_template_global` has cyclomatic complexity 19 and cognitive complexity 0 over 52 lines
-complex-function	high	tests/test_cli.py:47:5	test_find_best_app	function `test_find_best_app` has cyclomatic complexity 12 and cognitive complexity 0 over 85 lines
-complex-function	high	tests/test_cli.py:246:5	test_scriptinfo	function `test_scriptinfo` has cyclomatic complexity 11 and cognitive complexity 0 over 40 lines
-complex-function	high	tests/test_config.py:217:5	test_get_namespace	function `test_get_namespace` has cyclomatic complexity 13 and cognitive complexity 0 over 24 lines
-complex-function	high	tests/test_helpers.py:44:9	TestSendfile.test_static_file	function `TestSendfile.test_static_file` has cyclomatic complexity 16 and cognitive complexity 0 over 39 lines
-complex-function	high	tests/test_request.py:25:5	test_limit_config	function `test_limit_config` has cyclomatic complexity 15 and cognitive complexity 0 over 30 lines
-complex-function	high	tests/test_templating.py:123:5	test_template_filter	function `test_template_filter` has cyclomatic complexity 13 and cognitive complexity 0 over 32 lines
-complex-function	high	tests/test_templating.py:241:5	test_template_test	function `test_template_test` has cyclomatic complexity 13 and cognitive complexity 0 over 32 lines
-complex-function	high	tests/test_templating.py:359:5	test_add_template_global	function `test_add_template_global` has cyclomatic complexity 17 and cognitive complexity 0 over 44 lines
-complex-function	high	tests/test_templating.py:443:5	test_templates_auto_reload	function `test_templates_auto_reload` has cyclomatic complexity 12 and cognitive complexity 0 over 30 lines

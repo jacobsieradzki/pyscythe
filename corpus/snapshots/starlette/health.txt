@@ -1,11 +1,10 @@
 files_scanned=84
 symbols_checked=1791
 symbols_kept=0
-findings=51
+findings=23
 health: score=94 grade=A functions=1791 max_cyclomatic=49 max_cognitive=28
 --
 complex-function	high	benchmarks/file_response_benchmark.py:84:5	test_file_response	function `test_file_response` has cyclomatic complexity 13 and cognitive complexity 5 over 30 lines
-complex-function	high	benchmarks/gzip_benchmark.py:82:15	ResponsePair._drain_and_validate	function `ResponsePair._drain_and_validate` has cyclomatic complexity 13 and cognitive complexity 0 over 17 lines
 complex-function	high	starlette/datastructures.py:26:9	URL.__init__	function `URL.__init__` has cyclomatic complexity 16 and cognitive complexity 25 over 42 lines
 complex-function	high	starlette/datastructures.py:115:9	URL.replace	function `URL.replace` has cyclomatic complexity 11 and cognitive complexity 15 over 27 lines
 complex-function	high	starlette/formparsers.py:250:15	MultiPartParser.parse	function `MultiPartParser.parse` has cyclomatic complexity 11 and cognitive complexity 12 over 52 lines
@@ -27,31 +26,4 @@ complex-function	high	starlette/schemas.py:40:9	BaseSchemaGenerator.get_endpoint
 complex-function	high	starlette/staticfiles.py:115:15	StaticFiles.get_response	function `StaticFiles.get_response` has cyclomatic complexity 17 and cognitive complexity 20 over 44 lines
 complex-function	high	starlette/testclient.py:223:9	_TestClientTransport.handle_request	function `_TestClientTransport.handle_request` has cyclomatic complexity 16 and cognitive complexity 17 over 144 lines
 complex-function	high	starlette/websockets.py:65:15	WebSocket.send	function `WebSocket.send` has cyclomatic complexity 12 and cognitive complexity 20 over 40 lines
-complex-function	high	tests/middleware/test_base.py:97:5	test_custom_middleware	function `test_custom_middleware` has cyclomatic complexity 12 and cognitive complexity 0 over 24 lines
-complex-function	high	tests/middleware/test_base.py:1262:5	test_error_context_propagation	function `test_error_context_propagation` has cyclomatic complexity 14 and cognitive complexity 0 over 57 lines
-complex-function	high	tests/middleware/test_cors.py:11:5	test_cors_allow_all	function `test_cors_allow_all` has cyclomatic complexity 22 and cognitive complexity 0 over 63 lines
-complex-function	high	tests/middleware/test_cors.py:76:5	test_cors_allow_all_except_credentials	function `test_cors_allow_all_except_credentials` has cyclomatic complexity 17 and cognitive complexity 0 over 56 lines
-complex-function	high	tests/middleware/test_cors.py:134:5	test_cors_allow_specific_origin	function `test_cors_allow_specific_origin` has cyclomatic complexity 14 and cognitive complexity 0 over 48 lines
-complex-function	high	tests/middleware/test_cors.py:332:5	test_cors_allow_origin_regex	function `test_cors_allow_origin_regex` has cyclomatic complexity 20 and cognitive complexity 0 over 70 lines
-complex-function	high	tests/middleware/test_cors.py:532:5	test_cors_private_network_access_allowed	function `test_cors_private_network_access_allowed` has cyclomatic complexity 11 and cognitive complexity 0 over 39 lines
-complex-function	high	tests/middleware/test_gzip.py:278:5	test_gzip_streaming_response_emits_output_per_chunk	function `test_gzip_streaming_response_emits_output_per_chunk` has cyclomatic complexity 11 and cognitive complexity 0 over 31 lines
-complex-function	high	tests/middleware/test_https_redirect.py:15:5	test_https_redirect_middleware	function `test_https_redirect_middleware` has cyclomatic complexity 18 and cognitive complexity 0 over 50 lines
-complex-function	high	tests/middleware/test_opentelemetry.py:186:5	test_http_span_uses_route_and_semantic_attributes	function `test_http_span_uses_route_and_semantic_attributes` has cyclomatic complexity 16 and cognitive complexity 0 over 28 lines
-complex-function	high	tests/test_authentication.py:224:5	test_authentication_required	function `test_authentication_required` has cyclomatic complexity 19 and cognitive complexity 0 over 48 lines
-complex-function	high	tests/test_authentication.py:274:5	test_websocket_authentication_required	function `test_websocket_authentication_required` has cyclomatic complexity 14 and cognitive complexity 0 over 31 lines
-complex-function	high	tests/test_config.py:40:5	test_config	function `test_config` has cyclomatic complexity 24 and cognitive complexity 0 over 63 lines
-complex-function	high	tests/test_datastructures.py:21:5	test_url	function `test_url` has cyclomatic complexity 26 and cognitive complexity 0 over 51 lines
-complex-function	high	tests/test_datastructures.py:102:5	test_csv	function `test_csv` has cyclomatic complexity 15 and cognitive complexity 0 over 22 lines
-complex-function	high	tests/test_datastructures.py:126:5	test_url_from_scope	function `test_url_from_scope` has cyclomatic complexity 13 and cognitive complexity 0 over 58 lines
-complex-function	high	tests/test_datastructures.py:278:5	test_headers	function `test_headers` has cyclomatic complexity 22 and cognitive complexity 0 over 25 lines
-complex-function	high	tests/test_datastructures.py:396:5	test_queryparams	function `test_queryparams` has cyclomatic complexity 23 and cognitive complexity 0 over 26 lines
-complex-function	high	tests/test_datastructures.py:478:5	test_formdata	function `test_formdata` has cyclomatic complexity 18 and cognitive complexity 0 over 21 lines
-complex-function	high	tests/test_datastructures.py:515:5	test_multidict	function `test_multidict` has cyclomatic complexity 49 and cognitive complexity 0 over 87 lines
-complex-function	high	tests/test_requests.py:292:5	test_request_state_object	function `test_request_state_object` has cyclomatic complexity 11 and cognitive complexity 0 over 34 lines
 complex-function	high	tests/test_responses.py:263:15	send	function `send` has cyclomatic complexity 11 and cognitive complexity 2 over 12 lines
-complex-function	high	tests/test_responses.py:921:5	test_file_response_insert_ranges	function `test_file_response_insert_ranges` has cyclomatic complexity 14 and cognitive complexity 0 over 38 lines
-complex-function	high	tests/test_routing.py:186:5	test_router	function `test_router` has cyclomatic complexity 24 and cognitive complexity 0 over 43 lines
-complex-function	high	tests/test_routing.py:231:5	test_route_converters	function `test_route_converters` has cyclomatic complexity 16 and cognitive complexity 0 over 33 lines
-complex-function	high	tests/test_routing.py:455:5	test_host_routing	function `test_host_routing` has cyclomatic complexity 11 and cognitive complexity 0 over 38 lines
-complex-function	high	tests/test_staticfiles.py:305:5	test_staticfiles_html_normal	function `test_staticfiles_html_normal` has cyclomatic complexity 14 and cognitive complexity 0 over 31 lines
-complex-function	high	tests/test_testclient.py:89:5	test_use_testclient_as_contextmanager	function `test_use_testclient_as_contextmanager` has cyclomatic complexity 16 and cognitive complexity 0 over 76 lines

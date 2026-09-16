@@ -1,7 +1,7 @@
 files_scanned=447
 symbols_checked=3384
 symbols_kept=0
-findings=157
+findings=138
 health: score=87 grade=B functions=3384 max_cyclomatic=81 max_cognitive=158
 --
 complex-function	high	src/poetry/config/config.py:320:9	Config.get	function `Config.get` has cyclomatic complexity 13 and cognitive complexity 18 over 50 lines
@@ -109,7 +109,6 @@ complex-function	high	tests/console/commands/python/test_python_remove.py:96:5	t
 complex-function	high	tests/console/commands/test_add.py:633:5	test_add_to_existing_group	function `test_add_to_existing_group` has cyclomatic complexity 11 and cognitive complexity 3 over 51 lines
 complex-function	high	tests/console/commands/test_add.py:1058:5	test_add_constraint_with_optional	function `test_add_constraint_with_optional` has cyclomatic complexity 25 and cognitive complexity 12 over 64 lines
 complex-function	high	tests/console/commands/test_add.py:1494:5	test_add_latest_should_not_create_duplicate_keys	function `test_add_latest_should_not_create_duplicate_keys` has cyclomatic complexity 16 and cognitive complexity 6 over 51 lines
-complex-function	high	tests/console/commands/test_config.py:872:5	test_command_config_build_config_settings_get	function `test_command_config_build_config_settings_get` has cyclomatic complexity 13 and cognitive complexity 0 over 45 lines
 complex-function	high	tests/console/commands/test_install.py:121:5	test_group_options_are_passed_to_the_installer	function `test_group_options_are_passed_to_the_installer` has cyclomatic complexity 14 and cognitive complexity 7 over 39 lines
 complex-function	high	tests/console/commands/test_install.py:464:5	test_install_warning_corrupt_root	function `test_install_warning_corrupt_root` has cyclomatic complexity 12 and cognitive complexity 9 over 33 lines
 complex-function	high	tests/console/commands/test_new.py:31:5	verify_project_directory	function `verify_project_directory` has cyclomatic complexity 11 and cognitive complexity 4 over 39 lines
@@ -130,34 +129,16 @@ complex-function	high	tests/installation/test_uninstaller.py:500:5	test_uninstal
 complex-function	high	tests/masonry/builders/test_editable_builder.py:130:5	test_builder_installs_proper_files_for_standard_packages	function `test_builder_installs_proper_files_for_standard_packages` has cyclomatic complexity 35 and cognitive complexity 1 over 134 lines
 complex-function	high	tests/masonry/builders/test_editable_builder.py:267:5	test_builder_installs_project_gui_scripts	function `test_builder_installs_project_gui_scripts` has cyclomatic complexity 12 and cognitive complexity 1 over 40 lines
 complex-function	high	tests/mixology/helpers.py:43:5	check_solver_result	function `check_solver_result` has cyclomatic complexity 15 and cognitive complexity 12 over 37 lines
-complex-function	high	tests/mixology/version_solver/test_dependency_cache.py:20:5	test_solver_dependency_cache_respects_source_type	function `test_solver_dependency_cache_respects_source_type` has cyclomatic complexity 13 and cognitive complexity 0 over 42 lines
-complex-function	high	tests/mixology/version_solver/test_dependency_cache.py:64:5	test_solver_dependency_cache_pulls_from_prior_level_cache	function `test_solver_dependency_cache_pulls_from_prior_level_cache` has cyclomatic complexity 25 and cognitive complexity 0 over 57 lines
-complex-function	high	tests/mixology/version_solver/test_dependency_cache.py:123:5	test_solver_dependency_cache_respects_subdirectories	function `test_solver_dependency_cache_respects_subdirectories` has cyclomatic complexity 13 and cognitive complexity 0 over 64 lines
-complex-function	high	tests/packages/test_locker.py:342:5	test_locker_properly_loads_nested_extras	function `test_locker_properly_loads_nested_extras` has cyclomatic complexity 14 and cognitive complexity 0 over 79 lines
 complex-function	high	tests/plugins/test_plugin_manager.py:469:5	test_ensure_plugins_install_overwrite_wrong_version_plugins	function `test_ensure_plugins_install_overwrite_wrong_version_plugins` has cyclomatic complexity 12 and cognitive complexity 4 over 60 lines
 complex-function	high	tests/plugins/test_plugin_manager.py:582:5	test_project_plugins_are_installed_in_project_folder	function `test_project_plugins_are_installed_in_project_folder` has cyclomatic complexity 15 and cognitive complexity 4 over 46 lines
 complex-function	high	tests/publishing/test_uploader.py:210:5	test_uploader_registers_with_sdist_for_appropriate_400_errors	function `test_uploader_registers_with_sdist_for_appropriate_400_errors` has cyclomatic complexity 11 and cognitive complexity 1 over 16 lines
 complex-function	high	tests/publishing/test_uploader.py:276:5	test_uploader_register_uses_wheel_if_no_sdist	function `test_uploader_register_uses_wheel_if_no_sdist` has cyclomatic complexity 11 and cognitive complexity 1 over 25 lines
-complex-function	high	tests/puzzle/test_provider.py:403:5	test_search_for_directory_setup_with_base	function `test_search_for_directory_setup_with_base` has cyclomatic complexity 11 and cognitive complexity 0 over 23 lines
-complex-function	high	tests/puzzle/test_provider.py:503:5	test_search_for_directory_poetry	function `test_search_for_directory_poetry` has cyclomatic complexity 12 and cognitive complexity 0 over 28 lines
-complex-function	high	tests/puzzle/test_provider.py:533:5	test_search_for_directory_poetry_with_extras	function `test_search_for_directory_poetry_with_extras` has cyclomatic complexity 12 and cognitive complexity 0 over 28 lines
-complex-function	high	tests/puzzle/test_provider.py:563:5	test_search_for_file_sdist	function `test_search_for_file_sdist` has cyclomatic complexity 11 and cognitive complexity 0 over 35 lines
-complex-function	high	tests/puzzle/test_provider.py:600:5	test_search_for_file_sdist_with_extras	function `test_search_for_file_sdist_with_extras` has cyclomatic complexity 11 and cognitive complexity 0 over 36 lines
-complex-function	high	tests/puzzle/test_provider.py:638:5	test_search_for_file_wheel	function `test_search_for_file_wheel` has cyclomatic complexity 11 and cognitive complexity 0 over 35 lines
-complex-function	high	tests/puzzle/test_provider.py:675:5	test_search_for_file_wheel_with_extras	function `test_search_for_file_wheel_with_extras` has cyclomatic complexity 11 and cognitive complexity 0 over 36 lines
 complex-function	high	tests/puzzle/test_solver.py:1648:5	test_solver_duplicate_dependencies_different_sources_direct_origin_preserved	function `test_solver_duplicate_dependencies_different_sources_direct_origin_preserved` has cyclomatic complexity 11 and cognitive complexity 2 over 60 lines
-complex-function	high	tests/puzzle/test_solver_internals.py:299:5	test_propagate_markers_for_groups2	function `test_propagate_markers_for_groups2` has cyclomatic complexity 12 and cognitive complexity 0 over 38 lines
 complex-function	high	tests/puzzle/test_transaction.py:410:5	test_calculate_operations_extras	function `test_calculate_operations_extras` has cyclomatic complexity 11 and cognitive complexity 13 over 49 lines
-complex-function	high	tests/repositories/link_sources/test_json.py:28:5	test_attributes	function `test_attributes` has cyclomatic complexity 13 and cognitive complexity 0 over 33 lines
 complex-function	high	tests/repositories/test_http_repository.py:223:5	test_get_info_from_wheel	function `test_get_info_from_wheel` has cyclomatic complexity 14 and cognitive complexity 8 over 50 lines
-complex-function	high	tests/repositories/test_http_repository.py:275:5	test_get_info_from_wheel_state_sequence	function `test_get_info_from_wheel_state_sequence` has cyclomatic complexity 23 and cognitive complexity 0 over 83 lines
 complex-function	high	tests/repositories/test_http_repository.py:432:5	test_log_age_filtered_versions	function `test_log_age_filtered_versions` has cyclomatic complexity 11 and cognitive complexity 2 over 28 lines
 complex-function	high	tests/repositories/test_legacy_repository.py:160:5	test_get_package_information_pep_658	function `test_get_package_information_pep_658` has cyclomatic complexity 13 and cognitive complexity 1 over 31 lines
-complex-function	high	tests/repositories/test_legacy_repository.py:411:5	test_get_package_from_both_py2_and_py3_specific_wheels	function `test_get_package_from_both_py2_and_py3_specific_wheels` has cyclomatic complexity 12 and cognitive complexity 0 over 38 lines
-complex-function	high	tests/repositories/test_pypi_repository.py:141:5	test_package	function `test_package` has cyclomatic complexity 13 and cognitive complexity 0 over 47 lines
-complex-function	high	tests/test_conftest.py:22:5	test_conftest_create_package	function `test_conftest_create_package` has cyclomatic complexity 15 and cognitive complexity 0 over 60 lines
 complex-function	high	tests/test_factory.py:44:5	test_create_poetry	function `test_create_poetry` has cyclomatic complexity 52 and cognitive complexity 2 over 108 lines
-complex-function	high	tests/test_factory.py:355:5	test_poetry_with_explicit_source	function `test_poetry_with_explicit_source` has cyclomatic complexity 11 and cognitive complexity 0 over 15 lines
 complex-function	high	tests/utils/env/python/test_manager.py:90:5	test_find_downloadable_versions	function `test_find_downloadable_versions` has cyclomatic complexity 12 and cognitive complexity 6 over 19 lines
 complex-function	high	tests/utils/test_helpers.py:179:5	test_extractall_sdist_no_path_traversal	function `test_extractall_sdist_no_path_traversal` has cyclomatic complexity 15 and cognitive complexity 12 over 46 lines
 complex-function	high	tests/utils/test_helpers.py:291:5	test_extractall_sdist_no_symlink_path_traversal	function `test_extractall_sdist_no_symlink_path_traversal` has cyclomatic complexity 11 and cognitive complexity 9 over 54 lines

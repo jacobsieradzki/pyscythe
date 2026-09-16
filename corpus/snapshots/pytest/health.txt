@@ -1,7 +1,7 @@
 files_scanned=274
 symbols_checked=6495
 symbols_kept=0
-findings=164
+findings=130
 health: score=94 grade=A functions=6495 max_cyclomatic=58 max_cognitive=79
 --
 complex-function	high	scripts/update-plugin-list.py:134:5	iter_plugins	function `iter_plugins` has cyclomatic complexity 12 and cognitive complexity 27 over 57 lines
@@ -109,62 +109,28 @@ complex-function	high	src/_pytest/terminal.py:1210:9	TerminalReporter.summary_fa
 complex-function	high	src/_pytest/terminal.py:1728:9	TerminalProgressPlugin._emit_progress	function `TerminalProgressPlugin._emit_progress` has cyclomatic complexity 11 and cognitive complexity 8 over 37 lines
 complex-function	high	src/_pytest/tmpdir.py:141:9	TempPathFactory.getbasetemp	function `TempPathFactory.getbasetemp` has cyclomatic complexity 15 and cognitive complexity 29 over 85 lines
 complex-function	high	src/_pytest/unittest.py:423:9	TestCaseFunction.addSubTest	function `TestCaseFunction.addSubTest` has cyclomatic complexity 11 and cognitive complexity 14 over 57 lines
-complex-function	high	testing/code/test_excinfo.py:787:9	TestExceptionInfoFormatter.test_repr_tracebackentry_lines	function `TestExceptionInfoFormatter.test_repr_tracebackentry_lines` has cyclomatic complexity 12 and cognitive complexity 0 over 32 lines
-complex-function	high	testing/code/test_excinfo.py:821:9	TestExceptionInfoFormatter.test_repr_tracebackentry_lines2	function `TestExceptionInfoFormatter.test_repr_tracebackentry_lines2` has cyclomatic complexity 12 and cognitive complexity 0 over 27 lines
-complex-function	high	testing/code/test_excinfo.py:874:9	TestExceptionInfoFormatter.test_repr_tracebackentry_short	function `TestExceptionInfoFormatter.test_repr_tracebackentry_short` has cyclomatic complexity 11 and cognitive complexity 0 over 29 lines
 complex-function	high	testing/code/test_excinfo.py:1005:9	TestExceptionInfoFormatter.test_repr_traceback_and_excinfo	function `TestExceptionInfoFormatter.test_repr_traceback_and_excinfo` has cyclomatic complexity 13 and cognitive complexity 1 over 29 lines
-complex-function	high	testing/code/test_excinfo.py:1171:9	TestExceptionInfoFormatter.test_toterminal_long	function `TestExceptionInfoFormatter.test_toterminal_long` has cyclomatic complexity 16 and cognitive complexity 0 over 32 lines
-complex-function	high	testing/code/test_excinfo.py:1204:9	TestExceptionInfoFormatter.test_toterminal_long_missing_source	function `TestExceptionInfoFormatter.test_toterminal_long_missing_source` has cyclomatic complexity 14 and cognitive complexity 0 over 33 lines
-complex-function	high	testing/code/test_excinfo.py:1238:9	TestExceptionInfoFormatter.test_toterminal_long_incomplete_source	function `TestExceptionInfoFormatter.test_toterminal_long_incomplete_source` has cyclomatic complexity 14 and cognitive complexity 0 over 33 lines
 complex-function	high	testing/code/test_excinfo.py:1354:9	TestExceptionInfoFormatter.test_traceback_repr_style	function `TestExceptionInfoFormatter.test_traceback_repr_style` has cyclomatic complexity 23 and cognitive complexity 3 over 48 lines
 complex-function	high	testing/code/test_excinfo.py:1403:9	TestExceptionInfoFormatter.test_exc_chain_repr	function `TestExceptionInfoFormatter.test_exc_chain_repr` has cyclomatic complexity 58 and cognitive complexity 3 over 95 lines
 complex-function	high	testing/code/test_excinfo.py:1500:9	TestExceptionInfoFormatter.test_exc_repr_chain_suppression	function `TestExceptionInfoFormatter.test_exc_repr_chain_suppression` has cyclomatic complexity 15 and cognitive complexity 2 over 36 lines
 complex-function	high	testing/code/test_source.py:379:5	test_getfslineno	function `test_getfslineno` has cyclomatic complexity 11 and cognitive complexity 2 over 31 lines
-complex-function	high	testing/logging/test_fixture.py:165:5	test_with_statement_at_level_logging_disabled	function `test_with_statement_at_level_logging_disabled` has cyclomatic complexity 13 and cognitive complexity 0 over 26 lines
-complex-function	high	testing/logging/test_fixture.py:362:5	test_clear_for_call_stage	function `test_clear_for_call_stage` has cyclomatic complexity 12 and cognitive complexity 0 over 18 lines
-complex-function	high	testing/logging/test_formatter.py:64:5	test_multiline_message	function `test_multiline_message` has cyclomatic complexity 14 and cognitive complexity 0 over 99 lines
-complex-function	high	testing/logging/test_reporting.py:1525:5	test_log_file_cli_fallback_options	function `test_log_file_cli_fallback_options` has cyclomatic complexity 15 and cognitive complexity 0 over 57 lines
-complex-function	high	testing/python/approx.py:340:9	TestApprox.test_repr_string	function `TestApprox.test_repr_string` has cyclomatic complexity 12 and cognitive complexity 0 over 18 lines
-complex-function	high	testing/python/approx.py:533:9	TestApprox.test_custom_tolerances	function `TestApprox.test_custom_tolerances` has cyclomatic complexity 13 and cognitive complexity 0 over 15 lines
 complex-function	high	testing/python/collect.py:854:9	TestSorting.test_check_equality	function `TestSorting.test_check_equality` has cyclomatic complexity 15 and cognitive complexity 1 over 27 lines
-complex-function	high	testing/python/integration.py:428:5	test_function_instance	function `test_function_instance` has cyclomatic complexity 16 and cognitive complexity 0 over 38 lines
-complex-function	high	testing/python/metafunc.py:227:9	TestMetafunc.test_infer_parametrize_scope	function `TestMetafunc.test_infer_parametrize_scope` has cyclomatic complexity 15 and cognitive complexity 0 over 54 lines
 complex-function	high	testing/python/raises.py:243:9	TestRaises.test_raises_cyclic_reference	function `TestRaises.test_raises_cyclic_reference` has cyclomatic complexity 11 and cognitive complexity 6 over 31 lines
-complex-function	high	testing/python/raises_group.py:152:5	test_flatten_subgroups	function `test_flatten_subgroups` has cyclomatic complexity 15 and cognitive complexity 0 over 125 lines
-complex-function	high	testing/python/raises_group.py:279:5	test_catch_unwrapped_exceptions	function `test_catch_unwrapped_exceptions` has cyclomatic complexity 13 and cognitive complexity 0 over 78 lines
-complex-function	high	testing/python/raises_group.py:1072:5	test_raisesexc	function `test_raisesexc` has cyclomatic complexity 14 and cognitive complexity 0 over 49 lines
 complex-function	high	testing/test_assertion.py:271:9	TestImportHookInstallation.test_installed_plugin_rewrite	function `TestImportHookInstallation.test_installed_plugin_rewrite` has cyclomatic complexity 12 and cognitive complexity 12 over 104 lines
 complex-function	high	testing/test_assertrewrite.py:78:9	TestAssertionRewrite.test_place_initial_imports	function `TestAssertionRewrite.test_place_initial_imports` has cyclomatic complexity 31 and cognitive complexity 5 over 41 lines
-complex-function	high	testing/test_assertrewrite.py:2190:5	test_try_makedirs	function `test_try_makedirs` has cyclomatic complexity 11 and cognitive complexity 0 over 43 lines
-complex-function	high	testing/test_capture.py:941:5	test_dontreadfrominput	function `test_dontreadfrominput` has cyclomatic complexity 18 and cognitive complexity 0 over 34 lines
-complex-function	high	testing/test_capture.py:977:5	test_captureresult	function `test_captureresult` has cyclomatic complexity 26 and cognitive complexity 0 over 28 lines
-complex-function	high	testing/test_capture.py:1582:5	test_global_capture_with_live_logging	function `test_global_capture_with_live_logging` has cyclomatic complexity 11 and cognitive complexity 0 over 56 lines
 complex-function	high	testing/test_collection.py:42:9	TestCollector.test_check_equality	function `TestCollector.test_check_equality` has cyclomatic complexity 17 and cognitive complexity 1 over 30 lines
-complex-function	high	testing/test_collection.py:73:9	TestCollector.test_getparent_and_accessors	function `TestCollector.test_getparent_and_accessors` has cyclomatic complexity 17 and cognitive complexity 0 over 29 lines
-complex-function	high	testing/test_collection.py:745:9	Test_genitems.test_example_items1	function `Test_genitems.test_example_items1` has cyclomatic complexity 11 and cognitive complexity 0 over 35 lines
-complex-function	high	testing/test_collection.py:946:9	TestNodeKeywords.test_unpacked_marks_added_to_keywords	function `TestNodeKeywords.test_unpacked_marks_added_to_keywords` has cyclomatic complexity 13 and cognitive complexity 0 over 29 lines
 complex-function	high	testing/test_config.py:1959:5	test_disable_plugin_autoload	function `test_disable_plugin_autoload` has cyclomatic complexity 13 and cognitive complexity 9 over 73 lines
-complex-function	high	testing/test_config.py:3315:9	TestNativeTomlConfig.test_type_errors	function `TestNativeTomlConfig.test_type_errors` has cyclomatic complexity 13 and cognitive complexity 0 over 91 lines
 complex-function	high	testing/test_debugging.py:700:9	TestPDB.test_pdb_continue_with_recursive_debug	function `TestPDB.test_pdb_continue_with_recursive_debug` has cyclomatic complexity 11 and cognitive complexity 4 over 91 lines
 complex-function	high	testing/test_junitxml.py:574:9	TestPython.test_failure_function	function `TestPython.test_failure_function` has cyclomatic complexity 20 and cognitive complexity 4 over 66 lines
 complex-function	high	testing/test_junitxml.py:1812:5	test_logging_passing_tests_disabled_logs_output_for_failing_test_issue5430	function `test_logging_passing_tests_disabled_logs_output_for_failing_test_issue5430` has cyclomatic complexity 11 and cognitive complexity 3 over 39 lines
 complex-function	high	testing/test_main.py:26:5	test_wrap_session_notify_exception	function `test_wrap_session_notify_exception` has cyclomatic complexity 11 and cognitive complexity 6 over 40 lines
-complex-function	high	testing/test_pathlib.py:499:5	test_suppress_error_removing_lock	function `test_suppress_error_removing_lock` has cyclomatic complexity 11 and cognitive complexity 0 over 25 lines
 complex-function	high	testing/test_pathlib.py:847:9	TestImportLibMode.test_import_module_using_spec	function `TestImportLibMode.test_import_module_using_spec` has cyclomatic complexity 18 and cognitive complexity 3 over 52 lines
 complex-function	high	testing/test_pytester.py:22:5	test_make_hook_recorder	function `test_make_hook_recorder` has cyclomatic complexity 13 and cognitive complexity 2 over 54 lines
 complex-function	high	testing/test_pytester.py:381:9	TestSysPathsSnapshot.test_restore	function `TestSysPathsSnapshot.test_restore` has cyclomatic complexity 11 and cognitive complexity 1 over 22 lines
-complex-function	high	testing/test_recwarn.py:292:9	TestWarns.test_as_contextmanager	function `TestWarns.test_as_contextmanager` has cyclomatic complexity 16 and cognitive complexity 0 over 47 lines
 complex-function	high	testing/test_reports.py:40:9	TestReportSerialization.test_xdist_report_longrepr_reprcrash_130	function `TestReportSerialization.test_xdist_report_longrepr_reprcrash_130` has cyclomatic complexity 20 and cognitive complexity 5 over 45 lines
 complex-function	high	testing/test_reports.py:100:9	TestReportSerialization.test_reprentries_serialization_170	function `TestReportSerialization.test_reprentries_serialization_170` has cyclomatic complexity 20 and cognitive complexity 1 over 43 lines
 complex-function	high	testing/test_reports.py:173:9	TestReportSerialization.test_itemreport_outcomes	function `TestReportSerialization.test_itemreport_outcomes` has cyclomatic complexity 15 and cognitive complexity 6 over 33 lines
 complex-function	high	testing/test_runner.py:341:9	BaseFunctionalTests.test_exact_teardown_issue90	function `BaseFunctionalTests.test_exact_teardown_issue90` has cyclomatic complexity 13 and cognitive complexity 2 over 39 lines
-complex-function	high	testing/test_runner.py:381:9	BaseFunctionalTests.test_exact_teardown_issue1206	function `BaseFunctionalTests.test_exact_teardown_issue1206` has cyclomatic complexity 14 and cognitive complexity 0 over 37 lines
-complex-function	high	testing/test_runner.py:531:9	TestSessionReports.test_collect_result	function `TestSessionReports.test_collect_result` has cyclomatic complexity 11 and cognitive complexity 0 over 22 lines
-complex-function	high	testing/test_runner.py:576:5	test_callinfo	function `test_callinfo` has cyclomatic complexity 13 and cognitive complexity 0 over 22 lines
 complex-function	high	testing/test_runner.py:798:5	test_importorskip	function `test_importorskip` has cyclomatic complexity 12 and cognitive complexity 1 over 33 lines
 complex-function	high	testing/test_runner.py:1025:5	test_store_except_info_on_error	function `test_store_except_info_on_error` has cyclomatic complexity 13 and cognitive complexity 3 over 34 lines
-complex-function	high	testing/test_stash.py:8:5	test_stash	function `test_stash` has cyclomatic complexity 28 and cognitive complexity 0 over 62 lines
-complex-function	high	testing/test_terminal.py:1418:5	test_getreportopt	function `test_getreportopt` has cyclomatic complexity 16 and cognitive complexity 0 over 57 lines
 complex-function	high	testing/test_terminal.py:1577:9	TestGenericReporting.test_tb_option	function `TestGenericReporting.test_tb_option` has cyclomatic complexity 11 and cognitive complexity 7 over 26 lines
-complex-function	high	testing/test_terminal.py:1670:9	TestGenericReporting.test_show_capture	function `TestGenericReporting.test_show_capture` has cyclomatic complexity 13 and cognitive complexity 0 over 50 lines
-complex-function	high	testing/test_terminal.py:1721:9	TestGenericReporting.test_show_capture_with_teardown_logs	function `TestGenericReporting.test_show_capture_with_teardown_logs` has cyclomatic complexity 13 and cognitive complexity 0 over 39 lines

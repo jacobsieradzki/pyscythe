@@ -1,7 +1,7 @@
 files_scanned=2932
 symbols_checked=32694
 symbols_kept=0
-findings=495
+findings=485
 health: score=92 grade=A functions=32694 max_cyclomatic=94 max_cognitive=193
 --
 complex-function	high	django/apps/config.py:100:9	AppConfig.create	function `AppConfig.create` has cyclomatic complexity 28 and cognitive complexity 29 over 123 lines
@@ -465,11 +465,7 @@ complex-function	high	scripts/prepare_commit_msg.py:31:5	process_commit_message	
 complex-function	high	tests/admin_inlines/tests.py:1876:9	TestInlineWithFieldsets.test_inline_headings	function `TestInlineWithFieldsets.test_inline_headings` has cyclomatic complexity 10 and cognitive complexity 21 over 79 lines
 complex-function	high	tests/admin_views/tests.py:1105:9	AdminViewBasicTest.test_relation_spanning_filters	function `AdminViewBasicTest.test_relation_spanning_filters` has cyclomatic complexity 11 and cognitive complexity 6 over 58 lines
 complex-function	high	tests/auth_tests/test_management.py:67:17	mock_input	function `mock_input` has cyclomatic complexity 10 and cognitive complexity 16 over 22 lines
-complex-function	high	tests/composite_pk/test_values.py:35:9	CompositePKValuesTests.test_values_list	function `CompositePKValuesTests.test_values_list` has cyclomatic complexity 13 and cognitive complexity 0 over 110 lines
 complex-function	high	tests/db_functions/datetime/test_extract_trunc.py:58:9	truncate	function `truncate` has cyclomatic complexity 13 and cognitive complexity 16 over 39 lines
-complex-function	high	tests/forms_tests/field_tests/test_genericipaddressfield.py:14:9	GenericIPAddressFieldTest.test_generic_ipaddress_as_generic	function `GenericIPAddressFieldTest.test_generic_ipaddress_as_generic` has cyclomatic complexity 12 and cognitive complexity 0 over 51 lines
-complex-function	high	tests/forms_tests/field_tests/test_genericipaddressfield.py:86:9	GenericIPAddressFieldTest.test_generic_ipaddress_as_ipv6_only	function `GenericIPAddressFieldTest.test_generic_ipaddress_as_ipv6_only` has cyclomatic complexity 13 and cognitive complexity 0 over 42 lines
-complex-function	high	tests/forms_tests/tests/test_forms.py:4063:9	FormsTestCase.test_multivalue_optional_subfields	function `FormsTestCase.test_multivalue_optional_subfields` has cyclomatic complexity 17 and cognitive complexity 0 over 105 lines
 complex-function	high	tests/gis_tests/distapp/tests.py:70:9	DistanceTest.test_dwithin	function `DistanceTest.test_dwithin` has cyclomatic complexity 13 and cognitive complexity 18 over 59 lines
 complex-function	high	tests/gis_tests/gdal_tests/test_ds.py:160:9	DataSourceTest.test03a_layers	function `DataSourceTest.test03a_layers` has cyclomatic complexity 12 and cognitive complexity 22 over 61 lines
 complex-function	high	tests/gis_tests/geoapp/test_functions.py:670:9	GISFunctionsTests.test_rotate	function `GISFunctionsTests.test_rotate` has cyclomatic complexity 8 and cognitive complexity 21 over 21 lines
@@ -480,16 +476,11 @@ complex-function	high	tests/gis_tests/geos_tests/test_geos.py:1258:9	GEOSTest.te
 complex-function	high	tests/gis_tests/geos_tests/test_mutable_list.py:100:9	ListMixinTest.test02_setslice	function `ListMixinTest.test02_setslice` has cyclomatic complexity 11 and cognitive complexity 20 over 70 lines
 complex-function	high	tests/gis_tests/geos_tests/test_mutable_list.py:262:9	ListMixinTest.test06_list_methods	function `ListMixinTest.test06_list_methods` has cyclomatic complexity 15 and cognitive complexity 5 over 69 lines
 complex-function	high	tests/gis_tests/rasterapp/test_rasterfield.py:171:9	RasterFieldTest.test_all_gis_lookups_with_rasters	function `RasterFieldTest.test_all_gis_lookups_with_rasters` has cyclomatic complexity 15 and cognitive complexity 9 over 109 lines
-complex-function	high	tests/httpwrappers/tests.py:189:9	QueryDictTests.test_multiple_keys	function `QueryDictTests.test_multiple_keys` has cyclomatic complexity 11 and cognitive complexity 0 over 42 lines
-complex-function	high	tests/i18n/tests.py:718:9	FormattingTests.test_l10n_enabled	function `FormattingTests.test_l10n_enabled` has cyclomatic complexity 14 and cognitive complexity 0 over 445 lines
 complex-function	high	tests/introspection/tests.py:362:9	IntrospectionTests.test_get_constraints	function `IntrospectionTests.test_get_constraints` has cyclomatic complexity 21 and cognitive complexity 20 over 92 lines
 complex-function	high	tests/migrations/base.py:274:9	OperationTestBase.set_up_test_model	function `OperationTestBase.set_up_test_model` has cyclomatic complexity 16 and cognitive complexity 17 over 144 lines
 complex-function	high	tests/migrations/test_autodetector.py:38:9	BaseAutodetectorTests.repr_changes	function `BaseAutodetectorTests.repr_changes` has cyclomatic complexity 7 and cognitive complexity 19 over 16 lines
 complex-function	high	tests/migrations/test_operations.py:6071:9	OperationTests.test_run_python_atomic	function `OperationTests.test_run_python_atomic` has cyclomatic complexity 19 and cognitive complexity 4 over 134 lines
-complex-function	high	tests/multiple_database/tests.py:426:9	QueryTestCase.test_m2m_cross_database_protection	function `QueryTestCase.test_m2m_cross_database_protection` has cyclomatic complexity 11 and cognitive complexity 0 over 54 lines
 complex-function	high	tests/pagination/tests.py:681:15	PaginationTests.test_aget_elided_page_range_async	function `PaginationTests.test_aget_elided_page_range_async` has cyclomatic complexity 16 and cognitive complexity 9 over 87 lines
-complex-function	high	tests/prefetch_related/tests.py:864:9	CustomPrefetchTests.test_custom_qs	function `CustomPrefetchTests.test_custom_qs` has cyclomatic complexity 19 and cognitive complexity 0 over 181 lines
-complex-function	high	tests/prefetch_related/tests.py:1407:9	MultiTableInheritanceTest.test_m2m_to_inheriting_model	function `MultiTableInheritanceTest.test_m2m_to_inheriting_model` has cyclomatic complexity 11 and cognitive complexity 0 over 16 lines
 complex-function	high	tests/queries/test_explain.py:15:9	ExplainTests.test_basic	function `ExplainTests.test_basic` has cyclomatic complexity 13 and cognitive complexity 20 over 48 lines
 complex-function	high	tests/runtests.py:156:5	get_filtered_test_modules	function `get_filtered_test_modules` has cyclomatic complexity 14 and cognitive complexity 17 over 36 lines
 complex-function	high	tests/runtests.py:445:5	bisect_tests	function `bisect_tests` has cyclomatic complexity 12 and cognitive complexity 14 over 47 lines
@@ -498,4 +489,3 @@ complex-function	high	tests/schema/tests.py:3017:9	SchemaTests.test_check_constr
 complex-function	high	tests/schema/tests.py:3117:9	SchemaTests.test_remove_field_check_does_not_remove_meta_constraints	function `SchemaTests.test_remove_field_check_does_not_remove_meta_constraints` has cyclomatic complexity 18 and cognitive complexity 3 over 56 lines
 complex-function	high	tests/schema/tests.py:3336:9	SchemaTests.test_remove_field_unique_does_not_remove_meta_constraints	function `SchemaTests.test_remove_field_unique_does_not_remove_meta_constraints` has cyclomatic complexity 18 and cognitive complexity 3 over 55 lines
 complex-function	high	tests/schema/tests.py:3539:9	SchemaTests.test_remove_unique_together_does_not_remove_meta_constraints	function `SchemaTests.test_remove_unique_together_does_not_remove_meta_constraints` has cyclomatic complexity 18 and cognitive complexity 3 over 64 lines
-complex-function	high	tests/test_utils/tests.py:618:9	AssertTemplateUsedContextManagerTests.test_failure	function `AssertTemplateUsedContextManagerTests.test_failure` has cyclomatic complexity 11 and cognitive complexity 0 over 27 lines

@@ -1,7 +1,7 @@
 files_scanned=717
 symbols_checked=3048
 symbols_kept=0
-findings=92
+findings=90
 health: score=82 grade=B functions=3048 max_cyclomatic=48 max_cognitive=95
 --
 complex-function	high	src/dispatch/ai/service.py:145:5	generate_case_signal_historical_context	function `generate_case_signal_historical_context` has cyclomatic complexity 10 and cognitive complexity 16 over 90 lines
@@ -88,11 +88,9 @@ complex-function	high	src/dispatch/signal/service.py:742:5	filter_snooze	functio
 complex-function	high	src/dispatch/storage/flows.py:21:5	create_storage	function `create_storage` has cyclomatic complexity 15 and cognitive complexity 13 over 84 lines
 complex-function	high	src/dispatch/task/scheduled.py:47:5	sync_tasks	function `sync_tasks` has cyclomatic complexity 7 and cognitive complexity 16 over 26 lines
 complex-function	high	src/dispatch/task/service.py:160:5	update	function `update` has cyclomatic complexity 15 and cognitive complexity 27 over 74 lines
-complex-function	high	tests/cost_model/test_cost_model_service.py:63:5	test_create_cost_model	function `test_create_cost_model` has cyclomatic complexity 15 and cognitive complexity 0 over 42 lines
 complex-function	high	tests/cost_model/test_cost_model_service.py:140:5	test_update_cost_model	function `test_update_cost_model` has cyclomatic complexity 19 and cognitive complexity 2 over 115 lines
 complex-function	high	tests/database/test_service.py:230:5	test_restricted_incident_filter_with_test_data	function `test_restricted_incident_filter_with_test_data` has cyclomatic complexity 12 and cognitive complexity 3 over 164 lines
 complex-function	high	tests/database/test_service.py:396:5	test_restricted_case_filter_with_test_data	function `test_restricted_case_filter_with_test_data` has cyclomatic complexity 12 and cognitive complexity 3 over 157 lines
 complex-function	high	tests/feedback/test_feedback_cases.py:9:5	test_create	function `test_create` has cyclomatic complexity 12 and cognitive complexity 6 over 63 lines
 complex-function	high	tests/feedback/test_feedback_cases.py:89:5	test_update	function `test_update` has cyclomatic complexity 27 and cognitive complexity 25 over 103 lines
 complex-function	high	tests/feedback/test_feedback_service.py:51:5	test_update	function `test_update` has cyclomatic complexity 15 and cognitive complexity 6 over 69 lines
-complex-function	high	tests/incident_role/test_incident_role_service.py:25:5	test_create_update	function `test_create_update` has cyclomatic complexity 11 and cognitive complexity 0 over 77 lines

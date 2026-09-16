@@ -1,7 +1,7 @@
 files_scanned=1850
 symbols_checked=10964
 symbols_kept=0
-findings=747
+findings=711
 health: score=74 grade=C functions=10964 max_cyclomatic=155 max_cognitive=374
 --
 complex-function	high	hacking/azp/download.py:122:5	download_run	function `download_run` has cyclomatic complexity 35 and cognitive complexity 50 over 100 lines
@@ -687,58 +687,25 @@ complex-function	high	test/support/windows-integration/collections/ansible_colle
 complex-function	high	test/support/windows-integration/collections/ansible_collections/ansible/windows/plugins/plugin_utils/_reboot.py:369:5	_do_until_success_or_condition	function `_do_until_success_or_condition` has cyclomatic complexity 9 and cognitive complexity 17 over 65 lines
 complex-function	high	test/support/windows-integration/plugins/action/win_copy.py:77:9	_recurse	function `_recurse` has cyclomatic complexity 13 and cognitive complexity 51 over 95 lines
 complex-function	high	test/support/windows-integration/plugins/action/win_copy.py:328:9	ActionModule.run	function `ActionModule.run` has cyclomatic complexity 33 and cognitive complexity 48 over 191 lines
-complex-function	high	test/units/_internal/_yaml/test_dumper.py:23:5	test_yaml_dump	function `test_yaml_dump` has cyclomatic complexity 11 and cognitive complexity 0 over 32 lines
 complex-function	high	test/units/_internal/templating/test_common_.py:152:5	test_deepcopy	function `test_deepcopy` has cyclomatic complexity 11 and cognitive complexity 7 over 22 lines
 complex-function	high	test/units/_internal/templating/test_datatag.py:80:9	TestDatatagTemplar.lazy_value	function `TestDatatagTemplar.lazy_value` has cyclomatic complexity 12 and cognitive complexity 9 over 28 lines
-complex-function	high	test/units/_internal/templating/test_lazy_containers.py:211:5	test_dict_popitem	function `test_dict_popitem` has cyclomatic complexity 11 and cognitive complexity 0 over 30 lines
 complex-function	high	test/units/_internal/templating/test_lazy_containers.py:403:9	run_test	function `run_test` has cyclomatic complexity 27 and cognitive complexity 15 over 68 lines
 complex-function	high	test/units/_internal/templating/test_lazy_containers.py:858:5	test_lazy_copies	function `test_lazy_copies` has cyclomatic complexity 15 and cognitive complexity 6 over 28 lines
-complex-function	high	test/units/ansible_test/test_diff.py:106:5	test_add_two_text_files	function `test_add_two_text_files` has cyclomatic complexity 14 and cognitive complexity 0 over 21 lines
-complex-function	high	test/units/cli/galaxy/test_execute_list_collection.py:89:5	test_execute_list_collection_all	function `test_execute_list_collection_all` has cyclomatic complexity 14 and cognitive complexity 0 over 27 lines
-complex-function	high	test/units/cli/galaxy/test_execute_list_collection.py:144:5	test_execute_list_collection_specific_duplicate	function `test_execute_list_collection_specific_duplicate` has cyclomatic complexity 12 and cognitive complexity 0 over 28 lines
-complex-function	high	test/units/cli/test_adhoc.py:95:5	test_ansible_version	function `test_ansible_version` has cyclomatic complexity 12 and cognitive complexity 0 over 17 lines
 complex-function	high	test/units/cli/test_galaxy.py:511:5	test_collection_default	function `test_collection_default` has cyclomatic complexity 17 and cognitive complexity 1 over 23 lines
 complex-function	high	test/units/cli/test_galaxy.py:539:5	test_collection_skeleton	function `test_collection_skeleton` has cyclomatic complexity 17 and cognitive complexity 2 over 38 lines
 complex-function	high	test/units/cli/test_galaxy.py:655:5	test_collection_build	function `test_collection_build` has cyclomatic complexity 55 and cognitive complexity 10 over 89 lines
-complex-function	high	test/units/cli/test_galaxy.py:758:5	test_collection_install_with_names	function `test_collection_install_with_names` has cyclomatic complexity 15 and cognitive complexity 0 over 26 lines
-complex-function	high	test/units/cli/test_galaxy.py:800:5	test_collection_install_with_requirements_file	function `test_collection_install_with_requirements_file` has cyclomatic complexity 15 and cognitive complexity 0 over 34 lines
-complex-function	high	test/units/cli/test_galaxy.py:836:5	test_collection_install_with_relative_path	function `test_collection_install_with_relative_path` has cyclomatic complexity 13 and cognitive complexity 0 over 28 lines
-complex-function	high	test/units/cli/test_galaxy.py:866:5	test_collection_install_with_unexpanded_path	function `test_collection_install_with_unexpanded_path` has cyclomatic complexity 13 and cognitive complexity 0 over 28 lines
-complex-function	high	test/units/cli/test_galaxy.py:896:5	test_collection_install_in_collection_dir	function `test_collection_install_in_collection_dir` has cyclomatic complexity 13 and cognitive complexity 0 over 23 lines
-complex-function	high	test/units/cli/test_galaxy.py:921:5	test_collection_install_with_url	function `test_collection_install_with_url` has cyclomatic complexity 13 and cognitive complexity 0 over 38 lines
-complex-function	high	test/units/cli/test_galaxy.py:978:5	test_collection_install_path_with_ansible_collections	function `test_collection_install_path_with_ansible_collections` has cyclomatic complexity 15 and cognitive complexity 0 over 27 lines
-complex-function	high	test/units/cli/test_galaxy.py:1209:5	test_parse_requirements_with_collection_source	function `test_parse_requirements_with_collection_source` has cyclomatic complexity 11 and cognitive complexity 0 over 18 lines
-complex-function	high	test/units/galaxy/test_api.py:519:5	test_wait_import_task_with_failure	function `test_wait_import_task_with_failure` has cyclomatic complexity 13 and cognitive complexity 0 over 66 lines
-complex-function	high	test/units/galaxy/test_api.py:591:5	test_wait_import_task_with_failure_no_error	function `test_wait_import_task_with_failure_no_error` has cyclomatic complexity 13 and cognitive complexity 0 over 62 lines
 complex-function	high	test/units/galaxy/test_api.py:711:5	test_get_collection_version_metadata_no_version	function `test_get_collection_version_metadata_no_version` has cyclomatic complexity 13 and cognitive complexity 2 over 47 lines
 complex-function	high	test/units/galaxy/test_api.py:946:5	test_get_collection_versions_pagination	function `test_get_collection_versions_pagination` has cyclomatic complexity 12 and cognitive complexity 2 over 32 lines
-complex-function	high	test/units/galaxy/test_collection.py:498:5	test_build_with_existing_files_and_manifest	function `test_build_with_existing_files_and_manifest` has cyclomatic complexity 15 and cognitive complexity 0 over 37 lines
-complex-function	high	test/units/galaxy/test_collection.py:597:5	test_defaults_galaxy_yml	function `test_defaults_galaxy_yml` has cyclomatic complexity 14 and cognitive complexity 0 over 16 lines
 complex-function	high	test/units/galaxy/test_collection.py:634:5	test_build_ignore_files_and_folders	function `test_build_ignore_files_and_folders` has cyclomatic complexity 11 and cognitive complexity 1 over 40 lines
 complex-function	high	test/units/galaxy/test_collection.py:676:5	test_build_ignore_older_release_in_root	function `test_build_ignore_older_release_in_root` has cyclomatic complexity 11 and cognitive complexity 4 over 35 lines
 complex-function	high	test/units/galaxy/test_collection.py:713:5	test_build_ignore_patterns	function `test_build_ignore_patterns` has cyclomatic complexity 14 and cognitive complexity 2 over 48 lines
-complex-function	high	test/units/galaxy/test_collection.py:804:5	test_build_with_symlink_inside_collection	function `test_build_with_symlink_inside_collection` has cyclomatic complexity 13 and cognitive complexity 0 over 38 lines
-complex-function	high	test/units/galaxy/test_collection_install.py:644:5	test_build_requirement_from_name_multiple_versions_one_match	function `test_build_requirement_from_name_multiple_versions_one_match` has cyclomatic complexity 11 and cognitive complexity 0 over 38 lines
 complex-function	high	test/units/galaxy/test_collection_install.py:870:5	test_install_collections_from_tar	function `test_install_collections_from_tar` has cyclomatic complexity 15 and cognitive complexity 1 over 35 lines
 complex-function	high	test/units/galaxy/test_collection_install.py:911:5	test_install_collection_with_circular_dependency	function `test_install_collection_with_circular_dependency` has cyclomatic complexity 17 and cognitive complexity 1 over 36 lines
-complex-function	high	test/units/module_utils/basic/test__log_invocation.py:27:5	test_module_utils_basic__log_invocation	function `test_module_utils_basic__log_invocation` has cyclomatic complexity 12 and cognitive complexity 0 over 45 lines
-complex-function	high	test/units/module_utils/basic/test_filesystem.py:55:9	TestOtherFilesystem.test_module_utils_basic_ansible_module_set_owner_if_different	function `TestOtherFilesystem.test_module_utils_basic_ansible_module_set_owner_if_different` has cyclomatic complexity 11 and cognitive complexity 0 over 37 lines
-complex-function	high	test/units/module_utils/basic/test_filesystem.py:93:9	TestOtherFilesystem.test_module_utils_basic_ansible_module_set_group_if_different	function `TestOtherFilesystem.test_module_utils_basic_ansible_module_set_group_if_different` has cyclomatic complexity 11 and cognitive complexity 0 over 37 lines
-complex-function	high	test/units/module_utils/basic/test_platform_distribution.py:47:9	TestGetDistribution.test_distro_known	function `TestGetDistribution.test_distro_known` has cyclomatic complexity 31 and cognitive complexity 0 over 45 lines
-complex-function	high	test/units/module_utils/basic/test_selinux.py:100:9	TestSELinuxMU.test_selinux_context	function `TestSELinuxMU.test_selinux_context` has cyclomatic complexity 11 and cognitive complexity 0 over 26 lines
-complex-function	high	test/units/module_utils/basic/test_selinux.py:171:9	TestSELinuxMU.test_set_context_if_different	function `TestSELinuxMU.test_set_context_if_different` has cyclomatic complexity 13 and cognitive complexity 0 over 35 lines
 complex-function	high	test/units/module_utils/common/arg_spec/test_aliases.py:94:5	test_aliases	function `test_aliases` has cyclomatic complexity 13 and cognitive complexity 4 over 22 lines
-complex-function	high	test/units/module_utils/common/test_dict_transformations.py:71:9	TestCaseDictMerge.test_dict_merge	function `TestCaseDictMerge.test_dict_merge` has cyclomatic complexity 19 and cognitive complexity 0 over 42 lines
-complex-function	high	test/units/module_utils/common/test_network.py:58:5	test_is_netmask	function `test_is_netmask` has cyclomatic complexity 15 and cognitive complexity 0 over 17 lines
-complex-function	high	test/units/module_utils/common/test_sys_info.py:51:9	TestGetDistribution.test_distro_known	function `TestGetDistribution.test_distro_known` has cyclomatic complexity 31 and cognitive complexity 0 over 45 lines
-complex-function	high	test/units/module_utils/common/text/converters/test_to_str.py:68:5	test_type_hints	function `test_type_hints` has cyclomatic complexity 11 and cognitive complexity 0 over 57 lines
 complex-function	high	test/units/module_utils/datatag/test_datatag.py:93:5	assert_round_trip	function `assert_round_trip` has cyclomatic complexity 11 and cognitive complexity 6 over 17 lines
 complex-function	high	test/units/module_utils/datatag/test_datatag.py:292:9	ParamDesc.get_test_param_values	function `ParamDesc.get_test_param_values` has cyclomatic complexity 13 and cognitive complexity 14 over 50 lines
 complex-function	high	test/units/parsing/utils/test_yaml.py:14:5	test_json_parser_error	function `test_json_parser_error` has cyclomatic complexity 11 and cognitive complexity 2 over 28 lines
 complex-function	high	test/units/parsing/yaml/test_errors.py:69:5	test_yaml_parser_error	function `test_yaml_parser_error` has cyclomatic complexity 11 and cognitive complexity 2 over 30 lines
-complex-function	high	test/units/playbook/test_play_context.py:42:5	test_play_context	function `test_play_context` has cyclomatic complexity 13 and cognitive complexity 0 over 49 lines
-complex-function	high	test/units/plugins/inventory/test_constructed.py:160:5	test_parent_group_templating	function `test_parent_group_templating` has cyclomatic complexity 11 and cognitive complexity 0 over 53 lines
-complex-function	high	test/units/utils/collection_loader/test_collection_loader.py:122:5	test_loader_remove	function `test_loader_remove` has cyclomatic complexity 11 and cognitive complexity 0 over 14 lines
 complex-function	high	test/units/utils/collection_loader/test_collection_loader.py:138:5	test_loader_install	function `test_loader_install` has cyclomatic complexity 15 and cognitive complexity 1 over 20 lines
 complex-function	high	test/units/utils/collection_loader/test_collection_loader.py:210:5	test_nspkg_loader_load_module	function `test_nspkg_loader_load_module` has cyclomatic complexity 11 and cognitive complexity 1 over 17 lines
 complex-function	high	test/units/utils/collection_loader/test_collection_loader.py:237:5	test_collpkg_loader_load_module	function `test_collpkg_loader_load_module` has cyclomatic complexity 23 and cognitive complexity 9 over 41 lines
@@ -747,7 +714,4 @@ complex-function	high	test/units/utils/collection_loader/test_collection_loader.
 complex-function	high	test/units/utils/collection_loader/test_collection_loader.py:639:5	test_finder_playbook_paths	function `test_finder_playbook_paths` has cyclomatic complexity 16 and cognitive complexity 3 over 41 lines
 complex-function	high	test/units/utils/collection_loader/test_collection_loader.py:844:5	test_importlib_resources	function `test_importlib_resources` has cyclomatic complexity 18 and cognitive complexity 1 over 41 lines
 complex-function	high	test/units/utils/test_datatag.py:107:5	test_tag_builtins	function `test_tag_builtins` has cyclomatic complexity 14 and cognitive complexity 1 over 24 lines
-complex-function	high	test/units/utils/test_display.py:38:5	test_get_text_width	function `test_get_text_width` has cyclomatic complexity 15 and cognitive complexity 0 over 19 lines
 complex-function	high	test/units/utils/test_serialization_profiles.py:272:9	ProfileHelper.__init__	function `ProfileHelper.__init__` has cyclomatic complexity 11 and cognitive complexity 6 over 19 lines
-complex-function	high	test/units/utils/test_version.py:255:5	test_alpha	function `test_alpha` has cyclomatic complexity 31 and cognitive complexity 0 over 39 lines
-complex-function	high	test/units/utils/test_version.py:296:5	test_numeric	function `test_numeric` has cyclomatic complexity 31 and cognitive complexity 0 over 39 lines

@@ -1,7 +1,7 @@
 files_scanned=213
 symbols_checked=1824
 symbols_kept=0
-findings=77
+findings=62
 health: score=82 grade=B functions=1824 max_cyclomatic=49 max_cognitive=119
 --
 complex-function	high	examples/print_calendar.py:20:5	print_calendar	function `print_calendar` has cyclomatic complexity 9 and cognitive complexity 18 over 43 lines
@@ -66,18 +66,3 @@ complex-function	high	rich/traceback.py:433:9	Traceback.extract	function `Traceb
 complex-function	high	rich/traceback.py:658:13	render_stack	function `render_stack` has cyclomatic complexity 12 and cognitive complexity 16 over 66 lines
 complex-function	high	rich/traceback.py:768:9	Traceback._render_stack	function `Traceback._render_stack` has cyclomatic complexity 20 and cognitive complexity 45 over 128 lines
 complex-function	high	rich/tree.py:86:9	Tree.__rich_console__	function `Tree.__rich_console__` has cyclomatic complexity 22 and cognitive complexity 42 over 89 lines
-complex-function	high	tests/test_ansi.py:89:5	test_decode_newlines	function `test_decode_newlines` has cyclomatic complexity 13 and cognitive complexity 0 over 16 lines
-complex-function	high	tests/test_cells.py:48:5	test_set_cell_size	function `test_set_cell_size` has cyclomatic complexity 13 and cognitive complexity 0 over 13 lines
-complex-function	high	tests/test_color.py:126:5	test_downgrade	function `test_downgrade` has cyclomatic complexity 14 and cognitive complexity 0 over 52 lines
-complex-function	high	tests/test_console.py:1072:5	test_tty_compatible	function `test_tty_compatible` has cyclomatic complexity 13 and cognitive complexity 0 over 64 lines
-complex-function	high	tests/test_filesize.py:4:5	test_traditional	function `test_traditional` has cyclomatic complexity 11 and cognitive complexity 0 over 11 lines
-complex-function	high	tests/test_logging.py:125:5	test_markup_and_highlight	function `test_markup_and_highlight` has cyclomatic complexity 11 and cognitive complexity 0 over 38 lines
-complex-function	high	tests/test_null_file.py:4:5	test_null_file	function `test_null_file` has cyclomatic complexity 19 and cognitive complexity 0 over 20 lines
-complex-function	high	tests/test_pick.py:4:5	test_pick_bool	function `test_pick_bool` has cyclomatic complexity 11 and cognitive complexity 0 over 11 lines
-complex-function	high	tests/test_progress.py:629:5	test_wrap_file	function `test_wrap_file` has cyclomatic complexity 11 and cognitive complexity 0 over 16 lines
-complex-function	high	tests/test_ratio.py:28:5	test_ratio_resolve	function `test_ratio_resolve` has cyclomatic complexity 11 and cognitive complexity 0 over 31 lines
-complex-function	high	tests/test_style.py:96:5	test_parse	function `test_parse` has cyclomatic complexity 11 and cognitive complexity 0 over 20 lines
-complex-function	high	tests/test_style.py:234:5	test_clear_meta_and_links	function `test_clear_meta_and_links` has cyclomatic complexity 13 and cognitive complexity 0 over 20 lines
-complex-function	high	tests/test_text.py:162:5	test_highlight_regex	function `test_highlight_regex` has cyclomatic complexity 13 and cognitive complexity 0 over 66 lines
-complex-function	high	tests/test_text.py:230:5	test_highlight_regex_callable	function `test_highlight_regex_callable` has cyclomatic complexity 11 and cognitive complexity 0 over 34 lines
-complex-function	high	tests/test_text.py:406:5	test_divide	function `test_divide` has cyclomatic complexity 20 and cognitive complexity 0 over 41 lines

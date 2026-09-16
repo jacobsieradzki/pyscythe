@@ -1,7 +1,7 @@
 files_scanned=1581
 symbols_checked=3192
 symbols_kept=0
-findings=60
+findings=49
 health: score=87 grade=B functions=3192 max_cyclomatic=47 max_cognitive=79
 --
 complex-function	high	langchain_classic/__init__.py:45:5	__getattr__	function `__getattr__` has cyclomatic complexity 47 and cognitive complexity 46 over 330 lines
@@ -44,23 +44,12 @@ complex-function	high	langchain_classic/smith/evaluation/runner_utils.py:928:5	_
 complex-function	high	langchain_classic/smith/evaluation/runner_utils.py:1089:5	_prepare_eval_run	function `_prepare_eval_run` has cyclomatic complexity 11 and cognitive complexity 9 over 61 lines
 complex-function	high	langchain_classic/smith/evaluation/runner_utils.py:1218:9	_DatasetRunContainer._collect_metrics	function `_DatasetRunContainer._collect_metrics` has cyclomatic complexity 9 and cognitive complexity 20 over 28 lines
 complex-function	high	langchain_classic/smith/evaluation/runner_utils.py:1288:9	_DatasetRunContainer.prepare	function `_DatasetRunContainer.prepare` has cyclomatic complexity 11 and cognitive complexity 10 over 72 lines
-complex-function	high	tests/unit_tests/agents/test_agent.py:134:5	test_agent_with_callbacks	function `test_agent_with_callbacks` has cyclomatic complexity 13 and cognitive complexity 0 over 50 lines
 complex-function	high	tests/unit_tests/agents/test_agent.py:452:11	test_runnable_agent	function `test_runnable_agent` has cyclomatic complexity 16 and cognitive complexity 7 over 85 lines
 complex-function	high	tests/unit_tests/agents/test_agent.py:539:11	test_runnable_agent_with_function_calls	function `test_runnable_agent_with_function_calls` has cyclomatic complexity 11 and cognitive complexity 2 over 101 lines
 complex-function	high	tests/unit_tests/agents/test_agent.py:642:11	test_runnable_with_multi_action_per_step	function `test_runnable_with_multi_action_per_step` has cyclomatic complexity 11 and cognitive complexity 12 over 146 lines
 complex-function	high	tests/unit_tests/agents/test_agent.py:831:11	test_openai_agent_with_streaming	function `test_openai_agent_with_streaming` has cyclomatic complexity 11 and cognitive complexity 11 over 162 lines
 complex-function	high	tests/unit_tests/agents/test_agent.py:1021:11	test_openai_agent_tools_agent	function `test_openai_agent_tools_agent` has cyclomatic complexity 12 and cognitive complexity 16 over 309 lines
-complex-function	high	tests/unit_tests/agents/test_agent_async.py:105:11	test_agent_with_callbacks	function `test_agent_with_callbacks` has cyclomatic complexity 13 and cognitive complexity 0 over 50 lines
-complex-function	high	tests/unit_tests/agents/test_agent_iterator.py:93:5	test_agent_iterator_with_callbacks	function `test_agent_iterator_with_callbacks` has cyclomatic complexity 15 and cognitive complexity 0 over 64 lines
-complex-function	high	tests/unit_tests/agents/test_agent_iterator.py:159:11	test_agent_async_iterator_with_callbacks	function `test_agent_async_iterator_with_callbacks` has cyclomatic complexity 15 and cognitive complexity 0 over 65 lines
 complex-function	high	tests/unit_tests/conftest.py:31:5	pytest_collection_modifyitems	function `pytest_collection_modifyitems` has cyclomatic complexity 14 and cognitive complexity 32 over 68 lines
-complex-function	high	tests/unit_tests/evaluation/parsing/test_base.py:127:5	test_json_equality_evaluator_evaluate_lists_permutation_invariant	function `test_json_equality_evaluator_evaluate_lists_permutation_invariant` has cyclomatic complexity 12 and cognitive complexity 0 over 50 lines
-complex-function	high	tests/unit_tests/indexes/test_indexing.py:248:5	test_index_simple_delete_full	function `test_index_simple_delete_full` has cyclomatic complexity 11 and cognitive complexity 0 over 82 lines
-complex-function	high	tests/unit_tests/indexes/test_indexing.py:333:11	test_aindex_simple_delete_full	function `test_aindex_simple_delete_full` has cyclomatic complexity 11 and cognitive complexity 0 over 82 lines
-complex-function	high	tests/unit_tests/indexes/test_indexing.py:688:5	test_incremental_delete	function `test_incremental_delete` has cyclomatic complexity 11 and cognitive complexity 0 over 109 lines
-complex-function	high	tests/unit_tests/indexes/test_indexing.py:866:5	test_incremental_delete_with_batch_size	function `test_incremental_delete_with_batch_size` has cyclomatic complexity 13 and cognitive complexity 0 over 163 lines
-complex-function	high	tests/unit_tests/indexes/test_indexing.py:1032:11	test_aincremental_delete	function `test_aincremental_delete` has cyclomatic complexity 11 and cognitive complexity 0 over 109 lines
 complex-function	high	tests/unit_tests/llms/fake_chat_model.py:95:9	GenericFakeChatModel._stream	function `GenericFakeChatModel._stream` has cyclomatic complexity 19 and cognitive complexity 52 over 105 lines
 complex-function	high	tests/unit_tests/llms/test_fake_chat_model.py:40:11	test_generic_fake_chat_model_stream	function `test_generic_fake_chat_model_stream` has cyclomatic complexity 11 and cognitive complexity 4 over 94 lines
-complex-function	high	tests/unit_tests/output_parsers/test_datetime_parser.py:9:5	test_datetime_output_parser_parse	function `test_datetime_output_parser_parse` has cyclomatic complexity 12 and cognitive complexity 0 over 31 lines
 complex-function	high	tests/unit_tests/test_imports.py:14:5	test_import_all	function `test_import_all` has cyclomatic complexity 10 and cognitive complexity 16 over 33 lines

@@ -1,7 +1,7 @@
 files_scanned=442
 symbols_checked=9570
 symbols_kept=0
-findings=831
+findings=818
 health: score=69 grade=D functions=9570 max_cyclomatic=95 max_cognitive=148
 --
 complex-function	high	misc/apply-cache-diff.py:34:5	apply_diff	function `apply_diff` has cyclomatic complexity 11 and cognitive complexity 18 over 30 lines
@@ -597,10 +597,8 @@ complex-function	high	mypy/test/helpers.py:75:5	render_diff_range	function `rend
 complex-function	high	mypy/test/helpers.py:467:5	check_test_output_files	function `check_test_output_files` has cyclomatic complexity 13 and cognitive complexity 21 over 41 lines
 complex-function	high	mypy/test/test_config_parser.py:77:9	FindConfigFileSuite.test_precedence	function `FindConfigFileSuite.test_precedence` has cyclomatic complexity 12 and cognitive complexity 1 over 37 lines
 complex-function	high	mypy/test/test_diff_cache.py:25:9	DiffCacheIntegrationTests.test_diff_cache_produces_valid_json	function `DiffCacheIntegrationTests.test_diff_cache_produces_valid_json` has cyclomatic complexity 48 and cognitive complexity 19 over 181 lines
-complex-function	high	mypy/test/test_find_sources.py:130:9	SourceFinderSuite.test_crawl_namespace_explicit_base	function `SourceFinderSuite.test_crawl_namespace_explicit_base` has cyclomatic complexity 11 and cognitive complexity 0 over 42 lines
 complex-function	high	mypy/test/test_find_sources.py:264:9	SourceFinderSuite.test_find_sources_exclude	function `SourceFinderSuite.test_find_sources_exclude` has cyclomatic complexity 22 and cognitive complexity 3 over 113 lines
 complex-function	high	mypy/test/test_nativeparse.py:171:5	format_reachable_imports	function `format_reachable_imports` has cyclomatic complexity 18 and cognitive complexity 45 over 68 lines
-complex-function	high	mypy/test/testargs.py:27:9	ArgSuite.test_executable_inference	function `ArgSuite.test_executable_inference` has cyclomatic complexity 13 and cognitive complexity 0 over 52 lines
 complex-function	high	mypy/test/testcheck.py:60:9	TypeCheckSuite.run_case	function `TypeCheckSuite.run_case` has cyclomatic complexity 16 and cognitive complexity 24 over 34 lines
 complex-function	high	mypy/test/testcheck.py:108:9	TypeCheckSuite.run_case_once	function `TypeCheckSuite.run_case_once` has cyclomatic complexity 48 and cognitive complexity 66 over 168 lines
 complex-function	high	mypy/test/testcmdline.py:52:5	test_python_cmdline	function `test_python_cmdline` has cyclomatic complexity 26 and cognitive complexity 31 over 70 lines
@@ -613,19 +611,10 @@ complex-function	high	mypy/test/testfscache.py:61:9	TestFileSystemCache.test_isf
 complex-function	high	mypy/test/testpep561.py:91:5	test_pep561	function `test_pep561` has cyclomatic complexity 22 and cognitive complexity 28 over 69 lines
 complex-function	high	mypy/test/testpythoneval.py:41:5	test_python_evaluation	function `test_python_evaluation` has cyclomatic complexity 16 and cognitive complexity 22 over 70 lines
 complex-function	high	mypy/test/testsemanal.py:165:9	SemAnalTypeInfoSuite.run_case	function `SemAnalTypeInfoSuite.run_case` has cyclomatic complexity 10 and cognitive complexity 17 over 36 lines
-complex-function	high	mypy/test/teststubgen.py:743:9	StubgenUtilSuite.test_common_dir_prefix_unix	function `StubgenUtilSuite.test_common_dir_prefix_unix` has cyclomatic complexity 14 and cognitive complexity 0 over 14 lines
-complex-function	high	mypy/test/teststubgen.py:761:9	StubgenUtilSuite.test_common_dir_prefix_win	function `StubgenUtilSuite.test_common_dir_prefix_win` has cyclomatic complexity 14 and cognitive complexity 0 over 14 lines
-complex-function	high	mypy/test/teststubgen.py:798:9	StubgenHelpersSuite.test_is_non_library_module	function `StubgenHelpersSuite.test_is_non_library_module` has cyclomatic complexity 21 and cognitive complexity 0 over 28 lines
 complex-function	high	mypy/test/teststubgen.py:858:9	StubgenPythonSuite.run_case_inner	function `StubgenPythonSuite.run_case_inner` has cyclomatic complexity 13 and cognitive complexity 17 over 45 lines
-complex-function	high	mypy/test/teststubgen.py:1576:9	IsValidTypeSuite.test_is_valid_type	function `IsValidTypeSuite.test_is_valid_type` has cyclomatic complexity 26 and cognitive complexity 0 over 28 lines
-complex-function	high	mypy/test/teststubinfo.py:9:9	TestStubInfo.test_stub_distribution_name	function `TestStubInfo.test_stub_distribution_name` has cyclomatic complexity 11 and cognitive complexity 0 over 11 lines
 complex-function	high	mypy/test/teststubtest.py:181:5	run_stubtest_with_stderr	function `run_stubtest_with_stderr` has cyclomatic complexity 12 and cognitive complexity 3 over 38 lines
 complex-function	high	mypy/test/teststubtest.py:242:9	test	function `test` has cyclomatic complexity 12 and cognitive complexity 7 over 30 lines
-complex-function	high	mypy/test/teststubtest.py:3241:9	StubtestMiscUnit.test_get_typeshed_stdlib_modules	function `StubtestMiscUnit.test_get_typeshed_stdlib_modules` has cyclomatic complexity 11 and cognitive complexity 0 over 14 lines
 complex-function	high	mypy/test/testtypegen.py:23:9	TypeExportSuite.run_case	function `TypeExportSuite.run_case` has cyclomatic complexity 14 and cognitive complexity 19 over 61 lines
-complex-function	high	mypy/test/testtypes.py:390:9	TypeOpsSuite.test_is_proper_subtype	function `TypeOpsSuite.test_is_proper_subtype` has cyclomatic complexity 19 and cognitive complexity 0 over 26 lines
-complex-function	high	mypy/test/testtypes.py:444:9	TypeOpsSuite.test_is_proper_subtype_and_subtype_literal_types	function `TypeOpsSuite.test_is_proper_subtype_and_subtype_literal_types` has cyclomatic complexity 21 and cognitive complexity 0 over 30 lines
-complex-function	high	mypy/test/testtypes.py:475:9	TypeOpsSuite.test_subtype_aliases	function `TypeOpsSuite.test_subtype_aliases` has cyclomatic complexity 11 and cognitive complexity 0 over 20 lines
 complex-function	high	mypy/test/typefixture.py:302:9	TypeFixture.make_type_info	function `TypeFixture.make_type_info` has cyclomatic complexity 12 and cognitive complexity 24 over 69 lines
 complex-function	high	mypy/test/update_data.py:21:5	_iter_fixes	function `_iter_fixes` has cyclomatic complexity 20 and cognitive complexity 44 over 67 lines
 complex-function	high	mypy/typeanal.py:308:9	TypeAnalyser.visit_unbound_type_nonoptional	function `TypeAnalyser.visit_unbound_type_nonoptional` has cyclomatic complexity 74 and cognitive complexity 146 over 240 lines
@@ -823,8 +812,6 @@ complex-function	high	mypyc/test/test_lowering.py:34:9	TestLowering.run_case	fun
 complex-function	high	mypyc/test/test_refcount.py:37:9	TestRefCountTransform.run_case	function `TestRefCountTransform.run_case` has cyclomatic complexity 11 and cognitive complexity 10 over 29 lines
 complex-function	high	mypyc/test/test_run.py:215:9	TestRun.run_case_step	function `TestRun.run_case_step` has cyclomatic complexity 51 and cognitive complexity 59 over 243 lines
 complex-function	high	mypyc/test/test_serialization.py:34:5	assert_blobs_same	function `assert_blobs_same` has cyclomatic complexity 15 and cognitive complexity 14 over 36 lines
-complex-function	high	mypyc/test/test_spill.py:17:9	TestSpill.test_separate_generator_environment_keeps_private_frame_state	function `TestSpill.test_separate_generator_environment_keeps_private_frame_state` has cyclomatic complexity 12 and cognitive complexity 0 over 36 lines
-complex-function	high	mypyc/test/test_struct.py:17:9	TestStruct.test_struct_offsets	function `TestStruct.test_struct_offsets` has cyclomatic complexity 17 and cognitive complexity 0 over 32 lines
 complex-function	high	mypyc/test/testutil.py:271:5	infer_ir_build_options_from_test_name	function `infer_ir_build_options_from_test_name` has cyclomatic complexity 11 and cognitive complexity 8 over 36 lines
 complex-function	high	mypyc/transform/copy_propagation.py:25:5	do_copy_propagation	function `do_copy_propagation` has cyclomatic complexity 17 and cognitive complexity 32 over 58 lines
 complex-function	high	mypyc/transform/exceptions.py:66:5	split_blocks_at_errors	function `split_blocks_at_errors` has cyclomatic complexity 17 and cognitive complexity 30 over 81 lines

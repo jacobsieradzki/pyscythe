@@ -1,7 +1,7 @@
 files_scanned=60
 symbols_checked=1134
 symbols_kept=0
-findings=27
+findings=13
 health: score=92 grade=A functions=1134 max_cyclomatic=48 max_cognitive=49
 --
 complex-function	high	httpx/_config.py:23:5	create_ssl_context	function `create_ssl_context` has cyclomatic complexity 11 and cognitive complexity 16 over 47 lines
@@ -15,19 +15,5 @@ complex-function	high	httpx/_urlparse.py:213:5	urlparse	function `urlparse` has 
 complex-function	high	httpx/_urls.py:77:9	URL.__init__	function `URL.__init__` has cyclomatic complexity 11 and cognitive complexity 21 over 48 lines
 complex-function	high	httpx/_urls.py:425:9	QueryParams.__init__	function `QueryParams.__init__` has cyclomatic complexity 16 and cognitive complexity 18 over 37 lines
 complex-function	high	httpx/_utils.py:30:5	get_environment_proxies	function `get_environment_proxies` has cyclomatic complexity 12 and cognitive complexity 17 over 47 lines
-complex-function	high	tests/client/test_auth.py:427:11	test_digest_auth	function `test_digest_auth` has cyclomatic complexity 17 and cognitive complexity 0 over 30 lines
-complex-function	high	tests/client/test_auth.py:460:11	test_digest_auth_no_specified_qop	function `test_digest_auth_no_specified_qop` has cyclomatic complexity 17 and cognitive complexity 0 over 28 lines
-complex-function	high	tests/client/test_client.py:16:5	test_get	function `test_get` has cyclomatic complexity 13 and cognitive complexity 0 over 15 lines
 complex-function	high	tests/client/test_redirects.py:8:5	redirects	function `redirects` has cyclomatic complexity 23 and cognitive complexity 29 over 106 lines
-complex-function	high	tests/client/test_redirects.py:403:5	test_redirect_cookie_behavior	function `test_redirect_cookie_behavior` has cyclomatic complexity 11 and cognitive complexity 0 over 29 lines
-complex-function	high	tests/models/test_headers.py:6:5	test_headers	function `test_headers` has cyclomatic complexity 25 and cognitive complexity 0 over 29 lines
-complex-function	high	tests/models/test_queryparams.py:16:5	test_queryparams	function `test_queryparams` has cyclomatic complexity 23 and cognitive complexity 0 over 35 lines
-complex-function	high	tests/models/test_responses.py:91:5	test_raise_for_status	function `test_raise_for_status` has cyclomatic complexity 16 and cognitive complexity 0 over 56 lines
-complex-function	high	tests/models/test_url.py:8:5	test_basic_url	function `test_basic_url` has cyclomatic complexity 11 and cognitive complexity 0 over 14 lines
-complex-function	high	tests/models/test_url.py:502:5	test_url_join_rfc3986	function `test_url_join_rfc3986` has cyclomatic complexity 41 and cognitive complexity 0 over 53 lines
 complex-function	high	tests/models/test_whatwg.py:23:5	test_urlparse	function `test_urlparse` has cyclomatic complexity 12 and cognitive complexity 5 over 30 lines
-complex-function	high	tests/test_auth.py:191:5	test_digest_auth_rfc_7616_md5	function `test_digest_auth_rfc_7616_md5` has cyclomatic complexity 14 and cognitive complexity 0 over 58 lines
-complex-function	high	tests/test_auth.py:251:5	test_digest_auth_rfc_7616_sha_256	function `test_digest_auth_rfc_7616_sha_256` has cyclomatic complexity 14 and cognitive complexity 0 over 58 lines
-complex-function	high	tests/test_content.py:27:11	test_bytes_content	function `test_bytes_content` has cyclomatic complexity 14 and cognitive complexity 0 over 24 lines
-complex-function	high	tests/test_content.py:94:11	test_iterator_content	function `test_iterator_content` has cyclomatic complexity 11 and cognitive complexity 0 over 33 lines
-complex-function	high	tests/test_content.py:130:11	test_aiterator_content	function `test_aiterator_content` has cyclomatic complexity 14 and cognitive complexity 0 over 33 lines

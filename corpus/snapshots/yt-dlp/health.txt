@@ -1,7 +1,7 @@
 files_scanned=1128
 symbols_checked=6848
 symbols_kept=0
-findings=553
+findings=533
 health: score=72 grade=C functions=6848 max_cyclomatic=199 max_cognitive=334
 --
 complex-function	high	devscripts/make_changelog.py:148:9	Changelog._format_group	function `Changelog._format_group` has cyclomatic complexity 11 and cognitive complexity 25 over 34 lines
@@ -24,28 +24,8 @@ complex-function	high	test/helper.py:260:5	expect_info_dict	function `expect_inf
 complex-function	high	test/test_download.py:81:9	test_template	function `test_template` has cyclomatic complexity 47 and cognitive complexity 67 over 185 lines
 complex-function	high	test/test_downloader_external.py:135:9	TestDownloaderCookieBehavior.test_cookie_behavior	function `TestDownloaderCookieBehavior.test_cookie_behavior` has cyclomatic complexity 13 and cognitive complexity 1 over 49 lines
 complex-function	high	test/test_networking.py:143:9	HTTPTestRequestHandler.do_GET	function `HTTPTestRequestHandler.do_GET` has cyclomatic complexity 28 and cognitive complexity 30 over 130 lines
-complex-function	high	test/test_networking.py:1202:9	TestCurlCFFIRequestHandler.test_response_reader	function `TestCurlCFFIRequestHandler.test_response_reader` has cyclomatic complexity 28 and cognitive complexity 0 over 61 lines
-complex-function	high	test/test_networking.py:1694:9	TestYoutubeDLNetworking.test_compat_request	function `TestYoutubeDLNetworking.test_compat_request` has cyclomatic complexity 11 and cognitive complexity 0 over 18 lines
-complex-function	high	test/test_networking.py:1881:9	TestYoutubeDLNetworking.test_build_handler_params	function `TestYoutubeDLNetworking.test_build_handler_params` has cyclomatic complexity 11 and cognitive complexity 0 over 21 lines
-complex-function	high	test/test_networking.py:2045:9	TestRequest.test_copy	function `TestRequest.test_copy` has cyclomatic complexity 12 and cognitive complexity 0 over 30 lines
-complex-function	high	test/test_networking_utils.py:144:9	TestInstanceStoreMixin.test_mixin	function `TestInstanceStoreMixin.test_mixin` has cyclomatic complexity 11 and cognitive complexity 0 over 24 lines
-complex-function	high	test/test_pot/test_pot_director.py:388:9	TestPoTokenCache.test_unsupported_cache_spec_fallback	function `TestPoTokenCache.test_unsupported_cache_spec_fallback` has cyclomatic complexity 12 and cognitive complexity 0 over 27 lines
-complex-function	high	test/test_pot/test_pot_director.py:473:9	TestPoTokenCache.test_unavailable_cache_spec_fallback	function `TestPoTokenCache.test_unavailable_cache_spec_fallback` has cyclomatic complexity 15 and cognitive complexity 0 over 29 lines
-complex-function	high	test/test_pot/test_pot_director.py:521:9	TestPoTokenCache.test_unexpected_error_cache_spec_fallback	function `TestPoTokenCache.test_unexpected_error_cache_spec_fallback` has cyclomatic complexity 16 and cognitive complexity 0 over 31 lines
-complex-function	high	test/test_pot/test_pot_director.py:598:9	TestPoTokenCache.test_cache_provider_preferences	function `TestPoTokenCache.test_cache_provider_preferences` has cyclomatic complexity 12 and cognitive complexity 0 over 48 lines
-complex-function	high	test/test_pot/test_pot_director.py:690:9	TestPoTokenCache.test_get_invalid_po_token_response	function `TestPoTokenCache.test_get_invalid_po_token_response` has cyclomatic complexity 20 and cognitive complexity 0 over 42 lines
-complex-function	high	test/test_pot/test_pot_director.py:1062:9	TestPoTokenRequestDirector.test_bypass_cache	function `TestPoTokenRequestDirector.test_bypass_cache` has cyclomatic complexity 13 and cognitive complexity 0 over 25 lines
-complex-function	high	test/test_pot/test_pot_framework.py:520:9	TestPoTokenRequest.test_copy_request	function `TestPoTokenRequest.test_copy_request` has cyclomatic complexity 21 and cognitive complexity 0 over 24 lines
 complex-function	high	test/test_socks.py:82:9	Socks5ProxyHandler.handle	function `Socks5ProxyHandler.handle` has cyclomatic complexity 12 and cognitive complexity 14 over 63 lines
-complex-function	high	test/test_traversal.py:94:9	TestTraversal.test_traversal_set	function `TestTraversal.test_traversal_set` has cyclomatic complexity 12 and cognitive complexity 0 over 22 lines
-complex-function	high	test/test_traversal.py:156:9	TestTraversal.test_traversal_dict	function `TestTraversal.test_traversal_dict` has cyclomatic complexity 15 and cognitive complexity 0 over 32 lines
-complex-function	high	test/test_traversal.py:189:9	TestTraversal.test_traversal_default	function `TestTraversal.test_traversal_default` has cyclomatic complexity 13 and cognitive complexity 0 over 27 lines
-complex-function	high	test/test_traversal.py:235:9	TestTraversal.test_traversal_expected_type	function `TestTraversal.test_traversal_expected_type` has cyclomatic complexity 13 and cognitive complexity 0 over 28 lines
 complex-function	high	test/test_traversal.py:290:9	TestTraversal.test_traversal_traverse_string	function `TestTraversal.test_traversal_traverse_string` has cyclomatic complexity 12 and cognitive complexity 1 over 23 lines
-complex-function	high	test/test_traversal.py:314:9	TestTraversal.test_traversal_re	function `TestTraversal.test_traversal_re` has cyclomatic complexity 12 and cognitive complexity 0 over 20 lines
-complex-function	high	test/test_traversal.py:335:9	TestTraversal.test_traversal_xml_etree	function `TestTraversal.test_traversal_xml_etree` has cyclomatic complexity 14 and cognitive complexity 0 over 51 lines
-complex-function	high	test/test_traversal.py:387:9	TestTraversal.test_traversal_unbranching	function `TestTraversal.test_traversal_unbranching` has cyclomatic complexity 13 and cognitive complexity 0 over 31 lines
-complex-function	high	test/test_traversal.py:562:9	TestTraversalHelpers.test_trim_str	function `TestTraversalHelpers.test_trim_str` has cyclomatic complexity 11 and cognitive complexity 0 over 13 lines
 complex-function	high	test/test_traversal.py:585:9	TestTraversalHelpers.test_find_element	function `TestTraversalHelpers.test_find_element` has cyclomatic complexity 13 and cognitive complexity 1 over 24 lines
 complex-function	high	test/test_traversal.py:631:9	TestDictGet.test_dict_get	function `TestDictGet.test_dict_get` has cyclomatic complexity 12 and cognitive complexity 1 over 20 lines
 complex-function	high	yt_dlp/YoutubeDL.py:634:9	YoutubeDL.__init__	function `YoutubeDL.__init__` has cyclomatic complexity 43 and cognitive complexity 51 over 227 lines

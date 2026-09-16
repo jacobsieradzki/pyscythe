@@ -191,7 +191,16 @@ pub fn maintainability_index(tokens: &[CloneToken], functions: &[FunctionMetrics
     index
 }
 
+/// Whether the function is worth a reader's attention.
+///
+/// A long run of assertions counts a branch each and can reach a cyclomatic
+/// complexity in the hundreds, but there is nothing to hold in your head: the
+/// function is flat. Cognitive complexity says so by staying at zero, and a
+/// flat function is not a hotspot however many branches it has.
 const fn is_hotspot(metrics: &FunctionMetrics, t: &HealthThresholds) -> bool {
+    if metrics.cognitive == 0 {
+        return false;
+    }
     metrics.cyclomatic > t.max_cyclomatic || metrics.cognitive > t.max_cognitive
 }
 
@@ -255,6 +264,34 @@ mod tests {
     use crate::finding::Rule;
     use crate::report::Grade;
     use crate::testing::FakeIndex;
+
+    #[test]
+    fn a_flat_run_of_assertions_is_not_a_complexity_hotspot() {
+        use super::is_hotspot;
+        use crate::metrics::FunctionMetrics;
+        use crate::source::{ByteOffset, ByteSpan};
+        use crate::symbol::SymbolName;
+
+        let metrics = |cyclomatic: u32, cognitive: u32| FunctionMetrics {
+            name: SymbolName::new("f"),
+            owner: None,
+            name_span: ByteSpan::new(ByteOffset::new(0), ByteOffset::new(1)),
+            lines: 340,
+            parameters: 1,
+            cyclomatic,
+            cognitive,
+            max_nesting: 0,
+        };
+        let thresholds = HealthThresholds::default();
+        assert!(
+            !is_hotspot(&metrics(203, 0), &thresholds),
+            "202 assertions in a row are tedious, not complex"
+        );
+        assert!(
+            is_hotspot(&metrics(12, 9), &thresholds),
+            "real branching still counts"
+        );
+    }
 
     #[test]
     fn a_project_of_simple_functions_scores_one_hundred() {

@@ -1,7 +1,7 @@
 files_scanned=661
 symbols_checked=7794
 symbols_kept=0
-findings=315
+findings=306
 health: score=87 grade=B functions=7794 max_cyclomatic=49 max_cognitive=119
 --
 complex-function	high	docs/pip_sphinxext.py:122:9	PipOptions._format_option	function `PipOptions._format_option` has cyclomatic complexity 11 and cognitive complexity 7 over 36 lines
@@ -295,23 +295,14 @@ complex-function	high	src/pip/_vendor/urllib3/util/ssltransport.py:235:9	SSLTran
 complex-function	high	src/pip/_vendor/urllib3/util/url.py:301:5	_normalize_host	function `_normalize_host` has cyclomatic complexity 9 and cognitive complexity 19 over 27 lines
 complex-function	high	src/pip/_vendor/urllib3/util/url.py:367:5	parse_url	function `parse_url` has cyclomatic complexity 22 and cognitive complexity 28 over 103 lines
 complex-function	high	tests/conftest.py:119:5	pytest_collection_modifyitems	function `pytest_collection_modifyitems` has cyclomatic complexity 15 and cognitive complexity 26 over 48 lines
-complex-function	high	tests/functional/test_cache.py:469:5	test_cache_purge_removes_empty_dirs_and_legacy_files	function `test_cache_purge_removes_empty_dirs_and_legacy_files` has cyclomatic complexity 13 and cognitive complexity 0 over 39 lines
-complex-function	high	tests/functional/test_cli.py:114:5	test_no_network_imports	function `test_no_network_imports` has cyclomatic complexity 11 and cognitive complexity 0 over 35 lines
 complex-function	high	tests/functional/test_help.py:126:5	test_help_command_colors	function `test_help_command_colors` has cyclomatic complexity 11 and cognitive complexity 5 over 35 lines
-complex-function	high	tests/functional/test_install_report.py:217:5	test_install_report_vcs_and_wheel_cache	function `test_install_report_vcs_and_wheel_cache` has cyclomatic complexity 14 and cognitive complexity 0 over 57 lines
-complex-function	high	tests/functional/test_list.py:75:5	test_format_priority	function `test_format_priority` has cyclomatic complexity 11 and cognitive complexity 0 over 19 lines
 complex-function	high	tests/functional/test_new_resolver.py:1199:5	test_new_resolver_presents_messages_when_backtracking_a_lot	function `test_new_resolver_presents_messages_when_backtracking_a_lot` has cyclomatic complexity 11 and cognitive complexity 8 over 47 lines
 complex-function	high	tests/functional/test_uninstall.py:550:5	test_uninstall_without_record_fails	function `test_uninstall_without_record_fails` has cyclomatic complexity 11 and cognitive complexity 10 over 42 lines
 complex-function	high	tests/lib/__init__.py:323:9	TestPipResult.assert_installed	function `TestPipResult.assert_installed` has cyclomatic complexity 24 and cognitive complexity 28 over 68 lines
 complex-function	high	tests/lib/__init__.py:608:9	PipTestEnvironment.run	function `PipTestEnvironment.run` has cyclomatic complexity 20 and cognitive complexity 22 over 89 lines
 complex-function	high	tests/lib/__init__.py:816:5	diff_states	function `diff_states` has cyclomatic complexity 11 and cognitive complexity 3 over 43 lines
 complex-function	high	tests/unit/metadata/test_metadata_pkg_resources.py:84:5	test_wheel_metadata_works	function `test_wheel_metadata_works` has cyclomatic complexity 13 and cognitive complexity 2 over 35 lines
-complex-function	high	tests/unit/test_collector.py:1039:9	TestLinkCollector.test_collect_page_sources	function `TestLinkCollector.test_collect_page_sources` has cyclomatic complexity 12 and cognitive complexity 0 over 46 lines
-complex-function	high	tests/unit/test_direct_url_helpers.py:103:5	test_from_link_vcs	function `test_from_link_vcs` has cyclomatic complexity 14 and cognitive complexity 0 over 23 lines
-complex-function	high	tests/unit/test_models_wheel.py:104:9	TestWheelFile.test_supported_multiarch_darwin	function `TestWheelFile.test_supported_multiarch_darwin` has cyclomatic complexity 13 and cognitive complexity 0 over 37 lines
-complex-function	high	tests/unit/test_models_wheel.py:182:9	TestWheelFile.test_android	function `TestWheelFile.test_android` has cyclomatic complexity 25 and cognitive complexity 0 over 49 lines
 complex-function	high	tests/unit/test_network_auth.py:504:9	KeyringSubprocessResult._get_subcommand	function `KeyringSubprocessResult._get_subcommand` has cyclomatic complexity 12 and cognitive complexity 4 over 47 lines
-complex-function	high	tests/unit/test_network_session.py:193:9	TestPipSession.test_add_trusted_host	function `TestPipSession.test_add_trusted_host` has cyclomatic complexity 16 and cognitive complexity 0 over 55 lines
 complex-function	high	tests/unit/test_req.py:839:9	TestInstallRequirement.test_install_req_drop_extras	function `TestInstallRequirement.test_install_req_drop_extras` has cyclomatic complexity 14 and cognitive complexity 1 over 26 lines
 complex-function	high	tests/unit/test_req.py:884:9	TestInstallRequirement.test_install_req_extend_extras	function `TestInstallRequirement.test_install_req_extend_extras` has cyclomatic complexity 14 and cognitive complexity 1 over 27 lines
 complex-function	high	tests/unit/test_req_uninstall.py:380:9	TestStashedUninstallPathSet.test_commit_symlinks	function `TestStashedUninstallPathSet.test_commit_symlinks` has cyclomatic complexity 13 and cognitive complexity 2 over 32 lines

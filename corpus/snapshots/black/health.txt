@@ -1,7 +1,7 @@
 files_scanned=333
 symbols_checked=2597
 symbols_kept=0
-findings=101
+findings=100
 health: score=80 grade=B functions=2597 max_cyclomatic=116 max_cognitive=168
 --
 complex-function	high	scripts/generate_schema.py:9:5	generate_schema_from_click	function `generate_schema_from_click` has cyclomatic complexity 13 and cognitive complexity 11 over 36 lines
@@ -103,5 +103,4 @@ complex-function	high	tests/data/cases/empty_lines.py:5:5	f	function `f` has cyc
 complex-function	high	tests/data/cases/empty_lines.py:102:5	f	function `f` has cyclomatic complexity 13 and cognitive complexity 17 over 42 lines
 complex-function	high	tests/data/cases/pattern_matching_generic.py:13:5	get_grammars	function `get_grammars` has cyclomatic complexity 11 and cognitive complexity 9 over 77 lines
 complex-function	high	tests/optional.py:52:5	pytest_configure	function `pytest_configure` has cyclomatic complexity 13 and cognitive complexity 11 over 53 lines
-complex-function	high	tests/test_black.py:2533:9	TestCaching.test_filter_cached_hash	function `TestCaching.test_filter_cached_hash` has cyclomatic complexity 15 and cognitive complexity 0 over 37 lines
 complex-function	high	tests/util.py:53:5	_assert_format_equal	function `_assert_format_equal` has cyclomatic complexity 12 and cognitive complexity 15 over 34 lines

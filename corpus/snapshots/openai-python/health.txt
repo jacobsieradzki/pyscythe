@@ -1,7 +1,7 @@
 files_scanned=2156
 symbols_checked=9451
 symbols_kept=0
-findings=258
+findings=238
 health: score=77 grade=C functions=9451 max_cyclomatic=170 max_cognitive=396
 --
 complex-function	high	examples/responses/websocket.py:267:5	run_response	function `run_response` has cyclomatic complexity 17 and cognitive complexity 39 over 83 lines
@@ -148,7 +148,6 @@ complex-function	high	tests/lib/chat/test_completions_streaming.py:1027:5	test_s
 complex-function	high	tests/lib/chat/test_tool_call_deltas.py:78:5	assert_tool_stream	function `assert_tool_stream` has cyclomatic complexity 28 and cognitive complexity 4 over 38 lines
 complex-function	high	tests/lib/responses/test_null_output.py:20:11	test_stream_recovers_finalized_output	function `test_stream_recovers_finalized_output` has cyclomatic complexity 38 and cognitive complexity 18 over 106 lines
 complex-function	high	tests/lib/responses/test_null_output_items.py:36:11	test_stream_preserves_output_after_empty_item	function `test_stream_preserves_output_after_empty_item` has cyclomatic complexity 21 and cognitive complexity 5 over 101 lines
-complex-function	high	tests/lib/streaming/agents/test_streams.py:180:11	test_input_order_and_options	function `test_input_order_and_options` has cyclomatic complexity 12 and cognitive complexity 0 over 24 lines
 complex-function	high	tests/lib/streaming/agents/test_streams.py:253:11	test_tool_results_and_duplicates	function `test_tool_results_and_duplicates` has cyclomatic complexity 13 and cognitive complexity 1 over 29 lines
 complex-function	high	tests/lib/streaming/agents/test_streams.py:327:11	test_context_exit_close_and_single_use	function `test_context_exit_close_and_single_use` has cyclomatic complexity 11 and cognitive complexity 2 over 18 lines
 complex-function	high	tests/lib/streaming/agents/test_streams.py:386:11	test_tool_result_retry	function `test_tool_result_retry` has cyclomatic complexity 15 and cognitive complexity 3 over 31 lines
@@ -160,7 +159,6 @@ complex-function	high	tests/lib/test_azure_auth.py:206:11	test_callable_api_key_
 complex-function	high	tests/lib/test_azure_provider_diagnostics.py:132:11	test_invalid_provider_result_is_value_free	function `test_invalid_provider_result_is_value_free` has cyclomatic complexity 11 and cognitive complexity 5 over 22 lines
 complex-function	high	tests/lib/test_azure_websocket_redirects.py:45:11	test_async_azure_websocket_redirects	function `test_async_azure_websocket_redirects` has cyclomatic complexity 20 and cognitive complexity 13 over 45 lines
 complex-function	high	tests/lib/test_bedrock.py:885:5	test_profile_derived_region_survives_credential_override_with_custom_base_url	function `test_profile_derived_region_survives_credential_override_with_custom_base_url` has cyclomatic complexity 11 and cognitive complexity 1 over 36 lines
-complex-function	high	tests/lib/test_bedrock.py:1187:5	test_allows_responses_http_methods	function `test_allows_responses_http_methods` has cyclomatic complexity 13 and cognitive complexity 0 over 40 lines
 complex-function	high	tests/lib/test_bedrock_auth_conformance.py:45:5	_validate_fixture_envelope	function `_validate_fixture_envelope` has cyclomatic complexity 19 and cognitive complexity 8 over 17 lines
 complex-function	high	tests/lib/test_bedrock_auth_conformance.py:151:5	test_auth_selection_fixture	function `test_auth_selection_fixture` has cyclomatic complexity 15 and cognitive complexity 14 over 44 lines
 complex-function	high	tests/lib/test_bedrock_auth_conformance.py:239:5	test_retry_signing_fixture	function `test_retry_signing_fixture` has cyclomatic complexity 12 and cognitive complexity 1 over 45 lines
@@ -176,8 +174,6 @@ complex-function	high	tests/respx2/patterns.py:636:5	M	function `M` has cyclomat
 complex-function	high	tests/respx2/patterns.py:715:5	parse_url_patterns	function `parse_url_patterns` has cyclomatic complexity 15 and cognitive complexity 18 over 37 lines
 complex-function	high	tests/respx2/patterns.py:754:5	merge_patterns	function `merge_patterns` has cyclomatic complexity 12 and cognitive complexity 19 over 29 lines
 complex-function	high	tests/respx2/utils.py:113:9	SetCookie.__new__	function `SetCookie.__new__` has cyclomatic complexity 13 and cognitive complexity 14 over 45 lines
-complex-function	high	tests/test_client.py:447:9	TestOpenAI.test_validate_headers	function `TestOpenAI.test_validate_headers` has cyclomatic complexity 11 and cognitive complexity 0 over 77 lines
-complex-function	high	tests/test_client.py:1780:15	TestAsyncOpenAI.test_validate_headers	function `TestAsyncOpenAI.test_validate_headers` has cyclomatic complexity 11 and cognitive complexity 0 over 76 lines
 complex-function	high	tests/test_data_residency_regressions.py:92:5	test_residency_replaces_inherited_websocket_routing	function `test_residency_replaces_inherited_websocket_routing` has cyclomatic complexity 11 and cognitive complexity 1 over 17 lines
 complex-function	high	tests/test_debug_logging.py:155:11	test_failure_and_retry_metadata	function `test_failure_and_retry_metadata` has cyclomatic complexity 13 and cognitive complexity 3 over 32 lines
 complex-function	high	tests/test_debug_logging.py:200:11	test_websocket_receive_metadata	function `test_websocket_receive_metadata` has cyclomatic complexity 13 and cognitive complexity 8 over 25 lines
@@ -185,18 +181,9 @@ complex-function	high	tests/test_debug_logging.py:229:11	test_websocket_connecti
 complex-function	high	tests/test_debug_logging.py:337:11	test_custom_method_metadata	function `test_custom_method_metadata` has cyclomatic complexity 13 and cognitive complexity 3 over 30 lines
 complex-function	high	tests/test_debug_logging.py:371:11	test_sdk_log_switch_does_not_enable_transport_payloads	function `test_sdk_log_switch_does_not_enable_transport_payloads` has cyclomatic complexity 11 and cognitive complexity 3 over 30 lines
 complex-function	high	tests/test_dependency_constraints.py:16:5	test_optional_network_dependency_security_floors	function `test_optional_network_dependency_security_floors` has cyclomatic complexity 11 and cognitive complexity 1 over 10 lines
-complex-function	high	tests/test_httpx2.py:59:5	test_sync_helper_preserves_httpx2_family_for_parsed_raw_and_sse	function `test_sync_helper_preserves_httpx2_family_for_parsed_raw_and_sse` has cyclomatic complexity 17 and cognitive complexity 0 over 51 lines
-complex-function	high	tests/test_httpx2.py:112:11	test_async_helper_preserves_httpx2_family_for_parsed_raw_and_sse	function `test_async_helper_preserves_httpx2_family_for_parsed_raw_and_sse` has cyclomatic complexity 18 and cognitive complexity 0 over 51 lines
-complex-function	high	tests/test_httpx2.py:183:11	test_httpx2_urls_and_response_casts	function `test_httpx2_urls_and_response_casts` has cyclomatic complexity 13 and cognitive complexity 0 over 50 lines
-complex-function	high	tests/test_httpx2.py:271:11	test_httpx2_urls_work_for_all_websocket_builders	function `test_httpx2_urls_work_for_all_websocket_builders` has cyclomatic complexity 11 and cognitive complexity 0 over 25 lines
 complex-function	high	tests/test_httpx2.py:347:5	test_sync_retries_and_failure_families	function `test_sync_retries_and_failure_families` has cyclomatic complexity 11 and cognitive complexity 4 over 59 lines
 complex-function	high	tests/test_httpx2.py:409:11	test_async_retries_and_failure_families	function `test_async_retries_and_failure_families` has cyclomatic complexity 11 and cognitive complexity 4 over 59 lines
-complex-function	high	tests/test_httpx2.py:470:11	test_provider_auth_and_stream_consumed_families	function `test_provider_auth_and_stream_consumed_families` has cyclomatic complexity 23 and cognitive complexity 0 over 108 lines
-complex-function	high	tests/test_httpx2.py:582:11	test_assistant_stream_error_callbacks_preserve_httpx2_family	function `test_assistant_stream_error_callbacks_preserve_httpx2_family` has cyclomatic complexity 11 and cognitive complexity 0 over 82 lines
 complex-function	high	tests/test_httpx2.py:670:11	test_assistant_stream_hook_api_errors_are_not_unwrapped	function `test_assistant_stream_hook_api_errors_are_not_unwrapped` has cyclomatic complexity 17 and cognitive complexity 4 over 115 lines
-complex-function	high	tests/test_httpx2.py:787:11	test_sigv4_provider_preserves_httpx2_family_and_rejects_one_shot_bodies	function `test_sigv4_provider_preserves_httpx2_family_and_rejects_one_shot_bodies` has cyclomatic complexity 11 and cognitive complexity 0 over 49 lines
-complex-function	high	tests/test_httpx2_workload.py:35:5	test_sync_httpx2_workload_exchange_is_native_and_cached	function `test_sync_httpx2_workload_exchange_is_native_and_cached` has cyclomatic complexity 14 and cognitive complexity 0 over 47 lines
-complex-function	high	tests/test_models.py:330:5	test_union_of_lists	function `test_union_of_lists` has cyclomatic complexity 13 and cognitive complexity 0 over 30 lines
 complex-function	high	tests/test_models.py:540:5	test_to_dict	function `test_to_dict` has cyclomatic complexity 14 and cognitive complexity 1 over 30 lines
 complex-function	high	tests/test_models.py:572:5	test_forwards_compat_model_dump_method	function `test_forwards_compat_model_dump_method` has cyclomatic complexity 14 and cognitive complexity 1 over 26 lines
 complex-function	high	tests/test_models.py:608:5	test_to_json	function `test_to_json` has cyclomatic complexity 14 and cognitive complexity 3 over 26 lines
@@ -252,13 +239,6 @@ complex-function	high	tests/test_uv_workflows.py:6058:5	test_platform_release_ra
 complex-function	high	tests/test_uv_workflows.py:6489:5	test_wildcard_equality_series_preserve_reviewed_security_bounds	function `test_wildcard_equality_series_preserve_reviewed_security_bounds` has cyclomatic complexity 24 and cognitive complexity 23 over 53 lines
 complex-function	high	tests/test_uv_workflows.py:6585:5	test_python_membership_markers_preserve_exact_pep508_substrings	function `test_python_membership_markers_preserve_exact_pep508_substrings` has cyclomatic complexity 32 and cognitive complexity 40 over 119 lines
 complex-function	high	tests/test_uv_workflows.py:8283:5	test_arbitrary_equality_dependency_pins_can_track_reviewed_security_upgrades	function `test_arbitrary_equality_dependency_pins_can_track_reviewed_security_upgrades` has cyclomatic complexity 14 and cognitive complexity 12 over 24 lines
-complex-function	high	tests/test_x509_workload_identity.py:85:5	test_sync_x509_uses_one_transport_pinned_endpoint_and_cached_token	function `test_sync_x509_uses_one_transport_pinned_endpoint_and_cached_token` has cyclomatic complexity 12 and cognitive complexity 0 over 27 lines
-complex-function	high	tests/test_x509_workload_identity.py:114:5	test_sync_x509_does_not_mutate_or_independently_close_caller_transport	function `test_sync_x509_does_not_mutate_or_independently_close_caller_transport` has cyclomatic complexity 11 and cognitive complexity 0 over 24 lines
-complex-function	high	tests/test_x509_workload_identity.py:165:11	test_async_x509_does_not_mutate_or_independently_close_caller_transport	function `test_async_x509_does_not_mutate_or_independently_close_caller_transport` has cyclomatic complexity 11 and cognitive complexity 0 over 24 lines
-complex-function	high	tests/test_x509_workload_identity_hardening.py:473:5	test_sync_x509_client_copies_keep_authentication_caches_independent	function `test_sync_x509_client_copies_keep_authentication_caches_independent` has cyclomatic complexity 14 and cognitive complexity 0 over 28 lines
-complex-function	high	tests/test_x509_workload_identity_hardening.py:503:11	test_async_x509_client_copies_keep_authentication_caches_independent	function `test_async_x509_client_copies_keep_authentication_caches_independent` has cyclomatic complexity 14 and cognitive complexity 0 over 28 lines
 complex-function	high	tests/test_x509_workload_identity_regressions.py:174:5	test_sync_copy_can_switch_from_x509_identity_to_api_key	function `test_sync_copy_can_switch_from_x509_identity_to_api_key` has cyclomatic complexity 11 and cognitive complexity 1 over 23 lines
 complex-function	high	tests/test_x509_workload_identity_regressions.py:201:11	test_async_copy_can_switch_from_x509_identity_to_api_key	function `test_async_copy_can_switch_from_x509_identity_to_api_key` has cyclomatic complexity 11 and cognitive complexity 1 over 25 lines
-complex-function	high	tests/test_x509_workload_identity_regressions.py:368:5	test_sync_x509_exchange_does_not_inherit_caller_request_state	function `test_sync_x509_exchange_does_not_inherit_caller_request_state` has cyclomatic complexity 13 and cognitive complexity 0 over 34 lines
-complex-function	high	tests/test_x509_workload_identity_regressions.py:404:11	test_async_x509_exchange_does_not_inherit_caller_request_state	function `test_async_x509_exchange_does_not_inherit_caller_request_state` has cyclomatic complexity 13 and cognitive complexity 0 over 34 lines
 complex-function	high	tests/utils.py:56:5	assert_matches_type	function `assert_matches_type` has cyclomatic complexity 46 and cognitive complexity 44 over 94 lines

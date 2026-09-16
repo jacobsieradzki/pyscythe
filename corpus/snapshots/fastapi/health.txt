@@ -1,7 +1,7 @@
 files_scanned=1028
 symbols_checked=4769
 symbols_kept=0
-findings=53
+findings=39
 health: score=60 grade=D functions=4769 max_cyclomatic=48 max_cognitive=111
 --
 complex-function	high	fastapi/_compat/v2.py:285:5	get_definitions	function `get_definitions` has cyclomatic complexity 15 and cognitive complexity 6 over 62 lines
@@ -40,20 +40,6 @@ complex-function	high	scripts/docs.py:600:5	generate_docs_src_versions_for_file	
 complex-function	high	scripts/docs.py:727:5	remove_unused_docs_src	function `remove_unused_docs_src` has cyclomatic complexity 29 and cognitive complexity 68 over 107 lines
 complex-function	high	scripts/docs.py:837:5	add_permalinks_page	function `add_permalinks_page` has cyclomatic complexity 21 and cognitive complexity 39 over 61 lines
 complex-function	high	scripts/notify_translations.py:306:5	main	function `main` has cyclomatic complexity 28 and cognitive complexity 42 over 124 lines
-complex-function	high	tests/test_frontend.py:124:5	test_frontend_route_group_helpers	function `test_frontend_route_group_helpers` has cyclomatic complexity 12 and cognitive complexity 0 over 38 lines
 complex-function	high	tests/test_include_router_defaults_overrides.py:374:5	test_paths_level3	function `test_paths_level3` has cyclomatic complexity 13 and cognitive complexity 7 over 24 lines
 complex-function	high	tests/test_include_router_defaults_overrides.py:405:5	test_paths_level5	function `test_paths_level5` has cyclomatic complexity 19 and cognitive complexity 11 over 32 lines
-complex-function	high	tests/test_router_events.py:27:5	test_router_events	function `test_router_events` has cyclomatic complexity 22 and cognitive complexity 0 over 60 lines
-complex-function	high	tests/test_router_events.py:114:5	test_router_nested_lifespan_state	function `test_router_nested_lifespan_state` has cyclomatic complexity 22 and cognitive complexity 0 over 58 lines
-complex-function	high	tests/test_router_events.py:321:5	test_startup_shutdown_handlers_as_parameters	function `test_startup_shutdown_handlers_as_parameters` has cyclomatic complexity 22 and cognitive complexity 0 over 58 lines
-complex-function	high	tests/test_schema_extra_examples.py:9:5	create_app	function `create_app` has cyclomatic complexity 11 and cognitive complexity 0 over 205 lines
-complex-function	high	tests/test_schema_extra_examples.py:216:5	test_call_api	function `test_call_api` has cyclomatic complexity 17 and cognitive complexity 0 over 35 lines
 complex-function	high	tests/test_sse.py:115:5	test_async_generator_with_model	function `test_async_generator_with_model` has cyclomatic complexity 14 and cognitive complexity 3 over 19 lines
-complex-function	high	tests/test_sse.py:190:5	test_sse_events_with_fields	function `test_sse_events_with_fields` has cyclomatic complexity 11 and cognitive complexity 0 over 17 lines
-complex-function	high	tests/test_tutorial/test_configure_swagger_ui/test_tutorial001.py:8:5	test_swagger_ui	function `test_swagger_ui` has cyclomatic complexity 11 and cognitive complexity 0 over 28 lines
-complex-function	high	tests/test_tutorial/test_configure_swagger_ui/test_tutorial002.py:8:5	test_swagger_ui	function `test_swagger_ui` has cyclomatic complexity 12 and cognitive complexity 0 over 31 lines
-complex-function	high	tests/test_tutorial/test_configure_swagger_ui/test_tutorial003.py:8:5	test_swagger_ui	function `test_swagger_ui` has cyclomatic complexity 12 and cognitive complexity 0 over 31 lines
-complex-function	high	tests/test_tutorial/test_cors/test_tutorial001.py:6:5	test_cors	function `test_cors` has cyclomatic complexity 11 and cognitive complexity 0 over 32 lines
-complex-function	high	tests/test_tutorial/test_server_sent_events/test_tutorial002.py:20:5	test_stream_items	function `test_stream_items` has cyclomatic complexity 20 and cognitive complexity 0 over 24 lines
-complex-function	high	tests/test_tutorial/test_sql_databases/test_tutorial001.py:53:5	test_crud_app	function `test_crud_app` has cyclomatic complexity 19 and cognitive complexity 0 over 94 lines
-complex-function	high	tests/test_tutorial/test_sql_databases/test_tutorial002.py:53:5	test_crud_app	function `test_crud_app` has cyclomatic complexity 26 and cognitive complexity 0 over 98 lines

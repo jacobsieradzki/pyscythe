@@ -1,7 +1,7 @@
 files_scanned=1132
 symbols_checked=6338
 symbols_kept=0
-findings=126
+findings=82
 health: score=90 grade=A functions=6338 max_cyclomatic=63 max_cognitive=65
 --
 complex-function	high	litestar/_asgi/routing_trie/mapping.py:61:5	add_route_to_trie	function `add_route_to_trie` has cyclomatic complexity 10 and cognitive complexity 19 over 62 lines
@@ -53,7 +53,6 @@ complex-function	high	litestar/middleware/compression/middleware.py:119:19	send_
 complex-function	high	litestar/middleware/constraints.py:328:5	check_middleware_constraints	function `check_middleware_constraints` has cyclomatic complexity 13 and cognitive complexity 25 over 65 lines
 complex-function	high	litestar/openapi/spec/base.py:25:5	_normalize_value	function `_normalize_value` has cyclomatic complexity 11 and cognitive complexity 10 over 14 lines
 complex-function	high	litestar/openapi/spec/schema.py:23:5	_recursive_hash	function `_recursive_hash` has cyclomatic complexity 10 and cognitive complexity 17 over 18 lines
-complex-function	high	litestar/plugins/base.py:304:9	PluginRegistry.__init__	function `PluginRegistry.__init__` has cyclomatic complexity 14 and cognitive complexity 0 over 9 lines
 complex-function	high	litestar/plugins/core/_msgspec.py:61:5	kwarg_definition_from_field	function `kwarg_definition_from_field` has cyclomatic complexity 15 and cognitive complexity 13 over 60 lines
 complex-function	high	litestar/plugins/pydantic/dto.py:86:9	PydanticDTO.generate_field_definitions	function `PydanticDTO.generate_field_definitions` has cyclomatic complexity 11 and cognitive complexity 24 over 65 lines
 complex-function	high	litestar/plugins/pydantic/utils.py:162:5	_create_field_definition_v2	function `_create_field_definition_v2` has cyclomatic complexity 18 and cognitive complexity 22 over 62 lines
@@ -68,65 +67,22 @@ complex-function	high	litestar/static_files.py:180:11	_handler	function `_handle
 complex-function	high	litestar/typing.py:72:5	_annotated_types_extractor	function `_annotated_types_extractor` has cyclomatic complexity 18 and cognitive complexity 24 over 39 lines
 complex-function	high	litestar/typing.py:450:9	FieldDefinition.from_annotation	function `FieldDefinition.from_annotation` has cyclomatic complexity 18 and cognitive complexity 19 over 69 lines
 complex-function	high	litestar/utils/dataclass.py:22:5	extract_dataclass_fields	function `extract_dataclass_fields` has cyclomatic complexity 16 and cognitive complexity 7 over 37 lines
-complex-function	high	tests/e2e/test_response_caching.py:331:5	test_on_multiple_handlers	function `test_on_multiple_handlers` has cyclomatic complexity 13 and cognitive complexity 0 over 31 lines
-complex-function	high	tests/e2e/test_routing/test_path_mounting.py:20:5	test_supports_mounting	function `test_supports_mounting` has cyclomatic complexity 12 and cognitive complexity 0 over 38 lines
-complex-function	high	tests/e2e/test_routing/test_route_indexing.py:25:5	test_indexes_handlers	function `test_indexes_handlers` has cyclomatic complexity 11 and cognitive complexity 0 over 32 lines
-complex-function	high	tests/examples/test_request_data.py:100:5	test_request_data_10	function `test_request_data_10` has cyclomatic complexity 14 and cognitive complexity 0 over 38 lines
 complex-function	high	tests/unit/test_cli/test_core_commands.py:66:5	test_run_command	function `test_run_command` has cyclomatic complexity 49 and cognitive complexity 65 over 150 lines
 complex-function	high	tests/unit/test_cli/test_core_commands.py:358:5	test_run_command_arguments_precedence	function `test_run_command_arguments_precedence` has cyclomatic complexity 20 and cognitive complexity 21 over 57 lines
 complex-function	high	tests/unit/test_cli/test_core_commands.py:596:5	test_routes_command_options	function `test_routes_command_options` has cyclomatic complexity 13 and cognitive complexity 7 over 30 lines
 complex-function	high	tests/unit/test_cli/test_ssl.py:35:5	test_both_files_provided	function `test_both_files_provided` has cyclomatic complexity 11 and cognitive complexity 2 over 28 lines
 complex-function	high	tests/unit/test_cli/test_ssl.py:282:5	test_arguments_passed	function `test_arguments_passed` has cyclomatic complexity 13 and cognitive complexity 14 over 65 lines
-complex-function	high	tests/unit/test_connection/test_base.py:12:5	test_connection_base_properties	function `test_connection_base_properties` has cyclomatic complexity 24 and cognitive complexity 0 over 36 lines
-complex-function	high	tests/unit/test_datastructures/test_url.py:27:5	test_url	function `test_url` has cyclomatic complexity 11 and cognitive complexity 0 over 12 lines
-complex-function	high	tests/unit/test_di.py:242:11	test_stateful_sync_generator_with_cleanup	function `test_stateful_sync_generator_with_cleanup` has cyclomatic complexity 15 and cognitive complexity 0 over 36 lines
-complex-function	high	tests/unit/test_di.py:281:11	test_stateful_async_generator_with_cleanup	function `test_stateful_async_generator_with_cleanup` has cyclomatic complexity 15 and cognitive complexity 0 over 36 lines
-complex-function	high	tests/unit/test_dto/test_factory/test_backends/test_backends.py:209:5	test_backend_create_openapi_schema	function `test_backend_create_openapi_schema` has cyclomatic complexity 19 and cognitive complexity 0 over 36 lines
-complex-function	high	tests/unit/test_dto/test_factory/test_backends/test_backends.py:452:5	test_parse_model_nested_exclude	function `test_parse_model_nested_exclude` has cyclomatic complexity 18 and cognitive complexity 0 over 54 lines
-complex-function	high	tests/unit/test_dto/test_factory/test_backends/test_backends.py:508:5	test_parse_model_nested_include	function `test_parse_model_nested_include` has cyclomatic complexity 18 and cognitive complexity 0 over 54 lines
 complex-function	high	tests/unit/test_dto/test_factory/test_backends/test_base_dto.py:205:5	test_create_transfer_type_tuple	function `test_create_transfer_type_tuple` has cyclomatic complexity 12 and cognitive complexity 4 over 21 lines
-complex-function	high	tests/unit/test_exceptions.py:269:5	test_debug_html_response_contains_copy_traceback_elements	function `test_debug_html_response_contains_copy_traceback_elements` has cyclomatic complexity 13 and cognitive complexity 0 over 29 lines
 complex-function	high	tests/unit/test_handlers/test_http_handlers/test_kwarg_handling.py:27:5	test_route_handler_kwarg_handling	function `test_route_handler_kwarg_handling` has cyclomatic complexity 16 and cognitive complexity 9 over 36 lines
-complex-function	high	tests/unit/test_kwargs/test_layered_params.py:167:5	test_layered_include_in_schema_parameter	function `test_layered_include_in_schema_parameter` has cyclomatic complexity 18 and cognitive complexity 0 over 92 lines
-complex-function	high	tests/unit/test_middleware/test_allowed_hosts_middleware.py:39:5	test_allowed_hosts_middleware_hosts_regex	function `test_allowed_hosts_middleware_hosts_regex` has cyclomatic complexity 11 and cognitive complexity 0 over 15 lines
 complex-function	high	tests/unit/test_middleware/test_cors_middleware.py:60:5	test_cors_simple_response	function `test_cors_simple_response` has cyclomatic complexity 26 and cognitive complexity 13 over 54 lines
-complex-function	high	tests/unit/test_middleware/test_rate_limit_middleware.py:27:11	test_rate_limiting	function `test_rate_limiting` has cyclomatic complexity 20 and cognitive complexity 0 over 49 lines
-complex-function	high	tests/unit/test_openapi/test_integration.py:299:5	test_allow_multiple_parameters_with_same_name_but_different_location	function `test_allow_multiple_parameters_with_same_name_but_different_location` has cyclomatic complexity 12 and cognitive complexity 0 over 27 lines
-complex-function	high	tests/unit/test_openapi/test_parameters.py:58:5	test_create_parameters	function `test_create_parameters` has cyclomatic complexity 63 and cognitive complexity 0 over 96 lines
-complex-function	high	tests/unit/test_openapi/test_parameters.py:245:5	test_layered_parameters	function `test_layered_parameters` has cyclomatic complexity 37 and cognitive complexity 0 over 86 lines
-complex-function	high	tests/unit/test_openapi/test_path_item.py:63:5	test_create_path_item	function `test_create_path_item` has cyclomatic complexity 13 and cognitive complexity 0 over 14 lines
-complex-function	high	tests/unit/test_openapi/test_path_item.py:176:5	test_operation_override	function `test_operation_override` has cyclomatic complexity 11 and cognitive complexity 0 over 33 lines
 complex-function	high	tests/unit/test_openapi/test_responses.py:71:5	test_create_responses	function `test_create_responses` has cyclomatic complexity 12 and cognitive complexity 6 over 21 lines
 complex-function	high	tests/unit/test_openapi/test_responses.py:94:5	test_create_error_responses	function `test_create_error_responses` has cyclomatic complexity 37 and cognitive complexity 1 over 59 lines
-complex-function	high	tests/unit/test_openapi/test_responses.py:348:5	test_create_success_response_file_data	function `test_create_success_response_file_data` has cyclomatic complexity 15 and cognitive complexity 0 over 25 lines
-complex-function	high	tests/unit/test_openapi/test_responses.py:387:5	test_create_additional_responses	function `test_create_additional_responses` has cyclomatic complexity 23 and cognitive complexity 0 over 63 lines
-complex-function	high	tests/unit/test_openapi/test_responses.py:512:5	test_additional_responses_with_custom_example_ids	function `test_additional_responses_with_custom_example_ids` has cyclomatic complexity 11 and cognitive complexity 0 over 32 lines
-complex-function	high	tests/unit/test_openapi/test_schema.py:318:5	test_create_schema_from_msgspec_annotated_type	function `test_create_schema_from_msgspec_annotated_type` has cyclomatic complexity 13 and cognitive complexity 0 over 33 lines
-complex-function	high	tests/unit/test_openapi/test_schema.py:405:5	test_annotated_types	function `test_annotated_types` has cyclomatic complexity 11 and cognitive complexity 0 over 32 lines
-complex-function	high	tests/unit/test_openapi/test_schema.py:577:5	test_optional_enum	function `test_optional_enum` has cyclomatic complexity 14 and cognitive complexity 0 over 23 lines
-complex-function	high	tests/unit/test_openapi/test_schema.py:602:5	test_optional_str_specified_enum	function `test_optional_str_specified_enum` has cyclomatic complexity 14 and cognitive complexity 0 over 28 lines
-complex-function	high	tests/unit/test_openapi/test_schema.py:632:5	test_optional_int_specified_enum	function `test_optional_int_specified_enum` has cyclomatic complexity 14 and cognitive complexity 0 over 28 lines
-complex-function	high	tests/unit/test_plugins/test_htmx/test_htmx_reexports.py:4:5	test_all_re_exports_are_importable	function `test_all_re_exports_are_importable` has cyclomatic complexity 23 and cognitive complexity 0 over 92 lines
-complex-function	high	tests/unit/test_plugins/test_opentelemetry.py:71:5	test_open_telemetry_middleware_with_http_route	function `test_open_telemetry_middleware_with_http_route` has cyclomatic complexity 14 and cognitive complexity 0 over 45 lines
-complex-function	high	tests/unit/test_plugins/test_opentelemetry.py:278:5	test_after_exception_hook_handler_called_on_exception	function `test_after_exception_hook_handler_called_on_exception` has cyclomatic complexity 11 and cognitive complexity 0 over 42 lines
-complex-function	high	tests/unit/test_plugins/test_prometheus.py:29:5	test_prometheus_exporter_metrics_with_http	function `test_prometheus_exporter_metrics_with_http` has cyclomatic complexity 13 and cognitive complexity 0 over 72 lines
 complex-function	high	tests/unit/test_plugins/test_pydantic/test_openapi.py:249:5	test_create_date_constrained_field_schema_pydantic_v2	function `test_create_date_constrained_field_schema_pydantic_v2` has cyclomatic complexity 11 and cognitive complexity 4 over 20 lines
 complex-function	high	tests/unit/test_plugins/test_pydantic/test_openapi.py:583:5	test_create_for_computed_field	function `test_create_for_computed_field` has cyclomatic complexity 14 and cognitive complexity 3 over 27 lines
-complex-function	high	tests/unit/test_plugins/test_pydantic/test_schema_plugin.py:99:5	test_root_model_schema_generation	function `test_root_model_schema_generation` has cyclomatic complexity 36 and cognitive complexity 0 over 105 lines
-complex-function	high	tests/unit/test_response/test_response_to_asgi_response.py:158:11	test_to_response_returning_file_response	function `test_to_response_returning_file_response` has cyclomatic complexity 11 and cognitive complexity 0 over 34 lines
 complex-function	high	tests/unit/test_response/test_response_to_asgi_response.py:214:11	test_to_response_streaming_response	function `test_to_response_streaming_response` has cyclomatic complexity 12 and cognitive complexity 2 over 33 lines
-complex-function	high	tests/unit/test_response/test_response_to_asgi_response.py:312:11	test_to_response_sse_events	function `test_to_response_sse_events` has cyclomatic complexity 11 and cognitive complexity 0 over 32 lines
 complex-function	high	tests/unit/test_security/test_jwt/test_auth.py:54:11	test_jwt_auth	function `test_jwt_auth` has cyclomatic complexity 20 and cognitive complexity 5 over 107 lines
 complex-function	high	tests/unit/test_security/test_jwt/test_auth.py:232:11	test_jwt_cookie_auth	function `test_jwt_cookie_auth` has cyclomatic complexity 27 and cognitive complexity 5 over 146 lines
-complex-function	high	tests/unit/test_signature/test_parsing.py:22:5	test_create_function_signature_model_parameter_parsing	function `test_create_function_signature_model_parameter_parsing` has cyclomatic complexity 13 and cognitive complexity 0 over 25 lines
-complex-function	high	tests/unit/test_static_files/test_create_static_router.py:24:5	test_pass_options	function `test_pass_options` has cyclomatic complexity 11 and cognitive complexity 0 over 47 lines
-complex-function	high	tests/unit/test_template/test_builtin_functions.py:19:5	test_jinja_url_for	function `test_jinja_url_for` has cyclomatic complexity 13 and cognitive complexity 0 over 57 lines
-complex-function	high	tests/unit/test_template/test_builtin_functions.py:114:5	test_minijinja_url_for	function `test_minijinja_url_for` has cyclomatic complexity 13 and cognitive complexity 0 over 61 lines
 complex-function	high	tests/unit/test_template/test_template.py:164:5	test_template_scenarios	function `test_template_scenarios` has cyclomatic complexity 14 and cognitive complexity 11 over 31 lines
-complex-function	high	tests/unit/test_testing/test_request_factory.py:132:5	test_request_factory_create_with_params	function `test_request_factory_create_with_params` has cyclomatic complexity 14 and cognitive complexity 0 over 47 lines
 complex-function	high	tests/unit/test_testing/test_test_client.py:261:5	test_client_interface_context_manager	function `test_client_interface_context_manager` has cyclomatic complexity 15 and cognitive complexity 7 over 45 lines
 complex-function	high	tests/unit/test_testing/test_test_client.py:309:11	test_client_interface_context_manager_async	function `test_client_interface_context_manager_async` has cyclomatic complexity 15 and cognitive complexity 7 over 45 lines
-complex-function	high	tests/unit/test_typing.py:311:5	test_is_required	function `test_is_required` has cyclomatic complexity 14 and cognitive complexity 0 over 55 lines
-complex-function	high	tests/unit/test_typing.py:368:5	test_field_definition_bound_type	function `test_field_definition_bound_type` has cyclomatic complexity 11 and cognitive complexity 0 over 25 lines
-complex-function	high	tests/unit/test_typing.py:395:5	test_nested_generic_types	function `test_nested_generic_types` has cyclomatic complexity 13 and cognitive complexity 0 over 29 lines
 complex-function	high	tools/sphinx_ext/missing_references.py:52:5	on_warn_missing_reference	function `on_warn_missing_reference` has cyclomatic complexity 13 and cognitive complexity 15 over 39 lines
