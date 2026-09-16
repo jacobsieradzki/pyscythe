@@ -57,6 +57,9 @@ impl KeepRule for Graphene {
 
     fn keep(&self, context: KeepContext<'_>) -> Option<&'static str> {
         let symbol = context.symbol;
+        if crate::dead_code::is_attribute(symbol) && is_schema_type(&context) {
+            return Some("a field of a GraphQL schema type, declared for the executor");
+        }
         if symbol.kind != SymbolKind::Method {
             return None;
         }
@@ -76,6 +79,23 @@ impl KeepRule for Graphene {
 mod tests {
     use super::Graphene;
     use crate::plugins::testing::Case;
+
+    #[test]
+    fn keeps_the_fields_a_schema_type_declares() {
+        assert!(
+            Case::attribute("staff_users")
+                .on_class(
+                    Case::class("AccountQueries")
+                        .with_ancestors(&["graphene.types.objecttype.ObjectType"])
+                )
+                .is_kept_by(&Graphene)
+        );
+        assert!(
+            !Case::attribute("staff_users")
+                .on_class(Case::class("AccountQueries"))
+                .is_kept_by(&Graphene)
+        );
+    }
 
     #[test]
     fn keeps_hooks_on_schema_types() {

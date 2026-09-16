@@ -1,7 +1,7 @@
 files_scanned=4331
-symbols_checked=28571
-symbols_kept=16127
-findings=186
+symbols_checked=44027
+symbols_kept=18131
+findings=231
 --
 unused-file	medium	.semgrep/correctness/celery/task-logger-without-suffix.py	-	file `task-logger-without-suffix.py` is never imported or run
 unused-function	medium	.semgrep/correctness/django/django-migration-wrong-app-config.py:24:5	wrong_app_config_multiline	function `wrong_app_config_multiline` is never used
@@ -33,7 +33,16 @@ unused-function	low	saleor/checkout/utils.py:294:5	_get_line_if_exist	function `
 unused-variable	medium	saleor/checkout/webhooks/calculate_taxes.py:27:1	logger	variable `logger` is never used
 unused-variable	medium	saleor/checkout/webhooks/exclude_shipping.py:26:1	logger	variable `logger` is never used
 unused-method	low	saleor/core/db/expressions.py:76:9	as_postgresql	method `PostgresJsonConcatenate.as_postgresql` is never used
+unused-attribute	low	saleor/core/db/fields.py:38:5	empty_values	attribute `NonDatabaseFieldBase.empty_values` is never used
+unused-attribute	low	saleor/core/db/fields.py:43:5	concrete	attribute `NonDatabaseFieldBase.concrete` is never used
+unused-attribute	low	saleor/core/db/fields.py:45:5	generated	attribute `NonDatabaseFieldBase.generated` is never used
+unused-attribute	low	saleor/core/db/fields.py:48:5	is_relation	attribute `NonDatabaseFieldBase.is_relation` is never used
+unused-attribute	low	saleor/core/db/fields.py:53:5	one_to_many	attribute `NonDatabaseFieldBase.one_to_many` is never used
+unused-attribute	low	saleor/core/db/fields.py:54:5	one_to_one	attribute `NonDatabaseFieldBase.one_to_one` is never used
+unused-attribute	low	saleor/core/db/fields.py:57:14	column	attribute `NonDatabaseFieldBase.column` is never used
+unused-attribute	low	saleor/core/db/fields.py:58:14	primary_key	attribute `NonDatabaseFieldBase.primary_key` is never used
 unused-method	low	saleor/core/db/fields.py:76:9	contribute_to_class	method `NonDatabaseFieldBase.contribute_to_class` is never used
+unused-attribute	low	saleor/core/db/fields.py:77:14	attname	attribute `NonDatabaseFieldBase.attname` is never used
 unused-method	low	saleor/core/db/filters.py:7:9	as_postgresql	method `PostgresILike.as_postgresql` is never used
 unused-method	low	saleor/core/db_routers.py:5:9	db_for_write	method `PrimaryReplicaRouter.db_for_write` is never used
 unused-method	low	saleor/core/db_routers.py:9:9	allow_relation	method `PrimaryReplicaRouter.allow_relation` is never used
@@ -42,6 +51,7 @@ unused-class	medium	saleor/core/exceptions.py:98:7	SyncEventError	class `SyncEve
 unused-variable	medium	saleor/core/middleware.py:15:1	logger	variable `logger` is never used
 unused-variable	low	saleor/core/prices.py:13:1	PriceType	variable `PriceType` is never used
 unused-class	medium	saleor/core/storages.py:35:7	AzureStorage	class `AzureStorage` is never used
+unused-attribute	low	saleor/core/taxes.py:60:5	LINE_NUMBER	attribute `TaxDataErrorMessage.LINE_NUMBER` is never used
 unused-function	low	saleor/core/tests/commands/test_check_mptt_trees.py:12:5	corrupted_category_tree	function `corrupted_category_tree` is never used
 unused-function	low	saleor/core/tests/commands/test_check_mptt_trees.py:26:5	corrupted_menu_item_tree	function `corrupted_menu_item_tree` is never used
 unused-function	low	saleor/core/tests/commands/test_check_mptt_trees.py:38:5	category_tree_with_duplicated_root_tree_id	function `category_tree_with_duplicated_root_tree_id` is never used
@@ -61,6 +71,7 @@ unused-variable	medium	saleor/discount/tests/test_discounts.py:511:1	date_time_n
 unused-variable	low	saleor/discount/utils/manual_discount.py:12:1	T	variable `T` is never used
 unused-class	medium	saleor/graphql/account/dataloaders.py:166:7	PermissionByCodenameLoader	class `PermissionByCodenameLoader` is never used
 unused-variable	low	saleor/graphql/account/dataloaders.py:178:1	K	variable `K` is never used
+unused-attribute	low	saleor/graphql/account/filters.py:280:5	placed_orders_at	attribute `CustomerWhereFilterInput.placed_orders_at` is never used
 unused-method	low	saleor/graphql/account/filters.py:323:9	filter_is_active	method `CustomerWhereFilterInput.filter_is_active` is never used
 unused-variable	medium	saleor/graphql/account/resolvers.py:28:1	USER_SEARCH_FIELDS	variable `USER_SEARCH_FIELDS` is never used
 unused-variable	medium	saleor/graphql/account/tests/test_i18n.py:13:1	logger	variable `logger` is never used
@@ -68,11 +79,17 @@ unused-class	medium	saleor/graphql/app/types.py:174:7	HttpMethod	class `HttpMeth
 unused-variable	medium	saleor/graphql/attribute/dataloaders/assigned_attributes.py:31:6	PRODUCT_TYPE_ID	variable `PRODUCT_TYPE_ID` is never used
 unused-class	medium	saleor/graphql/attribute/dataloaders/attributes.py:7:7	AttributeValuesByAttributeIdLoader	class `AttributeValuesByAttributeIdLoader` is never used
 unused-variable	medium	saleor/graphql/attribute/dataloaders/reference_types.py:12:6	PAGE_TYPE_ID	variable `PAGE_TYPE_ID` is never used
+unused-attribute	low	saleor/graphql/attribute/filters.py:271:5	with_choices	attribute `AttributeWhere.with_choices` is never used
 unused-class	medium	saleor/graphql/attribute/shared_filters.py:105:7	SharedContainsFilterParams	class `SharedContainsFilterParams` is never used
 unused-function	low	saleor/graphql/checkout/filters.py:30:5	get_checkout_token_from_query	function `get_checkout_token_from_query` is never used
 unused-function	low	saleor/graphql/checkout/filters.py:39:5	get_payment_id_from_query	function `get_payment_id_from_query` is never used
 unused-function	low	saleor/graphql/checkout/filters.py:46:5	get_checkout_id_from_query	function `get_checkout_id_from_query` is never used
 unused-function	medium	saleor/graphql/checkout/filters.py:53:5	filter_checkout_by_payment	function `filter_checkout_by_payment` is never used
+unused-attribute	low	saleor/graphql/checkout/mutations/checkout_billing_address_update.py:39:9	save_address	attribute `Arguments.save_address` is never used
+unused-attribute	low	saleor/graphql/checkout/mutations/checkout_complete.py:80:9	store_source	attribute `Arguments.store_source` is never used
+unused-attribute	low	saleor/graphql/checkout/mutations/checkout_lines_delete.py:35:9	lines_ids	attribute `Arguments.lines_ids` is never used
+unused-attribute	low	saleor/graphql/checkout/mutations/checkout_shipping_address_update.py:62:9	save_address	attribute `Arguments.save_address` is never used
+unused-attribute	low	saleor/graphql/checkout/mutations/order_create_from_checkout.py:67:9	remove_checkout	attribute `Arguments.remove_checkout` is never used
 unused-class	medium	saleor/graphql/context.py:64:7	RequestWithUser	class `RequestWithUser` is never used
 unused-variable	low	saleor/graphql/core/dataloaders.py:16:1	K	variable `K` is never used
 unused-variable	low	saleor/graphql/core/dataloaders.py:17:1	R	variable `R` is never used
@@ -94,16 +111,39 @@ unused-method	low	saleor/graphql/core/validators/mutation_count_limit_rule.py:27
 unused-function	medium	saleor/graphql/core/validators/query_cost.py:330:5	validate_query_cost	function `validate_query_cost` is never used
 unused-function	medium	saleor/graphql/decorators.py:72:5	permission_required	function `permission_required` is never used
 unused-variable	medium	saleor/graphql/decorators.py:116:1	staff_member_or_app_required	variable `staff_member_or_app_required` is never used
+unused-attribute	low	saleor/graphql/discount/filters.py:196:5	is_old_sale	attribute `PromotionWhere.is_old_sale` is never used
 unused-function	medium	saleor/graphql/discount/mutations/utils.py:19:5	convert_catalogue_info_to_global_ids	function `convert_catalogue_info_to_global_ids` is never used
+unused-attribute	low	saleor/graphql/menu/mutations/assign_navigation.py:19:9	navigation_type	attribute `Arguments.navigation_type` is never used
 unused-variable	medium	saleor/graphql/meta/tests/queries/utils.py:13:1	PUBLIC_KEY2	variable `PUBLIC_KEY2` is never used
 unused-variable	medium	saleor/graphql/meta/tests/queries/utils.py:15:1	PUBLIC_VALUE2	variable `PUBLIC_VALUE2` is never used
 unused-function	medium	saleor/graphql/middleware.py:4:5	process_view	function `process_view` is never used
 unused-function	low	saleor/graphql/order/filters.py:106:5	get_payment_id_from_query	function `get_payment_id_from_query` is never used
 unused-function	medium	saleor/graphql/order/filters.py:113:5	filter_order_by_payment	function `filter_order_by_payment` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:379:5	is_click_and_collect	attribute `OrderFilter.is_click_and_collect` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:383:5	checkout_tokens	attribute `OrderFilter.checkout_tokens` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:386:5	gift_card_used	attribute `OrderFilter.gift_card_used` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:387:5	gift_card_bought	attribute `OrderFilter.gift_card_bought` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:391:5	checkout_ids	attribute `OrderFilter.checkout_ids` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:862:5	is_click_and_collect	attribute `CustomerOrderWhere.is_click_and_collect` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:866:5	is_gift_card_used	attribute `CustomerOrderWhere.is_gift_card_used` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:870:5	is_gift_card_bought	attribute `CustomerOrderWhere.is_gift_card_bought` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:879:5	has_invoices	attribute `CustomerOrderWhere.has_invoices` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:891:5	has_fulfillments	attribute `CustomerOrderWhere.has_fulfillments` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:991:5	is_click_and_collect	attribute `OrderWhere.is_click_and_collect` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:995:5	is_gift_card_used	attribute `OrderWhere.is_gift_card_used` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:999:5	is_gift_card_bought	attribute `OrderWhere.is_gift_card_bought` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:1008:5	has_invoices	attribute `OrderWhere.has_invoices` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:1020:5	has_fulfillments	attribute `OrderWhere.has_fulfillments` is never used
+unused-attribute	low	saleor/graphql/order/filters.py:1133:5	is_click_and_collect	attribute `DraftOrderWhere.is_click_and_collect` is never used
 unused-function	medium	saleor/graphql/order/mutations/draft_order_cleaner.py:108:5	clean_voucher_listing	function `clean_voucher_listing` is never used
+unused-attribute	low	saleor/graphql/order/mutations/order_discount_delete.py:24:9	discount_id	attribute `Arguments.discount_id` is never used
+unused-attribute	low	saleor/graphql/order/mutations/order_discount_update.py:27:9	discount_id	attribute `Arguments.discount_id` is never used
 unused-variable	medium	saleor/graphql/order/resolvers.py:17:1	ORDER_SEARCH_FIELDS	variable `ORDER_SEARCH_FIELDS` is never used
 unused-variable	medium	saleor/graphql/order/types.py:186:1	logger	variable `logger` is never used
 unused-variable	medium	saleor/graphql/page/dataloaders.py:10:1	PageTypeIdAndAttributeSlug	variable `PageTypeIdAndAttributeSlug` is never used
+unused-attribute	low	saleor/graphql/payment/mutations/transaction/payment_gateway_initialize.py:56:9	payment_gateways	attribute `Arguments.payment_gateways` is never used
+unused-attribute	low	saleor/graphql/payment/mutations/transaction/transaction_event_report.py:133:9	transaction_metadata	attribute `Arguments.transaction_metadata` is never used
+unused-attribute	low	saleor/graphql/payment/mutations/transaction/transaction_event_report.py:139:9	transaction_private_metadata	attribute `Arguments.transaction_private_metadata` is never used
 unused-variable	medium	saleor/graphql/payment/tests/mutations/test_transaction_request_action_reason.py:60:1	MUTATION_TRANSACTION_REQUEST_ACTION_BY_TOKEN	variable `MUTATION_TRANSACTION_REQUEST_ACTION_BY_TOKEN` is never used
 unused-function	low	saleor/graphql/payment/tests/queries/test_payment_sources.py:38:5	token_config_with_customer	function `token_config_with_customer` is never used
 unused-function	low	saleor/graphql/payment/tests/queries/test_payment_sources.py:43:5	set_braintree_customer_id	function `set_braintree_customer_id` is never used
@@ -125,6 +165,8 @@ unused-variable	medium	saleor/graphql/tests/queries/fragments.py:150:1	SHIPPING_
 unused-variable	low	saleor/graphql/translations/dataloaders.py:13:1	T	variable `T` is never used
 unused-variable	medium	saleor/graphql/utils/__init__.py:36:1	REVERSED_DIRECTION	variable `REVERSED_DIRECTION` is never used
 unused-function	medium	saleor/graphql/warehouse/filters.py:23:5	prefech_qs_for_filter	function `prefech_qs_for_filter` is never used
+unused-attribute	low	saleor/graphql/warehouse/mutations/warehouse_shipping_zone_assign.py:30:9	shipping_zone_ids	attribute `Arguments.shipping_zone_ids` is never used
+unused-attribute	low	saleor/graphql/warehouse/mutations/warehouse_shipping_zone_unassign.py:25:9	shipping_zone_ids	attribute `Arguments.shipping_zone_ids` is never used
 unused-variable	medium	saleor/graphql/warehouse/tests/queries/test_warehouses_filtering.py:28:1	QUERY_WERHOUSES_WITH_FILTERS_NO_IDS	variable `QUERY_WERHOUSES_WITH_FILTERS_NO_IDS` is never used
 unused-function	low	saleor/graphql/webhook/tests/test_pagination.py:8:5	webhooks_for_pagination	function `webhooks_for_pagination` is never used
 unused-method	low	saleor/menu/models.py:59:9	linked_object	method `MenuItem.linked_object` is never used
@@ -150,6 +192,9 @@ unused-function	low	saleor/order/utils.py:717:5	get_total_order_discount	functio
 unused-variable	medium	saleor/order/webhooks/exclude_shipping.py:28:1	logger	variable `logger` is never used
 unused-variable	medium	saleor/order/webhooks/order_calculate_taxes.py:28:1	logger	variable `logger` is never used
 unused-class	medium	saleor/payment/__init__.py:28:7	OperationType	class `OperationType` is never used
+unused-attribute	low	saleor/payment/__init__.py:73:5	REFUND_FAILED	attribute `TransactionKind.REFUND_FAILED` is never used
+unused-attribute	low	saleor/payment/migrations/0002_transfer_payment_to_payment_method.py:11:5	WAITING	attribute `PaymentStatus.WAITING` is never used
+unused-attribute	low	saleor/payment/migrations/0002_transfer_payment_to_payment_method.py:12:5	PREAUTH	attribute `PaymentStatus.PREAUTH` is never used
 unused-method	low	saleor/payment/models.py:472:9	can_confirm	method `Payment.can_confirm` is never used
 unused-variable	medium	saleor/payment/tests/test_payment.py:35:1	NOT_ACTIVE_PAYMENT_ERROR	variable `NOT_ACTIVE_PAYMENT_ERROR` is never used
 unused-variable	medium	saleor/payment/utils.py:93:1	GENERIC_TRANSACTION_ERROR	variable `GENERIC_TRANSACTION_ERROR` is never used

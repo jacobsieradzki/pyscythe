@@ -371,25 +371,36 @@ impl CodebaseIndex for TyIndex {
         let module = parsed_module(&self.db, program_file.python_file(&self.db)).load(&self.db);
         let model = ty_python_semantic::SemanticModel::new(&self.db, program_file);
         let declarations = declarations::declarations_by_name_range(module.syntax(), &model);
-        let assigned = declarations::assignment_target_ranges(module.syntax());
+        let mut assigned = declarations::assignment_target_ranges(module.syntax());
+        let instance_attributes = declarations::instance_attributes(module.syntax());
+        assigned.extend(
+            instance_attributes
+                .values()
+                .flatten()
+                .map(|attribute| attribute.name_range),
+        );
 
         let mut collector = SymbolCollector {
             file,
             tree: &tree,
             declarations,
+            instance_attributes,
             out: Vec::new(),
         };
         for (id, info) in tree.iter() {
             collector.visit(id, &info, SymbolScope::Module);
         }
         // A loop or `with` target is a variable to ty, but it is consumed by its
-        // own statement; only assignments can be dead.
+        // own statement, and a bare annotation defines nothing at all; only
+        // assignments can be dead.
         collector.out.retain(|symbol| {
-            !matches!(symbol.kind, SymbolKind::Variable | SymbolKind::Constant)
-                || assigned.contains(&TextRange::new(
-                    TextSize::new(symbol.name_span.start().get()),
-                    TextSize::new(symbol.name_span.end().get()),
-                ))
+            !matches!(
+                symbol.kind,
+                SymbolKind::Variable | SymbolKind::Constant | SymbolKind::Field
+            ) || assigned.contains(&TextRange::new(
+                TextSize::new(symbol.name_span.start().get()),
+                TextSize::new(symbol.name_span.end().get()),
+            ))
         });
         collector.out
     }
@@ -523,7 +534,7 @@ impl CodebaseIndex for TyIndex {
             SymbolKind::Class => {
                 inheritance::hierarchy_of_class(&self.db, ty_file, symbol.name_span, None)
             }
-            SymbolKind::Method => {
+            SymbolKind::Method | SymbolKind::Field => {
                 inheritance::hierarchy_of_enclosing_class(&self.db, ty_file, symbol.name_span, None)
             }
             _ => return Ancestry::unknown(),
@@ -647,6 +658,7 @@ struct SymbolCollector<'a> {
     file: FileId,
     tree: &'a HierarchicalSymbols,
     declarations: FxHashMap<TextRange, declarations::Declaration>,
+    instance_attributes: FxHashMap<TextRange, Vec<declarations::InstanceAttribute>>,
     out: Vec<Symbol>,
 }
 
@@ -680,6 +692,40 @@ impl SymbolCollector<'_> {
             .collect();
         for (child_id, child) in children {
             self.visit(child_id, &child, SymbolScope::Nested { parent: symbol_id });
+        }
+        self.add_instance_attributes(symbol_id, info);
+    }
+
+    /// Attributes the class only creates in its methods, which ty's document
+    /// symbols do not reach. A name the class body already declares is left
+    /// alone: it is one attribute, and the declaration is where it lives.
+    fn add_instance_attributes(&mut self, class: SymbolId, info: &SymbolInfo<'_>) {
+        let Some(attributes) = self.instance_attributes.remove(&info.name_range) else {
+            return;
+        };
+        for attribute in attributes {
+            let declared_in_body = self.out.iter().any(|symbol| {
+                symbol.scope == SymbolScope::Nested { parent: class }
+                    && symbol.name.as_str() == attribute.name
+            });
+            if declared_in_body {
+                continue;
+            }
+            let Ok(ordinal) = u32::try_from(self.out.len()) else {
+                return;
+            };
+            self.out.push(Symbol {
+                id: SymbolId::new(self.file, ordinal),
+                file: self.file,
+                name: SymbolName::new(attribute.name),
+                kind: SymbolKind::Field,
+                scope: SymbolScope::Nested { parent: class },
+                decorators: Vec::new(),
+                bases: Vec::new(),
+                class_keywords: Vec::new(),
+                name_span: span_of(attribute.name_range),
+                full_span: span_of(attribute.statement_range),
+            });
         }
     }
 }

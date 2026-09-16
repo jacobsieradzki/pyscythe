@@ -20,6 +20,8 @@ pub enum Rule {
     UnusedVariable,
     /// A method or property nothing calls, by resolution or by name.
     UnusedMethod,
+    /// A class attribute or instance field nothing reads.
+    UnusedAttribute,
     /// A module no other module imports and nothing runs.
     UnusedFile,
     /// A set of modules that import each other at load time.
@@ -59,11 +61,12 @@ impl Rule {
     }
 
     /// Every rule, in a stable order for tooling metadata.
-    pub const ALL: [Self; 13] = [
+    pub const ALL: [Self; 14] = [
         Self::UnusedFunction,
         Self::UnusedClass,
         Self::UnusedVariable,
         Self::UnusedMethod,
+        Self::UnusedAttribute,
         Self::UnusedFile,
         Self::CircularImport,
         Self::UnusedSuppression,
@@ -83,6 +86,7 @@ impl Rule {
             Self::UnusedClass => "unused-class",
             Self::UnusedVariable => "unused-variable",
             Self::UnusedMethod => "unused-method",
+            Self::UnusedAttribute => "unused-attribute",
             Self::UnusedFile => "unused-file",
             Self::CircularImport => "circular-import",
             Self::UnusedSuppression => "unused-suppression",
@@ -111,6 +115,9 @@ impl Rule {
             Self::UnusedMethod => {
                 "A method or property that nothing calls, by resolution or by name."
             }
+            Self::UnusedAttribute => {
+                "A class attribute or instance field that nothing reads, by resolution or by name."
+            }
             Self::UnusedFile => "A module that no other module imports and nothing runs.",
             Self::CircularImport => "Modules that import each other at load time.",
             Self::UnusedSuppression => "A `# pyscythe: ignore` comment that silences nothing.",
@@ -135,6 +142,7 @@ impl Rule {
             Self::UnusedClass => "class",
             Self::UnusedVariable => "variable",
             Self::UnusedMethod => "method",
+            Self::UnusedAttribute => "attribute",
             Self::UnusedFile => "file",
             Self::CircularImport => "import cycle",
             Self::UnusedSuppression => "suppression comment",

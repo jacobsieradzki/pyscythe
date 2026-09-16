@@ -1,7 +1,7 @@
 files_scanned=2932
-symbols_checked=39739
-symbols_kept=3306
-findings=278
+symbols_checked=53396
+symbols_kept=3718
+findings=318
 --
 unused-file	low	django/conf/locale/ar/formats.py	-	file `django.conf.locale.ar.formats` is never imported or run
 unused-file	low	django/conf/locale/ar_DZ/formats.py	-	file `django.conf.locale.ar_DZ.formats` is never imported or run
@@ -119,8 +119,10 @@ unused-class	medium	django/contrib/gis/geos/prototypes/io.py:35:7	WKBWriter_st	c
 unused-file	low	django/contrib/gis/serializers/geojson.py	-	file `django.contrib.gis.serializers.geojson` is never imported or run
 unused-file	low	django/contrib/postgres/aggregates/mixins.py	-	file `django.contrib.postgres.aggregates.mixins` is never imported or run
 unused-class	medium	django/contrib/sessions/exceptions.py:10:7	SuspiciousSession	class `SuspiciousSession` is never used
+unused-attribute	low	django/contrib/staticfiles/handlers.py:22:5	handles_files	attribute `StaticFilesHandlerMixin.handles_files` is never used
 unused-class	medium	django/contrib/syndication/views.py:25:7	FeedDoesNotExist	class `FeedDoesNotExist` is never used
 unused-method	low	django/core/files/base.py:65:9	multiple_chunks	method `File.multiple_chunks` is never used
+unused-attribute	low	django/core/files/uploadhandler.py:80:14	content_length	attribute `FileUploadHandler.content_length` is never used
 unused-class	low	django/core/serializers/jsonl.py:13:7	Serializer	class `Serializer` is never used
 unused-class	low	django/core/serializers/pyyaml.py:42:7	Serializer	class `Serializer` is never used
 unused-class	low	django/core/serializers/xml_serializer.py:18:7	Serializer	class `Serializer` is never used
@@ -129,6 +131,9 @@ unused-method	low	django/db/backends/oracle/base.py:407:9	oracledb_version	metho
 unused-function	low	django/db/transaction.py:78:5	savepoint_commit	function `savepoint_commit` is never used
 unused-function	low	django/db/transaction.py:86:5	clean_savepoints	function `clean_savepoints` is never used
 unused-method	low	django/forms/widgets.py:220:9	absolute_path	method `Media.absolute_path` is never used
+unused-attribute	low	django/http/multipartparser.py:410:5	IE_sanitize	attribute `MultiPartParser.IE_sanitize` is never used
+unused-attribute	medium	django/http/multipartparser.py:439:14	_empty	attribute `LazyStream._empty` is never used
+unused-attribute	low	django/tasks/backends/base.py:31:5	supports_get_result	attribute `BaseTaskBackend.supports_get_result` is never used
 unused-variable	low	django/tasks/backends/immediate.py:13:1	logger	variable `logger` is never used
 unused-function	low	django/template/context_processors.py:83:5	media	function `media` is never used
 unused-method	medium	django/test/runner.py:361:9	_exc_info_to_string	method `RemoteTestResult._exc_info_to_string` is never used
@@ -168,7 +173,12 @@ unused-class	medium	tests/apps/two_configs_one_default_app/apps.py:9:7	TwoConfig
 unused-class	medium	tests/apps/two_default_configs_app/apps.py:9:7	TwoConfigBis	class `TwoConfigBis` is never used
 unused-variable	low	tests/asgi/urls.py:66:1	handler403	variable `handler403` is never used
 unused-class	medium	tests/auth_tests/test_auth_backends.py:1086:7	TypeErrorValidator	class `TypeErrorValidator` is never used
+unused-attribute	low	tests/auth_tests/test_forms.py:62:13	u4	attribute `TestDataMixin.u4` is never used
+unused-attribute	low	tests/auth_tests/test_forms.py:63:13	u5	attribute `TestDataMixin.u5` is never used
+unused-attribute	low	tests/auth_tests/test_forms.py:64:13	u6	attribute `TestDataMixin.u6` is never used
+unused-attribute	low	tests/auth_tests/test_forms.py:65:13	u7	attribute `TestDataMixin.u7` is never used
 unused-method	low	tests/backends/base/test_creation.py:310:9	skip_function	method `SkipTestClass.skip_function` is never used
+unused-attribute	low	tests/builtin_server/tests.py:31:18	bytes_sent	attribute `ServerHandler.bytes_sent` is never used
 unused-method	low	tests/builtin_server/tests.py:48:9	log_request	method `DummyHandler.log_request` is never used
 unused-variable	low	tests/check_framework/template_test_apps/different_tags_app/templatetags/different_tags.py:3:1	register	variable `register` is never used
 unused-variable	low	tests/check_framework/template_test_apps/same_tags_app_1/templatetags/same_tags.py:3:1	register	variable `register` is never used
@@ -204,6 +214,7 @@ unused-variable	low	tests/csrf_tests/csrf_token_error_handler_urls.py:3:1	handle
 unused-method	low	tests/custom_migration_operations/more_operations.py:21:9	state_backwards	method `TestOperation.state_backwards` is never used
 unused-method	low	tests/custom_migration_operations/operations.py:21:9	state_backwards	method `TestOperation.state_backwards` is never used
 unused-function	low	tests/forms_tests/models.py:11:5	callable_default	function `callable_default` is never used
+unused-attribute	low	tests/from_db_value/models.py:7:5	currency	attribute `Cash.currency` is never used
 unused-variable	low	tests/handlers/tests_custom_error_handlers.py:31:1	handler403	variable `handler403` is never used
 unused-variable	medium	tests/i18n/commands/__init__.py:5:1	dummy1	variable `dummy1` is never used
 unused-variable	low	tests/i18n/commands/__init__.py:8:1	dummy2	variable `dummy2` is never used
@@ -225,7 +236,34 @@ unused-method	low	tests/invalid_models_tests/test_models.py:1498:17	filling_id	m
 unused-class	medium	tests/logging_tests/logconfig.py:7:7	MyHandler	class `MyHandler` is never used
 unused-method	low	tests/mail/test_backends.py:572:15	handle_DATA	method `SMTPHandler.handle_DATA` is never used
 unused-method	low	tests/mail/tests.py:151:9	assertStartsWith	method `MailTestsMixin.assertStartsWith` is never used
+unused-attribute	low	tests/mail/tests.py:155:18	longMessage	attribute `MailTestsMixin.longMessage` is never used
 unused-class	medium	tests/middleware_exceptions/middleware.py:41:7	ProcessExceptionExcMiddleware	class `ProcessExceptionExcMiddleware` is never used
+unused-attribute	low	tests/model_enums/tests.py:206:5	FS	attribute `Separator.FS` is never used
+unused-attribute	low	tests/model_enums/tests.py:207:5	GS	attribute `Separator.GS` is never used
+unused-attribute	low	tests/model_enums/tests.py:208:5	RS	attribute `Separator.RS` is never used
+unused-attribute	low	tests/model_enums/tests.py:214:5	TAU	attribute `Constants.TAU` is never used
+unused-attribute	low	tests/model_enums/tests.py:221:5	DIFFERENCE	attribute `Set.DIFFERENCE` is never used
+unused-attribute	low	tests/model_enums/tests.py:222:5	INTERSECTION	attribute `Set.INTERSECTION` is never used
+unused-attribute	low	tests/model_enums/tests.py:241:5	BREAKFAST	attribute `MealTimes.BREAKFAST` is never used
+unused-attribute	low	tests/model_enums/tests.py:242:5	LUNCH	attribute `MealTimes.LUNCH` is never used
+unused-attribute	low	tests/model_enums/tests.py:243:5	DINNER	attribute `MealTimes.DINNER` is never used
+unused-attribute	low	tests/model_enums/tests.py:247:5	WEEK	attribute `Frequency.WEEK` is never used
+unused-attribute	low	tests/model_enums/tests.py:248:5	DAY	attribute `Frequency.DAY` is never used
+unused-attribute	low	tests/model_enums/tests.py:249:5	HOUR	attribute `Frequency.HOUR` is never used
+unused-attribute	low	tests/model_enums/tests.py:250:5	MINUTE	attribute `Frequency.MINUTE` is never used
+unused-attribute	low	tests/model_enums/tests.py:257:5	TAU	attribute `Number.TAU` is never used
+unused-attribute	low	tests/model_enums/tests.py:261:5	LOCALHOST	attribute `IPv4Address.LOCALHOST` is never used
+unused-attribute	low	tests/model_enums/tests.py:262:5	GATEWAY	attribute `IPv4Address.GATEWAY` is never used
+unused-attribute	low	tests/model_enums/tests.py:263:5	BROADCAST	attribute `IPv4Address.BROADCAST` is never used
+unused-attribute	low	tests/model_enums/tests.py:267:5	LOCALHOST	attribute `IPv6Address.LOCALHOST` is never used
+unused-attribute	low	tests/model_enums/tests.py:268:5	UNSPECIFIED	attribute `IPv6Address.UNSPECIFIED` is never used
+unused-attribute	low	tests/model_enums/tests.py:272:5	LOOPBACK	attribute `IPv4Network.LOOPBACK` is never used
+unused-attribute	low	tests/model_enums/tests.py:273:5	LINK_LOCAL	attribute `IPv4Network.LINK_LOCAL` is never used
+unused-attribute	low	tests/model_enums/tests.py:274:5	PRIVATE_USE_A	attribute `IPv4Network.PRIVATE_USE_A` is never used
+unused-attribute	low	tests/model_enums/tests.py:278:5	LOOPBACK	attribute `IPv6Network.LOOPBACK` is never used
+unused-attribute	low	tests/model_enums/tests.py:279:5	UNSPECIFIED	attribute `IPv6Network.UNSPECIFIED` is never used
+unused-attribute	low	tests/model_enums/tests.py:280:5	UNIQUE_LOCAL	attribute `IPv6Network.UNIQUE_LOCAL` is never used
+unused-attribute	low	tests/model_enums/tests.py:281:5	LINK_LOCAL_UNICAST	attribute `IPv6Network.LINK_LOCAL_UNICAST` is never used
 unused-method	low	tests/schema/tests.py:313:9	assert_column_comment_not_exists	method `SchemaTests.assert_column_comment_not_exists` is never used
 unused-method	low	tests/servers/test_basehttp.py:15:9	sendall	method `Stub.sendall` is never used
 unused-class	low	tests/sessions_tests/no_clear_expired.py:4:7	SessionStore	class `SessionStore` is never used
@@ -239,6 +277,7 @@ unused-variable	low	tests/template_backends/apps/good/templatetags/good_tags.py:
 unused-variable	low	tests/template_backends/apps/good/templatetags/override.py:3:1	register	variable `register` is never used
 unused-variable	low	tests/template_backends/apps/good/templatetags/subpackage/tags.py:3:1	register	variable `register` is never used
 unused-method	low	tests/template_tests/tests.py:239:17	uses_deferred_annotations	method `MyObject.uses_deferred_annotations` is never used
+unused-attribute	low	tests/template_tests/utils.py:104:14	otherclass	attribute `SomeClass.otherclass` is never used
 unused-method	low	tests/template_tests/utils.py:109:9	method2	method `SomeClass.method2` is never used
 unused-method	low	tests/template_tests/utils.py:112:9	method3	method `SomeClass.method3` is never used
 unused-method	low	tests/template_tests/utils.py:115:9	method4	method `SomeClass.method4` is never used
@@ -271,6 +310,7 @@ unused-variable	low	tests/urlpatterns_reverse/urls_error_handlers_callables.py:1
 unused-function	medium	tests/urlpatterns_reverse/views.py:25:5	erroneous_view	function `erroneous_view` is never used
 unused-variable	medium	tests/utils_tests/test_csp.py:11:1	alt_config	variable `alt_config` is never used
 unused-method	medium	tests/utils_tests/test_functional.py:115:17	__value	method `Class.__value` is never used
+unused-attribute	medium	tests/utils_tests/test_lazyobject.py:477:14	_baz	attribute `BazProxy._baz` is never used
 unused-variable	low	tests/utils_tests/test_module/another_bad_module.py:3:1	content	variable `content` is never used
 unused-variable	low	tests/utils_tests/test_module/another_good_module.py:3:1	content	variable `content` is never used
 unused-variable	low	tests/utils_tests/test_module/bad_module.py:3:1	content	variable `content` is never used

@@ -1,7 +1,7 @@
 files_scanned=661
-symbols_checked=8930
-symbols_kept=1935
-findings=62
+symbols_checked=11040
+symbols_kept=2003
+findings=72
 --
 unused-function	low	src/pip/_internal/__init__.py:10:5	main	function `main` is never used
 unused-variable	low	src/pip/_internal/cli/cmdoptions.py:39:1	logger	variable `logger` is never used
@@ -22,6 +22,8 @@ unused-class	low	src/pip/_internal/commands/search.py:35:7	SearchCommand	class `
 unused-class	low	src/pip/_internal/commands/show.py:27:7	ShowCommand	class `ShowCommand` is never used
 unused-file	low	src/pip/_internal/commands/uninstall.py	-	file `pip._internal.commands.uninstall` is never imported or run
 unused-file	low	src/pip/_internal/commands/wheel.py	-	file `pip._internal.commands.wheel` is never imported or run
+unused-attribute	low	src/pip/_internal/exceptions/__init__.py:141:14	requirement_chain	attribute `FailedToPrepareCandidate.requirement_chain` is never used
+unused-attribute	low	src/pip/_internal/exceptions/__init__.py:142:14	failed_step	attribute `FailedToPrepareCandidate.failed_step` is never used
 unused-variable	low	src/pip/_internal/locations/_sysconfig.py:15:1	logger	variable `logger` is never used
 unused-file	low	src/pip/_internal/main.py	-	file `pip._internal.main` is never imported or run
 unused-method	low	src/pip/_internal/metadata/pkg_resources.py:75:9	metadata_isdir	method `InMemoryMetadata.metadata_isdir` is never used
@@ -30,6 +32,7 @@ unused-method	low	src/pip/_internal/network/lazy_wheel.py:135:9	writable	method 
 unused-method	low	src/pip/_internal/req/req_install.py:210:9	format_debug	method `InstallRequirement.format_debug` is never used
 unused-function	high	src/pip/_internal/req/req_install.py:837:5	_has_option	function `_has_option` is never used
 unused-variable	low	src/pip/_internal/req/req_set.py:8:1	logger	variable `logger` is never used
+unused-attribute	medium	src/pip/_internal/resolution/resolvelib/provider.py:105:14	_only_dependencies	attribute `PipProvider._only_dependencies` is never used
 unused-function	low	src/pip/_internal/utils/_jaraco_text.py:60:5	_	function `_` is never used
 unused-variable	low	src/pip/_internal/utils/compat.py:14:1	logger	variable `logger` is never used
 unused-function	medium	src/pip/_internal/utils/datetime.py:7:5	today_is_later_than	function `today_is_later_than` is never used
@@ -42,6 +45,7 @@ unused-function	low	tests/functional/test_cache.py:93:5	empty_wheel_cache	functi
 unused-function	low	tests/functional/test_cache.py:421:5	populate_wheel_cache_with_empty_dirs	function `populate_wheel_cache_with_empty_dirs` is never used
 unused-function	low	tests/functional/test_cache.py:435:5	populate_http_cache_with_empty_dirs	function `populate_http_cache_with_empty_dirs` is never used
 unused-function	low	tests/functional/test_cache.py:450:5	create_selfcheck_json	function `create_selfcheck_json` is never used
+unused-attribute	low	tests/functional/test_install_reqs.py:25:14	sdist_path	attribute `ArgRecordingSdist.sdist_path` is never used
 unused-class	low	tests/functional/test_new_resolver.py:938:11	PackageBuilder	class `PackageBuilder` is never used
 unused-function	low	tests/functional/test_new_resolver_user.py:95:5	patch_dist_in_site_packages	function `patch_dist_in_site_packages` is never used
 unused-function	low	tests/functional/test_pep668.py:12:5	patch_check_externally_managed	function `patch_check_externally_managed` is never used
@@ -55,13 +59,19 @@ unused-method	low	tests/lib/options_helpers.py:30:9	teardown_method	method `AddF
 unused-variable	high	tests/unit/test_collector.py:629:1	_pkg1_requirement	variable `_pkg1_requirement` is never used
 unused-variable	low	tests/unit/test_logging.py:19:1	logger	variable `logger` is never used
 unused-method	low	tests/unit/test_network_auth.py:575:9	check_returncode	method `KeyringSubprocessResult.check_returncode` is never used
+unused-attribute	low	tests/unit/test_network_session.py:327:22	called	attribute `MockLogger.called` is never used
 unused-function	low	tests/unit/test_operations_prepare.py:107:5	clean_project	function `clean_project` is never used
+unused-attribute	low	tests/unit/test_operations_prepare.py:126:14	dist_url2	attribute `Test_unpack_url.dist_url2` is never used
 unused-method	low	tests/unit/test_options.py:53:9	get_config_section	method `TestOptionPrecedence.get_config_section` is never used
 unused-method	low	tests/unit/test_options.py:60:9	get_config_section_global	method `TestOptionPrecedence.get_config_section_global` is never used
 unused-variable	low	tests/unit/test_resolution_legacy_resolver.py:31:1	T	variable `T` is never used
+unused-attribute	low	tests/unit/test_utils.py:76:14	mock_site_packages	attribute `Tests_EgglinkPath.mock_site_packages` is never used
+unused-attribute	low	tests/unit/test_utils.py:82:14	mock_user_site	attribute `Tests_EgglinkPath.mock_user_site` is never used
 unused-variable	medium	tests/unit/test_utils.py:315:5	expected_byte_string	variable `expected_byte_string` is never used
 unused-variable	medium	tests/unit/test_utils.py:319:5	expected_byte_string	variable `expected_byte_string` is never used
 unused-function	low	tests/unit/test_utils.py:855:5	patch_deprecation_check_version	function `patch_deprecation_check_version` is never used
 unused-function	medium	tests/unit/test_utils_filesystem.py:15:5	make_valid_symlink	function `make_valid_symlink` is never used
 unused-function	medium	tests/unit/test_utils_filesystem.py:21:5	make_broken_symlink	function `make_broken_symlink` is never used
 unused-function	medium	tests/unit/test_utils_filesystem.py:25:5	make_dir	function `make_dir` is never used
+unused-attribute	low	tests/unit/test_utils_unpacking.py:53:14	symlink_expected_mode	attribute `TestUnpackArchives.symlink_expected_mode` is never used
+unused-attribute	low	tests/unit/test_wheel.py:280:14	src_dist_info	attribute `TestInstallUnpackedWheel.src_dist_info` is never used

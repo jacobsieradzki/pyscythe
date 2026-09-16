@@ -103,6 +103,25 @@ const HOOK_METHODS: &[&str] = &[
     "get_by_natural_key",
 ];
 
+/// Base classes whose subclasses configure the framework through attributes:
+/// a model's fields, a form's fields, an admin's `list_display`, a view's
+/// `template_name`, a serializer's `fields`. Used when ty could not resolve
+/// the bases; otherwise ancestry decides.
+const FRAMEWORK_BASES: &[&str] = &[
+    "Model",
+    "Form",
+    "ModelForm",
+    "ModelAdmin",
+    "StackedInline",
+    "TabularInline",
+    "View",
+    "Serializer",
+    "ModelSerializer",
+    "ViewSet",
+    "ModelViewSet",
+    "AppConfig",
+];
+
 /// `@register.filter`, `@register.simple_tag`: a template `Library` hands
 /// the function to templates, which name it in `{% %}` and `{{ | }}`.
 const TEMPLATE_LIBRARY_DECORATORS: &[&str] = &[
@@ -192,6 +211,11 @@ impl KeepRule for Django {
         }
         if decorated_with_from(symbol, &["receiver"], false, &["django"]) {
             return Some("connected as a Django signal receiver");
+        }
+        if context.attribute_of_class_from("django", FRAMEWORK_BASES)
+            || context.attribute_of_class_from("rest_framework", FRAMEWORK_BASES)
+        {
+            return Some("an attribute of a Django class, read by the framework");
         }
         if (file_name == "tests.py" || context.is_under_directory("tests"))
             && symbol.kind == SymbolKind::Class

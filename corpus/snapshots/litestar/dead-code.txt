@@ -1,21 +1,26 @@
 files_scanned=1132
-symbols_checked=6668
-symbols_kept=2439
-findings=133
+symbols_checked=8370
+symbols_kept=2542
+findings=146
 --
 unused-variable	medium	litestar/_signature/model.py:65:1	MSGSPEC_CONSTRAINT_FIELDS	variable `MSGSPEC_CONSTRAINT_FIELDS` is never used
+unused-attribute	medium	litestar/channels/subscriber.py:40:14	_plugin	attribute `Subscriber._plugin` is never used
 unused-variable	medium	litestar/cli/_utils.py:50:9	RichContext	variable `RichContext` is never used
+unused-attribute	low	litestar/cli/_utils.py:163:14	group_class	attribute `LitestarGroup.group_class` is never used
 unused-function	high	litestar/cli/_utils.py:293:5	_bool_from_env	function `_bool_from_env` is never used
+unused-attribute	low	litestar/cli/commands/core.py:122:5	envvar_list_splitter	attribute `CommaSplittedPath.envvar_list_splitter` is never used
 unused-variable	medium	litestar/constants.py:14:1	DEFAULT_CHUNK_SIZE	variable `DEFAULT_CHUNK_SIZE` is never used
 unused-variable	medium	litestar/constants.py:15:1	HTTP_DISCONNECT	variable `HTTP_DISCONNECT` is never used
 unused-variable	medium	litestar/constants.py:20:1	OPENAPI_NOT_INITIALIZED	variable `OPENAPI_NOT_INITIALIZED` is never used
 unused-variable	medium	litestar/constants.py:26:1	WEBSOCKET_CLOSE	variable `WEBSOCKET_CLOSE` is never used
 unused-variable	medium	litestar/constants.py:27:1	WEBSOCKET_DISCONNECT	variable `WEBSOCKET_DISCONNECT` is never used
+unused-attribute	low	litestar/di.py:40:14	kind	attribute `Dependency.kind` is never used
 unused-variable	low	litestar/dto/dataclass_dto.py:23:1	AnyDataclass	variable `AnyDataclass` is never used
 unused-method	low	litestar/handlers/base.py:417:9	resolve_data_dto	method `BaseRouteHandler.resolve_data_dto` is never used
 unused-method	low	litestar/handlers/base.py:458:9	resolve_return_dto	method `BaseRouteHandler.resolve_return_dto` is never used
 unused-function	medium	litestar/handlers/http_handlers/_utils.py:221:11	cleanup_temporary_files	function `cleanup_temporary_files` is never used
 unused-class	medium	litestar/handlers/http_handlers/base.py:90:7	ResponseHandlerMap	class `ResponseHandlerMap` is never used
+unused-attribute	low	litestar/handlers/websocket_handlers/stream.py:307:14	generator_fn	attribute `_WebSocketStreamOptions.generator_fn` is never used
 unused-variable	medium	litestar/middleware/compression/middleware.py:29:9	Compressor	variable `Compressor` is never used
 unused-file	low	litestar/openapi/controller.py	-	file `litestar.openapi.controller` is never imported or run
 unused-variable	low	litestar/plugins/opentelemetry/config.py:28:1	ServerRequestHookHandler	variable `ServerRequestHookHandler` is never used
@@ -91,6 +96,10 @@ unused-class	medium	tests/unit/test_plugins/test_pydantic/test_plugin_serializat
 unused-class	medium	tests/unit/test_plugins/test_pydantic/test_plugin_serialization.py:53:7	CustomSet	class `CustomSet` is never used
 unused-class	medium	tests/unit/test_plugins/test_pydantic/test_plugin_serialization.py:57:7	CustomFrozenSet	class `CustomFrozenSet` is never used
 unused-class	medium	tests/unit/test_plugins/test_pydantic/test_plugin_serialization.py:61:7	CustomTuple	class `CustomTuple` is never used
+unused-attribute	low	tests/unit/test_repository/models_bigint.py:17:5	dob	attribute `BigIntAuthor.dob` is never used
+unused-attribute	low	tests/unit/test_repository/models_bigint.py:29:5	author_id	attribute `BigIntBook.author_id` is never used
+unused-attribute	low	tests/unit/test_repository/models_bigint.py:40:5	logged_at	attribute `BigIntEventLog.logged_at` is never used
+unused-attribute	low	tests/unit/test_repository/models_bigint.py:48:5	updated	attribute `BigIntModelWithFetchedValue.updated` is never used
 unused-class	medium	tests/unit/test_repository/models_bigint.py:83:7	RuleAsyncRepository	class `RuleAsyncRepository` is never used
 unused-class	medium	tests/unit/test_repository/models_bigint.py:89:7	AuthorAsyncRepository	class `AuthorAsyncRepository` is never used
 unused-class	medium	tests/unit/test_repository/models_bigint.py:95:7	BookAsyncRepository	class `BookAsyncRepository` is never used
@@ -105,6 +114,10 @@ unused-class	medium	tests/unit/test_repository/models_bigint.py:143:7	RuleSyncRe
 unused-class	medium	tests/unit/test_repository/models_bigint.py:149:7	ModelWithFetchedValueSyncRepository	class `ModelWithFetchedValueSyncRepository` is never used
 unused-class	medium	tests/unit/test_repository/models_bigint.py:155:7	TagSyncRepository	class `TagSyncRepository` is never used
 unused-class	medium	tests/unit/test_repository/models_bigint.py:161:7	ItemSyncRepository	class `ItemSyncRepository` is never used
+unused-attribute	low	tests/unit/test_repository/models_uuid.py:18:5	dob	attribute `UUIDAuthor.dob` is never used
+unused-attribute	low	tests/unit/test_repository/models_uuid.py:30:5	author_id	attribute `UUIDBook.author_id` is never used
+unused-attribute	low	tests/unit/test_repository/models_uuid.py:37:5	logged_at	attribute `UUIDEventLog.logged_at` is never used
+unused-attribute	low	tests/unit/test_repository/models_uuid.py:45:5	updated	attribute `UUIDModelWithFetchedValue.updated` is never used
 unused-class	medium	tests/unit/test_repository/models_uuid.py:80:7	RuleAsyncRepository	class `RuleAsyncRepository` is never used
 unused-class	medium	tests/unit/test_repository/models_uuid.py:86:7	AuthorAsyncRepository	class `AuthorAsyncRepository` is never used
 unused-class	medium	tests/unit/test_repository/models_uuid.py:92:7	BookAsyncRepository	class `BookAsyncRepository` is never used

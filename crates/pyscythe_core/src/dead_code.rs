@@ -73,6 +73,12 @@ pub fn analyze(
         let symbols = index.symbols(file.id);
         let owner_names: BTreeMap<SymbolId, SymbolName> =
             symbols.iter().map(|s| (s.id, s.name.clone())).collect();
+        // Only a class can change the rules for the members inside it.
+        let owner_classes: BTreeMap<SymbolId, Symbol> = symbols
+            .iter()
+            .filter(|s| s.kind == SymbolKind::Class)
+            .map(|s| (s.id, s.clone()))
+            .collect();
         let suppressions = index.suppressions(file.id);
         if suppressions
             .iter()
@@ -90,6 +96,7 @@ pub fn analyze(
                 config,
                 file,
                 owner_names: &owner_names,
+                owner_classes: &owner_classes,
                 suppressions: &suppressions,
                 file_role: roles.get(&file.id).copied().unwrap_or(FileRole::Regular),
             };
@@ -185,6 +192,7 @@ struct SymbolCheck<'a> {
     config: &'a Config,
     file: &'a SourceFile,
     owner_names: &'a BTreeMap<SymbolId, SymbolName>,
+    owner_classes: &'a BTreeMap<SymbolId, Symbol>,
     suppressions: &'a [Suppression],
     file_role: FileRole,
 }
@@ -202,7 +210,9 @@ impl SymbolCheck<'_> {
         }
 
         let position = self.index.position(self.file.id, symbol.name_span.start());
-        let ancestry = if matches!(symbol.kind, SymbolKind::Class | SymbolKind::Method) {
+        let ancestry = if matches!(symbol.kind, SymbolKind::Class | SymbolKind::Method)
+            || is_attribute(&symbol)
+        {
             self.index.ancestry(&symbol)
         } else {
             Ancestry::unknown()
@@ -212,8 +222,13 @@ impl SymbolCheck<'_> {
         } else {
             SubclassRegistration::NotRegistered
         };
+        let owner_class = match symbol.scope {
+            SymbolScope::Nested { parent } => self.owner_classes.get(&parent),
+            SymbolScope::Module => None,
+        };
         let context = KeepContext {
             symbol: &symbol,
+            owner: owner_class,
             file: self.file,
             manifest: self.manifest,
             ancestry: &ancestry,
@@ -677,10 +692,13 @@ impl SymbolCheck<'_> {
     }
 }
 
-/// A method that overrides an inherited member may be called by the base
-/// class's own code, which never names the subclass.
+/// A member that overrides an inherited one may be reached by the base class's
+/// own code, which never names the subclass: a method it calls, an attribute
+/// it reads. A `Directive` subclass setting `has_content` is docutils's
+/// interface, not the subclass's own business.
 fn override_reason(index: &dyn CodebaseIndex, symbol: &Symbol) -> Option<KeepReason> {
-    let is_member = matches!(symbol.kind, SymbolKind::Method | SymbolKind::Property);
+    let is_member =
+        matches!(symbol.kind, SymbolKind::Method | SymbolKind::Property) || is_attribute(symbol);
     (is_member && index.inheritance(symbol) == Inheritance::OverridesBase).then_some(KeepReason {
         plugin: PluginName::Python,
         why: "overrides an inherited member",
@@ -692,7 +710,8 @@ fn override_reason(index: &dyn CodebaseIndex, symbol: &Symbol) -> Option<KeepRea
 /// Dunders such as `__all__`, `__init__`, or `__version__` are consumed by the
 /// interpreter or tooling. Module-level functions, classes, and variables are
 /// candidates; so are methods and properties directly on a class, except the
-/// `.setter`/`.deleter` halves of a property, which share the getter's name.
+/// `.setter`/`.deleter` halves of a property, which share the getter's name,
+/// and the attributes a class or its constructor assigns.
 fn candidate_rule(symbol: &Symbol) -> Option<Rule> {
     if symbol.name.is_dunder() {
         return None;
@@ -703,9 +722,15 @@ fn candidate_rule(symbol: &Symbol) -> Option<Rule> {
             SymbolKind::Method | SymbolKind::Property if !is_property_accessor(symbol) => {
                 Some(Rule::UnusedMethod)
             }
+            SymbolKind::Field | SymbolKind::Constant => Some(Rule::UnusedAttribute),
             _ => None,
         },
     }
+}
+
+/// Whether the symbol is an attribute of a class rather than a module-level name.
+pub(crate) const fn is_attribute(symbol: &Symbol) -> bool {
+    !symbol.is_module_level() && matches!(symbol.kind, SymbolKind::Field | SymbolKind::Constant)
 }
 
 fn is_property_accessor(symbol: &Symbol) -> bool {
@@ -713,7 +738,7 @@ fn is_property_accessor(symbol: &Symbol) -> bool {
 }
 
 /// A symbol is used when a reference resolves to it from outside its own
-/// definition, or, for methods, when its name is accessed as an attribute
+/// definition, or, for members, when its name is accessed as an attribute
 /// anywhere: a call through a base type or an untyped object cannot be
 /// resolved to one method but still shows up by name.
 fn is_used(index: &dyn CodebaseIndex, symbol: &Symbol) -> bool {
@@ -729,7 +754,7 @@ fn is_used(index: &dyn CodebaseIndex, symbol: &Symbol) -> bool {
     if referenced {
         return true;
     }
-    matches!(symbol.kind, SymbolKind::Method | SymbolKind::Property)
+    (matches!(symbol.kind, SymbolKind::Method | SymbolKind::Property) || is_attribute(symbol))
         && index.attribute_name_usage(&symbol.name) == NameUsage::Used
 }
 

@@ -1,7 +1,7 @@
 files_scanned=1527
-symbols_checked=34991
-symbols_kept=24134
-findings=163
+symbols_checked=38542
+symbols_kept=24425
+findings=222
 --
 unused-file	medium	ci/import_pandas_check.py	-	file `ci.import_pandas_check` is never imported or run
 unused-file	medium	generate_pxi.py	-	file `generate_pxi` is never imported or run
@@ -39,23 +39,54 @@ unused-function	low	pandas/core/array_algos/masked_accumulations.py:88:5	cummin	
 unused-function	low	pandas/core/array_algos/masked_accumulations.py:94:5	cummax	function `cummax` is never used
 unused-method	medium	pandas/core/arrays/base.py:3309:9	_add_comparison_ops	method `ExtensionOpsMixin._add_comparison_ops` is never used
 unused-method	medium	pandas/core/arrays/base.py:3322:9	_add_logical_ops	method `ExtensionOpsMixin._add_logical_ops` is never used
+unused-attribute	low	pandas/core/arrays/interval.py:194:5	can_hold_na	attribute `IntervalArray.can_hold_na` is never used
 unused-variable	low	pandas/core/arrays/period.py:110:1	BaseOffsetT	variable `BaseOffsetT` is never used
+unused-attribute	medium	pandas/core/arrays/period.py:194:5	_other_ops	attribute `PeriodArray._other_ops` is never used
+unused-attribute	medium	pandas/core/arrays/sparse/array.py:561:5	_subtyp	attribute `SparseArray._subtyp` is never used
+unused-attribute	medium	pandas/core/arrays/timedeltas.py:195:5	_other_ops	attribute `TimedeltaArray._other_ops` is never used
 unused-variable	high	pandas/core/col.py:24:1	_OP_SYMBOLS	variable `_OP_SYMBOLS` is never used
 unused-variable	high	pandas/core/computation/expr.py:207:1	_expr_nodes	variable `_expr_nodes` is never used
 unused-variable	high	pandas/core/computation/expr.py:210:1	_operator_nodes	variable `_operator_nodes` is never used
 unused-variable	high	pandas/core/computation/expr.py:211:1	_unary_op_nodes	variable `_unary_op_nodes` is never used
 unused-variable	high	pandas/core/computation/expr.py:212:1	_cmp_op_nodes	variable `_cmp_op_nodes` is never used
 unused-variable	high	pandas/core/computation/expr.py:213:1	_comprehension_nodes	variable `_comprehension_nodes` is never used
+unused-attribute	low	pandas/core/computation/expr.py:390:5	unary_op_nodes_map	attribute `BaseExprVisitor.unary_op_nodes_map` is never used
 unused-variable	high	pandas/core/computation/expr.py:776:1	_numexpr_supported_calls	variable `_numexpr_supported_calls` is never used
 unused-variable	low	pandas/core/dtypes/cast.py:124:1	NumpyArrayT	variable `NumpyArrayT` is never used
+unused-attribute	low	pandas/core/dtypes/dtypes.py:129:5	subdtype	attribute `PandasExtensionDtype.subdtype` is never used
+unused-attribute	low	pandas/core/dtypes/dtypes.py:135:5	isbuiltin	attribute `PandasExtensionDtype.isbuiltin` is never used
 unused-variable	low	pandas/core/dtypes/generic.py:126:1	ABCDatetimeArray	variable `ABCDatetimeArray` is never used
 unused-variable	low	pandas/core/dtypes/generic.py:134:1	ABCPeriodArray	variable `ABCPeriodArray` is never used
 unused-variable	low	pandas/core/groupby/generic.py:104:1	ScalarResult	variable `ScalarResult` is never used
 unused-method	low	pandas/core/groupby/ops.py:635:9	nkeys	method `BaseGrouper.nkeys` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:135:5	_base	attribute `MultiIndexUInt64Engine._base` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:136:5	_codes_dtype	attribute `MultiIndexUInt64Engine._codes_dtype` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:145:5	_base	attribute `MultiIndexUInt32Engine._base` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:146:5	_codes_dtype	attribute `MultiIndexUInt32Engine._codes_dtype` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:155:5	_base	attribute `MultiIndexUInt16Engine._base` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:156:5	_codes_dtype	attribute `MultiIndexUInt16Engine._codes_dtype` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:165:5	_base	attribute `MultiIndexUInt8Engine._base` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:166:5	_codes_dtype	attribute `MultiIndexUInt8Engine._codes_dtype` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:177:5	_base	attribute `MultiIndexPyIntEngine._base` is never used
+unused-attribute	medium	pandas/core/indexes/multi.py:178:5	_codes_dtype	attribute `MultiIndexPyIntEngine._codes_dtype` is never used
 unused-method	medium	pandas/core/indexes/multi.py:3182:9	_recode_for_new_levels	method `MultiIndex._recode_for_new_levels` is never used
+unused-attribute	medium	pandas/core/interchange/buffer.py:96:14	_length	attribute `PandasBufferPyarrow._length` is never used
+unused-attribute	low	pandas/core/interchange/utils.py:71:5	INT8	attribute `ArrowCTypes.INT8` is never used
+unused-attribute	low	pandas/core/interchange/utils.py:73:5	INT16	attribute `ArrowCTypes.INT16` is never used
+unused-attribute	low	pandas/core/interchange/utils.py:74:5	UINT16	attribute `ArrowCTypes.UINT16` is never used
+unused-attribute	low	pandas/core/interchange/utils.py:75:5	INT32	attribute `ArrowCTypes.INT32` is never used
+unused-attribute	low	pandas/core/interchange/utils.py:76:5	UINT32	attribute `ArrowCTypes.UINT32` is never used
+unused-attribute	low	pandas/core/interchange/utils.py:78:5	UINT64	attribute `ArrowCTypes.UINT64` is never used
+unused-attribute	low	pandas/core/interchange/utils.py:79:5	FLOAT16	attribute `ArrowCTypes.FLOAT16` is never used
+unused-attribute	low	pandas/core/interchange/utils.py:80:5	FLOAT32	attribute `ArrowCTypes.FLOAT32` is never used
+unused-attribute	low	pandas/core/interchange/utils.py:84:5	DATE32	attribute `ArrowCTypes.DATE32` is never used
+unused-attribute	low	pandas/core/interchange/utils.py:85:5	DATE64	attribute `ArrowCTypes.DATE64` is never used
+unused-attribute	low	pandas/core/interchange/utils.py:98:5	LITTLE	attribute `Endianness.LITTLE` is never used
+unused-attribute	low	pandas/core/interchange/utils.py:99:5	BIG	attribute `Endianness.BIG` is never used
 unused-method	low	pandas/core/internals/managers.py:1266:9	column_arrays	method `BlockManager.column_arrays` is never used
 unused-method	low	pandas/core/internals/managers.py:2045:9	concat_vertical	method `BlockManager.concat_vertical` is never used
 unused-method	medium	pandas/core/resample.py:2799:9	_get_time_period_bins	method `TimeGrouper._get_time_period_bins` is never used
+unused-attribute	medium	pandas/core/reshape/merge.py:940:5	_merge_type	attribute `_MergeOperation._merge_type` is never used
 unused-function	low	pandas/core/sorting.py:217:5	get_compressed_ids	function `get_compressed_ids` is never used
 unused-file	low	pandas/core/sparse/api.py	-	file `pandas.core.sparse.api` is never imported or run
 unused-function	low	pandas/io/clipboard/__init__.py:693:5	is_available	function `is_available` is never used
@@ -68,8 +99,21 @@ unused-method	low	pandas/io/formats/style.py:2122:9	apply_index	method `Styler.a
 unused-method	medium	pandas/io/parsers/readers.py:2988:9	_failover_to_python	method `TextFileReader._failover_to_python` is never used
 unused-method	low	pandas/io/pytables.py:3130:9	set_data	method `DataCol.set_data` is never used
 unused-method	low	pandas/io/pytables.py:4407:9	data_orientation	method `Table.data_orientation` is never used
+unused-attribute	low	pandas/io/sas/sas7bdat.py:319:14	blank_missing	attribute `SAS7BDATReader.blank_missing` is never used
+unused-attribute	medium	pandas/io/sas/sas7bdat.py:335:14	_data_subheader_offsets	attribute `SAS7BDATReader._data_subheader_offsets` is never used
+unused-attribute	medium	pandas/io/sas/sas7bdat.py:336:14	_data_subheader_lengths	attribute `SAS7BDATReader._data_subheader_lengths` is never used
+unused-attribute	medium	pandas/io/sas/sas7bdat.py:344:14	_current_row_on_page_index	attribute `SAS7BDATReader._current_row_on_page_index` is never used
+unused-attribute	medium	pandas/io/sas/sas7bdat.py:354:14	_subheader_processors	attribute `SAS7BDATReader._subheader_processors` is never used
 unused-method	low	pandas/io/sas/sas7bdat.py:425:9	column_data_lengths	method `SAS7BDATReader.column_data_lengths` is never used
 unused-method	low	pandas/io/sas/sas7bdat.py:429:9	column_data_offsets	method `SAS7BDATReader.column_data_offsets` is never used
+unused-attribute	low	pandas/io/sas/sas7bdat.py:494:14	date_created	attribute `SAS7BDATReader.date_created` is never used
+unused-attribute	low	pandas/io/sas/sas7bdat.py:498:14	date_modified	attribute `SAS7BDATReader.date_modified` is never used
+unused-attribute	medium	pandas/io/sas/sas7bdat.py:631:14	_current_page_block_count	attribute `SAS7BDATReader._current_page_block_count` is never used
+unused-attribute	medium	pandas/io/sas/sas7bdat.py:633:14	_current_page_subheaders_count	attribute `SAS7BDATReader._current_page_subheaders_count` is never used
+unused-attribute	medium	pandas/io/sas/sas7bdat.py:969:14	_str_table_len	attribute `SAS7BDATReader._str_table_len` is never used
+unused-attribute	medium	pandas/io/sas/sas7bdat.py:970:14	_str_table_width	attribute `SAS7BDATReader._str_table_width` is never used
+unused-attribute	medium	pandas/io/sas/sas7bdat.py:971:14	_str_ascii_identity	attribute `SAS7BDATReader._str_ascii_identity` is never used
+unused-attribute	medium	pandas/io/sas/sas7bdat.py:972:14	_str_encoding	attribute `SAS7BDATReader._str_encoding` is never used
 unused-variable	medium	pandas/io/sas/sas_constants.py:15:1	align_1_value	variable `align_1_value` is never used
 unused-variable	medium	pandas/io/sas/sas_constants.py:22:1	platform_offset	variable `platform_offset` is never used
 unused-variable	medium	pandas/io/sas/sas_constants.py:23:1	platform_length	variable `platform_length` is never used
@@ -93,21 +137,35 @@ unused-variable	medium	pandas/io/sas/sas_constants.py:68:1	page_comp_type	variab
 unused-variable	medium	pandas/io/sas/sas_constants.py:71:1	truncated_subheader_id	variable `truncated_subheader_id` is never used
 unused-variable	medium	pandas/io/sas/sas_constants.py:72:1	compressed_subheader_id	variable `compressed_subheader_id` is never used
 unused-variable	medium	pandas/io/sas/sas_constants.py:73:1	compressed_subheader_type	variable `compressed_subheader_type` is never used
+unused-attribute	low	pandas/io/sas/sas_constants.py:225:5	data_subheader_index	attribute `SASIndex.data_subheader_index` is never used
 unused-variable	medium	pandas/io/sas/sas_constants.py:228:1	subheader_signature_to_index	variable `subheader_signature_to_index` is never used
 unused-variable	high	pandas/io/sas/sas_xport.py:92:1	_read_sas_doc	variable `_read_sas_doc` is never used
+unused-attribute	low	pandas/io/sas/sas_xport.py:307:14	file_info	attribute `XportReader.file_info` is never used
+unused-attribute	low	pandas/io/sas/sas_xport.py:337:14	member_info	attribute `XportReader.member_info` is never used
+unused-attribute	medium	pandas/io/stata.py:1292:14	_srtlist	attribute `StataReader._srtlist` is never used
+unused-attribute	medium	pandas/io/stata.py:1421:14	_filetype	attribute `StataReader._filetype` is never used
+unused-attribute	medium	pandas/io/stata.py:3279:14	_dta_ver	attribute `StataStrLWriter._dta_ver` is never used
 unused-method	low	pandas/plotting/_matplotlib/converter.py:230:9	axisinfo	method `TimeConverter.axisinfo` is never used
 unused-method	low	pandas/plotting/_matplotlib/converter.py:420:9	axisinfo	method `DatetimeConverter.axisinfo` is never used
 unused-method	low	pandas/plotting/_matplotlib/converter.py:535:9	autoscale	method `MilliSecondLocator.autoscale` is never used
+unused-attribute	low	pandas/plotting/_matplotlib/converter.py:1097:14	plot_obj	attribute `TimeSeries_DateLocator.plot_obj` is never used
 unused-method	low	pandas/plotting/_matplotlib/converter.py:1117:9	autoscale	method `TimeSeries_DateLocator.autoscale` is never used
+unused-attribute	low	pandas/plotting/_matplotlib/converter.py:1166:14	plot_obj	attribute `TimeSeries_DateFormatter.plot_obj` is never used
+unused-attribute	medium	pandas/tests/arithmetic/test_array_ops.py:56:18	_is_test_array	attribute `TestArray._is_test_array` is never used
 unused-function	low	pandas/tests/arrays/sparse/test_array.py:28:5	zarr	function `zarr` is never used
+unused-attribute	medium	pandas/tests/extension/decimal/array.py:90:14	_items	attribute `DecimalArray._items` is never used
+unused-attribute	medium	pandas/tests/extension/json/array.py:83:14	_items	attribute `JSONArray._items` is never used
 unused-function	low	pandas/tests/extension/test_numpy.py:155:5	skip_numpy_object	function `skip_numpy_object` is never used
 unused-function	low	pandas/tests/frame/methods/test_info.py:23:5	duplicate_columns_frame	function `duplicate_columns_frame` is never used
 unused-function	low	pandas/tests/groupby/transform/test_transform.py:750:5	frame_mi	function `frame_mi` is never used
+unused-attribute	low	pandas/tests/indexing/test_coercion.py:26:5	klasses	attribute `CoercionBase.klasses` is never used
 unused-function	low	pandas/tests/io/excel/test_writers.py:68:5	set_engine	function `set_engine` is never used
 unused-variable	low	pandas/tests/io/excel/test_xlsxwriter.py:10:1	xlsxwriter	variable `xlsxwriter` is never used
 unused-variable	low	pandas/tests/io/formats/style/test_exceptions.py:3:1	jinja2	variable `jinja2` is never used
 unused-variable	low	pandas/tests/io/formats/style/test_style.py:12:1	jinja2	variable `jinja2` is never used
+unused-attribute	medium	pandas/tests/io/json/test_pandas.py:2379:22	_c	attribute `_TestObject._c` is never used
 unused-method	low	pandas/tests/io/json/test_ujson.py:605:17	toDict	method `DictTest.toDict` is never used
+unused-attribute	medium	pandas/tests/io/json/test_ujson.py:673:22	_c	attribute `_TestObject._c` is never used
 unused-variable	medium	pandas/tests/io/parser/common/test_file_buffer_url.py:28:1	xfail_pyarrow	variable `xfail_pyarrow` is never used
 unused-variable	medium	pandas/tests/io/parser/common/test_index.py:14:1	xfail_pyarrow	variable `xfail_pyarrow` is never used
 unused-variable	medium	pandas/tests/io/parser/common/test_read_errors.py:22:1	xfail_pyarrow	variable `xfail_pyarrow` is never used
@@ -136,6 +194,7 @@ unused-function	low	pandas/tests/io/test_sql.py:864:5	sqlite_adbc_iris	function 
 unused-function	low	pandas/tests/io/test_sql.py:882:5	sqlite_adbc_types	function `sqlite_adbc_types` is never used
 unused-function	low	pandas/tests/io/test_sql.py:918:5	sqlite_buildin_types	function `sqlite_buildin_types` is never used
 unused-variable	low	pandas/tests/io/test_util.py:15:1	pytz	variable `pytz` is never used
+unused-attribute	medium	pandas/tests/libs/test_lib.py:354:18	_is_test_array	attribute `TestArray._is_test_array` is never used
 unused-function	low	pandas/tests/resample/test_resample_api.py:416:5	b_sum	function `b_sum` is never used
 unused-function	low	pandas/tests/resample/test_resample_api.py:421:5	df_resample	function `df_resample` is never used
 unused-function	low	pandas/tests/resample/test_resample_api.py:426:5	df_col_resample	function `df_col_resample` is never used

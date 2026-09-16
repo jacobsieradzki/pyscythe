@@ -1,7 +1,7 @@
 files_scanned=37
-symbols_checked=805
-symbols_kept=403
-findings=36
+symbols_checked=848
+symbols_kept=406
+findings=37
 --
 unused-variable	medium	src/requests/_types.py:119:5	CookiesType	variable `CookiesType` is never used
 unused-variable	medium	src/requests/_types.py:141:5	ProxiesType	variable `ProxiesType` is never used
@@ -39,3 +39,4 @@ unused-function	medium	tests/compat.py:14:5	u	function `u` is never used
 unused-method	low	tests/test_utils.py:895:13	Close	method `RegHandle.Close` is never used
 unused-method	low	tests/test_utils.py:931:13	Close	method `RegHandle.Close` is never used
 unused-method	low	tests/test_utils.py:992:13	Close	method `RegHandle.Close` is never used
+unused-attribute	low	tests/testserver/server.py:163:14	mutual_tls	attribute `TLSServer.mutual_tls` is never used

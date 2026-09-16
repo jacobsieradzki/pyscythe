@@ -1,8 +1,10 @@
 files_scanned=190
-symbols_checked=476
-symbols_kept=188
-findings=26
+symbols_checked=744
+symbols_kept=273
+findings=28
 --
+unused-attribute	low	styleguide_example/api/mixins.py:74:5	authentication_classes	attribute `ApiAuthMixin.authentication_classes` is never used
+unused-attribute	low	styleguide_example/api/mixins.py:79:5	permission_classes	attribute `ApiAuthMixin.permission_classes` is never used
 unused-method	low	styleguide_example/api/pagination.py:25:9	get_paginated_data	method `LimitOffsetPagination.get_paginated_data` is never used
 unused-file	medium	styleguide_example/blog_examples/google_login_server_flow/raw/views.py	-	file `styleguide_example.blog_examples.google_login_server_flow.raw.views` is never imported or run
 unused-file	medium	styleguide_example/blog_examples/google_login_server_flow/sdk/views.py	-	file `styleguide_example.blog_examples.google_login_server_flow.sdk.views` is never imported or run

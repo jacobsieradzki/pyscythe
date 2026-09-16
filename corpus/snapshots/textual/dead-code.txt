@@ -1,7 +1,7 @@
 files_scanned=987
-symbols_checked=9736
-symbols_kept=2244
-findings=132
+symbols_checked=12785
+symbols_kept=2268
+findings=157
 --
 unused-function	medium	src/textual/_ansi_sequences.py:440:5	set_pointer_shape	function `set_pointer_shape` is never used
 unused-variable	medium	src/textual/_border.py:17:1	INNER	variable `INNER` is never used
@@ -10,26 +10,38 @@ unused-variable	medium	src/textual/_border.py:251:1	INVISIBLE_EDGE_TYPES	variabl
 unused-variable	medium	src/textual/_border.py:261:1	Borders	variable `Borders` is never used
 unused-variable	medium	src/textual/_border.py:263:1	REVERSE_STYLE	variable `REVERSE_STYLE` is never used
 unused-file	low	src/textual/_doc.py	-	file `textual._doc` is never imported or run
+unused-attribute	low	src/textual/_markup_playground.py:73:5	show_variables	attribute `MarkupPlayground.show_variables` is never used
+unused-attribute	low	src/textual/_markup_playground.py:74:5	show_spans	attribute `MarkupPlayground.show_spans` is never used
+unused-attribute	low	src/textual/_parser.py:43:5	peek1	attribute `Parser.peek1` is never used
 unused-file	low	src/textual/_sleep.py	-	file `textual._sleep` is never imported or run
 unused-method	low	src/textual/_text_area_theme.py:172:9	get_highlight	method `TextAreaTheme.get_highlight` is never used
 unused-method	low	src/textual/_two_way_dict.py:57:9	contains_value	method `TwoWayDict.contains_value` is never used
 unused-class	medium	src/textual/_types.py:19:7	EventTarget	class `EventTarget` is never used
+unused-attribute	low	src/textual/app.py:467:5	CLOSE_TIMEOUT	attribute `App.CLOSE_TIMEOUT` is never used
+unused-attribute	low	src/textual/app.py:659:14	mouse_position_high_resolution	attribute `App.mouse_position_high_resolution` is never used
+unused-attribute	medium	src/textual/app.py:787:14	_screenshot	attribute `App._screenshot` is never used
 unused-method	low	src/textual/app.py:1469:9	unregister_theme	method `App.unregister_theme` is never used
 unused-method	medium	src/textual/app.py:3680:9	_unregister	method `App._unregister` is never used
 unused-method	low	src/textual/await_complete.py:68:9	is_done	method `AwaitComplete.is_done` is never used
+unused-attribute	medium	src/textual/color.py:720:14	_rich_colors	attribute `Gradient._rich_colors` is never used
+unused-attribute	medium	src/textual/command.py:732:14	_hit_count	attribute `CommandPalette._hit_count` is never used
 unused-method	low	src/textual/command.py:1178:9	_input	method `CommandPalette._input` is never used
 unused-method	low	src/textual/command.py:1190:9	_select_command	method `CommandPalette._select_command` is never used
 unused-method	low	src/textual/command.py:1248:9	_stop_event_leak	method `CommandPalette._stop_event_leak` is never used
 unused-variable	medium	src/textual/constants.py:128:1	DEVTOOLS_PORT	variable `DEVTOOLS_PORT` is never used
 unused-variable	medium	src/textual/content.py:46:1	ANSI_DEFAULT	variable `ANSI_DEFAULT` is never used
 unused-variable	medium	src/textual/content.py:52:1	TRANSPARENT_STYLE	variable `TRANSPARENT_STYLE` is never used
+unused-attribute	medium	src/textual/content.py:143:5	_NORMALIZE_TEXT_ALIGN	attribute `Content._NORMALIZE_TEXT_ALIGN` is never used
 unused-method	medium	src/textual/content.py:183:9	_is_regular	method `Content._is_regular` is never used
 unused-method	low	src/textual/content.py:919:9	append_text	method `Content.append_text` is never used
 unused-method	low	src/textual/content.py:1141:9	extend_right	method `Content.extend_right` is never used
+unused-attribute	medium	src/textual/css/_style_properties.py:288:14	_type	attribute `BoxProperty._type` is never used
+unused-attribute	low	src/textual/css/_style_properties.py:289:14	edge	attribute `BoxProperty.edge` is never used
 unused-method	low	src/textual/css/query.py:259:9	only_one	method `DOMQuery.only_one` is never used
 unused-method	low	src/textual/css/styles.py:661:9	is_split	method `StylesBase.is_split` is never used
 unused-variable	medium	src/textual/css/tokenize.py:310:1	tokenize_style	variable `tokenize_style` is never used
 unused-variable	medium	src/textual/css/types.py:43:1	Position	variable `Position` is never used
+unused-attribute	low	src/textual/demo/game.py:335:5	play_time	attribute `Game.play_time` is never used
 unused-function	medium	src/textual/design.py:533:5	show_design	function `show_design` is never used
 unused-method	low	src/textual/dom.py:839:9	css_identifier	method `DOMNode.css_identifier` is never used
 unused-method	low	src/textual/dom.py:1001:9	css_tree	method `DOMNode.css_tree` is never used
@@ -37,6 +49,7 @@ unused-method	low	src/textual/dom.py:1295:9	reset_styles	method `DOMNode.reset_s
 unused-class	medium	src/textual/drivers/_byte_stream.py:23:7	ParseEOF	class `ParseEOF` is never used
 unused-variable	medium	src/textual/drivers/linux_driver.py:31:1	KITTY_REPORT_EVENT_TYPES	variable `KITTY_REPORT_EVENT_TYPES` is never used
 unused-variable	medium	src/textual/drivers/linux_driver.py:32:1	KITTY_REPORT_ALTERNATE_KEYS	variable `KITTY_REPORT_ALTERNATE_KEYS` is never used
+unused-attribute	medium	src/textual/drivers/linux_driver.py:72:14	_mouse_pixels	attribute `LinuxDriver._mouse_pixels` is never used
 unused-file	low	src/textual/drivers/web_driver.py	-	file `textual.drivers.web_driver` is never imported or run
 unused-variable	medium	src/textual/drivers/win32.py:23:1	ENABLE_ECHO_INPUT	variable `ENABLE_ECHO_INPUT` is never used
 unused-variable	medium	src/textual/drivers/win32.py:24:1	ENABLE_EXTENDED_FLAGS	variable `ENABLE_EXTENDED_FLAGS` is never used
@@ -58,6 +71,7 @@ unused-variable	medium	src/textual/filter.py:152:1	DEFAULT_COLOR	variable `DEFAU
 unused-method	low	src/textual/geometry.py:1353:9	draw	method `Shape.draw` is never used
 unused-class	medium	src/textual/logging.py:15:7	TextualHandler	class `TextualHandler` is never used
 unused-method	low	src/textual/map_geometry.py:32:9	visible_region	method `MapGeometry.visible_region` is never used
+unused-attribute	low	src/textual/message.py:43:5	namespace	attribute `Message.namespace` is never used
 unused-method	low	src/textual/message_pump.py:220:9	task	method `MessagePump.task` is never used
 unused-method	low	src/textual/message_pump.py:225:9	has_parent	method `MessagePump.has_parent` is never used
 unused-method	low	src/textual/message_pump.py:327:9	disable_messages	method `MessagePump.disable_messages` is never used
@@ -71,8 +85,10 @@ unused-class	medium	src/textual/renderables/gradient.py:13:7	VerticalGradient	cl
 unused-method	medium	src/textual/screen.py:1961:9	_collect_select_widgets	method `Screen._collect_select_widgets` is never used
 unused-method	low	src/textual/scroll_view.py:168:9	refresh_line	method `ScrollView.refresh_line` is never used
 unused-method	low	src/textual/style.py:521:9	has_transparent_foreground	method `Style.has_transparent_foreground` is never used
+unused-attribute	medium	src/textual/timer.py:58:14	_target_repr	attribute `Timer._target_repr` is never used
 unused-function	medium	src/textual/visual.py:30:5	is_visual	function `is_visual` is never used
 unused-method	medium	src/textual/visual.py:286:9	_measure	method `RichVisual._measure` is never used
+unused-attribute	low	src/textual/widget.py:352:5	highlight_link_id	attribute `Widget.highlight_link_id` is never used
 unused-method	low	src/textual/widget.py:639:9	is_anchored	method `Widget.is_anchored` is never used
 unused-method	low	src/textual/widget.py:755:9	pre_render	method `Widget.pre_render` is never used
 unused-method	medium	src/textual/widget.py:1508:9	_refresh_styles	method `Widget._refresh_styles` is never used
@@ -83,12 +99,18 @@ unused-method	low	src/textual/widget.py:2208:9	scrollable_size	method `Widget.sc
 unused-method	low	src/textual/widget.py:2309:9	container_viewport	method `Widget.container_viewport` is never used
 unused-method	low	src/textual/widget.py:2394:9	container_scroll_offset	method `Widget.container_scroll_offset` is never used
 unused-method	medium	src/textual/widget.py:2402:9	_console	method `Widget._console` is never used
+unused-attribute	low	src/textual/widgets/_button.py:308:5	flat	attribute `Button.flat` is never used
+unused-attribute	low	src/textual/widgets/_footer.py:209:5	combine_groups	attribute `Footer.combine_groups` is never used
 unused-method	low	src/textual/widgets/_input.py:489:9	cursor_at_start	method `Input.cursor_at_start` is never used
+unused-attribute	medium	src/textual/widgets/_markdown.py:219:14	_inline_token	attribute `MarkdownBlock._inline_token` is never used
 unused-method	medium	src/textual/widgets/_markdown.py:682:9	_update_content	method `MarkdownTableContent._update_content` is never used
+unused-attribute	medium	src/textual/widgets/_markdown.py:732:14	_headers	attribute `MarkdownTable._headers` is never used
 unused-method	medium	src/textual/widgets/_markdown.py:1359:9	_build_from_source	method `Markdown._build_from_source` is never used
+unused-attribute	low	src/textual/widgets/_markdown.py:1623:5	top_block	attribute `MarkdownViewer.top_block` is never used
 unused-file	low	src/textual/widgets/_markdown_viewer.py	-	file `textual.widgets._markdown_viewer` is never imported or run
 unused-method	low	src/textual/widgets/_option_list.py:315:9	highlighted_option	method `OptionList.highlighted_option` is never used
 unused-method	medium	src/textual/widgets/_option_list.py:874:9	_get_line	method `OptionList._get_line` is never used
+unused-attribute	low	src/textual/widgets/_select.py:232:5	has_value	attribute `SelectCurrent.has_value` is never used
 unused-variable	medium	src/textual/widgets/_select.py:278:1	SelectOption	variable `SelectOption` is never used
 unused-method	low	src/textual/widgets/_select.py:653:9	_select_current_toggle	method `Select._select_current_toggle` is never used
 unused-method	low	src/textual/widgets/_select.py:659:9	_select_overlay_dismiss	method `Select._select_overlay_dismiss` is never used
@@ -123,6 +145,9 @@ unused-variable	medium	tests/test_screens.py:17:1	skip_py310	variable `skip_py31
 unused-method	low	tests/test_screens.py:565:13	handle_ok	method `InfoScreen.handle_ok` is never used
 unused-method	low	tests/test_tabs.py:409:9	log_message	method `TabsMessageCatchApp.log_message` is never used
 unused-method	low	tests/test_tabs.py:416:9	check_control	method `TabsMessageCatchApp.check_control` is never used
+unused-attribute	low	tests/test_widget.py:46:18	loading_indicator	attribute `MyApp.loading_indicator` is never used
+unused-attribute	low	tests/test_widget.py:47:18	log_	attribute `MyApp.log_` is never used
+unused-attribute	low	tests/test_widget.py:49:18	rich_log	attribute `MyApp.rich_log` is never used
 unused-method	low	tests/text_area/test_messages.py:17:9	message_received	method `TextAreaApp.message_received` is never used
 unused-method	low	tests/tree/test_tree_availability.py:40:9	node_selected	method `TreeApp.node_selected` is never used
 unused-method	low	tests/tree/test_tree_availability.py:44:9	node_expanded	method `TreeApp.node_expanded` is never used

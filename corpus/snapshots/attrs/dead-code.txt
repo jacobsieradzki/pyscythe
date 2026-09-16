@@ -1,6 +1,6 @@
 files_scanned=56
-symbols_checked=1310
-symbols_kept=853
+symbols_checked=1618
+symbols_kept=882
 findings=10
 --
 unused-variable	medium	src/attr/_compat.py:95:1	repr_context	variable `repr_context` is never used

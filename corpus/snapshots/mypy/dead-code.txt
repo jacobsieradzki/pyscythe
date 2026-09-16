@@ -1,7 +1,7 @@
 files_scanned=442
-symbols_checked=10998
-symbols_kept=323
-findings=141
+symbols_checked=13395
+symbols_kept=324
+findings=171
 --
 unused-function	medium	misc/analyze_cache.py:74:5	pluck	function `pluck` is never used
 unused-file	medium	misc/build_wheel.py	-	file `misc.build_wheel` is never imported or run
@@ -21,17 +21,23 @@ unused-function	low	mypy/dmypy/client.py:528:5	do_inspect	function `do_inspect` 
 unused-function	low	mypy/dmypy/client.py:604:5	do_hang	function `do_hang` is never used
 unused-function	low	mypy/dmypy/client.py:610:5	do_daemon	function `do_daemon` is never used
 unused-function	low	mypy/dmypy/client.py:634:5	do_help	function `do_help` is never used
+unused-attribute	low	mypy/errorcodes.py:28:14	description	attribute `ErrorCode.description` is never used
 unused-variable	low	mypy/errors.py:42:1	T	variable `T` is never used
+unused-attribute	low	mypy/errors.py:518:14	function_or_member	attribute `Errors.function_or_member` is never used
 unused-file	low	mypy/gclogger.py	-	file `mypy.gclogger` is never imported or run
 unused-function	low	mypy/git.py:66:5	is_dirty	function `is_dirty` is never used
+unused-attribute	medium	mypy/main.py:208:14	_result	attribute `BuildResultThunk._result` is never used
 unused-function	low	mypy/meet.py:678:5	is_overlapping_erased_types	function `is_overlapping_erased_types` is never used
 unused-variable	medium	mypy/message_registry.py:180:1	IMPLICIT_GENERIC_ANY_BUILTIN	variable `IMPLICIT_GENERIC_ANY_BUILTIN` is never used
 unused-variable	medium	mypy/operators.py:34:1	ops_falling_back_to_cmp	variable `ops_falling_back_to_cmp` is never used
+unused-attribute	low	mypy/options.py:110:14	build_type	attribute `Options.build_type` is never used
+unused-attribute	low	mypy/options.py:135:14	ignore_missing_imports_per_module	attribute `Options.ignore_missing_imports_per_module` is never used
 unused-method	low	mypy/plugin.py:282:9	builtin_type	method `SemanticAnalyzerPluginInterface.builtin_type` is never used
 unused-file	low	mypy/plugins/proper_plugin.py	-	file `mypy.plugins.proper_plugin` is never imported or run
 unused-method	low	mypy/semanal_shared.py:109:9	incomplete_feature_enabled	method `SemanticAnalyzerCoreInterface.incomplete_feature_enabled` is never used
 unused-method	low	mypy/server/astmerge.py:256:9	process_param_spec_def	method `NodeReplaceVisitor.process_param_spec_def` is never used
 unused-method	low	mypy/server/astmerge.py:260:9	process_type_var_tuple_def	method `NodeReplaceVisitor.process_type_var_tuple_def` is never used
+unused-attribute	low	mypy/stubgen.py:226:14	decointerpreter	attribute `Options.decointerpreter` is never used
 unused-variable	low	mypy/stubgen.py:273:1	NOT_IN_ALL	variable `NOT_IN_ALL` is never used
 unused-method	medium	mypy/stubgenc.py:199:9	_from_sig	method `CFunctionStub._from_sig` is never used
 unused-method	medium	mypy/stubgenc.py:203:9	_from_sigs	method `CFunctionStub._from_sigs` is never used
@@ -39,8 +45,20 @@ unused-variable	medium	mypy/subtypes.py:87:1	TypeParameterChecker	variable `Type
 unused-function	low	mypy/test/data.py:821:5	is_incremental	function `is_incremental` is never used
 unused-function	medium	mypy/test/data.py:825:5	has_stable_flags	function `has_stable_flags` is never used
 unused-function	medium	mypy/test/helpers.py:39:5	run_mypy	function `run_mypy` is never used
+unused-attribute	low	mypy/test/typefixture.py:73:14	sf	attribute `TypeFixture.sf` is never used
+unused-attribute	low	mypy/test/typefixture.py:74:14	sf1	attribute `TypeFixture.sf1` is never used
+unused-attribute	low	mypy/test/typefixture.py:170:14	gtf	attribute `TypeFixture.gtf` is never used
+unused-attribute	low	mypy/test/typefixture.py:171:14	gtf2	attribute `TypeFixture.gtf2` is never used
+unused-attribute	low	mypy/test/typefixture.py:172:14	gs	attribute `TypeFixture.gs` is never used
+unused-attribute	low	mypy/test/typefixture.py:174:14	gn	attribute `TypeFixture.gn` is never used
+unused-attribute	low	mypy/test/typefixture.py:183:14	gs2b	attribute `TypeFixture.gs2b` is never used
+unused-attribute	low	mypy/test/typefixture.py:189:14	hts	attribute `TypeFixture.hts` is never used
+unused-attribute	low	mypy/test/typefixture.py:193:14	lsta	attribute `TypeFixture.lsta` is never used
+unused-attribute	low	mypy/test/typefixture.py:194:14	lstb	attribute `TypeFixture.lstb` is never used
 unused-class	medium	mypy/traverser.py:1094:7	YieldFromCollector	class `YieldFromCollector` is never used
 unused-variable	low	mypy/typeanal.py:122:1	T	variable `T` is never used
+unused-attribute	low	mypy/typeanal.py:200:5	in_dynamic_func	attribute `TypeAnalyser.in_dynamic_func` is never used
+unused-attribute	low	mypy/typeanal.py:202:5	global_scope	attribute `TypeAnalyser.global_scope` is never used
 unused-variable	low	mypy/util.py:40:1	T	variable `T` is never used
 unused-function	medium	mypy/util.py:82:5	split_module_names	function `split_module_names` is never used
 unused-variable	medium	mypy/util.py:253:1	JUNIT_ERROR_TEMPLATE	variable `JUNIT_ERROR_TEMPLATE` is never used
@@ -52,12 +70,16 @@ unused-function	medium	mypyc/codegen/emitfunc.py:110:5	native_function_type	func
 unused-method	low	mypyc/codegen/emitfunc.py:1072:9	emit_declaration	method `FunctionEmitterVisitor.emit_declaration` is never used
 unused-method	low	mypyc/codegen/emitmodule.py:1593:9	declare_static_pyobject	method `GroupGenerator.declare_static_pyobject` is never used
 unused-function	low	mypyc/codegen/emitmodule.py:1610:5	toposort	function `toposort` is never used
+unused-attribute	low	mypyc/codegen/emitwrapper.py:859:14	target_cname	attribute `WrapperGenerator.target_cname` is never used
+unused-attribute	low	mypyc/errors.py:10:14	num_warnings	attribute `Errors.num_warnings` is never used
 unused-method	low	mypyc/ir/class_ir.py:425:9	has_method_decl	method `ClassIR.has_method_decl` is never used
+unused-attribute	low	mypyc/ir/ops.py:1306:14	var_arg_idx	attribute `CallC.var_arg_idx` is never used
 unused-variable	medium	mypyc/ir/rtypes.py:184:1	RStructLike	variable `RStructLike` is never used
 unused-variable	medium	mypyc/ir/rtypes.py:330:1	object_non_refcounted_rprimitive	variable `object_non_refcounted_rprimitive` is never used
 unused-variable	medium	mypyc/ir/rtypes.py:403:1	u16_rprimitive	variable `u16_rprimitive` is never used
 unused-function	low	mypyc/ir/rtypes.py:630:5	is_uint32_rprimitive	function `is_uint32_rprimitive` is never used
 unused-function	low	mypyc/ir/rtypes.py:634:5	is_uint64_rprimitive	function `is_uint64_rprimitive` is never used
+unused-attribute	low	mypyc/ir/rtypes.py:1106:18	buf_type	attribute `RVec.buf_type` is never used
 unused-variable	low	mypyc/ir/rtypes.py:1426:1	VecI64	variable `VecI64` is never used
 unused-variable	low	mypyc/ir/rtypes.py:1439:1	VecT	variable `VecT` is never used
 unused-variable	medium	mypyc/ir/rtypes.py:1467:1	VecNestedBufObject_rprimitive	variable `VecNestedBufObject_rprimitive` is never used
@@ -108,6 +130,7 @@ unused-function	low	mypyc/irbuild/specialize.py:1601:5	translate_vec_remove	func
 unused-function	low	mypyc/irbuild/specialize.py:1614:5	translate_vec_pop	function `translate_vec_pop` is never used
 unused-variable	medium	mypyc/irbuild/vec.py:207:1	VEC_TYPE_INFO_I64	variable `VEC_TYPE_INFO_I64` is never used
 unused-method	low	mypyc/lib-rt/setup.py:33:9	get_library_names	method `BuildExtGtest.get_library_names` is never used
+unused-attribute	low	mypyc/lib-rt/setup.py:47:14	library_dirs	attribute `BuildExtGtest.library_dirs` is never used
 unused-function	low	mypyc/lower/int_ops.py:87:5	lower_int_eq	function `lower_int_eq` is never used
 unused-function	low	mypyc/lower/int_ops.py:92:5	lower_int_ne	function `lower_int_ne` is never used
 unused-function	low	mypyc/lower/int_ops.py:97:5	lower_int_lt	function `lower_int_lt` is never used
@@ -120,6 +143,7 @@ unused-function	low	mypyc/lower/misc_ops.py:10:5	var_object_size	function `var_o
 unused-function	low	mypyc/lower/misc_ops.py:16:5	propagate_if_error_op	function `propagate_if_error_op` is never used
 unused-function	low	mypyc/lower/vec_ops.py:10:5	vec_get_item_unsafe	function `vec_get_item_unsafe` is never used
 unused-function	low	mypyc/lower/vec_ops.py:16:5	vec_get_item_unsafe_borrow	function `vec_get_item_unsafe_borrow` is never used
+unused-attribute	low	mypyc/namegen.py:62:14	used_names	attribute `NameGenerator.used_names` is never used
 unused-variable	medium	mypyc/primitives/dict_ops.py:168:1	dict_setdefault_op	variable `dict_setdefault_op` is never used
 unused-variable	medium	mypyc/primitives/float_ops.py:136:1	pow_op	variable `pow_op` is never used
 unused-variable	low	mypyc/primitives/int_ops.py:128:1	int_eq	variable `int_eq` is never used
@@ -137,10 +161,16 @@ unused-variable	medium	mypyc/primitives/weakref_ops.py:33:1	new_proxy_with_callb
 unused-function	medium	mypyc/test/librt_cache.py:218:5	run_with_librt	function `run_with_librt` is never used
 unused-variable	low	mypyc/test/test_alwaysdefined.py:19:1	files	variable `files` is never used
 unused-variable	low	mypyc/test/test_analysis.py:24:1	files	variable `files` is never used
+unused-attribute	low	mypyc/test/test_analysis.py:30:5	optional_out	attribute `TestAnalysis.optional_out` is never used
 unused-variable	low	mypyc/test/test_annotate.py:22:1	files	variable `files` is never used
+unused-attribute	low	mypyc/test/test_annotate.py:28:5	optional_out	attribute `TestReport.optional_out` is never used
 unused-variable	low	mypyc/test/test_capsule_deps.py:22:1	files	variable `files` is never used
 unused-variable	low	mypyc/test/test_commandline.py:20:1	files	variable `files` is never used
+unused-attribute	low	mypyc/test/test_commandline.py:31:5	optional_out	attribute `TestCommandLine.optional_out` is never used
 unused-variable	low	mypyc/test/test_exceptions.py:28:1	files	variable `files` is never used
+unused-attribute	low	mypyc/test/test_irbuild.py:80:5	optional_out	attribute `TestGenOps.optional_out` is never used
 unused-variable	low	mypyc/test/test_refcount.py:29:1	files	variable `files` is never used
+unused-attribute	low	mypyc/test/test_refcount.py:35:5	optional_out	attribute `TestRefCountTransform.optional_out` is never used
+unused-attribute	low	mypyc/test/test_run.py:164:5	optional_out	attribute `TestRun.optional_out` is never used
 unused-file	low	test-data/packages/typedpkg/typedpkg/dne.py	-	file `typedpkg.dne` is never imported or run
 unused-file	medium	test-data/unit/plugins/noentry.py	-	file `noentry.py` is never imported or run

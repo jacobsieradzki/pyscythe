@@ -1,6 +1,6 @@
 files_scanned=1581
-symbols_checked=4767
-symbols_kept=767
+symbols_checked=5415
+symbols_kept=835
 findings=623
 --
 unused-file	low	langchain_classic/_api/path.py	-	file `langchain_classic._api.path` is never imported or run

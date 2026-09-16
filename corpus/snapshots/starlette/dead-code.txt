@@ -1,8 +1,13 @@
 files_scanned=84
-symbols_checked=1513
+symbols_checked=1864
 symbols_kept=660
-findings=3
+findings=8
 --
+unused-attribute	medium	starlette/middleware/base.py:32:14	_wrapped_rc_stream	attribute `_CachedRequest._wrapped_rc_stream` is never used
+unused-attribute	medium	starlette/middleware/opentelemetry.py:38:14	_meter_provider	attribute `OpenTelemetryMiddleware._meter_provider` is never used
+unused-attribute	low	starlette/middleware/wsgi.py:96:14	response_headers	attribute `WSGIResponder.response_headers` is never used
+unused-attribute	medium	starlette/routing.py:567:14	_router	attribute `_DefaultLifespan._router` is never used
 unused-method	low	starlette/routing.py:758:9	add_websocket_route	method `Router.add_websocket_route` is never used
+unused-attribute	low	starlette/staticfiles.py:51:14	packages	attribute `StaticFiles.packages` is never used
 unused-method	low	starlette/testclient.py:223:9	handle_request	method `_TestClientTransport.handle_request` is never used
 unused-method	medium	tests/test_endpoints.py:66:19	_do_delete	method `Endpoint._do_delete` is never used

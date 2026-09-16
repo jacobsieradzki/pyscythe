@@ -1,7 +1,7 @@
 files_scanned=274
-symbols_checked=6569
-symbols_kept=1702
-findings=126
+symbols_checked=7227
+symbols_kept=1707
+findings=130
 --
 unused-method	low	src/_pytest/_py/path.py:47:9	dotfile	method `Checkers.dotfile` is never used
 unused-method	low	src/_pytest/_py/path.py:58:9	basestarts	method `Checkers.basestarts` is never used
@@ -27,12 +27,15 @@ unused-class	low	src/_pytest/main.py:517:7	Interrupted	class `Interrupted` is ne
 unused-method	low	src/_pytest/mark/structures.py:396:9	markname	method `MarkDecorator.markname` is never used
 unused-variable	medium	src/_pytest/monkeypatch.py:28:1	RE_IMPORT_ERROR_NAME	variable `RE_IMPORT_ERROR_NAME` is never used
 unused-method	low	src/_pytest/nodes.py:394:9	listnames	method `Node.listnames` is never used
+unused-attribute	low	src/_pytest/nodes.py:678:5	nextitem	attribute `Item.nextitem` is never used
 unused-function	low	src/_pytest/pathlib.py:512:5	parts	function `parts` is never used
 unused-variable	low	src/_pytest/pytester.py:76:1	pytest_plugins	variable `pytest_plugins` is never used
 unused-function	low	src/_pytest/pytester.py:199:5	_pytest	function `_pytest` is never used
 unused-method	low	src/_pytest/pytester.py:210:9	gethookrecorder	method `PytestArg.gethookrecorder` is never used
 unused-method	low	src/_pytest/python.py:1214:9	getparam	method `CallSpec.getparam` is never used
 unused-function	low	src/_pytest/subtests.py:137:5	subtests	function `subtests` is never used
+unused-attribute	medium	src/_pytest/terminal.py:637:14	_tests_ran	attribute `TerminalReporter._tests_ran` is never used
+unused-attribute	low	src/_pytest/unittest.py:230:5	failfast	attribute `TestCaseFunction.failfast` is never used
 unused-method	medium	src/_pytest/unittest.py:240:9	_testcase	method `TestCaseFunction._testcase` is never used
 unused-method	low	src/_pytest/unittest.py:260:9	startTest	method `TestCaseFunction.startTest` is never used
 unused-method	low	src/_pytest/unittest.py:307:9	addFailure	method `TestCaseFunction.addFailure` is never used
@@ -126,6 +129,7 @@ unused-variable	low	testing/test_cacheprovider.py:20:1	pytest_plugins	variable `
 unused-method	low	testing/test_skipping.py:548:9	xtest_dynamic_xfail_set_during_setup	method `TestXFail.xtest_dynamic_xfail_set_during_setup` is never used
 unused-variable	medium	testing/test_subtests.py:14:1	IS_PY311	variable `IS_PY311` is never used
 unused-function	low	testing/test_tmpdir.py:393:5	break_getuser	function `break_getuser` is never used
+unused-attribute	low	testing/test_unittest.py:485:13	ut	attribute `TestTrialUnittest.ut` is never used
 unused-function	high	testing/test_unraisableexception.py:221:5	_set_gc_state	function `_set_gc_state` is never used
 unused-file	medium	testing/typing_checks.py	-	file `testing.typing_checks` is never imported or run
 unused-file	medium	testing/typing_raises_group.py	-	file `testing.typing_raises_group` is never imported or run

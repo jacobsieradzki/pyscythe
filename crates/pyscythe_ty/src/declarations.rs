@@ -4,6 +4,7 @@
 use pyscythe_core::source::ModulePath;
 use pyscythe_core::symbol::{Decorator, DecoratorCall, DottedName, KeywordName, Provenance};
 use ruff_python_ast::name::UnqualifiedName;
+use ruff_python_ast::statement_visitor::{StatementVisitor, walk_body, walk_stmt};
 use ruff_python_ast::{self as ast, AnyNodeRef, Expr, Stmt};
 use ruff_text_size::{Ranged, TextRange};
 use rustc_hash::{FxHashMap, FxHashSet};
@@ -65,6 +66,9 @@ fn is_dunder_all(expr: &Expr) -> bool {
 /// Name ranges bound by plain, annotated, or augmented assignment statements
 /// at module level and in class bodies, including inside `if`/`try`/`with`
 /// blocks. Loop targets, `with ... as`, walrus, and `except ... as` are not.
+///
+/// A bare `name: int` is not bound either: it declares a type and creates
+/// nothing, so there is no definition to call unused.
 pub(crate) fn assignment_target_ranges(module: &ast::ModModule) -> FxHashSet<TextRange> {
     let mut out = FxHashSet::default();
     collect_assignment_targets(&module.body, &mut out);
@@ -79,7 +83,9 @@ fn collect_assignment_targets(body: &[Stmt], out: &mut FxHashSet<TextRange>) {
                     collect_name_targets(target, out);
                 }
             }
-            Stmt::AnnAssign(assign) => collect_name_targets(&assign.target, out),
+            Stmt::AnnAssign(assign) if assign.value.is_some() => {
+                collect_name_targets(&assign.target, out);
+            }
             Stmt::AugAssign(assign) => collect_name_targets(&assign.target, out),
             Stmt::TypeAlias(alias) => collect_name_targets(&alias.name, out),
             Stmt::ClassDef(class) => collect_assignment_targets(&class.body, out),
@@ -122,6 +128,118 @@ fn collect_name_targets(target: &Expr, out: &mut FxHashSet<TextRange>) {
         Expr::Starred(starred) => collect_name_targets(&starred.value, out),
         _ => {}
     }
+}
+
+/// An attribute a class creates on its instances: `self.name = ...` or
+/// `self.name: T = ...` in one of its own methods.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub(crate) struct InstanceAttribute {
+    pub(crate) name: String,
+    /// The `name` token of the first assignment, which is what ty resolves
+    /// `obj.name` to.
+    pub(crate) name_range: TextRange,
+    /// The whole assignment statement.
+    pub(crate) statement_range: TextRange,
+}
+
+/// Every `self.name = ...` a class assigns in its own methods, keyed by the
+/// class's name range, in source order and one entry per name.
+///
+/// ty's document symbols stop at the class body, so without this an attribute
+/// that only the constructor creates is invisible.
+pub(crate) fn instance_attributes(
+    module: &ast::ModModule,
+) -> FxHashMap<TextRange, Vec<InstanceAttribute>> {
+    let mut out = FxHashMap::default();
+    collect_instance_attributes(&module.body, &mut out);
+    out
+}
+
+fn collect_instance_attributes(
+    body: &[Stmt],
+    out: &mut FxHashMap<TextRange, Vec<InstanceAttribute>>,
+) {
+    for statement in body {
+        match statement {
+            Stmt::ClassDef(class) => {
+                let mut collector = InstanceAttributeCollector::default();
+                collector.visit_body(&class.body);
+                if !collector.found.is_empty() {
+                    out.insert(class.name.range(), collector.found);
+                }
+                collect_instance_attributes(&class.body, out);
+            }
+            Stmt::FunctionDef(function) => collect_instance_attributes(&function.body, out),
+            _ => {}
+        }
+    }
+}
+
+/// Walks one class body looking for methods that assign to their receiver.
+#[derive(Default)]
+struct InstanceAttributeCollector {
+    found: Vec<InstanceAttribute>,
+    seen: FxHashSet<String>,
+    /// The receiver name of the method being walked, such as `self` or `cls`.
+    receiver: Option<String>,
+}
+
+impl InstanceAttributeCollector {
+    fn note(&mut self, target: &Expr, statement: &Stmt) {
+        let Expr::Attribute(attribute) = target else {
+            return;
+        };
+        let Expr::Name(receiver) = &*attribute.value else {
+            return;
+        };
+        if self.receiver.as_deref() != Some(receiver.id.as_str()) {
+            return;
+        }
+        let name = attribute.attr.as_str();
+        if !self.seen.insert(name.to_owned()) {
+            return;
+        }
+        self.found.push(InstanceAttribute {
+            name: name.to_owned(),
+            name_range: attribute.attr.range(),
+            statement_range: statement.range(),
+        });
+    }
+}
+
+impl<'a> StatementVisitor<'a> for InstanceAttributeCollector {
+    fn visit_stmt(&mut self, stmt: &'a Stmt) {
+        match stmt {
+            // A class nested in this one owns its own attributes.
+            Stmt::ClassDef(_) => {}
+            Stmt::FunctionDef(function) if self.receiver.is_none() => {
+                let Some(receiver) = first_parameter_name(&function.parameters) else {
+                    return;
+                };
+                self.receiver = Some(receiver.to_owned());
+                walk_body(self, &function.body);
+                self.receiver = None;
+            }
+            Stmt::Assign(assign) if self.receiver.is_some() => {
+                for target in &assign.targets {
+                    self.note(target, stmt);
+                }
+            }
+            Stmt::AnnAssign(assign) if self.receiver.is_some() && assign.value.is_some() => {
+                self.note(&assign.target, stmt);
+            }
+            _ => walk_stmt(self, stmt),
+        }
+    }
+}
+
+/// The name a method binds its instance or class to, such as `self`.
+fn first_parameter_name(parameters: &ast::Parameters) -> Option<&str> {
+    let first = parameters
+        .posonlyargs
+        .first()
+        .or_else(|| parameters.args.first())?;
+    Some(first.parameter.name.as_str())
 }
 
 /// Whether `module` has a top-level `if __name__ == "__main__":` block.

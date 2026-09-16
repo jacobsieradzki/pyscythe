@@ -1,7 +1,7 @@
 files_scanned=1206
-symbols_checked=18495
-symbols_kept=10207
-findings=52
+symbols_checked=19755
+symbols_kept=10225
+findings=61
 --
 unused-file	medium	frontend/app/performance/apps/blank_app.py	-	file `blank_app.py` is never imported or run
 unused-file	medium	frontend/app/performance/apps/crud_app.py	-	file `crud_app.py` is never imported or run
@@ -27,14 +27,19 @@ unused-variable	medium	lib/streamlit/delta_generator.py:140:1	MAX_DELTA_BYTES	va
 unused-variable	low	lib/streamlit/delta_generator.py:142:1	Value	variable `Value` is never used
 unused-method	medium	lib/streamlit/delta_generator.py:447:9	_count_num_of_parent_columns	method `DeltaGenerator._count_num_of_parent_columns` is never used
 unused-variable	medium	lib/streamlit/development.py:21:1	is_development_mode	variable `is_development_mode` is never used
+unused-attribute	low	lib/streamlit/elements/lib/js_number.py:39:5	MIN_VALUE	attribute `JSNumber.MIN_VALUE` is never used
 unused-class	medium	lib/streamlit/elements/widgets/slider.py:227:7	SliderDefaultValues	class `SliderDefaultValues` is never used
+unused-attribute	medium	lib/streamlit/runtime/caching/cached_message_replay.py:153:14	_cache_type	attribute `CachedMessageReplayContext._cache_type` is never used
 unused-method	low	lib/streamlit/runtime/memory_media_file_storage.py:124:9	content_size	method `MemoryFile.content_size` is never used
+unused-attribute	medium	lib/streamlit/runtime/runtime.py:209:14	_loop_coroutine_task	attribute `Runtime._loop_coroutine_task` is never used
 unused-class	medium	lib/streamlit/runtime/session_manager.py:122:7	SessionStorageError	class `SessionStorageError` is never used
 unused-method	medium	lib/streamlit/runtime/state/query_params.py:765:9	_set_corrected_value	method `QueryParams._set_corrected_value` is never used
 unused-class	low	lib/streamlit/testing/v1/element_tree.py:902:7	Space	class `Space` is never used
+unused-attribute	medium	lib/streamlit/web/server/server.py:58:14	_bootstrap_task	attribute `Server._bootstrap_task` is never used
 unused-method	low	lib/streamlit/web/server/server.py:110:9	browser_is_connected	method `Server.browser_is_connected` is never used
 unused-variable	medium	lib/streamlit/web/server/server_util.py:33:1	AUTH_COOKIE_NAME	variable `AUTH_COOKIE_NAME` is never used
 unused-variable	medium	lib/streamlit/web/server/server_util.py:34:1	TOKENS_COOKIE_NAME	variable `TOKENS_COOKIE_NAME` is never used
+unused-attribute	medium	lib/streamlit/web/server/starlette/starlette_server.py:335:14	_server_task	attribute `UvicornServer._server_task` is never used
 unused-variable	medium	lib/tests/streamlit/auth_util_test.py:75:1	CONFIG_MOCK	variable `CONFIG_MOCK` is never used
 unused-variable	low	lib/tests/streamlit/delta_generator_test.py:67:1	register_widget	variable `register_widget` is never used
 unused-variable	low	lib/tests/streamlit/echo_test_data/multiline_param_echo.py:20:5	a	variable `a` is never used
@@ -50,8 +55,12 @@ unused-function	medium	lib/tests/streamlit/message_mocks.py:52:5	create_script_f
 unused-function	low	lib/tests/streamlit/runtime/app_session_test.py:84:5	del_path	function `del_path` is never used
 unused-function	medium	lib/tests/streamlit/runtime/caching/cache_utils_test.py:142:5	function_for_testing	function `function_for_testing` is never used
 unused-variable	medium	lib/tests/streamlit/runtime/caching/hashing_test.py:70:1	get_main_script_director	variable `get_main_script_director` is never used
+unused-attribute	low	lib/tests/streamlit/runtime/caching/storage/dummy_cache_storage_test.py:41:14	dummy_cache_storage	attribute `DummyCacheStorageManagerTest.dummy_cache_storage` is never used
 unused-function	low	lib/tests/streamlit/runtime/parallel_fragment_coordinator_test.py:75:5	_attach_mock_ctx	function `_attach_mock_ctx` is never used
+unused-attribute	medium	lib/tests/streamlit/runtime/runtime_test_case.py:121:5	_next_session_id	attribute `RuntimeTestCase._next_session_id` is never used
+unused-attribute	low	lib/tests/streamlit/runtime/state/query_params_proxy_test.py:52:14	mock_get_session_state	attribute `TestQueryParamsProxy.mock_get_session_state` is never used
 unused-function	low	lib/tests/streamlit/runtime/state/session_state_proxy_test.py:171:5	_reset_mock_session_state	function `_reset_mock_session_state` is never used
 unused-method	low	lib/tests/streamlit/runtime/state/widgets_test.py:315:9	coalesce_widget_states_returns_None_if_both_inputs_None	method `WidgetManagerTests.coalesce_widget_states_returns_None_if_both_inputs_None` is never used
 unused-method	low	lib/tests/streamlit/runtime/state/widgets_test.py:318:9	coalesce_widget_states_returns_old_states_if_new_states_None	method `WidgetManagerTests.coalesce_widget_states_returns_old_states_if_new_states_None` is never used
 unused-method	low	lib/tests/streamlit/runtime/state/widgets_test.py:322:9	coalesce_widget_states_returns_new_states_if_old_states_None	method `WidgetManagerTests.coalesce_widget_states_returns_new_states_if_old_states_None` is never used
+unused-attribute	low	lib/tests/streamlit/watcher/event_based_path_watcher_test.py:50:14	MockObserverClass	attribute `EventBasedPathWatcherTest.MockObserverClass` is never used

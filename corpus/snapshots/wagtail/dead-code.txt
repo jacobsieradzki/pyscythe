@@ -1,7 +1,7 @@
 files_scanned=1388
-symbols_checked=17597
-symbols_kept=1754
-findings=231
+symbols_checked=25583
+symbols_kept=1876
+findings=254
 --
 unused-variable	medium	wagtail/actions/publish_page_revision.py:9:1	logger	variable `logger` is never used
 unused-variable	medium	wagtail/actions/unpublish_page.py:6:1	logger	variable `logger` is never used
@@ -9,6 +9,7 @@ unused-function	low	wagtail/admin/auth.py:51:5	permission_required	function `per
 unused-function	low	wagtail/admin/auth.py:65:5	any_permission_required	function `any_permission_required` is never used
 unused-method	low	wagtail/admin/auth.py:90:9	require	method `PermissionPolicyChecker.require` is never used
 unused-file	low	wagtail/admin/blocks.py	-	file `wagtail.admin.blocks` is never imported or run
+unused-attribute	low	wagtail/admin/forms/formsets.py:11:5	deletion_widget	attribute `BaseFormSetMixin.deletion_widget` is never used
 unused-function	low	wagtail/admin/messages.py:18:5	debug	function `debug` is never used
 unused-function	low	wagtail/admin/models.py:24:5	get_object_usage	function `get_object_usage` is never used
 unused-method	low	wagtail/admin/panels/base.py:338:13	telepath_pack	method `BoundPanel.telepath_pack` is never used
@@ -23,7 +24,9 @@ unused-variable	low	wagtail/admin/urls/editing_sessions.py:5:1	app_name	variable
 unused-variable	low	wagtail/admin/urls/pages.py:6:1	app_name	variable `app_name` is never used
 unused-variable	low	wagtail/admin/urls/reports.py:11:1	app_name	variable `app_name` is never used
 unused-variable	low	wagtail/admin/urls/workflows.py:5:1	app_name	variable `app_name` is never used
+unused-attribute	low	wagtail/admin/userbar.py:37:14	in_editor	attribute `ContentCheckerItem.in_editor` is never used
 unused-variable	low	wagtail/admin/views/home.py:32:1	User	variable `User` is never used
+unused-attribute	low	wagtail/admin/views/mixins.py:159:5	export_buttons_template_name	attribute `SpreadsheetExportMixin.export_buttons_template_name` is never used
 unused-function	low	wagtail/admin/wagtail_hooks.py:71:5	register_base_page_viewset	function `register_base_page_viewset` is never used
 unused-function	low	wagtail/admin/wagtail_hooks.py:109:5	register_explorer_menu_item	function `register_explorer_menu_item` is never used
 unused-function	low	wagtail/admin/wagtail_hooks.py:132:5	register_settings_menu	function `register_settings_menu` is never used
@@ -79,11 +82,13 @@ unused-variable	low	wagtail/blocks/base.py:856:1	DECONSTRUCT_ALIASES	variable `D
 unused-variable	low	wagtail/blocks/field_block.py:1099:1	DECONSTRUCT_ALIASES	variable `DECONSTRUCT_ALIASES` is never used
 unused-variable	low	wagtail/blocks/list_block.py:512:1	DECONSTRUCT_ALIASES	variable `DECONSTRUCT_ALIASES` is never used
 unused-method	medium	wagtail/blocks/stream_block.py:550:13	_as_tuple	method `StreamChild._as_tuple` is never used
+unused-attribute	low	wagtail/blocks/stream_block.py:670:14	is_lazy	attribute `StreamValue.is_lazy` is never used
 unused-method	low	wagtail/blocks/struct_block.py:200:9	telepath_pack	method `BlockGroup.telepath_pack` is never used
 unused-class	medium	wagtail/contrib/forms/forms.py:157:7	SelectDateForm	class `SelectDateForm` is never used
 unused-variable	low	wagtail/contrib/forms/urls.py:9:1	app_name	variable `app_name` is never used
 unused-file	low	wagtail/contrib/forms/wagtail_hooks.py	-	file `wagtail.contrib.forms.wagtail_hooks` is never imported or run
 unused-variable	medium	wagtail/contrib/frontend_cache/backends/base.py:5:1	logger	variable `logger` is never used
+unused-attribute	low	wagtail/contrib/frontend_cache/backends/cloudflare.py:26:14	cloudflare_purge_endpoint_url	attribute `CloudflareBackend.cloudflare_purge_endpoint_url` is never used
 unused-file	low	wagtail/contrib/frontend_cache/backends/dummy.py	-	file `wagtail.contrib.frontend_cache.backends.dummy` is never imported or run
 unused-file	low	wagtail/contrib/frontend_cache/models.py	-	file `wagtail.contrib.frontend_cache.models` is never imported or run
 unused-variable	medium	wagtail/contrib/frontend_cache/utils.py:7:1	logger	variable `logger` is never used
@@ -99,6 +104,7 @@ unused-variable	low	wagtail/contrib/redirects/urls.py:5:1	app_name	variable `app
 unused-file	low	wagtail/contrib/redirects/wagtail_hooks.py	-	file `wagtail.contrib.redirects.wagtail_hooks` is never imported or run
 unused-variable	medium	wagtail/contrib/routable_page/models.py:17:1	logger	variable `logger` is never used
 unused-variable	low	wagtail/contrib/search_promotions/admin_urls.py:6:1	app_name	variable `app_name` is never used
+unused-attribute	low	wagtail/contrib/search_promotions/views/reports.py:12:5	hit_date	attribute `SearchTermsReportFilterSet.hit_date` is never used
 unused-file	low	wagtail/contrib/search_promotions/wagtail_hooks.py	-	file `wagtail.contrib.search_promotions.wagtail_hooks` is never imported or run
 unused-variable	low	wagtail/contrib/settings/urls.py:5:1	app_name	variable `app_name` is never used
 unused-file	low	wagtail/contrib/settings/wagtail_hooks.py	-	file `wagtail.contrib.settings.wagtail_hooks` is never imported or run
@@ -124,6 +130,12 @@ unused-function	low	wagtail/images/api/v3/router.py:106:5	create_image	function 
 unused-function	low	wagtail/images/api/v3/router.py:127:5	update_image	function `update_image` is never used
 unused-function	low	wagtail/images/api/v3/router.py:149:5	delete_image	function `delete_image` is never used
 unused-function	medium	wagtail/images/formats.py:64:5	unregister_image_format	function `unregister_image_format` is never used
+unused-attribute	low	wagtail/images/forms.py:213:9	ORIGINAL	attribute `FilterChoices.ORIGINAL` is never used
+unused-attribute	low	wagtail/images/forms.py:214:9	WIDTH	attribute `FilterChoices.WIDTH` is never used
+unused-attribute	low	wagtail/images/forms.py:215:9	HEIGHT	attribute `FilterChoices.HEIGHT` is never used
+unused-attribute	low	wagtail/images/forms.py:216:9	MIN	attribute `FilterChoices.MIN` is never used
+unused-attribute	low	wagtail/images/forms.py:217:9	MAX	attribute `FilterChoices.MAX` is never used
+unused-attribute	low	wagtail/images/forms.py:218:9	FILL	attribute `FilterChoices.FILL` is never used
 unused-method	medium	wagtail/images/models.py:226:9	_get_image_dimensions	method `WagtailImageFieldFile._get_image_dimensions` is never used
 unused-variable	low	wagtail/images/tests/test_api_v3/test_update.py:11:1	Image	variable `Image` is never used
 unused-function	low	wagtail/images/wagtail_hooks.py:31:5	register_admin_urls	function `register_admin_urls` is never used
@@ -145,6 +157,7 @@ unused-file	low	wagtail/locales/wagtail_hooks.py	-	file `wagtail.locales.wagtail
 unused-function	medium	wagtail/management/commands/publish_scheduled.py:11:5	revision_date_expired	function `revision_date_expired` is never used
 unused-file	low	wagtail/models/collections.py	-	file `wagtail.models.collections` is never imported or run
 unused-method	medium	wagtail/models/i18n.py:100:9	_get_language_info	method `Locale._get_language_info` is never used
+unused-attribute	low	wagtail/models/pages.py:263:14	LOCK	attribute `PagePermissionCodenames.LOCK` is never used
 unused-method	low	wagtail/models/pages.py:1768:9	has_unpublished_subtree	method `AbstractPage.has_unpublished_subtree` is never used
 unused-method	low	wagtail/models/revisions.py:127:9	base_content_object	method `Revision.base_content_object` is never used
 unused-method	low	wagtail/models/workflows.py:374:9	copy_approved_task_states_to_revision	method `WorkflowState.copy_approved_task_states_to_revision` is never used
@@ -189,6 +202,7 @@ unused-method	low	wagtail/test/routablepage/models.py:45:9	temporary_homepage_re
 unused-method	low	wagtail/test/routablepage/models.py:60:9	render_method_test	method `RoutablePageTest.render_method_test` is never used
 unused-method	low	wagtail/test/routablepage/models.py:64:9	render_method_test_custom_template	method `RoutablePageTest.render_method_test_custom_template` is never used
 unused-method	low	wagtail/test/testapp/models.py:387:9	name_display	method `EventPageSpeaker.name_display` is never used
+unused-attribute	low	wagtail/test/testapp/models.py:1477:9	PHILIPPINES	attribute `CountryCode.PHILIPPINES` is never used
 unused-function	low	wagtail/test/testapp/wagtail_hooks.py:61:5	editor_css	function `editor_css` is never used
 unused-function	low	wagtail/test/testapp/wagtail_hooks.py:87:5	register_kittens_menu_item	function `register_kittens_menu_item` is never used
 unused-function	low	wagtail/test/testapp/wagtail_hooks.py:109:5	register_custom_search_area	function `register_custom_search_area` is never used
@@ -214,7 +228,12 @@ unused-function	low	wagtail/test/testapp/wagtail_hooks.py:479:5	register_custom_
 unused-function	low	wagtail/test/testapp/wagtail_hooks.py:484:5	register_opera_viewset	function `register_opera_viewset` is never used
 unused-function	low	wagtail/test/testapp/wagtail_hooks.py:489:5	register_avatar_intercept_url	function `register_avatar_intercept_url` is never used
 unused-function	low	wagtail/test/testapp/wagtail_hooks.py:496:5	register_advert_chooser_viewset	function `register_advert_chooser_viewset` is never used
+unused-attribute	medium	wagtail/test/utils/wagtail_factories/blocks.py:32:5	_options_class	attribute `StreamBlockFactory._options_class` is never used
 unused-method	medium	wagtail/test/utils/wagtail_factories/blocks.py:36:9	_generate	method `StreamBlockFactory._generate` is never used
+unused-attribute	medium	wagtail/test/utils/wagtail_factories/blocks.py:141:5	_options_class	attribute `StructBlockFactory._options_class` is never used
+unused-attribute	medium	wagtail/test/utils/wagtail_factories/blocks.py:165:5	_options_class	attribute `BlockFactory._options_class` is never used
+unused-attribute	low	wagtail/test/utils/wagtail_factories/factories.py:27:5	EXTEND_CONTAINERS	attribute `ParentNodeFactory.EXTEND_CONTAINERS` is never used
+unused-attribute	low	wagtail/test/utils/wagtail_factories/factories.py:29:5	UNROLL_CONTEXT_BEFORE_EVALUATION	attribute `ParentNodeFactory.UNROLL_CONTEXT_BEFORE_EVALUATION` is never used
 unused-method	low	wagtail/test/utils/wagtail_factories/options.py:31:9	prepare_arguments	method `StreamBlockFactoryOptions.prepare_arguments` is never used
 unused-method	low	wagtail/tests/actions/test_registry.py:40:9	is_available_for_instance	method `UnavailableAction.is_available_for_instance` is never used
 unused-class	medium	wagtail/tests/test_blocks.py:39:7	FooStreamBlock	class `FooStreamBlock` is never used
@@ -222,6 +241,10 @@ unused-method	low	wagtail/tests/test_blocks.py:3236:17	joined	method `CustomStru
 unused-function	medium	wagtail/tests/test_locale_model.py:11:5	make_test_page	function `make_test_page` is never used
 unused-function	low	wagtail/tests/test_page_model.py:79:5	get_ct	function `get_ct` is never used
 unused-function	medium	wagtail/tests/test_utils.py:312:5	TestGetContentTypeLabel	function `TestGetContentTypeLabel` is never used
+unused-attribute	low	wagtail/users/models.py:79:9	LIGHT	attribute `AdminColorThemes.LIGHT` is never used
+unused-attribute	low	wagtail/users/models.py:80:9	DARK	attribute `AdminColorThemes.DARK` is never used
+unused-attribute	low	wagtail/users/models.py:91:9	MORE_CONTRAST	attribute `AdminContrastThemes.MORE_CONTRAST` is never used
+unused-attribute	low	wagtail/users/models.py:102:9	SNUG	attribute `AdminDensityThemes.SNUG` is never used
 unused-variable	medium	wagtail/users/templatetags/wagtailusers_tags.py:60:1	VIEW_PERMISSION_LABEL	variable `VIEW_PERMISSION_LABEL` is never used
 unused-variable	low	wagtail/users/views/users.py:50:1	add_user_perm	variable `add_user_perm` is never used
 unused-variable	low	wagtail/users/views/users.py:54:1	delete_user_perm	variable `delete_user_perm` is never used

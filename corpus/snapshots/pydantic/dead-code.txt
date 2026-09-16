@@ -1,7 +1,7 @@
 files_scanned=449
-symbols_checked=9873
-symbols_kept=5315
-findings=114
+symbols_checked=11395
+symbols_kept=5370
+findings=118
 --
 unused-function	medium	.github/actions/people/people.py:451:5	get_issues_experts	function `get_issues_experts` is never used
 unused-variable	medium	.github/actions/people/people.py:679:19	pr_commentors	variable `pr_commentors` is never used
@@ -11,10 +11,12 @@ unused-class	medium	pydantic-core/python/pydantic_core/__init__.py:133:7	MultiHo
 unused-variable	low	pydantic-core/python/pydantic_core/__init__.py:148:1	MISSING	variable `MISSING` is never used
 unused-file	medium	pydantic-core/src/self_schema.py	-	file `src.self_schema` is never imported or run
 unused-variable	medium	pydantic-core/tests/serializers/test_model_root.py:16:5	IsStrictDict	variable `IsStrictDict` is never used
+unused-attribute	low	pydantic-core/tests/serializers/test_union.py:347:18	password_hash	attribute `DBUser.password_hash` is never used
 unused-function	medium	pydantic-core/tests/test_typing.py:28:5	validator_deprecated	function `validator_deprecated` is never used
 unused-function	medium	pydantic-core/tests/validators/test_enums.py:467:5	support_custom_new_method	function `support_custom_new_method` is never used
 unused-function	medium	pydantic-core/tests/validators/test_model_fields.py:714:5	get_int_key	function `get_int_key` is never used
 unused-function	medium	pydantic-core/tests/validators/test_model_fields.py:733:5	get_custom_getitem	function `get_custom_getitem` is never used
+unused-attribute	medium	pydantic-core/tests/validators/test_model_fields.py:1145:18	_private_attribute	attribute `Foobar._private_attribute` is never used
 unused-method	low	pydantic-core/tests/validators/test_model_fields.py:1156:13	property_error	method `Foobar.property_error` is never used
 unused-method	low	pydantic-core/tests/validators/test_model_fields.py:1159:13	bound_method	method `Foobar.bound_method` is never used
 unused-method	low	pydantic-core/tests/validators/test_model_fields.py:1163:13	static_method	method `Foobar.static_method` is never used
@@ -102,6 +104,8 @@ unused-method	low	tests/test_abc.py:20:13	my_abstract_method	method `Model.my_ab
 unused-method	low	tests/test_abc.py:25:13	my_abstract_classmethod	method `Model.my_abstract_classmethod` is never used
 unused-method	low	tests/test_abc.py:30:13	my_abstract_staticmethod	method `Model.my_abstract_staticmethod` is never used
 unused-method	low	tests/test_dataclasses.py:206:13	prop3	method `MyDataclass.prop3` is never used
+unused-attribute	low	tests/test_deprecated.py:54:18	en_name	attribute `PokemonCls.en_name` is never used
+unused-attribute	low	tests/test_deprecated.py:55:18	jp_name	attribute `PokemonCls.jp_name` is never used
 unused-method	low	tests/test_docs_extraction.py:48:13	dummy_method	method `MyModel.dummy_method` is never used
 unused-method	low	tests/test_docs_extraction.py:230:13	dummy_method	method `MyModel.dummy_method` is never used
 unused-class	medium	tests/test_edge_cases.py:1635:7	DisplayGen	class `DisplayGen` is never used

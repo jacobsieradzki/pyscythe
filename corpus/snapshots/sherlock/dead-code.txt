@@ -1,7 +1,9 @@
 files_scanned=17
-symbols_checked=81
+symbols_checked=105
 symbols_kept=20
-findings=2
+findings=4
 --
+unused-attribute	low	sherlock_project/sites.py:56:14	url_username_format	attribute `SiteInformation.url_username_format` is never used
+unused-attribute	low	sherlock_project/sites.py:59:14	username_unclaimed	attribute `SiteInformation.username_unclaimed` is never used
 unused-method	low	sherlock_project/sites.py:224:9	site_name_list	method `SitesInformation.site_name_list` is never used
 unused-function	medium	tests/few_test_basic.py:6:5	test_username_via_message	function `test_username_via_message` is never used

@@ -43,6 +43,16 @@ impl KeepRule for SqlAlchemy {
         if decorated_with_from(symbol, METHOD_DECORATORS, false, &["sqlalchemy"]) {
             return Some("SQLAlchemy mapped attribute or validator");
         }
+        let maps_a_table = context
+            .owner
+            .is_some_and(|owner| owner.has_class_keyword("table"));
+        if crate::dead_code::is_attribute(symbol)
+            && (maps_a_table
+                || context.attribute_of_class_from("sqlalchemy", DECLARATIVE_BASES)
+                || context.attribute_of_class_from("flask_sqlalchemy", DECLARATIVE_BASES))
+        {
+            return Some("a column of an ORM model, which is its table");
+        }
         None
     }
 }

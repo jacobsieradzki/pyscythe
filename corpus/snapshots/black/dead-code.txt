@@ -1,6 +1,6 @@
 files_scanned=333
-symbols_checked=4623
-symbols_kept=3238
+symbols_checked=4888
+symbols_kept=3242
 findings=23
 --
 unused-file	medium	action/main.py	-	file `action.main` is never imported or run
@@ -12,7 +12,7 @@ unused-file	medium	src/blib2to3/pgen2/conv.py	-	file `blib2to3.pgen2.conv` is ne
 unused-method	low	src/blib2to3/pgen2/driver.py:195:9	parse_file	method `Driver.parse_file` is never used
 unused-method	low	src/blib2to3/pgen2/grammar.py:153:9	report	method `Grammar.report` is never used
 unused-variable	medium	src/blib2to3/pgen2/parse.py:27:1	Results	variable `Results` is never used
-unused-variable	medium	src/blib2to3/pygram.py:167:1	pattern_symbols	variable `pattern_symbols` is never used
+unused-attribute	low	src/blib2to3/pgen2/parse.py:196:14	convert	attribute `Parser.convert` is never used
 unused-method	low	src/blib2to3/pytree.py:111:9	post_order	method `Base.post_order` is never used
 unused-method	low	src/blib2to3/pytree.py:236:9	get_suffix	method `Base.get_suffix` is never used
 unused-class	medium	src/blib2to3/pytree.py:687:7	LeafPattern	class `LeafPattern` is never used

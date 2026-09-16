@@ -770,3 +770,37 @@ fn a_module_that_reads_its_own_globals_uses_every_name_it_defines() {
         "the token table is built from globals(); the plain module is ordinary: {report}"
     );
 }
+
+#[test]
+fn reports_attributes_nothing_reads_but_not_the_fields_of_a_data_class() {
+    let output = pyscythe()
+        .args(["dead-code", "--format", "json"])
+        .arg(fixture("attributes"))
+        .output()
+        .expect("runs");
+
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).expect("valid json");
+    let mut attributes: Vec<(&str, &str, &str)> = report["findings"]
+        .as_array()
+        .expect("findings array")
+        .iter()
+        .filter(|f| f["rule"] == "unused-attribute")
+        .filter_map(|f| {
+            Some((
+                f["owner"].as_str().unwrap_or(""),
+                f["symbol"].as_str()?,
+                f["confidence"].as_str()?,
+            ))
+        })
+        .collect();
+    attributes.sort_unstable();
+    assert_eq!(
+        attributes,
+        [
+            ("Settings", "_cache_size", "medium"),
+            ("Settings", "_pool", "medium"),
+            ("Settings", "retries", "low"),
+        ],
+        "{report}"
+    );
+}

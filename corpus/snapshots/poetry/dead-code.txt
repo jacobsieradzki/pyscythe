@@ -1,38 +1,42 @@
 files_scanned=447
-symbols_checked=3584
-symbols_kept=1626
-findings=51
+symbols_checked=4241
+symbols_kept=1664
+findings=55
 --
 unused-class	medium	src/poetry/console/commands/about.py:6:7	AboutCommand	class `AboutCommand` is never used
-unused-file	low	src/poetry/console/commands/cache/clear.py	-	file `poetry.console.commands.cache.clear` is never imported or run
+unused-class	medium	src/poetry/console/commands/cache/clear.py:22:7	CacheClearCommand	class `CacheClearCommand` is never used
 unused-file	low	src/poetry/console/commands/cache/list.py	-	file `poetry.console.commands.cache.list` is never imported or run
 unused-class	medium	src/poetry/console/commands/check.py:18:7	CheckCommand	class `CheckCommand` is never used
 unused-file	low	src/poetry/console/commands/debug/info.py	-	file `poetry.console.commands.debug.info` is never imported or run
-unused-file	low	src/poetry/console/commands/debug/resolve.py	-	file `poetry.console.commands.debug.resolve` is never imported or run
+unused-class	medium	src/poetry/console/commands/debug/resolve.py:20:7	DebugResolveCommand	class `DebugResolveCommand` is never used
 unused-file	low	src/poetry/console/commands/debug/tags.py	-	file `poetry.console.commands.debug.tags` is never imported or run
 unused-file	low	src/poetry/console/commands/env/info.py	-	file `poetry.console.commands.env.info` is never imported or run
 unused-file	low	src/poetry/console/commands/env/list.py	-	file `poetry.console.commands.env.list` is never imported or run
-unused-file	low	src/poetry/console/commands/env/remove.py	-	file `poetry.console.commands.env.remove` is never imported or run
+unused-class	medium	src/poetry/console/commands/env/remove.py:18:7	EnvRemoveCommand	class `EnvRemoveCommand` is never used
+unused-attribute	medium	src/poetry/console/commands/install.py:81:5	_loggers	attribute `InstallCommand._loggers` is never used
 unused-class	medium	src/poetry/console/commands/new.py:17:7	NewCommand	class `NewCommand` is never used
 unused-class	medium	src/poetry/console/commands/publish.py:16:7	PublishCommand	class `PublishCommand` is never used
 unused-class	medium	src/poetry/console/commands/python/install.py:26:7	PythonInstallCommand	class `PythonInstallCommand` is never used
-unused-file	low	src/poetry/console/commands/python/list.py	-	file `poetry.console.commands.python.list` is never imported or run
+unused-class	medium	src/poetry/console/commands/python/list.py:24:7	PythonListCommand	class `PythonListCommand` is never used
 unused-class	medium	src/poetry/console/commands/run.py:17:7	RunCommand	class `RunCommand` is never used
 unused-class	medium	src/poetry/console/commands/search.py:15:7	SearchCommand	class `SearchCommand` is never used
-unused-file	low	src/poetry/console/commands/self/add.py	-	file `poetry.console.commands.self.add` is never imported or run
-unused-file	low	src/poetry/console/commands/self/lock.py	-	file `poetry.console.commands.self.lock` is never imported or run
-unused-file	low	src/poetry/console/commands/self/remove.py	-	file `poetry.console.commands.self.remove` is never imported or run
+unused-class	medium	src/poetry/console/commands/self/add.py:17:7	SelfAddCommand	class `SelfAddCommand` is never used
+unused-class	medium	src/poetry/console/commands/self/lock.py:7:7	SelfLockCommand	class `SelfLockCommand` is never used
+unused-class	medium	src/poetry/console/commands/self/remove.py:14:7	SelfRemoveCommand	class `SelfRemoveCommand` is never used
 unused-class	medium	src/poetry/console/commands/self/show/__init__.py:17:7	SelfShowCommand	class `SelfShowCommand` is never used
-unused-file	low	src/poetry/console/commands/self/show/plugins.py	-	file `poetry.console.commands.self.show.plugins` is never imported or run
-unused-file	low	src/poetry/console/commands/self/update.py	-	file `poetry.console.commands.self.update` is never imported or run
-unused-file	low	src/poetry/console/commands/source/add.py	-	file `poetry.console.commands.source.add` is never imported or run
-unused-file	low	src/poetry/console/commands/source/remove.py	-	file `poetry.console.commands.source.remove` is never imported or run
-unused-file	low	src/poetry/console/commands/source/show.py	-	file `poetry.console.commands.source.show` is never imported or run
+unused-class	medium	src/poetry/console/commands/self/show/plugins.py:39:7	SelfShowPluginsCommand	class `SelfShowPluginsCommand` is never used
+unused-class	medium	src/poetry/console/commands/self/update.py:20:7	SelfUpdateCommand	class `SelfUpdateCommand` is never used
+unused-class	medium	src/poetry/console/commands/source/add.py:22:7	SourceAddCommand	class `SourceAddCommand` is never used
+unused-class	medium	src/poetry/console/commands/source/remove.py:16:7	SourceRemoveCommand	class `SourceRemoveCommand` is never used
+unused-class	medium	src/poetry/console/commands/source/show.py:16:7	SourceShowCommand	class `SourceShowCommand` is never used
 unused-file	low	src/poetry/console/events/console_events.py	-	file `poetry.console.events.console_events` is never imported or run
+unused-attribute	medium	src/poetry/inspection/lazy_wheel.py:304:14	_request_count	attribute `LazyFileOverHTTP._request_count` is never used
 unused-class	medium	src/poetry/installation/chef.py:27:7	ChefError	class `ChefError` is never used
 unused-method	low	src/poetry/installation/installer.py:165:9	is_updating	method `Installer.is_updating` is never used
 unused-file	low	src/poetry/masonry/api.py	-	file `poetry.masonry.api` is never imported or run
 unused-method	low	src/poetry/packages/locker.py:137:9	set_local_config	method `Locker.set_local_config` is never used
+unused-attribute	low	src/poetry/plugins/base_plugin.py:14:5	PLUGIN_API_VERSION	attribute `BasePlugin.PLUGIN_API_VERSION` is never used
+unused-attribute	medium	src/poetry/poetry.py:50:14	_plugin_manager	attribute `Poetry._plugin_manager` is never used
 unused-variable	medium	src/poetry/puzzle/provider.py:60:1	logger	variable `logger` is never used
 unused-method	medium	src/poetry/puzzle/provider.py:116:9	_formatter_context	method `Indicator._formatter_context` is never used
 unused-variable	medium	src/poetry/repositories/pypi_repository.py:28:1	logger	variable `logger` is never used

@@ -1,7 +1,7 @@
 files_scanned=213
-symbols_checked=2155
-symbols_kept=786
-findings=56
+symbols_checked=2813
+symbols_kept=796
+findings=67
 --
 unused-variable	high	rich/_export_format.py:75:1	_SVG_FONT_FAMILY	variable `_SVG_FONT_FAMILY` is never used
 unused-variable	high	rich/_export_format.py:76:1	_SVG_CLASSES_PREFIX	variable `_SVG_CLASSES_PREFIX` is never used
@@ -35,6 +35,7 @@ unused-variable	low	rich/box.py:314:1	HORIZONTALS	variable `HORIZONTALS` is neve
 unused-variable	low	rich/box.py:380:1	DOUBLE_EDGE	variable `DOUBLE_EDGE` is never used
 unused-variable	low	rich/box.py:391:1	MARKDOWN	variable `MARKDOWN` is never used
 unused-variable	low	rich/color.py:18:1	WINDOWS	variable `WINDOWS` is never used
+unused-attribute	low	rich/console.py:349:14	inherit	attribute `ThemeContext.inherit` is never used
 unused-variable	low	rich/containers.py:27:1	T	variable `T` is never used
 unused-class	medium	rich/errors.py:17:7	StyleStackError	class `StyleStackError` is never used
 unused-class	medium	rich/errors.py:29:7	LiveError	class `LiveError` is never used
@@ -42,13 +43,18 @@ unused-method	medium	rich/jupyter.py:25:9	_repr_mimebundle_	method `JupyterRende
 unused-method	medium	rich/jupyter.py:41:9	_repr_mimebundle_	method `JupyterMixin._repr_mimebundle_` is never used
 unused-function	low	rich/jupyter.py:98:5	print	function `print` is never used
 unused-class	medium	rich/markdown.py:128:7	HeadingFormat	class `HeadingFormat` is never used
+unused-attribute	medium	rich/progress.py:515:14	_update_time	attribute `ProgressColumn._update_time` is never used
 unused-variable	medium	rich/progress.py:1709:9	task3	variable `task3` is never used
+unused-attribute	medium	rich/progress_bar.py:55:14	_pulse_segments	attribute `ProgressBar._pulse_segments` is never used
 unused-class	medium	rich/prompt.py:328:7	FloatPrompt	class `FloatPrompt` is never used
 unused-variable	low	rich/syntax.py:59:1	WINDOWS	variable `WINDOWS` is never used
 unused-variable	medium	rich/terminal_theme.py:57:1	MONOKAI	variable `MONOKAI` is never used
 unused-variable	medium	rich/terminal_theme.py:81:1	DIMMED_MONOKAI	variable `DIMMED_MONOKAI` is never used
 unused-variable	medium	rich/terminal_theme.py:105:1	NIGHT_OWLISH	variable `NIGHT_OWLISH` is never used
 unused-variable	low	rich/traceback.py:50:1	WINDOWS	variable `WINDOWS` is never used
+unused-attribute	low	rich/traceback.py:330:14	show_locals	attribute `Traceback.show_locals` is never used
+unused-attribute	low	rich/traceback.py:335:14	locals_hide_dunder	attribute `Traceback.locals_hide_dunder` is never used
+unused-attribute	low	rich/traceback.py:336:14	locals_hide_sunder	attribute `Traceback.locals_hide_sunder` is never used
 unused-variable	medium	rich/tree.py:11:1	GuideType	variable `GuideType` is never used
 unused-method	medium	tests/test_pretty.py:69:13	_repr_html_	method `Thing._repr_html_` is never used
 unused-method	medium	tests/test_pretty.py:91:13	_repr_latex_	method `Thing._repr_latex_` is never used
@@ -57,5 +63,10 @@ unused-method	medium	tests/test_pretty.py:121:13	_repr_markdown_	method `Thing._
 unused-method	medium	tests/test_pretty.py:124:13	_repr_latex_	method `Thing._repr_latex_` is never used
 unused-method	medium	tests/test_pretty.py:127:13	_repr_html_	method `Thing._repr_html_` is never used
 unused-method	low	tests/test_progress.py:50:9	tick	method `MockClock.tick` is never used
+unused-attribute	low	tests/test_repr.py:37:14	fubar	attribute `BrokenEgg.fubar` is never used
+unused-attribute	low	tests/test_repr.py:86:14	eats	attribute `Bird.eats` is never used
+unused-attribute	low	tests/test_repr.py:87:14	fly	attribute `Bird.fly` is never used
+unused-attribute	low	tests/test_repr.py:88:14	another	attribute `Bird.another` is never used
+unused-attribute	low	tests/test_repr.py:89:14	extinct	attribute `Bird.extinct` is never used
 unused-variable	low	tests/test_syntax.py:439:5	syntax	variable `syntax` is never used
 unused-function	medium	tests/test_traceback.py:76:5	get_exception	function `get_exception` is never used

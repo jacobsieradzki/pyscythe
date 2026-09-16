@@ -1,10 +1,20 @@
 files_scanned=133
-symbols_checked=1457
-symbols_kept=468
-findings=20
+symbols_checked=1799
+symbols_kept=471
+findings=35
 --
 unused-variable	medium	httpie/cli/constants.py:45:1	SEPARATOR_GROUP_DATA_EMBED_ITEMS	variable `SEPARATOR_GROUP_DATA_EMBED_ITEMS` is never used
+unused-attribute	low	httpie/downloads.py:314:14	resumed_from	attribute `DownloadStatus.resumed_from` is never used
 unused-method	low	httpie/downloads.py:355:9	has_finished	method `DownloadStatus.has_finished` is never used
+unused-attribute	low	httpie/output/formatters/colors.py:209:5	BASE02	attribute `Solarized256Style.BASE02` is never used
+unused-attribute	low	httpie/output/formatters/colors.py:211:5	BASE00	attribute `Solarized256Style.BASE00` is never used
+unused-attribute	low	httpie/output/formatters/colors.py:212:5	BASE0	attribute `Solarized256Style.BASE0` is never used
+unused-attribute	low	httpie/output/formatters/colors.py:214:5	BASE2	attribute `Solarized256Style.BASE2` is never used
+unused-attribute	low	httpie/output/formatters/colors.py:215:5	BASE3	attribute `Solarized256Style.BASE3` is never used
+unused-attribute	low	httpie/output/formatters/colors.py:219:5	MAGENTA	attribute `Solarized256Style.MAGENTA` is never used
+unused-attribute	low	httpie/output/formatters/colors.py:220:5	VIOLET	attribute `Solarized256Style.VIOLET` is never used
+unused-attribute	low	httpie/output/lexers/http.py:65:5	filenames	attribute `SimplifiedHTTPLexer.filenames` is never used
+unused-attribute	low	httpie/output/streams.py:49:14	extra_options	attribute `BaseStream.extra_options` is never used
 unused-function	low	httpie/output/ui/palette.py:255:5	boldify	function `boldify` is never used
 unused-variable	medium	httpie/output/ui/rich_help.py:15:1	SEPARATORS	variable `SEPARATORS` is never used
 unused-variable	medium	httpie/output/ui/rich_help.py:19:1	STYLE_PROGRAM_NAME	variable `STYLE_PROGRAM_NAME` is never used
@@ -16,6 +26,10 @@ unused-function	medium	httpie/utils.py:80:5	humanize_bytes	function `humanize_by
 unused-variable	medium	tests/test_httpie_cli.py:11:1	OLD_SESSION_FILES_PATH	variable `OLD_SESSION_FILES_PATH` is never used
 unused-function	low	tests/test_update_warnings.py:239:5	lower_build_channel	function `lower_build_channel` is never used
 unused-variable	medium	tests/utils/__init__.py:43:1	HTTP_OK_COLOR	variable `HTTP_OK_COLOR` is never used
+unused-attribute	low	tests/utils/__init__.py:126:5	len	attribute `StdinBytesIO.len` is never used
+unused-attribute	low	tests/utils/__init__.py:210:5	complete_args	attribute `BaseCLIResponse.complete_args` is never used
+unused-attribute	low	tests/utils/http_server.py:32:5	do_GET	attribute `TestHandler.do_GET` is never used
+unused-attribute	low	tests/utils/http_server.py:33:5	do_POST	attribute `TestHandler.do_POST` is never used
 unused-function	low	tests/utils/http_server.py:37:5	get_headers	function `get_headers` is never used
 unused-function	low	tests/utils/http_server.py:46:5	chunked_drip	function `chunked_drip` is never used
 unused-function	low	tests/utils/http_server.py:62:5	random_encoding	function `random_encoding` is never used
@@ -23,3 +37,4 @@ unused-function	low	tests/utils/http_server.py:83:5	status_custom_msg	function `
 unused-function	low	tests/utils/http_server.py:92:5	get_cookies	function `get_cookies` is never used
 unused-function	low	tests/utils/http_server.py:109:5	set_cookies	function `set_cookies` is never used
 unused-function	low	tests/utils/http_server.py:120:5	set_cookie_and_redirect	function `set_cookie_and_redirect` is never used
+unused-attribute	low	tests/utils/matching/tokens.py:53:5	TERMINAL_BODY	attribute `ExpectSequence.TERMINAL_BODY` is never used

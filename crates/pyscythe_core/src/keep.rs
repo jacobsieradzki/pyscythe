@@ -110,6 +110,9 @@ pub enum FileRole {
 pub struct KeepContext<'a> {
     /// The symbol under consideration.
     pub symbol: &'a Symbol,
+    /// The class that owns it, for members; `None` for module-level symbols
+    /// and for members whose enclosing definition is not a class.
+    pub owner: Option<&'a Symbol>,
     /// The file it lives in.
     pub file: &'a SourceFile,
     /// The project manifest.
@@ -139,6 +142,22 @@ impl KeepContext<'_> {
     pub fn descends_from(&self, package: &str, base_names: &[&str]) -> bool {
         self.ancestry.has_ancestor_in(package)
             || (!self.ancestry.is_complete() && self.symbol.has_base_named(base_names))
+    }
+
+    /// Whether the symbol is an attribute of a class whose ancestry reaches
+    /// `package`, or, when the bases could not all be resolved, whose written
+    /// bases include one of `base_names`.
+    ///
+    /// The attributes of a framework's classes are read by the framework, not
+    /// by anything that names them.
+    #[must_use]
+    pub fn attribute_of_class_from(&self, package: &str, base_names: &[&str]) -> bool {
+        let Some(owner) = self.owner else {
+            return false;
+        };
+        crate::dead_code::is_attribute(self.symbol)
+            && (self.ancestry.has_ancestor_in(package)
+                || (!self.ancestry.is_complete() && owner.has_base_named(base_names)))
     }
 
     /// The file's name without directories, or empty when it has none.

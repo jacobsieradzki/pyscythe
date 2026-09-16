@@ -97,6 +97,7 @@ pub(crate) mod testing {
         pub(crate) tests: TestCollection,
         pub(crate) requested_as_parameter: NameUsage,
         pub(crate) globals_access: GlobalsAccess,
+        pub(crate) owner: Option<Box<Self>>,
     }
 
     impl Case {
@@ -117,6 +118,7 @@ pub(crate) mod testing {
                 tests: TestCollection::default(),
                 requested_as_parameter: NameUsage::Unused,
                 globals_access: GlobalsAccess::NotEnumerated,
+                owner: None,
             }
         }
 
@@ -194,6 +196,29 @@ pub(crate) mod testing {
             }
         }
 
+        /// An attribute assigned in the body of a plain class.
+        pub(crate) fn attribute(name: &'static str) -> Self {
+            Self {
+                kind: SymbolKind::Field,
+                nested: true,
+                owner: Some(Box::new(Self::class("Owner"))),
+                ..Self::function(name)
+            }
+        }
+
+        /// A class written inside another class.
+        pub(crate) fn nested_in_a_class(mut self) -> Self {
+            self.nested = true;
+            self
+        }
+
+        /// The same member, on `owner` instead of a plain class.
+        pub(crate) fn on_class(mut self, owner: Self) -> Self {
+            self.ancestry = owner.ancestry.clone();
+            self.owner = Some(Box::new(owner));
+            self
+        }
+
         pub(crate) fn at(mut self, path: &'static str) -> Self {
             self.path = path;
             self
@@ -255,23 +280,15 @@ pub(crate) mod testing {
             self
         }
 
-        pub(crate) fn keep_reason(&self, rule: &dyn KeepRule) -> Option<&'static str> {
-            let file = SourceFile {
-                id: FileId::new(0),
-                path: Utf8PathBuf::from(self.path),
-                relative_path: Utf8PathBuf::from(self.path).components().skip(2).collect(),
-                module: self.module.map(ModulePath::new),
-                main_guard: MainGuard::Absent,
-                exports: Vec::new(),
-            };
-            let symbol = Symbol {
-                id: SymbolId::new(file.id, 0),
-                file: file.id,
+        fn symbol(&self, file: FileId, ordinal: u32) -> Symbol {
+            Symbol {
+                id: SymbolId::new(file, ordinal),
+                file,
                 name: SymbolName::new(self.name),
                 kind: self.kind,
                 scope: if self.nested {
                     SymbolScope::Nested {
-                        parent: SymbolId::new(file.id, 0),
+                        parent: SymbolId::new(file, 0),
                     }
                 } else {
                     SymbolScope::Module
@@ -281,9 +298,23 @@ pub(crate) mod testing {
                 class_keywords: self.class_keywords.clone(),
                 name_span: ByteSpan::new(ByteOffset::new(4), ByteOffset::new(8)),
                 full_span: ByteSpan::new(ByteOffset::new(0), ByteOffset::new(40)),
+            }
+        }
+
+        pub(crate) fn keep_reason(&self, rule: &dyn KeepRule) -> Option<&'static str> {
+            let file = SourceFile {
+                id: FileId::new(0),
+                path: Utf8PathBuf::from(self.path),
+                relative_path: Utf8PathBuf::from(self.path).components().skip(2).collect(),
+                module: self.module.map(ModulePath::new),
+                main_guard: MainGuard::Absent,
+                exports: Vec::new(),
             };
+            let symbol = self.symbol(file.id, 1);
+            let owner = self.owner.as_ref().map(|owner| owner.symbol(file.id, 0));
             rule.keep(KeepContext {
                 symbol: &symbol,
+                owner: owner.as_ref(),
                 file: &file,
                 manifest: &self.manifest,
                 ancestry: &self.ancestry,

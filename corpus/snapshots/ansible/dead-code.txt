@@ -1,20 +1,29 @@
 files_scanned=1850
-symbols_checked=13871
-symbols_kept=2919
-findings=256
+symbols_checked=18188
+symbols_kept=3024
+findings=328
 --
 unused-file	medium	hacking/ansible-profile.py	-	file `ansible-profile.py` is never imported or run
+unused-attribute	low	hacking/azp/incidental.py:356:14	coverage_data	attribute `SourceFile.coverage_data` is never used
+unused-attribute	low	hacking/azp/incidental.py:357:14	coverage_points	attribute `SourceFile.coverage_points` is never used
+unused-attribute	medium	lib/ansible/_internal/_rpc_host.py:73:5	_Server	attribute `LocalManager._Server` is never used
 unused-method	low	lib/ansible/_internal/_task.py:97:9	loop_result	method `CurrentTask.loop_result` is never used
 unused-method	low	lib/ansible/_internal/_task.py:110:9	polymorphic_result	method `CurrentTask.polymorphic_result` is never used
 unused-method	low	lib/ansible/_internal/_task.py:175:9	current_item	method `TaskContext.current_item` is never used
 unused-method	low	lib/ansible/_internal/_task.py:179:9	current_item_label	method `TaskContext.current_item_label` is never used
 unused-variable	low	lib/ansible/_internal/_task.py:489:1	_type	variable `_type` is never used
 unused-variable	high	lib/ansible/_internal/_templating/_engine.py:56:1	_shared_empty_unmask_type_names	variable `_shared_empty_unmask_type_names` is never used
+unused-attribute	low	lib/ansible/_internal/_templating/_jinja_bits.py:421:5	python_source	attribute `_CompileStateSmugglingCtx.python_source` is never used
+unused-attribute	low	lib/ansible/_internal/_templating/_jinja_bits.py:591:14	autoescape	attribute `AnsibleEnvironment.autoescape` is never used
+unused-attribute	low	lib/ansible/_internal/_templating/_jinja_bits.py:615:14	optimized	attribute `AnsibleEnvironment.optimized` is never used
 unused-method	medium	lib/ansible/_internal/_templating/_jinja_bits.py:772:9	_access_const	method `AnsibleEnvironment._access_const` is never used
 unused-variable	low	lib/ansible/_internal/_templating/_transform.py:16:1	display	variable `display` is never used
 unused-file	medium	lib/ansible/_internal/_testing.py	-	file `lib.ansible._internal._testing` is never imported or run
 unused-variable	low	lib/ansible/_internal/_yaml/_dumper.py:20:1	display	variable `display` is never used
 unused-method	low	lib/ansible/cli/console.py:501:9	complete_cd	method `ConsoleCLI.complete_cd` is never used
+unused-attribute	low	lib/ansible/cli/doc.py:485:14	plugin_list	attribute `DocCLI.plugin_list` is never used
+unused-attribute	low	lib/ansible/cli/vault.py:46:14	b_vault_pass	attribute `VaultCLI.b_vault_pass` is never used
+unused-attribute	low	lib/ansible/cli/vault.py:47:14	b_new_vault_pass	attribute `VaultCLI.b_new_vault_pass` is never used
 unused-file	medium	lib/ansible/compat/importlib_resources.py	-	file `lib.ansible.compat.importlib_resources` is never imported or run
 unused-method	medium	lib/ansible/config/manager.py:475:9	_find_yaml_config_files	method `ConfigManager._find_yaml_config_files` is never used
 unused-class	medium	lib/ansible/errors/__init__.py:227:7	AnsibleInternalError	class `AnsibleInternalError` is never used
@@ -22,8 +31,12 @@ unused-class	medium	lib/ansible/errors/__init__.py:235:7	AnsibleModuleError	clas
 unused-variable	medium	lib/ansible/errors/__init__.py:315:1	AnsibleLookupError	variable `AnsibleLookupError` is never used
 unused-class	medium	lib/ansible/errors/__init__.py:392:7	AnsibleActionNoCheckMode	class `AnsibleActionNoCheckMode` is never used
 unused-class	medium	lib/ansible/errors/__init__.py:478:7	AnsibleConditionalError	class `AnsibleConditionalError` is never used
+unused-attribute	medium	lib/ansible/executor/module_common.py:490:14	_is_ambiguous	attribute `ModuleUtilLocatorBase._is_ambiguous` is never used
 unused-method	medium	lib/ansible/executor/module_common.py:583:9	_get_module_utils_remainder	method `ModuleUtilLocatorBase._get_module_utils_remainder` is never used
 unused-method	low	lib/ansible/executor/module_common.py:1137:9	process_module_result	method `_BuiltModule.process_module_result` is never used
+unused-attribute	medium	lib/ansible/executor/process/worker.py:104:14	_cliargs	attribute `WorkerProcess._cliargs` is never used
+unused-attribute	low	lib/ansible/executor/task_queue_manager.py:165:5	RUN_ERROR	attribute `TaskQueueManager.RUN_ERROR` is never used
+unused-attribute	low	lib/ansible/executor/task_queue_manager.py:169:5	RUN_UNKNOWN_ERROR	attribute `TaskQueueManager.RUN_UNKNOWN_ERROR` is never used
 unused-method	medium	lib/ansible/executor/task_result.py:68:9	_task_fields	method `CallbackTaskResult._task_fields` is never used
 unused-method	low	lib/ansible/executor/task_result.py:98:9	is_changed	method `CallbackTaskResult.is_changed` is never used
 unused-method	low	lib/ansible/executor/task_result.py:107:9	is_unreachable	method `CallbackTaskResult.is_unreachable` is never used
@@ -32,22 +45,35 @@ unused-method	low	lib/ansible/galaxy/__init__.py:67:9	add_role	method `Galaxy.ad
 unused-method	low	lib/ansible/galaxy/__init__.py:70:9	remove_role	method `Galaxy.remove_role` is never used
 unused-variable	medium	lib/ansible/galaxy/collection/__init__.py:81:5	CollectionManifestType	variable `CollectionManifestType` is never used
 unused-class	medium	lib/ansible/galaxy/collection/__init__.py:84:11	FilesManifestType	class `FilesManifestType` is never used
+unused-attribute	medium	lib/ansible/galaxy/collection/concrete_artifact_manager.py:77:14	_supplemental_signature_cache	attribute `ConcreteArtifactsManager._supplemental_signature_cache` is never used
 unused-method	low	lib/ansible/galaxy/dependency_resolution/reporters.py:99:9	backtracking	method `CollectionDependencyReporter.backtracking` is never used
+unused-attribute	low	lib/ansible/galaxy/role.py:50:5	SUPPORTED_SCMS	attribute `GalaxyRole.SUPPORTED_SCMS` is never used
+unused-attribute	low	lib/ansible/galaxy/role.py:54:5	ROLE_DIRS	attribute `GalaxyRole.ROLE_DIRS` is never used
 unused-method	low	lib/ansible/inventory/manager.py:671:9	clear_pattern_cache	method `InventoryManager.clear_pattern_cache` is never used
 unused-function	low	lib/ansible/module_utils/_internal/_ansiballz/_extensions/_coverage.py:20:5	run	function `run` is never used
 unused-function	low	lib/ansible/module_utils/_internal/_ansiballz/_extensions/_debugpy.py:85:5	run	function `run` is never used
 unused-function	low	lib/ansible/module_utils/_internal/_ansiballz/_extensions/_pydevd.py:48:5	run	function `run` is never used
 unused-function	high	lib/ansible/module_utils/_internal/_ansiballz/_respawn_wrapper.py:4:5	_respawn_main	function `_respawn_main` is never used
 unused-variable	low	lib/ansible/module_utils/_internal/_concurrent/_daemon_threading.py:24:1	Thread	variable `Thread` is never used
+unused-attribute	medium	lib/ansible/module_utils/_internal/_json/_profiles/__init__.py:296:14	_wrap_types	attribute `AnsibleProfileJSONEncoder._wrap_types` is never used
 unused-file	medium	lib/ansible/module_utils/_internal/_testing.py	-	file `lib.ansible.module_utils._internal._testing` is never imported or run
 unused-function	medium	lib/ansible/module_utils/api.py:37:5	rate_limit_argument_spec	function `rate_limit_argument_spec` is never used
 unused-function	medium	lib/ansible/module_utils/api.py:48:5	retry_argument_spec	function `retry_argument_spec` is never used
 unused-function	medium	lib/ansible/module_utils/api.py:59:5	basic_auth_argument_spec	function `basic_auth_argument_spec` is never used
 unused-function	low	lib/ansible/module_utils/api.py:71:5	rate_limit	function `rate_limit` is never used
 unused-function	medium	lib/ansible/module_utils/api.py:98:5	retry	function `retry` is never used
+unused-attribute	medium	lib/ansible/module_utils/basic.py:397:14	_clean	attribute `AnsibleModule._clean` is never used
+unused-attribute	medium	lib/ansible/module_utils/basic.py:400:14	_legal_inputs	attribute `AnsibleModule._legal_inputs` is never used
+unused-attribute	medium	lib/ansible/module_utils/basic.py:401:14	_options_context	attribute `AnsibleModule._options_context` is never used
+unused-attribute	medium	lib/ansible/module_utils/basic.py:455:14	_CHECK_ARGUMENT_TYPES_DISPATCHER	attribute `AnsibleModule._CHECK_ARGUMENT_TYPES_DISPATCHER` is never used
 unused-method	low	lib/ansible/module_utils/basic.py:1380:9	jsonify	method `AnsibleModule.jsonify` is never used
 unused-method	low	lib/ansible/module_utils/basic.py:2089:9	append_to_file	method `AnsibleModule.append_to_file` is never used
+unused-attribute	low	lib/ansible/module_utils/basic.py:2099:5	pretty_bytes	attribute `AnsibleModule.pretty_bytes` is never used
 unused-file	medium	lib/ansible/module_utils/common/_collections_compat.py	-	file `lib.ansible.module_utils.common._collections_compat` is never imported or run
+unused-attribute	medium	lib/ansible/module_utils/common/arg_spec.py:134:14	_required_together	attribute `ArgumentSpecValidator._required_together` is never used
+unused-attribute	medium	lib/ansible/module_utils/common/arg_spec.py:135:14	_required_one_of	attribute `ArgumentSpecValidator._required_one_of` is never used
+unused-attribute	medium	lib/ansible/module_utils/common/arg_spec.py:136:14	_required_if	attribute `ArgumentSpecValidator._required_if` is never used
+unused-attribute	medium	lib/ansible/module_utils/common/arg_spec.py:137:14	_required_by	attribute `ArgumentSpecValidator._required_by` is never used
 unused-file	medium	lib/ansible/module_utils/common/dict_transformations.py	-	file `lib.ansible.module_utils.common.dict_transformations` is never imported or run
 unused-file	medium	lib/ansible/module_utils/common/network.py	-	file `lib.ansible.module_utils.common.network` is never imported or run
 unused-variable	medium	lib/ansible/module_utils/common/yaml.py:61:5	yaml_load_all	variable `yaml_load_all` is never used
@@ -57,6 +83,9 @@ unused-variable	medium	lib/ansible/module_utils/common/yaml.py:71:5	yaml_load_al
 unused-variable	medium	lib/ansible/module_utils/common/yaml.py:73:5	yaml_dump_all	variable `yaml_dump_all` is never used
 unused-method	low	lib/ansible/module_utils/compat/selinux.py:29:13	from_param	method `_to_char_p.from_param` is never used
 unused-function	low	lib/ansible/module_utils/connection.py:76:5	exec_command	function `exec_command` is never used
+unused-attribute	low	lib/ansible/module_utils/errors.py:17:14	error_message	attribute `AnsibleValidationError.error_message` is never used
+unused-attribute	low	lib/ansible/module_utils/facts/namespace.py:33:14	namespace_name	attribute `FactNamespace.namespace_name` is never used
+unused-attribute	low	lib/ansible/module_utils/facts/network/base.py:54:5	IPV6_SCOPE	attribute `NetworkCollector.IPV6_SCOPE` is never used
 unused-function	low	lib/ansible/module_utils/service.py:248:5	check_ps	function `check_ps` is never used
 unused-method	low	lib/ansible/module_utils/six/__init__.py:255:9	create_module	method `_SixMetaPathImporter.create_module` is never used
 unused-function	medium	lib/ansible/module_utils/splitter.py:67:5	split_args	function `split_args` is never used
@@ -67,19 +96,29 @@ unused-variable	medium	lib/ansible/module_utils/urls.py:91:5	HAS_GSSAPI	variable
 unused-method	low	lib/ansible/module_utils/urls.py:113:13	http_error_401	method `HTTPGSSAPIAuthHandler.http_error_401` is never used
 unused-class	medium	lib/ansible/module_utils/urls.py:192:7	ProxyError	class `ProxyError` is never used
 unused-class	medium	lib/ansible/module_utils/urls.py:205:7	NoSSLError	class `NoSSLError` is never used
+unused-attribute	low	lib/ansible/module_utils/urls.py:217:14	import_traceback	attribute `MissingModuleError.import_traceback` is never used
+unused-attribute	low	lib/ansible/modules/dnf.py:417:14	pkg_mgr_name	attribute `DnfModule.pkg_mgr_name` is never used
+unused-attribute	low	lib/ansible/modules/dnf5.py:474:14	pkg_mgr_name	attribute `Dnf5Module.pkg_mgr_name` is never used
+unused-attribute	medium	lib/ansible/modules/service_facts.py:435:5	_pid_regex	attribute `FreeBSDScanService._pid_regex` is never used
 unused-file	medium	lib/ansible/parsing/ajson.py	-	file `lib.ansible.parsing.ajson` is never imported or run
 unused-file	medium	lib/ansible/parsing/utils/jsonify.py	-	file `lib.ansible.parsing.utils.jsonify` is never imported or run
 unused-method	medium	lib/ansible/playbook/base.py:95:9	_fattributes	method `FieldAttributeBase._fattributes` is never used
+unused-attribute	low	lib/ansible/playbook/base.py:724:5	DEPRECATED_ATTRIBUTES	attribute `Base.DEPRECATED_ATTRIBUTES` is never used
+unused-attribute	medium	lib/ansible/playbook/block.py:49:14	_implicit	attribute `Block._implicit` is never used
 unused-variable	low	lib/ansible/playbook/collectionsearch.py:10:1	display	variable `display` is never used
 unused-variable	low	lib/ansible/playbook/conditional.py:23:1	display	variable `display` is never used
 unused-variable	low	lib/ansible/playbook/play.py:42:1	display	variable `display` is never used
 unused-variable	medium	lib/ansible/playbook/play_context.py:48:1	RESET_VARS	variable `RESET_VARS` is never used
+unused-attribute	medium	lib/ansible/playbook/play_context.py:127:14	_become_plugin	attribute `PlayContext._become_plugin` is never used
+unused-attribute	low	lib/ansible/playbook/play_context.py:130:14	success_key	attribute `PlayContext.success_key` is never used
+unused-attribute	medium	lib/ansible/playbook/play_context.py:139:18	_internal_verbosity	attribute `PlayContext._internal_verbosity` is never used
 unused-variable	low	lib/ansible/playbook/role/definition.py:38:1	display	variable `display` is never used
 unused-variable	low	lib/ansible/playbook/role/requirement.py:35:1	display	variable `display` is never used
 unused-variable	low	lib/ansible/playbook/role_include.py:30:1	display	variable `display` is never used
 unused-method	medium	lib/ansible/playbook/task.py:159:9	_merge_kv	method `Task._merge_kv` is never used
 unused-variable	low	lib/ansible/plugins/__init__.py:34:1	display	variable `display` is never used
 unused-method	medium	lib/ansible/plugins/__init__.py:168:9	_check_required	method `AnsiblePlugin._check_required` is never used
+unused-attribute	medium	lib/ansible/plugins/callback/__init__.py:208:5	_copy_result	attribute `CallbackBase._copy_result` is never used
 unused-method	medium	lib/ansible/plugins/cliconf/__init__.py:85:9	_alarm_handler	method `CliconfBase._alarm_handler` is never used
 unused-method	low	lib/ansible/plugins/cliconf/__init__.py:150:9	reset_history	method `CliconfBase.reset_history` is never used
 unused-method	low	lib/ansible/plugins/cliconf/__init__.py:322:9	rollback	method `CliconfBase.rollback` is never used
@@ -88,7 +127,12 @@ unused-method	low	lib/ansible/plugins/cliconf/__init__.py:412:9	run_commands	met
 unused-method	low	lib/ansible/plugins/cliconf/__init__.py:432:9	check_edit_config_capability	method `CliconfBase.check_edit_config_capability` is never used
 unused-method	low	lib/ansible/plugins/cliconf/__init__.py:449:9	set_cli_prompt_context	method `CliconfBase.set_cli_prompt_context` is never used
 unused-method	medium	lib/ansible/plugins/cliconf/__init__.py:456:9	_update_cli_prompt_context	method `CliconfBase._update_cli_prompt_context` is never used
+unused-attribute	low	lib/ansible/plugins/connection/__init__.py:96:14	success_key	attribute `ConnectionBase.success_key` is never used
+unused-attribute	medium	lib/ansible/plugins/connection/__init__.py:348:14	_network_os	attribute `NetworkConnectionBase._network_os` is never used
+unused-attribute	medium	lib/ansible/plugins/connection/__init__.py:354:14	_cached_variables	attribute `NetworkConnectionBase._cached_variables` is never used
 unused-method	medium	lib/ansible/plugins/connection/__init__.py:454:9	_log_messages	method `NetworkConnectionBase._log_messages` is never used
+unused-attribute	medium	lib/ansible/plugins/httpapi/__init__.py:16:14	_become	attribute `HttpApiBase._become` is never used
+unused-attribute	medium	lib/ansible/plugins/httpapi/__init__.py:17:14	_become_pass	attribute `HttpApiBase._become_pass` is never used
 unused-method	low	lib/ansible/plugins/httpapi/__init__.py:19:9	set_become	method `HttpApiBase.set_become` is never used
 unused-method	low	lib/ansible/plugins/httpapi/__init__.py:32:9	logout	method `HttpApiBase.logout` is never used
 unused-method	low	lib/ansible/plugins/httpapi/__init__.py:40:9	update_auth	method `HttpApiBase.update_auth` is never used
@@ -100,7 +144,16 @@ unused-function	medium	lib/ansible/plugins/list.py:143:5	list_collection_plugins
 unused-function	medium	lib/ansible/plugins/list.py:265:5	list_plugin_names	function `list_plugin_names` is never used
 unused-function	medium	lib/ansible/plugins/list.py:269:5	list_plugin_files	function `list_plugin_files` is never used
 unused-function	medium	lib/ansible/plugins/list.py:274:5	list_plugin_classes	function `list_plugin_classes` is never used
+unused-attribute	low	lib/ansible/plugins/loader.py:157:14	exit_reason	attribute `PluginLoadContext.exit_reason` is never used
+unused-attribute	medium	lib/ansible/plugins/loader.py:1315:14	_plugin_type_friendly_name	attribute `Jinja2Loader._plugin_type_friendly_name` is never used
 unused-method	low	lib/ansible/plugins/netconf/__init__.py:311:9	guess_network_os	method `NetconfBase.guess_network_os` is never used
+unused-attribute	low	lib/ansible/plugins/strategy/__init__.py:1063:5	prompt_continuous	attribute `Debugger.prompt_continuous` is never used
+unused-attribute	low	lib/ansible/plugins/terminal/__init__.py:42:5	terminal_stdout_re	attribute `TerminalBase.terminal_stdout_re` is never used
+unused-attribute	low	lib/ansible/plugins/terminal/__init__.py:45:5	terminal_stderr_re	attribute `TerminalBase.terminal_stderr_re` is never used
+unused-attribute	low	lib/ansible/plugins/terminal/__init__.py:48:5	ansi_re	attribute `TerminalBase.ansi_re` is never used
+unused-attribute	low	lib/ansible/plugins/terminal/__init__.py:55:5	terminal_initial_prompt	attribute `TerminalBase.terminal_initial_prompt` is never used
+unused-attribute	low	lib/ansible/plugins/terminal/__init__.py:58:5	terminal_initial_answer	attribute `TerminalBase.terminal_initial_answer` is never used
+unused-attribute	low	lib/ansible/plugins/terminal/__init__.py:61:5	terminal_inital_prompt_newline	attribute `TerminalBase.terminal_inital_prompt_newline` is never used
 unused-method	medium	lib/ansible/plugins/terminal/__init__.py:66:9	_exec_cli_command	method `TerminalBase._exec_cli_command` is never used
 unused-method	medium	lib/ansible/plugins/terminal/__init__.py:74:9	_get_prompt	method `TerminalBase._get_prompt` is never used
 unused-method	low	lib/ansible/plugins/terminal/__init__.py:82:9	on_open_shell	method `TerminalBase.on_open_shell` is never used
@@ -113,6 +166,7 @@ unused-function	medium	lib/ansible/template/__init__.py:377:5	is_trusted_as_temp
 unused-file	medium	lib/ansible/utils/cmd_functions.py	-	file `lib.ansible.utils.cmd_functions` is never imported or run
 unused-method	medium	lib/ansible/utils/collection_loader/_collection_finder.py:121:9	_get_name	method `_AnsibleTraversableResources._get_name` is never used
 unused-method	medium	lib/ansible/utils/collection_loader/_collection_finder.py:221:9	_find_existing_finder	method `_AnsibleCollectionFinder._find_existing_finder` is never used
+unused-attribute	medium	lib/ansible/utils/collection_loader/_collection_finder.py:448:5	_allows_package_code	attribute `_AnsibleCollectionPkgLoaderBase._allows_package_code` is never used
 unused-method	low	lib/ansible/utils/collection_loader/_collection_finder.py:544:9	create_module	method `_AnsibleCollectionPkgLoaderBase.create_module` is never used
 unused-method	low	lib/ansible/utils/collection_loader/_collection_finder.py:870:9	create_module	method `_AnsibleInternalRedirectLoader.create_module` is never used
 unused-method	low	lib/ansible/utils/collection_loader/_collection_finder.py:960:9	fqcr	method `AnsibleCollectionRef.fqcr` is never used
@@ -127,6 +181,7 @@ unused-function	medium	lib/ansible/utils/plugin_docs.py:122:5	remove_current_col
 unused-file	medium	lib/ansible/utils/ssh_functions.py	-	file `lib.ansible.utils.ssh_functions` is never imported or run
 unused-file	medium	lib/ansible/utils/unsafe_proxy.py	-	file `lib.ansible.utils.unsafe_proxy` is never imported or run
 unused-function	low	lib/ansible/utils/vars.py:238:5	isidentifier	function `isidentifier` is never used
+unused-attribute	low	lib/ansible/utils/version.py:138:14	buildmetadata	attribute `SemanticVersion.buildmetadata` is never used
 unused-method	low	lib/ansible/vars/manager.py:154:9	set_inventory	method `VariableManager.set_inventory` is never used
 unused-function	medium	lib/ansible/vars/reserved.py:85:5	is_reserved_name	function `is_reserved_name` is never used
 unused-function	low	test/lib/ansible_test/_internal/__init__.py:67:5	main	function `main` is never used
@@ -190,22 +245,30 @@ unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/pylint.py:71
 unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/shellcheck.py:46:7	ShellcheckTest	class `ShellcheckTest` is never used
 unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/validate_modules.py:80:7	ValidateModulesTest	class `ValidateModulesTest` is never used
 unused-class	medium	test/lib/ansible_test/_internal/commands/sanity/yamllint.py:49:7	YamllintTest	class `YamllintTest` is never used
+unused-attribute	low	test/lib/ansible_test/_internal/core_ci.py:445:14	remote_message	attribute `CoreHttpError.remote_message` is never used
+unused-attribute	low	test/lib/ansible_test/_internal/core_ci.py:446:14	remote_stack_trace	attribute `CoreHttpError.remote_stack_trace` is never used
+unused-attribute	low	test/lib/ansible_test/_internal/core_ci.py:570:14	response_json	attribute `InstanceConnection.response_json` is never used
 unused-method	low	test/lib/ansible_test/_internal/docker_util.py:886:9	volumes	method `DockerImageInspect.volumes` is never used
 unused-method	low	test/lib/ansible_test/_internal/git.py:84:9	is_valid_ref	method `Git.is_valid_ref` is never used
 unused-class	medium	test/lib/ansible_test/_internal/host_profiles.py:1457:7	OriginProfile	class `OriginProfile` is never used
 unused-class	medium	test/lib/ansible_test/_internal/host_profiles.py:1474:7	PosixRemoteProfile	class `PosixRemoteProfile` is never used
 unused-class	medium	test/lib/ansible_test/_internal/host_profiles.py:1584:7	PosixSshProfile	class `PosixSshProfile` is never used
+unused-attribute	low	test/lib/ansible_test/_internal/provider/__init__.py:57:14	provider_type	attribute `ProviderNotFoundForPath.provider_type` is never used
 unused-class	medium	test/lib/ansible_test/_internal/provider/layout/ansible.py:18:7	AnsibleLayout	class `AnsibleLayout` is never used
 unused-class	medium	test/lib/ansible_test/_internal/provider/layout/collection.py:19:7	CollectionLayout	class `CollectionLayout` is never used
 unused-class	medium	test/lib/ansible_test/_internal/provider/source/git.py:25:7	GitSource	class `GitSource` is never used
 unused-variable	medium	test/lib/ansible_test/_internal/util.py:98:1	MODE_FILE_WRITE	variable `MODE_FILE_WRITE` is never used
+unused-attribute	low	test/lib/ansible_test/_internal/util.py:1007:14	runtime	attribute `SubprocessError.runtime` is never used
 unused-method	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/deprecated_calls.py:231:9	visit_call	method `AnsibleDeprecatedChecker.visit_call` is never used
 unused-function	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/deprecated_calls.py:542:5	register	function `register` is never used
+unused-attribute	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/deprecated_comment.py:23:5	msgs	attribute `AnsibleDeprecatedCommentChecker.msgs` is never used
 unused-method	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/deprecated_comment.py:54:9	process_tokens	method `AnsibleDeprecatedCommentChecker.process_tokens` is never used
 unused-function	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/deprecated_comment.py:135:5	register	function `register` is never used
 unused-function	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/hide_unraisable.py:22:5	register	function `register` is never used
+unused-attribute	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/string_format.py:38:5	msgs	attribute `AnsibleStringFormatChecker.msgs` is never used
 unused-method	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/string_format.py:41:9	visit_call	method `AnsibleStringFormatChecker.visit_call` is never used
 unused-function	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/string_format.py:67:5	register	function `register` is never used
+unused-attribute	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/unwanted.py:70:5	msgs	attribute `AnsibleUnwantedChecker.msgs` is never used
 unused-method	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/unwanted.py:173:9	visit_import	method `AnsibleUnwantedChecker.visit_import` is never used
 unused-method	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/unwanted.py:178:9	visit_importfrom	method `AnsibleUnwantedChecker.visit_importfrom` is never used
 unused-method	low	test/lib/ansible_test/_util/controller/sanity/pylint/plugins/unwanted.py:182:9	visit_attribute	method `AnsibleUnwantedChecker.visit_attribute` is never used
@@ -238,8 +301,11 @@ unused-variable	low	test/lib/ansible_test/_util/target/pytest/plugins/ansible_py
 unused-method	low	test/lib/ansible_test/_util/target/sanity/import/importer.py:214:13	create_module	method `RestrictedModuleLoader.create_module` is never used
 unused-function	low	test/units/_internal/_errors/test_alarm_timeout.py:17:5	assert_sigalrm_state	function `assert_sigalrm_state` is never used
 unused-method	low	test/units/_internal/templating/test_datatag.py:45:9	container_test_parameters	method `TestDatatagTemplar.container_test_parameters` is never used
+unused-attribute	low	test/units/cli/test_cli.py:105:14	mock_display_v	attribute `TestCliSetupVaultSecrets.mock_display_v` is never used
+unused-attribute	low	test/units/cli/test_galaxy.py:292:13	gc	attribute `ValidRoleTests.gc` is never used
 unused-variable	medium	test/units/config/manager/test_find_ini_config_file.py:16:1	real_exists	variable `real_exists` is never used
 unused-variable	medium	test/units/executor/module_common/test_recursive_finder.py:91:1	ONLY_BASIC_FILE	variable `ONLY_BASIC_FILE` is never used
+unused-attribute	medium	test/units/mock/loader.py:38:14	_vault_secrets	attribute `DictDataLoader._vault_secrets` is never used
 unused-method	medium	test/units/mock/yaml_helper.py:16:9	_dump_stream	method `YamlTestUtils._dump_stream` is never used
 unused-method	medium	test/units/mock/yaml_helper.py:24:9	_dump_load_cycle	method `YamlTestUtils._dump_load_cycle` is never used
 unused-function	low	test/units/module_utils/_internal/_patches/test_patches.py:98:5	func_for_ineffective_patch	function `func_for_ineffective_patch` is never used
@@ -254,8 +320,14 @@ unused-class	medium	test/units/module_utils/datatag/test_datatag.py:125:7	Ansibl
 unused-class	medium	test/units/module_utils/datatag/test_datatag.py:138:7	AnsibleSerializableBytes	class `AnsibleSerializableBytes` is never used
 unused-variable	high	test/units/module_utils/datatag/test_datatag.py:208:1	_str_override_method_args	variable `_str_override_method_args` is never used
 unused-method	low	test/units/module_utils/datatag/test_datatag.py:345:9	pytest_generate_tests	method `AutoParamSupport.pytest_generate_tests` is never used
+unused-attribute	low	test/units/module_utils/facts/base.py:29:5	valid_subsets	attribute `BaseFactsTest.valid_subsets` is never used
+unused-attribute	low	test/units/module_utils/facts/base.py:30:5	fact_namespace	attribute `BaseFactsTest.fact_namespace` is never used
 unused-method	medium	test/units/module_utils/facts/test_ansible_collector.py:244:9	_assert_ansible_namespace	method `TestCollectedFacts._assert_ansible_namespace` is never used
 unused-function	low	test/units/module_utils/facts/test_timeout.py:121:5	function_other_timeout	function `function_other_timeout` is never used
 unused-method	low	test/units/module_utils/urls/test_gzip.py:28:9	makefile	method `Sock.makefile` is never used
 unused-function	low	test/units/modules/test_iptables.py:17:5	_mock_basic_commands	function `_mock_basic_commands` is never used
 unused-method	medium	test/units/parsing/yaml/test_loader.py:197:9	_encrypt_plaintext	method `TestAnsibleLoaderVault._encrypt_plaintext` is never used
+unused-attribute	low	test/units/playbook/test_helpers.py:43:14	mock_tqm	attribute `MixinForMocks.mock_tqm` is never used
+unused-attribute	medium	test/units/playbook/test_helpers.py:66:14	_test_data_path	attribute `MixinForMocks._test_data_path` is never used
+unused-attribute	low	test/units/plugins/connection/test_ssh.py:305:14	files_watched	attribute `MockSelector.files_watched` is never used
+unused-attribute	low	test/units/plugins/inventory/test_inventory.py:80:5	ranges_to_expand	attribute `TestInventory.ranges_to_expand` is never used

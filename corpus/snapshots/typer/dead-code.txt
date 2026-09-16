@@ -1,7 +1,7 @@
 files_scanned=637
-symbols_checked=2830
-symbols_kept=1343
-findings=37
+symbols_checked=3238
+symbols_kept=1351
+findings=43
 --
 unused-variable	medium	tests/assets/cli/multi_app_norich.py:5:1	variable	variable `variable` is never used
 unused-variable	low	tests/test_callback_warning.py:5:1	runner	variable `runner` is never used
@@ -17,7 +17,9 @@ unused-variable	low	typer/_click/_winconsole.py:55:1	LocalFree	variable `LocalFr
 unused-variable	medium	typer/_click/_winconsole.py:68:1	STDIN_FILENO	variable `STDIN_FILENO` is never used
 unused-variable	medium	typer/_click/_winconsole.py:69:1	STDOUT_FILENO	variable `STDOUT_FILENO` is never used
 unused-variable	medium	typer/_click/_winconsole.py:70:1	STDERR_FILENO	variable `STDERR_FILENO` is never used
+unused-attribute	medium	typer/_click/_winconsole.py:92:9	_fields_	attribute `Py_buffer._fields_` is never used
 unused-variable	low	typer/_click/core.py:32:1	F	variable `F` is never used
+unused-attribute	medium	typer/_click/core.py:259:14	_close_callbacks	attribute `Context._close_callbacks` is never used
 unused-variable	low	typer/_click/decorators.py:10:5	GrpType	variable `GrpType` is never used
 unused-variable	low	typer/_click/decorators.py:13:1	P	variable `P` is never used
 unused-variable	low	typer/_click/decorators.py:15:1	R	variable `R` is never used
@@ -40,3 +42,7 @@ unused-variable	medium	typer/colors.py:18:1	BRIGHT_MAGENTA	variable `BRIGHT_MAGE
 unused-variable	medium	typer/colors.py:19:1	BRIGHT_CYAN	variable `BRIGHT_CYAN` is never used
 unused-variable	medium	typer/colors.py:20:1	BRIGHT_WHITE	variable `BRIGHT_WHITE` is never used
 unused-variable	high	typer/completion.py:14:1	_click_patched	variable `_click_patched` is never used
+unused-attribute	low	typer/core.py:994:5	command_class	attribute `TyperGroup.command_class` is never used
+unused-attribute	low	typer/core.py:995:5	group_class	attribute `TyperGroup.group_class` is never used
+unused-attribute	low	typer/models.py:266:14	chain	attribute `TyperInfo.chain` is never used
+unused-attribute	low	typer/testing.py:97:14	return_value	attribute `Result.return_value` is never used

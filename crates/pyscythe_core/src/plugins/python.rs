@@ -5,6 +5,55 @@
 use crate::keep::{KeepContext, KeepRule, PluginName};
 use crate::plugins::decorated_with_from;
 
+/// Decorators that turn a class body into a schema: every annotation becomes a
+/// field of the generated `__init__`, so the class's own code never names them.
+const SCHEMA_DECORATORS: &[&str] = &["dataclass", "define", "frozen", "mutable", "attrs", "s"];
+
+/// Where those decorators come from. An unresolved decorator matches by name.
+const SCHEMA_DECORATOR_PACKAGES: &[&str] = &[
+    "dataclasses",
+    "attr",
+    "attrs",
+    "pydantic.dataclasses",
+    "msgspec",
+];
+
+/// Base classes whose members the language reads as a whole: an enum is
+/// iterated and looked up by name or value, a `NamedTuple` or `TypedDict`
+/// declares a shape, a `Protocol` declares an interface for others to satisfy.
+const SCHEMA_BASES: &[&str] = &["Flag", "NamedTuple", "TypedDict", "Protocol"];
+
+/// Whether a base class name means the class is one of those.
+///
+/// Anything ending in "Enum" counts: `IntEnum` and `StrEnum` from the standard
+/// library, and a library's own `MieleEnum` or `BaseEnum`, which a project
+/// without its dependencies installed cannot resolve any further.
+fn is_schema_base(base: &str) -> bool {
+    base.ends_with("Enum") || SCHEMA_BASES.contains(&base)
+}
+
+/// Inner classes that every framework in the ecosystem reads as configuration:
+/// Django's and Graphene's `Meta`, Pydantic's and DRF's `Config`. Whatever is
+/// written in one is read by name, never by a reference.
+const CONFIGURATION_CLASSES: &[&str] = &["Meta", "Config"];
+
+/// Whether the class a member belongs to is one whose attributes are its data.
+fn owner_declares_a_schema(context: KeepContext<'_>) -> bool {
+    let Some(owner) = context.owner else {
+        return false;
+    };
+    decorated_with_from(owner, SCHEMA_DECORATORS, false, SCHEMA_DECORATOR_PACKAGES)
+        || owner
+            .bases
+            .iter()
+            .any(|base| is_schema_base(base.last_segment()))
+        || context
+            .ancestry
+            .names()
+            .iter()
+            .any(|ancestor| is_schema_base(ancestor.last_segment()))
+}
+
 pub(crate) struct Python;
 
 impl KeepRule for Python {
@@ -74,6 +123,16 @@ impl KeepRule for Python {
         {
             return Some("registered by a base class __init_subclass__ hook");
         }
+        if crate::dead_code::is_attribute(symbol) && owner_declares_a_schema(context) {
+            return Some("a field of a class whose attributes are its data");
+        }
+        if crate::dead_code::is_attribute(symbol)
+            && context.owner.is_some_and(|owner| {
+                !owner.is_module_level() && CONFIGURATION_CLASSES.contains(&owner.name.as_str())
+            })
+        {
+            return Some("written in an inner Meta or Config class, which a framework reads");
+        }
         None
     }
 }
@@ -82,6 +141,62 @@ impl KeepRule for Python {
 mod tests {
     use super::Python;
     use crate::plugins::testing::Case;
+
+    #[test]
+    fn keeps_the_fields_of_a_class_whose_attributes_are_its_data() {
+        assert!(
+            Case::attribute("y")
+                .on_class(Case::class("Point").decorated_from("dataclass", "dataclasses"))
+                .is_kept_by(&Python),
+            "a dataclass field is a constructor argument"
+        );
+        assert!(
+            Case::attribute("GREEN")
+                .on_class(Case::class("Colour").extending("Enum"))
+                .is_kept_by(&Python),
+            "an enum member is reached by iteration and by lookup"
+        );
+        assert!(
+            Case::attribute("cooling_down")
+                .on_class(Case::class("ProgramPhase").extending("MieleEnum"))
+                .is_kept_by(&Python),
+            "a library's own enum base is still an enum"
+        );
+        assert!(
+            Case::attribute("host")
+                .on_class(Case::class("Row").with_ancestors(&["typing.TypedDict"]))
+                .is_kept_by(&Python),
+            "a TypedDict key declares a shape for other code to build"
+        );
+        assert!(
+            !Case::attribute("retries")
+                .on_class(Case::class("Settings"))
+                .is_kept_by(&Python),
+            "an attribute of a plain class is ordinary code"
+        );
+        assert!(
+            !Case::method("render")
+                .on_class(Case::class("Point").decorated_from("dataclass", "dataclasses"))
+                .is_kept_by(&Python),
+            "a dataclass keeps its fields, not its methods"
+        );
+    }
+
+    #[test]
+    fn keeps_what_an_inner_meta_or_config_class_declares() {
+        let meta = Case::class("Meta").nested_in_a_class();
+        assert!(
+            Case::attribute("ordering")
+                .on_class(meta)
+                .is_kept_by(&Python)
+        );
+        assert!(
+            !Case::attribute("ordering")
+                .on_class(Case::class("Meta"))
+                .is_kept_by(&Python),
+            "a module-level class named Meta is ordinary code"
+        );
+    }
 
     #[test]
     fn keeps_files_a_type_checker_reads_but_not_a_source_module_named_typing() {
