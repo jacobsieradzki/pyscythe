@@ -1227,7 +1227,7 @@ dependencies = [
 
 [[package]]
 name = "pyscythe"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "anyhow",
  "assert_cmd",
@@ -1245,7 +1245,7 @@ dependencies = [
 
 [[package]]
 name = "pyscythe_core"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "camino",
  "globset",
@@ -1256,7 +1256,7 @@ dependencies = [
 
 [[package]]
 name = "pyscythe_corpus"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "anyhow",
  "camino",
@@ -1269,7 +1269,7 @@ dependencies = [
 
 [[package]]
 name = "pyscythe_metrics"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "pyscythe_core",
  "ruff_python_ast",
@@ -1280,7 +1280,7 @@ dependencies = [
 
 [[package]]
 name = "pyscythe_pyproject"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "camino",
  "pyscythe_core",
@@ -1293,7 +1293,7 @@ dependencies = [
 
 [[package]]
 name = "pyscythe_ty"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "anyhow",
  "camino",

@@ -135,7 +135,7 @@ When a rule changes, the snapshot diff is the review: read it, make sure every l
 Bump `version` in the workspace `Cargo.toml`, commit, then tag and push:
 
 ```bash
-git tag v0.2.0 && git push origin v0.2.0
+git tag v0.3.0 && git push origin v0.3.0
 ```
 
 The `release` workflow builds the wheels and sdist with maturin, publishes them to PyPI through trusted publishing (the `pypi` environment, no token stored anywhere), and attaches the same files to a GitHub Release. `uvx maturin build --release` builds a wheel locally into `target/wheels`.
