@@ -1,0 +1,37 @@
+# The hooks are a version pin and a command line; both break silently, so run
+# them against a project with one dead module in it.
+name: tests
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  hooks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pre-commit
+      - name: A project with something dead in it
+        run: |
+          mkdir -p /tmp/project/pkg
+          cd /tmp/project
+          : > pkg/__init__.py
+          printf 'def never_called():\n    return 1\n' > pkg/dead.py
+          git init -q
+          git config user.email tests@example.com
+          git config user.name tests
+          git add -A
+          git commit -qm fixture
+      - name: The hook reports it
+        run: |
+          cd /tmp/project
+          pre-commit try-repo "$GITHUB_WORKSPACE" pyscythe-dead-code --all-files --verbose >out.txt 2>&1 && status=0 || status=$?
+          cat out.txt
+          if [ "$status" -ne 1 ]; then
+            echo "expected exit 1 from a project with a dead module, got $status" >&2
+            exit 1
+          fi
+          grep -q "pkg.dead" out.txt

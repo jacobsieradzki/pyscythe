@@ -53,6 +53,11 @@ Ordered roughly by value. Each item lands with an acceptance test first.
 ## Deferred by decision
 
 - [x] Distribution: PyPI wheel via maturin (`release.yml` on `v*` tags, trusted publishing, GitHub Release), `cargo install --git`. First release v0.1.0 on 2026-09-13.
-- [ ] Homebrew tap and a `curl | sh` installer through cargo-dist once the repository is public; crates.io waits on the ruff and ty crates being published.
+- [x] Homebrew, from a tap of its own (`jacobsieradzki/homebrew-tap`), fed the per-platform archives the release repacks out of the wheels rather than a second build of the same code. Added 2026-09-24.
+- [x] pre-commit hooks, from a mirror repository (`jacobsieradzki/pyscythe-pre-commit`), because pre-commit installs the hook repository itself and this one's `pyproject.toml` is maturin's. Added 2026-09-24.
+- [ ] conda-forge: the recipe is written and rendered by `packaging/conda.sh`; it waits on a tag whose tarball contains the LICENSE, then a pull request to `conda-forge/staged-recipes`.
+- [ ] GitHub Marketplace: a checkbox on a GitHub Release. `action.yml` already has the name, description, and branding it asks for.
+- [ ] crates.io: `cargo publish` refuses a git dependency, and `ty_project` and `ty_ide` are still not on crates.io, though the rest of the ruff and ty crates are, at 0.0.14 (checked 2026-09-24).
+- [ ] A `curl | sh` installer: the release archives are what it would serve.
 - [ ] Agent integration: MCP server, Claude Code skill, `actions[]` in JSON. (Not a priority as of 2026-09-05.)
 - [ ] Runtime layer from coverage.py data.

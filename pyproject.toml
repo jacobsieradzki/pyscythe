@@ -10,6 +10,7 @@ description = "Codebase intelligence for Python: dead code, circular imports, du
 readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
+license-files = ["LICENSE"]
 authors = [{ name = "Jacob Sieradzki" }]
 keywords = ["dead-code", "linter", "static-analysis", "circular-imports", "duplication", "complexity"]
 classifiers = [

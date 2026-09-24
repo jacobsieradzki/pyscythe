@@ -80,8 +80,28 @@ jobs:
           name: sdist
           path: dist/*.tar.gz
 
+  # Homebrew and a plain download want a binary, not a wheel, and the wheels
+  # already hold one; repacking them is cheaper and more honest than a second
+  # build of the same code.
+  binaries:
+    needs: wheels
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: wheel-*
+          path: wheels
+          merge-multiple: true
+      - name: Repack the wheels as archives
+        run: packaging/binaries.sh wheels archives
+      - uses: actions/upload-artifact@v4
+        with:
+          name: archives
+          path: archives/*
+
   publish:
-    needs: [wheels, sdist]
+    needs: [wheels, sdist, binaries]
     if: github.ref_type == 'tag'
     runs-on: ubuntu-latest
     # The `pypi` environment is what PyPI's trusted publisher is bound to.
@@ -90,15 +110,77 @@ jobs:
       id-token: write
       contents: write
     steps:
+      # Only the wheels and the sdist go to PyPI; the archives go to the
+      # release, so they are downloaded apart from them.
       - uses: actions/download-artifact@v4
         with:
+          pattern: wheel-*
           path: dist
           merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: sdist
+          path: dist
+      - uses: actions/download-artifact@v4
+        with:
+          name: archives
+          path: archives
       - name: What is being published
-        run: ls -l dist
+        run: ls -l dist archives
       - uses: pypa/gh-action-pypi-publish@release/v1
       - name: GitHub Release with the same files
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/*
+          files: |
+            dist/*
+            archives/*
           generate_release_notes: true
+
+  # The Homebrew tap and the pre-commit mirror are repositories of their own,
+  # so this needs a token of its own. Without one the release still succeeds
+  # and they stay on the previous version.
+  downstream:
+    needs: publish
+    if: github.ref_type == 'tag'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.DOWNSTREAM_TOKEN }}
+      VERSION: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: archives
+          path: archives
+      - name: The version, without the v
+        run: echo "VERSION=${VERSION#v}" >> "$GITHUB_ENV"
+      - name: Set an author for both pushes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Homebrew tap
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::warning::DOWNSTREAM_TOKEN is not set; the tap keeps its previous version"
+            exit 0
+          fi
+          git clone --depth 1 "https://x-access-token:$GH_TOKEN@github.com/jacobsieradzki/homebrew-tap" tap
+          mkdir -p tap/Formula
+          packaging/homebrew.sh "$VERSION" archives > tap/Formula/pyscythe.rb
+          cd tap
+          git add Formula/pyscythe.rb
+          git diff --cached --quiet || git commit -m "pyscythe $VERSION"
+          git push
+      - name: pre-commit mirror
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::warning::DOWNSTREAM_TOKEN is not set; the pre-commit mirror keeps its previous version"
+            exit 0
+          fi
+          git clone --depth 1 "https://x-access-token:$GH_TOKEN@github.com/jacobsieradzki/pyscythe-pre-commit" mirror
+          packaging/pre-commit.sh "$VERSION" mirror
+          cd mirror
+          git add -A
+          git diff --cached --quiet || git commit -m "pyscythe $VERSION"
+          git tag "v$VERSION"
+          git push origin HEAD "v$VERSION"

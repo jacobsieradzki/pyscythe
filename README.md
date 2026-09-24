@@ -15,10 +15,23 @@ The binary ships as a wheel on PyPI, so any Python tool runner works, and no Pyt
 ```bash
 uvx pyscythe dead-code .            # run without installing
 uv tool install pyscythe            # or: pipx install pyscythe
+brew install jacobsieradzki/tap/pyscythe
 cargo install --locked --git https://github.com/jacobsieradzki/pyscythe pyscythe   # from source
 ```
 
-Wheels are built for Linux (x86_64, aarch64), macOS (Intel, Apple silicon), and Windows (x86_64). crates.io is not an option while the ruff and ty crates are git dependencies.
+Wheels are built for Linux (x86_64, aarch64), macOS (Intel, Apple silicon), and Windows (x86_64), and every release attaches the bare binary for each as an archive. crates.io is not an option while the ruff and ty crates are git dependencies: Astral publishes most of them, but not `ty_project` or `ty_ide`.
+
+As a [pre-commit](https://pre-commit.com) hook:
+
+```yaml
+repos:
+  - repo: https://github.com/jacobsieradzki/pyscythe-pre-commit
+    rev: v0.3.0
+    hooks:
+      - id: pyscythe-dead-code
+```
+
+Every analysis reads the whole project rather than the files a commit touches, so the hooks pass no filenames and run once over everything; `stages: [pre-push]` suits a large codebase better. `pyscythe-cycles`, `pyscythe-deps`, `pyscythe-boundaries`, `pyscythe-health`, and `pyscythe-dupes` are there too.
 
 ## Usage
 
@@ -66,13 +79,13 @@ Exit codes: `0` clean, `1` findings, `2` error.
 
 ### In CI
 
-As a GitHub Action, which installs the PyPI wheel with uv (the action itself lives in this repository, so the runner needs access to it while the repository is private):
+As a GitHub Action, which installs the PyPI wheel with uv:
 
 ```yaml
-- uses: jacobsieradzki/pyscythe@main
+- uses: jacobsieradzki/pyscythe@v0.3.0
   with:
     command: dead-code
-    version: 0.1.0                      # omit for the latest release
+    version: 0.3.0                      # the wheel to install; omit for the latest
     since: origin/${{ github.base_ref }}
     args: --min-confidence medium
 ```
@@ -118,7 +131,7 @@ For Rust, the tools that map onto oxlint, oxfmt, and fallow are clippy, rustfmt,
 
 ### The corpus
 
-`corpus/corpus.toml` pins 35 public projects (Django, Home Assistant, pandas, pydantic, ansible, saleor, and others chosen for the shapes they add) at a commit each, with the environment for each pinned in `corpus/locks`. `mise run corpus` clones them into `corpus/cache`, builds their environments with uv, runs every analysis, and compares the reports with `corpus/snapshots`: one sorted line per finding, paths relative to the project. The `corpus` workflow does the same on every push and pull request, so a change in output over real code is always a visible diff in the pull request.
+`corpus/corpus.toml` pins 36 public projects (Django, Home Assistant, pandas, pydantic, ansible, saleor, and others chosen for the shapes they add) at a commit each, with the environment for each pinned in `corpus/locks`. `mise run corpus` clones them into `corpus/cache`, builds their environments with uv, runs every analysis, and compares the reports with `corpus/snapshots`: one sorted line per finding, paths relative to the project. The `corpus` workflow does the same on every push and pull request, so a change in output over real code is always a visible diff in the pull request.
 
 ```bash
 mise run corpus                              # check every project
@@ -138,7 +151,7 @@ Bump `version` in the workspace `Cargo.toml`, commit, then tag and push:
 git tag v0.3.0 && git push origin v0.3.0
 ```
 
-The `release` workflow builds the wheels and sdist with maturin, publishes them to PyPI through trusted publishing (the `pypi` environment, no token stored anywhere), and attaches the same files to a GitHub Release. `uvx maturin build --release` builds a wheel locally into `target/wheels`.
+The `release` workflow builds the wheels and sdist with maturin, publishes them to PyPI through trusted publishing (the `pypi` environment, no token stored anywhere), repacks the wheels as per-platform archives, and attaches all of it to a GitHub Release. It then pushes the Homebrew formula and the pre-commit mirror, which are repositories of their own. [`packaging/README.md`](packaging/README.md) covers every channel, the scripts that render each one, and the parts a person still has to do by hand. `uvx maturin build --release` builds a wheel locally into `target/wheels`.
 
 ## Layout
 
@@ -147,3 +160,8 @@ The `release` workflow builds the wheels and sdist with maturin, publishes them 
 - `crates/pyscythe_pyproject` — reads `pyproject.toml` into the manifest and config.
 - `crates/pyscythe_metrics` — per-function complexity from the ruff AST alone, unit-tested on snippets.
 - `crates/pyscythe_cli` — the `pyscythe` binary, output formats, and acceptance tests that run the real binary over fixture projects.
+- `packaging` — everything pyscythe is published through, and the scripts that render it.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

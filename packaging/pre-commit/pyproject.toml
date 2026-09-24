@@ -1,0 +1,16 @@
+# pre-commit installs the hook repository itself, so this repository is a
+# package whose only job is to pull the pyscythe wheel of a matching version
+# out of PyPI. Generated from packaging/pre-commit in jacobsieradzki/pyscythe.
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyscythe-pre-commit"
+version = "__VERSION__"
+description = "pre-commit hooks for pyscythe"
+requires-python = ">=3.9"
+dependencies = ["pyscythe==__VERSION__"]
+
+[tool.setuptools]
+packages = []

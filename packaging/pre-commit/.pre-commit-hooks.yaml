@@ -1,0 +1,68 @@
+# Hooks for pyscythe. Every analysis reads the whole project rather than the
+# files a commit happens to touch, so the hooks pass no filenames; the file
+# types only decide whether a commit is worth analysing at all.
+- id: pyscythe-dead-code
+  name: pyscythe dead-code
+  description: Report functions, classes, methods, attributes, and files that nothing uses
+  entry: pyscythe dead-code
+  language: python
+  types_or: [python, pyi]
+  pass_filenames: false
+  require_serial: true
+  args: []
+  minimum_pre_commit_version: "2.9.2"
+
+- id: pyscythe-cycles
+  name: pyscythe cycles
+  description: Report import cycles that would bite at load time
+  entry: pyscythe cycles
+  language: python
+  types_or: [python, pyi]
+  pass_filenames: false
+  require_serial: true
+  args: []
+  minimum_pre_commit_version: "2.9.2"
+
+- id: pyscythe-deps
+  name: pyscythe deps
+  description: Compare declared dependencies with the ones the code imports
+  entry: pyscythe deps
+  language: python
+  types_or: [python, pyi, toml, plain-text]
+  pass_filenames: false
+  require_serial: true
+  args: []
+  minimum_pre_commit_version: "2.9.2"
+
+- id: pyscythe-boundaries
+  name: pyscythe boundaries
+  description: Enforce the layering rules the project declares
+  entry: pyscythe boundaries
+  language: python
+  types_or: [python, pyi, toml]
+  pass_filenames: false
+  require_serial: true
+  args: []
+  minimum_pre_commit_version: "2.9.2"
+
+- id: pyscythe-health
+  name: pyscythe health
+  description: Grade complexity and report the hotspots
+  entry: pyscythe health
+  language: python
+  types_or: [python, pyi]
+  pass_filenames: false
+  require_serial: true
+  args: []
+  minimum_pre_commit_version: "2.9.2"
+
+- id: pyscythe-dupes
+  name: pyscythe dupes
+  description: Report copied code, including renamed copies
+  entry: pyscythe dupes
+  language: python
+  types_or: [python, pyi]
+  pass_filenames: false
+  require_serial: true
+  args: []
+  minimum_pre_commit_version: "2.9.2"

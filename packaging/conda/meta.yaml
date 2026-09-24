@@ -1,0 +1,56 @@
+# conda-forge recipe. Submitted once to conda-forge/staged-recipes, after which
+# the feedstock's own bot opens the version bumps. Built from the tag tarball
+# rather than the PyPI sdist so that it is a plain binary with no Python in the
+# run requirements, and with `git` in the build requirements because the ruff
+# and ty crates are git dependencies until Astral publishes ty_project.
+{% set name = "pyscythe" %}
+{% set version = "__VERSION__" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/jacobsieradzki/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: __SHA256__
+
+build:
+  number: 0
+  script:
+    - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+    - cargo install --no-track --locked --bins --root $PREFIX --path crates/pyscythe_cli  # [unix]
+    - cargo install --no-track --locked --bins --root %PREFIX% --path crates/pyscythe_cli  # [win]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ stdlib('c') }}
+    - {{ compiler('rust') }}
+    - cargo-bundle-licenses
+    - git
+
+test:
+  commands:
+    - pyscythe --version
+    - pyscythe dead-code --help
+
+about:
+  home: https://github.com/jacobsieradzki/pyscythe
+  license: MIT
+  license_family: MIT
+  license_file:
+    - LICENSE
+    - THIRDPARTY.yml
+  summary: Dead code, import cycles, duplication, and complexity for Python codebases
+  description: |
+    pyscythe reports Python functions, classes, methods, attributes, and whole
+    files that nothing uses, import cycles that bite at load time, copied code,
+    complexity hotspots, architecture boundary violations, and the gap between
+    declared and imported dependencies. It resolves references semantically
+    through the ty type checker rather than textually, and plugins keep the
+    symbols that frameworks reach by convention.
+  dev_url: https://github.com/jacobsieradzki/pyscythe
+
+extra:
+  recipe-maintainers:
+    - jacobsieradzki
